@@ -1,0 +1,106 @@
+<?php
+
+function group_registration_init(){
+   // drupal_set_message('Module active success');
+}
+
+
+/**
+ * Implement hook_form_user_register_form_alter().
+ */
+function group_registration_form_user_register_form_alter(&$form, &$form_state) {
+
+    $form['#submit'][] = 'create_company_group_on_user_registration';
+}
+
+/**
+ * Custom submit function for user registration form
+ */
+function create_company_group_on_user_registration($form, &$form_state) {
+
+    $usr_obj = $form_state['user']; //get registered user object
+
+    if (is_object($usr_obj) && isset($usr_obj->uid) && !check_group_title($form_state['input']['field_company_name']['und'][0]['target_id'])) {// dont forget to add your conditions
+
+        global $user;
+
+        $node = new stdClass();
+
+        $node->type     = "group";
+        $node->uid      = $user->uid;
+        $node->title    = t($form_state['input']['field_company_name']['und'][0]['target_id']);
+        $node->body     = t($form_state['input']['field_company_name']['und'][0]['target_id'] . "Group");
+        $node->status       = 1; //(1 or 0): published or not
+        $node->promote      = 0; //(1 or 0): promoted to front page
+        $node->comment      = 1; //2 = comments on, 1 = comments off
+
+        $node->og_description   = t("OD Description");
+        $node->og_register  = 0;
+        $node->og_directory = 0;
+        $node->og_private   = 1;
+        $node->og_selective = 3;
+
+        $node = node_submit($node);
+        node_save($node);
+
+        // Load the user we want to add to the group (ID #2 was my test user)
+        $account = user_load($user->uid);
+
+        // Add the user to the group
+        og_group('node', $node->nid, array(
+            "entity type"       => "user",
+            "entity"        => $account,
+            "membership type"   => OG_MEMBERSHIP_TYPE_DEFAULT,
+        ));
+
+        // Changes the users role in the group (1 = non-member, 2 = member, 3 = administrator member)
+        og_role_grant('node', $node->nid, $account->uid, 2);
+
+        drupal_set_message(t("Finished"));
+
+    }
+}
+
+
+function check_group_title($group_title = null){
+
+    if(!empty($group_title)) {
+
+        $result = db_select('node', 'n')
+        ->fields('n')
+        ->condition('type', 'group' , '=')
+        ->condition('title', $group_title, '=')
+        ->condition('status', 1,'=')
+        ->execute()
+        ->fetchAssoc();
+
+        return ($result) ? true : false;
+    }
+
+    return false;
+
+}
+
+
+/**
+ * Implements hook_node_update().
+ */
+function group_registration_node_update($node) {
+
+    $gid = isset($node->field_project['und'][0]['target_id']) ? $node->field_project['und'][0]['target_id']: 0;
+
+    // Node type with group reference field.
+    if ($node->type != "group_content" || !$gid) {
+        return false;
+    }
+
+    $values = array(
+        'entity_type' => 'node',
+        'entity' => $node,
+        'state' => OG_STATE_ACTIVE,
+    );
+
+    // Add this node to the group.
+    $result = og_group('node', $gid, $values);
+}
+?>

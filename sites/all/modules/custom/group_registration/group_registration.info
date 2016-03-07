@@ -1,0 +1,6 @@
+name = Company Group Registration
+description = Create a group during registeration process and associate with company,
+version = 7.x
+core = 7.x
+package = Custom Module
+

@@ -1,0 +1,8 @@
+<?php
+
+function custom_init(){
+    //drupal_set_message('custom module active success');
+}
+
+
+?>
