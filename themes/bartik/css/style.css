@@ -294,7 +294,6 @@ ul.tips {
 }
 #logo {
   float: left; /* LTR */
-  padding: 15px 15px 15px 10px; /* LTR */
 }
 #name-and-slogan {
   float: left; /* LTR */
@@ -454,11 +453,16 @@ h1#site-name {
   padding: 0 0.5em;
 }
 
+#base-title{
+    clear: both;
+}
+
 /* --------------- Main Menu ------------ */
 
 #main-menu {
   clear: both;
 }
+
 #main-menu-links {
   font-size: 0.929em;
   margin: 0;
@@ -1117,7 +1121,7 @@ a.button:active {
 
 fieldset {
   background: #ffffff;
-  border: 1px solid #cccccc;
+  border: 0px;
   margin-top: 10px;
   margin-bottom: 32px;
   padding: 0 0 10px;
@@ -1129,7 +1133,7 @@ fieldset {
   border-radius: 4px;
 }
 .fieldset-wrapper {
-  margin-top: 25px;
+  margin-top: 35px;
 }
 .node-form .vertical-tabs .fieldset-wrapper {
   margin-top: 0;
@@ -1167,8 +1171,8 @@ fieldset.collapsed {
   border-radius: 0;
 }
 fieldset legend {
-  background: #dbdbdb;
-  border: 1px solid #ccc;
+  /*background: #dbdbdb;
+  border: 1px solid #ccc;*/
   border-bottom: none;
   color: #3b3b3b;
   display: block;
@@ -1208,6 +1212,7 @@ fieldset legend a:active {
 fieldset .fieldset-wrapper {
   padding: 0 10px;
 }
+
 fieldset .fieldset-description {
   margin-top: 5px;
   margin-bottom: 1em;
@@ -1247,7 +1252,8 @@ input.form-submit:focus {
   margin-top: 2px;
 }
 .form-item label {
-  font-size: 0.929em;
+  font-size: 20px;
+    font-weight: normal;
 }
 .form-type-radio label,
 .form-type-checkbox label {
@@ -1639,3 +1645,18 @@ div.admin-panel .description {
 #footer-wrapper .poll .bar .foreground {
   background-color: #ddd;
 }
+
+
+/*
+Base title section */
+
+#base-title-section{
+    width: 100%;
+    min-width: 960px;
+    background-color: darkgray;
+}
+
+#base-title,#site-search{
+    float: left;
+    width: 480px;
+ }

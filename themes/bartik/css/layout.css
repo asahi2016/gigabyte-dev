@@ -5,22 +5,24 @@ html,
 body,
 #page  {
   height: 100%;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 14px;
 }
 #page-wrapper {
   min-height: 100%;
-  min-width: 960px;
+  min-width: 100%;
 }
 #header div.section,
 #featured div.section,
 #messages div.section,
-#main,
 #triptych,
 #footer-columns,
 #footer {
-  width: 960px;
+  width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
+#main{width:1100px;margin:0px auto;}
 #header div.section {
   position: relative;
 }
@@ -39,6 +41,16 @@ body,
   right: 0; /* LTR */
   top: 0;
   width: 480px;
+}
+.top_f,.top_s{
+    background:transparent url('../images/blue-background.png') no-repeat scroll center center / cover;
+}
+.top_f{
+    height:80px;
+}
+.top_s{
+    margin:4px 0px 0px;
+    height:35px;
 }
 #content,
 #sidebar-first,
@@ -73,7 +85,7 @@ body,
 }
 #content .section,
 .sidebar .section {
-  padding: 0 15px;
+  padding: 0 0px;
 }
 #breadcrumb {
   margin: 0 15px;
@@ -98,3 +110,67 @@ body,
   width: 940px;
   min-width: 920px;
 }
+
+
+h1.title{
+    font-weight: 900;
+    font-size: 27px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #12406A;
+}
+.fieldset-legend {
+    font-size: 20px;
+    font-weight: 700;
+    width:100%;
+}
+#user-register-form .fieldset-wrapper{
+    width:1000px;
+    margin:35px auto;
+}
+#user-register-form .form-item label{
+    width:370px;
+    float:left;
+}
+#user-register-form .fieldset-wrapper .form-item label{
+
+}
+#user-register-form .form-text{
+    width:170px;
+    height:20px;
+}
+#user-register-form .description,.page-user-register .tabs{
+    display:none;
+}
+#user-register-form .form-type-checkboxes label{
+    width:100%;
+}
+#user-register-form .field-name-field-rma-contact label{
+    width:370px;
+}
+#user-register-form .fieldset-wrapper .field-name-field-rma-contact .form-checkboxes{
+    width:600px;
+    margin:0px;
+}
+#user-register-form label.option{width: auto;
+    float: left;
+    font-weight: 700;
+    margin: 0 10px 0 0;}
+#user-register-form .form-checkbox{float: left;
+    margin: 9px 3px 0px 0px;
+    width: auto;}
+#user-register-form .password-parent{
+    width:900px;
+}
+fieldset.form-wrapper{
+    border-bottom:1px solid #8c8b8b;
+}
+#user-register-form .fieldset-wrapper .form-checkboxes{
+    width:670px;
+    float:left;  margin:10px 0 10px 50px;
+}
+#user-register-form .form-checkboxes .form-item,#user-register-form .form-item,#user-register-form .form-radios,#user-register-form .form-radios .option,
+#user-register-form .form-radio{
+    float:left;
+}
+#user-register-form .form-radio{margin:10px 5px 0px 0px}
