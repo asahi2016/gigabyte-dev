@@ -217,7 +217,7 @@ $databases = array (
   array (
     'default' => 
     array (
-      'database' => 'gigabytedb',
+      'database' => 'gigabyte',
       'username' => 'root',
       'password' => '',
       'host' => 'localhost',
