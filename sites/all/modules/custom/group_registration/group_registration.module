@@ -10,7 +10,12 @@ function group_registration_init(){
  */
 function group_registration_form_user_register_form_alter(&$form, &$form_state) {
 
-
+    unset($form['field_other_programs']['und'][0]['value']['#title']);
+    unset($form['field_other_distributor']['und'][0]['value']['#title']);
+    unset($form['field_other_sub_distributor']['und'][0]['value']['#title']);
+    unset($form['field_other_programs']['und']['#title']);
+    unset($form['field_other_distributor']['und']['#title']);
+    unset($form['field_other_sub_distributor']['und']['#title']);
     unset($form['account']['name']['#description']);
     unset($form['account']['mail']['#description']);
     $form['account']['pass']['#prefix'] = '<div class="field-pwd">';

@@ -1826,7 +1826,7 @@ function menu_secondary_menu() {
     return menu_navigation_links(variable_get('menu_main_links_source', 'main-menu'), 1);
   }
   else {
-    return menu_navigation_links(variable_get('menu_secondary_links_source', 'user-menu'), 0);
+    //return menu_navigation_links(variable_get('menu_secondary_links_source', 'user-menu'), 0);
   }
 }
 

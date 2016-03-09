@@ -127,6 +127,7 @@ h1.title,.wrapper_full h2{
 #user-register-form .fieldset-wrapper{
     width:1000px;
     margin:35px auto;
+    padding: 0 10px 0 60px;
 }
 #user-register-form .form-item label{
     width:370px;
@@ -174,6 +175,19 @@ fieldset.form-wrapper{
     float:left;
 }
 #user-register-form .form-radio{margin:10px 5px 0px 0px}
+
+#user-register-form #edit-field-participating-programs-und div:last-child, #user-register-form #edit-field-choose-distributor-und div:last-child, #user-register-form #edit-field-choose-sub-distributor div:last-child{
+    clear:both;
+    width:auto;
+}
+
+#user-register-form .field-name-field-other-programs, .field-name-field-other-distributor, .field-name-field-other-sub-distributor{
+    float: left;
+    margin: -64px 12px 0px 132px;
+}
+#user-register-form .field-name-field-other-sub-distributor {width:340px;}
+
+
 .wrapper_full p{font-size: 14px;line-height: 1.42857143;color: #333;}
 #content.wrapper_full ul{float:left;padding: 0px;}
 .wrapper_full li{list-style-type: none;float:left;margin:20px 40px 0 0}
@@ -183,7 +197,7 @@ fieldset.form-wrapper{
 #block-user-login .form-text,#block-user-login label{    float: left;
     width: 150px;
     text-align: right;}
-#block-user-login .form-text{margin:0 0 20px 20px;width:170px;}
+#block-user-login .form-text{margin:0 0 20px 20px;width:170px;text-align:left;padding:4px 4px 4px 8px;}
 #breadcrumb{width:100%;}
 .inner-wrapper{width:100%;float:left;}
 .inner-wrapper #sidebar-second{width:400px;float:right;}
