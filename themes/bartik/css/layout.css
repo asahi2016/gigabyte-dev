@@ -78,7 +78,7 @@ body,
 }
 #sidebar-first,
 #sidebar-second {
-  width: 240px;
+  /*width: 240px;*/
 }
 #main-wrapper {
   min-height: 300px;
@@ -112,7 +112,7 @@ body,
 }
 
 
-h1.title{
+h1.title,.wrapper_full h2{
     font-weight: 900;
     font-size: 27px;
     margin-top: 30px;
@@ -174,3 +174,18 @@ fieldset.form-wrapper{
     float:left;
 }
 #user-register-form .form-radio{margin:10px 5px 0px 0px}
+.wrapper_full p{font-size: 14px;line-height: 1.42857143;color: #333;}
+#content.wrapper_full ul{float:left;padding: 0px;}
+.wrapper_full li{list-style-type: none;float:left;margin:20px 40px 0 0}
+#content.partner-portal-login{width:600px;float:left;}
+/*#block-user-login{width:335px;}*/
+#block-user-login h2{display: none}
+#block-user-login .form-text,#block-user-login label{    float: left;
+    width: 150px;
+    text-align: right;}
+#block-user-login .form-text{margin:0 0 20px 20px;width:170px;}
+#breadcrumb{width:100%;}
+.inner-wrapper{width:100%;float:left;}
+.inner-wrapper #sidebar-second{width:400px;float:right;}
+#sidebar-second .item-list{clear: both}
+#sidebar-second li,#sidebar-second ul{list-style-type: none;text-align: left;padding:0px;text-align: right;margin:0 5px 0px 0px}
