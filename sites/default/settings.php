@@ -218,9 +218,9 @@ $databases = array (
     'default' => 
     array (
       'database' => 'gigabyte',
-      'username' => 'asahi2016',
-      'password' => 'Asahi2016',
-      'host' => 'gigabytedb.czvvmjrcibas.us-west-2.rds.amazonaws.com',
+      'username' => 'root',
+      'password' => '',
+      'host' => 'localhost',
       'port' => '',
       'driver' => 'mysql',
       'prefix' => '',

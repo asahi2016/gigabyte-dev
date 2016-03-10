@@ -13,6 +13,7 @@ stylesheets[print][] = css/print.css
 regions[header] = Header
 regions[base_title] = Base title
 regions[search] = Search
+regions[menu] = Menu
 regions[help] = Help
 regions[page_top] = Page top
 regions[page_bottom] = Page bottom

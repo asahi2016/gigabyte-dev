@@ -142,56 +142,10 @@
     </div>
 
     <div class="full-width top_s">
-     <div class="section clearfix main-menu-nav">
-        <?php if ($main_menu): ?>
-            <?php $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu'));
-            print drupal_render($main_menu_tree);
-            ?>
-          <div id="main-menu" class="navigation">
-            <?php print theme('links__system_main_menu', array(
-              'links' => $main_menu,
-              'attributes' => array(
-                'id' => 'main-menu-links',
-                'class' => array('links', 'clearfix'),
-              ),
-              'heading' => array(
-                'text' => t('Main menu'),
-                'level' => 'h2',
-                'class' => array('element-invisible'),
-              ),
-            )); ?>
-          </div> <!-- /#main-menu -->
+     <div class="section clearfix main-menu-nav" id="main-menu-nav">
+        <?php if ($page['menu']): ?>
+            <?php print render($page['menu']);?>
         <?php endif; ?>
-
-          <div id="secondary-menu" class="navigation">
-            <?php print theme('links__system_secondary_menu', array(
-              'links' => $secondary_menu,
-              'attributes' => array(
-                'id' => 'secondary-menu-links',
-                'class' => array('links', 'inline', 'clearfix'),
-              ),
-              'heading' => array(
-                'text' => t('Secondary menu'),
-                'level' => 'h2',
-                'class' => array(''),
-              ),
-            )); ?>
-          </div> <!-- /#secondary-menu -->
-
-         <div id="secondary-menu" class="navigation">
-             <?php print theme('links__system_secondary_menu', array(
-                 'links' => $secondary_menu,
-                 'attributes' => array(
-                     'id' => 'secondary-menu-links',
-                     'class' => array('links', 'inline', 'clearfix'),
-                 ),
-                 'heading' => array(
-                     'text' => t('Secondary menu'),
-                     'level' => 'h2',
-                     'class' => array(''),
-                 ),
-             )); ?>
-         </div> <!-- /#secondary-menu -->
       </div>
     </div>
   </div> <!-- /.section, /#header -->
