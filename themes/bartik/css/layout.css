@@ -203,3 +203,116 @@ fieldset.form-wrapper{
 .inner-wrapper #sidebar-second{width:400px;float:right;}
 #sidebar-second .item-list{clear: both}
 #sidebar-second li,#sidebar-second ul{list-style-type: none;text-align: left;padding:0px;text-align: right;margin:0 5px 0px 0px}
+.main-menu-nav{width:1200px;margin:0px auto;}
+.main-menu-nav > ul > li{
+    width:200px;
+    list-style-image: none;
+    list-style-type: none;
+}
+
+.main-menu-nav a,.main-menu-nav a:hover,.main-menu-nav a:focus{
+    text-decoration:none;
+}
+.main-menu-nav{
+    font-family: 'Raleway', sans-serif;
+    height:35px;
+    width:100%;
+    /*z-index:9999;*/
+    margin-top:4px;
+}
+.main-menu-nav>ul{
+    position:relative;
+    list-style:none;
+    padding:0px;
+    margin:0;
+
+}
+.main-menu-nav>ul>li>ul{
+    z-index:1;
+    position:absolute;
+    left:0;
+    padding:0;
+    margin:0;
+    list-style:none;
+    top:36px;
+}
+.main-menu-nav>ul>li:hover>ul li a{
+    opacity:1;
+    height:50px;
+    transition:all .3s linear;
+    -o-transition:all .3s linear;
+    -moz-transition:all .3s linear;
+    -webkit-transition:all .3s linear;
+}
+.main-menu-nav>ul>li:hover>ul li a:hover{
+    color: #1371b7;
+    font-family: Raleway, sans-serif;
+    font-size: 14px;
+}
+.main-menu-nav>ul>li>ul a{
+    display:block;
+    color:white;
+    font-size:14px;
+    width:200px;
+    line-height:50px !important;
+    background:#87caef;
+    border-bottom:1px solid #ddd;
+    text-align:center;
+    padding:0 5px;
+    height:0;
+    overflow:hidden;
+    opacity:0;
+    transition:all .3s linear .2s;
+    -o-transition:all .3s linear .2s;
+    -moz-transition:all .3s linear .2s;
+    -webkit-transition:all .3s linear .2s;
+}
+.main-menu-nav>ul>li{
+    float:left;
+    position:relative;
+    width:200px;
+    text-align:center;
+}
+.main-menu-nav>ul>li>a{
+    color:white;
+    display:block;
+    line-height:35px !important;
+    text-transform:uppercase;
+    text-decoration:none;
+}
+.main-menu-nav>ul>li>a:hover{
+    color:orange;
+}
+ul, li {
+    list-style: none;
+}
+.main-menu-nav li ul li {
+    position: relative;
+    float: left;
+}
+.main-menu-nav li ul li.collapsed,.main-menu-nav ul li.leaf,.main-menu-nav ul li.expanded {
+    padding: 0;
+    list-style-image: none;
+    list-style-type: none;
+}
+.main-menu-nav li ul li a{
+    display: block;
+}
+.main-menu-nav li ul ul{
+    display: none;
+    float: left;
+    position: absolute;
+    left: 0;
+    margin: 0;
+}
+.main-menu-nav li ul li:hover > ul{
+    display: block;
+    left:171px;
+    top:0px;
+}
+.main-menu-nav li ul ul li:hover > ul{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 100%;
+}

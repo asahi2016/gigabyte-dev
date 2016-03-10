@@ -30,7 +30,7 @@ function multipurpose_zymphonies_theme_breadcrumb($variables) {
  */
 function multipurpose_zymphonies_theme_preprocess_page(&$vars) {
   if (isset($vars['main_menu'])) {
-    $vars['main_menu'] = theme('links__system_main_menu', array(
+   /* $vars['main_menu'] = theme('links__system_main_menu', array(
       'links' => $vars['main_menu'],
       'attributes' => array(
         'class' => array('links', 'main-menu', 'clearfix'),
@@ -59,7 +59,12 @@ function multipurpose_zymphonies_theme_preprocess_page(&$vars) {
     ));
   }
   else {
-    $vars['secondary_menu'] = FALSE;
+    $vars['secondary_menu'] = FALSE;*/
+      // Get the entire main menu tree
+      $main_menu_tree = menu_tree_all_data('main-menu');
+
+      // Add the rendered output to the $main_menu_expanded variable
+      $variables['main_menu_expanded'] = menu_tree_output($main_menu_tree);
   }
 }
 

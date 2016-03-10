@@ -8,6 +8,7 @@ stylesheets[all][] = css/style.css
 stylesheets[all][] = css/media.css
 scripts[] = js/custom.js
 
+regions[base_title] = Base title
 regions[search]      	 = Search
 regions[user_menu]  	 = User menu
 regions[slideshow]       = Slideshow

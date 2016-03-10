@@ -1898,3 +1898,152 @@ div.warning {
 .view-gallery .views-row img{
 	display: block;
 }
+
+/*
+Base title section */
+
+#base-title-section{
+    width: 100%;
+    min-width: 960px;
+    background-color: darkgray;
+}
+
+#base-title,#site-search{
+    float: left;
+    width: 480px;
+}
+
+/*---------Recaptcha------------*/
+
+div.g-recaptcha{
+    float: left;
+    margin: 0 0 0 70px;
+}
+#block-system-user-menu ul{width:400px;float:left;}
+#block-system-user-menu li{list-style-type: none;float:left;margin:0 4px;}
+
+#block-menu-menu-anonymous-user-menu li a {
+    display: block;
+    border-bottom: 1px solid;
+    border-bottom-color: #eee;
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+    padding: 3px 7px;
+
+
+}
+#block-menu-menu-anonymous-user-menu li a {
+    float: right;
+    margin: 0 20px 0 0;
+    padding:5px 10px;
+
+}
+
+#block-menu-menu-anonymous-user-menu li:last-child a,#block-system-user-menu li.last.leaf a {
+    background:#5CCD00;
+    background:-moz-linear-gradient(top,#6DBC2E 0%,#4AA400 100%);
+    background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#6DBC2E),color-stop(100%,#4AA400));
+    background:-webkit-linear-gradient(top,#6DBC2E 0%,#4AA400 100%);
+    background:-o-linear-gradient(top,#6DBC2E 0%,#4AA400 100%);
+    background:-ms-linear-gradient(top,#6DBC2E 0%,#4AA400 100%);
+    background:linear-gradient(top,#6DBC2E 0%,#4AA400 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#6DBC2E', endColorstr='#4AA400',GradientType=0);
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border:1px solid #459A00;
+    color:#fff;
+}
+#block-menu-menu-anonymous-user-menu li:first-child a,#block-system-user-menu li.leaf a{
+    background:#337ab7;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border:1px solid #337ab7;
+    color:#fff;
+}
+#block-system-user-menu li.first a{background:none;border:none;color:#000;}
+#block-menu-menu-anonymous-user-menu li a:hover,
+#block-menu-menu-anonymous-user-menu li a:focus,
+#block-menu-menu-anonymous-user-menu li a:active {
+    text-decoration: none;
+}
+
+#user-register-form .fieldset-wrapper{
+    width:1000px;
+    margin:35px auto;
+    padding: 0 10px 0 60px;
+}
+#user-register-form .form-item label{
+    width:370px;
+    float:left;
+}
+#user-register-form .fieldset-wrapper .form-item label{
+
+}
+#user-register-form .form-text{
+    width:170px;
+    height:20px;
+}
+#user-register-form .description,.page-user-register .tabs{
+    display:none;
+}
+#user-register-form .form-type-checkboxes label{
+    width:100%;
+}
+#user-register-form .field-name-field-rma-contact label{
+    width:370px;
+}
+#user-register-form .fieldset-wrapper .field-name-field-rma-contact .form-checkboxes{
+    width:600px;
+    margin:0px;
+}
+#user-register-form label.option{width: auto;
+    float: left;
+    font-weight: 700;
+    margin: 0 10px 0 0;}
+#user-register-form .form-checkbox{float: left;
+    margin: 9px 3px 0px 0px;
+    width: auto;}
+#user-register-form .password-parent{
+    width:900px;
+}
+fieldset.form-wrapper{
+    border-bottom:1px solid #8c8b8b;
+}
+#user-register-form .fieldset-wrapper .form-checkboxes{
+    width:670px;
+    float:left;  margin:10px 0 10px 50px;
+}
+#user-register-form .form-checkboxes .form-item,#user-register-form .form-item,#user-register-form .form-radios,#user-register-form .form-radios .option,
+#user-register-form .form-radio{
+    float:left;
+}
+#user-register-form .form-radio{margin:10px 5px 0px 0px}
+
+#user-register-form #edit-field-participating-programs-und div:last-child, #user-register-form #edit-field-choose-distributor-und div:last-child, #user-register-form #edit-field-choose-sub-distributor div:last-child{
+    clear:both;
+    width:auto;
+}
+
+#user-register-form .field-name-field-other-programs, .field-name-field-other-distributor, .field-name-field-other-sub-distributor{
+    float: left;
+    margin: -64px 12px 0px 132px;
+}
+#user-register-form .field-name-field-other-sub-distributor {width:340px;}
+
+
+.wrapper_full p{font-size: 14px;line-height: 1.42857143;color: #333;}
+#content.wrapper_full ul{float:left;padding: 0px;}
+.wrapper_full li{list-style-type: none;float:left;margin:20px 40px 0 0}
+#content.partner-portal-login{width:600px;float:left;}
+/*#block-user-login{width:335px;}*/
+#block-user-login h2{display: none}
+#block-user-login .form-text,#block-user-login label{    float: left;
+    width: 150px;
+    text-align: right;}
+#block-user-login .form-text{margin:0 0 20px 20px;width:170px;text-align:left;padding:4px 4px 4px 8px;}
+#breadcrumb{width:100%;}
+.inner-wrapper{width:100%;float:left;}
+.inner-wrapper #sidebar-second{width:400px;float:right;}
+#sidebar-second .item-list{clear: both}
+#sidebar-second li,#sidebar-second ul{list-style-type: none;text-align: left;padding:0px;text-align: right;margin:0 5px 0px 0px}

@@ -87,6 +87,14 @@
 <!-- End Header -->
 
   <div class="slideshow">
+      <div class="menu-wrap">
+          <div class="full-wrap clearfix" id="base-title">
+              <?php print render($page['base_title']) ?>
+          </div>
+          <div class="full-wrap clearfix" id="search">
+              <?php print render($page['search']) ?>
+          </div>
+      </div>
     <div class="menu-wrap">
       <div class="full-wrap clearfix">
         <nav id="main-menu"  role="navigation">
@@ -98,7 +106,6 @@
           </div>
           <div class="clear"></div>
         </nav>
-        <?php print render($page['search']) ?>
       </div>
     </div>
     <?php if ($is_front): ?>
