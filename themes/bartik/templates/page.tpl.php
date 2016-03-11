@@ -143,9 +143,17 @@
 
     <div class="full-width top_s">
      <div class="section clearfix main-menu-nav" id="main-menu-nav">
-        <?php if ($page['menu']): ?>
-            <?php print render($page['menu']);?>
-        <?php endif; ?>
+         <?php if(user_is_logged_in()){ ?>
+                <?php if ($page['menu']): ?>
+                    <?php print render($page['menu']);?>
+                <?php endif; ?>
+         <?php }else{ ?>
+                 <?php if ($main_menu): ?>
+                    <?php $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu'));
+                        print drupal_render($main_menu_tree);
+                    ?>
+                 <?php endif; ?>
+         <?php } ?>
       </div>
     </div>
   </div> <!-- /.section, /#header -->

@@ -238,7 +238,7 @@ fieldset.form-wrapper{
     padding:0;
     margin:0;
     list-style:none;
-    top:27px;
+    top:37px;
 }
 #main-menu-nav ul li:hover>ul li a{
     opacity:1;
@@ -274,9 +274,9 @@ fieldset.form-wrapper{
 #main-menu-nav ul li{
     float:left;
     position:relative;
-    width:190px;
+    width:auto;
     text-align:center;
-    padding:0px;
+    padding:0px 50px;
 }
 #main-menu-nav ul li a{
     color:white;
@@ -284,6 +284,14 @@ fieldset.form-wrapper{
     line-height:18px;
     text-transform:uppercase;
     text-decoration:none;
+    padding:9px 0px;
+}
+
+#main-menu-nav ul li.first.expanded,#main-menu-nav ul li.first.collapsed{
+    padding:0 50px;
+}
+#main-menu-nav ul li ul li.first.expanded,#main-menu-nav ul li ul li.first.collapsed{
+    padding:0 35px;
 }
 #main-menu-nav ul li a:hover{
     /*color:orange;*/
@@ -296,7 +304,7 @@ ul, li {
     float: left;
 }
 #main-menu-nav li ul li.collapsed,#main-menu-nav ul li.leaf,#main-menu-nav ul li.expanded {
-    padding: 0;
+    padding: 0 35px;
     list-style-image: none;
     list-style-type: none;
 }
