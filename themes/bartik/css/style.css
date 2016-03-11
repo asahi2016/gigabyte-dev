@@ -1042,7 +1042,8 @@ ul.action-links li a {
 
 #messages {
   padding: 20px 0 5px;
-  margin: 0 auto;
+     width:100%;
+    float:left;
 }
 .featured #messages {
   background: #f0f0f0;
