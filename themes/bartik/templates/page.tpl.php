@@ -170,6 +170,12 @@
     </div></div> <!-- /.section, /#featured -->
   <?php endif; ?>
 
+  <?php if ($page['top_content']): ?>
+     <div id="top_content"><div class="section clearfix">
+         <?php print render($page['top_content']); ?>
+     </div></div> <!-- /.section, /#featured -->
+  <?php endif; ?>
+
   <div id="main-wrapper" class="clearfix">
       <div id="main" class="clearfix">
         <div class="inner-wrapper" >

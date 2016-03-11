@@ -20,6 +20,7 @@ regions[page_bottom] = Page bottom
 regions[highlighted] = Highlighted
 
 regions[featured] = Featured
+regions[top_content] = Top content
 regions[content] = Content
 regions[sidebar_first] = Sidebar first
 regions[sidebar_second] = Sidebar second
