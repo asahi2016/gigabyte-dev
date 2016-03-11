@@ -8,7 +8,7 @@ function group_registration_init(){
 /**
  * Implement hook_form_user_register_form_alter().
  */
-function group_registration_form_user_register_form_alter(&$form, &$form_state) {
+function group_registration_form_user_register_form_alter(&$form, &$form_state, $form_id) {
 
     unset($form['field_other_programs']['und'][0]['value']['#title']);
     unset($form['field_other_distributor']['und'][0]['value']['#title']);
@@ -18,11 +18,195 @@ function group_registration_form_user_register_form_alter(&$form, &$form_state) 
     unset($form['field_other_sub_distributor']['und']['#title']);
     unset($form['account']['name']['#description']);
     unset($form['account']['mail']['#description']);
-    $form['account']['pass']['#prefix'] = '<div class="field-pwd">';
-    $form['account']['pass']['#suffix'] = '</div>';
-
+    form_clear_error();
+    $form['#validate'][] = 'group_registration_form_validation';
+    drupal_set_title('');
+    $form['actions']['submit']['#value'] = t('Submit Query');
     $form['#submit'][] = 'create_company_group_on_user_registration';
 }
+
+/*
+* User registration form custom module validation function
+*/
+function group_registration_form_validation ( $form, &$form_state) {
+
+    $username = $form_state['values']['name'];
+    $pass1 = $form_state['values']['pass'];
+
+    $username_count = strlen($username);
+    $pass1_count = strlen($pass1);
+    //$pass2_count = strlen($pass2);
+
+
+    if($username_count >= 6 && $username_count <= 20){
+        if(!preg_match('/^([a-zA-Z0-9_@.]+)$/',$username)){
+            form_set_error('edit-name',t('Username should be alphabets, numbers and allowed special characters ( _ . @)'));
+        }
+    }
+    else {
+        form_set_error('edit-name',t('Username should be minimum 8 characters and maximum 20 characters'));
+    }
+
+    if($pass1_count >= 6 && $pass1_count <= 20){
+        if(!preg_match('/^([a-zA-Z0-9_@.]+)$/',$pass1)){
+            form_set_error('pass',t('Password should be alphabets, numbers and allowed special characters ( _ . @)'));
+        }
+    }
+    else {
+        form_set_error('pass',t('Password should be minimum 8 characters and maximum 20 characters'));
+    }
+
+
+    $first_name = $form_state['input']['field_first_name']['und']['0']['value'];
+    if(!$first_name){
+        form_set_error('field_first_name' , 'First Name cannot be empty.');
+    }
+
+    $last_name = $form_state['input']['field_last_name']['und']['0']['value'];
+    if(!$last_name){
+        form_set_error('field_last_name' , 'Last Name cannot be empty.');
+    }
+
+    $username = $form_state['input']['name'];
+    if(!$username){
+        form_set_error('name' , 'Username cannot be empty.');
+    }
+
+    $email = $form_state['input']['mail'];
+    if(!$email){
+        form_set_error('mail' , 'Email Address cannot be empty.');
+    }
+
+
+    $pass = $form_state['values']['pass'];
+    $pass_count = ($pass)? strlen($pass):0;
+    if(!$pass){
+       form_set_error('pass' , 'Password cannot be empty.');
+    }else if($pass && ($pass_count >= 6 && $pass_count <= 20)){
+        if(!preg_match('/^([a-zA-Z0-9_@.]+)$/',$pass)){
+            form_set_error('pass',t('Password should be alphabets, numbers and allowed special characters ( _ . @)'));
+        }
+    }else{
+        form_set_error('pass',t('Password should be minimum 8 characters and maximum 20 characters'));
+    }
+
+    $field_job_title = $form_state['input']['field_job_title']['und']['0']['value'];
+    if(!$field_job_title){
+        form_set_error('field_job_title' , 'Job title cannot be empty.');
+    }
+
+    $field_contact_number = $form_state['input']['field_contact_number']['und']['0']['value'];
+    if(!$field_contact_number){
+        form_set_error('field_contact_number' , 'Contact Number cannot be empty.');
+    }
+
+    $field_company_name = $form_state['input']['field_company_name']['und']['0']['target_id'];
+    if(!$field_company_name){
+        form_set_error('field_company_name' , 'Company Name cannot be empty.');
+    }
+
+    /*$field_country = $form_state['input']['field_country']['und']['0']['value'];
+    if(!$field_country){
+        form_set_error('field_country' , 'Please choose your country.');
+    }*/
+
+    $field_business_address_1 = $form_state['input']['field_business_address_1']['und']['0']['value'];
+    if(!$field_business_address_1){
+        form_set_error('field_business_address_1' , 'Business address 1 cannot be empty.');
+    }
+
+    $field_business_address_2 = $form_state['input']['field_business_address_2']['und']['0']['value'];
+    if(!$field_business_address_2){
+        form_set_error('field_business_address_2' , 'Business address 2 cannot be empty.');
+    }
+
+    $field_company_city = $form_state['input']['field_company_city']['und']['0']['value'];
+    if(!$field_company_city){
+        form_set_error('field_company_city' , 'City cannot be empty.');
+    }
+
+    $field_company_state = $form_state['input']['field_company_state']['und']['0']['value'];
+    if(!$field_company_state){
+        form_set_error('field_company_state' , 'State cannot be empty.');
+    }
+
+    $field_company_zip_code = $form_state['input']['field_company_zip_code']['und']['0']['value'];
+    if(!$field_company_zip_code){
+        form_set_error('field_company_zip_code' , 'Zip Code cannot be empty.');
+    }
+
+    $field_participating_programs = $form_state['values']['field_participating_programs']['und'];
+    if(!$field_participating_programs){
+        form_set_error('field_participating_programs' , 'Please choose any one option');
+    }else{
+        $other_program = false;
+
+        foreach($field_participating_programs as $programs_input){
+            foreach($form_state['complete form']['field_participating_programs']['und']['#options'] as $pkey => $programs){
+                if($pkey == $programs_input['tid'] && strtolower($programs) == 'other'){
+                    $other_program = true;
+                }
+            }
+        }
+
+        if($other_program){
+            empty($form_state['values']['field_other_programs']['und'][0]['value'])?
+                form_set_error('field_other_programs' , 'Other cannot be empty') : '';
+        }
+
+    }
+
+
+    $field_choose_distributor = $form_state['values']['field_choose_distributor']['und'];
+    if(!$field_choose_distributor){
+        form_set_error('field_choose_distributor' , 'Please choose any one option');
+    }else{
+        $other_distributor = false;
+        foreach($field_choose_distributor as $distributor_input){
+            foreach($form_state['complete form']['field_choose_distributor']['und']['#options'] as $dkey => $distributor){
+                if($dkey == $distributor_input['tid'] && strtolower($distributor) == 'other'){
+                    $other_distributor = true;
+                }
+            }
+        }
+        if($other_distributor){
+            empty($form_state['values']['field_other_distributor']['und'][0]['value'])?
+                form_set_error('field_other_distributor' , 'Other cannot be empty') : '';
+        }
+
+    }
+
+    $field_choose_sub_distributor = $form_state['values']['field_choose_sub_distributor']['und'];
+    if(!$field_choose_sub_distributor){
+        form_set_error('field_choose_sub_distributor' , 'Please choose any one option');
+    }else{
+        $other_sub_distributor = false;
+        foreach($field_choose_sub_distributor as $subdistributor_input){
+            foreach($form_state['complete form']['field_choose_sub_distributor']['und']['#options'] as $sdkey => $sdistributor){
+                if($sdkey == $subdistributor_input['tid'] && strtolower($sdistributor) == 'other'){
+                    $other_sub_distributor = true;
+                }
+            }
+        }
+        if($other_sub_distributor){
+            empty($form_state['values']['field_other_sub_distributor']['und'][0]['value'])?
+                form_set_error('field_other_sub_distributor' , 'Other cannot be empty') : '';
+        }
+
+    }
+
+    $field_motherboard_qty = $form_state['input']['field_motherboard_qty']['und']['0']['value'];
+    if(!$field_motherboard_qty){
+        form_set_error('field_motherboard_qty' , 'Motherboard Qty cannot be empty.');
+    }
+
+    $field_receive_newsletter = $form_state['values']['field_receive_newsletter']['und']['0']['value'];
+    if(!$field_receive_newsletter){
+        form_set_error('field_receive_newsletter' , 'Please select newsletter subscrtiption.');
+    }
+
+}
+
 
 /**
  * Custom submit function for user registration form
