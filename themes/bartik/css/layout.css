@@ -47,10 +47,14 @@ body,
 }
 .top_f{
     height:80px;
+    float:left;
+    width:100%;
 }
 .top_s{
     margin:4px 0px 0px;
     height:35px;
+    width:100%;
+    float:left;
 }
 #content,
 #sidebar-first,
@@ -219,7 +223,6 @@ fieldset.form-wrapper{
     height:35px;
     width:100%;
     /*z-index:9999;*/
-    margin-top:4px;
 }
 #main-menu-nav ul{
     position:relative;
@@ -235,7 +238,7 @@ fieldset.form-wrapper{
     padding:0;
     margin:0;
     list-style:none;
-    top:36px;
+    top:27px;
 }
 #main-menu-nav ul li:hover>ul li a{
     opacity:1;
@@ -278,7 +281,7 @@ fieldset.form-wrapper{
 #main-menu-nav ul li a{
     color:white;
     display:block;
-    line-height:35px !important;
+    line-height:18px;
     text-transform:uppercase;
     text-decoration:none;
 }
@@ -319,3 +322,4 @@ ul, li {
     left: 100%;
 }
 .page-admin-structure-block-demo #header #main-menu-nav .block-region{width:1180px;}
+#block-system-main-menu{display: none;}
