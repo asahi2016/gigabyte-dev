@@ -84,6 +84,13 @@
  * @see bartik_process_page()
  * @see html.tpl.php
  */
+$url = $_SERVER['REQUEST_URI'];
+$current_url = explode('/',$url);
+setcookie('curr_pg',$current_url[(count($current_url)-1)]);
+if(empty($_COOKIE['curr_pg'])){
+    $_COOKIE['curr_pg'] = $current_url[(count($current_url)-1)];
+}
+$_SESSION['curr_pg'] = $current_url[(count($current_url)-1)];
 ?>
 <div id="page-wrapper"><div id="page">
 
@@ -143,10 +150,16 @@
 
     <div class="full-width top_s">
      <div class="section clearfix main-menu-nav" id="main-menu-nav">
-         <?php if(user_is_logged_in()){ ?>
+         <?php if(user_is_logged_in() && $_SESSION['curr_pg'] == 'partner'){ ?>
                 <?php if ($page['menu']): ?>
                     <?php print render($page['menu']);?>
                 <?php endif; ?>
+         <?php }else if(user_is_logged_in() && $_SESSION['curr_pg'] != 'partner') { ?>
+             <?php if ($main_menu): ?>
+                 <?php $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu'));
+                 print drupal_render($main_menu_tree);
+                 ?>
+             <?php endif; ?>
          <?php }else{ ?>
                  <?php if ($main_menu): ?>
                     <?php $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu'));
