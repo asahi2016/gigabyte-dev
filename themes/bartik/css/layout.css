@@ -332,3 +332,7 @@ ul, li {
 }
 .page-admin-structure-block-demo #header #main-menu-nav .block-region{width:1180px;}
 #block-system-main-menu{display: none;}
+
+body.page-user-register div.messages.error{
+    display: none;
+}

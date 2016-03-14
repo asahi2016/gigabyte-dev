@@ -28,55 +28,12 @@ function group_registration_form_user_register_form_alter(&$form, &$form_state, 
 /*
 * User registration form custom module validation function
 */
-function group_registration_form_validation ( $form, &$form_state) {
-
-    $username = $form_state['values']['name'];
-    $pass1 = $form_state['values']['pass'];
-
-    $username_count = strlen($username);
-    $pass1_count = strlen($pass1);
-    //$pass2_count = strlen($pass2);
-
-
-    if($username_count >= 6 && $username_count <= 20){
-        if(!preg_match('/^([a-zA-Z0-9_@.]+)$/',$username)){
-            form_set_error('edit-name',t('Username should be alphabets, numbers and allowed special characters ( _ . @)'));
-        }
-    }
-    else {
-        form_set_error('edit-name',t('Username should be minimum 8 characters and maximum 20 characters'));
-    }
-
-    if($pass1_count >= 6 && $pass1_count <= 20){
-        if(!preg_match('/^([a-zA-Z0-9_@.]+)$/',$pass1)){
-            form_set_error('pass',t('Password should be alphabets, numbers and allowed special characters ( _ . @)'));
-        }
-    }
-    else {
-        form_set_error('pass',t('Password should be minimum 8 characters and maximum 20 characters'));
-    }
-
-
-    $first_name = $form_state['input']['field_first_name']['und']['0']['value'];
-    if(!$first_name){
-        form_set_error('field_first_name' , 'First Name cannot be empty.');
-    }
-
-    $last_name = $form_state['input']['field_last_name']['und']['0']['value'];
-    if(!$last_name){
-        form_set_error('field_last_name' , 'Last Name cannot be empty.');
-    }
-
-    $username = $form_state['input']['name'];
-    if(!$username){
-        form_set_error('name' , 'Username cannot be empty.');
-    }
+function group_registration_form_validation ( &$form, &$form_state) {
 
     $email = $form_state['input']['mail'];
     if(!$email){
         form_set_error('mail' , 'Email Address cannot be empty.');
     }
-
 
     $pass = $form_state['values']['pass'];
     $pass_count = ($pass)? strlen($pass):0;
@@ -90,16 +47,6 @@ function group_registration_form_validation ( $form, &$form_state) {
         form_set_error('pass',t('Password should be minimum 8 characters and maximum 20 characters'));
     }
 
-    $field_job_title = $form_state['input']['field_job_title']['und']['0']['value'];
-    if(!$field_job_title){
-        form_set_error('field_job_title' , 'Job title cannot be empty.');
-    }
-
-    $field_contact_number = $form_state['input']['field_contact_number']['und']['0']['value'];
-    if(!$field_contact_number){
-        form_set_error('field_contact_number' , 'Contact Number cannot be empty.');
-    }
-
     $field_company_name = $form_state['input']['field_company_name']['und']['0']['target_id'];
     if(!$field_company_name){
         form_set_error('field_company_name' , 'Company Name cannot be empty.');
@@ -109,31 +56,6 @@ function group_registration_form_validation ( $form, &$form_state) {
     if(!$field_country){
         form_set_error('field_country' , 'Please choose your country.');
     }*/
-
-    $field_business_address_1 = $form_state['input']['field_business_address_1']['und']['0']['value'];
-    if(!$field_business_address_1){
-        form_set_error('field_business_address_1' , 'Business address 1 cannot be empty.');
-    }
-
-    $field_business_address_2 = $form_state['input']['field_business_address_2']['und']['0']['value'];
-    if(!$field_business_address_2){
-        form_set_error('field_business_address_2' , 'Business address 2 cannot be empty.');
-    }
-
-    $field_company_city = $form_state['input']['field_company_city']['und']['0']['value'];
-    if(!$field_company_city){
-        form_set_error('field_company_city' , 'City cannot be empty.');
-    }
-
-    $field_company_state = $form_state['input']['field_company_state']['und']['0']['value'];
-    if(!$field_company_state){
-        form_set_error('field_company_state' , 'State cannot be empty.');
-    }
-
-    $field_company_zip_code = $form_state['input']['field_company_zip_code']['und']['0']['value'];
-    if(!$field_company_zip_code){
-        form_set_error('field_company_zip_code' , 'Zip Code cannot be empty.');
-    }
 
     $field_participating_programs = $form_state['values']['field_participating_programs']['und'];
     if(!$field_participating_programs){
@@ -155,7 +77,6 @@ function group_registration_form_validation ( $form, &$form_state) {
         }
 
     }
-
 
     $field_choose_distributor = $form_state['values']['field_choose_distributor']['und'];
     if(!$field_choose_distributor){
@@ -195,15 +116,71 @@ function group_registration_form_validation ( $form, &$form_state) {
 
     }
 
-    $field_motherboard_qty = $form_state['input']['field_motherboard_qty']['und']['0']['value'];
-    if(!$field_motherboard_qty){
-        form_set_error('field_motherboard_qty' , 'Motherboard Qty cannot be empty.');
+    // Append custom error message element with content
+    group_registration_errors_reset( $form );
+
+}
+
+function group_registration_errors_reset(&$element){
+
+    if( ! isset( $_SESSION[ 'messages' ] ) ) {
+        return;
     }
 
-    $field_receive_newsletter = $form_state['values']['field_receive_newsletter']['und']['0']['value'];
-    if(!$field_receive_newsletter){
-        form_set_error('field_receive_newsletter' , 'Please select newsletter subscrtiption.');
+    $reset_errors = array();
+
+    // Recurse through all children.
+    foreach( element_children( $element ) as $key ) {
+        if( isset( $element[ $key ] ) && $element[ $key ] ) {
+            $reset_errors += group_registration_errors_reset( $element[ $key ] );
+        }
     }
+
+    // Check for errors and settings
+    $errors = form_get_errors();
+    $element_id = implode( '][', $element[ '#parents' ] );
+
+    if ( !empty( $errors[ $element_id ] )) {
+        $error_message = $errors[ $element_id ];
+
+        // Get error id
+        $error_id = array_search( $error_message, $_SESSION[ 'messages' ][ 'error' ] );
+
+        if( $error_id !== FALSE ) {
+            unset( $_SESSION[ 'messages' ][ 'error' ][ $error_id ] );
+            $_SESSION[ 'messages' ][ 'error' ] = array_values( $_SESSION[ 'messages' ][ 'error' ]  );
+
+            if( count( $_SESSION[ 'messages' ][ 'error' ] ) <= 0 ) {
+                unset( $_SESSION[ 'messages' ][ 'error' ] );
+            }
+
+            switch($element['#type']){
+
+                case 'textfield':
+                      $error_message = str_replace('field is required','cannot be empty',$error_message);
+                      break;
+                case 'password_confirm':
+                    $error_message = str_replace('field is required','cannot be empty',$error_message);
+                    break;
+                case 'checkboxes':
+                      $error_message = str_replace($error_message ,'Please select atleast one checkboxes',$error_message);
+                    break;
+                case 'radio':
+                      $error_message = str_replace($error_message ,'Please select any one option',$error_message);
+                    break;
+                case 'select':
+                      $error_message = str_replace($error_message ,'Please select any one member type',$error_message);
+                    break;
+
+            }
+
+            $element[ '#prefix' ] = '<span class="custom-error">'.$error_message.'</span>';
+
+            $reset_errors[ $element[ '#id' ] ] = $error_message;
+        }
+    }
+
+    return $reset_errors;
 
 }
 
