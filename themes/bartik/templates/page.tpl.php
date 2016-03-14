@@ -91,6 +91,10 @@ if(empty($_COOKIE['curr_pg'])){
     $_COOKIE['curr_pg'] = $current_url[(count($current_url)-1)];
 }
 $_SESSION['curr_pg'] = $current_url[(count($current_url)-1)];
+//echo $_SESSION['curr_pg'];
+if($_SESSION['curr_pg'] == 'login' && user_is_logged_in()){
+    header('Location:/gigabyte/partner');
+}
 ?>
 <div id="page-wrapper"><div id="page">
 
@@ -135,7 +139,12 @@ $_SESSION['curr_pg'] = $current_url[(count($current_url)-1)];
           <div id="base-title-section">
                 <?php if ($page['base_title']): ?>
                   <div id="base-title"><div class="section clearfix">
-                          <?php print render($page['base_title']); ?>
+                          <?php
+                            if($_SESSION['curr_pg'] == 'partner')
+                                print render($page['base_title']['menu_menu-partner-portal-title']);
+                            else
+                                print render($page['base_title']['menu_menu-business-center']);
+                          ?>
                       </div></div> <!-- /.section, /#base_title -->
                  <?php endif; ?>
 
@@ -152,7 +161,11 @@ $_SESSION['curr_pg'] = $current_url[(count($current_url)-1)];
      <div class="section clearfix main-menu-nav" id="main-menu-nav">
          <?php if(user_is_logged_in() && $_SESSION['curr_pg'] == 'partner'){ ?>
                 <?php if ($page['menu']): ?>
-                    <?php print render($page['menu']);?>
+                <?php
+                     /*$partner_portal_menu_tree = menu_tree(variable_get('menu_main_links_source', 'menu_menu-partner-portal-menu'));
+                     print drupal_render($partner_portal_menu_tree);*/
+                 print render($page['menu']['menu_menu-partner-portal-menu']);
+                 ?>
                 <?php endif; ?>
          <?php }else if(user_is_logged_in() && $_SESSION['curr_pg'] != 'partner') { ?>
              <?php if ($main_menu): ?>

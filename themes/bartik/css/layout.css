@@ -31,10 +31,10 @@ body,
   float: right; /* LTR */
   margin: 0 5px 10px;
 }
-.with-secondary-menu .region-header {
+/*.with-secondary-menu .region-header {
   margin-top: 3em;
-}
-.without-secondary-menu .region-header {
+}*/
+.without-secondary-menu .region-header,.with-secondary-menu .region-header {
   margin-top: 15px;
 }
 #secondary-menu {
