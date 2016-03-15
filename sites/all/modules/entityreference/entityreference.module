@@ -1054,7 +1054,8 @@ function entityreference_autocomplete_callback_get_matches($type, $field, $insta
     // Loop through the products and convert them into autocomplete output.
     foreach ($entity_labels as $values) {
       foreach ($values as $entity_id => $label) {
-        $key = "$label ($entity_id)";
+        //$key = "$label ($entity_id)";
+        $key = "$label";
         // Strip things like starting/trailing white spaces, line breaks and tags.
         $key = preg_replace('/\s\s+/', ' ', str_replace("\n", '', trim(decode_entities(strip_tags($key)))));
         // Names containing commas or quotes must be wrapped in quotes.

@@ -1069,10 +1069,10 @@ div.messages {
 
 /* -------------- Password Meter  ------------- */
 
-.confirm-parent,
+/*.confirm-parent,
 .password-parent {
-  width: 34em;
-}
+  width:555px;
+}*/
 .password-parent,
 div.form-item div.password-suggestions {
   position: relative;

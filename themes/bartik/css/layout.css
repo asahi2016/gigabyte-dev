@@ -133,6 +133,8 @@ h1.title,.wrapper_full h2{
     width:1000px;
     margin:35px auto;
     padding: 0 10px 0 60px;
+    position:relative;
+    float:left;
 }
 #user-register-form .form-item label{
     width:370px;
@@ -166,7 +168,7 @@ h1.title,.wrapper_full h2{
     margin: 9px 3px 0px 0px;
     width: auto;}
 #user-register-form .password-parent{
-    width:900px;
+    width:555px;
 }
 fieldset.form-wrapper{
     border-bottom:1px solid #8c8b8b;
@@ -181,14 +183,14 @@ fieldset.form-wrapper{
 }
 #user-register-form .form-radio{margin:10px 5px 0px 0px}
 
-#user-register-form #edit-field-participating-programs-und div:last-child, #user-register-form #edit-field-choose-distributor-und div:last-child, #user-register-form #edit-field-choose-sub-distributor div:last-child{
+#user-register-form #edit-field-participating-programs-und div:last-child, #user-register-form #edit-field-choose-distributor-und div:last-child, #user-register-form #edit-field-choose-sub-distributor div:last-child,
+#edit-field-membership-account,#edit-field-choose-sub-distributor{
     clear:both;
     width:auto;
 }
 
 #user-register-form .field-name-field-other-programs, .field-name-field-other-distributor, .field-name-field-other-sub-distributor{
     float: left;
-    margin: -64px 12px 0px 132px;
 }
 #user-register-form .field-name-field-other-sub-distributor {width:340px;}
 
@@ -339,3 +341,18 @@ ul, li {
 body.page-user-register div.messages.error{
     display: none;
 }
+.custom-error{float:left; padding: 10px 20px; color:red;}
+#user-register-form .form-checkboxes .form-item{clear:both;}
+#edit-field-job-title{clear:both;}
+#user-register-form .form-type-password-confirm.form-item{width:555px;}
+#edit-field-receive-newsletter-und .custom-error{float:right;}
+#edit-field-participating-programs,#edit-field-choose-distributor,#edit-field-choose-sub-distributor{float:left;position: relative;width:600px;}
+#edit-field-participating-programs .custom-error,#edit-field-choose-distributor .custom-error,
+#edit-field-choose-sub-distributor .custom-error{position:absolute;left:320px;bottom:25px;}
+#edit-field-other-distributor .text-full,#edit-field-other-sub-distributor .text-full, #edit-field-other-programs .text-full{position:absolute;}
+#edit-field-other-programs .text-full{top: 252px;left: 190px;}
+#edit-field-other-distributor .text-full{top: 774px;left: 190px;}
+#edit-field-other-sub-distributor .text-full{bottom:118px;left: 190px;}
+#user-register-form select{width:182px;border:1px solid #ccc;border-radius: 3px; overflow: hidden;}
+#user-register-form select select:focus { outline: none;}
+div.form-item div.password-suggestions{display: none !important;}

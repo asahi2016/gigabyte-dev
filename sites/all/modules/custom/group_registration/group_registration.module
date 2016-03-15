@@ -1,7 +1,8 @@
 <?php
 
 function group_registration_init(){
-   // drupal_set_message('Module active success');
+
+    drupal_add_js(drupal_get_path('module', 'custom').'/group_registration/js/registration.js');
 }
 
 
@@ -46,16 +47,6 @@ function group_registration_form_validation ( &$form, &$form_state) {
     }else{
         form_set_error('pass',t('Password should be minimum 8 characters and maximum 20 characters'));
     }
-
-    $field_company_name = $form_state['input']['field_company_name']['und']['0']['target_id'];
-    if(!$field_company_name){
-        form_set_error('field_company_name' , 'Company Name cannot be empty.');
-    }
-
-    /*$field_country = $form_state['input']['field_country']['und']['0']['value'];
-    if(!$field_country){
-        form_set_error('field_country' , 'Please choose your country.');
-    }*/
 
     $field_participating_programs = $form_state['values']['field_participating_programs']['und'];
     if(!$field_participating_programs){
@@ -174,7 +165,7 @@ function group_registration_errors_reset(&$element){
 
             }
 
-            $element[ '#prefix' ] = '<span class="custom-error">'.$error_message.'</span>';
+            $element[ '#suffix' ] = '<span class="custom-error">'.$error_message.'</span>';
 
             $reset_errors[ $element[ '#id' ] ] = $error_message;
         }
