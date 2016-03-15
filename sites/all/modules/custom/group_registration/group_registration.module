@@ -2,9 +2,74 @@
 
 function group_registration_init(){
 
+    global $base_path;
+    global $base_url;
+    $my_settings = array(
+        'basePath' => $base_path,
+        'baseUrl' => $base_url,
+    );
+
+    drupal_add_js(array('gigabyte' => $my_settings), 'setting');
     drupal_add_js(drupal_get_path('module', 'custom').'/group_registration/js/registration.js');
 }
 
+
+/**
+ * Implementation of hook_menu().
+ */
+function group_registration_menu() {
+
+    $items['get/company_info'] = array(
+        'page callback' => 'group_registration_ajax_get_company_info', // Render HTML
+        'type' => MENU_CALLBACK,
+        'access callback' => TRUE,
+    );
+    return $items;
+}
+
+function group_registration_ajax_get_company_info() {
+
+    global $user;
+
+    if(isset($_POST['ajax']) && $_POST['ajax'] == true){
+
+        $response = array();
+        $company_name = $_POST['company_name'];
+
+        $group_users = get_group_users_lists(array('group_name' => $company_name));
+
+        $response['response'] = array('group_name' => $company_name , 'roles' => $group_users[0]->roles);
+
+        echo json_encode($response);
+    }
+}
+
+function get_group_users_lists($group = array()){
+
+    $group_users = array();
+
+    //Get group id by group name
+    $result = db_query("SELECT * FROM {node} n WHERE n.title = :title AND n.type = :type", array(":title"=> $group['group_name'], ":type"=> 'group'));
+    $group = $result->fetchAssoc();
+
+    //Filter user group lists
+    $userinfo = db_query("SELECT * FROM {users} u WHERE u.status = :status ORDER BY created ASC", array(":status" => 1))->fetchAll();
+
+    foreach($userinfo as $key => $user){
+        $user_details = user_load_multiple(array($user->uid));
+        foreach($user_details as $ukey => $user_detail ){
+            if(!in_array('administrator', $user_detail->roles)){
+                if($user_detail->field_company_name['und'][0]['target_id'] == $group['nid']){
+                    array_push($group_users, $user_detail);
+                }
+            }
+        }
+
+    }
+
+    return $group_users;
+
+}
 
 /**
  * Implement hook_form_user_register_form_alter().
@@ -147,7 +212,7 @@ function group_registration_errors_reset(&$element){
 
             switch($element['#type']){
 
-                case 'textfield': 
+                case 'textfield':
                       $error_message = str_replace('3. ','',$error_message);
                       $error_message = str_replace('field is required','cannot be empty',$error_message);
                       break;

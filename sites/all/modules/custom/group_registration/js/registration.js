@@ -1,5 +1,5 @@
 (function ($) {
-    $(document).ready(function(){
+    $(document).ready(function($){
          $('#edit-autoassignrole-user legend').remove();
          var member_type = $('#edit-autoassignrole-user div.fieldset-wrapper').html();
          $( member_type ).insertAfter( "#edit-field-company-name" );
@@ -9,7 +9,7 @@
          $('#edit-field-other-distributor input').attr('disabled','disabled');
          $('#edit-field-other-sub-distributor input').attr('disabled','disabled');
 
-        $("#edit-field-rma-contact-und-same-as-above").change(function(){
+         $("#edit-field-rma-contact-und-same-as-above").change(function(){
             if($(this).is(':checked')){
                 $('#edit-field-rma-first-name-und-0-value').val($('#edit-field-first-name-und-0-value').val());
                 $('#edit-field-rma-last-name-und-0-value').val($('#edit-field-last-name-und-0-value').val());
@@ -49,7 +49,38 @@
                     disableElement.attr('disabled','disabled');
                 }
             }
-        })
+        });
+
+       $(document).on('click','#autocomplete ul li', function(){
+           var company_id = $('#edit-field-company-name-und-0-target-id').val();
+           company_info_ajax_load(company_id);
+       });
+
+
+        function company_info_ajax_load(company_id) {
+
+            $.post(
+                Drupal.settings.gigabyte.baseUrl + '/get/company_info',
+                {
+                    company_name : company_id,
+                    ajax: true
+                },
+                function (response) {
+                    var data = JSON.parse(response);
+                    $.each(data.response.roles, function(key,val) {
+                        if(key != 2) {
+                            $('select#edit-user-roles option').each(function(){
+                                if($(this).val() == key){
+                                    $(this).attr('selected','selected');
+                                }
+                            });
+                            $('select#edit-user-roles').attr('disabled','disabled');
+                        }
+                    });
+                }
+            );
+        }
+
     });
 })(jQuery);
 
