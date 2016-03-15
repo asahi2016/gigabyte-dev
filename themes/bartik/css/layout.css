@@ -246,10 +246,10 @@ fieldset.form-wrapper{
 #main-menu-nav ul li:hover>ul li a{
     opacity:1;
     height:50px;
-    transition:all .3s linear;
-    -o-transition:all .3s linear;
-    -moz-transition:all .3s linear;
-    -webkit-transition:all .3s linear;
+    transition:all .1s linear;
+    -o-transition:all .1s linear;
+    -moz-transition:all .1s linear;
+    -webkit-transition:all .1s linear;
 }
 #main-menu-nav ul li:hover ul li a:hover{
     color: #1371b7;
@@ -269,10 +269,10 @@ fieldset.form-wrapper{
     height:0;
     overflow:hidden;
     opacity:0;
-    transition:all .3s linear .2s;
-    -o-transition:all .3s linear .2s;
-    -moz-transition:all .3s linear .2s;
-    -webkit-transition:all .3s linear .2s;
+    transition:all .1s linear .1s;
+    -o-transition:all .1s linear .1s;
+    -moz-transition:all .1s linear .1s;
+    -webkit-transition:all .1s linear .1s;
 }
 #main-menu-nav ul li{
     float:left;

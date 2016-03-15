@@ -1730,3 +1730,5 @@ div.g-recaptcha{
     text-decoration: none;
 }
 #user-login-form #edit-actions #edit-submit{width:185px; margin:0;}
+#footer-wrapper{background:#fff !important;text-align:center;color:#676767;}
+#footer p{width: 900px;word-break: break-all;}
