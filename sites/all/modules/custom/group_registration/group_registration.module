@@ -147,7 +147,8 @@ function group_registration_errors_reset(&$element){
 
             switch($element['#type']){
 
-                case 'textfield':
+                case 'textfield': 
+                      $error_message = str_replace('3. ','',$error_message);
                       $error_message = str_replace('field is required','cannot be empty',$error_message);
                       break;
                 case 'password_confirm':
