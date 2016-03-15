@@ -1729,3 +1729,4 @@ div.g-recaptcha{
 #block-menu-menu-anonymous-user-menu li a:active {
     text-decoration: none;
 }
+#user-login-form #edit-actions #edit-submit{width:185px; margin:0;}

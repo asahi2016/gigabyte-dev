@@ -1355,8 +1355,8 @@ function user_login_block($form) {
   );
   $items = array();
   if (variable_get('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)) {
-    $items[] = l(t('
-Do not have an account yet? Register Now'), 'user/register', array('attributes' => array('title' => t('Create a new user account.'))));
+    $items[] = t('Do not have an account yet?').l(t('
+ Register Now'), 'user/register', array('attributes' => array('title' => t('Create a new user account.'),'class' => t('register-account-link'))));
   }
  // $items[] = l(t('Request new password'), 'user/password', array('attributes' => array('title' => t('Request new password via e-mail.'))));
   $form['links'] = array('#markup' => theme('item_list', array('items' => $items)));

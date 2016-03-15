@@ -214,3 +214,17 @@ function bartik_theme_menu_local_tasks(&$variables) {
     }
     return $output;
 }
+
+function bartik_menu_link($variables){
+    $element = &$variables['element'];
+
+    $pattern = '/\S+\.(png|gif|jpg)\b/i';
+    if (preg_match($pattern, $element['#title'], $matches) > 0) {
+        $element['#title'] = preg_replace($pattern,
+            'Only local images are allowed.',
+            $element['#title']);
+        $element['#localized_options']['html'] = TRUE;
+    }
+
+    return theme_menu_link($variables);
+}
