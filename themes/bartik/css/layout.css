@@ -342,7 +342,7 @@ body.page-user-register div.messages.error{
     display: none;
 }
 .custom-error{float:left; padding: 10px 20px; color:red;}
-#user-register-form .form-checkboxes .form-item{clear:both;}
+/*#user-register-form .form-checkboxes .form-item{clear:both;}*/
 #edit-field-job-title{clear:both;}
 #user-register-form .form-type-password-confirm.form-item{width:555px;}
 #edit-field-receive-newsletter-und .custom-error{float:right;}
@@ -350,8 +350,8 @@ body.page-user-register div.messages.error{
 #edit-field-participating-programs .custom-error,#edit-field-choose-distributor .custom-error,
 #edit-field-choose-sub-distributor .custom-error{position:absolute;left:320px;bottom:25px;}
 #edit-field-other-distributor .text-full,#edit-field-other-sub-distributor .text-full, #edit-field-other-programs .text-full{position:absolute;}
-#edit-field-other-programs .text-full{top: 252px;left: 190px;}
-#edit-field-other-distributor .text-full{top: 774px;left: 190px;}
+#edit-field-other-programs .text-full{top: 172px;left: 190px;}
+#edit-field-other-distributor .text-full{bottom: 327px;left: 190px;}
 #edit-field-other-sub-distributor .text-full{bottom:118px;left: 190px;}
 #user-register-form select{width:182px;border:1px solid #ccc;border-radius: 3px; overflow: hidden;}
 #user-register-form select select:focus { outline: none;}
