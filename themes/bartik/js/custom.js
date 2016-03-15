@@ -13,6 +13,4 @@ jQuery(document).ready(function($) {
     $("a.register-account-link").parents('div.item-list').css('position','absolute');
     $("a.register-account-link").parents('div.item-list').css('top',200);
     $("a.register-account-link").parents('div.item-list').css('left',110);
-
-
 });
