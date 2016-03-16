@@ -1665,7 +1665,7 @@ Base title section */
 #base-title h2{display:none;}
 #base-title ul li{
     list-style: none;
-    margin: 18px 0 30px 30px;
+    margin: 18px 0 10px 30px;
     font-size: 26px;
     font-family: 'Raleway', sans-serif;
 }
@@ -1681,7 +1681,7 @@ div.g-recaptcha{
     float: left;
     margin: 0 0 0 70px;
 }
-#block-system-user-menu ul{width:400px;float:left;}
+#block-system-user-menu ul{float:left;}
 #block-system-user-menu li{list-style-type: none;float:left;margin:0 4px;}
 
 #block-menu-menu-anonymous-user-menu li a {
