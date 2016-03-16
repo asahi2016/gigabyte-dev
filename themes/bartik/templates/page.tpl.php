@@ -131,8 +131,12 @@ if($_SESSION['curr_pg'] == 'login' && user_is_logged_in()){
 
               </div> <!-- /#name-and-slogan -->
             <?php endif; ?>
-
-            <?php print render($page['header']); ?>
+            <div id="header-wrapper-right" class="header-wrapper-right" >
+                <?php print render($page['header']); ?>
+                <div id="country-menu" class="country-menu" >
+                    <?php print render($page['country_menu']); ?>
+                </div>
+            </div>
     </div>
     <div class="full-width top_f">
         <div class="section clearfix">
