@@ -93,7 +93,7 @@ if(empty($_COOKIE['curr_pg'])){
 $_SESSION['curr_pg'] = $current_url[(count($current_url)-1)];
 //echo $_SESSION['curr_pg'];
 if($_SESSION['curr_pg'] == 'login' && user_is_logged_in()){
-    header('Location:/gigabyte/partner');
+    header('Location:partner');
 }
 ?>
 <div id="page-wrapper"><div id="page">
