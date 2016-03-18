@@ -57,7 +57,8 @@
        });
 
 
-        function company_info_ajax_load(company_id) {
+       function company_info_ajax_load(company_id) {
+
 
             $.post(
                 Drupal.settings.gigabyte.baseUrl + '/get/company_info',
@@ -66,20 +67,79 @@
                     ajax: true
                 },
                 function (response) {
+
                     var data = JSON.parse(response);
+
                     $.each(data.response.roles, function(key,val) {
                         if(key != 2) {
                             $('select#edit-user-roles option').each(function(){
+                                if( $(this).text() == '- Select -' ) {
+                                    $(this).removeAttr("selected");
+                                }
+
                                 if($(this).val() == key){
                                     $(this).attr('selected','selected');
                                 }
                             });
+
                             $('select#edit-user-roles').attr('disabled','disabled');
+                            $('select#edit-field-country-und').attr('disabled','disabled');
                         }
                     });
+
+                    var group_user = data.response.group_info;
+                    if(group_user){
+                        $('#edit-field-business-address-1-und-0-value').val(group_user.business_address_1);
+                        $('#edit-field-business-address-2-und-0-value').val(group_user.business_address_2);
+                        $('#edit-field-company-city-und-0-value').val(group_user.city);
+                        $('#edit-field-company-state-und-0-value').val(group_user.state);
+                        $('#edit-field-company-zip-code-und-0-value').val(group_user.zip);
+
+                        $('select#edit-field-country-und option').each(function() {
+                            if($(this).val() == group_user.country){
+                                $(this).attr('selected','selected');
+                            }
+                        });
+
+                        $('fieldset').each(function(i){
+                            if(i == 1) {
+                                $(this).find('input[type="text"]').attr('readonly','readonly');
+                            }
+                        });
+
+                    }
                 }
             );
-        }
+       }
+
+       $('#edit-field-company-name-und-0-target-id').focus(function(){
+           $('fieldset').each(function(i){
+              if(i == 1) {
+                  $(this).find('input[type="text"]').val('');
+                  $(this).find('input[type="text"]').removeAttr('readonly');
+              }
+           });
+
+           $('select#edit-user-roles').removeAttr('disabled');
+           $("select#edit-user-roles option").each(function () {
+               if ($(this).text() == '- Select -') {
+                   $(this).attr("selected", "selected");
+               }else{
+                   $(this).removeAttr("selected");
+               }
+           });
+
+           $('select#edit-field-country-und').removeAttr('disabled');
+
+           $('select#edit-field-country-und option').each(function() {
+               if ($(this).val() == 1) {
+                   $(this).attr("selected", "selected");
+               }else{
+                   $(this).removeAttr("selected");
+               }
+           });
+
+       });
 
     });
 })(jQuery);

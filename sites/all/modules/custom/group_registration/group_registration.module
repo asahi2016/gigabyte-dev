@@ -38,7 +38,32 @@ function group_registration_ajax_get_company_info() {
 
         $group_users = get_group_users_lists(array('group_name' => $company_name));
 
-        $response['response'] = array('group_name' => $company_name , 'roles' => $group_users[0]->roles);
+        $group_info = array();
+
+        foreach($group_users as $key => $group_user) {
+
+            if(isset($group_user->og_user_node['und'][0]['target_id'])) { // Check Group Admin user
+
+                $business_address_1 = $group_user->field_business_address_1['und'][0]['value'];
+                $business_address_2 = $group_user->field_business_address_2['und'][0]['value'];
+                $company_zip_code = $group_user->field_company_zip_code['und'][0]['value'];
+                $company_state = $group_user->field_company_state['und'][0]['value'];
+                $company_city = $group_user->field_company_city['und'][0]['value'];
+                $company_country = $group_user->field_country['und'][0]['tid'];
+
+                $group_info = array(
+                    'business_address_1' => $business_address_1,
+                    'business_address_2' => $business_address_2,
+                    'zip' => $company_zip_code,
+                    'state' => $company_state,
+                    'city' => $company_city,
+                    'country' => $company_country,
+                );
+            }
+
+        }
+
+        $response['response'] = array('group_name' => $company_name , 'roles' => $group_users[0]->roles , 'group_info' => $group_info);
 
         echo json_encode($response);
     }
@@ -48,12 +73,15 @@ function get_group_users_lists($group = array()){
 
     $group_users = array();
 
+    preg_match("/.+\((\d+)\)/", $group['group_name'] , $matches);
+    $group_id = trim($matches[1]);
+
     //Get group id by group name
-    $result = db_query("SELECT * FROM {node} n WHERE n.title = :title AND n.type = :type", array(":title"=> $group['group_name'], ":type"=> 'group'));
+    $result = db_query("SELECT * FROM {node} n WHERE n.nid = :nid AND n.type = :type", array(":nid"=> $group_id , ":type"=> 'group'));
     $group = $result->fetchAssoc();
 
     //Filter user group lists
-    $userinfo = db_query("SELECT * FROM {users} u WHERE u.status = :status ORDER BY created ASC", array(":status" => 1))->fetchAll();
+    $userinfo = db_query("SELECT * FROM {users} u ORDER BY created ASC")->fetchAll();
 
     foreach($userinfo as $key => $user){
         $user_details = user_load_multiple(array($user->uid));
@@ -85,6 +113,7 @@ function group_registration_form_user_register_form_alter(&$form, &$form_state, 
     unset($form['account']['name']['#description']);
     unset($form['account']['mail']['#description']);
     form_clear_error();
+    $form['field_company_name']['#prefix'] = '<!--<div id="field-blocker" ></div>-->';
     $form['#validate'][] = 'group_registration_form_validation';
     drupal_set_title('');
     $form['actions']['submit']['#value'] = t('Submit Query');
@@ -94,7 +123,7 @@ function group_registration_form_user_register_form_alter(&$form, &$form_state, 
 /*
 * User registration form custom module validation function
 */
-function group_registration_form_validation ( &$form, &$form_state) {
+function group_registration_form_validation (&$form, &$form_state ) {
 
     $email = $form_state['input']['mail'];
     if(!$email){
@@ -106,7 +135,7 @@ function group_registration_form_validation ( &$form, &$form_state) {
     if(!$pass){
        form_set_error('pass' , 'Password cannot be empty.');
     }else if($pass && ($pass_count >= 6 && $pass_count <= 20)){
-        if(!preg_match('/^([a-zA-Z0-9_@.]+)$/',$pass)){
+        if(!preg_match('/^([a-zA-Z0-9_@.]+)$/', $pass)){
             form_set_error('pass',t('Password should be alphabets, numbers and allowed special characters ( _ . @)'));
         }
     }else{
@@ -179,7 +208,20 @@ function group_registration_form_validation ( &$form, &$form_state) {
 
 function group_registration_errors_reset(&$element){
 
+
     if( ! isset( $_SESSION[ 'messages' ] ) ) {
+
+        $group_id = null;
+        if (preg_match("/.+\((\d+)\)/", $element['field_company_name']['und'][0]['target_id']['#value'] , $matches)) {
+            $group_id =  $matches[1];
+        }
+
+        if (!$group_id && !check_group_title($element['field_company_name']['und'][0]['target_id']['#value'])) {
+            $_SESSION['new_group_name'] = $element['field_company_name']['und'][0]['target_id']['#value'];
+            if(!isset($_SESSION['new_group_name'])){
+                $_SESSION['new_group_name'] = $element['field_company_name']['und'][0]['target_id']['#value'];
+            }
+        }
         return;
     }
 
@@ -245,51 +287,7 @@ function group_registration_errors_reset(&$element){
 /**
  * Custom submit function for user registration form
  */
-function create_company_group_on_user_registration($form, &$form_state) {
-
-    $usr_obj = $form_state['user']; //get registered user object
-
-    if (is_object($usr_obj) && isset($usr_obj->uid) && !check_group_title($form_state['input']['field_company_name']['und'][0]['target_id'])) {// dont forget to add your conditions
-
-        global $user;
-
-        $node = new stdClass();
-
-        $node->type     = "group";
-        $node->uid      = $user->uid;
-        $node->title    = t($form_state['input']['field_company_name']['und'][0]['target_id']);
-        $node->body     = t($form_state['input']['field_company_name']['und'][0]['target_id'] . "Group");
-        $node->status       = 1; //(1 or 0): published or not
-        $node->promote      = 0; //(1 or 0): promoted to front page
-        $node->comment      = 1; //2 = comments on, 1 = comments off
-
-        $node->og_description   = t("OD Description");
-        $node->og_register  = 0;
-        $node->og_directory = 0;
-        $node->og_private   = 1;
-        $node->og_selective = 3;
-
-        $node = node_submit($node);
-        node_save($node);
-
-        // Load the user we want to add to the group (ID #2 was my test user)
-        $account = user_load($user->uid);
-
-        // Add the user to the group
-        og_group('node', $node->nid, array(
-            "entity type"       => "user",
-            "entity"        => $account,
-            "membership type"   => OG_MEMBERSHIP_TYPE_DEFAULT,
-        ));
-
-        // Changes the users role in the group (1 = non-member, 2 = member, 3 = administrator member)
-        og_role_grant('node', $node->nid, $account->uid, 2);
-
-        drupal_set_message(t("Finished"));
-
-    }
-}
-
+function create_company_group_on_user_registration( &$form, &$form_state ) { }
 
 function check_group_title($group_title = null){
 
@@ -310,26 +308,79 @@ function check_group_title($group_title = null){
 
 }
 
+function check_group_id($group_id = null){
 
-/**
- * Implements hook_node_update().
- */
-function group_registration_node_update($node) {
+    if(!empty($group_id)) {
 
-    $gid = isset($node->field_project['und'][0]['target_id']) ? $node->field_project['und'][0]['target_id']: 0;
+        $result = db_select('node', 'n')
+            ->fields('n')
+            ->condition('type', 'group' , '=')
+            ->condition('nid', $group_id, '=')
+            ->condition('status', 1,'=')
+            ->execute()
+            ->fetchAssoc();
 
-    // Node type with group reference field.
-    if ($node->type != "group_content" || !$gid) {
-        return false;
+        return ($result) ? true : false;
     }
 
-    $values = array(
-        'entity_type' => 'node',
-        'entity' => $node,
-        'state' => OG_STATE_ACTIVE,
-    );
+    return false;
 
-    // Add this node to the group.
-    $result = og_group('node', $gid, $values);
 }
+
+/*
+ * Group Create
+ */
+function group_registration_user_presave(&$edit, $account, $category) {
+
+    if(isset($_SESSION['new_group_name']) && !empty($_SESSION['new_group_name'])){
+
+        $group_name = $_SESSION['new_group_name'];
+
+        if (!check_group_title($group_name)) {// dont forget to add your conditions
+
+            $node = new stdClass();
+            $node->type     = "group";
+            $node->uid      = $account->uid;
+            $node->title    = t($group_name);
+            $node->body     = t($group_name . " Group");
+            $node->status       = 1; //(1 or 0): published or not
+            $node->promote      = 0; //(1 or 0): promoted to front page
+            $node->comment      = 1; //2 = comments on, 1 = comments off
+
+            $node->og_description   = t("$group_name handle by $account->name");
+            $node->og_register  = 0;
+            $node->og_directory = 0;
+            $node->og_private   = 1;
+            $node->og_selective = 3;
+
+            $node = node_submit($node);
+            node_save($node);
+
+            $group_id = $node->nid;
+
+            $edit['field_company_name']['und'][0]['target_id'] = $group_id;
+
+        }
+    }
+
+}
+
+
+/*
+ * Assign a user to Group
+ */
+function group_registration_user_insert(&$edit, $account, $category){
+
+    $nid = $account->field_company_name['und'][0]['target_id'];
+    if($nid && isset($_SESSION['new_group_name'])  && !empty($_SESSION['new_group_name'])){
+        $node = node_load($nid);
+        if (isset($node)) {
+            $node->uid = $account->uid;
+            $node->og_description   = t($_SESSION['new_group_name'] ." handle by $account->name");
+            node_save($node);
+            unset($_SESSION['new_group_name']);
+        }
+    }
+}
+
 ?>

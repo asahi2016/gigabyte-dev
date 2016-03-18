@@ -2036,7 +2036,13 @@ function user_uid_optional_to_arg($arg) {
  */
 function user_menu_title() {
   global $user;
-  return user_is_logged_in() ? t('Hi '. format_username($user)).' !' : t('User account');
+  $user_name = $user->name;
+  if( $user->uid != 1){
+      $userinfo = user_load($user->uid);
+      $user_name = $userinfo->field_first_name['und'][0]['value'];
+  }
+
+  return user_is_logged_in() ? t('Hi '. $user_name).' !' : t('User account');
 }
 
 /**
