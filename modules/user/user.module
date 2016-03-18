@@ -2036,8 +2036,8 @@ function user_uid_optional_to_arg($arg) {
  */
 function user_menu_title() {
   global $user;
-  $user_name = $user->name;
-  if( $user->uid != 1){
+  $user_name = !empty($user->name)?$user->name:'';
+  if( $user->uid != 1 && !empty($user->uid)){
       $userinfo = user_load($user->uid);
       $user_name = $userinfo->field_first_name['und'][0]['value'];
   }
