@@ -262,7 +262,7 @@ function group_registration_errors_reset(&$element){
                     $error_message = str_replace('field is required','cannot be empty',$error_message);
                     break;
                 case 'checkboxes':
-                      $error_message = str_replace($error_message ,'Please select atleast one checkboxes',$error_message);
+                      $error_message = str_replace($error_message ,'Please select at least one checkboxes',$error_message);
                     break;
                 case 'radio':
                       $error_message = str_replace($error_message ,'Please select any one option',$error_message);
