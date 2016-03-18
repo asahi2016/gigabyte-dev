@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Bartik's theme implementation to display a single Drupal page.
@@ -95,6 +94,33 @@ $_SESSION['curr_pg'] = $current_url[(count($current_url)-1)];
 if($_SESSION['curr_pg'] == 'login' && user_is_logged_in()){
     header('Location:partner');
 }
+
+global $user;
+$userinfo = user_load($user->uid);
+/*echo "<pre>";
+print_r($userinfo);
+echo "</pre>";
+exit;*/
+$_SESSION['userid'] = $user->uid;
+$country = db_select('field_data_field_country', 'f')
+    ->fields('f', array('field_country_tid'))
+    ->condition('entity_type', 'user')
+    ->condition('bundle', 'user')
+    ->condition('entity_id', $user->uid)
+    ->execute()
+    ->fetchField();
+$_SESSION['user_country_id'] = empty($_SESSION['user_country_id'])?$country:$_SESSION['user_country_id'];
+echo $_SESSION['user_country_id'];
+if(isset($_GET['country'])) {
+    if($_GET['country'] == 'ca') {
+        $_SESSION['user_country_id'] = 2;
+    }else{
+        $_SESSION['user_country_id'] = 1;
+    }
+}
+
+drupal_add_js("jQuery(document).ready(function(){country_id = ". (!empty($_SESSION['user_country_id'])?$_SESSION['user_country_id']:0)."; if(country_id == 2){jQuery('#page-canada-content').show();jQuery('#page-us-content').hide();jQuery('#country-menu li:first-child').removeClass('active');jQuery('#country-menu li:last-child').addClass('active');}else if(country_id == 1){jQuery('#page-canada-content').hide();jQuery('#page-us-content').show();jQuery('#country-menu li:first-child').addClass('active');jQuery('#country-menu li:last-child').removeClass('active');}else{jQuery('#page-canada-content').hide();jQuery('#page-us-content').show();jQuery('#country-menu li:first-child').addClass('active');jQuery('#country-menu li:last-child').removeClass('active');}})", array('type' => 'inline','scope' => 'footer'));
+
 ?>
 <div id="page-wrapper"><div id="page">
 

@@ -28,4 +28,15 @@ jQuery(document).ready(function($) {
             location.href = curr_url + '?country=us';
         }
     });
+    // Switch between back to business center and partner portal
+    curr_url = document.URL.split('/');
+    url_last = curr_url[curr_url.length -1];
+    if(url_last == 'partner'){
+       $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').text( 'Back to Business Center');
+       // $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').attr('href','/gigabyte/partner');
+    }else{
+        $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').text('Back to Partner Portal');
+        $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').attr('href','/gigabyte/partner');
+    }
+
 });
