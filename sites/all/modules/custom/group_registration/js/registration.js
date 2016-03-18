@@ -34,17 +34,21 @@
             }
         });
 
-        $('div.form-checkboxes input[type="checkbox"]').click(function(){
-            if($(this).parent('div').find('label').text().toLowerCase().trim() == 'other'){
-                var disableElement =  $(this).parents('div.form-type-checkboxes')
-                    .parent('div')
-                    .next('div.field-type-text')
-                    .find('input[type="text"]');
-
-                var disable =  disableElement.attr('disabled');
-                if(disable == true){
-                    disableElement.removeAttr('disabled');
-                }else{
+        $('div.form-checkboxes input[type="checkbox"]').change(function(){
+            if($(this).is(':checked')) {
+                if ($(this).parent('div').find('label').text().toLowerCase().trim() == 'other') {
+                    var activeElement = $(this).parents('div.form-type-checkboxes')
+                        .parent('div')
+                        .next('div.field-type-text')
+                        .find('input[type="text"]');
+                    activeElement.removeAttr('disabled');
+                }
+            }else{
+                if ($(this).parent('div').find('label').text().toLowerCase().trim() == 'other') {
+                    var disableElement = $(this).parents('div.form-type-checkboxes')
+                        .parent('div')
+                        .next('div.field-type-text')
+                        .find('input[type="text"]');
                     disableElement.val('');
                     disableElement.attr('disabled','disabled');
                 }
