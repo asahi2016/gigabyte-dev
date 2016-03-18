@@ -225,11 +225,11 @@ function og_context($group_type = 'node', $group = NULL, $account = NULL, $check
   if ($group) {
     list($id) = entity_extract_ids($group_type, $group);
   }
-
+    $accountid = !empty($account->uid)?$account->uid:$user->id;
   $cache_keys = array(
     $group_type,
     $id,
-    $account->uid,
+    $accountid,
     $check_access,
   );
   $cache_key = implode(':', $cache_keys);
