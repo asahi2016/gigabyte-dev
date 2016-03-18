@@ -225,7 +225,7 @@ function og_context($group_type = 'node', $group = NULL, $account = NULL, $check
   if ($group) {
     list($id) = entity_extract_ids($group_type, $group);
   }
-    $accountid = !empty($account->uid)?$account->uid:$user->id;
+    $accountid = !empty($account->uid)?$account->uid:0;
   $cache_keys = array(
     $group_type,
     $id,
