@@ -36,7 +36,7 @@ jQuery(document).ready(function($) {
        // $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').attr('href','/gigabyte/partner');
     }else{
         $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').text('Back to Partner Portal');
-        $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').attr('href','/gigabyte/partner');
+        $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').attr('href','partner');
     }
 
 });
