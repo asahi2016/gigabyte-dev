@@ -28,8 +28,8 @@ body,
   position: relative;
 }
 .region-header {
-  float: right; /* LTR */
-  margin: 0 5px 10px;
+  float: left; /* LTR */
+  margin: 0 0px 10px;
 }
 /*.with-secondary-menu .region-header {
   margin-top: 3em;
@@ -198,7 +198,7 @@ fieldset.form-wrapper{
 .wrapper_full p{font-size: 14px;line-height: 1.42857143;color: #333;}
 #content.wrapper_full ul{float:left;padding: 0px;}
 .wrapper_full li{list-style-type: none;float:left;margin:20px 40px 0 0}
-#content.partner-portal-login{width:600px;float:left;}
+#content.partner-portal-login{width:600px;float:left;margin:0 0 0 35px;}
 /*#block-user-login{width:335px;}*/
 #block-user-login h2{display: none}
 #block-user-login .form-text,#block-user-login label{    float: left;
@@ -351,8 +351,35 @@ body.page-user-register div.messages.error{
 #edit-field-choose-sub-distributor .custom-error{position:absolute;left:320px;bottom:25px;}
 #edit-field-other-distributor .text-full,#edit-field-other-sub-distributor .text-full, #edit-field-other-programs .text-full{position:absolute;}
 #edit-field-other-programs .text-full{top: 172px;left: 190px;}
-#edit-field-other-distributor .text-full{bottom: 327px;left: 190px;}
+#edit-field-other-distributor .text-full{bottom: 282px;left: 190px;}
 #edit-field-other-sub-distributor .text-full{bottom:118px;left: 190px;}
 #user-register-form select{width:182px;border:1px solid #ccc;border-radius: 3px; overflow: hidden;}
 #user-register-form select select:focus { outline: none;}
 div.form-item div.password-suggestions{display: none !important;}
+.page-user-register .region-top-content{
+    float:left;
+    width:1000px;
+    padding:0 0 0 100px;
+}
+.page-user-register .region-top-content h2{
+    font-weight: 900;
+    font-size: 27px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #12406A;}
+.page-user-register .region-top-content p{
+    color:#12406a;
+    margin:0px 0 10px;
+}
+.page-user-register .form-actions{
+    width:100%;
+    float:left;
+}
+.page-user-register .form-actions input.form-submit{float:left;margin-left:435px;}
+
+#country-menu{float:left;}
+#country-menu ul{margin: 16px 0px 0px;}
+#country-menu ul li{float: left;margin: 0 10px 0 0;}
+#country-menu ul li img{width: 45px;height:25px; cursor:pointer;}
+#country-menu ul li.active img{border:1px solid red;}
+.header-wrapper-right{float:right;}
