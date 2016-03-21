@@ -92,8 +92,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 }
 //$ipcountry = json_decode(file_get_contents('http://api.ipinfodb.com/v3/ip-country/?key='.$apikey.'&ip='.$ip.'&format=json'));
 $ipcountry = json_decode(file_get_contents('http://ipinfo.io/'.$ip.'/json'));
-echo $ipcountry->country;
-exit;
+
 $url = $_SERVER['REQUEST_URI'];
 $current_url = explode('/',$url);
 setcookie('curr_pg',$current_url[(count($current_url)-1)]);
@@ -131,7 +130,7 @@ $country = db_select('field_data_field_country', 'f')
     ->execute()
     ->fetchField();
 
-if(!user_is_logged_in()){
+if(!user_is_logged_in() && !isset($_GET['country'])){
     $_SESSION['user_country_id'] = !empty($ipcountry->country)?$ipcountry->country:'';
 }
 $_SESSION['user_country_id'] = empty($_SESSION['user_country_id'])?$country:$_SESSION['user_country_id'];
