@@ -371,13 +371,37 @@ function group_registration_user_presave(&$edit, $account, $category) {
  */
 function group_registration_user_insert(&$edit, $account, $category){
 
-    $nid = $account->field_company_name['und'][0]['target_id'];
-    if($nid && isset($_SESSION['new_group_name'])  && !empty($_SESSION['new_group_name'])){
+    if(isset($_SESSION['new_group_name'])  && !empty($_SESSION['new_group_name'])){
+        $nid = $account->field_company_name['und'][0]['target_id'];
+
         $node = node_load($nid);
         if (isset($node)) {
             $node->uid = $account->uid;
             $node->og_description   = t($_SESSION['new_group_name'] ." handle by $account->name");
             node_save($node);
+
+            $member_type = 2;
+            foreach($account->user_roles as $role_id => $role_name){
+                $member_type = $role_id;
+            }
+
+            //Adding company information to separate table.
+            $data_insert = array(
+                'nid' => $nid,
+                'uid' => $account->uid,
+                'name' => $_SESSION['new_group_name'],
+                'member_type' => $member_type,
+                'business_address_1' => $account->field_business_address_1['und'][0]['value'],
+                'business_address_2' => $account->field_business_address_2['und'][0]['value'],
+                'city' => $account->field_company_city['und'][0]['value'],
+                'state' => $account->field_company_state['und'][0]['value'],
+                'country' => $account->field_country['und'][0]['tid'],
+                'zip' => $account->field_company_zip_code['und'][0]['value'],
+                'status' => 1
+            );
+
+            db_insert('company')->fields($data_insert)->execute();
+
             unset($_SESSION['new_group_name']);
         }
     }

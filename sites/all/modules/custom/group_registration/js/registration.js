@@ -5,9 +5,9 @@
          $( member_type ).insertAfter( "#edit-field-company-name" );
          $('#edit-autoassignrole-user').remove();
 
-         $('#edit-field-other-programs input').attr('disabled','disabled');
+        /* $('#edit-field-other-programs input').attr('disabled','disabled');
          $('#edit-field-other-distributor input').attr('disabled','disabled');
-         $('#edit-field-other-sub-distributor input').attr('disabled','disabled');
+         $('#edit-field-other-sub-distributor input').attr('disabled','disabled');*/
 
          $("#edit-field-rma-contact-und-same-as-above").change(function(){
             if($(this).is(':checked')){
@@ -50,7 +50,7 @@
                         .next('div.field-type-text')
                         .find('input[type="text"]');
                     disableElement.val('');
-                    disableElement.attr('disabled','disabled');
+                    //disableElement.attr('disabled','disabled');
                 }
             }
         });

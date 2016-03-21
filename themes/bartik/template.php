@@ -109,9 +109,29 @@ function bartik_process_maintenance_page(&$variables) {
  * Override or insert variables into the node template.
  */
 function bartik_preprocess_node(&$variables) {
+
   if ($variables['view_mode'] == 'full' && node_is_page($variables['node'])) {
     $variables['classes_array'][] = 'node-full';
   }
+
+  if ((arg(0) == 'node') && (is_numeric(arg(1)))) {
+
+    if(isset($variables['node']->type) && ($variables['node']->type == 'group')){
+
+        $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
+
+        $company_info = db_query("SELECT * FROM {company} WHERE nid =".$variables['nid'])->fetchAssoc();
+
+        $roles = user_role_load($company_info['member_type']);
+        $country = taxonomy_term_load($company_info['country']);
+
+        $variables['company'] = $company_info;
+        $variables['company']['roles'] = $roles;
+        $variables['company']['country'] = $country;
+
+    }
+  }
+
 }
 
 /**
@@ -228,3 +248,4 @@ function bartik_menu_link($variables){
 
     return theme_menu_link($variables);
 }
+
