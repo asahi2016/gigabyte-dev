@@ -149,6 +149,7 @@ if(isset($_GET['country'])) {
     $_SESSION['user_country_id'] = empty($_SESSION['user_country_id'])?$country:$_SESSION['user_country_id'];
 }
 
+echo $_SESSION['user_country_id'];
 
 
 drupal_add_js("jQuery(document).ready(function(){country_id = " . (!empty($_SESSION['user_country_id']) ? $_SESSION['user_country_id'] : 0) . "; country_content = '".(!empty($node_content)?$node_content:'')."';country = location.search.split('country=')[1]; if((country_id == 2 || country == 'ca') && country_content.length>0){jQuery('#page-canada-content').show();jQuery('#page-us-content').hide();jQuery('#country-menu li:first-child').removeClass('active');jQuery('#country-menu li:last-child').addClass('active');}else if(country_id == 1){jQuery('#page-canada-content').hide();jQuery('#page-us-content').show();jQuery('#country-menu li:first-child').addClass('active');jQuery('#country-menu li:last-child').removeClass('active');}else{jQuery('#page-canada-content').hide();jQuery('#page-us-content').show();jQuery('#country-menu li:first-child').addClass('active');jQuery('#country-menu li:last-child').removeClass('active');}})", array('type' => 'inline','scope' => 'footer'));
