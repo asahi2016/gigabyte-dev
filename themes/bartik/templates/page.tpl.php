@@ -130,26 +130,32 @@ $country = db_select('field_data_field_country', 'f')
     ->execute()
     ->fetchField();
 
-if(!user_is_logged_in()){
-    //$_SESSION['user_country_id'] = !empty($ipcountry->country)?$ipcountry->country:'';
-    if($ipcountry->country == "CA"){
-        $_SESSION['user_country_id'] = 2;
-    }else{
-        $_SESSION['user_country_id'] = 1;
-    }
-}
+$getcountry = isset($_GET['country'])?$_GET['country']:0;
 
-if(isset($_GET['country'])) {
-    if ($_GET['country'] == 'ca') {
-        $_SESSION['user_country_id'] = 2;
-    } else {
-        $_SESSION['user_country_id'] = 1;
+if(!user_is_logged_in()){
+    echo "User not logged in";
+    if(!empty($getcountry)){
+        if ($getcountry == 'ca') {
+            $_SESSION['user_country_id'] = 2;
+        } else {
+            $_SESSION['user_country_id'] = 1;
+        }
+    }else{
+        $_SESSION['user_country_id'] = !empty($ipcountry->country)?($ipcountry->country == 'CA')?2:1:1;
     }
 }else{
-    $_SESSION['user_country_id'] = empty($_SESSION['user_country_id'])?$country:$_SESSION['user_country_id'];
+    if(!empty($getcountry)){
+        if ($getcountry == 'ca') {
+            $_SESSION['user_country_id'] = 2;
+        } else {
+            $_SESSION['user_country_id'] = 1;
+        }
+    }else{
+        $_SESSION['user_country_id'] = !empty($country)?$country:1;
+    }
 }
 
-drupal_add_js("jQuery(document).ready(function(){country_id = " . (!empty($_SESSION['user_country_id']) ? $_SESSION['user_country_id'] : 0) . "; country_content = '".(!empty($node_content)?$node_content:'')."';country = location.search.split('country=')[1]; if((country == 'ca' || country_id == 2) && country_content.length>0){jQuery('#page-canada-content').show();jQuery('#page-us-content').hide();jQuery('#country-menu li:first-child').removeClass('active');jQuery('#country-menu li:last-child').addClass('active');}else if(country_id == 1){jQuery('#page-canada-content').hide();jQuery('#page-us-content').show();jQuery('#country-menu li:first-child').addClass('active');jQuery('#country-menu li:last-child').removeClass('active');}else{jQuery('#page-canada-content').hide();jQuery('#page-us-content').show();jQuery('#country-menu li:first-child').addClass('active');jQuery('#country-menu li:last-child').removeClass('active');}})", array('type' => 'inline','scope' => 'footer'));
+drupal_add_js("jQuery(document).ready(function(){country_id = " . (!empty($_SESSION['user_country_id']) ? $_SESSION['user_country_id'] : 1) . "; country_content = '".(!empty($node_content)?$node_content:'')."';country = location.search.split('country=')[1]; if((country == 'ca' || country_id == 2) && country_content.length>0){jQuery('#page-canada-content').show();jQuery('#page-us-content').hide();jQuery('#country-menu li:first-child').removeClass('active');jQuery('#country-menu li:last-child').addClass('active');}else if(country_id == 1){jQuery('#page-canada-content').hide();jQuery('#page-us-content').show();if(country == 'us'){jQuery('#country-menu li:first-child').addClass('active');jQuery('#country-menu li:last-child').removeClass('active');}else if(country == 'ca'){jQuery('#country-menu li:first-child').removeClass('active');jQuery('#country-menu li:last-child').addClass('active');}else{jQuery('#country-menu li:first-child').addClass('active');jQuery('#country-menu li:last-child').removeClass('active');}}else{jQuery('#page-canada-content').hide();jQuery('#page-us-content').show();if(country == 'us' || country_id == 1){jQuery('#country-menu li:first-child').addClass('active');jQuery('#country-menu li:last-child').removeClass('active');}else if(country == 'ca' || country_id == 2){jQuery('#country-menu li:first-child').removeClass('active');jQuery('#country-menu li:last-child').addClass('active');}else{jQuery('#country-menu li:first-child').addClass('active');jQuery('#country-menu li:last-child').removeClass('active');}}})", array('type' => 'inline','scope' => 'footer'));
 
 ?>
 <div id="page-wrapper"><div id="page">
