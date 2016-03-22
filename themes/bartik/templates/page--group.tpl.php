@@ -1,10 +1,8 @@
-<div class="table-title">
-    <h3>Company Information</h3>
-</div>
+</br>
 <table class="table-fill">
     <thead>
     <tr>
-        <th class="text-left" colspan="2">Company Name</th>
+        <th class="text-left" colspan="2">Company Information</th>
     </tr>
     </thead>
     <tbody class="table-hover">

@@ -249,3 +249,42 @@ function bartik_menu_link($variables){
     return theme_menu_link($variables);
 }
 
+
+function bartik_theme(){
+
+    return array(
+        'user_profile_form' => array(
+            // Forms always take the form argument.
+            'arguments' => array('form' => NULL),
+            'render element' => 'form',
+            'template' => 'templates/user-profile-edit',
+        ),
+    );
+
+}
+
+
+function bartik_preprocess_user_profile_form(&$variables) {
+
+    /*echo '<pre>';
+    print_r($variables);
+    echo '</pre>';*/
+
+}
+
+
+function bartik_menu_local_tasks() {
+    $output = '';
+    $primary = array();
+    $node = new stdClass();
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $node = node_load(arg(1));
+    }
+
+    if (in_array($node->type, array('group'))) {
+        if ($primary = menu_primary_local_tasks()) {
+            unset($primary);
+        }
+    }
+    return $output;
+}
