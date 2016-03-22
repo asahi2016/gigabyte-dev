@@ -11,6 +11,7 @@ function group_registration_init(){
 
     drupal_add_js(array('gigabyte' => $my_settings), 'setting');
     drupal_add_js(drupal_get_path('module', 'custom').'/group_registration/js/registration.js');
+
 }
 
 
@@ -24,7 +25,69 @@ function group_registration_menu() {
         'type' => MENU_CALLBACK,
         'access callback' => TRUE,
     );
+
+    $items['update/user/account'] = array(
+        'page callback' => 'group_registration_update_user_account_submit', // Render HTML
+        'type' => MENU_CALLBACK,
+        'access callback' => TRUE,
+    );
     return $items;
+}
+
+function group_registration_update_user_account_submit(){
+
+    if(isset($_POST) && !empty($_POST)) {
+
+        global $user;
+
+        $account = user_load($user->uid);
+
+        $category = 'account';
+
+        $distributor = $_POST['field_choose_distributor']['und'];
+
+        $i=0;
+        foreach($_POST['field_choose_distributor']['und'] as $key => $dist){
+            unset($_POST['field_choose_distributor']['und'][$key]);
+            $_POST['field_choose_distributor']['und'][$i]['tid'] = $dist;
+            $i++;
+        }
+
+        $i=0;
+        foreach($_POST['field_choose_sub_distributor']['und'] as $key => $dist){
+            unset($_POST['field_choose_sub_distributor']['und'][$key]);
+            $_POST['field_choose_sub_distributor']['und'][$i]['tid'] = $dist;
+            $i++;
+        }
+        $i=0;
+        foreach($_POST['field_participating_programs']['und'] as $key => $dist){
+            unset($_POST['field_participating_programs']['und'][$key]);
+            $_POST['field_participating_programs']['und'][$i]['tid'] = $dist;
+            $i++;
+        }
+
+        $rma_country = $_POST['field_rma_country']['und'];
+        unset($_POST['field_rma_country']['und']);
+        $_POST['field_rma_country']['und'][0]['tid'] = $rma_country;
+
+        $news = $_POST['field_receive_newsletter']['und'];
+        unset($_POST['field_receive_newsletter']['und']);
+        $_POST['field_receive_newsletter']['und'][0]['value'] = $news;
+
+        user_save($account, $_POST, $category);
+
+        if ($category == 'account' && !empty($edit['pass'])) {
+            // Remove the password reset tag since a new password was saved.
+            unset($_SESSION['pass_reset_' . $account->uid]);
+        }
+        // Clear the page cache because pages can contain usernames and/or profile information:
+        cache_clear_all();
+
+        drupal_set_message(t('The changes have been updated.'));
+
+        drupal_goto('user/' . $account->uid . '/edit');
+    }
+
 }
 
 function group_registration_ajax_get_company_info() {
@@ -265,7 +328,7 @@ function group_registration_errors_reset(&$element){
                     $error_message = str_replace('field is required','cannot be empty',$error_message);
                     break;
                 case 'checkboxes':
-                      $error_message = str_replace($error_message ,'Please select at least one checkboxes',$error_message);
+                      $error_message = str_replace($error_message ,'Please select at least one checkbox',$error_message);
                     break;
                 case 'radio':
                       $error_message = str_replace($error_message ,'Please select any one option',$error_message);
@@ -276,7 +339,7 @@ function group_registration_errors_reset(&$element){
 
             }
 
-            $element[ '#suffix' ] = '<span class="custom-error">'.$error_message.'</span>';
+            $element[ '#suffix' ] = '<span class="custom-error '.$element[ '#id' ].'" >'.$error_message.'</span>';
 
             $reset_errors[ $element[ '#id' ] ] = $error_message;
         }
@@ -439,5 +502,6 @@ function group_registration_user_insert(&$edit, $account, $category){
         }
     }
 }
+
 
 ?>

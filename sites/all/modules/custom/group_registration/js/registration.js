@@ -7,12 +7,12 @@
         var pwd_desc = $('.form-type-password-confirm .description');
         $('.form-type-password-confirm .password-parent').append(pwd_desc);
 
-        var pwd_err_msg = $('#edit-account .custom-error').eq(1);
+        var pwd_err_msg = $('#edit-account span.custom-error.edit-pass');
 
         $(pwd_err_msg).insertAfter(pwd_desc);
         $('.password-parent .custom-error').eq(1).remove();
 
-        var other_input1 = $('#edit-field-other-programs .text-full');
+        /*var other_input1 = $('#edit-field-other-programs .text-full');
         var other_input2 = $('#edit-field-other-distributor .text-full');
         var other_input3 = $('#edit-field-other-sub-distributor .text-full');
         $('#edit-field-participating-programs-und .form-item-field-participating-programs-und-7').append(other_input1);
@@ -30,11 +30,41 @@
         //$('#edit-field-participating-programs .form-required').append(other_err1);
         $('#edit-field-participating-programs .custom-error').text('');
         $('#edit-field-choose-distributor .custom-error').text('');
-        $('#edit-field-choose-sub-distributor .custom-error').text('');
+        $('#edit-field-choose-sub-distributor .custom-error').text('');*/
 
         //$('#edit-field-participating-programs .custom-error').text('');
 
-        /* $('#edit-field-other-programs input').attr('disabled','disabled');
+        var other_programs =  $('#edit-field-other-programs').html();
+        $('div#edit-field-participating-programs-und').find('div.form-type-checkbox:last-child').append(other_programs);
+        $('#edit-field-other-programs').remove();
+
+        var other_distributor =  $('#edit-field-other-distributor').html();
+        $('div#edit-field-choose-distributor-und').find('div.form-type-checkbox:last-child').append(other_distributor);
+        $('#edit-field-other-distributor').remove();
+
+        var other_sub_distributor =  $('#edit-field-other-sub-distributor').html();
+        $('div#edit-field-choose-sub-distributor-und').find('div.form-type-checkbox:last-child').append(other_sub_distributor);
+        $('#edit-field-other-sub-distributor').remove();
+
+
+        $('form').submit(function(){
+            $('select#edit-user-roles').removeAttr('disabled');
+            $('select#edit-field-country-und').removeAttr('disabled');
+        });
+
+        var company_name = $('#edit-field-company-name-und-0-target-id').val();
+
+        if(company_name != '') {
+            $('#edit-field-business-address-1-und-0-value').attr('readonly','readonly');
+            $('#edit-field-business-address-2-und-0-value').attr('readonly','readonly');
+            $('#edit-field-company-city-und-0-value').attr('readonly','readonly');
+            $('#edit-field-company-state-und-0-value').attr('readonly','readonly');
+            $('#edit-field-company-zip-code-und-0-value').attr('readonly','readonly');
+            $('select#edit-user-roles').attr('disabled','disabled');
+            $('select#edit-field-country-und').attr('disabled','disabled');
+        }
+
+         /*$('#edit-field-other-programs input').attr('disabled','disabled');
          $('#edit-field-other-distributor input').attr('disabled','disabled');
          $('#edit-field-other-sub-distributor input').attr('disabled','disabled');*/
 
@@ -89,13 +119,11 @@
                 if ($(this).parent('div').find('label').text().toLowerCase().trim() == 'other') {
                     var activeElement = $(this).parents('div.form-type-checkboxes')
                         .parent('div')
-                        .next('div.field-type-text')
                         .next('span.custom-error');
                     $(this).parents('div.form-type-checkboxes').parent('div').find('.form-required').text('');
                     $(this).parents('div.form-type-checkboxes').parent('div').find('.form-required').text('* '+$(activeElement).text());
                     $(activeElement).text('');
                 }
-
         });
 
 
