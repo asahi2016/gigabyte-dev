@@ -133,7 +133,6 @@ $country = db_select('field_data_field_country', 'f')
 $getcountry = isset($_GET['country'])?$_GET['country']:0;
 
 if(!user_is_logged_in()){
-    echo "User not logged in";
     if(!empty($getcountry)){
         if ($getcountry == 'ca') {
             $_SESSION['user_country_id'] = 2;
