@@ -266,12 +266,78 @@ function bartik_theme(){
 
 function bartik_preprocess_user_profile_form(&$variables) {
 
-    /*echo '<pre>';
-    print_r($variables);
-    echo '</pre>';*/
+    $variables['form']['#submit'][] = 'group_registration_update_user_account';
+    $variables['form']['actions']['submit']['#value'] = 'Update';
 
+    $variables['account']['firstname']['value'] = $variables['form']['#user']->field_first_name['und'][0]['value'];
+    $variables['account']['lastname']['value'] = $variables['form']['#user']->field_last_name['und'][0]['value'];
+    $variables['account']['mail'] = $variables['form']['#user']->mail;
+    $variables['account']['job_title']['value'] = $variables['form']['#user']->field_job_title['und'][0]['value'];
+    $variables['account']['contact_number']['value'] = $variables['form']['#user']->field_contact_number['und'][0]['value'];
+    $variables['account']['participating_programs']['value'] = $variables['form']['#user']->field_participating_programs['und'][0]['tid'];
+    $variables['account']['choose_distributor']['value'] = $variables['form']['#user']->field_choose_distributor['und'][0]['tid'];
+    $variables['account']['choose_sub_distributor']['value'] = $variables['form']['#user']->field_choose_sub_distributor['und'][0]['tid'];
+    $variables['account']['rma_first_name']['value'] = $variables['form']['#user']->field_rma_first_name['und'][0]['value'];
+    $variables['account']['rma_last_name']['value'] = $variables['form']['#user']->field_rma_last_name['und'][0]['value'];
+    $variables['account']['rma_contact_number']['value'] = $variables['form']['#user']->field_rma_contact_number['und'][0]['value'];
+    $variables['account']['rma_country']['value'] = $variables['form']['#user']->field_rma_country['und'][0]['tid'];
+    $variables['account']['shipping_address_1']['value'] = $variables['form']['#user']->field_shipping_address_1['und'][0]['value'];
+    $variables['account']['shipping_address_2']['value'] = $variables['form']['#user']->field_shipping_address_2['und'][0]['value'];
+    $variables['account']['rma_city']['value'] = $variables['form']['#user']->field_rma_city['und'][0]['value'];
+    $variables['account']['rma_state']['value'] = $variables['form']['#user']->field_rma_state['und'][0]['value'];
+    $variables['account']['rma_zip_code']['value'] = $variables['form']['#user']->field_rma_zip_code['und'][0]['value'];
+    $variables['account']['membership_account']['value'] = $variables['form']['#user']->field_membership_account['und'][0]['value'];
+    $variables['account']['motherboard_qty']['value'] = $variables['form']['#user']->field_motherboard_qty['und'][0]['value'];
+    $variables['account']['other_programs']['value'] = !empty($variables['form']['#user']->field_other_programs['und'])?$variables['form']['#user']->field_other_programs['und'][0]['value']:'';
+    $variables['account']['other_distributor']['value'] = !empty($variables['form']['#user']->field_other_distributor['und'])?$variables['form']['#user']->field_other_distributor['und'][0]['value']:'';
+    $variables['account']['other_sub_distributor']['value'] = !empty($variables['form']['#user']->field_other_sub_distributor['und'])?$variables['form']['#user']->field_other_sub_distributor['und'][0]['value']:'';
+    $variables['account']['group_id'] = $variables['form']['#user']->og_user_node['und'][0]['target_id'];
+    $variables['account']['company_id'] = $variables['form']['#user']->field_company_name['und'][0]['target_id'];
+
+    $company_info = db_query("SELECT * FROM {company} WHERE nid =".$variables['account']['company_id'])->fetchAssoc();
+    $roles = user_role_load($company_info['member_type']);
+    $country = taxonomy_term_load($company_info['country']);
+
+    $variables['account']['company'] = $company_info;
+    $variables['account']['company']['roles'] = $roles;
+    $variables['account']['company']['country'] = $country;
+
+    $variables['account']['job_title']['form'] = drupal_render($variables['form']['group_personal_info']['field_job_title']);
+    $variables['account']['contact_number']['form'] = drupal_render($variables['form']['group_personal_info']['field_contact_number']);
+    $variables['account']['pass']['form'] = drupal_render($variables['form']['group_personal_info']['account']['pass']);
+    $variables['account']['current_pass']['form'] = drupal_render($variables['form']['group_personal_info']['account']['current_pass']);
+
+    $variables['account']['rma_first_name']['form'] = drupal_render($variables['form']['group_rma_information']['field_rma_first_name']);
+    $variables['account']['rma_last_name']['form'] = drupal_render($variables['form']['group_rma_information']['field_rma_last_name']);
+    $variables['account']['rma_contact_number']['form'] = drupal_render($variables['form']['group_rma_information']['field_rma_contact_number']);
+    $variables['account']['rma_country']['form'] = drupal_render($variables['form']['group_rma_information']['field_rma_country']);
+    $variables['account']['shipping_address_1']['form'] = drupal_render($variables['form']['group_rma_information']['field_shipping_address_1']);
+    $variables['account']['shipping_address_2']['form'] = drupal_render($variables['form']['group_rma_information']['field_shipping_address_2']);
+    $variables['account']['rma_city']['form'] = drupal_render($variables['form']['group_rma_information']['field_rma_city']);
+    $variables['account']['rma_state']['form'] = drupal_render($variables['form']['group_rma_information']['field_rma_state']);
+    $variables['account']['rma_zip_code']['form'] = drupal_render($variables['form']['group_rma_information']['field_rma_zip_code']);
+
+    unset($variables['form']['group_better_services']['field_other_programs']['und'][0]['value']['#title']);
+    unset($variables['form']['group_better_services']['field_other_distributor']['und'][0]['value']['#title']);
+    unset($variables['form']['group_better_services']['field_other_sub_distributor']['und'][0]['value']['#title']);
+    unset($variables['form']['group_better_services']['field_other_programs']['und']['#title']);
+    unset($variables['form']['group_better_services']['field_other_distributor']['und']['#title']);
+    unset($variables['form']['group_better_services']['field_other_sub_distributor']['und']['#title']);
+
+    $variables['account']['participating_programs']['form'] = drupal_render($variables['form']['group_better_services']['field_participating_programs']);
+    $variables['account']['other_programs']['form'] = drupal_render($variables['form']['group_better_services']['field_other_programs']);
+
+    $variables['account']['membership_account']['form'] = drupal_render($variables['form']['group_better_services']['field_membership_account']);
+    $variables['account']['motherboard_qty']['form'] = drupal_render($variables['form']['group_better_services']['field_motherboard_qty']);
+
+    $variables['account']['choose_distributor']['form'] = drupal_render($variables['form']['group_better_services']['field_choose_distributor']);
+    $variables['account']['other_distributor']['form'] = drupal_render($variables['form']['group_better_services']['field_other_distributor']);
+
+    $variables['account']['choose_sub_distributor']['form'] = drupal_render($variables['form']['group_better_services']['field_choose_sub_distributor']);
+    $variables['account']['other_sub_distributor']['form'] = drupal_render($variables['form']['group_better_services']['field_other_sub_distributor']);
+
+    $variables['account']['receive_newsletter']['form'] = drupal_render($variables['form']['group_better_services']['field_receive_newsletter']);
 }
-
 
 function bartik_menu_local_tasks() {
     $output = '';

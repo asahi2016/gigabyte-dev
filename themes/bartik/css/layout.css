@@ -398,3 +398,51 @@ div.form-item div.password-suggestions{display: none !important;}
 #user-register-form .form-type-select .description{display: none}
 #user-register-form .custom-error{width:250px;padding:5px 0px 10px 20px}
 #user-register-form .captcha .custom-error{width:auto;}
+
+#account-setting .border table tr td{
+    font-family: Arial,Helvetica,sans-serif;
+    font-size:14px;
+    padding:5px 20px 0 20px;
+}
+#account-setting table{
+    margin:0px;
+}
+#account-setting .form-item label{
+    font-size:14px;
+    margin:0 10px 0 0;
+}
+#account-setting .form-item{
+    clear:both;
+}
+#account-setting table.company-details label{width:180px;}
+#account-setting table label{width:auto;float:left;}
+#account-setting table input.text-full{float:left;width:200px;  margin:0 0 10px 0;padding:5px 10px;}
+table.company-details tr td{padding: 0px;}
+#account-setting #edit-field-participating-programs {width:900px;}
+#account-setting #edit-field-participating-programs .form-item label.option,#account-setting #edit-field-choose-distributor-und .form-item label.option,
+#account-setting #edit-field-choose-sub-distributor-und .form-item label.option,#account-setting #edit-field-receive-newsletter-und .form-item label.option{font-weight: bold;float:left;}
+#account-setting #edit-field-participating-programs .form-item input,#account-setting #edit-field-choose-distributor-und .form-item input,
+#account-setting #edit-field-choose-sub-distributor-und .form-item input,#account-setting #edit-field-receive-newsletter-und .form-item input.form-radio{float:left;margin:5px 10px 0 0}
+#account-setting #edit-field-receive-newsletter .form-radios .form-item{float:left;clear: inherit;margin:0px;}
+#account-setting #edit-field-receive-newsletter .form-item label,#account-setting #edit-field-receive-newsletter .form-radios{float:left;}
+#account-setting #edit-field-participating-programs-und,#account-setting #edit-field-choose-distributor-und,#account-setting #edit-field-choose-sub-distributor-und
+{float: left;margin: 5px 0 0 30px;width: 100%;}
+#account-setting #field-other-programs-add-more-wrapper,#account-setting #field-other-distributor-add-more-wrapper,#account-setting #field-other-sub-distributor-add-more-wrapper{float:left;}
+.form-checkboxes #field-other-programs-add-more-wrapper .form-item,.form-checkboxes #field-other-distributor-add-more-wrapper .form-item,
+.form-checkboxes #field-other-sub-distributor-add-more-wrapper .form-item{margin:0px;}
+#account-setting table#password td{padding:0px;}
+#account-setting table#password td:nth-child .form-item{float:left;clear: inherit;}
+#account-setting table#password td:nth-child(2) .form-item{clear:inherit;float:left;width:100%;}
+#account-setting table#password td:nth-child(2) .form-item .form-item{clear:inherit;float: left;width:290px;margin:0 0px 0 0}
+#account-setting table#password td label{width:auto;float:left;}
+#account-setting table#password td input{width:120px;float:left;}
+#account-setting table#password td .description,.page-user-edit h1#page-title,.page-user-edit div.messages.error{display: none;}
+
+
+#edit-field-participating-programs .form-item{width:100%}
+#edit-field-participating-programs .form-item{
+    clear: inherit;
+    float: left;
+}
+#edit-field-participating-programs .form-item{float:left;clear: inherit;}
+

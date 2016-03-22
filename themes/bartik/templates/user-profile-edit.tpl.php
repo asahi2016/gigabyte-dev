@@ -1,160 +1,148 @@
-<style>
-    .border {
-        -webkit-box-shadow: 0px 0px 1px 0px rgba(0,0,0,1);
-        -moz-box-shadow: 0px 0px 1px 0px rgba(0,0,0,1);
-        box-shadow: 0px 0px 1px 0px rgba(0,0,0,1);
-    }
-
-    .Question {
-        padding-left: 30px;
-        padding-top: 10px;
-    }
-
-    .Question > label {
-        padding-right: 30px;
-    }
-</style>
-<script>
-    $(function () {
-        $('#password').hide()
-        $('#Q1_other').hide()
-        $('#Q4_other').hide()
-        $('#Q5_other').hide()
-    });
-
-    function display(id) {
-        $(id).fadeToggle()
-    }
-</script>
+<div id="account-setting">
 <table>
     <tbody>
     <tr>
-        <td><p style="font-weight:900; font-size:27px; margin-top:30px; margin-bottom:30px; color:#12406a;">Account Management</p></td>
+        <td colspan="8"><p style="font-weight:900; font-size:27px; margin-top:30px; margin-bottom:30px; color:#12406a;">Account Management</p></td>
     </tr>
     </tbody>
 </table>
-
-<div class="border" style="width:1000px; margin:0 auto 0 auto;">
-    <div style="text-align:center; font-size:20px; font-weight:700; padding-top:10px; padding-bottom:10px;">Personal Information</div>
-    <table style="width:940px; margin:0 30px 0 30px;">
+<div class="border" style="width:998px; margin:0 auto 0 auto;">
+    <div style="text-align:center; font-size:20px; font-weight:700; padding-top:10px; padding-bottom:10px;color:#333">Personal Information</div>
+    <table class="full-wrap">
         <tbody>
         <tr>
-            <td>First Name: Jack</td>
-            <td>Last Name: Wan</td>
+            <td>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td width="50%">First Name: <?= $account['firstname']['value']?></td>
+                        <td width="35%">Last Name: <?= $account['lastname']['value']?></td>
+                        <td width="15%">Job Title: <?= $account['job_title']['value']?></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
         </tr>
         <tr>
-            <td>Email Address (Login ID): jackwan@gigabyteusa.com</td>
-            <td>Contact Number: <input id="Text1" type="text" value="626-854-9338 ext. 157" /></td>
-        </tr>
-        <tr>
-            <td colspan="2"><hr /></td>
-        </tr>
-        </tbody>
-    </table>
-    <table id="password" style="width:940px; margin:0 30px 0 30px;">
-        <tbody>
-        <tr>
-            <td>Current Password: <input id="Password1" type="password" /></td>
-            <td>New Password: <input id="Password1" type="password" /></td>
-            <td>Confirm Password: <input id="Password1" type="password" /></td>
+            <td>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td width="50%">Email Address (Login ID): <?=$account['mail']?></td>
+                        <td width="50%"><?= $account['contact_number']['form'] ?></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
         </tr>
         <tr>
             <td colspan="3"><hr /></td>
         </tr>
         </tbody>
     </table>
+    <table id="password" style="width:940px; margin:0 30px 0 30px;">
+        <tbody>
+        <tr>
+            <td valign="top" style="width:330px;"><?= $account['current_pass']['form'] ?> </td>
+            <td valign="top"><?= $account['pass']['form'] ?></td>
+        </tr>
+        </tbody>
+    </table>
     <div style="text-align:center; padding-bottom:10px;">
-        <input id="Button1" type="button" value="Change Password" onclick="display('#password')" />
+        <input id="password_hide" type="button" value="Change Password" />
     </div>
 </div>
-
-<table style="margin-top:30px;">
+<div style="width:998px;float:left;margin:20px 0px 20px;">
+<table class="company-details"">
     <tbody>
     <tr>
-        <td>
-            <div class="border" style="width:485px; height:450px;">
-                <div style="text-align:center; font-size:20px; font-weight:700; padding-top:10px; padding-bottom:10px;">Company Information</div>
+        <td valign="top">
+            <div class="border" style="width:485px;min-height:480px;">
+                <div style="text-align:center; font-size:20px; font-weight:700; padding-top:10px; padding-bottom:10px;color:#333">Company Information</div>
                 <div style="padding-left:30px; padding-right:30px; padding-bottom:10px;">
-                    Company Name: GIGABYTE<br /><br />
-                    Member Type: GIGABYTE Employees<br /><br />
-                    Job Title: Web Master<br /><br />
-                    Country: <select id="Select1">
-                        <option>United States</option>
-                        <option>Canada</option>
-                    </select><br /><br />
-                    Business Address 1: <input id="Text1" type="text" value="17358 Railroad St" /><br /><br />
-                    Business Address 2: <input id="Text1" type="text" /><br /><br />
-                    City: <input id="Text1" type="text" value="City of Industry" /><br /><br />
-                    State: <input id="Text1" type="text" value="CA" style="width:50px;" /><br /><br />
-                    Zip Code: <input id="Text1" type="text" value="91748" style="width:50px;" />
+                    Company Name: <?= $account['company']['name']?><br /><br />
+                    Member Type: <?= $account['company']['roles']->name?><br /><br />
+                    Country: <?= $account['company']['country']->name?> <br /><br />
+                    Business Address 1: <?= $account['company']['business_address_1']?><br /><br />
+                    Business Address 2: <?= $account['company']['business_address_2']?><br /><br />
+                    City: <?= $account['company']['city']?><br /><br />
+                    State: <?= $account['company']['state']?><br /><br />
+                    Zip Code: <?= $account['company']['zip']?>
                 </div>
             </div>
         </td>
         <td style="width:30px;"></td>
-        <td>
-            <div class="border" style="width:485px; height:450px;">
-                <div style="text-align:center; font-size:20px; font-weight:700; padding-top:10px; padding-bottom:10px;">RMA Contact</div>
+        <td valign="top">
+            <div class="border" style="width:485px;min-height:480px;">
+                <div style="text-align:center; font-size:20px; font-weight:700; padding-top:10px; padding-bottom:10px;color:#333">RMA Contact</div>
                 <div style="padding-left:30px; padding-right:30px; padding-bottom:10px;">
-                    RMA First Name: Jack<br /><br />
-                    RMA Last Name: Wan<br /><br />
-                    Contact Number:<input id="Text1" type="text" value="626-854-9338 ext. 157" /><br /><br />
-                    Country: <select id="Select1">
-                        <option>United States</option>
-                        <option>Canada</option>
-                    </select><br /><br />
-                    Shipping Address 1: <input id="Text1" type="text" value="17358 Railroad St" /><br /><br />
-                    Shipping Address 2: <input id="Text1" type="text" /><br /><br />
-                    City: <input id="Text1" type="text" value="City of Industry" /><br /><br />
-                    State: <input id="Text1" type="text" value="CA" style="width:50px;" /><br /><br />
-                    Zip Code: <input id="Text1" type="text" value="91748" style="width:50px;" />
+                    RMA First Name: <?= $account['rma_first_name']['value']?><br /><br />
+                    RMA Last Name: <?= $account['rma_last_name']['value']?><br /><br />
+                    <?= $account['rma_contact_number']['form']?>
+                    <?= $account['rma_country']['form']?>
+                    <?= $account['shipping_address_1']['form']?>
+                    <?= $account['shipping_address_2']['form']?>
+                    <?= $account['rma_city']['form']?>
+                    <?= $account['rma_state']['form']?>
+                    <?= $account['rma_zip_code']['form']?>
                 </div>
             </div>
         </td>
     </tr>
     </tbody>
 </table>
-
-<div class="border" style="width:1000px; margin:30px auto 0 auto;">
-    <div style="padding:30px 30px 30px 30px;">
-        1. Are you participating following programs? (Check all that apply)<br />
-        <div class="Question">
-            <label><input type="checkbox" name="CheckboxGroup1" checked="checked">None</label>
-            <label><input type="checkbox" name="CheckboxGroup1">Intel Product Dealer</label>
-            <label><input type="checkbox" name="CheckboxGroup1">Intel Solution Provider</label>
-            <label><input type="checkbox" name="CheckboxGroup1">Intel Premier Provider</label>
-            <label><input type="checkbox" name="CheckboxGroup1">Intel Innovative Technology Provider Program</label>
-            <label><input type="checkbox" name="CheckboxGroup1" onclick="display('#Q1_other')">Other <input id="Q1_other" type="text" /></label>
-        </div>
-        <hr />
-        2. What is your membership account # in above program(s)? <input id="Text1" type="text" />
-        <hr />
-        3. Monthly Desktop Motherboard Qty Purchased: <input id="Text1" type="text" value="99999" />
-        <hr />
-        4. Which distributor do you purchase motherboard from?<br />
-        <div class="Question">
-            <label><input type="checkbox" name="CheckboxGroup1" checked="checked">ASI</label>
-            <label><input type="checkbox" name="CheckboxGroup1">Malabs</label>
-            <label><input type="checkbox" name="CheckboxGroup1">D&H</label>
-            <label><input type="checkbox" name="CheckboxGroup1">Ingram Micro</label>
-            <label><input type="checkbox" name="CheckboxGroup1">LeaderTech</label>
-            <label><input type="checkbox" name="CheckboxGroup1" onclick="display('#Q4_other')">Other <input id="Q4_other" type="text" /></label>
-        </div>
-        <hr />
-        5. Which Sub-Distributor do you purchase motherboard from?<br />
-        <div class="Question">
-            <label><input type="checkbox" name="CheckboxGroup1" checked="checked">SED</label>
-            <label><input type="checkbox" name="CheckboxGroup1">Bass Computer</label>
-            <label><input type="checkbox" name="CheckboxGroup1">Arrow</label>
-            <label><input type="checkbox" name="CheckboxGroup1">Avnet</label>
-            <label><input type="checkbox" name="CheckboxGroup1">Eastern Data</label>
-            <label><input type="checkbox" name="CheckboxGroup1" onclick="display('#Q5_other')">Other <input id="Q5_other" type="text" /></label>
-        </div>
-        <hr />
-        6. I want to receive GIGABYTE’s business newsletter?<br />
-        <div class="Question">
-            <label><input type="radio" name="RadioGroup1" checked="checked" />Yes</label>
-            <label><input type="radio" name="RadioGroup1" />No</label>
-        </div>
-    </div>
 </div>
-<div style="margin:30px auto 0 auto; text-align:center;"><input id="Button1" type="button" value="Update" /></div>
+
+<div class="border" style="width:960px;float:left;padding: 20px;margin:0 0 20px 0;">
+    <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+        <tr>
+            <td><?= $account['participating_programs']['form']?>
+                <?= $account['other_programs']['form']?></td>
+        </tr>
+        <tr>
+            <td><?= $account['membership_account']['form']?></td>
+        </tr>
+        <tr>
+            <td><?= $account['motherboard_qty']['form']?></td>
+        </tr>
+        <tr>
+            <td><?= $account['choose_distributor']['form']?>
+                <?= $account['other_distributor']['form']?></td>
+        </tr>
+        <tr>
+            <td><?= $account['choose_sub_distributor']['form']?>
+                <?= $account['other_sub_distributor']['form']?></td>
+        </tr>
+        <tr>
+            <td><?= $account['receive_newsletter']['form']?></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<?php
+  print drupal_render($variables['form']['actions']);
+  //print drupal_render($form);
+?>
+<?php global $base_url; ?>
+<input type="hidden" id="actionUrl" value="<?php echo $base_url ?>/update/user/account" />
+
+</div>
+<script>
+    (function($) {
+        $(document).ready(function($){
+            $('#password').hide()
+
+            $('#password_hide').click(function(){
+                $('#password').fadeToggle()
+            });
+
+            $('#edit-submit').click(function(e){
+                var url = $('#actionUrl').val();
+                e.preventDefault();
+                $('form#user-profile-form').attr('action', url).submit();
+            });
+        });
+    })(jQuery);
+</script>
+
