@@ -194,7 +194,7 @@ fieldset.form-wrapper{
 
 #user-register-form #edit-field-participating-programs-und div:last-child, #user-register-form #edit-field-choose-distributor-und div:last-child, #user-register-form #edit-field-choose-sub-distributor div:last-child,
 #edit-field-membership-account,#edit-field-choose-sub-distributor{
-    clear:both;
+    float:left;
     width:auto;
 }
 
@@ -437,12 +437,13 @@ table.company-details tr td{padding: 0px;}
 #account-setting table#password td label{width:auto;float:left;}
 #account-setting table#password td input{width:120px;float:left;}
 #account-setting table#password td .description,.page-user-edit h1#page-title,.page-user-edit div.messages.error{display: none;}
-
-
 #edit-field-participating-programs .form-item{width:100%}
 #edit-field-participating-programs .form-item{
     clear: inherit;
     float: left;
 }
 #edit-field-participating-programs .form-item{float:left;clear: inherit;}
-
+#field-other-distributor-add-more-wrapper{float:left;}
+#account-setting .form-actions{width:100%;text-align: center}
+#account-setting input.form-submit{float:inherit;}
+#edit-field-membership-account,#edit-field-choose-sub-distributor-und .form-type-checkbox:last-child{clear:both;}

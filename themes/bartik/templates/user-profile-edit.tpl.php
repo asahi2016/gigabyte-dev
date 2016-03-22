@@ -6,7 +6,7 @@
     </tr>
     </tbody>
 </table>
-<div class="border" style="width:998px; margin:0 auto 0 auto;">
+<div class="border" style="width:998px; margin:0 auto 0 auto; float: left;">
     <div style="text-align:center; font-size:20px; font-weight:700; padding-top:10px; padding-bottom:10px;color:#333">Personal Information</div>
     <table class="full-wrap">
         <tbody>
