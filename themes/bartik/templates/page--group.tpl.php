@@ -7,10 +7,6 @@
     </thead>
     <tbody class="table-hover">
     <tr>
-        <td class="text-left">Company Name</td>
-        <td class="text-left"><?=$company['name']?></td>
-    </tr>
-    <tr>
         <td class="text-left">Member Type</td>
         <td class="text-left"><?=$company['roles']->name ;?></td>
     </tr>
@@ -19,15 +15,15 @@
         <td class="text-left"><?=$company['country']->name ;?></td>
     </tr>
     <tr>
-        <td class="text-left">Busniess Address 1</td>
+        <td class="text-left">Business Address 1</td>
         <td class="text-left"><?=$company['business_address_1']?></td>
     </tr>
     <tr>
-        <td class="text-left">Busniess Address 2</td>
+        <td class="text-left">Business Address 2</td>
         <td class="text-left"><?=$company['business_address_2']?></td>
     </tr>
     <tr>
-        <td class="text-left">Address</td>
+        <td class="text-left">City</td>
         <td class="text-left"><?=$company['city']?></td>
     </tr>
     <tr>
