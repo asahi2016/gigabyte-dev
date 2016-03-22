@@ -112,6 +112,7 @@ function group_registration_form_user_register_form_alter(&$form, &$form_state, 
     unset($form['field_other_sub_distributor']['und']['#title']);
     unset($form['account']['name']['#description']);
     unset($form['account']['mail']['#description']);
+   // $form['field_other_programs']['und'][0]['#suffix'] ='<span class="testing"></span>';
     $form['account']['pass']['#description'] = '<p>' . t("(At least 8 letters including 1 uppercase, 1 lowercase)") .'<p>';
     form_clear_error();
     $form['field_company_name']['#prefix'] = '<!--<div id="field-blocker" ></div>-->';

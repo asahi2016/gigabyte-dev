@@ -1,6 +1,9 @@
 
 jQuery(document).ready(function($) {
-   var li_count = $('#main-menu-nav > ul > li').length;
+    console.log($("div#field-canada-content-add-more-wrapper .text-summary-wrapper"));
+    $("div#field-canada-content-add-more-wrapper .text-summary-wrapper").text('If this page requires separate content for Canadian users, this version of the page can be added here.  Any content in this text field will be displayed by default for all users registered in Canada, or for users who select Canada as their country of preference upon visiting the site.');
+
+    var li_count = $('#main-menu-nav > ul > li').length;
     //alert(li_count);
         var menu_width = $('#header div.section').width();
         var li_width = (menu_width/li_count);
@@ -38,5 +41,6 @@ jQuery(document).ready(function($) {
         $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').text('Back to Partner Portal');
         $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').attr('href','partner');
     }
+
 
 });

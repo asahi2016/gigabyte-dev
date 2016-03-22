@@ -12,6 +12,28 @@
         $(pwd_err_msg).insertAfter(pwd_desc);
         $('.password-parent .custom-error').eq(1).remove();
 
+        var other_input1 = $('#edit-field-other-programs .text-full');
+        var other_input2 = $('#edit-field-other-distributor .text-full');
+        var other_input3 = $('#edit-field-other-sub-distributor .text-full');
+        $('#edit-field-participating-programs-und .form-item-field-participating-programs-und-7').append(other_input1);
+        $('#edit-field-choose-distributor-und .form-item-field-choose-distributor-und-13').append(other_input2);
+        $('#edit-field-choose-sub-distributor-und .form-item-field-choose-sub-distributor-und-19').append(other_input3);
+
+        var other_err1 = $('#edit-field-participating-programs .custom-error').text();
+        var other_err2 = $('#edit-field-choose-distributor .custom-error').text();
+        var other_err3 = $('#edit-field-choose-sub-distributor .custom-error').text();
+
+        $('#edit-field-participating-programs .form-required').append(other_err1);
+        $('#edit-field-choose-distributor .form-required').append(other_err2);
+        $('#edit-field-choose-sub-distributor .form-required').append(other_err3);
+
+        //$('#edit-field-participating-programs .form-required').append(other_err1);
+        $('#edit-field-participating-programs .custom-error').text('');
+        $('#edit-field-choose-distributor .custom-error').text('');
+        $('#edit-field-choose-sub-distributor .custom-error').text('');
+
+        //$('#edit-field-participating-programs .custom-error').text('');
+
         /* $('#edit-field-other-programs input').attr('disabled','disabled');
          $('#edit-field-other-distributor input').attr('disabled','disabled');
          $('#edit-field-other-sub-distributor input').attr('disabled','disabled');*/
@@ -61,6 +83,23 @@
                 }
             }
         });
+
+
+        $('div.form-checkboxes input[type="checkbox"]:checked').each(function(e){
+                if ($(this).parent('div').find('label').text().toLowerCase().trim() == 'other') {
+                    var activeElement = $(this).parents('div.form-type-checkboxes')
+                        .parent('div')
+                        .next('div.field-type-text')
+                        .next('span.custom-error');
+                    $(this).parents('div.form-type-checkboxes').parent('div').find('.form-required').text('');
+                    $(this).parents('div.form-type-checkboxes').parent('div').find('.form-required').text('* '+$(activeElement).text());
+                    $(activeElement).text('');
+                }
+
+        });
+
+
+
 
        $(document).on('click','#autocomplete ul li', function(){
            var company_id = $('#edit-field-company-name-und-0-target-id').val();
