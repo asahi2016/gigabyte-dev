@@ -4,3 +4,10 @@ sites/*/settings*.php
 # Ignore paths that contain user-generated content.
 sites/*/files
 sites/*/private
+themes/bartik/css/layout.css.orig
+.idea/workspace.xml
+*.xml
+.idea/gigabyte.iml
+*.xml___jb_bak___
+.idea/.name
+PhpStorm-a1b2d14a-7324-4930-a013-75fd00a536c5.php

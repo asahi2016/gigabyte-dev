@@ -112,12 +112,14 @@ function group_registration_form_user_register_form_alter(&$form, &$form_state, 
     unset($form['field_other_sub_distributor']['und']['#title']);
     unset($form['account']['name']['#description']);
     unset($form['account']['mail']['#description']);
+    $form['account']['pass']['#description'] = '<p>' . t("(At least 8 letters including 1 uppercase, 1 lowercase)") .'<p>';
     form_clear_error();
     $form['field_company_name']['#prefix'] = '<!--<div id="field-blocker" ></div>-->';
     $form['#validate'][] = 'group_registration_form_validation';
     drupal_set_title('');
     $form['actions']['submit']['#value'] = t('Submit Query');
     $form['#submit'][] = 'create_company_group_on_user_registration';
+
 }
 
 /*
@@ -134,12 +136,12 @@ function group_registration_form_validation (&$form, &$form_state ) {
     $pass_count = ($pass)? strlen($pass):0;
     if(!$pass){
        form_set_error('pass' , 'Password cannot be empty.');
-    }else if($pass && ($pass_count >= 6 && $pass_count <= 20)){
-        if(!preg_match('/^([a-zA-Z0-9_@.]+)$/', $pass)){
-            form_set_error('pass',t('Password should be alphabets, numbers and allowed special characters ( _ . @)'));
+    }else if($pass && ($pass_count >= 8 && $pass_count <= 20)){
+        if(!preg_match('/^(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z$&+,:;=?@#|<>.-^*()%!]{8,20}$/', $pass)){
+            form_set_error('pass',t('Password does not meet the requirement'));
         }
     }else{
-        form_set_error('pass',t('Password should be minimum 8 characters and maximum 20 characters'));
+        form_set_error('pass',t('Password does not meet the requirement'));
     }
 
     $field_participating_programs = $form_state['values']['field_participating_programs']['und'];
@@ -287,7 +289,37 @@ function group_registration_errors_reset(&$element){
 /**
  * Custom submit function for user registration form
  */
-function create_company_group_on_user_registration( &$form, &$form_state ) { }
+
+function create_company_group_on_user_registration($form, &$form_state) {
+
+    $usr_obj = $form_state['user']; //get registered user object
+
+    if (is_object($usr_obj) && isset($usr_obj->uid) && !check_group_title($form_state['input']['field_company_name']['und'][0]['target_id'])) {// dont forget to add your conditions
+
+        global $user;
+
+        $node = new stdClass();
+        $node->type     = "group";
+        $node->uid      = $user->uid;
+        $node->title    = t($form_state['input']['field_company_name']['und'][0]['target_id']);
+        $node->body     = t($form_state['input']['field_company_name']['und'][0]['target_id'] . "Group");
+        $node->status       = 1; //(1 or 0): published or not
+        $node->promote      = 0; //(1 or 0): promoted to front page
+        $node->comment      = 1; //2 = comments on, 1 = comments off
+
+        $node->og_description   = t("OG Description");
+        $node->og_register  = 0;
+        $node->og_directory = 0;
+        $node->og_private   = 1;
+        $node->og_selective = 3;
+
+        $node = node_submit($node);
+        node_save($node);
+
+        $_SESSION['current_user_group_id'] = $node->nid;
+
+    }
+}
 
 function check_group_title($group_title = null){
 

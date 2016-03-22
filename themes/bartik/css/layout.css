@@ -44,7 +44,11 @@ body,
   width: 480px;
 }
 .top_f,.top_s{
-    background:transparent url('../images/blue-background.png') no-repeat scroll center center / cover;
+    background: transparent url('../images/blue-background.png') no-repeat scroll center center / cover;
+    background-image: url('../images/blue-background.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 .top_f{
     height:80px;
@@ -146,6 +150,7 @@ h1.title,.wrapper_full h2{
 #user-register-form .form-text{
     width:170px;
     height:20px;
+    float:left;
 }
 #user-register-form .description,.page-user-register .tabs{
     display:none;
@@ -168,10 +173,11 @@ h1.title,.wrapper_full h2{
     margin: 9px 3px 0px 0px;
     width: auto;}
 #user-register-form .password-parent{
-    width:555px;
+    width:100%;
 }
 fieldset.form-wrapper{
     border-bottom:1px solid #8c8b8b;
+    width:99%;
 }
 #user-register-form .fieldset-wrapper .form-checkboxes{
     width:670px;
@@ -198,7 +204,7 @@ fieldset.form-wrapper{
 .wrapper_full p{font-size: 14px;line-height: 1.42857143;color: #333;}
 #content.wrapper_full ul{float:left;padding: 0px;}
 .wrapper_full li{list-style-type: none;float:left;margin:20px 40px 0 0}
-#content.partner-portal-login{width:600px;float:left;margin:0 0 0 35px;}
+#content.partner-portal-login{width:100%;float:left;margin:0 0 0 35px;}
 /*#block-user-login{width:335px;}*/
 #block-user-login h2{display: none}
 #block-user-login .form-text,#block-user-login label{    float: left;
@@ -344,14 +350,14 @@ body.page-user-register div.messages.error{
 .custom-error{float:left; padding: 10px 20px; color:red;}
 /*#user-register-form .form-checkboxes .form-item{clear:both;}*/
 #edit-field-job-title{clear:both;}
-#user-register-form .form-type-password-confirm.form-item{width:555px;}
+#user-register-form .form-type-password-confirm.form-item{width:900px;}
 #edit-field-receive-newsletter-und .custom-error{float:right;}
 #edit-field-participating-programs,#edit-field-choose-distributor,#edit-field-choose-sub-distributor{float:left;position: relative;width:600px;}
 #edit-field-participating-programs .custom-error,#edit-field-choose-distributor .custom-error,
 #edit-field-choose-sub-distributor .custom-error{position:absolute;left:316px;bottom:25px;}
 #edit-field-other-distributor .text-full,#edit-field-other-sub-distributor .text-full, #edit-field-other-programs .text-full{position:absolute;}
 #edit-field-other-programs .text-full{top: 172px;left: 190px;}
-#edit-field-other-distributor .text-full{bottom: 325px;left: 190px;}
+#edit-field-other-distributor .text-full{bottom:325px;left: 190px;}
 #edit-field-other-sub-distributor .text-full{bottom:118px;left: 190px;}
 #user-register-form select{width:182px;border:1px solid #ccc;border-radius: 3px; overflow: hidden;}
 #user-register-form select select:focus { outline: none;}
@@ -383,3 +389,8 @@ div.form-item div.password-suggestions{display: none !important;}
 #country-menu ul li img{width: 45px;height:25px; cursor:pointer;}
 #country-menu ul li.active img{border:1px solid red;}
 .header-wrapper-right{float:right;}
+
+.password-parent .description{float:left;margin:0 0 0 370px;}
+#user-register-form .form-type-select .description{display: none}
+#user-register-form .custom-error{width:250px;padding:5px 0px 10px 20px}
+#user-register-form .captcha .custom-error{width:auto;}

@@ -4,6 +4,13 @@
          var member_type = $('#edit-autoassignrole-user div.fieldset-wrapper').html();
          $( member_type ).insertAfter( "#edit-field-company-name" );
          $('#edit-autoassignrole-user').remove();
+        var pwd_desc = $('.form-type-password-confirm .description');
+        $('.form-type-password-confirm .password-parent').append(pwd_desc);
+
+        var pwd_err_msg = $('#edit-account .custom-error').eq(1);
+
+        $(pwd_err_msg).insertAfter(pwd_desc);
+        $('.password-parent .custom-error').eq(1).remove();
 
         /* $('#edit-field-other-programs input').attr('disabled','disabled');
          $('#edit-field-other-distributor input').attr('disabled','disabled');
@@ -50,7 +57,7 @@
                         .next('div.field-type-text')
                         .find('input[type="text"]');
                     disableElement.val('');
-                    //disableElement.attr('disabled','disabled');
+                    disableElement.attr('disabled','disabled');
                 }
             }
         });
