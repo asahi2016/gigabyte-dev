@@ -279,12 +279,13 @@ function bartik_menu_local_tasks() {
     $node = new stdClass();
     if (arg(0) == 'node' && is_numeric(arg(1))) {
         $node = node_load(arg(1));
-    }
 
-    if (in_array($node->type, array('group'))) {
-        if ($primary = menu_primary_local_tasks()) {
-            unset($primary);
+        if (in_array($node->type, array('group'))) {
+            if ($primary = menu_primary_local_tasks()) {
+                unset($primary);
+            }
         }
     }
+
     return $output;
 }
