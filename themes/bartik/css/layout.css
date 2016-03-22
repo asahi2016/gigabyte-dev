@@ -44,7 +44,7 @@ body,
   width: 480px;
 }
 .top_f,.top_s{
-    background: transparent url('../images/blue-background.png') no-repeat scroll center center / cover;
+    /*background: transparent url('../images/blue-background.png') no-repeat scroll center center / cover;*/
     background-image: url('../images/blue-background.png');
     background-repeat: no-repeat;
     background-position: center center;
