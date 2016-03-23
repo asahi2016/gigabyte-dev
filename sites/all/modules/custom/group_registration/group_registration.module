@@ -299,7 +299,7 @@ function group_registration_errors_reset(&$element){
     // Check for errors and settings
     $errors = form_get_errors();
 
-    if(empty($errors)){
+    if(empty($errors) && !empty($_POST)){
 
         echo '<pre>';
         print_r($element['field_company_name']);
