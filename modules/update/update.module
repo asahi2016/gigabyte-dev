@@ -617,10 +617,10 @@ function _update_message_text($msg_type, $msg_reason, $report_link = FALSE, $lan
 
   if ($report_link) {
     if (update_manager_access()) {
-      $text .= ' ' . t('See the <a href="@available_updates">available updates</a> page for more information and to install your missing updates.', array('@available_updates' => url('admin/reports/updates/update', array('language' => $language))), array('langcode' => $langcode));
+      //$text .= ' ' . t('See the <a href="@available_updates">available updates</a> page for more information and to install your missing updates.', array('@available_updates' => url('admin/reports/updates/update', array('language' => $language))), array('langcode' => $langcode));
     }
     else {
-      $text .= ' ' . t('See the <a href="@available_updates">available updates</a> page for more information.', array('@available_updates' => url('admin/reports/updates', array('language' => $language))), array('langcode' => $langcode));
+      //$text .= ' ' . t('See the <a href="@available_updates">available updates</a> page for more information.', array('@available_updates' => url('admin/reports/updates', array('language' => $language))), array('langcode' => $langcode));
     }
   }
 
