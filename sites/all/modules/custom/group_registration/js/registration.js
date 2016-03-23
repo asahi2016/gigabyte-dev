@@ -108,6 +108,26 @@
         });
 
 
+        var country_selected = $('#edit-field-country-und option:selected').text();
+        if(country_selected.toLowerCase().trim() == 'canada'){
+            $('#field-company-zip-code-add-more-wrapper label').html('Postal Code <span class="form-required" title="This field is required.">*</span>');
+        }else{
+            $('#field-company-zip-code-add-more-wrapper label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
+        }
+
+
+        $('#edit-field-country-und').change(function () {
+            var label = $('option:selected', this).text();
+            //alert(label);
+            if (label == "Canada") {
+                //alert("hi");
+                $('#field-company-zip-code-add-more-wrapper label').html('Postal Code <span class="form-required" title="This field is required.">*</span>');
+            } else if (label == "United States") {
+                $('#field-company-zip-code-add-more-wrapper label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
+            }
+        });
+
+
        $(document).on('click','#autocomplete ul li', function(){
            var company_id = $('#edit-field-company-name-und-0-target-id').val();
            company_info_ajax_load(company_id);
@@ -154,6 +174,18 @@
 
                         $('select#edit-field-country-und option').each(function() {
                             if($(this).val() == group_user.country){
+
+                                var country_selected = $(this).text();
+
+                                if(country_selected.toLowerCase().trim() == 'canada'){
+                                    $('#field-company-zip-code-add-more-wrapper label').html('Postal Code <span class="form-required" title="This field is required.">*</span>');
+                                }
+
+                                if(country_selected.toLowerCase().trim() != 'canada'){
+                                    $('#field-company-zip-code-add-more-wrapper label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
+                                }
+
+
                                 $(this).attr('selected','selected');
                             }
                         });

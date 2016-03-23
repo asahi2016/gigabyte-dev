@@ -302,14 +302,14 @@ function group_registration_errors_reset(&$element){
     if(empty($errors) && !empty($_POST)){
 
         $group_id = null;
-        if (preg_match("/.+\((\d+)\)/", $element['field_company_name']['und'][0]['target_id']['#value'] , $matches)) {
+        if (preg_match("/.+\((\d+)\)/", $_POST['field_company_name']['und'][0]['target_id'] , $matches)) {
             $group_id =  $matches[1];
         }
 
-        if (!$group_id && !check_group_title($element['field_company_name']['und'][0]['target_id']['#value'])) {
-            $_SESSION['new_group_name'] = $element['field_company_name']['und'][0]['target_id']['#value'];
+        if (!$group_id && !check_group_title($_POST['field_company_name']['und'][0]['target_id'])) {
+            $_SESSION['new_group_name'] = $_POST['field_company_name']['und'][0]['target_id'];
             if(!isset($_SESSION['new_group_name'])){
-                $_SESSION['new_group_name'] = $element['field_company_name']['und'][0]['target_id']['#value'];
+                $_SESSION['new_group_name'] = $_POST['field_company_name']['und'][0]['target_id'];
             }
         }
 
