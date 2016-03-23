@@ -225,6 +225,11 @@ function group_registration_form_validation (&$form, &$form_state ) {
         form_set_error('field_motherboard_qty' , 'Motherboard Qty accept only numeric values');
     }
 
+    $field_contact_number = $form_state['input']['field_contact_number']['und'][0]['value'];
+    if(!is_numeric($field_contact_number) && !empty($field_contact_number)){
+        form_set_error('field_contact_number' , 'Contact Number accept only numeric values');
+    }
+
     $field_participating_programs = $form_state['values']['field_participating_programs']['und'];
     if(!$field_participating_programs){
         form_set_error('field_participating_programs' , 'Please choose any one option');
