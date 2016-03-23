@@ -12,13 +12,6 @@
         $(pwd_err_msg).insertAfter(pwd_desc);
         $('.password-parent .custom-error').eq(1).remove();
 
-        /*var other_input1 = $('#edit-field-other-programs .text-full');
-        var other_input2 = $('#edit-field-other-distributor .text-full');
-        var other_input3 = $('#edit-field-other-sub-distributor .text-full');
-        $('#edit-field-participating-programs-und .form-item-field-participating-programs-und-7').append(other_input1);
-        $('#edit-field-choose-distributor-und .form-item-field-choose-distributor-und-13').append(other_input2);
-        $('#edit-field-choose-sub-distributor-und .form-item-field-choose-sub-distributor-und-19').append(other_input3);
-
         var other_err1 = $('#edit-field-participating-programs .custom-error').text();
         var other_err2 = $('#edit-field-choose-distributor .custom-error').text();
         var other_err3 = $('#edit-field-choose-sub-distributor .custom-error').text();
@@ -26,13 +19,9 @@
         $('#edit-field-participating-programs .form-required').append(other_err1);
         $('#edit-field-choose-distributor .form-required').append(other_err2);
         $('#edit-field-choose-sub-distributor .form-required').append(other_err3);
-
-        //$('#edit-field-participating-programs .form-required').append(other_err1);
         $('#edit-field-participating-programs .custom-error').text('');
         $('#edit-field-choose-distributor .custom-error').text('');
-        $('#edit-field-choose-sub-distributor .custom-error').text('');*/
-
-        //$('#edit-field-participating-programs .custom-error').text('');
+        $('#edit-field-choose-sub-distributor .custom-error').text('');
 
         var other_programs =  $('#edit-field-other-programs').html();
         $('div#edit-field-participating-programs-und').find('div.form-type-checkbox:last-child').append(other_programs);
