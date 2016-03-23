@@ -31,7 +31,19 @@ function group_registration_menu() {
         'type' => MENU_CALLBACK,
         'access callback' => TRUE,
     );
+
+    $items['user/account'] = array(
+        'page callback' => 'group_registration_user_account_redirect', // Render HTML
+        'type' => MENU_CALLBACK,
+        'access callback' => TRUE,
+    );
     return $items;
+}
+
+function group_registration_user_account_redirect(){
+
+   global $user;
+   drupal_goto('user/'.$user->uid.'/edit');
 }
 
 function group_registration_update_user_account_submit(){
@@ -502,6 +514,5 @@ function group_registration_user_insert(&$edit, $account, $category){
         }
     }
 }
-
 
 ?>
