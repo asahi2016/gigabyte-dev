@@ -301,6 +301,11 @@ function group_registration_errors_reset(&$element){
 
     if(empty($errors)){
 
+        echo '<pre>';
+        print_r($element['field_company_name']);
+        echo '</pre>';
+        exit;
+
         $group_id = null;
         if (preg_match("/.+\((\d+)\)/", $element['field_company_name']['und'][0]['target_id']['#value'] , $matches)) {
             $group_id =  $matches[1];
