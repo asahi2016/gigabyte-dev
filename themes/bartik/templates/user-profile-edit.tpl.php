@@ -36,7 +36,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan="3"><hr /></td>
+            <td><hr /></td>
         </tr>
         </tbody>
     </table>
@@ -57,9 +57,9 @@
     <tbody>
     <tr>
         <td valign="top">
-            <div class="border" style="width:485px;min-height:480px;">
+            <div class="border" style="width:485px;min-height:480px;float: left;">
                 <div style="text-align:center; font-size:20px; font-weight:700; padding-top:10px; padding-bottom:10px;color:#333">Company Information</div>
-                <div style="padding-left:30px; padding-right:30px; padding-bottom:10px;">
+                <div style="padding-left:30px; padding-right:30px; padding-bottom:10px;font-size: 14px;">
                     Company Name: <?= $account['company']['name']?><br /><br />
                     Member Type: <?= $account['company']['roles']->name?><br /><br />
                     Country: <?= $account['company']['country']->name?> <br /><br />
@@ -73,9 +73,9 @@
         </td>
         <td style="width:30px;"></td>
         <td valign="top">
-            <div class="border" style="width:485px;min-height:480px;">
+            <div class="border" style="width:485px;min-height:480px;float: left;">
                 <div style="text-align:center; font-size:20px; font-weight:700; padding-top:10px; padding-bottom:10px;color:#333">RMA Contact</div>
-                <div style="padding-left:30px; padding-right:30px; padding-bottom:10px;">
+                <div style="padding-left:30px; padding-right:30px; padding-bottom:10px;font-size: 14px;">
                     RMA First Name: <?= $account['rma_first_name']['value']?><br /><br />
                     RMA Last Name: <?= $account['rma_last_name']['value']?><br /><br />
                     <?= $account['rma_contact_number']['form']?>
