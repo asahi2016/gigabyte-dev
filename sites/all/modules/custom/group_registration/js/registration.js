@@ -53,9 +53,9 @@
             $('select#edit-field-country-und').attr('disabled','disabled');
         }
 
-         /*$('#edit-field-other-programs input').attr('disabled','disabled');
-         $('#edit-field-other-distributor input').attr('disabled','disabled');
-         $('#edit-field-other-sub-distributor input').attr('disabled','disabled');*/
+         $('#edit-field-participating-programs input[type="text"]').attr('disabled','disabled');
+         $('#edit-field-choose-distributor input[type="text"]').attr('disabled','disabled');
+         $('#edit-field-choose-sub-distributor input[type="text"]').attr('disabled','disabled');
 
          $("#edit-field-rma-contact-und-same-as-above").change(function(){
             if($(this).is(':checked')){
@@ -85,24 +85,15 @@
         $('div.form-checkboxes input[type="checkbox"]').change(function(){
             if($(this).is(':checked')) {
                 if ($(this).parent('div').find('label').text().toLowerCase().trim() == 'other') {
-                    var activeElement = $(this).parents('div.form-type-checkboxes')
-                        .parent('div')
-                        .next('div.field-type-text')
-                        .find('input[type="text"]');
-                    activeElement.removeAttr('disabled');
+                    $(this).parent('div').find('input[type="text"]').removeAttr('disabled');
                 }
             }else{
                 if ($(this).parent('div').find('label').text().toLowerCase().trim() == 'other') {
-                    var disableElement = $(this).parents('div.form-type-checkboxes')
-                        .parent('div')
-                        .next('div.field-type-text')
-                        .find('input[type="text"]');
-                    disableElement.val('');
-                    disableElement.attr('disabled','disabled');
+                    $(this).parent('div').find('input[type="text"]').attr('disabled','disabled');
+                    $(this).parent('div').find('input[type="text"]').val('');
                 }
             }
         });
-
 
         $('div.form-checkboxes input[type="checkbox"]:checked').each(function(e){
                 if ($(this).parent('div').find('label').text().toLowerCase().trim() == 'other') {
@@ -112,10 +103,9 @@
                     $(this).parents('div.form-type-checkboxes').parent('div').find('.form-required').text('');
                     $(this).parents('div.form-type-checkboxes').parent('div').find('.form-required').text('* '+$(activeElement).text());
                     $(activeElement).text('');
+                    $(this).parent('div').find('input[type="text"]').removeAttr('disabled');
                 }
         });
-
-
 
 
        $(document).on('click','#autocomplete ul li', function(){
