@@ -220,6 +220,12 @@ function group_registration_form_validation (&$form, &$form_state ) {
         form_set_error('pass',t('Password does not meet the requirement'));
     }
 
+
+    $field_motherboard_qty = $form_state['input']['field_motherboard_qty']['und'][0]['value'];
+    if(!is_numeric($field_motherboard_qty) && !empty($field_motherboard_qty)){
+        form_set_error('field_motherboard_qty' , 'Motherboard Qty accept only numeric values');
+    }
+
     $field_participating_programs = $form_state['values']['field_participating_programs']['und'];
     if(!$field_participating_programs){
         form_set_error('field_participating_programs' , 'Please choose any one option');
@@ -472,7 +478,6 @@ function group_registration_user_presave(&$edit, $account, $category) {
     }
 
 }
-
 
 /*
  * Assign a user to Group
