@@ -212,20 +212,37 @@
  *   );
  * @endcode
  */
-$databases = array (
+/*$databases = array (
   'default' => 
   array (
     'default' => 
     array (
       'database' => 'gigabyte',
       'username' => 'root',
-      'password' => '',
-      'host' => 'localhost',
-      'port' => '',
+      'password' => 'Test@123',
+      'host' => '192.168.2.11',
+      'port' => '3306',
       'driver' => 'mysql',
       'prefix' => '',
     ),
   ),
+);*/
+
+
+$databases = array (
+    'default' =>
+        array (
+            'default' =>
+                array (
+                    'database' => 'gigabyte',
+                    'username' => 'root',
+                    'password' => '',
+                    'host' => 'localhost',
+                    'port' => '3306',
+                    'driver' => 'mysql',
+                    'prefix' => '',
+                ),
+        ),
 );
 
 /**
