@@ -537,7 +537,8 @@ function group_registration_user_insert(&$edit, $account, $category){
                 'state' => $account->field_company_state['und'][0]['value'],
                 'country' => $account->field_country['und'][0]['tid'],
                 'zip' => $account->field_company_zip_code['und'][0]['value'],
-                'status' => 1
+                'status' => 1,
+                'updated' => date('Y-m-d H:i:s')
             );
 
             db_insert('company')->fields($data_insert)->execute();
