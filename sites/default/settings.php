@@ -212,22 +212,6 @@
  *   );
  * @endcode
  */
-/*$databases = array (
-  'default' => 
-  array (
-    'default' => 
-    array (
-      'database' => 'gigabyte',
-      'username' => 'root',
-      'password' => 'Test@123',
-      'host' => '192.168.2.11',
-      'port' => '3306',
-      'driver' => 'mysql',
-      'prefix' => '',
-    ),
-  ),
-);*/
-
 
 $databases = array (
     'default' =>
@@ -236,7 +220,7 @@ $databases = array (
                 array (
                     'database' => 'gigabyte',
                     'username' => 'root',
-                    'password' => '',
+                    'password' => 'Asahi@123',
                     'host' => 'localhost',
                     'port' => '3306',
                     'driver' => 'mysql',
