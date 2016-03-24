@@ -4,6 +4,7 @@
          $('form').submit(function(){
             $('select#edit-user-roles').removeAttr('disabled');
             $('select#edit-field-country-und').removeAttr('disabled');
+
          });
 
          //Member type move to company information section
@@ -26,15 +27,18 @@
 
          var other_err1 = $('#edit-field-participating-programs .custom-error').text();
          $('#edit-field-participating-programs .form-required').append(other_err1);
-         $('#edit-field-participating-programs .custom-error').remove();
+         $('#edit-field-participating-programs .custom-error').text('');
+         $('#edit-field-participating-programs .custom-error').css('width','0');
 
          var other_err2 = $('#edit-field-choose-distributor .custom-error').text();
          $('#edit-field-choose-distributor .form-required').append(other_err2);
-         $('#edit-field-choose-distributor .custom-error').remove();
+         $('#edit-field-choose-distributor .custom-error').text('');
+         $('#edit-field-choose-distributor .custom-error').css('width','0');
 
          var other_err3 = $('#edit-field-choose-sub-distributor .custom-error').text();
          $('#edit-field-choose-sub-distributor .form-required').append(other_err3);
-         $('span.edit-field-other-sub-distributor').remove();
+         $('#edit-field-choose-sub-distributor .custom-error').text('');
+
 
 
         //Services section other field position changes and removed error field html
@@ -128,6 +132,7 @@
                     $(this).parent('div').find('input[type="text"]').removeAttr('disabled');
                 }
         });
+        $('span.edit-field-other-sub-distributor').hide();
 
 
         var country_selected = $('#edit-field-country-und option:selected').text();
