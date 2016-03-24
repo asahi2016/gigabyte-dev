@@ -219,7 +219,7 @@ $databases = array (
     array (
       'database' => 'gigabyte',
       'username' => 'root',
-      'password' => '',
+      'password' => 'Asahi@123',
       'host' => 'localhost',
       'port' => '',
       'driver' => 'mysql',
