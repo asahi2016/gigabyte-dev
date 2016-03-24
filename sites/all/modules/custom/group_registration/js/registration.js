@@ -26,15 +26,15 @@
 
          var other_err1 = $('#edit-field-participating-programs .custom-error').text();
          $('#edit-field-participating-programs .form-required').append(other_err1);
-         $('#edit-field-participating-programs .custom-error').text('');
+         $('#edit-field-participating-programs .custom-error').remove();
 
          var other_err2 = $('#edit-field-choose-distributor .custom-error').text();
          $('#edit-field-choose-distributor .form-required').append(other_err2);
-         $('#edit-field-choose-distributor .custom-error').text('');
+         $('#edit-field-choose-distributor .custom-error').remove();
 
          var other_err3 = $('#edit-field-choose-sub-distributor .custom-error').text();
          $('#edit-field-choose-sub-distributor .form-required').append(other_err3);
-         $('#edit-field-choose-sub-distributor .custom-error').text('');
+         $('span.edit-field-other-sub-distributor').remove();
 
 
         //Services section other field position changes and removed error field html
