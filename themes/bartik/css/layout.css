@@ -447,3 +447,13 @@ table.company-details tr td{padding: 0px;}
 #account-setting .form-actions{width:100%;text-align: center}
 #account-setting input.form-submit{float:inherit;}
 #edit-field-membership-account,#edit-field-choose-sub-distributor-und .form-type-checkbox:last-child{clear:both;}
+#page-us-content .field-item table{clear:both;}
+table.even_img{margin:30px 0px 0px;}
+table.even_img tbody{border:0px}
+table.even_img tr{background:none;}
+table.even_img td{width:250px;float:left;padding:0 50px;}
+table.even_img td:nth-child(2) {padding:0 30px;}
+table.even_img tr:nth-child(2) td:nth-child(2) {padding:30px 30px;}
+table.even_img tr:nth-child(2) td {padding:30px 50px;}
+table.tbl_grey{background:#F0F0F0;text-align:center;width:1000px;}
+table.tbl_grey td{background:#F0F0F0;padding:30px 230px;text-align:center;font-size:14px;}
