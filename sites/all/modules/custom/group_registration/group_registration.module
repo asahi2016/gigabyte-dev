@@ -532,7 +532,6 @@ function group_registration_user_insert(&$edit, $account, $category){
                 'name' => $_SESSION['new_group_name'],
                 'member_type' => $member_type,
                 'business_address_1' => $account->field_business_address_1['und'][0]['value'],
-                'business_address_2' => $account->field_business_address_2['und'][0]['value'],
                 'city' => $account->field_company_city['und'][0]['value'],
                 'state' => $account->field_company_state['und'][0]['value'],
                 'country' => $account->field_country['und'][0]['tid'],
@@ -540,6 +539,10 @@ function group_registration_user_insert(&$edit, $account, $category){
                 'status' => 1,
                 'updated' => date('Y-m-d H:i:s')
             );
+
+            if(isset($account->field_business_address_2['und'][0]['value']) && !empty($account->field_business_address_2['und'][0]['value'])) {
+               $data_insert['business_address_2'] = $account->field_business_address_2['und'][0]['value'];
+            }
 
             db_insert('company')->fields($data_insert)->execute();
 
