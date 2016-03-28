@@ -426,7 +426,7 @@ table.company-details tr td{padding: 0px;}
 #account-setting #edit-field-participating-programs .form-item input,#account-setting #edit-field-choose-distributor-und .form-item input,
 #account-setting #edit-field-choose-sub-distributor-und .form-item input,#account-setting #edit-field-receive-newsletter-und .form-item input.form-radio{float:left;margin:5px 10px 0 0}
 #account-setting #edit-field-participating-programs .form-item input.text-full,#account-setting #edit-field-choose-distributor-und .form-item input.text-full,
-#account-setting #edit-field-choose-sub-distributor .form-item input.text-full{margin:0px 10px 0px 0px}
+#account-setting #edit-field-choose-sub-distributor .form-item input.text-full{margin:-4px 10px 0px 0px}
 #account-setting #edit-field-receive-newsletter .form-radios .form-item{float:left;clear: inherit;margin:0px;}
 #account-setting #edit-field-receive-newsletter .form-item label,#account-setting #edit-field-receive-newsletter .form-radios{float:left;}
 #account-setting #edit-field-participating-programs-und,#account-setting #edit-field-choose-distributor-und,#account-setting #edit-field-choose-sub-distributor-und
