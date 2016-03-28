@@ -115,8 +115,8 @@ function make_a_request_form_submit($form,&$form_state){
 
         drupal_mail('make_a_request', 'make_a_request_mail', $to, language_default(), $params, $from,TRUE);
 
-        //$site_email = variable_get('site_mail');
-         $site_email = 'vinoth.asahi@gmail.com';
+       $site_email = variable_get('site_mail');
+         //$site_email = 'vinoth.asahi@gmail.com';
         $to_admin = $site_email;
         $from_user = $user->mail;
         $subject_admin = "Gigabyte Make a Request From User";
