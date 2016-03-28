@@ -172,6 +172,22 @@
            company_info_ajax_load(company_id);
        });
 
+       (function ($) {
+           $.prototype.enterPressed = function (fn) {
+                $(this).keyup(function (e) {
+                    if ((e.keyCode || e.which) == 13) {
+                        fn();
+                    }
+               });
+           };
+       }(jQuery || {}));
+
+        $(".form-autocomplete").enterPressed(function() {
+            var company_id = $('#edit-field-company-name-und-0-target-id').val();
+            company_info_ajax_load(company_id);
+
+        });
+
 
        function company_info_ajax_load(company_id) {
 
@@ -235,7 +251,7 @@
             );
        }
 
-       $('#edit-field-company-name-und-0-target-id').focus(function(){
+       $('#edit-field-company-name-und-0-target-id').click(function(){
            $('fieldset').each(function(i){
               if(i == 1) {
                   $(this).find('input[type="text"]').val('');
