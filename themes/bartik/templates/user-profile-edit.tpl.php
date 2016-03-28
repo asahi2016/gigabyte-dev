@@ -75,7 +75,7 @@
         <td valign="top">
             <div class="border" style="width:485px;min-height:480px;float: left;">
                 <div style="text-align:center; font-size:20px; font-weight:700; padding-top:10px; padding-bottom:10px;color:#333">RMA Contact</div>
-                <div style="padding-left:30px; padding-right:30px; padding-bottom:10px;font-size: 14px;" class="fieldset-wrapper">
+                <div style="padding-left:30px; padding-right:30px; padding-bottom:10px;font-size: 14px;margin-top: 0px;" class="fieldset-wrapper">
                     RMA First Name: <?= $account['rma_first_name']['value']?><br /><br />
                     RMA Last Name: <?= $account['rma_last_name']['value']?><br /><br />
                     <?= $account['rma_contact_number']['form']?>
