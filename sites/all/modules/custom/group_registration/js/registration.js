@@ -58,7 +58,8 @@
          //Disabled and make readonly text field defaultly, When html document loaded
 
          var company_name = $('#edit-field-company-name-und-0-target-id').val();
-         if(company_name != '') {
+         var company_id = $.trim(company_name).match(/\d+/)[0];
+         if(company_name != '' && $.isNumeric(company_id)) {
             $('#edit-field-business-address-1-und-0-value').attr('readonly','readonly');
             $('#edit-field-business-address-2-und-0-value').attr('readonly','readonly');
             $('#edit-field-company-city-und-0-value').attr('readonly','readonly');
@@ -191,6 +192,8 @@
 
        function company_info_ajax_load(company_id) {
 
+            $('select#edit-user-roles').removeAttr('disabled');
+            $('select#edit-field-country-und').removeAttr('disabled');
 
             $.post(
                 Drupal.settings.gigabyte.baseUrl + '/get/company_info',
@@ -204,16 +207,12 @@
 
                     $.each(data.response.roles, function(key,val) {
                         if(key != 2) {
-                            $('select#edit-user-roles').removeAttr('disabled');
                             $('select#edit-user-roles option').each(function(){
                                 if($(this).val() == key){
-                                    $(this).attr('selected','selected');
-                                    var selectText =  $(this).text();
-                                    $(this).text(selectText);
+                                    $(this).prop( 'selected', 'selected' );
                                 }
                             });
                             $('select#edit-user-roles').attr('disabled','disabled');
-                            $('select#edit-field-country-und').attr('disabled','disabled');
                         }
                     });
 
@@ -227,7 +226,6 @@
 
                         $('select#edit-field-country-und option').each(function() {
                             if($(this).val() == group_user.country){
-
                                 var country_selected = $(this).text();
                                 if(country_selected.toLowerCase().trim() == 'canada'){
                                     $('#field-company-zip-code-add-more-wrapper label').html('Postal Code <span class="form-required" title="This field is required.">*</span>');
@@ -235,8 +233,8 @@
                                 if(country_selected.toLowerCase().trim() != 'canada'){
                                     $('#field-company-zip-code-add-more-wrapper label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
                                 }
-                                $(this).attr('selected','selected');
-                                $(this).text(country_selected);
+                                $(this).prop( 'selected', 'selected' );
+                                $('select#edit-field-country-und').attr('disabled','disabled');
                             }
                         });
 
@@ -262,7 +260,7 @@
            $('select#edit-field-country-und').removeAttr('disabled');
            $("select#edit-field-country-und option").each(function () {
                 if ($(this).text() == 'United States') {
-                    $(this).attr("selected", "selected");
+                    $(this).prop("selected", "selected");
                     $('#field-company-zip-code-add-more-wrapper label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
                 }else{
                     $(this).removeAttr("selected");
@@ -272,7 +270,7 @@
            $('select#edit-user-roles').removeAttr('disabled');
            $("select#edit-user-roles option").each(function () {
                if ($(this).text() == '- Select -') {
-                   $(this).attr("selected", "selected");
+                   $(this).prop("selected", "selected");
                }else{
                    $(this).removeAttr("selected");
                }
