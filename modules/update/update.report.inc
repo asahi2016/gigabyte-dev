@@ -234,7 +234,7 @@ function theme_update_report($variables) {
   }
 
   $project_types = array(
-    'core' => t('Drupal core'),
+    /*'core' => t('Drupal core'),*/
     'module' => t('Modules'),
     'theme' => t('Themes'),
     'module-disabled' => t('Disabled modules'),
