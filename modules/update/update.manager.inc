@@ -932,14 +932,15 @@ function update_manager_local_transfers_allowed() {
   // Compare the owner of a webserver-created temporary file to the owner of
   // the configuration directory to determine if local transfers will be
   // allowed.
-  $temporary_file = drupal_tempnam('temporary://', 'update_');
+  //$temporary_file = drupal_tempnam('temporary://', 'update_');
   //$local_transfers_allowed = fileowner($temporary_file) == fileowner(conf_path());
 
   // Clean up. If this fails, we can ignore it (since this is just a temporary
   // file anyway).
-  @drupal_unlink($temporary_file);
+  //@drupal_unlink($temporary_file);
 
-  return $local_transfers_allowed;
+  //return $local_transfers_allowed;
+  return true;
 }
 
 /**
