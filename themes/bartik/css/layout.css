@@ -270,12 +270,12 @@ fieldset.form-wrapper{
     display:block;
     color:white;
     font-size:14px;
-    width:200px;
+    width:220px;
     line-height:50px !important;
     background:#87caef;
     border-bottom:1px solid #ddd;
-    text-align:center;
-    padding:0 5px;
+    text-align:left;
+    padding:0 20px 0 20px;
     height:0;
     overflow:hidden;
     opacity:0;
@@ -334,11 +334,11 @@ ul, li {
 }
 #main-menu-nav li ul li:hover > ul{
     display: block;
-    left:211px;
+    left:261px;
     top:0px;
 }
 #main-menu-nav li.last ul li:hover > ul{
-    left:-211px;
+    left:-261px;
 }
 #main-menu-nav li ul ul li:hover > ul{
     display: block;
