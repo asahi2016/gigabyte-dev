@@ -239,7 +239,7 @@ function group_registration_form_user_register_form_alter(&$form, &$form_state, 
     $form['field_company_name']['#prefix'] = '<!--<div id="field-blocker" ></div>-->';
     $form['#validate'][] = 'group_registration_form_validation';
     drupal_set_title('');
-    $form['actions']['submit']['#value'] = t('Submit Query');
+    $form['actions']['submit']['#value'] = t('Register Now');
     $form['#submit'][] = 'create_company_group_on_user_registration';
 
 }
