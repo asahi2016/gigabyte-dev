@@ -32,7 +32,7 @@ function update_requirements($phase) {
       module_load_include('inc', 'update', 'update.compare');
       $data = update_calculate_project_data($available);
       // First, populate the requirements for core:
-      $requirements['update_core'] = _update_requirement_check($data['drupal'], 'core');
+      //$requirements['update_core'] = _update_requirement_check($data['drupal'], 'core');
       // We don't want to check drupal a second time.
       unset($data['drupal']);
       if (!empty($data)) {
