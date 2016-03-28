@@ -245,7 +245,7 @@ fieldset.form-wrapper{
 
 }
 #main-menu-nav ul li ul{
-    z-index:1;
+    z-index:2;
     position:absolute;
     left:0;
     padding:0;
@@ -320,6 +320,7 @@ ul, li {
     padding: 0 35px;
     list-style-image: none;
     list-style-type: none;
+    z-index: 3;
 }
 #main-menu-nav li ul li a{
     display: block;
