@@ -1,0 +1,171 @@
+<?php
+
+function make_a_request_menu(){
+
+    $items = array();
+    $items['make_a_request'] = array(
+            'title' => t('Make a request form'),
+            'page callback' => 'drupal_get_form',
+            'page arguments' => array('make_a_request_form'),
+            'access arguments' => array('access content'),
+            'description' => t('Make a request form'),
+            'type' => MENU_CALLBACK,
+        );
+    /*$items['admin/config/make_a_request'] = array(
+        'title' => t('Make a request view'),
+        'page callback' => 'customer_request_review',
+        'access arguments' => array(1),
+        'access callback' => TRUE,
+        'theme' => 'make_a_request_display',
+        'description' => t('Make a request view'),
+        'type' => MENU_CALLBACK,
+    );*/
+
+    return $items;
+}
+
+function make_a_request_block_info()
+{
+    $block['make_a_request_form'] = array(
+        'info' => t('Make a Request'),
+        'cache' => DRUPAL_CACHE_PER_ROLE,
+    );
+    $block['customer_request_review'] = array(
+        'info' => t('Customer Request Review'),
+        'cache' => DRUPAL_CACHE_PER_ROLE,
+    );
+    return $block;
+}
+
+function make_a_request_block_view($delta = '')
+{
+    $block = array();
+    switch ($delta) {
+        case 'make_a_request_form':
+            $block['content'] = drupal_get_form('make_a_request_form');
+            break;
+        case 'customer_request_review':
+            $block['content'] = customer_request_review();
+    }
+    return $block;
+}
+
+function make_a_request_form($form,&$form_state){
+
+    $form_required_marker = array('#theme' => 'form_required_marker');
+    $required = ' ' . drupal_render($form_required_marker);
+    $form['make_a_request'] = array(
+        '#type' => 'textarea',
+        '#title' => t('Request:') . $required,
+        '#id' => 'make-a-request-form-id',
+    );
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Submit',
+    );
+    return $form;
+}
+
+function make_a_request_form_validate(&$form , &$form_state){
+
+    $request_value = $form_state['input']['make_a_request'];
+    if(!$request_value){
+        form_set_error('make_a_request','Please enter the request');
+    }
+    group_registration_errors_reset( $form );
+}
+
+function make_a_request_form_submit($form,&$form_state){
+
+    global $user;
+
+    $account = user_load($user->uid);
+    $node = node_load($account->field_company_name['und'][0]['target_id']);
+
+    $company_name = $node->title;
+    $first_name = $account->field_first_name['und'][0]['value'];
+    $request = $form_state['input']['make_a_request'];
+
+    $date_now = date("Y/m/d H:i:s");
+
+    db_insert('make_a_request')
+        ->fields(array(
+            'uid' => $user->uid,
+            'date' => $date_now,
+            'user_name' => $first_name,
+            'contact_email' => $user->mail,
+            'company_name' => $company_name,
+            'request' => $request
+
+        ))->execute();
+
+        $to = $user->mail;
+        $from = "request@gigabyte.com";
+        $subject = "Gigabyte Make a Request";
+        $body = " ";
+        $body .= 'Hi ' . $first_name . '<br>';
+        $body .= 'Thank you for making the request with us. We will contact you soon.<br>';
+        $body .= 'Thanks<br>';
+        $body .= 'Gigabyte';
+
+        $params = array(
+            'subject' => $subject,
+            'body' => $body,
+        );
+
+        drupal_mail('make_a_request', 'make_a_request_mail', $to, language_default(), $params, $from,TRUE);
+
+        //$site_email = variable_get('site_mail');
+         $site_email = 'vinoth.asahi@gmail.com';
+        $to_admin = $site_email;
+        $from_user = $user->mail;
+        $subject_admin = "Gigabyte Make a Request From User";
+        $body_admin  = "";
+        $body_admin .= 'Hi admin' .'<br>';
+        $body_admin .= $first_name .' has Make a request to you! Please contact him/her soon.'.'<br>';
+        $body_admin .= 'Thanks<br>';
+        $body_admin .= 'Gigabyte';
+
+        $params = array(
+            'subject' => $subject_admin,
+            'body' => $body_admin,
+        );
+        drupal_mail('make_a_request', 'make_a_request_mail', $to_admin, language_default(), $params, $from_user,TRUE);
+
+        drupal_set_message('<p>'.t('Request sent successfully, we will contact you soon.').'</p>');
+}
+
+function make_a_request_mail($key, &$message, $params) {
+    switch ($key) {
+        case 'make_a_request_mail':
+            $message['subject'] = $params['subject'];
+            $message['body'][] = t($params['body']);
+            break;
+    }
+}
+
+function customer_request_review_admin(){
+
+    $query = db_select('make_a_request','request')
+        ->fields('request',array('date','user_name','contact_email','company_name','request'))
+        ->orderBy('date','DESC');
+
+    $result = $query->execute()->fetchAll();
+
+    return $result;
+}
+
+function make_a_request_theme(){
+    return array(
+        'make_a_request_display' =>
+            array(
+                'template' => 'templates/make_a_request',
+                'variables' => array('value' => customer_request_review_admin())
+            )
+    );
+}
+function customer_request_review(){
+
+    customer_request_review_admin();
+    return theme('make_a_request_display');
+}
