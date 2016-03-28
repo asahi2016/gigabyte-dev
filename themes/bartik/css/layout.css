@@ -208,7 +208,7 @@ fieldset.form-wrapper{
 #content.wrapper_full ul{float:left;padding: 0px;}
 .wrapper_full li{list-style-type: none;float:left;margin:20px 40px 0 0}
 .not-logged-in #content.partner-portal-login{width:600px;}
-.not-logged-in #content.partner-portal-login.wrapper_full{width:1000px;}
+.not-logged-in #content.partner-portal-login.wrapper_full{width:1100px;}
 #content.partner-portal-login{width:100%;float:left;margin:0 0 0 35px;}
 /*#block-user-login{width:335px;}*/
 #block-user-login h2{display: none}
