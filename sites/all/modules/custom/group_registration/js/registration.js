@@ -57,8 +57,11 @@
 
          //Disabled and make readonly text field defaultly, When html document loaded
 
-         var company_name = $('#edit-field-company-name-und-0-target-id').val();
-         var company_id = $.trim(company_name).match(/\d+/)[0];
+         var company_name = $.trim($('#edit-field-company-name-und-0-target-id').val());
+         var company_id = '';
+         if(company_name) {
+             company_id = company_name.match(/\d+/)[0];
+         }
          if(company_name != '' && $.isNumeric(company_id)) {
             $('#edit-field-business-address-1-und-0-value').attr('readonly','readonly');
             $('#edit-field-business-address-2-und-0-value').attr('readonly','readonly');
