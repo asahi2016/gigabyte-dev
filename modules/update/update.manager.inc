@@ -250,7 +250,7 @@ function update_manager_update_form($form, $form_state = array(), $context) {
     $form['#validate'][] = 'update_manager_update_form_validate';
   }
 
-  if (!empty($projects['manual'])) {
+ /* if (!empty($projects['manual'])) {
     $prefix = '<h2>' . t('Manual updates required') . '</h2>';
     $prefix .= '<p>' . t('Updates of Drupal core are not supported at this time.') . '</p>';
     $form['manual_updates'] = array(
@@ -259,7 +259,7 @@ function update_manager_update_form($form, $form_state = array(), $context) {
       '#prefix' => $prefix,
       '#weight' => 120,
     );
-  }
+  }*/
 
   return $form;
 }
