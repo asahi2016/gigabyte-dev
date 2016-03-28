@@ -15,9 +15,9 @@
                 <table>
                     <tbody>
                     <tr>
-                        <td width="50%">First Name: <?= $account['firstname']['value']?></td>
-                        <td width="35%">Last Name: <?= $account['lastname']['value']?></td>
-                        <td width="15%">Job Title: <?= $account['job_title']['value']?></td>
+                        <td width="312px">First Name: <?= $account['firstname']['value']?></td>
+                        <td width="265px">Last Name: <?= $account['lastname']['value']?></td>
+                        <td width="255px">Job Title: <?= $account['job_title']['value']?></td>
                     </tr>
                     </tbody>
                 </table>
@@ -28,8 +28,8 @@
                 <table>
                     <tbody>
                     <tr>
-                        <td width="50%">Email Address (Login ID): <?=$account['mail']?></td>
-                        <td width="50%"><?= $account['contact_number']['form'] ?></td>
+                        <td width="312px">Email Address (Login ID): <?=$account['mail']?></td>
+                        <td><?= $account['contact_number']['form'] ?></td>
                     </tr>
                     </tbody>
                 </table>
