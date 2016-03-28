@@ -104,7 +104,6 @@ $_SESSION['curr_pg'] = $current_url[(count($current_url)-1)];
 if($_SESSION['curr_pg'] == 'login' && user_is_logged_in()){
     header('Location:partner');
 }
-
 global $user;
 global $node;
 $userinfo = user_load($user->uid);
@@ -280,7 +279,7 @@ drupal_add_js("jQuery(document).ready(function(){country_id = " . (!empty($_SESS
       </div></div> <!-- /.section, /#sidebar-first -->
     <?php endif; ?>
 
-    <div id="content" class="column wrapper_full partner-portal-login"><div class="section">
+    <div id="content" class="column wrapper_full partner-portal-login <?php if($_SESSION['curr_pg'] == 'login'){echo 'split-page';} ?>"><div class="section">
       <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
