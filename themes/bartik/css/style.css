@@ -198,8 +198,8 @@ table tbody tr th {
 tr td,
 tr th {
   padding: 4px 9px;
-  border: 1px solid #fff;
-  text-align: left; /* LTR */background: #fff;
+  /* border: 1px solid; */
+  /* text-align: left; */ /* LTR */background: #fff;
 }
 #footer-wrapper tr td,
 #footer-wrapper tr th {
@@ -210,11 +210,11 @@ tr.odd {
   background: #e4e4e4;
   background: rgba(0, 0, 0, 0.105);
 }
-tr,
+/* tr,
 tr.even {
   background: #efefef;
   background: rgba(0, 0, 0, 0.063);
-}
+} */
 table ul.links {
   margin: 0;
   padding: 0;
