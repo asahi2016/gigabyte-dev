@@ -204,7 +204,7 @@ drupal_add_js("jQuery(document).ready(function(){country_id = " . (!empty($_SESS
                 <?php if ($page['base_title']): ?>
                   <div id="base-title"><div class="section clearfix">
                           <?php
-                            if($_SESSION['curr_pg'] == 'partner')
+                            if($_SESSION['curr_pg'] == 'partner' || in_array('partner',$current_url))
                                 print render($page['base_title']['menu_menu-partner-portal-title']);
                             else
                                 print render($page['base_title']['menu_menu-business-center']);
@@ -223,7 +223,7 @@ drupal_add_js("jQuery(document).ready(function(){country_id = " . (!empty($_SESS
 
     <div class="full-width top_s">
      <div class="section clearfix main-menu-nav" id="main-menu-nav">
-         <?php if(user_is_logged_in() && $_SESSION['curr_pg'] == 'partner'){ ?>
+         <?php if(user_is_logged_in() && ($_SESSION['curr_pg'] == 'partner' || in_array('partner',$current_url))){ ?>
                 <?php if ($page['menu']): ?>
                 <?php
                      /*$partner_portal_menu_tree = menu_tree(variable_get('menu_main_links_source', 'menu_menu-partner-portal-menu'));
