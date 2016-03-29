@@ -279,7 +279,7 @@ drupal_add_js("jQuery(document).ready(function(){country_id = " . (!empty($_SESS
       </div></div> <!-- /.section, /#sidebar-first -->
     <?php endif; ?>
 
-    <div id="content" class="column wrapper_full partner-portal-login <?php if($_SESSION['curr_pg'] == 'login' || in_array('login',$current_url)){echo 'split-page';} ?>"><div class="section">
+    <div id="content" class="column wrapper_full partner-portal-login <?php if(in_array('login',$current_url)){echo 'split-page';} ?>"><div class="section">
       <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
