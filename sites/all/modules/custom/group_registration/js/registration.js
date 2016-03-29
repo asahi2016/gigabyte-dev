@@ -60,7 +60,7 @@
          var company_name = $.trim($('#edit-field-company-name-und-0-target-id').val());
          var company_id = '';
          if(company_name) {
-             company_id = company_name.match(/\d+/)[0];
+             company_id = company_name.match(/\d+/);
          }
          if(company_name != '' && $.isNumeric(company_id)) {
             $('#edit-field-business-address-1-und-0-value').attr('readonly','readonly');
