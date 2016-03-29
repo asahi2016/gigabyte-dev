@@ -42,5 +42,9 @@ jQuery(document).ready(function($) {
         $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').attr('href','/gigabyte/gigabyte/partner');
     }
 
+    var txt_val = $('.make_a_request_ptag').text();
+    $('<p>'+txt_val+'</p>').insertBefore($("#make-a-request-form"));
+    $('.make_a_request_ptag').text('');
 
 });
+

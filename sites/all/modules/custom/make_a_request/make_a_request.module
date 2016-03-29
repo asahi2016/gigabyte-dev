@@ -7,19 +7,19 @@ function make_a_request_menu(){
             'title' => t('Make a request form'),
             'page callback' => 'drupal_get_form',
             'page arguments' => array('make_a_request_form'),
-            'access arguments' => array('access content'),
+            'access arguments' => array('access administration pages'),
             'description' => t('Make a request form'),
             'type' => MENU_CALLBACK,
         );
-    /*$items['admin/config/make_a_request'] = array(
+    $items['admin/config/make_a_request'] = array(
         'title' => t('Make a request view'),
         'page callback' => 'customer_request_review',
-        'access arguments' => array(1),
+        'access arguments' => array('access administration pages'),
         'access callback' => TRUE,
         'theme' => 'make_a_request_display',
         'description' => t('Make a request view'),
         'type' => MENU_CALLBACK,
-    );*/
+    );
 
     return $items;
 }
@@ -63,6 +63,7 @@ function make_a_request_form($form,&$form_state){
         '#type' => 'submit',
         '#value' => 'Submit',
     );
+
     return $form;
 }
 
@@ -79,57 +80,64 @@ function make_a_request_form_submit($form,&$form_state){
 
     global $user;
 
-    $account = user_load($user->uid);
-    $node = node_load($account->field_company_name['und'][0]['target_id']);
+        $account = user_load($user->uid);
+        $node = node_load($account->field_company_name['und'][0]['target_id']);
+        $company_name = $node->title;
+        $first_name = $account->field_first_name['und'][0]['value'];
+        $last_name = $account->field_last_name['und'][0]['value'];
+        $request = $form_state['input']['make_a_request'];
+        $date_now = date("Y/m/d H:i:s");
 
-    $company_name = $node->title;
-    $first_name = $account->field_first_name['und'][0]['value'];
-    $request = $form_state['input']['make_a_request'];
+        db_insert('make_a_request')
+            ->fields(array(
+                'uid' => $user->uid,
+                'date' => $date_now,
+                'first_name' => $first_name,
+                'last_name' => $last_name,
+                'contact_email' => $user->mail,
+                'company_name' => $company_name,
+                'request' => $request
 
-    $date_now = date("Y/m/d H:i:s");
-
-    db_insert('make_a_request')
-        ->fields(array(
-            'uid' => $user->uid,
-            'date' => $date_now,
-            'user_name' => $first_name,
-            'contact_email' => $user->mail,
-            'company_name' => $company_name,
-            'request' => $request
-
-        ))->execute();
+            ))->execute();
 
         $to = $user->mail;
         $from = "request@gigabyte.com";
-        $subject = "Gigabyte Make a Request";
+        $subject = "Gigabyte Partner Portal - Marketing Material Request";
         $body = " ";
-        $body .= 'Hi ' . $first_name . '<br>';
-        $body .= 'Thank you for making the request with us. We will contact you soon.<br>';
-        $body .= 'Thanks<br>';
-        $body .= 'Gigabyte';
+        $body .= '<p>Hi ' . $first_name . '</p><br>';
+        $body .= '<p> Thank you for submitting your request.  A Gigabyte Representative will be contacting you soon.</p><br>';
+        $body .= '<p>Your Request:</p><br>';
+        $body .= '<p>'.$request.'</p><br>';
+        $body .= '<p>Thank you</p><br>';
+        $body .= '<p>Gigabyte</p>';
 
         $params = array(
             'subject' => $subject,
             'body' => $body,
         );
 
+
         drupal_mail('make_a_request', 'make_a_request_mail', $to, language_default(), $params, $from,TRUE);
 
-       $site_email = variable_get('site_mail');
-         //$site_email = 'vinoth.asahi@gmail.com';
+        $site_email = variable_get('site_mail');
         $to_admin = $site_email;
         $from_user = $user->mail;
-        $subject_admin = "Gigabyte Make a Request From User";
-        $body_admin  = "";
-        $body_admin .= 'Hi admin' .'<br>';
-        $body_admin .= $first_name .' has Make a request to you! Please contact him/her soon.'.'<br>';
-        $body_admin .= 'Thanks<br>';
-        $body_admin .= 'Gigabyte';
+        $subject_admin = "Gigabyte Partner Portal - Marketing Material Request";
+        $body_admin  = " ";
+        $body_admin .= '<p>Hi admin' .'</p><br>';
+        $body_admin .= '<p>You have received a new Request for Marketing Material from the Partner Portal:</p><br>';
+        $body_admin .= '<p>Name: '.$first_name .' '.$last_name.'<br>';
+        $body_admin .= 'Email: '.$user->mail.'<br>';
+        $body_admin .= 'Company: '.$company_name.'<br>';
+        $body_admin .= 'Request:</p><br>';
+        $body_admin .= '<p>'.$request.'</p><br>';
+        $body_admin .= '<p>Thank you,</p><br>';
+        $body_admin .= '<p>Gigabyte</p>';
 
         $params = array(
             'subject' => $subject_admin,
             'body' => $body_admin,
-        );
+            );
         drupal_mail('make_a_request', 'make_a_request_mail', $to_admin, language_default(), $params, $from_user,TRUE);
 
         drupal_set_message('<p>'.t('Request sent successfully, we will contact you soon.').'</p>');
@@ -147,7 +155,7 @@ function make_a_request_mail($key, &$message, $params) {
 function customer_request_review_admin(){
 
     $query = db_select('make_a_request','request')
-        ->fields('request',array('date','user_name','contact_email','company_name','request'))
+        ->fields('request',array('date','first_name','last_name','contact_email','company_name','request'))
         ->orderBy('date','DESC');
 
     $result = $query->execute()->fetchAll();
