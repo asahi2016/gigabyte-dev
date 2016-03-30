@@ -138,7 +138,8 @@ function jquery_file_upload_add_configurations() {
   }
   $max_file_size_upload = 1024 * 1024 * 1024;
   $js_vars = new stdClass;
-  $js_vars->filetypes = str_replace(' ', '|', variable_get('types_supported_' . $final_role, ''));
+  $js_vars->filetypes = str_replace(' ', '|', "jpg jpeg png pdf");
+  //$js_vars->filetypes = array('png','jpg','pdf','jpeg');
   $js_vars->max_file_size = $max_file_size_upload;
   $js_vars->space_remaining = $max_file_size_upload - $space_taken;
 
@@ -186,11 +187,18 @@ function jquery_file_uploader_upload() {
 
     //check for folders
     $current_directory = getcwd();
-    if (!file_exists($current_directory . '/' . variable_get('file_public_path', conf_path() . '/files') . '/file_uploads')) {
+  /*  if (!file_exists($current_directory . '/' . variable_get('file_public_path', conf_path() . '/files') . '/file_uploads')) {
       $result = mkdir($current_directory . '/' . variable_get('file_public_path', conf_path() . '/files') . '/file_uploads');
     }
     if (!file_exists($current_directory . '/' . variable_get('file_public_path', conf_path() . '/files') . '/file_uploads/' . $user->uid)) {
       $result = mkdir($current_directory . '/' . variable_get('file_public_path', conf_path() . '/files') . '/file_uploads/' . $user->uid);
+    }*/
+
+    if (!file_exists($current_directory . '/' . variable_get('file_private_path', conf_path() . '/files') . '/assets')) {
+          $result = mkdir($current_directory . '/' . variable_get('file_private_path', conf_path() . '/files') . '/assets');
+        }
+    if (!file_exists($current_directory . '/' . variable_get('file_private_path', conf_path() . '/files') . '/assets/' . $user->uid)) {
+          $result = mkdir($current_directory . '/' . variable_get('file_private_path', conf_path() . '/files') . '/assets/' . $user->uid);
     }
 
     $secure_file_name = file_munge_filename($_FILES['files']['name'][0], "gif jpeg jpg png tiff asf avi mpeg mpg wmv vob mov mp4 flv txt doc docx xls xlsx ppt pptx mp3");
@@ -207,10 +215,26 @@ function jquery_file_uploader_upload() {
       $node->uid = $user->uid;
       $node->status = 1;
       $node->title = $filenamexx[0];
-
+      $node->ext =  $filenamexx[count($filenamexx)-1];
       $ok->display = 1;
       $node->field_jquery_uploader_file['und'][0] = (array) $ok;
+
       node_save($node);
+        $ext_jpg = '';
+        $ext_png = '';
+        $ext_pdf = '';
+      if($node->ext == 'jpg' || $node->ext == 'jpeg'){
+          $ext_jpg = $node->ext;
+          $jpg_path = $node->field_jquery_uploader_file['und'][0]['destination'];
+      }
+      if($node->ext == 'png'){
+          $ext_jpg = $node->ext;
+          $png_path = $node->field_jquery_uploader_file['und'][0]['destination'];
+      }
+      if($node->ext == 'pdf'){
+          $ext_pdf = $node->ext;
+          $pdf_path = $node->field_jquery_uploader_file['und'][0]['destination'];
+      }
 
       $nid = db_insert('jquery_file_upload') // Table name no longer needs {}
               ->fields(array(
@@ -220,7 +244,18 @@ function jquery_file_uploader_upload() {
               ))
               ->execute();
 
-      $token = drupal_get_token($secure_file_name);
+      $asset_upload_id = db_insert('asset_uploads')
+                            ->fields(array(
+                                'uid' => $user->uid,
+                                'file_name' => $_FILES['files']['name'][0],
+                                'size' => floatval($_FILES['files']['size'][0]),
+                                'jpg' => $jpg_path,
+                                'png' => $png_path,
+                                'pdf' => $pdf_path,
+                                'created_at' => date('Y-m-d h:i:s')
+                            ))->execute();
+
+        $token = drupal_get_token($secure_file_name);
 
       $file = array(
           'name' => $_FILES['files']['name'][0],
