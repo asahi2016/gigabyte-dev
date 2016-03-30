@@ -1,0 +1,99 @@
+<?php
+
+if(!function_exists('node_add')){
+    module_load_include('inc','node','node.pages');
+}
+
+
+function assets_submission_init(){
+   // drupal_set_message('Assets Submission');
+
+}
+
+function print_pre($array = array() , $exit = false){
+
+    echo '<pre>';
+    print_r($array);
+    echo '</pre>';
+
+    if($exit){
+        exit;
+    }
+
+}
+
+function assets_submission_menu(){
+
+    $items['view/submissions'] = array(
+        'page callback' => 'display_user_assets_submission', // Render HTML
+        'type' => MENU_CALLBACK,
+        'access callback' => TRUE,
+        'file' => 'includes/assets_submission_page.inc',
+    );
+
+    return $items;
+
+}
+
+
+function display_user_assets_submission(){
+    return theme('view_user_submissions', array());
+}
+
+/**
+ * Implements hook_theme().
+ */
+
+function assets_submission_theme() {
+
+    $path = drupal_get_path('module', 'assets_submission') . '/templates';
+
+    return array('view_user_submissions' => array(
+        'path' => $path,
+        'template' => 'view-user-submissions',
+        'variables' => array(),
+    )
+    );
+}
+
+
+function template_preprocess_view_user_submissions(&$variables){
+
+    global $user;
+
+    $type = 'submission';
+    $node = (object) array('uid' => $user->uid, 'name' => (isset($user->name) ? $user->name : ''), 'type' => $type, 'language' => LANGUAGE_NONE);
+    drupal_set_title(t('@name', array('@name' => 'Submission')), PASS_THROUGH);
+    $form = drupal_get_form($type . '_node_form', $node);
+
+    unset($form['actions']['preview']);
+    //unset($form['title']['#title']);
+    $form['title']['#title'] = 'Title';
+    unset($form['field_submission_image']['und'][0]['#title']);
+
+    $form['body']['und']['#title'] = 'Description:';
+    $form['body']['und'][0]['#title'] = 'Description:';
+    $form['body']['und'][0]['value']['#title'] = 'Description:';
+
+    //Render new submission form
+    $new_submission_form = drupal_render($form);
+    $variables['new_submission_form'] = $new_submission_form;
+
+    return $variables;
+
+}
+
+function assets_submission_form_submission_node_form_alter($form, &$form_state){
+
+    //print_pre($form , 1);
+
+}
+
+
+function assets_submission_node_submit($node, $form, &$form_state) {
+
+    //print_pre($node, 1);
+   
+}
+
+?>
