@@ -220,7 +220,7 @@ $databases = array (
                 array (
                     'database' => 'gigabyte',
                     'username' => 'root',
-                    'password' => 'Asahi@123',
+                    'password' => '',
                     'host' => 'localhost',
                     'port' => '3306',
                     'driver' => 'mysql',
