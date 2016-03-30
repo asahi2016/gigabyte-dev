@@ -23,6 +23,15 @@
     </button>
     <input class="toggle" type="checkbox">
   </div>
+    <!-- Select file type -->
+    <div class="span7 filetypes">
+        <label>JPG</label>
+        <input type="checkbox" name="filetype" value="jpg" />
+        <label>PNG</label>
+        <input type="checkbox" name="filetype" value="png" />
+        <label>PDF</label>
+        <input type="checkbox" name="filetype" value="pdf" />
+    </div>
   <!-- The global progress information -->
   <div class="span5 fileupload-progress fade">
     <!-- The global progress bar -->
@@ -41,7 +50,9 @@
 
 <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
+console.log(file);
     <tr class="template-upload fade">
+        <td class="file-type" >{%= file.type.split('/')[1].toUpperCase() %}</td>
         <td class="preview"><span class="fade"></span></td>
         <td class="name"><span>{%=file.name%}</span></td>
         <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
