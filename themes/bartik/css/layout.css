@@ -45,6 +45,8 @@ body,
 }
 a{color:#337ab7;}
 .w300 {width: 300px;}
+.f_w_700{font-weight: 700;}
+.w900{width:900px;}
 #page-wrapper {
   min-height: 100%;
   min-width: 100%;
@@ -575,9 +577,10 @@ table.chart{width:1000px;}
 .txt_center{text-align:center;}
 table{width:1000px;margin:0px auto;}
 table tr td{background:none;padding:0px;}
-.gsm_p_d1000{width:1000px; margin:50px 0px 10px; height:100px;}
+.gsm_p_d1000{width:1000px; margin:10px 0px 10px; height:100px;}
 .gsm_benefit > tbody > tr > td > p {float: left; margin-left: 20px;}
 .wrapper_full p.tbl_contact_p,.tbl_contact_p,.tbl_contact_p a{color:white; font-size:19.06px; font-weight:900;}
+p.tbl_contact_p{margin:0px;padding:15px 0px 20px 0px;}
 .wrapper_full p.tbl_contact_ps{color:white; font-size:14.52px; font-weight:900;}
 table.gsm_benefit {width: 900px;height: 170px;background-size: cover; margin:0px auto 10px;}
 .gsm_benefit > tbody > tr > td > img{float: left;margin-left: 70px;}
@@ -658,9 +661,15 @@ a.join_a_tag,a.join_a_tag:link,a.join_a_tag:visited{color:#fff;text-decoration:u
 			color:#fff;
 			min-height:240px;
 }
-.tbl_benefits,.hr_line{width:1000px;}
+.tbl_benefits{width:1000px;}
+table.tbl_benefits > tbody > tr > td{padding:40px 0px 0px}
+.hr_line{width:100%;float:left;border:0px;border-top:1px solid #eee;margin:20px 0px 20px;}
 .tbl_contact {font-size: 20px;text-align: left;width: 1000px;}
 .product_certificate{width:1000px;text-align:center;}
 .p_c_details{margin-top:30px;border:3px solid grey;text-align:center;}
 .p_c_details td{font-size:26px; font-weight:700; color:black; text-align:left; padding-left:20px;border:1px solid grey;}
 .p_c_details td a{font-size:14px;}
+.w_title_head p { text-align: center;font-size: 24px;}
+.tbl_warranty {width: 800px;margin:30px auto;font-size: 20px;}
+.warranty_services{text-align:center;width:100%;}
+.warranty_services img{width:100%;}
