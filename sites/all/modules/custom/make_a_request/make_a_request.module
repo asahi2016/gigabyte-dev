@@ -79,7 +79,6 @@ function make_a_request_form_validate(&$form , &$form_state){
 function make_a_request_form_submit($form,&$form_state){
 
     $role = !user_access('administer users');
-
     if($role){
 
         global $user;
@@ -117,12 +116,12 @@ function make_a_request_form_submit($form,&$form_state){
         $from = "request@gigabyte.com";
         $subject = "Gigabyte Partner Portal - Marketing Material Request";
         $body = " ";
-        $body .= '<p>Hi ' . $first_name.'</p>';
-        $body .= '<p> Thank you for submitting your request.  A Gigabyte Representative will be contacting you soon.</p>';
-        $body .= '<p>Your Request:</p>';
-        $body .= '<p>'.$request.'</p>';
-        $body .= '<p>Thank you,</p>';
-        $body .= '<p>Gigabyte</p>';
+        $body .= '<p style="margin:10px 5px">Hi ' . $first_name.',</p>';
+        $body .= '<p style="margin:10px 5px"> Thank you for submitting your request.  A Gigabyte Representative will be contacting you soon.</p>';
+        $body .= '<p style="margin:10px 5px">Your Request:</p>';
+        $body .= '<p style="margin:10px 5px">'.$request.'</p>';
+        $body .= '<p style="margin:10px 5px">Thank you,</p>';
+        $body .= '<p style="margin:10px 5px">Gigabyte</p>';
 
         $params = array(
             'subject' => $subject,
@@ -138,15 +137,15 @@ function make_a_request_form_submit($form,&$form_state){
         $from_user = $user->mail;
         $subject_admin = "Gigabyte Partner Portal - Marketing Material Request";
         $body_admin  = " ";
-        $body_admin .= '<p>Hi admin' .'</p>';
-        $body_admin .= '<p>You have received a new Request for Marketing Material from the Partner Portal:</p>';
-        $body_admin .= '<p>Name: '.$first_name .' '.$last_name.'<br';
+        $body_admin .= '<p style="margin:10px 5px">Hi admin' .'</p>';
+        $body_admin .= '<p style="margin:10px 5px">You have received a new Request for Marketing Material from the Partner Portal:</p>';
+        $body_admin .= '<p style="margin:10px 5px">Name: '.$first_name .' '.$last_name.'<br';
         $body_admin .= 'Email: '.$user->mail.'<br>';
         $body_admin .= 'Company: '.$company_name.'<br>';
         $body_admin .= 'Request:</p>';
-        $body_admin .= '<p>'.$request.'</p>';
-        $body_admin .= '<p>Thank you,</p>';
-        $body_admin .= '<p>Gigabyte</p>';
+        $body_admin .= '<p style="margin:10px 5px">'.$request.'</p>';
+        $body_admin .= '<p style="margin:10px 5px">Thank you,</p>';
+        $body_admin .= '<p style="margin:10px 5px">Gigabyte</p>';
 
         $params = array(
             'subject' => $subject_admin,
@@ -183,7 +182,7 @@ function customer_request_review_admin(){
     return $result;
 }
 
-function make_a_request_theme(){
+function make_a_request_theme($existing, $type, $theme, $path){
     return array(
         'make_a_request_display' =>
             array(

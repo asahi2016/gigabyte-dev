@@ -1,8 +1,13 @@
 
-<link href="/gigabyte/themes/bartik/css/dataTables.bootstrap.min.css" rel="stylesheet">
-<script src="/gigabyte/themes/bartik/js/jquery-1.12.0.min.js"></script>
-<script src="/gigabyte/themes/bartik/js/dataTables.bootstrap.min.js"></script>
+<?php
 
+global $base_url;
+
+drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/jquery-1.12.0.min.js');
+drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/dataTables.bootstrap.min.js');
+drupal_add_css($base_url.'/sites/all/modules/custom/make_a_request/css/dataTables.bootstrap.min.css');
+
+?>
 <div>
     <table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
