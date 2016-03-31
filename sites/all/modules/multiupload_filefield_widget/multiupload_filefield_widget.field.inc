@@ -47,16 +47,18 @@ function multiupload_filefield_widget_field_widget_form(&$form, &$form_state, $f
 
   // Essentially we use the mfw_managed_file type, extended with some enhancements.
   $element_info = element_info('mfw_managed_file');
-  $element += array(
-    '#type' => 'mfw_managed_file',
-    '#upload_location' => file_field_widget_uri($field, $instance),
-    '#upload_validators' => file_field_widget_upload_validators($field, $instance),
-    '#value_callback' => 'mfw_field_widget_value',
-    '#process' => array_merge($element_info['#process'], array('mfw_field_widget_process')),
-    '#progress_indicator' => $instance['widget']['settings']['progress_indicator'],
-    // Allows this field to return an array instead of a single value.
-    '#extended' => TRUE,
-  );
+    if(!empty($element_info)) {
+        $element += array(
+            '#type' => 'mfw_managed_file',
+            '#upload_location' => file_field_widget_uri($field, $instance),
+            '#upload_validators' => file_field_widget_upload_validators($field, $instance),
+            '#value_callback' => 'mfw_field_widget_value',
+            '#process' => array_merge($element_info['#process'], array('mfw_field_widget_process')),
+            '#progress_indicator' => $instance['widget']['settings']['progress_indicator'],
+            // Allows this field to return an array instead of a single value.
+            '#extended' => TRUE,
+        );
+    }
 
   if ($field['cardinality'] == 1) {
     // Set the default value.
