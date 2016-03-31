@@ -119,9 +119,12 @@ function make_a_request_form_submit($form,&$form_state){
         $body .= '<p style="margin:10px 5px">Hi ' . $first_name.',</p>';
         $body .= '<p style="margin:10px 5px"> Thank you for submitting your request.  A Gigabyte Representative will be contacting you soon.</p>';
         $body .= '<p style="margin:10px 5px">Your Request:</p>';
-        $body .= '<p style="margin:10px 5px">'.'"'.$request.'"'.'</p>';
-        $body .= '<p style="margin:10px 5px">Thank you,</p>';
+        $body .= '<p style="margin:10px 5px">'.'"'.$request.'"'.'</p></br>';
+        $body .= '<p> </p>';
+        $body .= '<p style="margin:10px 5px">Thank you,</p></br>';
+        $body .= '<p> </p>';
         $body .= '<p style="margin:10px 5px">Gigabyte</p>';
+
 
         $params = array(
             'subject' => $subject,
@@ -143,8 +146,10 @@ function make_a_request_form_submit($form,&$form_state){
         $body_admin .= 'Email: '.$user->mail.'<br>';
         $body_admin .= 'Company: '.$company_name.'<br>';
         $body_admin .= 'Request:</p>';
-        $body_admin .= '<p style="margin:10px 5px">'.'"'.$request.'."'.'</p>';
-        $body_admin .= '<p style="margin:10px 5px">Thank you,</p>';
+        $body_admin .= '<p style="margin:10px 5px">'.'"'.$request.'."'.'</p></br>';
+        $body_admin .= '<p> </p>';
+        $body_admin .= '<p style="margin:10px 5px">Thank you,</p></br>';
+        $body_admin .= '<p> </p>';
         $body_admin .= '<p style="margin:10px 5px">Gigabyte</p>';
 
         $params = array(
