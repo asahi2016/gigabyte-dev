@@ -11,7 +11,7 @@ stylesheets[all][] = css/colors.css
 stylesheets[all][] = colorbox/colorbox.css
 stylesheets[print][] = css/print.css
 scripts[all] = js/custom.js
-scripts[] = colorbox/jquery.colorbox.js
+scripts[all] = colorbox/jquery.colorbox.js
 
 regions[header] = Header
 regions[country_menu] = Country Menu
