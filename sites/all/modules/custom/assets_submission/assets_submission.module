@@ -7,6 +7,7 @@ if(!function_exists('node_add')){
 
 function assets_submission_init(){
    // drupal_set_message('Assets Submission');
+    drupal_add_js(drupal_get_path('module', 'custom').'/assets_submission/js/submissions.js');
 
 }
 
@@ -59,19 +60,17 @@ function assets_submission_theme() {
 
 function assets_submission_block_view_alter(&$data, $block) {
 
-    echo $block->delta;
+   //print_pre($block);
 
-    switch ($block->delta) {
-        case 'foo':
-            $data['subject'] = 'bar';
-            break;
-    }
 }
 
 
 function template_preprocess_view_user_submissions(&$variables){
 
+    //print_pre($variables,1);
+
     /*global $user;
+
 
     $type = 'submission';
     $node = (object) array('uid' => $user->uid, 'name' => (isset($user->name) ? $user->name : ''), 'type' => $type, 'language' => LANGUAGE_NONE);
@@ -89,15 +88,22 @@ function template_preprocess_view_user_submissions(&$variables){
 
     //Render new submission form
     $new_submission_form = drupal_render($form);
-    $variables['new_submission_form'] = $new_submission_form;*/
+    $variables['new_submission_form'] = $new_submission_form;
 
-    return $variables;
+    return $variables;*/
 
 }
 
-function assets_submission_form_submission_node_form_alter($form, &$form_state){
+function assets_submission_form_submission_node_form_alter(&$form, &$form_state){
 
-    //print_pre($form , 1);
+    $form['new_submission'] = array(
+        '#prefix' => '<div id="new-submission" style="float: left">',
+        '#suffix' => '</div>',
+        '#markup' => '<input type="button" value="New Submission">',
+        '#weight' => -10,
+    );
+
+    // print_pre($form , 1);
 
 }
 
