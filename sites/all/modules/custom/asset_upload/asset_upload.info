@@ -1,0 +1,5 @@
+name = Asset Upload
+description = Administrator can upload assets in the backend
+version = 7.x
+core = 7.x
+package = Custom Module

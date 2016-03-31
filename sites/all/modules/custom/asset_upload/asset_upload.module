@@ -1,0 +1,22 @@
+<?php
+
+
+
+function asset_upload_form_tools_assets_logos_node_form_alter(&$form, &$form_state, $form_id){
+    // Get the system roles.
+    $roles = user_roles(FALSE, NULL);
+    unset($roles[3], $roles[4], $roles[1], $roles[2]);
+    /*print_r($roles);
+    exit;*/
+
+    // print_pre($form,1);
+    $form['trc_user_roles'] = array(
+        '#type' => 'checkboxes',
+        '#title' => 'Allow users who can see uploaded files',
+        '#options' => $roles,
+        '#descripion' => 'User roles checked are able to see site-wide uploads.',
+        '#default_value' => variable_get('trc_user_roles', array()),
+        '#weight' => 4
+    );
+    return $form;
+}
