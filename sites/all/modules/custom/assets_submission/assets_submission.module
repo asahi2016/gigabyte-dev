@@ -94,16 +94,101 @@ function template_preprocess_view_user_submissions(&$variables){
 
 }
 
-function assets_submission_form_submission_node_form_alter(&$form, &$form_state){
+function assets_submission_form_submission_node_form_alter(&$form, &$form_state, $extra){
 
     $form['new_submission'] = array(
-        '#prefix' => '<div id="new-submission" style="float: left">',
+        '#prefix' => '<div class="new-submission-form" style="float: left">',
         '#suffix' => '</div>',
-        '#markup' => '<input type="button" value="New Submission">',
+        '#markup' => '<input id="new-submission" type="button" value="New Submission">',
         '#weight' => -10,
     );
+    $form['ajax-submit']['#value'] = 'Submit';
 
-    // print_pre($form , 1);
+
+    $nid = $extra;
+    $form['nid'] = array('#type' => 'value', '#value' => $nid);
+
+    $show_taxonomy_terms = module_exists('taxonomy') &&
+        variable_get('revisioning_show_taxonomy_terms', TRUE) && (count(taxonomy_get_vocabularies()) > 0);
+
+    module_load_include('inc','revisioning','revisioning_api');
+
+    $revisions = _revisioning_get_all_revisions_for_node($nid, $show_taxonomy_terms);
+
+    $revision_ids = array();
+    $published = FALSE;
+    foreach ($revisions as $revision) {
+        $vid = $revision->vid;
+        if ($vid == $revision->current) {
+            $title = $revision->title;
+            $published = $revision->status;
+        }
+        // No text next to check boxes (see below).
+        $revision_ids[$vid] = '';
+        $base_url = "node/$nid/revisions/$vid";
+
+        // First column: saved date + author.
+        $first_cell = t('Saved !date by !username',
+                array(
+                    '!date' => l(format_date($revision->timestamp, 'short'), "$base_url/view"),
+                    '!username' => theme('username', array('account' => $revision))))
+            . (empty($revision->log) ? '' : '<p class="revision-log">' . filter_xss($revision->log) . '</p>');
+        $form['info'][$vid] = array(
+            // Was: 'item', see [#1884696].
+            '#type' => 'markup',
+            '#markup' => $first_cell,
+        );
+
+        // Third & fourth columns: term (2nd column is handled below).
+        if (!empty($revision->tags)) {
+            $form['tags'][$vid] = array(
+                '#type' => 'item',
+                '#markup' => $revision->tags,
+            );
+            $has_tags = TRUE;
+        }
+        if (!empty($revision->term)) {
+            $form['term'][$vid] = array(
+                '#type' => 'item',
+                '#markup' => $revision->term,
+            );
+            $has_terms = TRUE;
+        }
+        $form['status'][$vid] = array(
+            '#type' => 'value',
+            '#value' => $revision->status,
+        );
+    }
+    // Close foreach ($revisions as $revision).
+    if (empty($has_tags)) {
+        unset($form['tags']);
+    }
+    if (empty($has_terms)) {
+        unset($form['term']);
+    }
+    revisioning_set_status_message(format_plural(count($revisions),
+        '%title is @publication_status. It has only one revision',
+        '%title is @publication_status. It has @count revisions.',
+        array(
+            '%title' => $title,
+            '@publication_status' => ($published ? t('published') : t('NOT published')),
+        )
+    ));
+    if (count($revisions) >= 2 && module_exists('diff')) {
+        // Second column: check-boxes to select two revisions to compare
+        // The default selection is the top two check-boxes
+        $id1 = key($revision_ids);
+        next($revision_ids);
+        $id2 = key($revision_ids);
+        $form['tickbox'] = array(
+            '#type' => 'checkboxes',
+            '#options' => $revision_ids,
+            '#default_value' => array($id1, $id2),
+            '#required' => TRUE,
+        );
+        // Submit button.
+        $form['submit'] = array('#value' => t('Compare'), '#type' => 'submit');
+    }
 
 }
 
