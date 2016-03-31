@@ -24,14 +24,14 @@
     <input class="toggle" type="checkbox">
   </div>
     <!-- Select file type -->
-    <div class="span7 filetypes">
+   <!-- <div class="span7 filetypes">
         <label>JPG</label>
         <input type="checkbox" name="filetype" value="jpg" />
         <label>PNG</label>
         <input type="checkbox" name="filetype" value="png" />
         <label>PDF</label>
         <input type="checkbox" name="filetype" value="pdf" />
-    </div>
+    </div>-->
   <!-- The global progress information -->
   <div class="span5 fileupload-progress fade">
     <!-- The global progress bar -->
