@@ -105,7 +105,7 @@ function revisioning_form_alter(&$form, &$form_state, $form_id) {
       }
     }
 
-    //$form['revision_information']['#access'] = FALSE;
+    $form['revision_information']['#access'] = FALSE;
 
   }
 }

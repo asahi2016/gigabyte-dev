@@ -57,9 +57,21 @@ function assets_submission_theme() {
 }
 
 
+function assets_submission_block_view_alter(&$data, $block) {
+
+    echo $block->delta;
+
+    switch ($block->delta) {
+        case 'foo':
+            $data['subject'] = 'bar';
+            break;
+    }
+}
+
+
 function template_preprocess_view_user_submissions(&$variables){
 
-    global $user;
+    /*global $user;
 
     $type = 'submission';
     $node = (object) array('uid' => $user->uid, 'name' => (isset($user->name) ? $user->name : ''), 'type' => $type, 'language' => LANGUAGE_NONE);
@@ -77,7 +89,7 @@ function template_preprocess_view_user_submissions(&$variables){
 
     //Render new submission form
     $new_submission_form = drupal_render($form);
-    $variables['new_submission_form'] = $new_submission_form;
+    $variables['new_submission_form'] = $new_submission_form;*/
 
     return $variables;
 

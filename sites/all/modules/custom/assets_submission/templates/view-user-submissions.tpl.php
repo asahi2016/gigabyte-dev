@@ -62,7 +62,7 @@ $('#new-submission').click(function(){
 <div class="subm_wrap"><a href="javascript:void(0);" class="submit" id="new-submission"><input id="button1" type="button" value="New Submission" /></a></div>
 <div>
     <div id="new-submission-form" style="display: none;">
-        <?php print $new_submission_form;?>
+        <?php //print $new_submission_form;?>
     </div>
 </div>
 <table class="subm_wrap_s">
