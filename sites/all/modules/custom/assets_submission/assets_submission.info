@@ -1,0 +1,8 @@
+name = Assets Submission
+description = Upload image, revisioning submitted content, State level process (Approve, Pending) for submission content.
+version = 7.x
+core = 7.x
+package = Custom Module
+
+
+
