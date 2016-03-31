@@ -7,8 +7,9 @@ if(!function_exists('node_add')){
 
 function assets_submission_init(){
    // drupal_set_message('Assets Submission');
-    drupal_add_js(drupal_get_path('module', 'custom').'/assets_submission/js/submissions.js');
 
+    drupal_add_js(drupal_get_path('module', 'custom').'/assets_submission/js/submissions.js');
+    drupal_add_js(drupal_get_path('module', 'custom').'/assets_submission/js/display_colorbox.js', array('scope' => 'footer'));
 }
 
 function print_pre($array = array() , $exit = false){
@@ -67,6 +68,53 @@ function assets_submission_block_view_alter(&$data, $block) {
 
 function template_preprocess_view_user_submissions(&$variables){
 
+    global $user;
+    $uid = $user->uid;
+    $node_type = 'submission';
+
+    $nodes = array();
+    $nids = db_query('SELECT nid FROM {node} WHERE uid = :uid AND type = :type', array(':uid' => $uid, ':type' => $node_type))->fetchCol();
+    if (!empty($nids)) {
+        $nodes = node_load_multiple($nids);
+    }
+
+    $show_taxonomy_terms = module_exists('taxonomy') &&
+        variable_get('revisioning_show_taxonomy_terms', TRUE) && (count(taxonomy_get_vocabularies()) > 0);
+
+    module_load_include('inc','revisioning','revisioning_api');
+
+    $node_revisions = array();
+    foreach($nodes as $nid => $node){
+        $node_revisions[$nid]['submissions'] = _revisioning_get_all_revisions_for_node($node->nid , $show_taxonomy_terms);
+    }
+
+    unset($nid);
+    foreach ($node_revisions as $nid => $revisions) {
+        $node_revisions[$nid]['root'] = node_load_multiple(array($nid));
+        foreach ($revisions['submissions'] as $rid => $revision) {
+
+            $node_revisions[$nid]['submissions'][$rid]->node = node_load($nid , $rid);
+            $node_revisions[$nid]['submissions'][$rid]->user = user_load_multiple(array($revision->uid));
+            //print_pre($revision);
+
+            /*$vid = $revision->vid;
+            if ($vid == $revision->current) {
+                $title = $revision->title;
+                $published = $revision->status;
+            }
+            // No text next to check boxes (see below).
+            $revision_ids[$vid] = '';
+            $base_url = "node/$nid/revisions/$vid";*/
+        }
+
+        $node_revisions[$nid]['root']['comment'] = comment_load($node_revisions[$nid]['root'][$nid]->cid);
+    }
+
+
+    //print_pre($node_revisions,1);
+    $variables['submissions_lists'] = $node_revisions;
+
+    return $variables;
     //print_pre($variables,1);
 
     /*global $user;
@@ -103,92 +151,6 @@ function assets_submission_form_submission_node_form_alter(&$form, &$form_state,
         '#weight' => -10,
     );
     $form['ajax-submit']['#value'] = 'Submit';
-
-
-    $nid = $extra;
-    $form['nid'] = array('#type' => 'value', '#value' => $nid);
-
-    $show_taxonomy_terms = module_exists('taxonomy') &&
-        variable_get('revisioning_show_taxonomy_terms', TRUE) && (count(taxonomy_get_vocabularies()) > 0);
-
-    module_load_include('inc','revisioning','revisioning_api');
-
-    $revisions = _revisioning_get_all_revisions_for_node($nid, $show_taxonomy_terms);
-
-    $revision_ids = array();
-    $published = FALSE;
-    foreach ($revisions as $revision) {
-        $vid = $revision->vid;
-        if ($vid == $revision->current) {
-            $title = $revision->title;
-            $published = $revision->status;
-        }
-        // No text next to check boxes (see below).
-        $revision_ids[$vid] = '';
-        $base_url = "node/$nid/revisions/$vid";
-
-        // First column: saved date + author.
-        $first_cell = t('Saved !date by !username',
-                array(
-                    '!date' => l(format_date($revision->timestamp, 'short'), "$base_url/view"),
-                    '!username' => theme('username', array('account' => $revision))))
-            . (empty($revision->log) ? '' : '<p class="revision-log">' . filter_xss($revision->log) . '</p>');
-        $form['info'][$vid] = array(
-            // Was: 'item', see [#1884696].
-            '#type' => 'markup',
-            '#markup' => $first_cell,
-        );
-
-        // Third & fourth columns: term (2nd column is handled below).
-        if (!empty($revision->tags)) {
-            $form['tags'][$vid] = array(
-                '#type' => 'item',
-                '#markup' => $revision->tags,
-            );
-            $has_tags = TRUE;
-        }
-        if (!empty($revision->term)) {
-            $form['term'][$vid] = array(
-                '#type' => 'item',
-                '#markup' => $revision->term,
-            );
-            $has_terms = TRUE;
-        }
-        $form['status'][$vid] = array(
-            '#type' => 'value',
-            '#value' => $revision->status,
-        );
-    }
-    // Close foreach ($revisions as $revision).
-    if (empty($has_tags)) {
-        unset($form['tags']);
-    }
-    if (empty($has_terms)) {
-        unset($form['term']);
-    }
-    revisioning_set_status_message(format_plural(count($revisions),
-        '%title is @publication_status. It has only one revision',
-        '%title is @publication_status. It has @count revisions.',
-        array(
-            '%title' => $title,
-            '@publication_status' => ($published ? t('published') : t('NOT published')),
-        )
-    ));
-    if (count($revisions) >= 2 && module_exists('diff')) {
-        // Second column: check-boxes to select two revisions to compare
-        // The default selection is the top two check-boxes
-        $id1 = key($revision_ids);
-        next($revision_ids);
-        $id2 = key($revision_ids);
-        $form['tickbox'] = array(
-            '#type' => 'checkboxes',
-            '#options' => $revision_ids,
-            '#default_value' => array($id1, $id2),
-            '#required' => TRUE,
-        );
-        // Submit button.
-        $form['submit'] = array('#value' => t('Compare'), '#type' => 'submit');
-    }
 
 }
 
