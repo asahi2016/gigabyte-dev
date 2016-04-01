@@ -91,7 +91,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
     $ip = $_SERVER['REMOTE_ADDR'];
 }
 //$ipcountry = json_decode(file_get_contents('http://api.ipinfodb.com/v3/ip-country/?key='.$apikey.'&ip='.$ip.'&format=json'));
-$ipcountry = json_decode(file_get_contents('http://ipinfo.io/'.$ip.'/json'));
+if(!user_is_logged_in()){ $ipcountry = json_decode(file_get_contents('http://ipinfo.io/'.$ip.'/json')); }
 
 $url = $_SERVER['REQUEST_URI'];
 $current_url = explode('/',$url);
@@ -104,13 +104,11 @@ $_SESSION['curr_pg'] = $current_url[(count($current_url)-1)];
 if($_SESSION['curr_pg'] == 'login' && user_is_logged_in()){
     header('Location:partner');
 }
+// GEt user and node information for a logged in user and the current page
 global $user;
 global $node;
 $userinfo = user_load($user->uid);
-/*echo "<pre>";
-print_r($userinfo);
-echo "</pre>";
-exit;*/
+
 $_SESSION['userid'] = $user->uid;
 if (arg(0) == 'node' && is_numeric(arg(1))) {
     // Get the nid
