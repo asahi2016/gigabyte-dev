@@ -1,0 +1,5 @@
+name = Project Support Request
+description = User Project Support Request to gigabyte admin regarding their project.
+version = 7.x
+core = 7.x
+package = Custom Module

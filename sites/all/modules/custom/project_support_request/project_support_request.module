@@ -1,0 +1,26 @@
+<?php
+
+function project_support_request_menu(){
+
+    $items['admin/config/project_support']= array(
+        'type' => MENU_CALLBACK,
+        'access callback' => TRUE,
+    );
+
+    return $items;
+}
+function project_support_request_form_webform_client_form_76_alter( &$form, &$form_state, $form_id){
+
+    if($form_id == 'webform_client_form_76'){
+        $form['actions']['reset'] = array(
+            '#type' => 'button',
+            '#value' => t('Reset'),
+            '#weight' => 100,
+            '#validate' => array(),
+            '#attributes' => array('onclick' => 'this.form.reset(); return false;'),
+        );
+    }
+
+    return $form;
+}
+
