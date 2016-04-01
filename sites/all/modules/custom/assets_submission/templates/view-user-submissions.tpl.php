@@ -57,6 +57,8 @@ $date = date('m/d/Y', REQUEST_TIME);
 
             $status = 'Awaiting Reply from GIGABYTE';
 
+            $description = $submission->node->body['und'][0]['value'];
+
             if ($submission->status != 0) {
                 $status = 'Approved';
             }
@@ -79,7 +81,7 @@ $date = date('m/d/Y', REQUEST_TIME);
                         </tr>
                         <tr class="v_align">
                             <td class="f_w_700">
-                                Status: <span class="f_w_400 cblue"><?php print  $status; ?></span>
+                                Status: <span class="cblue"><?php print  $status; ?></span>
                             </td>
                             <td class="f_w_700">
                                 Submitted: <span class="f_w_400"><?php print $submitted; ?></span>
@@ -88,12 +90,19 @@ $date = date('m/d/Y', REQUEST_TIME);
                             </td>
                         </tr>
                         <tr class="v_align">
-                            <td colspan="2" class="f_w_700">Latest Comments:<br/><span
-                                    class="f_w_400"><?php print $last_comment; ?></span></td>
+                            <td>Description:<br/>
+                                <span><?php print $description; ?></span>
+                            </td>
+                            <td>Latest Comments:<br/>
+                                <span><?php print $last_comment; ?></span>
+                            </td>
                         </tr>
                         <tr>
-                            <td><input type="button" submission-node="<?php echo $nid?>" value="Reply" style="display:none;" rel="reply"/></td>
-                            <td><input type="button" value="Download"/></td>
+                            <td>
+                                <input type="button" submission-node="<?php echo $nid?>" value="Reply" style="display:none;" rel="reply"/>
+                                <input type="button" value="Download"/>
+                            </td>
+                            <td></td>
                         </tr>
                         </tbody>
                     </table>
