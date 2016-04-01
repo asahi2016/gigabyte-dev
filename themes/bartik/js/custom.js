@@ -1,6 +1,21 @@
 
 jQuery(document).ready(function($) {
-    console.log($("div#field-canada-content-add-more-wrapper .text-summary-wrapper"));
+    // Switch between back to business center and partner portal
+    curr_url = document.URL.split('/');
+    var found = curr_url.indexOf("partner") > -1;
+    if(found){
+        $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').text( 'Back to Business Center');
+    }else{
+        $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').text('Back to Partner Portal');
+        $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').attr('href','/gigabyte/gigabyte/partner');
+
+    }
+    /*if(url_last == 'partner'){
+
+        // $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').attr('href','/gigabyte/partner');
+    }else{
+       }
+    console.log($("div#field-canada-content-add-more-wrapper .text-summary-wrapper"));*/
     $("div#field-canada-content-add-more-wrapper .text-summary-wrapper").text('If this page requires separate content for Canadian users, this version of the page can be added here.  Any content in this text field will be displayed by default for all users registered in Canada, or for users who select Canada as their country of preference upon visiting the site.');
 
     var li_count = $('#main-menu-nav > ul > li').length;
@@ -31,16 +46,7 @@ jQuery(document).ready(function($) {
             location.href = curr_url + '?country=us';
         }
     });
-    // Switch between back to business center and partner portal
-    curr_url = document.URL.split('/');
-    url_last = curr_url[curr_url.length -1];
-    if(url_last == 'partner'){
-       $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').text( 'Back to Business Center');
-       // $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').attr('href','/gigabyte/partner');
-    }else{
-        $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').text('Back to Partner Portal');
-        $('#header-wrapper-right #block-system-user-menu li:nth-child(3).leaf').find('a').attr('href','/gigabyte/gigabyte/partner');
-    }
+
 
     var txt_val = $('.make_a_request_ptag').text();
     $('<p>'+txt_val+'</p>').insertBefore($("#make-a-request-form"));
