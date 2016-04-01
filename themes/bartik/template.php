@@ -286,7 +286,7 @@ function bartik_preprocess_user_profile_form(&$variables) {
     $variables['account']['rma_city']['value'] = $variables['form']['#user']->field_rma_city['und'][0]['value'];
     $variables['account']['rma_state']['value'] = $variables['form']['#user']->field_rma_state['und'][0]['value'];
     $variables['account']['rma_zip_code']['value'] = $variables['form']['#user']->field_rma_zip_code['und'][0]['value'];
-    $variables['account']['membership_account']['value'] = $variables['form']['#user']->field_membership_account['und'][0]['value'];
+    $variables['account']['membership_account']['value'] = isset($variables['form']['#user']->field_membership_account['und'][0]['value'])?$variables['form']['#user']->field_membership_account['und'][0]['value']:'';
     $variables['account']['motherboard_qty']['value'] = $variables['form']['#user']->field_motherboard_qty['und'][0]['value'];
     $variables['account']['other_programs']['value'] = !empty($variables['form']['#user']->field_other_programs['und'])?$variables['form']['#user']->field_other_programs['und'][0]['value']:'';
     $variables['account']['other_distributor']['value'] = !empty($variables['form']['#user']->field_other_distributor['und'])?$variables['form']['#user']->field_other_distributor['und'][0]['value']:'';
