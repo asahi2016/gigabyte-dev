@@ -1,5 +1,20 @@
 (function ($) {
     $(document).ready(function($) {
-        $('.group4').colorbox({rel:'group4', slideshow:true});
+        $('table#submission').click(function(){
+            var ref = $(this).html();
+            $.colorbox({ html: ref });
+            $.colorbox.resize();
+        });
+
+        $('input#new-submission').click(function(){
+            $('form#submission-node-form').show();
+            var submission_form = $('form#submission-node-form').parent('div.submission-form').html();
+            $.colorbox({ html: submission_form,
+                onClosed: function () {
+                    $('form#submission-node-form').hide();
+                }
+            });
+            $.colorbox.resize();
+        });
     });
 })(jQuery);

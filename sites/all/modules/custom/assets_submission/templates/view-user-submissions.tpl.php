@@ -42,14 +42,9 @@ $date = date('m/d/Y', REQUEST_TIME);
         </tbody>
     </table>
 
-    <h2>Slideshow</h2>
-    <p><a class="group4"  href="../content/ohoopee1.jpg" title="Me and my grandfather on the Ohoopee.">Grouped Photo 1</a></p>
-    <p><a class="group4"  href="../content/ohoopee2.jpg" title="On the Ohoopee as a child">Grouped Photo 2</a></p>
-    <p><a class="group4"  href="../content/ohoopee3.jpg" title="On the Ohoopee as an adult">Grouped Photo 3</a></p>
-
     <?php foreach($variables['submissions_lists'] as  $nid => $node){ ?>
 
-        <table class="m_top30">
+        <table id="submission">
 
         <?php foreach($node['submissions'] as $rid => $submission){
 
