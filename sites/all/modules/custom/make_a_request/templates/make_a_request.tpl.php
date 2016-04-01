@@ -47,7 +47,7 @@ drupal_add_css($base_url.'/sites/all/modules/custom/make_a_request/css/dataTable
             });
         });
         $('#pagination').DataTable({
-            "order": [[ 3, "desc" ]]
+            "order": [[ 0, "desc" ]]
         });
     });
     
