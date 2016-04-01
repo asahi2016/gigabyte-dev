@@ -49,6 +49,7 @@ body,
 }
 .w300{width:300px;}
 a{color: #337ab7;text-decoration: none;}
+.f_w_700{font-weight: 700;}
 #header div.section,
 #featured div.section,
 #top_content div.section,
@@ -579,7 +580,7 @@ table tr td{background:none;padding:0px;}
 .gsm_benefit > tbody > tr > td > p {float: left; margin-left: 20px;}
 .wrapper_full p.tbl_contact_p,.tbl_contact_p,.tbl_contact_p a{color:white; font-size:19.06px; font-weight:900;}
 p.tbl_contact_p{margin:0px;padding:15px 0px 20px 0px;}
-.wrapper_full p.tbl_contact_ps{color:white; font-size:14.52px; font-weight:900;}
+.wrapper_full p.tbl_contact_ps{color:white; font-size:14.52px; font-weight:900;background-position: 0px -25px;}
 table.gsm_benefit {width: 900px;height: 170px;background-size: cover; margin:0px auto 10px;}
 .gsm_benefit > tbody > tr > td > img{float: left;margin-left: 70px;}
 .type>tbody>tr>td>div{width: 15px;height: 15px;float: left;margin-right: 10px;}
@@ -600,7 +601,7 @@ a.join_a_tag,a.join_a_tag:link,a.join_a_tag:visited{color:#fff;text-decoration:u
 .replace_servic td.level1{background:#E9E9E8;border-bottom:1px solid #A5A2A3;color:#1F1B1D}
 .replace_servic td.level2{background:#7A7A7A;border-bottom:1px solid #BCB9B9;color:#E7E7E7;}
 .replace_servic td.level3,.replace_servic td.level4{background:#C6C3C3;border-bottom:1px solid #9F9C9D;color:#1F1B1D;}
-.replace_servic td.level3{border-right:#A5A2A3;}
+.replace_servic td.level3,.replace_servic td.level4{border-right:1px solid #A5A2A3;}
 /* pagination css */
 #pagination td{padding:10px 15px;font-size:15px;font-family: ralewayregular;}
 #pagination_wrapper{float:left;}
@@ -609,7 +610,7 @@ a.join_a_tag,a.join_a_tag:link,a.join_a_tag:visited{color:#fff;text-decoration:u
 #pagination,#pagination_info,#pagination_paginate{float:left;width:100%;margin:20px 0 0px 0;}
 #pagination_info,#pagination_paginate{width:auto;}
 #pagination_paginate{float:right;}
-#pagination_paginate a{padding:5px 10px;}
+#pagination_paginate a{padding:5px 10px;cursor:pointer;}
 #pagination_paginate a.current{ color: #333;border: 1px solid #979797;background-color: white;
 							  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #dcdcdc));
 							  background: -webkit-linear-gradient(top, #fff 0%, #dcdcdc 100%);
@@ -617,6 +618,7 @@ a.join_a_tag,a.join_a_tag:link,a.join_a_tag:visited{color:#fff;text-decoration:u
 							  background: -ms-linear-gradient(top, #fff 0%, #dcdcdc 100%);
 							  background: -o-linear-gradient(top, #fff 0%, #dcdcdc 100%);
 							  background: linear-gradient(to bottom, #fff 0%, #dcdcdc 100%);
+							  cursor:default;
 							}
 #pagination_paginate span a{padding:10px 20px;}
 
@@ -638,6 +640,7 @@ a.join_a_tag,a.join_a_tag:link,a.join_a_tag:visited{color:#fff;text-decoration:u
 			text-transform:uppercase;
 			margin:0px;
 		}
+.option_box > p{margin:25px 0px 20px; }
 .option_box_topf{
 			background: rgb(87,171,223); /* Old browsers */
 			background: -moz-linear-gradient(45deg,  rgb(87,171,223) 1%, rgb(41,137,216) 53%, rgb(79,139,201) 100%); /* FF3.6-15 */
@@ -794,3 +797,74 @@ table.tbl_list td p{margin:0px;font-size:12px;}
     content:'x';
 }
 /* ending */
+form.node-tools_assets_logos-form {float:left;border:2px solid #eee;padding:20px;margin:0 0 20px 0px;border-radius:5px;}
+.node-tools_assets_logos-form  .form-item:first-child.form-item-title{float:left;width:100%;}
+.node-tools_assets_logos-form .form-type-checkboxes{float:left;margin:10px 0 10px 0px;width:100%;}
+.node-tools_assets_logos-form .form-type-checkboxes label{margin:0 0 10px 0px;}
+.node-tools_assets_logos-form .form-type-checkbox{float:left;margin:0 0 0 10px;}
+.node-tools_assets_logos-form .form-type-checkbox label{font-size:14px;}
+.node-tools_assets_logos-form .form-item:first-child.form-item-title label{float:left;}
+.node-tools_assets_logos-form .form-item .form-text{float:left;width:220px;margin:0 20px 0 20px;}
+.field-type-image{float:left;width:100%;margin:20px 0px 0px;}
+.field-type-image label{float:left;margin:0 0 10px 0px;width:150px;}
+.field-type-image .image-widget-data{float:left;margin:0 0 10px 0px;}
+.field-type-image .image-widget-data .form-file{float:left;}
+.field-type-image .description{clear:both;}
+#edit-field-upload-image .form-submit{width:150px;float:left;margin:40px 0px;}
+#edit-field-upload-image .image-widget-data .form-submit{width:150px;float:left;margin:0px 0px;}
+.view-assets-upload-view{float:left;width:100%;}
+.view-assets-upload-view ul.upload-assets-list{width:100%;}
+.view-assets-upload-view ul li{margin:0px 30px 0 0;width:520px;}
+.view-assets-upload-view ul li img{min-height:220px;}
+.view-assets-upload-view ul li .item-list ul,.view-assets-upload-view ul li .item-list ul li{width:100%;}
+.view-assets-upload-view ul li .views-field.views-field-field-image-asset-category,.view-assets-upload-view ul li .views-field.views-field-field-image-resolution{float:left;margin:0 0 20px 30px;width:240px;}
+.view-assets-upload-view ul li .views-field:first-child{margin:0 0 20px 0px;float:left;}
+.node-tools_assets_logos-form > .form-submit{float:left;margin:20px 0px 20px 0px}
+.view-assets-upload-view ul li .views-label{font-weight:bold;margin:20px 0px;}
+.view-assets-upload-view ul li .field-content a{float:left;}
+.views-field-edit-node{clear:both;}
+.btn a{
+display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+	margin:0 20px 0 0px;
+}
+.btn-success a{
+	color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.btn-success a:hover{
+	color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+.btn-danger a{
+	color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+	}
+.btn-danger a:hover{
+	    color: #fff;
+		background-color: #c9302c;
+		border-color: #ac2925;
+	}
+#field-image-resolution-add-more-wrapper{float:left;width:100%;}
+#field-image-resolution-add-more-wrapper label.option{font-size:14px;}
+.contactus_title{font-size:13px;}
