@@ -12,6 +12,7 @@
             $.colorbox({ html: submission_form,
                 onClosed: function () {
                     $('form#submission-node-form').hide();
+                    window.location.href = gigabyte.baseUrl + '/view/submissions'
                 }
             });
             $.colorbox.resize();

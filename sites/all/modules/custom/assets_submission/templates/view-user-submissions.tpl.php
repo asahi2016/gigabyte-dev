@@ -10,6 +10,7 @@ $date = date('m/d/Y', REQUEST_TIME);
 ?>
 
 <?php if(isset($variables['submissions_lists']) && !empty($variables['submissions_lists'])){ ?>
+
      <table class="subm_wrap_s">
         <tbody>
         <tr>
