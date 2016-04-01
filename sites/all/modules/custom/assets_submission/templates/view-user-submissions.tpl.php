@@ -46,7 +46,6 @@ $date = date('m/d/Y', REQUEST_TIME);
     <?php foreach($variables['submissions_lists'] as  $nid => $node){ ?>
 
         <div class="user-submissions">
-
         <?php
             $i = 1;
             $submission_count = count($node['submissions']);?>
@@ -68,11 +67,11 @@ $date = date('m/d/Y', REQUEST_TIME);
             $last_comment = '';
                 ?>
                 <div class="group" >
-                    <table class="submission-lists-<?php echo $nid;?> subContent<?php echo $i;?>">
+                    <table class="submission-lists-<?php echo $nid;?>" id="subContent<?php echo $nid;?><?php echo $i;?>" nodeId="<?php echo $nid;?>">
                         <tbody>
                         <tr>
                             <td rowspan="4" class="w300">
-                                <a href="#CA1">
+                                <a href="javascript:void(0);" class="submission-image">
                                     <img src="<?php print image_style_url("medium", $img_url); ?>"/>
                                 </a>
                             </td>
@@ -93,13 +92,13 @@ $date = date('m/d/Y', REQUEST_TIME);
                                     class="f_w_400"><?php print $last_comment; ?></span></td>
                         </tr>
                         <tr>
-                            <td><input id="Button1" type="button" value="Download"/></td>
+                            <td><input type="button" submission-node="<?php echo $nid?>" value="Reply" style="display:none;" rel="reply"/></td>
+                            <td><input type="button" value="Download"/></td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-            <?php
-                $i=$i+1;
+            <?php  $i=$i+1;
          }?>
         </div>
 

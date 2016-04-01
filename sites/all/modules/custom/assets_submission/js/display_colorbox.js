@@ -1,15 +1,19 @@
 (function ($) {
     $(document).ready(function($) {
-        $('div.user-submissions').click(function(){
-            var ref = $(this).find('div.group:first-child').html();
-            var table_class = $(this).find('div.group:first-child').attr('class');
+        $('a.submission-image').click(function(){
+            var ref = $(this).parents('div.group:first-child').html();
+            var table_class = $(this).parents('div.group table:first-child').attr('class');
+            var nodeId = $(this).parents('div.group table:first-child').attr('nodeId');
             var position = null;
+
             $('.'+table_class).colorbox({rel:'"'+table_class+'"', slideshow:true, html: ref, onLoad:function(){
                 position = $('.'+table_class).colorbox.element().index() + 1;
             },
             onComplete:function () {
-                var submission =  $(this).find('table.subContent'+position).parent('div.group').html();
+                $(this).parents('div.group').find('table#subContent'+nodeId+position +'input[rel="reply"]').show();
+                var submission =  $(this).parents('div.group').find('table#subContent'+nodeId+position).parent('div.group').html();
                 $("#cboxLoadedContent").html(submission);
+                $("#cboxLoadedContent").find('table input[rel="reply"]').show();
             }
 
             });
