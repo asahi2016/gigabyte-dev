@@ -45,15 +45,21 @@ $date = date('m/d/Y', REQUEST_TIME);
 
     <?php foreach($variables['submissions_lists'] as  $nid => $node){ ?>
 
-        <table id="submission">
+        <div class="user-submissions">
+        <?php
+            $i = 1;
+            $submission_count = count($node['submissions']);?>
 
-        <?php foreach($node['submissions'] as $rid => $submission){
+            <?php
+            foreach($node['submissions'] as $rid => $submission) {
 
             $img_url = $submission->node->field_submission_image['und'][0]['uri'];
 
             $status = 'Awaiting Reply from GIGABYTE';
 
-            if($submission->status != 0){
+            $description = $submission->node->body['und'][0]['value'];
+
+            if ($submission->status != 0) {
                 $status = 'Approved';
             }
 
@@ -61,39 +67,49 @@ $date = date('m/d/Y', REQUEST_TIME);
             $updated = date("F d Y", $submission->node->created);
             //$last_comment = $node['root']['comment']->comment_body['und'][0]['value'];
             $last_comment = '';
-
-            ?>
-
-                <tbody>
-                <tr>
-                    <td rowspan="4" class="w300">
-                        <a href="#CA1">
-                            <img src="<?php print image_style_url("medium", $img_url); ?>" />
-                        </a>
-                    </td>
-                    <td class="f_size20 f_w_700"><?php print $submission->title; ?></td>
-                </tr>
-                <tr class="v_align">
-                    <td class="f_w_700">
-                        Status: <span class="f_w_400 cblue"><?php print  $status;?></span>
-                    </td>
-                    <td class="f_w_700">
-                        Submitted: <span class="f_w_400"><?php print $submitted; ?></span>
-                        <br />
-                        Updated: <span class="f_w_400"><?php print $updated; ?></span>
-                    </td>
-                </tr>
-                <tr class="v_align">
-                    <td colspan="2" class="f_w_700">Latest Comments:<br /><span class="f_w_400"><?php print $last_comment;?></span></td>
-                </tr>
-                <tr>
-                    <td><input id="Button1" type="button" value="Download" /></td>
-                </tr>
-                </tbody>
-
-            <?php } ?>
-
-        </table>
+                ?>
+                <div class="group" >
+                    <table class="submission-lists-<?php echo $nid;?>" id="subContent<?php echo $nid;?><?php echo $i;?>" nodeId="<?php echo $nid;?>">
+                        <tbody>
+                        <tr>
+                            <td rowspan="4" class="w300">
+                                <a href="javascript:void(0);" class="submission-image">
+                                    <img src="<?php print image_style_url("medium", $img_url); ?>"/>
+                                </a>
+                            </td>
+                            <td class="f_size20 f_w_700"><?php print $submission->title; ?></td>
+                        </tr>
+                        <tr class="v_align">
+                            <td class="f_w_700">
+                                Status: <span class="cblue"><?php print  $status; ?></span>
+                            </td>
+                            <td class="f_w_700">
+                                Submitted: <span class="f_w_400"><?php print $submitted; ?></span>
+                                <br/>
+                                Updated: <span class="f_w_400"><?php print $updated; ?></span>
+                            </td>
+                        </tr>
+                        <tr class="v_align">
+                            <td>Description:<br/>
+                                <span><?php print $description; ?></span>
+                            </td>
+                            <td>Latest Comments:<br/>
+                                <span><?php print $last_comment; ?></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="button" submission-node="<?php echo $nid?>" value="Reply" style="display:none;" rel="reply"/>
+                                <input type="button" value="Download"/>
+                            </td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            <?php  $i=$i+1;
+         }?>
+        </div>
 
     <?php } ?>
 
