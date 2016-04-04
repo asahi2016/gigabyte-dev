@@ -800,7 +800,9 @@ table.tbl_list td p{margin:0px;font-size:12px;}
 form.node-tools_assets_logos-form {float:left;border:2px solid #eee;padding:20px;margin:0 0 20px 0px;border-radius:5px;}
 .node-tools_assets_logos-form  .form-item:first-child.form-item-title{float:left;width:100%;}
 .node-tools_assets_logos-form .form-type-checkboxes{float:left;margin:10px 0 10px 0px;width:100%;}
-.node-tools_assets_logos-form .form-type-checkboxes label{margin:0 0 10px 0px;}
+.node-tools_assets_logos-form .form-type-checkboxes label{margin:0 0 10px 0px;float:left;}
+.node-tools_assets_logos-form .form-type-checkboxes label.fel-field-label{width:140px;}
+.node-tools_assets_logos-form .form-checkboxes .form-checkbox{float:left;margin:4px 4px 0px 0px;}
 .node-tools_assets_logos-form .form-type-checkbox{float:left;margin:0 0 0 10px;}
 .node-tools_assets_logos-form .form-type-checkbox label{font-size:14px;}
 .node-tools_assets_logos-form .form-item:first-child.form-item-title label{float:left;}
@@ -869,14 +871,50 @@ display: inline-block;
 #field-image-resolution-add-more-wrapper label.option{font-size:14px;}
 .contactus_title{font-size:30px;}
 
-.views-table tr.assets-row-list td{padding:10px;text-align:left;}
+/* .views-table tr.assets-row-list td{padding:10px;text-align:left;} */
 /* .views-table tr.assets-row-list td.views-field-title{width:250px}
 .views-table tr.assets-row-list td.views-field-field-upload-image{width:250px}
 .views-table tr.assets-row-list td.views-field-field-image-asset-category{width:250px;}
 .views-table tr.assets-row-list td.views-field-field-image-resolution{width:250px;} */
-.views-table tr.assets-row-list td,.views-table tr th{width:100px;float:left;min-height:20px;}
+/* .views-table tr.assets-row-list td,.views-table tr th{width:100px;float:left;min-height:20px;}
 .views-table tr th{text-align:center;}
 .views-table tr th.views-field-edit-node,.views-table tr th.views-field-delete-node,.views-table tr td.views-field-edit-node,.views-table tr td.views-field-delete-node{width:99px;float:left;min-height:20px;clear:inherit;}
 .views-table tr.assets-row-list td.views-field-field-upload-image,.views-table tr .views-field-field-upload-image,
 .views-table tr.assets-row-list td.views-field-field-image-resolution,.views-table tr .views-field-field-image-resolution{width:237px;}
-.views-table tr th{text-align:left;width:95px;border-right:1px solid #fff}
+.views-table tr th{text-align:left;width:95px;border-right:1px solid #fff} */
+.node-tools_assets_logos-form .field-multiple-table{width:800px;float:left;}
+.field-multiple-table th label{padding:0 0 0 30px;}
+.field-multiple-table .form-item {margin:20px 0px 0px;float:left;width:100%;}
+.field-multiple-table .form-item .form-item {margin:0px 0px 0px;}
+.field-multiple-table .form-item label{float:left;margin:10px 20px 0 0}
+.field-multiple-table .form-item input.form-checkbox{float:left;margin:15px 5px 0 0}
+.field-multiple-table .form-item .description{clear:both;margin:10px 0px 0px;}
+.field-multiple-table .form-item .form-managed-file{float:left;width:840px;}
+.field-multiple-table .form-submit{float:left;width:800px;}
+.field-multiple-table .form-submit{float:left;}
+.field-multiple-table {float:left;margin:10px 22px 20px 0}
+.field-multiple-table #edit-field-multi-image-upload-und-add-more{float:left;margin:10px 22px 20px 0}
+.field-multiple-table tr.draggable {margin:0px 0px 0px;padding: 10px 10px;float: left;width:858px;}
+.field-name-field-multi-image-upload .field-add-more-submit{clear:boht;float:left;margin:15px 0px;}
+.field-multiple-table .form-submit{float: right; margin: 0 20px 0 0;  width: 120px;}
+.field-multiple-table img.file-icon{float:left;margin:2px 5px 0px 0px;}
+.view-assets-upload-view{width:800px;float:left;}
+.view-assets-upload-view .views-table{width:925px;float:left;}
+.view-assets-upload-view .views-table th{padding:10px 20px;border-right:1px solid #fff;text-align:center;}
+.view-assets-upload-view .views-table th.views-field-title,.view-assets-upload-view .views-table td.views-field-title{width:120px;float:left;}
+.view-assets-upload-view .views-table th.views-field-field-image-asset-category,.view-assets-upload-view .views-table td.views-field-field-image-asset-category{width:150px;float:left;}
+.view-assets-upload-view .views-table th.views-field-field-multi-image-upload,.view-assets-upload-view .views-table td.views-field-field-multi-image-upload{width:280px;float:left;}
+.view-assets-upload-view .views-table th.views-field-edit-node,.view-assets-upload-view .views-table td.views-field-edit-node{width:80px;float:left;}
+.view-assets-upload-view .views-table th.views-field-delete-node,.view-assets-upload-view .views-table td.views-field-delete-node{width:80px;float:left;}
+
+.view-assets-upload-view ul li .tableheader-processed img{width:16px;height:16px;min-height:inherit;}
+.view-assets-upload-view .views-field-field-multi-image-upload ul li,.view-assets-upload-view .views-field-field-image-asset-category ul li{width:auto;}
+.view-assets-upload-view .views-table tr{float:left;padding:0px;}
+.view-assets-upload-view .views-table th{min-height:18px;}
+.view-assets-upload-view .views-table td{padding:10px 20px;border-right:1px solid #fff;border-left:1px solid #fff;}
+.view-assets-upload-view .views-table td table td{border:0px;}
+.view-assets-upload-view .views-table th.views-field-edit-node,.view-assets-upload-view .views-table th.views-field-delete-node,
+.view-assets-upload-view .views-table td.views-field-edit-node,.view-assets-upload-view .views-table td.views-field-delete-node{clear:inherit}
+.view-assets-upload-view .views-table ul li table.sticky-enabled {width:250px;}
+.view-assets-upload-view .views-table ul li table.sticky-enabled tr td:last-child,.view-assets-upload-view .views-table ul li table.sticky-enabled tr th:last-child {border:0px;}
+.view-assets-upload-view .views-table ul li table.sticky-enabled tr td,.view-assets-upload-view .views-table ul li table.sticky-enabled tr th{width:125px;word-break:break-word;}
