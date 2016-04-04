@@ -113,8 +113,6 @@ function template_preprocess_view_user_submissions(&$variables){
 
     unset($nid);
 
-
-
     foreach ($node_revisions as $nid => $revisions) {
 
         $node_revisions[$nid]['root'] = node_load_multiple(array($nid));
@@ -122,6 +120,13 @@ function template_preprocess_view_user_submissions(&$variables){
 
             $node_revisions[$nid]['submissions'][$rid]->node = node_load($nid , $rid);
             $node_revisions[$nid]['submissions'][$rid]->user = user_load_multiple(array($revision->uid));
+
+            //Get Last comment of submission iteration
+            $comment = db_query('SELECT * FROM {submission_comments} WHERE nid = :nid AND sid = :sid ORDER BY comment_id DESC LIMIT 1',
+                array(':nid' => $nid, ':sid' => $rid))->fetchAssoc();
+
+            $node_revisions[$nid]['submissions'][$rid]->comment = $comment;
+
             //print_pre($revision);
 
             /*$vid = $revision->vid;

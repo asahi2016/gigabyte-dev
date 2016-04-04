@@ -55,6 +55,7 @@
             $status = 'Awaiting Reply from GIGABYTE';
 
             $description = $submission->node->body['und'][0]['value'];
+            $last_comment = $submission->comment['comment'];
 
             if ($submission->status != 0) {
                 $status = 'Approved';
@@ -62,9 +63,8 @@
 
             $submitted = date("F d Y", $node['root'][$nid]->created);
             $updated = date("F d Y", $submission->node->created);
-            //$last_comment = $node['root']['comment']->comment_body['und'][0]['value'];
-            $last_comment = '';
-                ?>
+
+            ?>
                 <div class="group" >
                     <table class="submission-lists-<?php echo $nid;?>" id="subContent<?php echo $nid;?><?php echo $i;?>" nodeId="<?php echo $nid;?>" nodeIndex="<?php echo $i;?>">
                         <tbody>
