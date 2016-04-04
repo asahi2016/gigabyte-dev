@@ -9,7 +9,15 @@ $date = date('m/d/Y', REQUEST_TIME);
 
 ?>
 
-<?php if(isset($variables['submissions_lists']) && !empty($variables['submissions_lists'])){ ?>
+<?php if(isset($variables['submissions_lists']) && !empty($variables['submissions_lists'])){
+
+        global $user;
+            $admin = false;
+        if (in_array('administrator', $user->roles)) {
+            $admin = true;
+        }
+
+     ?>
 
      <table class="subm_wrap_s">
         <tbody>
@@ -47,7 +55,7 @@ $date = date('m/d/Y', REQUEST_TIME);
 
         <div class="user-submissions">
         <?php
-            $i = 1;
+            $i = 0;
             $submission_count = count($node['submissions']);?>
 
             <?php
@@ -69,7 +77,7 @@ $date = date('m/d/Y', REQUEST_TIME);
             $last_comment = '';
                 ?>
                 <div class="group" >
-                    <table class="submission-lists-<?php echo $nid;?>" id="subContent<?php echo $nid;?><?php echo $i;?>" nodeId="<?php echo $nid;?>">
+                    <table class="submission-lists-<?php echo $nid;?>" id="subContent<?php echo $nid;?><?php echo $i;?>" nodeId="<?php echo $nid;?>" nodeIndex="<?php echo $i;?>">
                         <tbody>
                         <tr>
                             <td rowspan="4" class="w300">
@@ -99,7 +107,12 @@ $date = date('m/d/Y', REQUEST_TIME);
                         </tr>
                         <tr>
                             <td>
-                                <input type="button" submission-node="<?php echo $nid?>" value="Reply" style="display:none;" rel="reply"/>
+                                <?php if($admin){ ?>
+                                        <input type="button" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" value="Reply" style="display:none;" rel="admin-reply"/>
+                                        <input type="button" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" value="Approve" style="display:none;" rel="approve"/>
+                                <?php }else{ ?>
+                                         <input type="button" submission-node="<?php echo $nid?>" value="Reply" style="display:none;" rel="reply"/>
+                                <?php }?>
                                 <input type="button" value="Download"/>
                             </td>
                             <td></td>
@@ -121,5 +134,44 @@ $date = date('m/d/Y', REQUEST_TIME);
 
 <?php } ?>
 
+<?php if($admin){ ?>
 
+<div class="admin-comment" style="display: none;">
+     <div class="display-error"></div>
+     <h3></h3>
+    <textarea name="admin-comment" id="admin-comment"></textarea>
+    <input type="hidden" id="submission-node" value=""/>
+    <input type="hidden" id="submission-iteration" value=""/>
+    <input type="button" id="submit-comment" value="Submit"/>
+    <script type="text/javascript">
+        (function ($) {
+            $(document).ready(function($) {
+
+                $('#submit-comment').click(function () {
+
+                    var submission_node = $('input[type="hidden"]#submission-node').val();
+                    var submission_iteration = $('input[type="hidden"]#submission-iteration').val();
+                    var comment = $('textarea#admin-comment').val();
+
+                    $.post(
+                        Drupal.settings.gigabyte.baseUrl + '/partner/update/submission/comment',
+                        {
+                            node : submission_node,
+                            iteration : submission_iteration,
+                            comment : comment,
+                            ajax: true
+                        },
+                        function (response) {
+
+                        }
+                    );
+
+                });
+
+            });
+        })(jQuery);
+    </script>
+</div>
+
+<?php } ?>
 

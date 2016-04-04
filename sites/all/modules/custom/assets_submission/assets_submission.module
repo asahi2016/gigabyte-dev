@@ -32,6 +32,13 @@ function assets_submission_menu(){
         'file' => 'includes/assets_submission_page.inc',
     );
 
+    $items['partner/update/submission/comment'] = array(
+        'page callback' => 'update_submission_comment', // Render HTML
+        'type' => MENU_CALLBACK,
+        'access callback' => TRUE,
+        'file' => 'includes/assets_submission_page.inc',
+    );
+
     return $items;
 
 }
@@ -97,7 +104,7 @@ function template_preprocess_view_user_submissions(&$variables){
         foreach ($revisions['submissions'] as $rid => $revision) {
 
             $node_revisions[$nid]['submissions'][$rid]->node = node_load($nid , $rid);
-            //$node_revisions[$nid]['submissions'][$rid]->user = user_load_multiple(array($revision->uid));
+            $node_revisions[$nid]['submissions'][$rid]->user = user_load_multiple(array($revision->uid));
             //print_pre($revision);
 
             /*$vid = $revision->vid;
@@ -143,6 +150,8 @@ function assets_submission_form_submission_node_form_alter(&$form, &$form_state,
 
 function assets_submission_node_submit($node, $form, &$form_state) {
 
+   // print_pre($node);
+
     $nid = null;
     if(isset($_COOKIE['submissionNode']) && !empty($_COOKIE['submissionNode'])){
         $nid = $_COOKIE['submissionNode'];
@@ -152,8 +161,16 @@ function assets_submission_node_submit($node, $form, &$form_state) {
         // Programatically load the existing revision and save it
         // Taken from http://api.drupal.org/api/drupal/modules!node!node.module/function/node_save/7
         $new_revision = node_load($nid);
+
+        //print_pre($new_revision,1);
+
         // Make any changes to the new revision here...
+        $new_revision->title = $node->title;
+        //$new_revision->created = $node->created;
+        //$new_revision->changed = $node->changed;
         $new_revision->revision = 1;
+        $new_revision->body = $node->body;
+        $new_revision->field_submission_image = $node->field_submission_image;
         $new_revision->log = t($node->title. 'is new submission of' .$new_revision->type);
 
         // Save the new revision first
