@@ -8,7 +8,7 @@ function update_submission_comment(){
 
        $node_id = trim($_POST['node']);
        $submission_id = trim($_POST['iteration']);
-       $submission_comment = trim($_POST['iteration']);
+       $submission_comment = trim($_POST['comment']);
 
        //Submission Comment insert here
        /*
@@ -33,12 +33,12 @@ function update_submission_comment(){
            'changed' => date('Y-m-d H:i:s')
        );
 
-      // db_insert('submission_comments')->fields($data_insert)->execute();
+       $last_comment_id = db_insert('submission_comments')->fields($data_insert)->execute();
 
 
-       $response = array('message' => 'Comment update successfully');
+       $response = array('message' => 'Comment update successfully', 'last_commment' => $last_comment_id);
 
-       json_encode($response);
+       print json_encode($response);
 
    }
 

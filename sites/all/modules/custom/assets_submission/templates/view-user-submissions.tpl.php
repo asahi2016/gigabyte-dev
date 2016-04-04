@@ -1,14 +1,3 @@
-<?php
-
-//$img_url = $variables['data']->uc_product_image['und'][0]['uri'];
-//$img_src = image_style_url("large", $img_url);
-//$link = drupal_get_path_alias('node/' . $variables['data']->nid);
-$date = date('m/d/Y', REQUEST_TIME);
-
-//
-
-?>
-
 <?php if(isset($variables['submissions_lists']) && !empty($variables['submissions_lists'])){
 
         global $user;
@@ -113,7 +102,9 @@ $date = date('m/d/Y', REQUEST_TIME);
                                 <?php }else{ ?>
                                          <input type="button" submission-node="<?php echo $nid?>" value="Reply" style="display:none;" rel="reply"/>
                                 <?php }?>
-                                <input type="button" value="Download"/>
+                                <a href="<?php print image_style_url("medium", $img_url); ?>" class="download-image" download>
+                                    <input type="button" value="Download"/>
+                                </a>
                             </td>
                             <td></td>
                         </tr>
@@ -136,41 +127,16 @@ $date = date('m/d/Y', REQUEST_TIME);
 
 <?php if($admin){ ?>
 
+<div class="admin-comment-container">
 <div class="admin-comment" style="display: none;">
      <div class="display-error"></div>
      <h3></h3>
     <textarea name="admin-comment" id="admin-comment"></textarea>
+    </br>
     <input type="hidden" id="submission-node" value=""/>
     <input type="hidden" id="submission-iteration" value=""/>
     <input type="button" id="submit-comment" value="Submit"/>
-    <script type="text/javascript">
-        (function ($) {
-            $(document).ready(function($) {
-
-                $('#submit-comment').click(function () {
-
-                    var submission_node = $('input[type="hidden"]#submission-node').val();
-                    var submission_iteration = $('input[type="hidden"]#submission-iteration').val();
-                    var comment = $('textarea#admin-comment').val();
-
-                    $.post(
-                        Drupal.settings.gigabyte.baseUrl + '/partner/update/submission/comment',
-                        {
-                            node : submission_node,
-                            iteration : submission_iteration,
-                            comment : comment,
-                            ajax: true
-                        },
-                        function (response) {
-
-                        }
-                    );
-
-                });
-
-            });
-        })(jQuery);
-    </script>
+</div>
 </div>
 
 <?php } ?>

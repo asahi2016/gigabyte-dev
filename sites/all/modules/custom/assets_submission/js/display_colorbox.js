@@ -11,12 +11,11 @@
                 slideshowAuto : false,
                 onComplete:function(){
                     var position = $.colorbox.element().attr('nodeIndex');
-                    $('table#subContent'+nodeId+position +'input[rel="reply"]').show();
-                    $('table#subContent'+nodeId+position +'input[rel="admin-reply"]').show();
-                    $('table#subContent'+nodeId+position +'input[rel="approve"]').show();
                     var submission =  $('table#subContent'+nodeId+position).parent('div.group').html();
                     $("#cboxLoadedContent").html(submission);
                     $("#cboxLoadedContent").find('table input[rel="reply"]').show();
+                    $("#cboxLoadedContent").find('table input[rel="admin-reply"]').show();
+                    $("#cboxLoadedContent").find('table input[rel="approve"]').show();
                     $.colorbox.resize();
             }
 
@@ -26,38 +25,76 @@
 
         $(document).on('click','input[rel="reply"]',function(){
                 var submission_node = $(this).attr('submission-node');
+                var submission_iteration = $(this).attr('submission-iteration');
                 $.cookie("submissionNode", submission_node, {
                     expires : 10,           //expires in 10 days
                 });
+                $.colorbox({onClosed:function(){
+                    // open the other colorBox
+                    $('form#submission-node-form').show();
+                    var submission_form = $('form#submission-node-form').parent('div.submission-form').html();
+                    $.colorbox({
+                        html : submission_form,
+                        onClosed:function() {
+                            $.cookie("submissionNode", '');
+                        }
+                    });
+                    $('div.submission-form form#submission-node-form').hide();
 
-                $('form#submission-node-form').show();
-                var submission_form = $('form#submission-node-form').parent('div.submission-form').html();
-                $('#cboxLoadedContent').html('');
-                $('#cboxLoadedContent').html(submission_form);
-                //$.colorbox.resize();
-
-               // $.colorbox.({height: "auto"});
-
-                $('div.submission-form form#submission-node-form').hide();
-
+                }});
+                $.colorbox.close();
         });
 
+
         $(document).on('click','input[rel="admin-reply"]',function(){
-             $('.admin-comment').colorbox();
-             $('.admin-comment').colorbox.resize();
+            var submission_node = $(this).attr('submission-node');
+            var submission_iteration = $(this).attr('submission-iteration');
+            $('div.admin-comment').find('input#submission-node').val(submission_node);
+            $('div.admin-comment').find('input#submission-iteration').val(submission_iteration);
+
+            $.colorbox({onClosed:function(){
+                // open the other colorBox
+                $('.admin-comment-container div.admin-comment').show();
+                var comment_form = $('.admin-comment-container').html();
+                $('.admin-comment-container div.admin-comment').hide();
+                $.colorbox({
+                    html : comment_form,
+                });
+                $.colorbox.resize();
+
+            }});
+            $.colorbox.close();
         });
 
 
         $('input#new-submission').click(function(){
             $('form#submission-node-form').show();
             var submission_form = $('form#submission-node-form').parent('div.submission-form').html();
-            $.colorbox({ html: submission_form,
-                onClosed: function () {
-                    $('form#submission-node-form').hide();
-                }
-            });
+            $.colorbox({ html: submission_form});
             $('div.submission-form form#submission-node-form').hide();
             $.colorbox.resize();
         });
+
+
+        $(document).on('click', '#submit-comment', function (event) {
+            event.preventDefault();
+            var submission_node = $('input[type="hidden"]#submission-node').val();
+            var submission_iteration = $('input[type="hidden"]#submission-iteration').val();
+            var comment = $('#cboxLoadedContent textarea').val();
+            $.post(
+                Drupal.settings.gigabyte.baseUrl + '/partner/update/submission/comment',
+                {
+                    node: submission_node,
+                    iteration: submission_iteration,
+                    comment: comment,
+                    ajax: true
+                },
+                function (response) {
+
+                }
+            );
+
+        });
+
     });
 })(jQuery);

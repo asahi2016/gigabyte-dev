@@ -79,7 +79,17 @@ function template_preprocess_view_user_submissions(&$variables){
     $node_type = 'submission';
 
     $nodes = array();
-    $nids = db_query('SELECT nid FROM {node} WHERE uid = :uid AND type = :type', array(':uid' => $uid, ':type' => $node_type))->fetchCol();
+
+    $admin = false;
+    if (in_array('administrator', $user->roles)) {
+        $admin = true;
+    }
+
+    if($admin){
+        $nids = db_query('SELECT nid FROM {node}  WHERE  type = :type', array(':type' => $node_type))->fetchCol();
+    }else {
+        $nids = db_query('SELECT nid FROM {node} WHERE uid = :uid AND type = :type', array(':uid' => $uid, ':type' => $node_type))->fetchCol();
+    }
     if (!empty($nids)) {
         $nodes = node_load_multiple($nids);
     }
