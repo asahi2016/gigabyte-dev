@@ -20,5 +20,47 @@ function asset_upload_form_tools_assets_logos_node_form_alter(&$form, &$form_sta
     );
 
     $form['ajax-submit']['#value'] = 'Submit';
+    $form['#submit'][] = 'save_asset_permissions';
     return $form;
+}
+
+function save_asset_permissions(&$form, &$form_state){
+    //print_pre($form_state['input'],1);
+    $permitted = $form_state['input']['trc_user_roles'];
+    $permitted_role = array();
+    foreach($permitted as $permit){
+        if(!empty($permit)){
+            $permitted_role[] = $permit;
+        }
+    }
+    //get user ID
+    global $user;
+    $userid = $user->uid;
+    // Get File ID
+    $image_array = array();
+    $image_array['jpg'] = $form_state['input']['field_multi_image_upload']['und'][0]['field_jpg']['und'][0]['fid'];
+    $image_array['pdf'] = $form_state['input']['field_multi_image_upload']['und'][0]['field_pdf']['und'][0]['fid'];
+    $image_array['png'] = $form_state['input']['field_multi_image_upload']['und'][0]['field_png']['und'][0]['fid'];
+    $images = serialize($image_array);
+    // Get Permitted roles
+    $roles_permitted = serialize($permitted_role);
+    // Get Image Resolution
+    $img_resolution = $form_state['input']['field_image_resolution']['und'][0]['image_style'];
+    // Get creation timestamp
+    $created_at = date('Y-m-d h:i:s');
+    // Get category ID
+    $category_id = serialize($form_state['input']['field_image_asset_category']['und']);
+    //DB Insert
+    if(!empty($userid) && !empty($fid) && !empty($category_id) && !empty($roles_permitted)){
+        $nid = db_insert('asset_uploads')
+            ->fields(array(
+                'uid' => $userid,
+                'fid' => $images,
+                'cid' => $category_id,
+                'permitted_roles' => $roles_permitted,
+                'img_resolution' => $img_resolution,
+                'created_at' => $created_at,
+            ))
+            ->execute();
+    }
 }
