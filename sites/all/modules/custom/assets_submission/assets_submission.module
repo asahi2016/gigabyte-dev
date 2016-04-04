@@ -39,6 +39,13 @@ function assets_submission_menu(){
         'file' => 'includes/assets_submission_page.inc',
     );
 
+    $items['partner/update/submission/status'] = array(
+        'page callback' => 'update_submission_status_by_admin', // Render HTML
+        'type' => MENU_CALLBACK,
+        'access callback' => TRUE,
+        'file' => 'includes/assets_submission_page.inc',
+    );
+
     return $items;
 
 }

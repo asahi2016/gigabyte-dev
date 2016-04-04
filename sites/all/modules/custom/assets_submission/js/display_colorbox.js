@@ -96,5 +96,21 @@
 
         });
 
+        $(document).on('click','input[rel="approve"]',function(){
+            var submission_node = $(this).attr('submission-node');
+            var submission_iteration = $(this).attr('submission-iteration');
+            $.post(
+                Drupal.settings.gigabyte.baseUrl + '/partner/update/submission/status',
+                {
+                    node: submission_node,
+                    iteration: submission_iteration,
+                    status: 'approve',
+                    ajax: true
+                },
+                function (response) {
+
+                }
+            );
+        });
     });
 })(jQuery);

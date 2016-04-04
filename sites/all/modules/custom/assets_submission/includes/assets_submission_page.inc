@@ -35,7 +35,6 @@ function update_submission_comment(){
 
        $last_comment_id = db_insert('submission_comments')->fields($data_insert)->execute();
 
-
        $response = array('message' => 'Comment update successfully', 'last_commment' => $last_comment_id);
 
        print json_encode($response);
@@ -44,6 +43,24 @@ function update_submission_comment(){
 
 }
 
+
+function update_submission_status_by_admin(){
+
+    if(isset($_POST['ajax']) && !empty($_POST['ajax']) && $_POST['status'] == 'approve'){
+
+        global $user;
+
+        $node_id = trim($_POST['node']);
+        $submission_id = trim($_POST['iteration']);
+        $submission_status = trim($_POST['status']);
+
+        $response = array('message' => 'Approved successfully');
+
+        print json_encode($response);
+
+    }
+
+}
 
 
 ?>
