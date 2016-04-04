@@ -134,6 +134,17 @@ function bartik_preprocess_node(&$variables) {
 
 }
 
+function bartik_preprocess_views_view(&$vars) {
+    $view = &$vars['view'];
+    // Make sure it's the correct view
+    if ($view->name == 'assets_upload_view') {
+        global $base_url;
+        drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/dataTables.bootstrap.min.js');
+        drupal_add_js($base_url.'/sites/all/modules/custom/asset_upload/js/custom.js');
+        drupal_add_css($base_url.'/sites/all/modules/custom/make_a_request/css/dataTables.bootstrap.min.css');
+    }
+}
+
 /**
  * Override or insert variables into the block template.
  */
