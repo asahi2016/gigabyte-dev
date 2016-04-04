@@ -26,6 +26,7 @@
         $(document).on('click','input[rel="reply"]',function(){
                 var submission_node = $(this).attr('submission-node');
                 var submission_iteration = $(this).attr('submission-iteration');
+                var submission_title = $(this).attr('submission-title');
                 $.cookie("submissionNode", submission_node, {
                     expires : 10,           //expires in 10 days
                 });
@@ -49,14 +50,18 @@
         $(document).on('click','input[rel="admin-reply"]',function(){
             var submission_node = $(this).attr('submission-node');
             var submission_iteration = $(this).attr('submission-iteration');
+            var submission_title = $(this).attr('submission-title');
             $('div.admin-comment').find('input#submission-node').val(submission_node);
             $('div.admin-comment').find('input#submission-iteration').val(submission_iteration);
 
             $.colorbox({onClosed:function(){
+                
                 // open the other colorBox
+                $('.admin-comment-container div.admin-comment').find('h1').text(submission_title);
                 $('.admin-comment-container div.admin-comment').show();
                 var comment_form = $('.admin-comment-container').html();
                 $('.admin-comment-container div.admin-comment').hide();
+
                 $.colorbox({
                     html : comment_form,
                 });
@@ -90,7 +95,9 @@
                     ajax: true
                 },
                 function (response) {
-
+                    alert('Comment Updated Successfully');
+                    $.colorbox.close();
+                    window.location.reload();
                 }
             );
 

@@ -59,6 +59,10 @@
 
             if ($submission->status != 0) {
                 $status = 'Approved';
+            }else{
+                if($admin){
+                    $status = 'Awaiting Reply from PARTNER';
+                }
             }
 
             $submitted = date("F d Y", $node['root'][$nid]->created);
@@ -97,10 +101,10 @@
                         <tr>
                             <td>
                                 <?php if($admin){ ?>
-                                        <input type="button" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" value="Reply" style="display:none;" rel="admin-reply"/>
-                                        <input type="button" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" value="Approve" style="display:none;" rel="approve"/>
+                                        <input type="button" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Reply" style="display:none;" rel="admin-reply"/>
+                                        <input type="button" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Approve" style="display:none;" rel="approve"/>
                                 <?php }else{ ?>
-                                         <input type="button" submission-node="<?php echo $nid?>" value="Reply" style="display:none;" rel="reply"/>
+                                         <input type="button" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Reply" style="display:none;" rel="reply"/>
                                 <?php }?>
                                 <a href="<?php print image_style_url("medium", $img_url); ?>" class="download-image" download>
                                     <input type="button" value="Download"/>
@@ -128,14 +132,17 @@
 <?php if($admin){ ?>
 
 <div class="admin-comment-container">
-<div class="admin-comment" style="display: none;">
+<div class="admin-comment" style="display: none;height: 300px;width:500px" >
+
+    <div style="text-align: center">
      <div class="display-error"></div>
-     <h3></h3>
-    <textarea name="admin-comment" id="admin-comment"></textarea>
+        Reply of <h1></h1>
+    <textarea name="admin-comment" id="admin-comment" style="height: 200px;width:400px"></textarea>
     </br>
     <input type="hidden" id="submission-node" value=""/>
     <input type="hidden" id="submission-iteration" value=""/>
     <input type="button" id="submit-comment" value="Submit"/>
+    </div>
 </div>
 </div>
 
