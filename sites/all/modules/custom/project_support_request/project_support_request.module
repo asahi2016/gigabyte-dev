@@ -25,7 +25,6 @@ function project_support_request_form_webform_client_form_76_alter( &$form, &$fo
                 $field['#attributes']['required'] = false;
     }
 }
-
     $form['#validate'][] = 'project_support_request_form_validation';
     $form['#submit'][] = 'project_support_request_form_submit';
 
@@ -34,17 +33,30 @@ function project_support_request_form_webform_client_form_76_alter( &$form, &$fo
             '#type' => 'button',
             '#value' => t('Reset'),
             '#weight' => 100,
-            '#validate' => array(),
             '#attributes' => array('onclick' => 'this.form.reset(); return false;'),
         );
 
     }
+
+    if(!user_access('administer users')) {
+
+        global $user;
+
+        $user_info = user_load($user->uid);
+        $country_id = $user_info->field_country['und'][0]['tid'];
+        if($country_id == 2){
+            $form['submitted']['country']['#default_value'] = "2|Canada";
+        }
+        else
+        {
+            $form['submitted']['country']['#default_value'] = "1|USA";
+        }
+    }
+
     return $form;
 }
 
 function project_support_request_form_validation(&$form, &$form_state){
-
-    //print_pre($form_state['values'],1);
 
     $first_name = $form_state['values']['submitted']['first_name'];
     $last_name = $form_state['values']['submitted']['last_name'];
@@ -62,15 +74,15 @@ function project_support_request_form_validation(&$form, &$form_state){
     $preferred_motherboard_model = $form_state['values']['submitted']['preferred_motherboard_model'];
     $project_details = $form_state['values']['submitted']['project_details'];
 
-    if(!preg_match('/^[A-Za-z]+$/',$first_name)){
+    if(!preg_match('/^[A-Za-z ]+$/',$first_name)){
         form_set_error('submitted][first_name','First Name Allowed only characters');
     }
 
-    if(!preg_match('/^[A-Za-z]+$/',$last_name)){
+    if(!preg_match('/^[A-Za-z ]+$/',$last_name)){
         form_set_error('submitted][last_name','Last Name Allowed only characters');
     }
 
-    if(!preg_match('/^[A-Za-z]+$/',$job_title)){
+    if(!preg_match('/^[A-Za-z ]+$/',$job_title)){
         form_set_error('submitted][job_title','Company Name Allowed only characters');
     }
 
@@ -78,10 +90,10 @@ function project_support_request_form_validation(&$form, &$form_state){
         form_set_error('submitted][contact_number','Please enter valid contact number');
     }
 
-    if(!preg_match('/^[A-Za-z]+$/',$city)){
+    if(!preg_match('/^[A-Za-z ]+$/',$city)){
         form_set_error('submitted][city','Please enter valid city');
     }
-    if(!preg_match('/^[A-Za-z]+$/',$state)){
+    if(!preg_match('/^[A-Za-z ]+$/',$state)){
         form_set_error('submitted][state','Please enter valid state');
     }
 
@@ -101,72 +113,68 @@ function project_support_request_form_validation(&$form, &$form_state){
 }
 function project_support_request_form_submit($form, &$form_state){
 
-    /*echo '<pre>';
-    echo print_r($form_state);
-    echo '<pre>';
-    exit;*/
+   //drupal_set_message('Request sent successfully, we will contact you soon');
 
 }
 
-
-function project_support_request_errors_reset(&$element){
+function project_support_request_errors_reset(&$element)
+{
 
     // Check for errors and settings
     $errors = form_get_errors();
 
-    if( ! isset( $_SESSION[ 'messages' ] ) ) {
+    if (!isset($_SESSION['messages'])) {
         return;
     }
 
     $reset_errors = array();
 
     // Recurse through all children.
-    foreach( element_children( $element ) as $key ) {
-        if( isset( $element[ $key ] ) && $element[ $key ] ) {
-            $reset_errors += project_support_request_errors_reset( $element[ $key ] );
+    foreach (element_children($element) as $key) {
+        if (isset($element[$key]) && $element[$key]) {
+            $reset_errors += project_support_request_errors_reset($element[$key]);
         }
     }
 
-    $element_id = implode( '][', $element[ '#parents' ] );
+    $element_id = implode('][', $element['#parents']);
 
-    if ( !empty( $errors[ $element_id ] )) {
-        $error_message = $errors[ $element_id ];
+    if (!empty($errors[$element_id])) {
+        $error_message = $errors[$element_id];
 
         // Get error id
-        $error_id = array_search( $error_message, $_SESSION[ 'messages' ][ 'error' ] );
+        $error_id = array_search($error_message, $_SESSION['messages']['error']);
 
-        if( $error_id !== FALSE ) {
-            unset( $_SESSION[ 'messages' ][ 'error' ][ $error_id ] );
-            $_SESSION[ 'messages' ][ 'error' ] = array_values( $_SESSION[ 'messages' ][ 'error' ]  );
+        if ($error_id !== FALSE) {
+            unset($_SESSION['messages']['error'][$error_id]);
+            $_SESSION['messages']['error'] = array_values($_SESSION['messages']['error']);
 
-            if( count( $_SESSION[ 'messages' ][ 'error' ] ) <= 0 ) {
-                unset( $_SESSION[ 'messages' ][ 'error' ] );
+            if (count($_SESSION['messages']['error']) <= 0) {
+                unset($_SESSION['messages']['error']);
             }
 
-            switch($element['#type']){
+            switch ($element['#type']) {
 
                 case 'textfield':
-                    $error_message = str_replace('3. ','',$error_message);
-                    $error_message = str_replace('field is required','cannot be empty',$error_message);
+                    $error_message = str_replace('3. ', '', $error_message);
+                    $error_message = str_replace('field is required', 'cannot be empty', $error_message);
                     break;
                 case 'password_confirm':
-                    $error_message = str_replace('field is required','cannot be empty',$error_message);
+                    $error_message = str_replace('field is required', 'cannot be empty', $error_message);
                     break;
                 case 'checkboxes':
-                    $error_message = str_replace($error_message ,'Please select at least one checkbox',$error_message);
+                    $error_message = str_replace($error_message, 'Please select at least one checkbox', $error_message);
                     break;
                 case 'radio':
-                    $error_message = str_replace($error_message ,'Please select any one option',$error_message);
+                    $error_message = str_replace($error_message, 'Please select any one option', $error_message);
                     break;
                 case 'select':
-                    $error_message = str_replace($error_message ,'Please select any one member type',$error_message);
+                    $error_message = str_replace($error_message, 'Please select any one member type', $error_message);
                     break;
-
             }
 
-            $element[ '#suffix' ] = '<span class="custom-error '.$element[ '#id' ].'" >'.$error_message.'</span>';
+            $element['#suffix'] = '<span class="custom-error ' . $element['#id'] . '" >' . $error_message . '</span>';
 
-            $reset_errors[ $element[ '#id' ] ] = $error_message;
+            $reset_errors[$element['#id']] = $error_message;
         }
     }
 
