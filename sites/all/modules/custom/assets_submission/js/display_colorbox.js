@@ -131,7 +131,9 @@
                     ajax: true
                 },
                 function (response) {
-
+                    alert('Submission status approved Successfully');
+                    $.colorbox.close();
+                    window.location.reload();
                 }
             );
         });
