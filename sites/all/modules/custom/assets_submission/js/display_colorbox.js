@@ -3,7 +3,20 @@
 
         $('#cboxLoadingOverlay').remove();
         $('#cboxLoadingGraphic').remove();
-        
+
+        if($('form#submission-node-form .image-preview img').length > 0){
+            // open the other colorBox
+            $('form#submission-node-form').show();
+            var submission_form = $('form#submission-node-form').parent('div.submission-form').html();
+            $.colorbox({
+                html : submission_form,
+                onClosed:function() {
+                    $.cookie("submissionNode", '');
+                }
+            });
+            $('div.submission-form form#submission-node-form').hide();
+        }
+
         $('a.submission-image').click(function(){
             var ref = $(this).parents('div.group:first-child').html();
             var table_class = $(this).parents('div.group table:first-child').attr('class').split(' ')[0];
