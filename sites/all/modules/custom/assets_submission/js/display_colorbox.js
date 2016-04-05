@@ -1,5 +1,8 @@
 (function ($) {
     $(document).ready(function($) {
+
+        $('#cboxLoadingOverlay').remove();
+        $('#cboxLoadingGraphic').remove();
         
         $('a.submission-image').click(function(){
             var ref = $(this).parents('div.group:first-child').html();
@@ -55,7 +58,7 @@
             $('div.admin-comment').find('input#submission-iteration').val(submission_iteration);
 
             $.colorbox({onClosed:function(){
-                
+
                 // open the other colorBox
                 $('.admin-comment-container div.admin-comment').find('h1').text(submission_title);
                 $('.admin-comment-container div.admin-comment').show();

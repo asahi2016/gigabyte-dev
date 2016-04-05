@@ -95,8 +95,36 @@ function template_preprocess_view_user_submissions(&$variables){
     if($admin){
         $nids = db_query('SELECT nid FROM {node}  WHERE  type = :type', array(':type' => $node_type))->fetchCol();
     }else {
-        $nids = db_query('SELECT nid FROM {node} WHERE uid = :uid AND type = :type', array(':uid' => $uid, ':type' => $node_type))->fetchCol();
+        $user = user_load($uid);
+
+        $gid = $user->field_company_name['und'][0]['target_id'];
+
+        $members_ids = db_query("SELECT og.etid as uid
+            FROM {og_membership} og
+            WHERE og.gid=:gid
+            AND og.group_type=:group_type
+            AND og.entity_type=:entity_type",
+                array(
+                    ':gid' => $gid,
+                    ':entity_type' => 'user',
+                    ':group_type' => 'node',
+                )
+            )->fetchAll();
+
+
+        $mids = array();
+        if($members_ids){
+            foreach ($members_ids as $mid){
+                array_push($mids ,$mid->uid);
+            }
+            $uids = implode(',',$mids);
+        }else{
+            $uids = $uid;
+        }
+
+        $nids = db_query('SELECT nid FROM {node} WHERE uid IN(:uid) AND type = :type', array(':uid' => $uids, ':type' => $node_type))->fetchCol();
     }
+
     if (!empty($nids)) {
         $nodes = node_load_multiple($nids);
     }
@@ -143,7 +171,7 @@ function template_preprocess_view_user_submissions(&$variables){
     }
 
     //print_pre($node_revisions,1);
-    //print_pre($node_revisions,1);
+
     $variables['submissions_lists'] = $node_revisions;
 
     return $variables;
