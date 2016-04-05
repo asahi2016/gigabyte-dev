@@ -192,13 +192,12 @@ function assets_submission_form_submission_node_form_alter(&$form, &$form_state,
    // $form['#attributes']['class'][] = 'group4';
     $form['#prefix'] = '<div class="submission-form">';
     $form['#suffix'] = '</div>';
-
     //print_pre($form['#attributes']['class'],1);
 
 }
 
 
-function assets_submission_node_submit($node, $form, &$form_state) {
+function assets_submission_node_submit($node,&$form, &$form_state) {
 
    // print_pre($node);
 
@@ -230,6 +229,12 @@ function assets_submission_node_submit($node, $form, &$form_state) {
         drupal_set_message(t('@type %title was saved with a new submission', array('@type' => node_type_get_name($new_revision), '%title' => $new_revision->title)));
         unset($_COOKIE['submissionNode']);
         drupal_goto('view/submissions');
+
+    }else{
+
+        if($node->type == 'submission'){
+            $form_state['redirect'] = 'view/submissions';
+        }
     }
    
 }
