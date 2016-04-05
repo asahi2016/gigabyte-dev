@@ -1,5 +1,12 @@
 <?php
 
+function project_support_request_init(){
+
+    drupal_set_message('come');
+    drupal_add_js(drupal_get_path('module', 'custom').'/project_support_request/js/project_request.js');
+
+}
+
 function project_support_request_menu(){
 
     $items['admin/config/project_support']= array(
@@ -26,6 +33,7 @@ function project_support_request_form_webform_client_form_76_alter( &$form, &$fo
     }
 
 }
+    //print_pre($form,1);
     $form['#validate'][] = 'project_support_request_form_validation';
     $form['#submit'][] = 'project_support_request_form_submit';
 
@@ -34,8 +42,8 @@ function project_support_request_form_webform_client_form_76_alter( &$form, &$fo
             '#type' => 'button',
             '#value' => t('Reset'),
             '#weight' => 100,
-            '#validate' => array(),
-            '#attributes' => array('onclick' => 'this.form.reset(); return false;'),
+            '#validate' => array()
+            //'#attributes' => array('onclick' => 'this.form.reset(); return false;'),
         );
 
     }
@@ -65,6 +73,7 @@ function project_support_request_form_validation(&$form, &$form_state){
     $company_name = $form_state['values']['submitted']['company_name'];
     $job_title = $form_state['values']['submitted']['job_title'];
     $contact_number = $form_state['values']['submitted']['contact_number'];
+    $email_address = $form_state['values']['submitted']['email_address'];
     $address_1 = $form_state['values']['submitted']['address_1'];
     $address_2 = $form_state['values']['submitted']['address_2'];
     $city = $form_state['values']['submitted']['city'];
@@ -79,15 +88,12 @@ function project_support_request_form_validation(&$form, &$form_state){
     if(!preg_match('/^[A-Za-z ]+$/',$first_name)){
         form_set_error('submitted][first_name','First Name Allowed only characters');
     }
-
     if(!preg_match('/^[A-Za-z ]+$/',$last_name)){
         form_set_error('submitted][last_name','Last Name Allowed only characters');
     }
-
     if(!preg_match('/^[A-Za-z ]+$/',$job_title)){
         form_set_error('submitted][job_title','Company Name Allowed only characters');
     }
-
     if(!is_numeric($contact_number)) {
         form_set_error('submitted][contact_number','Please enter valid contact number');
     }
@@ -98,13 +104,15 @@ function project_support_request_form_validation(&$form, &$form_state){
     if(!preg_match('/^[A-Za-z ]+$/',$state)){
         form_set_error('submitted][state','Please enter valid state');
     }
-
+    if(!filter_var($email_address, FILTER_VALIDATE_EMAIL)){
+        form_set_error('submitted][email_address','Please enter valid email address');
+    }
     if($country == '2'){
-        if(!preg_match('^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$',$zip_code)){
+        if(!preg_match('/^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$/',$zip_code)){
             form_set_error('submitted][zip_code','Please enter valid Zip code');
         }
         else{
-            if(!preg_match('^\d{5}(-\d{4})?$',$zip_code)){
+            if(!preg_match('/^\d{5}(-\d{4})?$/',$zip_code)){
                 form_set_error('submitted][zip_code','Please enter valid Zip code');
             }
         }
@@ -112,9 +120,7 @@ function project_support_request_form_validation(&$form, &$form_state){
     if(strlen($project_details) > 500 ){
         form_set_error('submitted][project_details','Project details allows maximum 500 characters.');
     }
-
     project_support_request_errors_reset($form);
-
 }
 function project_support_request_form_submit($form, &$form_state){
 
@@ -160,10 +166,7 @@ function project_support_request_errors_reset(&$element)
             switch ($element['#type']) {
 
                 case 'textfield':
-                    $error_message = str_replace(': ', ' ', $error_message);
-                    $error_message = str_replace('field is required', 'cannot be empty', $error_message);
-                    break;
-                case 'password_confirm':
+                    $error_message = str_replace(':', ' ', $error_message);
                     $error_message = str_replace('field is required', 'cannot be empty', $error_message);
                     break;
                 case 'checkboxes':
