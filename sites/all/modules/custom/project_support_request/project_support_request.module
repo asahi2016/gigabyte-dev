@@ -12,18 +12,19 @@ function project_support_request_menu(){
 
 function project_support_request_webform_component_render_alter(&$element, &$component) {
 
-    if ($component['type'] == 'textfield' && $component['required'] == 1 ) {
+    if ($component['type'] = 'textfield' && $component['required'] = 1 ) {
         unset($element['#attributes']['required']);
+        unset($element['#webform_component']['required']);
     }
 }
 
 function project_support_request_form_webform_client_form_76_alter( &$form, &$form_state, $form_id){
 
-    foreach ($form['submitted'] as &$field){
-        if (is_array($field) && isset($field['#required']) && $field['#required'] == 1){
-                    //dsm($field);
-                $field['#attributes']['required'] = false;
+    foreach ($form['#node']->webform['components'] as &$field){
+        if (is_array($field) && isset($field['required']) && $field['#required'] = 1){
+                $field['required'] = false;
     }
+
 }
     $form['#validate'][] = 'project_support_request_form_validation';
     $form['#submit'][] = 'project_support_request_form_submit';
@@ -33,13 +34,14 @@ function project_support_request_form_webform_client_form_76_alter( &$form, &$fo
             '#type' => 'button',
             '#value' => t('Reset'),
             '#weight' => 100,
+            '#validate' => array(),
             '#attributes' => array('onclick' => 'this.form.reset(); return false;'),
         );
 
     }
 
-    if(!user_access('administer users')) {
-
+    if(user_is_logged_in() && !user_access('administer users'))
+    {
         global $user;
 
         $user_info = user_load($user->uid);
@@ -86,7 +88,7 @@ function project_support_request_form_validation(&$form, &$form_state){
         form_set_error('submitted][job_title','Company Name Allowed only characters');
     }
 
-    if(!is_numeric($contact_number) && strlen($contact_number) == 10) {
+    if(!is_numeric($contact_number)) {
         form_set_error('submitted][contact_number','Please enter valid contact number');
     }
 
@@ -97,15 +99,18 @@ function project_support_request_form_validation(&$form, &$form_state){
         form_set_error('submitted][state','Please enter valid state');
     }
 
-    if($country == 'A'){
+    if($country == '2'){
         if(!preg_match('^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$',$zip_code)){
             form_set_error('submitted][zip_code','Please enter valid Zip code');
         }
         else{
             if(!preg_match('^\d{5}(-\d{4})?$',$zip_code)){
-                form_set_error('submitted][zip_code','Please enter valid Postal code');
+                form_set_error('submitted][zip_code','Please enter valid Zip code');
             }
         }
+    }
+    if(strlen($project_details) > 500 ){
+        form_set_error('submitted][project_details','Project details allows maximum 500 characters.');
     }
 
     project_support_request_errors_reset($form);
@@ -155,7 +160,7 @@ function project_support_request_errors_reset(&$element)
             switch ($element['#type']) {
 
                 case 'textfield':
-                    $error_message = str_replace('3. ', '', $error_message);
+                    $error_message = str_replace(': ', ' ', $error_message);
                     $error_message = str_replace('field is required', 'cannot be empty', $error_message);
                     break;
                 case 'password_confirm':
@@ -165,10 +170,10 @@ function project_support_request_errors_reset(&$element)
                     $error_message = str_replace($error_message, 'Please select at least one checkbox', $error_message);
                     break;
                 case 'radio':
-                    $error_message = str_replace($error_message, 'Please select any one option', $error_message);
+                    $error_message = str_replace($error_message, 'Please select any one country', $error_message);
                     break;
                 case 'select':
-                    $error_message = str_replace($error_message, 'Please select any one member type', $error_message);
+                    $error_message = str_replace($error_message, 'Please select any one option', $error_message);
                     break;
             }
 
