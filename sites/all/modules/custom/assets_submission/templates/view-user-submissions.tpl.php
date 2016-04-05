@@ -1,12 +1,12 @@
-<?php if(isset($variables['submissions_lists']) && !empty($variables['submissions_lists'])){
+<?php
+    global $user;
+    $admin = false;
+    if (in_array('administrator', $user->roles)) {
+        $admin = true;
+    }
+?>
 
-        global $user;
-            $admin = false;
-        if (in_array('administrator', $user->roles)) {
-            $admin = true;
-        }
-
-     ?>
+<?php if(isset($variables['submissions_lists']) && !empty($variables['submissions_lists'])){     ?>
 
      <table class="subm_wrap_s">
         <tbody>
