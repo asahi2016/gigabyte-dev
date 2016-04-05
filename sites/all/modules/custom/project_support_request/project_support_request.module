@@ -1,8 +1,8 @@
 <?php
 
 function project_support_request_init(){
-    drupal_add_js(drupal_get_path('module', 'custom').'/project_support_request/js/project_request.js');
 
+    drupal_add_js(drupal_get_path('module', 'custom').'/project_support_request/js/project_request.js');
 }
 
 function project_support_request_menu(){
@@ -22,6 +22,7 @@ function project_support_request_webform_component_render_alter(&$element, &$com
     }
 }
 
+//alter the webform id webform_client_form_76
 function project_support_request_form_webform_client_form_76_alter( &$form, &$form_state, $form_id){
 
     foreach ($form['#node']->webform['components'] as &$field){
@@ -30,7 +31,6 @@ function project_support_request_form_webform_client_form_76_alter( &$form, &$fo
     }
 
 }
-    //print_pre($form,1);
     $form['#validate'][] = 'project_support_request_form_validation';
     $form['#submit'][] = 'project_support_request_form_submit';
 
@@ -62,7 +62,7 @@ function project_support_request_form_webform_client_form_76_alter( &$form, &$fo
 
     return $form;
 }
-
+//validate the project support request form
 function project_support_request_form_validation(&$form, &$form_state){
 
     $first_name = $form_state['values']['submitted']['first_name'];
@@ -114,9 +114,7 @@ function project_support_request_form_validation(&$form, &$form_state){
             }
         }
     }
-    if(strlen($project_details) > 500 ){
-        form_set_error('submitted][project_details','Project details allows maximum 500 characters.');
-    }
+   
     project_support_request_errors_reset($form);
 }
 function project_support_request_form_submit($form, &$form_state){
@@ -171,10 +169,19 @@ function project_support_request_errors_reset(&$element)
                     $error_message = str_replace('field is required', 'cannot be empty', $error_message);
                     break;
                 case 'radio':
-                    $error_message = str_replace($error_message, 'Please select any one country', $error_message);
+                    $error_message = str_replace($error_message, 'Please select your country', $error_message);
                     break;
                 case 'select':
-                    $error_message = str_replace($error_message, 'Please select any one option', $error_message);
+
+                    switch($element['#id']) {
+                        case 'edit-submitted-project-type':
+                            $error_message = str_replace($error_message, 'Please select your project type', $error_message);
+                            break;
+                        case 'edit-submitted-unit-price-range':
+                            $error_message = str_replace($error_message, 'Please select your unit price range', $error_message);
+                            break;
+                    }
+
                     break;
             }
 

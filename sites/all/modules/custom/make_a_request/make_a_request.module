@@ -159,7 +159,7 @@ function make_a_request_form_submit($form,&$form_state){
             );
         drupal_mail('make_a_request', 'make_a_request_mail', $to_admin, language_default(), $params, $from_user,TRUE);
 
-        drupal_set_message('<p>'.t('Request sent successfully, we will contact you soon.').'</p>');
+        drupal_set_message('<p>'.t('Thank you for your request. A Gigabyte representative will be contacting you soon.').'</p>');
 }
     else{
         drupal_set_message(t('<p>Admin cannot send request to admin.</p>'), 'error');
