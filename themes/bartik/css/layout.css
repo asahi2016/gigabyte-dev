@@ -1003,3 +1003,10 @@ float:left;}
 .view-assets-upload-view .view-content .views-table .views-field-title{width:80px;}
 .view-assets-upload-view .view-content .views-table .views-field-field-image-asset-category{width:180px;}
 .view-assets-upload-view .view-content .views-table .views-field-field-jpg{width:250px;float:left;}
+
+.user-submissions .group{
+    display: none;
+}
+.user-submissions .group:first-child{
+    display: block;
+}

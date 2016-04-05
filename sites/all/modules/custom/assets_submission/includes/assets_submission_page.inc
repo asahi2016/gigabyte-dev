@@ -54,16 +54,12 @@ function update_submission_status_by_admin(){
         $submission_id = trim($_POST['iteration']);
         $submission_status = trim($_POST['status']);
 
-
         $nids = array();
-        // Load all nodes in one go for better performance.
-        $nodes = node_load_multiple($node_id);
-        foreach ($nodes as $node) {
-            // set status property to 1
-            $node->status = 1;
-            // re-save the node
-            node_save($node);
-        }
+        $node = node_load($node_id, $submission_id);
+        $node->status = 1;
+        $node->is_pending = 0;
+        $node->revision_moderation = 0;
+        node_save($node);
 
         $response = array('message' => 'Approved successfully');
 
