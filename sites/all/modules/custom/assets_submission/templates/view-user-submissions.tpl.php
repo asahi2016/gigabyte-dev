@@ -54,7 +54,7 @@
 
             $status = 'Awaiting Reply from GIGABYTE';
 
-            $description = $submission->node->body['und'][0]['value'];
+            $description = isset($submission->node->body['und'][0]['value'])?$submission->node->body['und'][0]['value']:'';
             $last_comment = $submission->comment['comment'];
 
             if ($submission->status != 0) {
