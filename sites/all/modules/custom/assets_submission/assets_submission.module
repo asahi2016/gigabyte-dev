@@ -122,7 +122,7 @@ function template_preprocess_view_user_submissions(&$variables){
             $uids = $uid;
         }
 
-        $nids = db_query('SELECT nid FROM {node} WHERE uid IN(:uid) AND type = :type', array(':uid' => $uids, ':type' => $node_type))->fetchCol();
+        $nids = db_query('SELECT nid FROM {node} WHERE uid IN(:uid) AND type = :type ORDER BY nid DESC', array(':uid' => $uids, ':type' => $node_type))->fetchCol();
     }
 
     if (!empty($nids)) {
