@@ -911,7 +911,7 @@ display: inline-block;
 .view-assets-upload-view .views-field-field-multi-image-upload ul li,.view-assets-upload-view .views-field-field-image-asset-category ul li{width:auto;}
 .view-assets-upload-view .views-table tr{float:left;padding:0px;}
 .view-assets-upload-view .views-table th{min-height:18px;}
-.view-assets-upload-view .views-table td{padding:10px 20px;border-right:1px solid #fff;border-left:1px solid #fff;}
+.view-assets-upload-view .views-table td{padding:10px 20px;border-left:1px solid #fff;}
 .view-assets-upload-view .views-table td table td{border:0px;}
 .view-assets-upload-view .views-table th.views-field-edit-node,.view-assets-upload-view .views-table th.views-field-delete-node,
 .view-assets-upload-view .views-table td.views-field-edit-node,.view-assets-upload-view .views-table td.views-field-delete-node{clear:inherit}
@@ -939,3 +939,67 @@ display: inline-block;
 #block-webform-client-block-76 .captcha div.g-recaptcha{margin:0 0 20px 20px}
 
 td#join a{margin:0 15px 0 0}
+
+#field-jpg-add-more-wrapper{float:left;width:100%;}
+#field-jpg-add-more-wrapper .field-name-field-dimension-jpg,#field-jpg-add-more-wrapper .field-name-field-resolution-jpg,#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg{float:left;}
+#field-jpg-add-more-wrapper .field-name-field-resolution-jpg label{margin:0 0 0 20px;}
+#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .fieldset-legend{font-family:Arial,Helvetica,sans-serif;color:#000;font-weight:normal;}
+#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper{margin-top:0px;width:auto;border-bottom:0px;}
+#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg fieldset.form-wrapper{border-bottom:0px;}
+#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .form-item,#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper label,
+#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget,#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .description,
+#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .form-item{float:left;}
+#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget .form-select,#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget span{
+float:left;}
+#field-jpg-add-more-wrapper .fieldset-wrapper{float:left;margin-top:20px;}
+#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget span.file a,#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget span.file img{float:left;}
+#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget span.file a{width:180px;}
+#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget .form-select{margin:0 15px 0 15px}
+#field-jpg-add-more-wrapper .form-item .form-text{width:175px;}
+#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .description,#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget{clear:both;}
+#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper label{display:none;}
+#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .description{margin:15px 0px 0px;}
+
+#field-png-add-more-wrapper{float:left;width:100%;}
+#field-png-add-more-wrapper .field-name-field-dimension-png,#field-png-add-more-wrapper .field-name-field-resolution-png,#field-png-add-more-wrapper .field-name-field-upload-image-png{float:left;}
+#field-png-add-more-wrapper .field-name-field-resolution-png label{margin:0 0 0 20px;}
+#field-png-add-more-wrapper .field-name-field-upload-image-png .fieldset-legend{font-family:Arial,Helvetica,sans-serif;color:#000;font-weight:normal;}
+#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper{margin-top:0px;width:auto;border-bottom:0px;}
+#field-png-add-more-wrapper .field-name-field-upload-image-png fieldset.form-wrapper{border-bottom:0px;}
+#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .form-item,#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper label,
+#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget,#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .description,
+#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .form-item{float:left;}
+#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget .form-select,#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget span{
+float:left;}
+#field-png-add-more-wrapper .fieldset-wrapper{float:left;margin-top:20px;}
+#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget span.file a,#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget span.file img{float:left;}
+#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget span.file a{width:180px;}
+#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget .form-select{margin:0 15px 0 15px}
+#field-png-add-more-wrapper .form-item .form-text{width:175px;}
+#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .description,#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget{clear:both;}
+#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper label{display:none;}
+#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .description{margin:15px 0px 0px;}
+
+#field-pdf-add-more-wrapper{float:left;width:100%;}
+#field-pdf-add-more-wrapper .field-name-field-upload-image-pdf .form-wrapper .description{margin:15px 0px 0px;}
+#field-pdf-add-more-wrapper .form-wrapper .form-item{width: 540px; float: right;}
+#field-pdf-add-more-wrapper .form-wrapper .file-widget .form-file,#field-pdf-add-more-wrapper .form-wrapper .file-widget .form-submit{float:left;}
+#field-pdf-add-more-wrapper .form-wrapper .file-widget span.file a,#field-pdf-add-more-wrapper .form-wrapper .file-widget span.file img,#field-pdf-add-more-wrapper .form-wrapper .file-widget span.file-size{float:left;}
+#field-pdf-add-more-wrapper .form-wrapper .file-widget span.file a{width:180px;}
+#field-pdf-add-more-wrapper .form-wrapper .file-widget span.file-size{margin:0 15px;}
+
+.view-assets-upload-view  > .view-content{width:1100px;float:left;}
+.view-assets-upload-view  .view-content .views-table{width:100%;float:left;}
+.view-assets-upload-view  .view-content .views-table table{width:225px;}
+.view-assets-upload-view  .view-content .views-table table th,.view-assets-upload-view  .view-content .views-table table td{width:90px;}
+.view-assets-upload-view  .view-content .views-table table td .file img,.view-assets-upload-view  .view-content .views-table table td .file a{float:left;}
+.view-assets-upload-view  .view-content .views-table table td .file a{float:left;margin: 0 0 0 10px;width: 60px;}
+.view-assets-upload-view  .view-content .views-table th,.view-assets-upload-view  .view-content .views-table td{padding:10px 10px;}
+.view-assets-upload-view .view-content .dataTables_length{float:left;}
+.view-assets-upload-view .view-content .dataTables_filter,.view-assets-upload-view .view-content .dataTables_paginate{float:right;}
+.view-assets-upload-view .view-content .dataTables_info{float:left;margin:0 10px;}
+.view-assets-upload-view .view-content .views-table tr{width:100%;float:left;}
+.view-assets-upload-view .view-content .views-table tr th{float:left;}
+.view-assets-upload-view .view-content .views-table .views-field-title{width:80px;}
+.view-assets-upload-view .view-content .views-table .views-field-field-image-asset-category{width:180px;}
+.view-assets-upload-view .view-content .views-table .views-field-field-jpg{width:250px;float:left;}
