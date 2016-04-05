@@ -59,6 +59,7 @@ function update_submission_status_by_admin(){
         $node->status = 1;
         $node->is_pending = 0;
         $node->revision_moderation = 0;
+        $node->changed = time();
         node_save($node);
 
         $response = array('message' => 'Approved successfully');
