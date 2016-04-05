@@ -1,8 +1,14 @@
 (function ($) {
     $(document).ready(function($) {
 
-        $('#cboxLoadingOverlay').remove();
-        $('#cboxLoadingGraphic').remove();
+        $(document).on('click','#colorbox' , function () {
+            $('#cboxLoadingOverlay').remove();
+            $('#cboxLoadingGraphic').remove();
+        });
+
+        $(document).on('click','.download-image', function() {
+            $(this).trigger('click');
+        });
 
         if($('form#submission-node-form .image-preview img').length > 0){
             // open the other colorBox

@@ -51,6 +51,8 @@
             foreach($node['submissions'] as $rid => $submission) {
 
             $img_url = $submission->node->field_submission_image['und'][0]['uri'];
+            $img_original_url = file_create_url($img_url);
+
 
             $status = 'Awaiting Reply from GIGABYTE';
 
@@ -66,7 +68,7 @@
             }
 
             $submitted = date("F d Y", $node['root'][$nid]->created);
-            $updated = date("F d Y", $submission->node->created);
+            $updated = date("F d Y", $submission->node->changed);
 
             ?>
                 <div class="group" >
@@ -106,7 +108,7 @@
                                 <?php }else{ ?>
                                          <input type="button" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Reply" style="display:none;" rel="reply"/>
                                 <?php }?>
-                                <a href="<?php print image_style_url("medium", $img_url); ?>" class="download-image" download>
+                                <a href="<?php print $img_original_url; ?>" class="download-image" download>
                                     <input type="button" value="Download"/>
                                 </a>
                             </td>
