@@ -3,6 +3,8 @@
 
 
 function asset_upload_form_tools_assets_logos_node_form_alter(&$form, &$form_state, $form_id){
+    // Remove preview button
+    unset($form['actions']['preview']);
     // Get the system roles.
     $roles = user_roles(FALSE, NULL);
     unset($roles[3], $roles[4], $roles[1], $roles[2]);
@@ -25,7 +27,7 @@ function asset_upload_form_tools_assets_logos_node_form_alter(&$form, &$form_sta
 }
 
 function save_asset_permissions(&$form, &$form_state){
-    //print_pre($form_state['input'],1);
+   /* //print_pre($form_state['input'],1);
     $permitted = $form_state['input']['trc_user_roles'];
     $permitted_role = array();
     foreach($permitted as $permit){
@@ -61,6 +63,7 @@ function save_asset_permissions(&$form, &$form_state){
                 'img_resolution' => $img_resolution,
                 'created_at' => $created_at,
             ))
-            ->execute();
-    }
+            ->execute();*/
+    //}
+
 }

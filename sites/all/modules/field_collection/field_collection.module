@@ -960,7 +960,6 @@ function field_collection_field_widget_form(&$form, &$form_state, $field, $insta
         if (empty($field_collection_item)) {
           $field_collection_item = entity_create('field_collection_item', array('field_name' => $field_name));
           $field_collection_item->setHostEntity($element['#entity_type'], $element['#entity']);
-          //var_dump($field_collection_item->setHostEntity($element['#entity_type'], $element['#entity']));
         }
 
         // Put our entity in the form state, so FAPI callbacks can access it.
