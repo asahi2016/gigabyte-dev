@@ -93,7 +93,7 @@ function template_preprocess_view_user_submissions(&$variables){
     }
 
     if($admin){
-        $nids = db_query('SELECT nid FROM {node}  WHERE  type = :type', array(':type' => $node_type))->fetchCol();
+        $nids = db_query('SELECT nid FROM {node}  WHERE  type = :type ORDER BY nid DESC', array(':type' => $node_type))->fetchCol();
     }else {
         $user = user_load($uid);
 
