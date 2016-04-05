@@ -548,6 +548,23 @@ function group_registration_user_insert(&$edit, $account, $category){
 
             unset($_SESSION['new_group_name']);
         }
+    }else{
+
+        $gid = $account->field_company_name['und'][0]['target_id'];
+
+        //print_pre($account,1);
+        $user_account = user_load($account->uid);
+
+        $values = array(
+            "entity_type" => 'user',
+            "entity" => $user_account,
+            "state" => OG_STATE_ACTIVE,
+        );
+
+        $og_membership = og_group('node', $gid , $values, TRUE);
+      
+        // Changes the users role in the group (1 = non-member, 2 = member, 3 = administrator member)
+        og_role_grant('node', $gid, $account->uid, 2);
     }
 }
 
