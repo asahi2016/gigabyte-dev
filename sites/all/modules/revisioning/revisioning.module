@@ -554,7 +554,7 @@ function revisioning_node_presave($node) {
     $node->current_status  = $node->status;
     $node->current_title   = $node->title;
     $node->current_promote = $node->promote;
-    $node->current_sticky  = $node->sticky;
+    $node->current_sticky  = isset($node->sticky)? $node->sticky : 0 ;
     $node->current_comment = isset($node->comment) ? $node->comment : 0;
     return;
   }
