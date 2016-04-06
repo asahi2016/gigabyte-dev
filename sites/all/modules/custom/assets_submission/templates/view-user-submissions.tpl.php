@@ -53,7 +53,6 @@
             $img_url = $submission->node->field_submission_image['und'][0]['uri'];
             $img_original_url = file_create_url($img_url);
 
-
             $status = 'Awaiting Reply from GIGABYTE';
 
             $description = isset($submission->node->body['und'][0]['value'])?$submission->node->body['und'][0]['value']:'';
@@ -62,7 +61,7 @@
             if ($submission->status != 0) {
                 $status = 'Approved';
             }else{
-                if($admin){
+                if($last_comment){
                     $status = 'Awaiting Reply from PARTNER';
                 }
             }

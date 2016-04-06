@@ -155,6 +155,7 @@ function template_preprocess_view_user_submissions(&$variables){
 
             $node_revisions[$nid]['submissions'][$rid]->comment = $comment;
 
+            ksort($node_revisions[$nid]['submissions']);
             //print_pre($revision);
 
             /*$vid = $revision->vid;
@@ -224,6 +225,8 @@ function assets_submission_node_submit($node,&$form, &$form_state) {
 
         // Save the new revision first
         node_save($new_revision);
+        
+        
 
         watchdog('content', '@type: reverted %title submission %revision.', array('@type' => $new_revision->type, '%title' => $new_revision->title, '%revision' => $new_revision->vid));
         drupal_set_message(t('@type %title was saved with a new submission', array('@type' => node_type_get_name($new_revision), '%title' => $new_revision->title)));
