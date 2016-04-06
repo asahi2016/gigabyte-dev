@@ -122,7 +122,7 @@ function template_preprocess_view_user_submissions(&$variables){
         $args = get_clean_url($query);
     }
 
-    print_pre($args);
+   // print_pre($args);
 
 
     $nodes = array();
