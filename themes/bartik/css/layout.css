@@ -898,7 +898,7 @@ display: inline-block;
 .field-name-field-multi-image-upload .field-add-more-submit{clear:boht;float:left;margin:15px 0px;}
 .field-multiple-table .form-submit{float: right; margin: 0 20px 0 0;  width: 120px;}
 .field-multiple-table img.file-icon{float:left;margin:2px 5px 0px 0px;}
-.view-assets-upload-view{width:800px;float:left;}
+.view-assets-upload-view{float:left;}
 .view-assets-upload-view .views-table{width:925px;float:left;}
 .view-assets-upload-view .views-table th{padding:10px 20px;border-right:1px solid #fff;text-align:center;}
 .view-assets-upload-view .views-table th.views-field-title,.view-assets-upload-view .views-table td.views-field-title{width:120px;float:left;}
@@ -957,8 +957,11 @@ float:left;}
 #field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget .form-select{margin:0 15px 0 15px}
 #field-jpg-add-more-wrapper .form-item .form-text{width:175px;}
 #field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .description,#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget{clear:both;}
+#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg{float:left;width:auto;margin:0px;}
+#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg label{float:left;width:auto;margin:0px;}
 #field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper label{display:none;}
 #field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .description{margin:15px 0px 0px;}
+#field-jpg-add-more-wrapper .form-wrapper .file-widget .form-submit{margin:0px;}
 
 #field-png-add-more-wrapper{float:left;width:100%;}
 #field-png-add-more-wrapper .field-name-field-dimension-png,#field-png-add-more-wrapper .field-name-field-resolution-png,#field-png-add-more-wrapper .field-name-field-upload-image-png{float:left;}
@@ -979,16 +982,17 @@ float:left;}
 #field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .description,#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget{clear:both;}
 #field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper label{display:none;}
 #field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .description{margin:15px 0px 0px;}
+#field-png-add-more-wrapper .form-wrapper .file-widget .form-submit{margin:0px;}
 
 #field-pdf-add-more-wrapper{float:left;width:100%;}
 #field-pdf-add-more-wrapper .field-name-field-upload-image-pdf .form-wrapper .description{margin:15px 0px 0px;}
 #field-pdf-add-more-wrapper .form-wrapper .form-item{width: 540px; float: right;}
-#field-pdf-add-more-wrapper .form-wrapper .file-widget .form-file,#field-pdf-add-more-wrapper .form-wrapper .file-widget .form-submit{float:left;}
+#field-pdf-add-more-wrapper .form-wrapper .file-widget .form-file,#field-pdf-add-more-wrapper .form-wrapper .file-widget .form-submit{float:left;margin:0px;}
 #field-pdf-add-more-wrapper .form-wrapper .file-widget span.file a,#field-pdf-add-more-wrapper .form-wrapper .file-widget span.file img,#field-pdf-add-more-wrapper .form-wrapper .file-widget span.file-size{float:left;}
 #field-pdf-add-more-wrapper .form-wrapper .file-widget span.file a{width:180px;}
 #field-pdf-add-more-wrapper .form-wrapper .file-widget span.file-size{margin:0 15px;}
 
-.view-assets-upload-view  > .view-content{width:1100px;float:left;}
+.view-assets-upload-view  > .view-content{width:1100px;float:left;margin:50px 0px 0px;}
 .view-assets-upload-view  .view-content .views-table{width:100%;float:left;}
 .view-assets-upload-view  .view-content .views-table table{width:225px;}
 .view-assets-upload-view  .view-content .views-table table th,.view-assets-upload-view  .view-content .views-table table td{width:90px;}
@@ -1003,7 +1007,9 @@ float:left;}
 .view-assets-upload-view .view-content .views-table .views-field-title{width:80px;}
 .view-assets-upload-view .view-content .views-table .views-field-field-image-asset-category{width:180px;}
 .view-assets-upload-view .view-content .views-table .views-field-field-jpg{width:250px;float:left;}
-
+.node-tools_assets_logos-form .messages.error{float:left;width:90%;}
+.node-tools_assets_logos-form .messages.error li{margin:0px;}
+.node-tools_assets_logos-form .form-submit{margin:0 80px 0 0;}
 .user-submissions .group{
     display: none;
 }
