@@ -4,36 +4,66 @@
     if (in_array('administrator', $user->roles)) {
         $admin = true;
     }
+
+    if(isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])) {
+        $query = urldecode($_SERVER['QUERY_STRING']);
+        $args = get_clean_url($query);
+    }
+
+
 ?>
 
 <?php if(isset($variables['submissions_lists']) && !empty($variables['submissions_lists'])){     ?>
 
-     <table class="subm_wrap_s">
+     <table class="subm_wrap_s" id="submission-filters">
         <tbody>
         <tr>
             <td>Filter:</td>
             <td>
-                <input id="Checkbox1" type="checkbox" /> Awaiting Reply from Partner
-                <input id="Checkbox1" type="checkbox" /> Approved
+                <input id="partner" type="checkbox" value="partner" <?php  echo isset($args['partner'])? !empty($args['partner']) ?  'checked' : '' :''?>/> Awaiting Reply from Partner
+                <input id="approved" type="checkbox" value="approved" <?php echo isset($args['approved'])? !empty($args['approved']) ?  'checked' : '' :''?>/> Approved
             </td>
         </tr>
         <tr>
             <td></td>
             <td>
-                Submitted:
-                <select id="Select1">
-                    <option>From New to Old</option>
-                    <option>From Old to New</option>
+                <?php
+
+                $date_filter = array('all'=> 'All', 'submitted' => 'Submitted' , 'updated' => 'Updated');
+                ?>
+                Filter By:
+                <select id="date-filter">
+                    <?php
+                        $selected = '';
+                        foreach ($date_filter as $dkey => $dlabel) {
+                            if (isset($args['filter']) && ($dkey == $args['filter'])) {
+                                $selected = 'selected = selected';
+                            }else{
+                                $selected = '';
+                            }
+                            ?>
+                           <option value="<?php echo $dkey;?>" <?php echo $selected;?> ><?php echo $dlabel;?></option>
+                    <?php } ?>
                 </select>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>
-                Updated:
-                <select id="Select1">
-                    <option>From New to Old</option>
-                    <option>From Old to New</option>
+                Sort By:
+                <select id="date-sort">
+                    <?php
+                    $sselected = '';
+                    $sort_filter = array('DESC' => 'Descending','ASC' => 'Ascending');
+                    foreach ($sort_filter as $skey => $slabel) {
+                        if (isset($args['sort']) && ($skey == $args['sort'])) {
+                            $sselected = 'selected = selected';
+                        }else{
+                            $sselected = '';
+                        }
+                        ?>
+                        <option value="<?php echo $skey;?>" <?php echo $sselected;?> ><?php echo $slabel;?></option>
+                    <?php } ?>
                 </select>
             </td>
         </tr>
@@ -66,7 +96,9 @@
                 }
             }
 
-            $submitted = date("F d Y", $node['root'][$nid]->created);
+            //print_pre($submission,1);
+
+            $submitted = date("F d Y", $submission->node->created);
             $updated = date("F d Y", $submission->node->changed);
 
             ?>
@@ -74,44 +106,44 @@
                     <table class="submission-lists-<?php echo $nid;?>" id="subContent<?php echo $nid;?><?php echo $i;?>" nodeId="<?php echo $nid;?>" nodeIndex="<?php echo $i;?>">
                         <tbody>
                         <tr>
-                            <td rowspan="4" class="w300">
+                            <td rowspan="4" class="w300 td_img">
                                 <a href="javascript:void(0);" class="submission-image">
                                     <img src="<?php print image_style_url("medium", $img_url); ?>"/>
                                 </a>
                             </td>
                             <td class="f_size20 f_w_700"><?php print $submission->title; ?></td>
                         </tr>
-                        <tr class="v_align">
-                            <td class="f_w_700">
-                                Status: <span class="cblue"><?php print  $status; ?></span>
+                        <tr>
+                            <td class="f_w_700 td_left" valign="top">
+                                <p>Status: <span class="cblue"><?php print  $status; ?></span></p>
                             </td>
-                            <td class="f_w_700">
-                                Submitted: <span class="f_w_400"><?php print $submitted; ?></span>
-                                <br/>
-                                Updated: <span class="f_w_400"><?php print $updated; ?></span>
-                            </td>
-                        </tr>
-                        <tr class="v_align">
-                            <td>Description:<br/>
-                                <span><?php print $description; ?></span>
-                            </td>
-                            <td>Latest Comments:<br/>
-                                <span><?php print $last_comment; ?></span>
+                            <td class="f_w_700 td_right" valign="top">
+                                <p>Submitted: <span class="f_w_400"><?php print $submitted; ?></span></p>
+                                <p>Updated: <span class="f_w_400"><?php print $updated; ?></span></p>
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td valign="top" class="f_w_700 td_left">
+                                <p>Description:</p>
+                                <p><span class="descrip_td"><?php print $description; ?></span></p>
+                            </td>
+                            <td valign="top" class="f_w_700 td_right">
+                                <p>Latest Comments:</p>
+                                <p><span class="descrip_td"><?php print $last_comment; ?></span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
                                 <?php if($admin){ ?>
-                                        <input type="button" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Reply" style="display:none;" rel="admin-reply"/>
-                                        <input type="button" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Approve" style="display:none;" rel="approve"/>
+                                        <input type="button" class="btn btn-info" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Reply" style="display:none;" rel="admin-reply"/>
+                                        <input type="button" class="btn btn-success" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Approve" style="display:none;" rel="approve"/>
                                 <?php }else{ ?>
-                                         <input type="button" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Reply" style="display:none;" rel="reply"/>
+                                         <input type="button" class="btn btn-info" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Reply" style="display:none;" rel="reply"/>
                                 <?php }?>
                                 <a href="<?php print $img_original_url; ?>" class="download-image" download>
-                                    <input type="button" value="Download"/>
+                                    <input type="button" value="Download" class="form-submit"/>
                                 </a>
                             </td>
-                            <td></td>
                         </tr>
                         </tbody>
                     </table>
@@ -133,7 +165,7 @@
 <?php if($admin){ ?>
 
 <div class="admin-comment-container">
-<div class="admin-comment" style="display: none;height: 300px;width:500px" >
+<div class="admin-comment" style="display: none;height: 320px;width:500px" >
 
     <div style="text-align: center">
      <div class="display-error"></div>
@@ -142,7 +174,7 @@
     </br>
     <input type="hidden" id="submission-node" value=""/>
     <input type="hidden" id="submission-iteration" value=""/>
-    <input type="button" id="submit-comment" value="Submit"/>
+    <input type="button" id="submit-comment" class="form-submit" value="Submit" style="float:inherit"/>
     </div>
 </div>
 </div>

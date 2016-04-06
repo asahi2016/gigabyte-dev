@@ -48,8 +48,13 @@ body,
   min-width: 100%;
 }
 .w300{width:300px;}
+.m_top30{margin-top:30px;}
 a{color: #337ab7;text-decoration: none;}
-.f_w_700{font-weight: 700;}
+.f_w_700 {font-weight: 700;}
+.f_size20 {font-size: 20px;}
+.cblue{color:#0000FF;}
+.v_align {vertical-align: baseline;}
+.f_w_400 {font-weight: 400;}
 #header div.section,
 #featured div.section,
 #top_content div.section,
@@ -1016,3 +1021,69 @@ float:left;}
 .user-submissions .group:first-child{
     display: block;
 }
+#new-submission{
+    background:#286090;
+    padding:4px 10px;
+    color:#fff;
+    border-radius:2px;
+    font-size:15px;
+    cursor:pointer;
+    border:0px;
+    float:right;
+}
+.submission-form{
+    float:left;
+    width:100%;
+}
+.user-submissions table{margin:30px 0px 0px;float:left;border:1px solid #eee;border-spacing: 10px;border-collapse: separate;}
+.user-submissions table td{color:#333333}
+.user-submissions table td img{padding:0 20px 0px 0px;}
+.user-submissions table td p{font-size:14px;margin:0 0 5px 0px;}
+.user-submissions table td p span{font-size:12px;}
+.descrip_td{font-weight: 400;margin:5px 0px 0px;float:left;}
+.user-submissions table td input.form-submit{width:130px;float:left;}
+.btn-success{
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.btn-info {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+.btn{
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.page-view-submissions #cboxLoadedContent table td a{float:left;}
+.page-view-submissions #cboxLoadedContent table td a .form-submit{
+    width: auto;
+    margin: 2px 5px 0px 0px;
+    padding: 6px 10px 6px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+.page-view-submissions #cboxLoadedContent table td.td_img.w300{width:200px;padding:0 20px 0px 0px;}
+.page-view-submissions #cboxLoadedContent table td.td_left{width:200px;float:left;padding: 0 20px 0 0}
+.page-view-submissions table td.td_left,.page-view-submissions table td.td_right{width:350px;float:left;}
+.page-view-submissions #cboxLoadedContent table td.td_right{width:200px;float:left;}
+.page-view-submissions #cboxLoadedContent table td .btn,.page-view-submissions #cboxLoadedContent table td a{margin:20px 0px 0px;}
+#cboxLoadedContent{overflow: hidden!important;}

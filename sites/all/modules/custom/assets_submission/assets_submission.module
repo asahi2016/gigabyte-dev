@@ -78,12 +78,52 @@ function assets_submission_block_view_alter(&$data, $block) {
 
 }
 
+function get_clean_url($str) {
+    # result array
+    $arr = array();
+
+    # split on outer delimiter
+    $pairs = explode('&', $str);
+
+    # loop through each pair
+    foreach ($pairs as $i) {
+        # split into name and value
+        list($name,$value) = explode('=', $i, 2);
+
+        # if name already exists
+        if( isset($arr[$name]) ) {
+            # stick multiple values into an array
+            if( is_array($arr[$name]) ) {
+                $arr[$name][] = $value;
+            }
+            else {
+                $arr[$name] = array($arr[$name], $value);
+            }
+        }
+        # otherwise, simply stick it in a scalar
+        else {
+            $arr[$name] = $value;
+        }
+    }
+
+    # return result array
+    return $arr;
+}
 
 function template_preprocess_view_user_submissions(&$variables){
 
     global $user;
     $uid = $user->uid;
     $node_type = 'submission';
+
+    $args = array();
+    if(isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])) {
+        $query = urldecode($_SERVER['QUERY_STRING']);
+        $args = get_clean_url($query);
+    }
+
+    print_pre($args);
+
 
     $nodes = array();
 
@@ -93,7 +133,7 @@ function template_preprocess_view_user_submissions(&$variables){
     }
 
     if($admin){
-        $nids = db_query('SELECT nid FROM {node}  WHERE  type = :type ORDER BY nid DESC', array(':type' => $node_type))->fetchCol();
+        $nids = db_query('SELECT nid FROM {node} WHERE type = :type ORDER BY nid DESC', array(':type' => $node_type))->fetchCol();
     }else {
         $user = user_load($uid);
 
@@ -122,7 +162,34 @@ function template_preprocess_view_user_submissions(&$variables){
             $uids = $uid;
         }
 
-        $nids = db_query('SELECT nid FROM {node} WHERE uid IN(:uid) AND type = :type ORDER BY nid DESC', array(':uid' => $uids, ':type' => $node_type))->fetchCol();
+
+        if(isset($args) && !empty($args)){
+
+            $order_by = array();
+            $order_by['field'] = 'created';
+            $order_by['sort'] = 'ASC';
+
+            if(!empty($args['filter']) && !empty($args['sort'])){
+
+                $order_by['sort'] = $args['sort'];
+
+                if($args['filter'] == 'submitted'){
+                    $order_by['field'] = 'created';
+                }else if ($args['filter'] == 'updated'){
+                    $order_by['field'] = 'changed';
+                }else{
+                    $order_by['field'] = 'nid';
+                }
+            }
+
+            //print_pre($order_by,1);
+
+            $nids = db_query('SELECT nid FROM {node} WHERE uid IN(:uid) AND type = :type ORDER BY :field :sort', array(':uid' => $uids, ':type' => $node_type , ':field' => $order_by['field'] , ':sort' => $order_by['sort']))->fetchCol();
+
+        }else{
+            $nids = db_query('SELECT nid FROM {node} WHERE uid IN(:uid) AND type = :type ORDER BY nid DESC', array(':uid' => $uids, ':type' => $node_type))->fetchCol();
+        }
+
     }
 
     if (!empty($nids)) {
@@ -147,7 +214,7 @@ function template_preprocess_view_user_submissions(&$variables){
         foreach ($revisions['submissions'] as $rid => $revision) {
 
             $node_revisions[$nid]['submissions'][$rid]->node = node_load($nid , $rid);
-            $node_revisions[$nid]['submissions'][$rid]->user = user_load_multiple(array($revision->uid));
+            //$node_revisions[$nid]['submissions'][$rid]->user = user_load_multiple(array($revision->uid));
 
             //Get Last comment of submission iteration
             $comment = db_query('SELECT * FROM {submission_comments} WHERE nid = :nid AND sid = :sid ORDER BY comment_id DESC LIMIT 1',
@@ -156,22 +223,16 @@ function template_preprocess_view_user_submissions(&$variables){
             $node_revisions[$nid]['submissions'][$rid]->comment = $comment;
 
             ksort($node_revisions[$nid]['submissions']);
-            //print_pre($revision);
 
-            /*$vid = $revision->vid;
-            if ($vid == $revision->current) {
-                $title = $revision->title;
-                $published = $revision->status;
-            }
-            // No text next to check boxes (see below).
-            $revision_ids[$vid] = '';
-            $base_url = "node/$nid/revisions/$vid";*/
         }
 
         $node_revisions[$nid]['root']['comment'] = comment_load($node_revisions[$nid]['root'][$nid]->cid);
     }
 
-    //print_pre($node_revisions,1);
+
+
+    //print_pre($node_revisions[98]['submissions'][99]->node);
+    //print_pre($node_revisions[98]['root'][98],1);
 
     $variables['submissions_lists'] = $node_revisions;
 
@@ -216,8 +277,7 @@ function assets_submission_node_submit($node,&$form, &$form_state) {
 
         // Make any changes to the new revision here...
         $new_revision->title = $node->title;
-        //$new_revision->created = $node->created;
-        //$new_revision->changed = $node->changed;
+        $new_revision->changed = time();
         $new_revision->revision = 1;
         $new_revision->body = $node->body;
         $new_revision->field_submission_image = $node->field_submission_image;
