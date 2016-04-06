@@ -1,5 +1,7 @@
 (function ($) {
     $(document).ready(function($){
+
+        //Reset the form field after submission fails
         $('#edit-reset').click(function(){
             $('#webform-client-form-76').each(function(){
                 $('input#edit-submitted-first-name').val('');
@@ -20,5 +22,22 @@
                 $('input#edit-submitted-project-details').val('');
             });
         });
+
+        //change the zip code and postal code based on country selection
+        $("input#edit-submitted-country-1").click(function() {
+            $('.webform-component--zip-code label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
+
+        });
+        $("input#edit-submitted-country-2").click(function() {
+            $('.webform-component--zip-code label').html('Postal Code <span class="form-required" title="This field is required.">*</span>');
+
+        });
+        var country_selected_ca = $('#edit-submitted-country input:checked').val();
+        if(country_selected_ca == 2){
+            $('.webform-component--zip-code label').html('Postal Code <span class="form-required" title="This field is required.">*</span>');
+        }else{
+            $('.webform-component--zip-code label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
+        }
+
     });
 })(jQuery);
