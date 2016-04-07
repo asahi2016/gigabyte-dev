@@ -5,13 +5,19 @@ global $base_url;
 
 drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/jquery-1.12.0.min.js');
 drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/dataTables.bootstrap.min.js');
-drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/jquery.table2excel.js');
+drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/jquery.dataTables.min.js');
+drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/dataTables.buttons.min.js');
+drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/jszip.min.js');
+drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/pdfmake.min.jss');
+drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/vfs_fonts.js');
+drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/buttons.html5.min.js');
+drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/buttons.flash.min.js');
 drupal_add_css($base_url.'/sites/all/modules/custom/make_a_request/css/dataTables.bootstrap.min.css');
+drupal_add_css($base_url.'/sites/all/modules/custom/make_a_request/css/jquery.dataTables.min.css');
+drupal_add_css($base_url.'/sites/all/modules/custom/make_a_request/css/buttons.dataTables.min.css');
 
 ?>
-
 <div>
-    <button id="export_request_review_to_excel">Export Request Review to Excel</button>
     <table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
         <th>Date</th>
@@ -39,16 +45,14 @@ drupal_add_css($base_url.'/sites/all/modules/custom/make_a_request/css/dataTable
 <script type='text/javascript'>
 
     $(document).ready(function() {
+        $('#pagination').DataTable( {
+            jQueryUI: true,
+            order:[[0,'desc']],
+            dom: 'Bfrtip',
+            buttons: [
+                { extend: 'excel', text: 'Export Request Review to excel' },
+            ]
+        } );
+    } );
 
-        $("#export_request_review_to_excel").click(function() {
-            $("#pagination").table2excel({
-                name: "Worksheet Name",
-                filename: "cutomer_request_review"
-            });
-        });
-        $('#pagination').DataTable({
-            "order": [[ 0, "desc" ]]
-        });
-    });
-    
 </script>

@@ -19,18 +19,20 @@
                 $('select#edit-submitted-project-type').val('');
                 $('select#edit-submitted-unit-price-range').val('');
                 $('input#edit-submitted-preferred-motherboard-model').val('');
-                $('input#edit-submitted-project-details').val('');
+                $('textarea#edit-submitted-project-details').val('');
+                $('span.custom-error').text('');
+                $('input').removeClass('error');
+                $('select').removeClass('error');
+                $('textarea').removeClass('error');
             });
         });
 
         //change the zip code and postal code based on country selection
         $("input#edit-submitted-country-1").click(function() {
             $('.webform-component--zip-code label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
-
         });
         $("input#edit-submitted-country-2").click(function() {
             $('.webform-component--zip-code label').html('Postal Code <span class="form-required" title="This field is required.">*</span>');
-
         });
         var country_selected_ca = $('#edit-submitted-country input:checked').val();
         if(country_selected_ca == 2){
