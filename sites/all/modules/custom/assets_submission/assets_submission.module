@@ -122,7 +122,7 @@ function template_preprocess_view_user_submissions(&$variables){
         $args = get_clean_url($query);
     }
 
-   // print_pre($args);
+    //print_pre($args);
 
 
     $nodes = array();
@@ -162,33 +162,7 @@ function template_preprocess_view_user_submissions(&$variables){
             $uids = $uid;
         }
 
-
-        if(isset($args) && !empty($args)){
-
-            $order_by = array();
-            $order_by['field'] = 'created';
-            $order_by['sort'] = 'ASC';
-
-            if(!empty($args['filter']) && !empty($args['sort'])){
-
-                $order_by['sort'] = $args['sort'];
-
-                if($args['filter'] == 'submitted'){
-                    $order_by['field'] = 'created';
-                }else if ($args['filter'] == 'updated'){
-                    $order_by['field'] = 'changed';
-                }else{
-                    $order_by['field'] = 'nid';
-                }
-            }
-
-            //print_pre($order_by,1);
-
-            $nids = db_query('SELECT nid FROM {node} WHERE uid IN(:uid) AND type = :type ORDER BY :field :sort', array(':uid' => $uids, ':type' => $node_type , ':field' => $order_by['field'] , ':sort' => $order_by['sort']))->fetchCol();
-
-        }else{
-            $nids = db_query('SELECT nid FROM {node} WHERE uid IN(:uid) AND type = :type ORDER BY nid DESC', array(':uid' => $uids, ':type' => $node_type))->fetchCol();
-        }
+        $nids = db_query('SELECT nid FROM {node} WHERE uid IN(:uid) AND type = :type ORDER BY nid DESC', array(':uid' => $uids, ':type' => $node_type))->fetchCol();
 
     }
 
@@ -222,17 +196,12 @@ function template_preprocess_view_user_submissions(&$variables){
 
             $node_revisions[$nid]['submissions'][$rid]->comment = $comment;
 
-            ksort($node_revisions[$nid]['submissions']);
+            //ksort($node_revisions[$nid]['submissions']);
 
         }
 
         $node_revisions[$nid]['root']['comment'] = comment_load($node_revisions[$nid]['root'][$nid]->cid);
     }
-
-
-
-    //print_pre($node_revisions[98]['submissions'][99]->node);
-    //print_pre($node_revisions[98]['root'][98],1);
 
     $variables['submissions_lists'] = $node_revisions;
 
@@ -254,7 +223,8 @@ function assets_submission_form_submission_node_form_alter(&$form, &$form_state,
    // $form['#attributes']['class'][] = 'group4';
     $form['#prefix'] = '<div class="submission-form">';
     $form['#suffix'] = '</div>';
-    //print_pre($form['#attributes']['class'],1);
+
+    //print_pre($form['displayonly'],1);
 
 }
 
@@ -293,11 +263,6 @@ function assets_submission_node_submit($node,&$form, &$form_state) {
         unset($_COOKIE['submissionNode']);
         drupal_goto('view/submissions');
 
-    }else{
-
-        if($node->type == 'submission'){
-            $form_state['redirect'] = 'view/submissions';
-        }
     }
    
 }

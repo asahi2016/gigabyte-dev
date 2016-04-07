@@ -54,7 +54,7 @@
                 <select id="date-sort">
                     <?php
                     $sselected = '';
-                    $sort_filter = array('DESC' => 'Descending','ASC' => 'Ascending');
+                    $sort_filter = array('DESC' => 'From New to Old','ASC' => 'From Old to New');
                     foreach ($sort_filter as $skey => $slabel) {
                         if (isset($args['sort']) && ($skey == $args['sort'])) {
                             $sselected = 'selected = selected';

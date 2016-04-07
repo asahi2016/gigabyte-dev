@@ -15,7 +15,15 @@
         });*/
 
 
-        $('table#submission-filters').click(function () {
+        $('table#submission-filters input[type="checkbox"]').click(function () {
+            submission_filters();
+        });
+
+        $('table#submission-filters select').change(function () {
+            submission_filters();
+        });
+
+        function submission_filters() {
 
             var partner = $('table#submission-filters #partner:checked').val();
             var approved = $('table#submission-filters #approved:checked').val();
@@ -31,8 +39,8 @@
             query = encodeURIComponent(query);
 
             window.location.href = Drupal.settings.gigabyte.baseUrl + '/view/submissions?'+query;
+        }
 
-        });
 
     });
 })(jQuery);
