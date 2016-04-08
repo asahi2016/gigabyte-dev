@@ -214,6 +214,7 @@ function template_preprocess_view_user_submissions(&$variables){
 
                     $created = $revisions['submissions'][$rid]->timestamp;
                     $updated = $revisions['submissions'][$rid]->node->changed;
+                    $status = $revisions['submissions'][$rid]->node->status;
                     $submission_nodeid = $nid;
 
                     $created_submissions[$rid] = $created;
@@ -226,36 +227,48 @@ function template_preprocess_view_user_submissions(&$variables){
                         if ($args['filter'] == 'submitted') {
 
                             if ($comment) {
-                                $reply_from_partner[$rid] = $created;
+                                if (!$status) {
+                                    $reply_from_partner[$rid] = $created;
+                                }
                             } else {
-                                $reply_from_gigabyte[$rid] = $created;
+                                if (!$status) {
+                                    $reply_from_gigabyte[$rid] = $created;
+                                }
                             }
 
-                            if ($revisions['submissions'][$rid]->node->status == 1) {
+                            if ($status) {
                                 $approved[$rid] = $created;
                             }
 
                         } else if ($args['filter'] == 'updated') {
 
                             if ($comment) {
-                                $reply_from_partner[$rid] = $updated;
+                                if (!$status) {
+                                    $reply_from_partner[$rid] = $updated;
+                                }
                             } else {
-                                $reply_from_gigabyte[$rid] = $updated;
+                                if (!$status) {
+                                    $reply_from_gigabyte[$rid] = $updated;
+                                }
                             }
 
-                            if ($revisions['submissions'][$rid]->node->status == 1) {
+                            if ($status) {
                                 $approved[$rid] = $updated;
                             }
 
                         } else if ($args['filter'] == 'all') {
 
                             if ($comment) {
-                                $reply_from_partner[$rid] = $submission_nodeid;
+                                if (!$status) {
+                                    $reply_from_partner[$rid] = $submission_nodeid;
+                                }
                             } else {
-                                $reply_from_gigabyte[$rid] = $submission_nodeid;
+                                if (!$status) {
+                                    $reply_from_gigabyte[$rid] = $submission_nodeid;
+                                }
                             }
 
-                            if ($revisions['submissions'][$rid]->node->status == 1) {
+                            if ($status) {
                                 $approved[$rid] = $submission_nodeid;
                             }
                         }
