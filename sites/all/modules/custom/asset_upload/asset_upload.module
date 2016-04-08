@@ -41,30 +41,43 @@ function save_asset_permissions(&$form, &$form_state){
     $userid = $user->uid;
     // Get File ID
     $image_array = array();
-    $image_array['jpg'] = $form_state['input']['field_multi_image_upload']['und'][0]['field_jpg']['und'][0]['fid'];
-    $image_array['pdf'] = $form_state['input']['field_multi_image_upload']['und'][0]['field_pdf']['und'][0]['fid'];
-    $image_array['png'] = $form_state['input']['field_multi_image_upload']['und'][0]['field_png']['und'][0]['fid'];
+    $image_array['jpg_fileid'] = $form_state['input']['field_jpg']['und'][0]['field_upload_jpg']['und'][0]['fid'];
+    $image_array['png_fileid'] = $form_state['input']['field_png']['und'][0]['field_upload_png']['und'][0]['fid'];
+    $image_array['pdf_fileid'] = $form_state['input']['field_pdf']['und'][0]['field_upload_file_pdf']['und'][0]['fid'];
     $images = serialize($image_array);
     // Get Permitted roles
     $roles_permitted = serialize($permitted_role);
     // Get Image Resolution
-    $img_resolution = $form_state['input']['field_image_resolution']['und'][0]['image_style'];
+    $img_resolution = array();
+    $img_resolution['jpg'] = $form_state['input']['field_jpg']['und'][0]['field_resolution_jpg']['und'][0]['value'];
+    $img_resolution['png'] = $form_state['input']['field_png']['und'][0]['field_resolution_png']['und'][0]['value'];
+    $resolution = serialize($img_resolution);
+    //$img_resolution['pdf'] = $form_state['input']['field_jpg']['und'][0]['field_resolution_jpg']['und'][0]['value'];
+    // Get Image Dimension
+    $img_dimension = array();
+    $img_dimension['jpg'] = $form_state['input']['field_jpg']['und'][0]['field_dimension_jpg']['und'][0]['image_style'];
+    $img_dimension['png'] = $form_state['input']['field_png']['und'][0]['field_dimension_png']['und'][0]['image_style'];
+    $dimension = serialize($img_dimension);
     // Get creation timestamp
     $created_at = date('Y-m-d h:i:s');
     // Get category ID
     $category_id = serialize($form_state['input']['field_image_asset_category']['und']);
     //DB Insert
-    if(!empty($userid) && !empty($fid) && !empty($category_id) && !empty($roles_permitted)){
+    if(!empty($userid) && !empty($images) && !empty($category_id) && !empty($roles_permitted)){
         $nid = db_insert('asset_uploads')
             ->fields(array(
                 'uid' => $userid,
                 'fid' => $images,
                 'cid' => $category_id,
                 'permitted_roles' => $roles_permitted,
-                'img_resolution' => $img_resolution,
+                'img_resolution' => $dimension,
+                'dpi' => $resolution,
                 'created_at' => $created_at,
             ))
             ->execute();
+    }else{
+        echo "Fields are empty";
+        exit;
     }
 }
 
@@ -90,6 +103,18 @@ function asset_upload_views_pre_render(&$view) {
                 $view->result[$key]->field_field_assets_image_preview[0]['rendered']['#markup'] = "<img src='".image_style_url('medium',$file_data['uri'])."'>";
                 unset($file_data);
             }
+        break;
+        case 'asset_upload_partner_view':
+                    //print_pre($view->result,1);
+                    foreach($view->result as $key => $value){
+                        $file_data = array();
+                        foreach($value->field_field_jpg[0]['rendered']['entity']['field_collection_item'] as $k => $v){
+                            $file_data = $v['field_resolution_jpg']['#object']->field_upload_jpg['und'][0];
+                        }
+                        $view->result[$key]->field_field_assets_image_preview[0]['rendered']['#markup'] = "<img src='".image_style_url('medium',$file_data['uri'])."'>";
+                        unset($file_data);
+                    }
+                break;
 
     }
 
