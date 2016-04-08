@@ -1,3 +1,10 @@
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        function gotop() {
+            $("html,body").animate({ scrollTop: $("#top").offset().top }, 1000, 'swing');
+        }
+    });
+</script>
 <?php
 /**
  * @file
@@ -320,7 +327,7 @@ drupal_add_js("jQuery(document).ready(function(){country_id = " . (!empty($_SESS
   <?php endif; ?>
 
   <div id="footer-wrapper"><div class="section">
-
+          <img class="f_img" src="themes/bartik/images/icon_top_mouseover.png" width="100" height="100" alt="" onclick="gotop()" />
     <?php if ($page['footer_firstcolumn'] || $page['footer_secondcolumn'] || $page['footer_thirdcolumn'] || $page['footer_fourthcolumn']): ?>
       <div id="footer-columns" class="clearfix">
         <?php print render($page['footer_firstcolumn']); ?>

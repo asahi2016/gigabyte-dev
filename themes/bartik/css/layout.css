@@ -55,6 +55,7 @@ a{color: #337ab7;text-decoration: none;}
 .cblue{color:#0000FF;}
 .v_align {vertical-align: baseline;}
 .f_w_400 {font-weight: 400;}
+ul{list-style-type:none;}
 #header div.section,
 #featured div.section,
 #top_content div.section,
@@ -1101,10 +1102,10 @@ td#join a{margin:0 15px 0 0}
 .field-type-file{float:left;}
 #field-pdf-add-more-wrapper .field-type-file{float:right;}
 
-#pagination th{padding: 20px 0px; background: #696969;}
-#pagination th .DataTables_sort_wrapper{width:120px;}
+#pagination th.ui-state-default{padding: 8px 0px 8px 12px;  background: #3e3e3e;  color: #fffce5; border:1px solid #F8FBFF}
+#pagination th .DataTables_sort_wrapper{width:140px;font:bold 14px/22px ralewayregular;color:#fff;}
 #pagination th .DataTables_sort_wrapper span{float:right;}
-#pagination thead tr{background: #2E3D4A;}
+#pagination td{font-family: Arial,Helvetica,sans-serif;;}
 #pagination_wrapper a.dt-button {
     background:#286090;
     padding:4px 10px;
@@ -1115,3 +1116,50 @@ td#join a{margin:0 15px 0 0}
     border:0px;
     float:left;
 }
+#pagination th .DataTables_sort_wrapper .ui-icon-carat-2-n-s{background-position: -128px 3px}
+.f_img {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    opacity: 0.5;
+}
+.views-exposed-form .views-exposed-widget{width:100%;}
+.views-exposed-form .views-exposed-widget > label{margin:10px 0 10px 0;font-size:16px;}
+.views-exposed-form .views-exposed-widget .form-type-checkbox{float:left;margin:0 20px 0 0}
+.views-exposed-form .views-exposed-widget .form-type-checkbox label{font-size:14px;}
+.views-exposed-form .views-exposed-widget .form-type-checkbox input{float:left;margin:3px 0px 0px 0px;}
+.view-content .view-grouping-header a{font-size:20px;color:#333;}
+.view-content .view-grouping > a{font-size:20px;color:#333;}
+.view-content .view-grouping{width:100%;float:left;}
+.view-content .view-grouping .view-grouping-content{float:left;margin:10px 0px 0 0;}
+.view-content .view-grouping .view-grouping-content h3{float:left;width:100%;}
+.view-content .view-grouping-content .asset-upload-list li > div{float:left;margin:0 15px 0 0}
+.view-content .view-grouping-content .asset-upload-list li div.views-field-field-assets-image-preview{
+    width: 250px;float: left;margin:0 20px 0 0;
+}
+.view-content .view-grouping-content .views-field-field-assets-image-preview .field-content img,
+.view-content .view-grouping-content .views-field-field-assets-image-preview .field-content{width:250px;height:80px;}
+.views-label-field-image-asset-category{font-weight:bold;float:left;width:100%;text-transform: capitalize;
+    margin: 0 0 10px 0;}
+.views-field-field-image-asset-category ul{clear:both;}
+.views-field-field-image-asset-category li{display:block;width:100%}
+.view-grouping .asset-upload-list .views-field-field-jpg span,
+.view-grouping .asset-upload-list .views-field-field-png span,
+.view-grouping .asset-upload-list .views-field-field-pdf span{font-weight:bold;text-transform: capitalize;
+    margin: 0 0 10px 0;float:left;width:100%;}
+.view-content .view-grouping-content .asset-upload-list li div.views-field-field-image-asset-category{width:100px;}
+.view-content .view-grouping-content .asset-upload-list li div.views-field-field-jpg{width:200px;}
+.view-content .view-grouping-content .asset-upload-list li div.views-field-field-png{width:200px;}
+.view-content .view-grouping-content .asset-upload-list li div.views-field-field-pdf{width:200px;}
+#content.wrapper_full ul.field-collection-view-links{margin: 20px 0px 0 0}
+.field-collection-view-links li.first{margin: 0 20px 0 0}
+.assets-row-list-partner td .field-name-field-upload-png .field-label,
+.assets-row-list-partner td .field-name-field-upload-file-pdf .field-label,
+.assets-row-list-partner td .field-name-field-upload-file-pdf .field-label{display:none;}
+.assets-upload-display table.views-table th,.assets-upload-display table.views-table td{border:1px solid #333;text-align:center;
+padding:10px;}
+.assets-upload-display table.views-table th:first-child,.assets-upload-display table.views-table td:first-child{border:none;}
+.assets-upload-display table.views-table th{background:none;color:#333;}
+.assets-upload-display table.views-table td ul{width:100%;}
+.assets-upload-display table.views-table td li{text-align: center;margin:10px 0px 0px;}
+.assets-row-list-partner .field-type-file{width:100%;}
