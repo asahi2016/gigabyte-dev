@@ -9,6 +9,10 @@ function assets_submission_init(){
    // drupal_set_message('Assets Submission');
     drupal_add_js(drupal_get_path('module', 'custom').'/assets_submission/js/submissions.js');
     drupal_add_js(drupal_get_path('module', 'custom').'/assets_submission/js/display_colorbox.js');
+    if(!isset($_POST) && empty($_POST)){
+        setcookie("submissionNode", "", time()-3600);
+        unset($_COOKIE['submissionNode']);
+    }
 }
 
 function print_pre($array = array() , $exit = false){
@@ -214,6 +218,7 @@ function template_preprocess_view_user_submissions(&$variables){
 
                     $created = $revisions['submissions'][$rid]->timestamp;
                     $updated = $revisions['submissions'][$rid]->node->changed;
+                    $status = $revisions['submissions'][$rid]->node->status;
                     $submission_nodeid = $nid;
 
                     $created_submissions[$rid] = $created;
@@ -226,36 +231,48 @@ function template_preprocess_view_user_submissions(&$variables){
                         if ($args['filter'] == 'submitted') {
 
                             if ($comment) {
-                                $reply_from_partner[$rid] = $created;
+                                if (!$status) {
+                                    $reply_from_partner[$rid] = $created;
+                                }
                             } else {
-                                $reply_from_gigabyte[$rid] = $created;
+                                if (!$status) {
+                                    $reply_from_gigabyte[$rid] = $created;
+                                }
                             }
 
-                            if ($revisions['submissions'][$rid]->node->status == 1) {
+                            if ($status) {
                                 $approved[$rid] = $created;
                             }
 
                         } else if ($args['filter'] == 'updated') {
 
                             if ($comment) {
-                                $reply_from_partner[$rid] = $updated;
+                                if (!$status) {
+                                    $reply_from_partner[$rid] = $updated;
+                                }
                             } else {
-                                $reply_from_gigabyte[$rid] = $updated;
+                                if (!$status) {
+                                    $reply_from_gigabyte[$rid] = $updated;
+                                }
                             }
 
-                            if ($revisions['submissions'][$rid]->node->status == 1) {
+                            if ($status) {
                                 $approved[$rid] = $updated;
                             }
 
                         } else if ($args['filter'] == 'all') {
 
                             if ($comment) {
-                                $reply_from_partner[$rid] = $submission_nodeid;
+                                if (!$status) {
+                                    $reply_from_partner[$rid] = $submission_nodeid;
+                                }
                             } else {
-                                $reply_from_gigabyte[$rid] = $submission_nodeid;
+                                if (!$status) {
+                                    $reply_from_gigabyte[$rid] = $submission_nodeid;
+                                }
                             }
 
-                            if ($revisions['submissions'][$rid]->node->status == 1) {
+                            if ($status) {
                                 $approved[$rid] = $submission_nodeid;
                             }
                         }
@@ -399,6 +416,8 @@ function assets_submission_node_submit($node,&$form, &$form_state) {
 
         watchdog('content', '@type: reverted %title submission %revision.', array('@type' => $new_revision->type, '%title' => $new_revision->title, '%revision' => $new_revision->vid));
         drupal_set_message(t('@type %title was saved with a new submission', array('@type' => node_type_get_name($new_revision), '%title' => $new_revision->title)));
+
+        setcookie("submissionNode", "", time()-3600);
         unset($_COOKIE['submissionNode']);
         drupal_goto('view/submissions');
 

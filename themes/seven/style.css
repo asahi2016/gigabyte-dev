@@ -988,3 +988,8 @@ div.add-or-remove-shortcuts {
   -webkit-border-radius: 8px;
   border-radius: 8px;
 }
+#field-assets-image-preview-add-more-wrapper{display:none;}
+.views-table .item-list ul li{list-style-type:none;text-align:left;}
+.field-collection-view-links li{list-style-type:none;float:left;margin:0 0 0 10px}
+.field-collection-view-links li:first-child{margin:0 0 0 0px;}
+ul.field-collection-view-links{float:left;margin:0.25em 0 0.25em 0;}

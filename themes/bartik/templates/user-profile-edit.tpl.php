@@ -6,45 +6,29 @@
     </tr>
     </tbody>
 </table>
-<div class="border" style="width:998px; margin:0 auto 0 auto; float: left;">
+<div class="border" style="width:1100px; margin:0 auto 0 auto; float: left;">
     <div style="text-align:center; font-size:20px; font-weight:700; padding-top:10px; padding-bottom:10px;color:#333">Personal Information</div>
     <table class="full-wrap">
         <tbody>
         <tr>
-            <td>
-                <table>
-                    <tbody>
-                    <tr>
-                        <td width="312px">First Name: <?= $account['firstname']['value']?></td>
-                        <td width="265px">Last Name: <?= $account['lastname']['value']?></td>
-                        <td width="255px">Job Title: <?= $account['job_title']['value']?></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </td>
+            <td width="380" valign="top">First Name: <?= $account['firstname']['value']?></td>
+            <td width="380" valign="top">Last Name: <?= $account['lastname']['value']?></td>
+            <td width="340" rowspan="2" valign="top">Job Title: <?= $account['job_title']['value']?></td>
         </tr>
         <tr>
-            <td>
-                <table>
-                    <tbody>
-                    <tr>
-                        <td width="312px">Email Address (Login ID): <?=$account['mail']?></td>
-                        <td><?= $account['contact_number']['form'] ?></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </td>
+            <td>Email Address (Login ID): <?=$account['mail']?></td>
+            <td><?= $account['contact_number']['form'] ?></td>
         </tr>
         <tr>
-            <td><hr /></td>
+            <td colspan="3"><hr /></td>
         </tr>
         </tbody>
     </table>
     <table id="password" style="width:940px; margin:0 30px 0 30px;">
         <tbody>
         <tr>
-            <td valign="top" style="width:330px;"><?= $account['current_pass']['form'] ?> </td>
-            <td valign="top"><?= $account['pass']['form'] ?></td>
+            <td valign="top" style="width:380px;"><?= $account['current_pass']['form'] ?> </td>
+            <td valign="top" width="720"><?= $account['pass']['form'] ?></td>
         </tr>
         </tbody>
     </table>
@@ -52,12 +36,12 @@
         <input id="password_hide" type="button" value="Change Password" />
     </div>
 </div>
-<div style="width:998px;float:left;margin:20px 0px 20px;">
-<table class="company-details"">
+<div style="width:1100px;float:left;margin:20px 0px 20px;">
+<table class="company-details">
     <tbody>
     <tr>
-        <td valign="top">
-            <div class="border" style="width:485px;min-height:480px;float: left;">
+        <td width="535" valign="top" style="min-height:480px;float: left;" class="border">
+            <div>
                 <div style="text-align:center; font-size:20px; font-weight:700; padding-top:10px; padding-bottom:10px;color:#333">Company Information</div>
                 <div style="padding-left:30px; padding-right:30px; padding-bottom:10px;font-size: 14px;">
                     Company Name: <?= $account['company']['name']?><br /><br />
@@ -71,9 +55,9 @@
                 </div>
             </div>
         </td>
-        <td style="width:30px;"></td>
-        <td valign="top">
-            <div class="border" style="width:485px;min-height:480px;float: left;">
+        <td width="30"></td>
+        <td width="535" valign="top" style="min-height:480px;float: left;" class="border">
+            <div>
                 <div style="text-align:center; font-size:20px; font-weight:700; padding-top:10px; padding-bottom:10px;color:#333">RMA Contact</div>
                 <div style="padding-left:30px; padding-right:30px; padding-bottom:10px;font-size: 14px;margin-top: 0px;" class="fieldset-wrapper">
                     RMA First Name: <?= $account['rma_first_name']['value']?><br /><br />
@@ -93,7 +77,7 @@
 </table>
 </div>
 
-<div class="border" style="width:960px;float:left;padding: 20px;margin:0 0 20px 0;">
+<div class="border" style="width:1060px;float:left;padding: 20px;margin:0 0 20px 0;">
     <table cellpadding="0" cellspacing="0" border="0">
         <tbody>
         <tr>
