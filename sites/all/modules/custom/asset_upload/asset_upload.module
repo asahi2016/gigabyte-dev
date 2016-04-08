@@ -105,7 +105,7 @@ function asset_upload_views_pre_render(&$view) {
                             if(!empty($v['field_resolution_png'])){
                                 $file_data = $v['field_resolution_png']['#object']->field_upload_png['und'][0];
                             }else{
-                                $file_data['uri'] = $base_url."/themes/images/noimage.png";
+                                $file_data['uri'] = "noimage.png";
                             }
                         }
                     }
