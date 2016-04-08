@@ -1085,6 +1085,13 @@ td#join a{margin:0 15px 0 0}
     border-radius: 4px;
     font-size: 14px;
 }
+.page-view-submissions .form-textarea-wrapper textarea{
+    height:200px;
+    overflow-y: scroll;
+}
+.page-view-submissions .field-type-image .image-widget-data{width:100%;}
+.page-view-submissions .form-managed-file .form-submit{display:none;}
+.page-view-submissions .field-type-image .image-widget-data .form-file{width:320px;}
 .page-view-submissions #cboxLoadedContent table td.td_img.w300{width:200px;padding:0 20px 0px 0px;}
 .page-view-submissions #cboxLoadedContent table td.td_left{width:200px;float:left;padding: 0 20px 0 0}
 .page-view-submissions table td.td_left,.page-view-submissions table td.td_right{width:350px;float:left;}
