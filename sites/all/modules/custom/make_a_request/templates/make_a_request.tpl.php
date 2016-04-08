@@ -50,9 +50,9 @@ drupal_add_css($base_url.'/sites/all/modules/custom/make_a_request/css/buttons.d
             order:[[0,'desc']],
             dom: 'Bfrtip',
             buttons: [
-                { extend: 'excel', text: 'Export Request Review to excel' }
-                { extend: 'csv', text: 'Export Request Review to csv' }
-                { extend: 'excelFlash', text: 'Export Request to excel' }
+                { extend: 'excel', text: 'Export Request Review to excel' },
+                { extend: 'csv', text: 'Export Request Review to csv' },
+                { extend: 'excelFlash', text: 'Export Request to excel' },
                 { extend: 'csvFlash', text: 'Export Request  to csv' }
             ]
         } );

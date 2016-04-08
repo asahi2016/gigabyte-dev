@@ -1,1 +1,0 @@
-window.CKEDITOR_BASEPATH = '/gigabyte/sites/all/libraries/ckeditor/';

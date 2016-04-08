@@ -121,3 +121,31 @@ More about developing:
    http://drupal.org/best-practices
  * Refer to the API documentation:
    http://api.drupal.org/api/drupal/7
+
+
+   if(isset($args) && !empty($args)){
+
+               $order_by = array();
+               $order_by['field'] = 'created';
+               $order_by['sort'] = 'ASC';
+
+               if(!empty($args['filter']) && !empty($args['sort'])){
+
+                   $order_by['sort'] = $args['sort'];
+
+                   if($args['filter'] == 'submitted'){
+                       $order_by['field'] = 'created';
+                   }else if ($args['filter'] == 'updated'){
+                       $order_by['field'] = 'changed';
+                   }else{
+                       $order_by['field'] = 'nid';
+                   }
+               }
+
+               //print_pre($order_by,1);
+
+               $nids = db_query('SELECT nid FROM {node} WHERE uid IN(:uid) AND type = :type ORDER BY :field :sort', array(':uid' => $uids, ':type' => $node_type , ':field' => $order_by['field'] , ':sort' => $order_by['sort']))->fetchCol();
+
+           }else{
+
+           }

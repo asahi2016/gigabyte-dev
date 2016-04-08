@@ -104,19 +104,7 @@ function project_support_request_form_validation(&$form, &$form_state){
     if(!filter_var($email_address, FILTER_VALIDATE_EMAIL)){
         form_set_error('submitted][email_address','Please enter valid email address');
     }
-    if($country == 2){
-        if(!preg_match('/^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$/',$zip_code)){
-            form_set_error('submitted][zip_code','Please enter valid Postal code');
-        }
-        else{
-            if($country == 1){
-                if(!preg_match('/^\d{5}(-\d{4})?$/',$zip_code)){
-                    form_set_error('submitted][zip_code','Please enter valid Zip code');
-                }
-            }
-    }
 
-    }
     project_support_request_errors_reset($form);
 }
 function project_support_request_form_submit($form, &$form_state){
