@@ -1,7 +1,21 @@
 <script type="text/javascript">
     jQuery(document).ready(function($) {
-        function gotop() {
-            $("html,body").animate({ scrollTop: $("#top").offset().top }, 1000, 'swing');
+        $('#scrol-top').click(function() {
+           $("html,body").animate({scrollTop: 0}, 1000, 'swing');
+        });
+            scrolltop()
+        $(window).scroll(function (event) {
+            scrolltop()
+        });
+        function scrolltop(){
+            var scroll = $(window).scrollTop();
+            if(scroll > '400')
+            {
+                $('#scrol-top').show();
+            }
+            else{
+                $('#scrol-top').hide();
+            }
         }
     });
 </script>
@@ -327,7 +341,7 @@ drupal_add_js("jQuery(document).ready(function(){country_id = " . (!empty($_SESS
   <?php endif; ?>
 
   <div id="footer-wrapper"><div class="section">
-          <img class="f_img" src="themes/bartik/images/icon_top_mouseover.png" width="100" height="100" alt="" onclick="gotop()" />
+          <img class="f_img" src="themes/bartik/images/icon_top_mouseover.png" width="100" height="100" alt="" id="scrol-top" />
     <?php if ($page['footer_firstcolumn'] || $page['footer_secondcolumn'] || $page['footer_thirdcolumn'] || $page['footer_fourthcolumn']): ?>
       <div id="footer-columns" class="clearfix">
         <?php print render($page['footer_firstcolumn']); ?>
