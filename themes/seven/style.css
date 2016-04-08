@@ -993,3 +993,4 @@ div.add-or-remove-shortcuts {
 .field-collection-view-links li{list-style-type:none;float:left;margin:0 0 0 10px}
 .field-collection-view-links li:first-child{margin:0 0 0 0px;}
 ul.field-collection-view-links{float:left;margin:0.25em 0 0.25em 0;}
+.page-admin-upload-assets .views-table .assets-row-list td.views-field.views-field-field-assets-image-preview img{width:220px;height:165px;}
