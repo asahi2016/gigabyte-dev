@@ -167,9 +167,14 @@ function template_preprocess_view_user_submissions(&$variables){
                 $uids = $uid;
             }
 
+            print_pre($uids);
+            echo $uid;
+
             $nids = db_query('SELECT nid FROM {node} WHERE uid IN(:uid) AND type = :type ORDER BY nid DESC', array(':uid' => $uids, ':type' => $node_type))->fetchCol();
 
         }
+
+        print_pre($nids);
 
         if (!empty($nids)) {
             $nodes = node_load_multiple($nids);
