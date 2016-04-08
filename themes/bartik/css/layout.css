@@ -1128,7 +1128,7 @@ td#join a{margin:0 15px 0 0}
 .views-exposed-form .views-exposed-widget .form-type-checkbox{float:left;margin:0 20px 0 0}
 .views-exposed-form .views-exposed-widget .form-type-checkbox label{font-size:14px;}
 .views-exposed-form .views-exposed-widget .form-type-checkbox input{float:left;margin:3px 0px 0px 0px;}
-.view-content .view-grouping-header a{font-size:20px;color:#333;}
+.view-content .views-table caption a{font-size:20px;color:#333;}
 .view-content .view-grouping > a{font-size:20px;color:#333;}
 .view-content .view-grouping{width:100%;float:left;}
 .view-content .view-grouping .view-grouping-content{float:left;margin:10px 0px 0 0;}
@@ -1155,11 +1155,17 @@ td#join a{margin:0 15px 0 0}
 .field-collection-view-links li.first{margin: 0 20px 0 0}
 .assets-row-list-partner td .field-name-field-upload-png .field-label,
 .assets-row-list-partner td .field-name-field-upload-file-pdf .field-label,
-.assets-row-list-partner td .field-name-field-upload-file-pdf .field-label{display:none;}
+.assets-row-list-partner td .field-name-field-upload-jpg .field-label{display:none;}
 .assets-upload-display table.views-table th,.assets-upload-display table.views-table td{border:1px solid #333;text-align:center;
 padding:10px;}
 .assets-upload-display table.views-table th:first-child,.assets-upload-display table.views-table td:first-child{border:none;}
 .assets-upload-display table.views-table th{background:none;color:#333;}
+.assets-upload-display table.views-table th.views-field-field-image-asset-category{width:150px;}
+.assets-upload-display table.views-table th.views-field-field-jpg{width:150px;}
+.assets-upload-display table.views-table th.views-field-field-png{width:150px;}
+.assets-upload-display table.views-table th.views-field-field-pdf{width:150px;}
 .assets-upload-display table.views-table td ul{width:100%;}
 .assets-upload-display table.views-table td li{text-align: center;margin:10px 0px 0px;}
 .assets-row-list-partner .field-type-file{width:100%;}
+.assets-upload-display table.views-table th:first-child{width:300px;}
+.assets-upload-display table.views-table td:first-child  img{max-width:220px;max-height:165px;}
