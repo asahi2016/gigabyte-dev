@@ -1168,3 +1168,4 @@ padding:10px;}
 .assets-upload-display table.views-table td li{text-align: center;margin:10px 0px 0px;}
 .assets-row-list-partner .field-type-file{width:100%;}
 .assets-upload-display table.views-table th:first-child{width:300px;}
+.assets-upload-display table.views-table td:first-child  img{max-width:220px;max-height:165px;}
