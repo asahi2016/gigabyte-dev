@@ -50,6 +50,7 @@
             var email = $(this).find("td").eq(9).html();
             $(this).find("td").eq(9).html('<a href="mailto:' + email + '">' + email + '</a>');
         });
+        
 
     });
 })(jQuery);
