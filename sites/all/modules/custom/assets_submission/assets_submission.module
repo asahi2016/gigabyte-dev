@@ -412,6 +412,8 @@ function assets_submission_node_submit($node,&$form, &$form_state) {
 
         watchdog('content', '@type: reverted %title submission %revision.', array('@type' => $new_revision->type, '%title' => $new_revision->title, '%revision' => $new_revision->vid));
         drupal_set_message(t('@type %title was saved with a new submission', array('@type' => node_type_get_name($new_revision), '%title' => $new_revision->title)));
+
+        setcookie('submissionNode', '', time() + (86400 * 30), "/"); // 86400 = 1 day
         unset($_COOKIE['submissionNode']);
         drupal_goto('view/submissions');
 
