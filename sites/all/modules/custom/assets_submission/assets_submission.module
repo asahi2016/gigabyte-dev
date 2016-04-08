@@ -9,7 +9,8 @@ function assets_submission_init(){
    // drupal_set_message('Assets Submission');
     drupal_add_js(drupal_get_path('module', 'custom').'/assets_submission/js/submissions.js');
     drupal_add_js(drupal_get_path('module', 'custom').'/assets_submission/js/display_colorbox.js');
-    if(!isset($_POST) && empty($_POST)){
+
+    if(empty($_POST)){
         setcookie("submissionNode", "", time()-3600);
         unset($_COOKIE['submissionNode']);
     }
@@ -420,7 +421,6 @@ function assets_submission_node_submit($node,&$form, &$form_state) {
         setcookie("submissionNode", "", time()-3600);
         unset($_COOKIE['submissionNode']);
         drupal_goto('view/submissions');
-
     }
    
 }
