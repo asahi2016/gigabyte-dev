@@ -12,7 +12,7 @@
 
 
 ?>
-
+<?php if(user_is_logged_in()){ ?>
 
 <table class="subm_wrap_s" id="submission-filters">
     <tbody>
@@ -192,3 +192,4 @@
 
 <?php } ?>
 
+<?php } ?>
