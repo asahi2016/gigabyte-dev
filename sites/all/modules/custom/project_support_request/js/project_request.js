@@ -15,7 +15,6 @@
                 $('input#edit-submitted-city').val('');
                 $('input#edit-submitted-state').val('');
                 $('input#edit-submitted-zip-code').val('');
-                $('input#edit-submitted-country-1').val('');
                 $('select#edit-submitted-project-type').val('');
                 $('select#edit-submitted-unit-price-range').val('');
                 $('input#edit-submitted-preferred-motherboard-model').val('');
@@ -24,6 +23,8 @@
                 $('input').removeClass('error');
                 $('select').removeClass('error');
                 $('textarea').removeClass('error');
+                $('#edit-submitted-country-1').attr('checked',true);
+                $('.webform-component--zip-code label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
             });
         });
 
