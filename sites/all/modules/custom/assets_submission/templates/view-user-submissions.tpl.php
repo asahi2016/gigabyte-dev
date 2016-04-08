@@ -13,62 +13,73 @@
 
 ?>
 
-<?php if(isset($variables['submissions_lists']) && !empty($variables['submissions_lists'])){     ?>
 
-     <table class="subm_wrap_s" id="submission-filters">
-        <tbody>
-        <tr>
-            <td>Filter:</td>
-            <td>
-                <input id="partner" type="checkbox" value="partner" <?php  echo isset($args['partner'])? !empty($args['partner']) ?  'checked' : '' :''?>/> Awaiting Reply from Partner
-                <input id="approved" type="checkbox" value="approved" <?php echo isset($args['approved'])? !empty($args['approved']) ?  'checked' : '' :''?>/> Approved
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <?php
+<table class="subm_wrap_s" id="submission-filters">
+    <tbody>
+    <tr>
+        <td>Filter:</td>
+        <td>
+            <?php
+            $status_filter = array('partner' => 'Awaiting Reply from Partner' , 'gigabyte' => 'Awaiting Reply from GIGABYTE' ,'approved'=> 'Approved');
 
-                $date_filter = array('all'=> 'All', 'submitted' => 'Submitted' , 'updated' => 'Updated');
+            $checked = '';
+            foreach ($status_filter as $stkey => $stlabel) {
+                if (isset($args['status']) && ($stkey == $args['status'])) {
+                    $checked = 'checked = checked';
+                }else{
+                    $checked = '';
+                }
                 ?>
-                Filter By:
-                <select id="date-filter">
-                    <?php
+                <input type="radio" name="status-option" value="<?php echo $stkey;?>" <?php echo $checked;?>/> <?php echo $stlabel;?>
+            <?php } ?>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <?php
+            $date_filter = array('all'=> 'All', 'submitted' => 'Submitted' , 'updated' => 'Updated');
+            ?>
+            Filter By:
+            <select id="date-filter">
+                <?php
+                $selected = '';
+                foreach ($date_filter as $dkey => $dlabel) {
+                    if (isset($args['filter']) && ($dkey == $args['filter'])) {
+                        $selected = 'selected = selected';
+                    }else{
                         $selected = '';
-                        foreach ($date_filter as $dkey => $dlabel) {
-                            if (isset($args['filter']) && ($dkey == $args['filter'])) {
-                                $selected = 'selected = selected';
-                            }else{
-                                $selected = '';
-                            }
-                            ?>
-                           <option value="<?php echo $dkey;?>" <?php echo $selected;?> ><?php echo $dlabel;?></option>
-                    <?php } ?>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                Sort By:
-                <select id="date-sort">
-                    <?php
-                    $sselected = '';
-                    $sort_filter = array('DESC' => 'From New to Old','ASC' => 'From Old to New');
-                    foreach ($sort_filter as $skey => $slabel) {
-                        if (isset($args['sort']) && ($skey == $args['sort'])) {
-                            $sselected = 'selected = selected';
-                        }else{
-                            $sselected = '';
-                        }
-                        ?>
-                        <option value="<?php echo $skey;?>" <?php echo $sselected;?> ><?php echo $slabel;?></option>
-                    <?php } ?>
-                </select>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+                    }
+                    ?>
+                    <option value="<?php echo $dkey;?>" <?php echo $selected;?> ><?php echo $dlabel;?></option>
+                <?php } ?>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            Sort By:
+            <select id="date-sort">
+                <?php
+                $sselected = '';
+                $sort_filter = array('DESC' => 'From New to Old','ASC' => 'From Old to New');
+                foreach ($sort_filter as $skey => $slabel) {
+                    if (isset($args['sort']) && ($skey == $args['sort'])) {
+                        $sselected = 'selected = selected';
+                    }else{
+                        $sselected = '';
+                    }
+                    ?>
+                    <option value="<?php echo $skey;?>" <?php echo $sselected;?> ><?php echo $slabel;?></option>
+                <?php } ?>
+            </select>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<?php if(isset($variables['submissions_lists']) && !empty($variables['submissions_lists'])){     ?>
 
     <?php foreach($variables['submissions_lists'] as  $nid => $node){ ?>
 
@@ -96,9 +107,9 @@
                 }
             }
 
-            //print_pre($submission,1);
+           // print_pre($submission,1);
 
-            $submitted = date("F d Y", $submission->node->created);
+            $submitted = date("F d Y", $submission->timestamp);
             $updated = date("F d Y", $submission->node->changed);
 
             ?>

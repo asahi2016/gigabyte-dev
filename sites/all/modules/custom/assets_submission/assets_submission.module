@@ -124,7 +124,6 @@ function template_preprocess_view_user_submissions(&$variables){
 
     //print_pre($args);
 
-
     $nodes = array();
 
     $admin = false;
@@ -176,15 +175,26 @@ function template_preprocess_view_user_submissions(&$variables){
     module_load_include('inc','revisioning','revisioning_api');
 
     $node_revisions = array();
+
+    //$full_submissions = array();
     foreach($nodes as $nid => $node){
         $node_revisions[$nid]['submissions'] = _revisioning_get_all_revisions_for_node($node->nid , $show_taxonomy_terms);
     }
 
     unset($nid);
 
-    foreach ($node_revisions as $nid => $revisions) {
+    $created_submissions = array();
+    $updated_submissions = array();
+    $reply_from_gigabyte = array();
+    $reply_from_partner = array();
+    $approved = array();
+
+    foreach($node_revisions as $nid => $revisions) {
 
         $node_revisions[$nid]['root'] = node_load_multiple(array($nid));
+
+        $first_submission = false;
+
         foreach ($revisions['submissions'] as $rid => $revision) {
 
             $node_revisions[$nid]['submissions'][$rid]->node = node_load($nid , $rid);
@@ -196,17 +206,121 @@ function template_preprocess_view_user_submissions(&$variables){
 
             $node_revisions[$nid]['submissions'][$rid]->comment = $comment;
 
-            //ksort($node_revisions[$nid]['submissions']);
 
+            if(!$first_submission){
+
+                $created = $revisions['submissions'][$rid]->timestamp;
+                $updated = $revisions['submissions'][$rid]->node->changed;
+
+                $created_submissions[$rid] = $created;
+                $updated_submissions[$rid] = $updated;
+
+
+                if(isset($args) && !empty($args)){
+
+                    if($args['filter'] == 'submitted'){
+
+                        if($comment) {
+                            $reply_from_partner[$rid] = $created;
+                        }else{
+                            $reply_from_gigabyte[$rid] = $created;
+                        }
+
+                        if($revisions['submissions'][$rid]->node->status == 1) {
+                            $approved[$rid] = $created;
+                        }
+
+                    }else if ($args['filter'] == 'updated'){
+
+                        if($comment) {
+                            $reply_from_partner[$rid] = $updated;
+                        }else {
+                            $reply_from_gigabyte[$rid] = $updated;
+                        }
+
+                        if($revisions['submissions'][$rid]->node->status == 1) {
+                            $approved[$rid] = $updated;
+                        }
+                    }
+
+                }
+
+                $first_submission = true;
+            }
+
+            //ksort($node_revisions[$nid]['submissions']);
         }
 
         $node_revisions[$nid]['root']['comment'] = comment_load($node_revisions[$nid]['root'][$nid]->cid);
     }
 
+    if(isset($args) && !empty($args)){
+
+        if($args['filter'] == 'submitted'){
+            $node_revisions = arrange_submissions($args, $created_submissions, $node_revisions);
+        }elseif ($args['filter'] == 'updated'){
+            $node_revisions = arrange_submissions($args, $updated_submissions, $node_revisions);
+        }
+
+        if($args['status']){
+
+            if($args['status'] == 'gigabyte'){
+                $node_revisions = arrange_submissions($args, $reply_from_gigabyte, $node_revisions);
+            }elseif ($args['status'] == 'partner'){
+                $node_revisions = arrange_submissions($args, $reply_from_partner , $node_revisions);
+            }elseif ($args['status'] == 'approved'){
+                $node_revisions = arrange_submissions($args, $approved , $node_revisions);
+            }
+        }
+
+    }
+
     $variables['submissions_lists'] = $node_revisions;
 
     return $variables;
-    //print_pre($variables,1);
+
+}
+
+function arrange_submissions($args, $filter_data, $submissions){
+
+    $filtered = filter_sort($args, $filter_data);
+
+    $filtered_submissions = array();
+
+    foreach ($filtered as $rid => $value){
+
+        foreach ($submissions as $nid => $lists){
+
+            foreach ($lists['submissions'] as $srid => $revision) {
+
+                 if($srid == $rid){
+                     $filtered_submissions[$nid] = $lists;
+                     break;
+                 }
+
+            }
+
+        }
+
+    }
+
+    return $filtered_submissions;
+}
+
+
+function filter_sort($args , $array)
+{
+
+    if(isset($args) && !empty($args)){
+
+        if($args['sort'] == 'ASC'){
+            asort($array);
+        }else if($args['sort'] == 'DESC'){
+            arsort($array,0);
+        }
+    }
+
+    return $array;
 
 }
 
@@ -255,8 +369,6 @@ function assets_submission_node_submit($node,&$form, &$form_state) {
 
         // Save the new revision first
         node_save($new_revision);
-        
-        
 
         watchdog('content', '@type: reverted %title submission %revision.', array('@type' => $new_revision->type, '%title' => $new_revision->title, '%revision' => $new_revision->vid));
         drupal_set_message(t('@type %title was saved with a new submission', array('@type' => node_type_get_name($new_revision), '%title' => $new_revision->title)));

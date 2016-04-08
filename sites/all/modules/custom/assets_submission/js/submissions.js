@@ -15,7 +15,7 @@
         });*/
 
 
-        $('table#submission-filters input[type="checkbox"]').click(function () {
+        $('table#submission-filters input[type="radio"]').click(function () {
             submission_filters();
         });
 
@@ -25,16 +25,11 @@
 
         function submission_filters() {
 
-            var partner = $('table#submission-filters #partner:checked').val();
-            var approved = $('table#submission-filters #approved:checked').val();
+            var status = $('table#submission-filters input[name="status-option"]:checked').val();
             var filter = $('table#submission-filters #date-filter option:selected').val();
             var sort = $('table#submission-filters #date-sort option:selected').val();
 
-            partner = (partner == undefined)?'':partner;
-            approved = (approved == undefined)?'':approved;
-
-            var query = 'filter='+filter+'&sort='+sort+'&partner='+partner+'&approved='+approved;
-
+            var query = 'filter='+filter+'&sort='+sort+'&status='+status;
 
             query = encodeURIComponent(query);
 
