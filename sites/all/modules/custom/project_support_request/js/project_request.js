@@ -27,6 +27,9 @@
             });
         });
 
+        $('#edit-submitted-country .edit-submitted-country-1').hide();
+        $('.edit-submitted-country').hide();
+
         //change the zip code and postal code based on country selection
         $("input#edit-submitted-country-1").click(function() {
             $('.webform-component--zip-code label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
