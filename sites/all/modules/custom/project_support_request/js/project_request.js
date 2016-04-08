@@ -45,5 +45,11 @@
             $('.webform-component--zip-code label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
         }
 
+        //adding mailto link to webform submission table email field.
+        $('.views-table tr').each(function() {
+            var email = $(this).find("td").eq(9).html();
+            $(this).find("td").eq(9).html('<a href="mailto:' + email + '">' + email + '</a>');
+        });
+
     });
 })(jQuery);
