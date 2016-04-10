@@ -103,12 +103,25 @@ function asset_upload_views_pre_render(&$view) {
                 $file_data = array();
                 foreach($view->result as $key => $value){
                     $file_data = array();
-                    foreach($value->field_field_jpg[0]['rendered']['entity']['field_collection_item'] as $k => $v){
-                        //print_pre($v,1);
-                        if(!empty($v['field_upload_jpg']['#object']->field_upload_jpg)){
+                    //print_pre($value,1);
+                    if(!empty($value->field_field_jpg)){
+                        foreach($value->field_field_jpg[0]['rendered']['entity']['field_collection_item'] as $k => $v){
                             //print_pre($v,1);
-                            $file_data = $v['field_upload_jpg']['#object']->field_upload_jpg['und'][0];
-                        }else{
+                            if(!empty($v['field_upload_jpg']['#object']->field_upload_jpg)){
+                                //print_pre($v,1);
+                                $file_data = $v['field_upload_jpg']['#object']->field_upload_jpg['und'][0];
+                            }else{
+                                foreach($value->field_field_png[0]['rendered']['entity']['field_collection_item'] as $k => $v){
+                                    if(!empty($v['field_resolution_png']['#object']->field_upload_png)){
+                                        $file_data = $v['field_resolution_png']['#object']->field_upload_png['und'][0];
+                                    }else{
+                                        $file_data['uri'] = "noimage.png";
+                                    }
+                                }
+                            }
+                        }
+                    }else{
+                        if(!empty($value->field_field_png)){
                             foreach($value->field_field_png[0]['rendered']['entity']['field_collection_item'] as $k => $v){
                                 if(!empty($v['field_resolution_png']['#object']->field_upload_png)){
                                     $file_data = $v['field_resolution_png']['#object']->field_upload_png['und'][0];
@@ -116,6 +129,8 @@ function asset_upload_views_pre_render(&$view) {
                                     $file_data['uri'] = "noimage.png";
                                 }
                             }
+                        }else{
+                            $file_data['uri'] = "noimage.png";
                         }
                     }
                     $view->result[$key]->field_field_assets_image_preview[0]['rendered']['#markup'] = "<img src='".image_style_url('medium',$file_data['uri'])."'>";
