@@ -104,7 +104,7 @@ function asset_upload_views_pre_render(&$view) {
                 foreach($view->result as $key => $value){
                     $file_data = array();
                     foreach($value->field_field_jpg[0]['rendered']['entity']['field_collection_item'] as $k => $v){
-                        //print_pre($v,1);
+                        print_pre($v,1);
                         if(!empty($v['field_upload_jpg']['#object']->field_upload_jpg)){
                             //print_pre($v,1);
                             $file_data = $v['field_upload_jpg']['#object']->field_upload_jpg['und'][0];
@@ -128,7 +128,7 @@ function asset_upload_views_pre_render(&$view) {
                     foreach($view->result as $key => $value){
                         $file_data = array();
                         foreach($value->field_field_jpg[0]['rendered']['entity']['field_collection_item'] as $k => $v){
-                            //print_pre($v,1);
+                            print_pre($v,1);
                             if(!empty($v['field_upload_jpg']['#object']->field_upload_jpg)){
                                 //print_pre($v,1);
                                 $file_data = $v['field_upload_jpg']['#object']->field_upload_jpg['und'][0];
