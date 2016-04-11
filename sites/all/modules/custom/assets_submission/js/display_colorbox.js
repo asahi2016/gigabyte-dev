@@ -108,20 +108,25 @@
             var submission_node = $('input[type="hidden"]#submission-node').val();
             var submission_iteration = $('input[type="hidden"]#submission-iteration').val();
             var comment = $('#cboxLoadedContent textarea').val();
-            $.post(
-                Drupal.settings.gigabyte.baseUrl + '/partner/update/submission/comment',
-                {
-                    node: submission_node,
-                    iteration: submission_iteration,
-                    comment: comment,
-                    ajax: true
-                },
-                function (response) {
-                    alert('Comment Updated Successfully');
-                    $.colorbox.close();
-                    window.location.reload();
-                }
-            );
+
+            if(comment) {
+                $.post(
+                    Drupal.settings.gigabyte.baseUrl + '/partner/update/submission/comment',
+                    {
+                        node: submission_node,
+                        iteration: submission_iteration,
+                        comment: comment,
+                        ajax: true
+                    },
+                    function (response) {
+                        alert('Comment Updated Successfully');
+                        $.colorbox.close();
+                        window.location.reload();
+                    }
+                );
+            }else{
+                alert('Comment field can not be empty.');
+            }
 
         });
 
