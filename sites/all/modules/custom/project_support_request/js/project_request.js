@@ -32,7 +32,7 @@
         $('.edit-submitted-country').hide();
 
         //change the zip code and postal code based on country selection
-        $("input#edit-submitted-country-1").click(function() {
+        /*$("input#edit-submitted-country-1").click(function() {
             $('.webform-component--zip-code label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
         });
         $("input#edit-submitted-country-2").click(function() {
@@ -43,14 +43,29 @@
             $('.webform-component--zip-code label').html('Postal Code <span class="form-required" title="This field is required.">*</span>');
         }else{
             $('.webform-component--zip-code label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
-        }
+        }*/
 
         //adding mailto link to webform submission table email field.
         $('.views-table tr').each(function() {
             var email = $(this).find("td").eq(9).html();
             $(this).find("td").eq(9).html('<a href="mailto:' + email + '">' + email + '</a>');
         });
-        
-
+        function country_name_sel(){
+            var country_selected_ca = $('#edit-submitted-country input:checked').val();
+            if(country_selected_ca >= 2){
+                $('.webform-component--zip-code label').html('Postal Code: <span class="form-required" title="This field is required.">*</span>');
+            }else{
+                $('.webform-component--zip-code label').html('Zip Code: <span class="form-required" title="This field is required.">*</span>');
+            }
+        }
+        $('.form-item-submitted-country input[type="radio"]').click(function(){
+            country_name_sel();
+        });
+                country_name_sel();
+        var country_name = $('.webform-component--country').text().split(':')[1];
+        if(country_name.trim()=='Canada'){
+            $('.webform-component--zip-code label.webform-label-processed').text('Postal Code:');
+        }
     });
 })(jQuery);
+
