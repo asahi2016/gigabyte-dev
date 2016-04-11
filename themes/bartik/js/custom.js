@@ -47,6 +47,24 @@ jQuery(document).ready(function($) {
         }
     });
 
+    $('#scrol-top').click(function() {
+        $("html,body").animate({scrollTop: 0}, 1000, 'swing');
+    });
+    scrolltop()
+    $(window).scroll(function (event) {
+        scrolltop()
+    });
+    function scrolltop(){
+        var scroll = $(window).scrollTop();
+        if(scroll > '400')
+        {
+            $('#scrol-top').show();
+        }
+        else{
+            $('#scrol-top').hide();
+        }
+    }
+
 
     var txt_val = $('.make_a_request_ptag').text();
     $('<p>'+txt_val+'</p>').insertBefore($("#make-a-request-form"));
