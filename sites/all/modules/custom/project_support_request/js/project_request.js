@@ -67,8 +67,11 @@
         });
                 country_name_sel();
         var country_name = $('.webform-component--country').text().split(':')[1];
-        if(country_name.trim()=='Canada'){
-            $('.webform-component--zip-code label.webform-label-processed').text('Postal Code:');
+
+        if($('.webform-component--country').length > 0) {
+            if ($.trim(country_name) == 'Canada') {
+                $('.webform-component--zip-code label.webform-label-processed').text('Postal Code:');
+            }
         }
     });
 })(jQuery);
