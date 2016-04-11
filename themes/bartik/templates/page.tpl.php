@@ -339,9 +339,9 @@ drupal_add_js("jQuery(document).ready(function(){country_id = " . (!empty($_SESS
       <?php print render($page['triptych_last']); ?>
     </div></div> <!-- /#triptych, /#triptych-wrapper -->
   <?php endif; ?>
-
+  <?php global $base_url; ?>
   <div id="footer-wrapper"><div class="section">
-          <img class="f_img" src="themes/bartik/images/icon_top_mouseover.png" width="100" height="100" alt="" id="scrol-top" />
+          <img class="f_img" src="<?php echo $base_url;?>themes/bartik/images/icon_top_mouseover.png" width="100" height="100" alt="" id="scrol-top" />
     <?php if ($page['footer_firstcolumn'] || $page['footer_secondcolumn'] || $page['footer_thirdcolumn'] || $page['footer_fourthcolumn']): ?>
       <div id="footer-columns" class="clearfix">
         <?php print render($page['footer_firstcolumn']); ?>
