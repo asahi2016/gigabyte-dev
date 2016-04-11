@@ -16,30 +16,28 @@
 
 <table class="subm_wrap_s" id="submission-filters">
     <tbody>
+    <?php if($admin){ ?>
     <tr>
         <td>Filter by company:</td>
         <td>
-            <?php if($admin){ ?>
+            <select id="company-filter">
+                <option value="">All</option>
+                <?php
+                $selected = '';
+                foreach ($variables['company_lists'] as $company_key => $company) {
+                    if (isset($args['cid']) && ($company->nid == $args['cid'])) {
+                        $selected = 'selected = selected';
+                    }else{
+                        $selected = '';
+                    }
+                    ?>
+                    <option value="<?php echo $company->nid;?>" <?php echo $selected;?> ><?php echo $company->title;?></option>
+                <?php } ?>
 
-                <select id="company-filter">
-                    <option value="">All</option>
-                    <?php
-                    $selected = '';
-                    foreach ($variables['company_lists'] as $company_key => $company) {
-                        if (isset($args['cid']) && ($company->nid == $args['cid'])) {
-                            $selected = 'selected = selected';
-                        }else{
-                            $selected = '';
-                        }
-                        ?>
-                        <option value="<?php echo $company->nid;?>" <?php echo $selected;?> ><?php echo $company->title;?></option>
-                    <?php } ?>
-
-                </select>
-
-            <?php  } ?>
+            </select>
         </td>
     </tr>
+    <?php  } ?>
     <tr>
         <td>Filter by status:</td>
         <td>
