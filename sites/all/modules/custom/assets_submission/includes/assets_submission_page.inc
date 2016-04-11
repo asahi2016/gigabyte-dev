@@ -35,6 +35,17 @@ function update_submission_comment(){
 
        $last_comment_id = db_insert('submission_comments')->fields($data_insert)->execute();
 
+       //Update node date.
+
+       $node = node_load($node_id, $submission_id);
+       $node->changed = time();
+       $node->promote = 0;
+       node_save($node);
+
+       $param['comments'] = $comment_content = comment_load($last_comment_id);
+
+       send_mail_content_information('reply_comments', $param , $node);
+
        $response = array('message' => 'Comment update successfully', 'last_commment' => $last_comment_id);
 
        print json_encode($response);
@@ -62,6 +73,8 @@ function update_submission_status_by_admin(){
         $node->promote = 0;
         node_save($node);
 
+        send_mail_content_information('approved ', $param = array(), $node);
+        
         $response = array('message' => 'Approved successfully');
 
         print json_encode($response);
