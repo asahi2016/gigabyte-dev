@@ -29,7 +29,13 @@
             var filter = $('table#submission-filters #date-filter option:selected').val();
             var sort = $('table#submission-filters #date-sort option:selected').val();
 
-            var query = 'filter='+filter+'&sort='+sort+'&status='+status;
+            var company = '';
+            if($('table#submission-filters #company-filter').length > 0){
+                var cid = $('table#submission-filters #company-filter option:selected').val();
+                company = '&cid='+cid;
+            }
+
+            var query = 'filter='+filter+'&sort='+sort+'&status='+status+company;
 
             query = encodeURIComponent(query);
 

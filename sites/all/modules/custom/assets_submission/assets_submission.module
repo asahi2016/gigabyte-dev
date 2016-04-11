@@ -139,26 +139,31 @@ function template_preprocess_view_user_submissions(&$variables){
 
         if ($admin) {
 
-            $company_lists = '';
+            $company_info = db_query("SELECT * FROM {node} WHERE type = :type", array(':type' => 'group'))->fetchAll();
+            $variables['company_lists'] = $company_info;
 
             $nids = db_query('SELECT nid FROM {node} WHERE type = :type ORDER BY nid DESC', array(':type' => $node_type))->fetchCol();
+
+            if(isset($args['cid']) && is_numeric($args['cid'])) {
+
+                $members_ids = get_member_ids_from_particular_group($args['cid']);
+                $mids = array();
+                if ($members_ids) {
+                    foreach ($members_ids as $mid) {
+                        array_push($mids, $mid->uid);
+                    }
+                    $uids = implode(',', $mids);
+                }
+
+                $nids = db_query("SELECT nid FROM {node} WHERE uid IN($uids) AND type = :type ORDER BY nid DESC", array(':type' => $node_type))->fetchCol();
+            }
+
         } else {
             $user = user_load($uid);
 
             $gid = $user->field_company_name['und'][0]['target_id'];
 
-            $members_ids = db_query("SELECT og.etid as uid
-            FROM {og_membership} og
-            WHERE og.gid=:gid
-            AND og.group_type=:group_type
-            AND og.entity_type=:entity_type",
-                array(
-                    ':gid' => $gid,
-                    ':entity_type' => 'user',
-                    ':group_type' => 'node',
-                )
-            )->fetchAll();
-
+            $members_ids = get_member_ids_from_particular_group($gid);
 
             $mids = array();
             if ($members_ids) {
@@ -330,6 +335,24 @@ function template_preprocess_view_user_submissions(&$variables){
     }
 
     return $variables;
+}
+
+function get_member_ids_from_particular_group($group_id){
+
+    $members_ids = db_query("SELECT og.etid as uid
+            FROM {og_membership} og
+            WHERE og.gid=:gid
+            AND og.group_type=:group_type
+            AND og.entity_type=:entity_type",
+        array(
+            ':gid' => $group_id,
+            ':entity_type' => 'user',
+            ':group_type' => 'node',
+        )
+    )->fetchAll();
+
+    return $members_ids;
+
 }
 
 function arrange_submissions($args, $filter_data, $submissions){
