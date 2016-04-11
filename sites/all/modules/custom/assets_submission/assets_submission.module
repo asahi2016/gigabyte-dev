@@ -285,7 +285,11 @@ function template_preprocess_view_user_submissions(&$variables){
                 //ksort($node_revisions[$nid]['submissions']);
             }
 
-            $node_revisions[$nid]['root']['comment'] = comment_load($node_revisions[$nid]['root'][$nid]->cid);
+            $comment_content = '';
+            if(isset($node_revisions[$nid]['root'][$nid]->cid)){
+                $comment_content = comment_load($node_revisions[$nid]['root'][$nid]->cid);
+            }
+            $node_revisions[$nid]['root']['comment'] = $comment_content;
         }
 
         if (isset($args) && !empty($args)) {
