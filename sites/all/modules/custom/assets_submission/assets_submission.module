@@ -445,13 +445,23 @@ function assets_submission_node_insert($node){
 
 function send_mail_content_information($flag, $param = array(), $node){
 
+
     global $user;
-    $account = user_load($user->uid);
+
+    $uid = $user->uid;
+
+    if(($flag == 'reply_comments') || ($flag == 'approved')){
+
+        $uid = $node->uid;
+
+    }
+
+    $account = user_load($uid);
     $company_node = node_load($account->field_company_name['und'][0]['target_id']);
     $company_name = $company_node->title;
     $first_name = $account->field_first_name['und'][0]['value'];
     $last_name = $account->field_last_name['und'][0]['value'];
-    $to = $user->mail;
+    $to = $account->mail;
     $from = "request@gigabyte.com";
     $subject = "Gigabyte Partner Portal - Assets Submissions";
     $admin_notify = false;
@@ -474,7 +484,7 @@ function send_mail_content_information($flag, $param = array(), $node){
                 $body_admin .= '<p style="margin:10px 5px">Hi admin' .'</p>';
                 $body_admin .= '<p style="margin:10px 5px">You have received a new submission for review from the Partner Portal:</p>';
                 $body_admin .= '<p style="margin:10px 5px">Name: '.$first_name .' '.$last_name.'<br';
-                $body_admin .= 'Email: '.$user->mail.'<br>';
+                $body_admin .= 'Email: '.$account->mail.'<br>';
                 $body_admin .= 'Company: '.$company_name.'<br>';
                 $body_admin .= 'Submission:</p>';
                 $body_admin .= '<p style="margin:10px 5px"> Submission: '.$node->title.'</p>';
@@ -501,7 +511,7 @@ function send_mail_content_information($flag, $param = array(), $node){
                 $body_admin .= '<p style="margin:10px 5px">Hi admin' .'</p>';
                 $body_admin .= '<p style="margin:10px 5px">You have received a new submission for review from the Partner Portal:</p>';
                 $body_admin .= '<p style="margin:10px 5px">Name: '.$first_name .' '.$last_name.'<br';
-                $body_admin .= 'Email: '.$user->mail.'<br>';
+                $body_admin .= 'Email: '.$account->mail.'<br>';
                 $body_admin .= 'Company: '.$company_name.'<br>';
                 $body_admin .= 'Submission:</p>';
                 $body_admin .= '<p style="margin:10px 5px"> Submission: '.$node->title.'</p>';
@@ -558,7 +568,7 @@ function send_mail_content_information($flag, $param = array(), $node){
 
         $site_email = variable_get('site_mail');
         $to_admin = $site_email;
-        $from_user = $user->mail;
+        $from_user = $account->mail;
         $subject_admin = "Gigabyte Partner Portal - Assets Submissions";
 
         $params = array(
