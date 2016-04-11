@@ -42,7 +42,7 @@ function update_submission_comment(){
        $node->promote = 0;
        node_save($node);
 
-       $param['comments'] = $comment_content = comment_load($last_comment_id);
+       $param['comments'] = $submission_comment;
 
        send_mail_content_information('reply_comments', $param , $node);
 
@@ -74,7 +74,7 @@ function update_submission_status_by_admin(){
         node_save($node);
 
         send_mail_content_information('approved ', $param = array(), $node);
-        
+
         $response = array('message' => 'Approved successfully');
 
         print json_encode($response);

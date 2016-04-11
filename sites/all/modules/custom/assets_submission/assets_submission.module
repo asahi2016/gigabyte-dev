@@ -443,7 +443,7 @@ function assets_submission_node_insert($node){
 }
 
 
-function send_mail_content_information($flag, $param = array(), $node){
+function send_mail_content_information($flag, $params = array(), $node){
 
 
     global $user;
@@ -526,7 +526,7 @@ function send_mail_content_information($flag, $param = array(), $node){
                 $body .= '<p style="margin:10px 5px"> A Gigabyte Representative commented on your submission. Please find below the details.</p>';
                 $body .= '<p style="margin:10px 5px"> Company: '.$company_name.'</p>';
                 $body .= '<p style="margin:10px 5px"> Commented on Submission: '.$node->title.'</p>';
-                $body .= '<p style="margin:10px 5px"> Comments: '.$node->title.'</p>';
+                $body .= '<p style="margin:10px 5px"> Comments: '.$params['comments'].'</p>';
                 $body .= '<p> </p>';
                 $body .= '<p style="margin:10px 5px">Thank you,</p></br>';
                 $body .= '<p> </p>';
