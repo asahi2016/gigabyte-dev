@@ -138,6 +138,9 @@ function template_preprocess_view_user_submissions(&$variables){
         }
 
         if ($admin) {
+
+            $company_lists = '';
+
             $nids = db_query('SELECT nid FROM {node} WHERE type = :type ORDER BY nid DESC', array(':type' => $node_type))->fetchCol();
         } else {
             $user = user_load($uid);
@@ -482,13 +485,15 @@ function send_mail_content_information($flag, $params = array(), $node){
 
                 $body_admin  = " ";
                 $body_admin .= '<p style="margin:10px 5px">Hi admin' .'</p>';
-                $body_admin .= '<p style="margin:10px 5px">You have received a new submission for review from the Partner Portal:</p>';
-                $body_admin .= '<p style="margin:10px 5px">Name: '.$first_name .' '.$last_name.'<br>';
+                $body_admin .= '<p style="margin:10px 5px">You have received a new submission for review from the Partner Portal</p>';
                 $body_admin .= '<p> </p>';
-                $body_admin .= 'Email: '.$account->mail.'<br>';
+                $body_admin .= '<p style="margin:10px 5px">Name: '.$first_name .' '.$last_name.'</p>';
                 $body_admin .= '<p> </p>';
-                $body_admin .= 'Company: '.$company_name.'<br>';
-                $body_admin .= '<p style="margin:10px 5px"> Submission: '.$node->title.'</p>';
+                $body_admin .= '<p style="margin:10px 5px">Email: '.$account->mail.'</p>';
+                $body_admin .= '<p> </p>';
+                $body_admin .= '<p style="margin:10px 5px">Company: '.$company_name.'</p>';
+                $body_admin .= '<p> </p>';
+                $body_admin .= '<p style="margin:10px 5px">Submission: '.$node->title.'</p>';
                 $body_admin .= '<p> </p>';
                 $body_admin .= '<p style="margin:10px 5px">Thank you,</p></br>';
                 $body_admin .= '<p> </p>';
@@ -510,13 +515,15 @@ function send_mail_content_information($flag, $params = array(), $node){
 
                 $body_admin  = " ";
                 $body_admin .= '<p style="margin:10px 5px">Hi admin' .'</p>';
-                $body_admin .= '<p style="margin:10px 5px">You have received a new submission for review from the Partner Portal:</p>';
-                $body_admin .= '<p style="margin:10px 5px">Name: '.$first_name .' '.$last_name.'<br>';
-                $body_admin .= 'Email: '.$account->mail.'<br>';
+                $body_admin .= '<p style="margin:10px 5px">You have received a new submission for review from the Partner Portal</p>';
                 $body_admin .= '<p> </p>';
-                $body_admin .= 'Company: '.$company_name.'<br>';
+                $body_admin .= '<p style="margin:10px 5px">Name: '.$first_name .' '.$last_name.'</p>';
                 $body_admin .= '<p> </p>';
-                $body_admin .= '<p style="margin:10px 5px"> Submission: '.$node->title.'</p>';
+                $body_admin .= '<p style="margin:10px 5px">Email: '.$account->mail.'</p>';
+                $body_admin .= '<p> </p>';
+                $body_admin .= '<p style="margin:10px 5px">Company: '.$company_name.'</p>';
+                $body_admin .= '<p> </p>';
+                $body_admin .= '<p style="margin:10px 5px">Submission: '.$node->title.'</p>';
                 $body_admin .= '<p> </p>';
                 $body_admin .= '<p style="margin:10px 5px">Thank you,</p></br>';
                 $body_admin .= '<p> </p>';
