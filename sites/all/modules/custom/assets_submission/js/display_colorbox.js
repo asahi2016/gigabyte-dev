@@ -4,7 +4,6 @@
         $(document).on('click','#colorbox' , function () {
             $('#cboxLoadingOverlay').remove();
             $('#cboxLoadingGraphic').remove();
-
         });
 
         $(document).on('click','.download-image', function() {
@@ -27,6 +26,7 @@
         }
 
         $('a.submission-image').click(function(){
+            $('#cboxSlideshow').remove();
             var ref = $(this).parents('div.group:first-child').html();
             var table_class = $(this).parents('div.group table:first-child').attr('class').split(' ')[0];
             var nodeId = $(this).parents('div.group table:first-child').attr('nodeId');

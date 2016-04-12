@@ -132,7 +132,7 @@
 
            // print_pre($submission,1);
 
-            $submitted = date("F d Y", $submission->timestamp);
+            $submitted = date("F d Y", $submission->node->created);
             $updated = date("F d Y", $submission->node->changed);
 
             ?>

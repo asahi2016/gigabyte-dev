@@ -224,7 +224,7 @@ function template_preprocess_view_user_submissions(&$variables){
 
                 if (!$first_submission) {
 
-                    $created = $revisions['submissions'][$rid]->timestamp;
+                    $created = $revisions['submissions'][$rid]->node->created;
                     $updated = $revisions['submissions'][$rid]->node->changed;
                     $status = $revisions['submissions'][$rid]->node->status;
                     $submission_nodeid = $nid;
