@@ -409,10 +409,80 @@ function assets_submission_form_submission_node_form_alter(&$form, &$form_state,
     $form['ajax-submit']['#value'] = 'Submit';
 
    // $form['#attributes']['class'][] = 'group4';
+    $form['#validate'][] = 'assets_submission_form_validation';
     $form['#prefix'] = '<div class="submission-form">';
     $form['#suffix'] = '</div>';
 
     //print_pre($form['displayonly'],1);
+
+}
+
+
+function assets_submission_form_validation(&$form, &$form_state){
+    // Append custom error message element with content
+    assets_submission_errors_reset( $form );
+}
+
+
+function assets_submission_errors_reset(&$element){
+
+    // Check for errors and settings
+    $errors = form_get_errors();
+
+    if( ! isset( $_SESSION[ 'messages' ] ) ) {
+        return;
+    }
+
+    $reset_errors = array();
+
+    // Recurse through all children.
+    foreach( element_children( $element ) as $key ) {
+        if( isset( $element[ $key ] ) && $element[ $key ] ) {
+            $reset_errors += group_registration_errors_reset( $element[ $key ] );
+        }
+    }
+
+    $element_id = implode( '][', $element[ '#parents' ] );
+
+    if ( !empty( $errors[ $element_id ] )) {
+        $error_message = $errors[ $element_id ];
+
+        // Get error id
+        $error_id = array_search( $error_message, $_SESSION[ 'messages' ][ 'error' ] );
+
+        if( $error_id !== FALSE ) {
+            unset( $_SESSION[ 'messages' ][ 'error' ][ $error_id ] );
+            $_SESSION[ 'messages' ][ 'error' ] = array_values( $_SESSION[ 'messages' ][ 'error' ]  );
+
+            if( count( $_SESSION[ 'messages' ][ 'error' ] ) <= 0 ) {
+                unset( $_SESSION[ 'messages' ][ 'error' ] );
+            }
+
+            switch($element['#type']){
+
+                case 'textfield':
+                    $error_message = str_replace('3. ','',$error_message);
+                    $error_message = str_replace('field is required','cannot be empty',$error_message);
+                    break;
+                case 'checkboxes':
+                    $error_message = str_replace($error_message ,'Please select at least one checkbox',$error_message);
+                    break;
+                case 'radio':
+                    $error_message = str_replace($error_message ,'Please select any one option',$error_message);
+                    break;
+                case 'select':
+                    $error_message = str_replace($error_message ,'Please select any one member type',$error_message);
+                    break;
+
+            }
+
+            $element[ '#suffix' ] = '<span class="custom-error '.$element[ '#id' ].'" >'.$error_message.'</span>';
+
+            $reset_errors[ $element[ '#id' ] ] = $error_message;
+        }
+    }
+
+    return $reset_errors;
 
 }
 
