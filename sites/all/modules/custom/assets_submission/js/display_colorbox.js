@@ -20,6 +20,8 @@
                 html : submission_form,
                 onClosed:function() {
                     $.cookie("submissionNode", '');
+                    $('form#submission-node-form span.custom-error').hide();
+                    $('form#submission-node-form input').removeClass('error');
                 }
             });
             $('div.submission-form form#submission-node-form').hide();

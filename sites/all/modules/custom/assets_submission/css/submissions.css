@@ -1,0 +1,5 @@
+#submission-node-form .form-item{float:left;}
+#submission-node-form .field-type-image{margin:0px;clear: both}
+#submission-node-form .custom-error{clear:both;padding:0 10px;float:right;}
+#submission-node-form .form-submit{clear:both;}
+.page-partner-submissions div.messages.error{display:none;}

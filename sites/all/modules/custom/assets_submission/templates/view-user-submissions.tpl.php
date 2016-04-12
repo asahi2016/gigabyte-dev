@@ -10,7 +10,6 @@
         $args = get_clean_url($query);
     }
 
-
 ?>
 <?php if(user_is_logged_in()){ ?>
 

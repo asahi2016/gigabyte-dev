@@ -434,6 +434,8 @@ function assets_submission_errors_reset(&$element){
     // Check for errors and settings
     $errors = form_get_errors();
 
+
+    //print_pre($element['#type']);
     if( ! isset( $_SESSION[ 'messages' ] ) ) {
         return;
     }
@@ -469,16 +471,13 @@ function assets_submission_errors_reset(&$element){
                     $error_message = str_replace('3. ','',$error_message);
                     $error_message = str_replace('field is required','cannot be empty',$error_message);
                     break;
-                case 'checkboxes':
-                    $error_message = str_replace($error_message ,'Please select at least one checkbox',$error_message);
+                case 'file':
+                    $error_message = ($errors['field_submission_image_und_0'])?
+                        'Invalid file format, Only files with the following extensions are allowed: png gif jpg jpeg':
+                       $error_message;
+                    unset($errors['field_submission_image_und_0']);
+                    //$error_message = str_replace($error_message ,'Please select any one member type',$error_message);
                     break;
-                case 'radio':
-                    $error_message = str_replace($error_message ,'Please select any one option',$error_message);
-                    break;
-                case 'select':
-                    $error_message = str_replace($error_message ,'Please select any one member type',$error_message);
-                    break;
-
             }
 
             $element[ '#suffix' ] = '<span class="custom-error '.$element[ '#id' ].'" >'.$error_message.'</span>';
