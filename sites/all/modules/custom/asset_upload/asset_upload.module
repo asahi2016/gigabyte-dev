@@ -128,6 +128,7 @@ function asset_upload_views_pre_render(&$view) {
                         }
                     }else{
                         if(!empty($value->field_field_png)){
+
                             foreach($value->field_field_png[0]['rendered']['entity']['field_collection_item'] as $k => $v){
                                 if(!empty($v['field_resolution_png']['#object']->field_upload_png)){
                                     $file_data = $v['field_resolution_png']['#object']->field_upload_png['und'][0];
@@ -142,12 +143,16 @@ function asset_upload_views_pre_render(&$view) {
                         break;
                     }
                     if(!empty($value->field_field_png)) {
+                        //print_pre($value->field_field_png);
                         foreach ($value->field_field_png[0]['rendered']['entity']['field_collection_item'] as $k => $v) {
                             if (!empty($v['field_resolution_png']['#object']->field_upload_png)) {
                                 $file_data_png = $v['field_resolution_png']['#object']->field_upload_png['und'][0];
                             } else {
                                 $file_data_png['uri'] = "noimage.png";
                             }
+                        }
+                        if(empty($v['field_resolution_png']['#object']->field_upload_png)){
+                            $value->field_field_png[0]['rendered']['links']= '';
                         }
                     }
                     $rev_id_jpg = $view->result[$key]->_field_data['nid']['entity']->field_jpg['und'][0]['value'];
