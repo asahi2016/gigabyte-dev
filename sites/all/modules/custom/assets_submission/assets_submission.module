@@ -9,6 +9,7 @@ function assets_submission_init(){
    // drupal_set_message('Assets Submission');
     drupal_add_js(drupal_get_path('module', 'custom').'/assets_submission/js/submissions.js');
     drupal_add_js(drupal_get_path('module', 'custom').'/assets_submission/js/display_colorbox.js');
+    drupal_add_css(drupal_get_path('module', 'custom').'/assets_submission/css/submissions.css');
 
     if(empty($_POST)){
         setcookie("submissionNode", "", time()-3600);
