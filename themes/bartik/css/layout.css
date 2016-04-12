@@ -1078,29 +1078,29 @@ td#join a{margin:0 15px 0 0}
     border: 1px solid transparent;
     border-radius: 4px;
 }
-.page-view-submissions #cboxLoadedContent table td a{float:left;}
-.page-view-submissions #cboxLoadedContent table td a .form-submit{
+.page-partner-submissions #cboxLoadedContent table td a{float:left;}
+.page-partner-submissions #cboxLoadedContent table td a .form-submit{
     width: auto;
     margin: 2px 5px 0px 0px;
     padding: 6px 10px 6px 10px;
     border-radius: 4px;
     font-size: 14px;
 }
-.page-view-submissions .form-textarea-wrapper textarea{
+.page-partner-submissions .form-textarea-wrapper textarea{
     height:200px;
     overflow-y: scroll;
 }
-.page-view-submissions .field-type-image .form-managed-file{clear:both;}
-.page-view-submissions .field-type-image .image-preview{float:left;}
-.page-view-submissions .field-type-image .image-widget-data img{float:left;}
-.page-view-submissions .field-type-image .image-widget-data{float:left;}
-.page-view-submissions .form-managed-file .form-submit{margin: 0 0px 0 10px;display:block;}
-.page-view-submissions .field-type-image .image-widget-data .form-file{width:200px;}
-.page-view-submissions #cboxLoadedContent table td.td_img.w300{width:200px;padding:0 20px 0px 0px;}
-.page-view-submissions #cboxLoadedContent table td.td_left{width:200px;float:left;padding: 0 20px 0 0}
-.page-view-submissions table td.td_left,.page-view-submissions table td.td_right{width:350px;float:left;}
-.page-view-submissions #cboxLoadedContent table td.td_right{width:200px;float:left;}
-.page-view-submissions #cboxLoadedContent table td .btn,.page-view-submissions #cboxLoadedContent table td a{margin:20px 0px 0px;}
+.page-partner-submissions .field-type-image .form-managed-file{clear:both;}
+.page-partner-submissions .field-type-image .image-preview{float:left;}
+.page-partner-submissions .field-type-image .image-widget-data img{float:left;}
+.page-partner-submissions .field-type-image .image-widget-data{float:left;}
+.page-partner-submissions .form-managed-file .form-submit{margin: 0 0px 0 10px;display:block;}
+.page-partner-submissions .field-type-image .image-widget-data .form-file{width:200px;}
+.page-partner-submissions #cboxLoadedContent table td.td_img.w300{width:200px;padding:0 20px 0px 0px;}
+.page-partner-submissions #cboxLoadedContent table td.td_left{width:200px;float:left;padding: 0 20px 0 0}
+.page-partner-submissions table td.td_left,.page-partner-submissions table td.td_right{width:350px;float:left;}
+.page-partner-submissions #cboxLoadedContent table td.td_right{width:200px;float:left;}
+.page-partner-submissions #cboxLoadedContent table td .btn,.page-partner-submissions #cboxLoadedContent table td a{margin:20px 0px 0px;}
 #cboxLoadedContent{overflow: hidden!important;}
 #field-png-add-more-wrapper .field-type-image{width:auto;margin:0px;}
 #field-png-add-more-wrapper .field-type-image label{margin:0px;}
