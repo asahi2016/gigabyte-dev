@@ -550,6 +550,8 @@ function send_mail_content_information($flag, $params = array(), $node){
 
     $uid = $user->uid;
 
+    $flag = trim($flag);
+
     if(($flag == 'reply_comments') || ($flag == 'approved')){
 
         $uid = $node->uid;
@@ -639,6 +641,7 @@ function send_mail_content_information($flag, $params = array(), $node){
                 $body .= '<p style="margin:10px 5px">Gigabyte</p>';
                 break;
         case 'approved':
+
                 $body = "";
                 $body .= '<p style="margin:10px 5px">Hi ' . $first_name.',</p>';
                 $body .= '<p style="margin:10px 5px"> Your submission has been approved by the Gigabyte Representative.</p>';
