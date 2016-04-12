@@ -5,7 +5,7 @@
         $('form#submission-node-form').parents('div.content').prepend(new_submission);
         $('div.new-submission-form').remove();
         $('form#submission-node-form').hide();
-        $('body.page-partner-submissions h2').text('Submission');
+        $('body.page-partner-submissions h2').remove();
 
 
         /*$('table#submission-filters input[type=checkbox]').click(function () {
