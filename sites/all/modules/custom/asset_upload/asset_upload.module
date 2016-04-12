@@ -21,15 +21,15 @@ function asset_upload_form_tools_assets_logos_node_form_alter(&$form, &$form_sta
         '#weight' => 30
     );
 
-    $form['ajax-submit']['#value'] = 'Submit';
+   $form['ajax-submit']['#value'] = 'Submit';
     $form['#submit'][] = 'save_asset_permissions';
-    return $form;
+      //return $form;
 }
 
 
 function save_asset_permissions(&$form, &$form_state){
     //print_pre($form_state['input']);
-   /* $permitted = $form_state['input']['trc_user_roles'];
+    $permitted = $form_state['input']['trc_user_roles'];
     $permitted_role = array();
     foreach($permitted as $permit){
         if(!empty($permit)){
@@ -80,9 +80,9 @@ function save_asset_permissions(&$form, &$form_state){
             ))
             ->execute();
     }else{
-        echo "Fields are empty";
-        exit;
-    }*/
+       drupal_set_message('Some of the fields are empty');
+    }
+    drupal_goto('partner/upload-assets');
 }
 
 /*function asset_upload_views_default_views_alter(&$views) {
@@ -103,6 +103,7 @@ function asset_upload_views_pre_render(&$view) {
     drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/dataTables.buttons.min.js');
     switch($view->name){
         case 'assets_upload_view':
+            //print_pre($view->result);
             foreach($view->result as $key => $value){
                 $file_data = array();
                 foreach($view->result as $key => $value){
@@ -111,9 +112,9 @@ function asset_upload_views_pre_render(&$view) {
                     if(!empty($value->field_field_jpg)){
                         foreach($value->field_field_jpg[0]['rendered']['entity']['field_collection_item'] as $k => $v){
                             //print_pre($v,1);
-                            if(!empty($v['field_upload_jpg']['#object']->field_upload_jpg)){
-                                //print_pre($v,1);
-                                $file_data = $v['field_upload_jpg']['#object']->field_upload_jpg['und'][0];
+                            if(!empty($v['field_resolution_jpg']['#object']->field_upload_jpg)){
+                                //print_pre($v);
+                                $file_data = $v['field_resolution_jpg']['#object']->field_upload_jpg['und'][0];
                             }else{
                                 foreach($value->field_field_png[0]['rendered']['entity']['field_collection_item'] as $k => $v){
                                     if(!empty($v['field_resolution_png']['#object']->field_upload_png)){
@@ -140,25 +141,46 @@ function asset_upload_views_pre_render(&$view) {
                         }
                         break;
                     }
-                    $view->result[$key]->field_field_assets_image_preview[0]['rendered']['#markup'] = "<img src='".image_style_url('medium',$file_data['uri'])."'>";
+                    if(!empty($value->field_field_png)) {
+                        foreach ($value->field_field_png[0]['rendered']['entity']['field_collection_item'] as $k => $v) {
+                            if (!empty($v['field_resolution_png']['#object']->field_upload_png)) {
+                                $file_data_png = $v['field_resolution_png']['#object']->field_upload_png['und'][0];
+                            } else {
+                                $file_data_png['uri'] = "noimage.png";
+                            }
+                        }
+                    }
+                    $rev_id_jpg = $view->result[$key]->_field_data['nid']['entity']->field_jpg['und'][0]['value'];
+                    $rev_id_png = $view->result[$key]->_field_data['nid']['entity']->field_png['und'][0]['value'];
+                    $view->result[$key]->field_field_jpg[0]['rendered']['entity']['field_collection_item'][$rev_id_jpg]['field_dimension_jpg']['#markup'] = "<div class='field field-name-field-dimension-jpg field-type-file field-label-inline clearfix'><div class='field-label'>Dimensions:</div><div class='field-items'><div class='field-item even'>{$file_data['width']} X {$file_data['height']}</div></div></div>";
+                    if(!empty($file_data_png['fid'])){
+                        $view->result[$key]->field_field_png[0]['rendered']['entity']['field_collection_item'][$rev_id_png]['field_dimension_png']['#markup'] = "<div class='field field-name-field-dimension-jpg field-type-file field-label-inline clearfix'><div class='field-label'>Dimensions:</div><div class='field-items'><div class='field-item even'>{$file_data_png['width']} X {$file_data_png['height']}</div></div></div>";
+                    }
+                    if(!empty($file_data)){
+                        $view->result[$key]->field_field_assets_image_preview[0]['rendered']['#markup'] = "<a class='assets-preview-image' href='".image_style_url('large',$file_data['uri'])."' ><img src='".image_style_url('medium',$file_data['uri'])."'></a>";
+                    }else{
+                        if(!empty($file_data_png['fid'])){
+                            $view->result[$key]->field_field_assets_image_preview[0]['rendered']['#markup'] = "<a class='assets-preview-image' href='".image_style_url('large',$file_data_png['uri'])."' ><img src='".image_style_url('medium',$file_data_png['uri'])."'></a>";
+                        }
+                    }
                     unset($file_data);
-                    break;
+                    unset($file_data_png);
                 }
             }
         break;
         case 'asset_upload_partner_view':
-                    //print_pre($view->result,1);
+            //print_pre($view->result);
             foreach($view->result as $key => $value){
                 $file_data = array();
                 foreach($view->result as $key => $value){
                     $file_data = array();
-                    //print_pre($value,1);
+                    // print_pre($value,1);
                     if(!empty($value->field_field_jpg)){
                         foreach($value->field_field_jpg[0]['rendered']['entity']['field_collection_item'] as $k => $v){
                             //print_pre($v,1);
-                            if(!empty($v['field_upload_jpg']['#object']->field_upload_jpg)){
-                                //print_pre($v,1);
-                                $file_data = $v['field_upload_jpg']['#object']->field_upload_jpg['und'][0];
+                            if(!empty($v['field_resolution_jpg']['#object']->field_upload_jpg)){
+                                //print_pre($v);
+                                $file_data = $v['field_resolution_jpg']['#object']->field_upload_jpg['und'][0];
                             }else{
                                 foreach($value->field_field_png[0]['rendered']['entity']['field_collection_item'] as $k => $v){
                                     if(!empty($v['field_resolution_png']['#object']->field_upload_png)){
@@ -167,6 +189,7 @@ function asset_upload_views_pre_render(&$view) {
                                         $file_data['uri'] = "noimage.png";
                                     }
                                 }
+                                break;
                             }
                         }
                     }else{
@@ -177,17 +200,18 @@ function asset_upload_views_pre_render(&$view) {
                                 }else{
                                     $file_data['uri'] = "noimage.png";
                                 }
+                                break;
                             }
                         }else{
                             $file_data['uri'] = "noimage.png";
                         }
+                        break;
                     }
-                    $view->result[$key]->field_field_assets_image_preview[0]['rendered']['#markup'] = "<img src='".image_style_url('medium',$file_data['uri'])."'>";
+
+                    $view->result[$key]->field_field_assets_image_preview[0]['rendered']['#markup'] = "a class='assets-preview-image' href='".image_style_url('medium',$file_data['uri'])."' ><img src='".image_style_url('medium',$file_data['uri'])."'></a>";
                     unset($file_data);
                 }
             }
-                break;
-
+            break;
     }
-
 }

@@ -1,5 +1,12 @@
 
 jQuery(document).ready(function($) {
+    //Node option publish option enable
+    $('.block-system .vertical-tabs ul.vertical-tabs-list li').removeClass('selected');
+    var last_eq = $('.block-system .vertical-tabs-panes fieldset.vertical-tabs-pane').size();
+    $('.block-system .vertical-tabs-panes fieldset.vertical-tabs-pane').hide();
+    $('.block-system .vertical-tabs ul.vertical-tabs-list li:last-child').addClass('selected');
+    $('.block-system .vertical-tabs-panes fieldset.vertical-tabs-pane').eq(last_eq - 1).show();
+
     // Switch between back to business center and partner portal
     curr_url = document.URL.split('/');
     var found = curr_url.indexOf("partner") > -1;
