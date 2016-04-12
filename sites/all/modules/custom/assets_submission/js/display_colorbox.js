@@ -10,7 +10,7 @@
             $(this).trigger('click');
         });
 
-        if($('form#submission-node-form .image-preview img').length > 0){
+        if(($('form#submission-node-form .image-preview img').length > 0)){
             // open the other colorBox
             $('form#submission-node-form').show();
             var submission_form = $('form#submission-node-form').parent('div.submission-form').html();
@@ -30,6 +30,7 @@
 
             $('.'+table_class).colorbox({rel:'"'+table_class+'"', slideshow:true, html: ref,
                 height: "auto",
+                arrowKey: true,
                 slideshowAuto : false,
                 onComplete:function(){
                     var position = $.colorbox.element().attr('nodeIndex');

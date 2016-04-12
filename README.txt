@@ -149,3 +149,6 @@ More about developing:
            }else{
 
            }
+
+
+GIG-122 Implement company filter functioanlity to GIGABYTE admin for filters the submission based on particular company by using company filter option.
