@@ -80,9 +80,9 @@ function save_asset_permissions(&$form, &$form_state){
             ))
             ->execute();
     }else{
-       drupal_set_message('Some of the fields are empty');
+       drupal_set_message('Required fields are empty');
     }
-    drupal_goto('partner/upload-assets');
+    //drupal_goto('partner/upload-assets');
 }
 
 /*function asset_upload_views_default_views_alter(&$views) {
