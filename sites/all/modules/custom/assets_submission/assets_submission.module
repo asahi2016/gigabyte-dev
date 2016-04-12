@@ -139,6 +139,10 @@ function template_preprocess_view_user_submissions(&$variables){
 
         if ($admin) {
 
+            $args['filter'] = isset($args['filter'])? $args['filter'] :'submitted';
+            $args['sort'] = isset($args['sort'])? $args['sort'] :'DESC';
+            $args['status'] = isset($args['status'])? $args['status'] :'';
+
             $company_info = db_query("SELECT * FROM {node} WHERE type = :type", array(':type' => 'group'))->fetchAll();
             $variables['company_lists'] = $company_info;
 
