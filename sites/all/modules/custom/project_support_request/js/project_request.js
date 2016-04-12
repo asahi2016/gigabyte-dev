@@ -23,27 +23,14 @@
                 $('input').removeClass('error');
                 $('select').removeClass('error');
                 $('textarea').removeClass('error');
-                $('#edit-submitted-country-1').attr('checked',true);
+                $('input#edit-submitted-country-1').attr('checked',true);
+                $('input#edit-submitted-country-2').removeAttr('checked',true);
                 $('.webform-component--zip-code label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
             });
         });
 
         $('#edit-submitted-country .edit-submitted-country-1').hide();
         $('.edit-submitted-country').hide();
-
-        //change the zip code and postal code based on country selection
-        /*$("input#edit-submitted-country-1").click(function() {
-            $('.webform-component--zip-code label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
-        });
-        $("input#edit-submitted-country-2").click(function() {
-            $('.webform-component--zip-code label').html('Postal Code <span class="form-required" title="This field is required.">*</span>');
-        });
-        var country_selected_ca = $('#edit-submitted-country input:checked').val();
-        if(country_selected_ca == 2){
-            $('.webform-component--zip-code label').html('Postal Code <span class="form-required" title="This field is required.">*</span>');
-        }else{
-            $('.webform-component--zip-code label').html('Zip Code <span class="form-required" title="This field is required.">*</span>');
-        }*/
 
         //adding mailto link to webform submission table email field.
         $('.views-table.cols-17 tr').each(function() {
@@ -56,7 +43,7 @@
         });
         function country_name_sel(){
             var country_selected_ca = $('#edit-submitted-country input:checked').val();
-            if(country_selected_ca >= 2){
+            if(country_selected_ca == 2){
                 $('.webform-component--zip-code label').html('Postal Code: <span class="form-required" title="This field is required.">*</span>');
             }else{
                 $('.webform-component--zip-code label').html('Zip Code: <span class="form-required" title="This field is required.">*</span>');
