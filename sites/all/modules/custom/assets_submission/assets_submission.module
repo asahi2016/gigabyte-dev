@@ -438,7 +438,7 @@ function assets_submission_errors_reset(&$element){
     // Recurse through all children.
     foreach( element_children( $element ) as $key ) {
         if( isset( $element[ $key ] ) && $element[ $key ] ) {
-            $reset_errors += group_registration_errors_reset( $element[ $key ] );
+            $reset_errors += assets_submission_errors_reset( $element[ $key ] );
         }
     }
 
