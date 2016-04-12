@@ -104,6 +104,9 @@ function project_support_request_form_validation(&$form, &$form_state){
     if(!filter_var($email_address, FILTER_VALIDATE_EMAIL)){
         form_set_error('submitted][email_address','Please enter valid email address');
     }
+    if(strlen($project_details) > 500){
+        form_set_error('submitted][project_details','Project Details allows maximum 500 characters');
+    }
 
     project_support_request_errors_reset($form);
 }
