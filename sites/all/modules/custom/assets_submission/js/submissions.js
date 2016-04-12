@@ -39,7 +39,7 @@
 
             query = encodeURIComponent(query);
 
-            window.location.href = Drupal.settings.gigabyte.baseUrl + '/view/submissions?'+query;
+            window.location.href = Drupal.settings.gigabyte.baseUrl + '/partner/submissions?'+query;
         }
 
 

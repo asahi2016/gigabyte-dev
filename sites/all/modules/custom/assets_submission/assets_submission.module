@@ -29,7 +29,7 @@ function print_pre($array = array() , $exit = false){
 
 function assets_submission_menu(){
 
-    $items['view/submissions'] = array(
+    $items['partner/submissions'] = array(
         'page callback' => 'display_user_assets_submission', // Render HTML
         'type' => MENU_CALLBACK,
         'access callback' => TRUE,
@@ -520,7 +520,7 @@ function assets_submission_node_submit($node,&$form, &$form_state) {
         setcookie("submissionNode", "", time()-3600);
         drupal_set_message('<p>'.t('Thank you for your submission. A Gigabyte representative will review and contacting you shortly.').'</p>');
         drupal_set_message(t('@type %title was saved with a new submission', array('@type' => node_type_get_name($node), '%title' => $node->title)));
-        drupal_goto('view/submissions');
+        drupal_goto('partner/submissions');
 
     }
    
@@ -533,7 +533,7 @@ function assets_submission_node_insert($node){
         setcookie("submissionNode", "", time()-3600);
         drupal_set_message('<p>'.t('Thank you for your submission. A Gigabyte representative will review and contacting you shortly.').'</p>');
         drupal_set_message(t('@type %title was saved with a new submission', array('@type' => node_type_get_name($node), '%title' => $node->title)));
-        drupal_goto('view/submissions');
+        drupal_goto('partner/submissions');
     }
 
 }
