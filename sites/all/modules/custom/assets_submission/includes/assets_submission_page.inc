@@ -38,6 +38,7 @@ function update_submission_comment(){
        //Update node date.
 
        $node = node_load($node_id, $submission_id);
+       $node->created = $node->created;
        $node->changed = time();
        $node->promote = 0;
        node_save($node);
@@ -69,6 +70,7 @@ function update_submission_status_by_admin(){
         $node->status = 1;
         $node->is_pending = 0;
         $node->revision_moderation = 0;
+        $node->created = $node->created;
         $node->changed = time();
         $node->promote = 0;
         node_save($node);

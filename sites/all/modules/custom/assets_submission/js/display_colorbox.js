@@ -4,13 +4,16 @@
         $(document).on('click','#colorbox' , function () {
             $('#cboxLoadingOverlay').remove();
             $('#cboxLoadingGraphic').remove();
+
         });
 
         $(document).on('click','.download-image', function() {
             $(this).trigger('click');
         });
 
-        if(($('form#submission-node-form .image-preview img').length > 0)){
+        $('form#submission-node-form').find('input[type="submit"][value="Upload"]').remove();
+
+        if(($('form#submission-node-form .image-preview img').length > 0) || ($('form#submission-node-form span.custom-error').length > 0)){
             // open the other colorBox
             $('form#submission-node-form').show();
             var submission_form = $('form#submission-node-form').parent('div.submission-form').html();

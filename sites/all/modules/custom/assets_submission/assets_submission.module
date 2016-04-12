@@ -413,7 +413,7 @@ function assets_submission_form_submission_node_form_alter(&$form, &$form_state,
     $form['#prefix'] = '<div class="submission-form">';
     $form['#suffix'] = '</div>';
 
-    //print_pre($form['displayonly'],1);
+    //print_pre($form,1);
 
 }
 
