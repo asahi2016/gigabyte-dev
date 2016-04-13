@@ -1215,7 +1215,11 @@ padding:10px;}
     border-radius: 5px;
 }
 .subm_wrap_s{font-size:15px;}
+.subm_wrap_s td div{float:left;}
+.subm_wrap_s .filter_status{margin:20px 20px 0px 0}
+.subm_wrap_s .filter_status .title{margin:0px 10px 0px 0;}
 .subm_wrap_s .radio_list{float:left;margin:0 40px 30px 0px;}
-.subm_wrap_s .title{font-weight: bold;font-size:18px;}
+.subm_wrap_s .title{font-weight: bold;font-size:16px;width:160px;float:left;}
 .subm_wrap_s .by_option{float:left;margin:0 20px 0px 0px}
-.subm_wrap_s .by_option select{width:160px;margin:0 50px 0px 10px}
+.subm_wrap_s .by_option:last-child{margin:0 20px 0px 0px}
+.subm_wrap_s .by_option select,.subm_wrap_s select{width:180px;margin:0 50px 0px 10px;padding:3px;}

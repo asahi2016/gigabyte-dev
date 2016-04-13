@@ -17,29 +17,32 @@
     <tbody>
     <?php if($admin){ ?>
     <tr>
-        <td>Filter by company:</td>
         <td>
-            <select id="company-filter">
-                <option value="">All</option>
-                <?php
-                $selected = '';
-                foreach ($variables['company_lists'] as $company_key => $company) {
-                    if (isset($args['cid']) && ($company->nid == $args['cid'])) {
-                        $selected = 'selected = selected';
-                    }else{
-                        $selected = '';
-                    }
-                    ?>
-                    <option value="<?php echo $company->nid;?>" <?php echo $selected;?> ><?php echo $company->title;?></option>
-                <?php } ?>
+            <div><span class="title">Filter By Company:</span></div>
+            <div>
+                <select id="company-filter">
+                    <option value="">All</option>
+                    <?php
+                    $selected = '';
+                    foreach ($variables['company_lists'] as $company_key => $company) {
+                        if (isset($args['cid']) && ($company->nid == $args['cid'])) {
+                            $selected = 'selected = selected';
+                        }else{
+                            $selected = '';
+                        }
+                        ?>
+                        <option value="<?php echo $company->nid;?>" <?php echo $selected;?> ><?php echo $company->title;?></option>
+                    <?php } ?>
 
-            </select>
+                </select>
+            </div>
         </td>
     </tr>
     <?php  } ?>
     <tr>
-        <td valign="top"><span class="title">Filter by status:</span></td>
         <td valign="top">
+            <div class="filter_status">
+                <div><span class="title">Filter By Status:</span></div>
             <?php
 
             $status_filter = array('partner' => 'Awaiting Reply from Partner' , 'gigabyte' => 'Awaiting Reply from GIGABYTE' ,'approved'=> 'Approved');
@@ -54,10 +57,10 @@
                 ?><div class="radio_list">
                 <input type="radio" name="status-option" value="<?php echo $stkey;?>" <?php echo $checked;?>/> <?php echo $stlabel;?></div>
             <?php } ?>
+            </div>
         </td>
     </tr>
     <tr>
-        <td></td>
         <td valign="top">
             <div class="by_option">
                 <?php
