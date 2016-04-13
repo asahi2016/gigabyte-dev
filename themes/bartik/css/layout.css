@@ -948,57 +948,64 @@ form.node-tools_assets_logos-form {float:left;border:2px solid #eee;padding:20px
 
 td#join a{margin:0 15px 0 0}
 
-#field-jpg-add-more-wrapper{float:left;width:100%;}
-#field-jpg-add-more-wrapper .field-name-field-dimension-jpg,#field-jpg-add-more-wrapper .field-name-field-resolution-jpg,#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg{float:left;}
-#field-jpg-add-more-wrapper .field-name-field-resolution-jpg label{margin:0 0 0 20px;}
-#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .fieldset-legend{font-family:Arial,Helvetica,sans-serif;color:#000;font-weight:normal;}
-#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper{margin-top:0px;width:auto;border-bottom:0px;}
-#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg fieldset.form-wrapper{border-bottom:0px;}
-#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .form-item,#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper label,
-#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget,#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .description,
-#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .form-item{float:left;}
-#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget .form-select,#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget span{
+div[id*='field-jpg-add-more-wrapper']{float:left;width:100%;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-dimension-jpg,div[id*='field-jpg-add-more-wrapper'] .field-name-field-resolution-jpg,div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg{float:left;width:27%;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-dimension-jpg{width:280px;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-resolution-jpg{width:280px;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg{width:500px;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-resolution-jpg label{margin:0 0 0 20px;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .fieldset-legend{font-family:Arial,Helvetica,sans-serif;color:#000;font-weight:normal;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper{margin-top:0px;width:auto;border-bottom:0px;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg fieldset.form-wrapper{border-bottom:0px;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .form-item,div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper label,
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .file-widget,div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .description,
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .form-item{float:left;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .file-widget .form-select,div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .file-widget span{
     float:left;}
-#field-jpg-add-more-wrapper .fieldset-wrapper{float:left;margin-top:20px;}
-#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget span.file a,#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget span.file img{float:left;}
-#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget span.file a{width:180px;}
-#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget .form-select{margin:0 15px 0 15px}
-#field-jpg-add-more-wrapper .form-item .form-text{width:175px;}
-#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .description,#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .file-widget{clear:both;}
-#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg{float:left;width:auto;margin:0px;}
-#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg label{float:left;width:auto;margin:0px;}
-#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper label{display:none;}
-#field-jpg-add-more-wrapper .field-name-field-upload-image-jpg .form-wrapper .description{margin:15px 0px 0px;}
-#field-jpg-add-more-wrapper .form-wrapper .file-widget .form-submit{margin:0px;}
+div[id*='field-jpg-add-more-wrapper'] .fieldset-wrapper{float:left;margin-top:20px;width:100%;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .file-widget span.file a,div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .file-widget span.file img{float:left;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .file-widget span.file a{width:180px;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .file-widget .form-select{margin:0 15px 0 15px}
+div[id*='field-jpg-add-more-wrapper'] .form-item .form-text{width:175px;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .description,div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .file-widget{clear:both;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg{float:left;width:auto;margin:0px;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg label{float:left;width:auto;margin:0px;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper label{display:none;}
+div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .description{margin:15px 0px 0px;}
+div[id*='field-jpg-add-more-wrapper'] .form-wrapper .file-widget .form-submit{margin:0px;}
 
-#field-png-add-more-wrapper{float:left;width:100%;}
-#field-png-add-more-wrapper .field-name-field-dimension-png,#field-png-add-more-wrapper .field-name-field-resolution-png,#field-png-add-more-wrapper .field-name-field-upload-image-png{float:left;}
-#field-png-add-more-wrapper .field-name-field-resolution-png label{margin:0 0 0 20px;}
-#field-png-add-more-wrapper .field-name-field-upload-image-png .fieldset-legend{font-family:Arial,Helvetica,sans-serif;color:#000;font-weight:normal;}
-#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper{margin-top:0px;width:auto;border-bottom:0px;}
-#field-png-add-more-wrapper .field-name-field-upload-image-png fieldset.form-wrapper{border-bottom:0px;}
-#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .form-item,#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper label,
-#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget,#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .description,
-#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .form-item{float:left;}
-#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget .form-select,#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget span{
+div[id*='field-png-add-more-wrapper']{float:left;width:100%;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-dimension-png,div[id*='field-png-add-more-wrapper'] .field-name-field-resolution-png,div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png{float:left;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-dimension-png{width:280px;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-resolution-png{width:280px;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png{width:500px;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-resolution-png label{margin:0 0 0 20px;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .fieldset-legend{font-family:Arial,Helvetica,sans-serif;color:#000;font-weight:normal;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper{margin-top:0px;width:auto;border-bottom:0px;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png fieldset.form-wrapper{border-bottom:0px;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .form-item,div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper label,
+div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .file-widget,div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .description,
+div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .form-item{float:left;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .file-widget .form-select,div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .file-widget span{
     float:left;}
-#field-png-add-more-wrapper .fieldset-wrapper{float:left;margin-top:20px;}
-#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget span.file a,#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget span.file img{float:left;}
-#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget span.file a{width:180px;}
-#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget .form-select{margin:0 15px 0 15px}
-#field-png-add-more-wrapper .form-item .form-text{width:175px;}
-#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .description,#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .file-widget{clear:both;}
-#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper label{display:none;}
-#field-png-add-more-wrapper .field-name-field-upload-image-png .form-wrapper .description{margin:15px 0px 0px;}
-#field-png-add-more-wrapper .form-wrapper .file-widget .form-submit{margin:0px;}
+div[id*='field-png-add-more-wrapper'] .fieldset-wrapper{float:left;margin-top:20px;width:100%;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .file-widget span.file a,div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .file-widget span.file img{float:left;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .file-widget span.file a{width:180px;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .file-widget .form-select{margin:0 15px 0 15px}
+div[id*='field-png-add-more-wrapper'] .form-item .form-text{width:175px;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .description,div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .file-widget{clear:both;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper label{display:none;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .description{margin:15px 0px 0px;}
+div[id*='field-png-add-more-wrapper'] .form-wrapper .file-widget .form-submit{margin:0px;}
 
-#field-pdf-add-more-wrapper{float:left;width:100%;}
-#field-pdf-add-more-wrapper .field-name-field-upload-image-pdf .form-wrapper .description{margin:15px 0px 0px;}
-#field-pdf-add-more-wrapper .form-wrapper .form-item{width: 540px; float: right;}
-#field-pdf-add-more-wrapper .form-wrapper .file-widget .form-file,#field-pdf-add-more-wrapper .form-wrapper .file-widget .form-submit{float:left;margin:0px;}
-#field-pdf-add-more-wrapper .form-wrapper .file-widget span.file a,#field-pdf-add-more-wrapper .form-wrapper .file-widget span.file img,#field-pdf-add-more-wrapper .form-wrapper .file-widget span.file-size{float:left;}
-#field-pdf-add-more-wrapper .form-wrapper .file-widget span.file a{width:180px;}
-#field-pdf-add-more-wrapper .form-wrapper .file-widget span.file-size{margin:0 15px;}
+div[id*='field-pdf-add-more-wrapper']{float:left;width:100%;}
+div[id*='field-pdf-add-more-wrapper'] .field-type-file{width:100%;}
+div[id*='field-pdf-add-more-wrapper'] .field-name-field-upload-image-pdf .form-wrapper .description{margin:15px 0px 0px;}
+div[id*='field-pdf-add-more-wrapper'] .form-wrapper .form-item{width: 540px; float: right;}
+div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget .form-file,div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget .form-submit{float:left;margin:0px;}
+div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget span.file a,div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget span.file img,div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget span.file-size{float:left;}
+div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget span.file a{width:180px;}
+div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget span.file-size{margin:0 15px;}
 
 .view-assets-upload-view  > .view-content{width:1100px;float:left;margin:50px 0px 0px;}
 .view-assets-upload-view  .view-content .views-table{width:100%;float:left;}
@@ -1105,16 +1112,16 @@ td#join a{margin:0 15px 0 0}
 .page-partner-submissions #cboxLoadedContent table td.td_right{width:200px;float:left;}
 .page-partner-submissions #cboxLoadedContent table td .btn,.page-partner-submissions #cboxLoadedContent table td a{margin:20px 0px 0px;}
 #cboxLoadedContent{overflow: hidden!important;}
-#field-png-add-more-wrapper .field-type-image{width:auto;margin:0px;}
-#field-png-add-more-wrapper .field-type-image label{margin:0px;}
+div[id*='field-png-add-more-wrapper'] .field-type-image{width:auto;margin:0px;}
+div[id*='field-png-add-more-wrapper'] .field-type-image label{margin:0px;}
 #block-views-image-preview-view-block{float:left;}
-#field-pdf-add-more-wrapper .form-wrapper .file-widget .form-file{width:270px;}
+div[id*='field-jpg-add-more-wrapper'] .form-wrapper .file-widget .form-file{width:270px;}
 /* .node-tools_assets_logos-form .form-submit{margin:0 90px 0 0;} */
-#field-jpg-add-more-wrapper .field-type-image .image-widget{clear:both;}
-#field-jpg-add-more-wrapper .image-preview img{width:100px;}
-#field-jpg-add-more-wrapper .image-widget-data img{float:left;margin:0 5px 0 0;}
+div[id*='field-jpg-add-more-wrapper'] .field-type-image .image-widget{clear:both;}
+div[id*='field-jpg-add-more-wrapper'] .image-preview img{width:100px;}
+div[id*='field-jpg-add-more-wrapper'] .image-widget-data img{float:left;margin:0 5px 0 0;}
 .field-type-file{float:left;margin:0 0 10px 0}
-#field-pdf-add-more-wrapper .field-type-file{float:right;}
+div[id*='field-jpg-add-more-wrapper'] .field-type-file{float:right;width:470px;}
 
 #pagination th.ui-state-default{padding: 8px 0px 8px 12px;  background: #3e3e3e;  color: #fffce5; border:1px solid #F8FBFF}
 #pagination th .DataTables_sort_wrapper{width:140px;font:bold 14px/22px ralewayregular;color:#fff;}
@@ -1192,7 +1199,9 @@ padding:10px;}
 .views-exposed-form .views-exposed-widget{float:left;width:400px}
 .views-exposed-form .views-exposed-widget:last-child{width:250px}
 .views-exposed-form .views-exposed-widget .views-widget{float:left;}
-.views-exposed-form .views-exposed-widget label{float:left;margin:0 10px 0 0}
+.views-exposed-form .views-widget-filter-field_image_asset_category_tid .views-widget{clear:both;}
+.views-exposed-form .views-widget-filter-field_image_asset_category_tid .form-type-bef-checkbox{float:left;margin:10px 0px 0px;}
+.views-exposed-form .views-exposed-widget label{float:left;margin:0 10px 0 0;font-size:14px;}
 .views-exposed-form .views-widget .form-select,.views-exposed-form .views-widget-sort-by .form-select,
 .views-exposed-form .views-widget-sort-order .form-select{width:150px}
 .views-exposed-form .views-exposed-widget .form-submit{margin-top:0px;}
@@ -1223,3 +1232,7 @@ padding:10px;}
 .subm_wrap_s .by_option{float:left;margin:0 20px 0px 0px}
 .subm_wrap_s .by_option:last-child{margin:0 20px 0px 0px}
 .subm_wrap_s .by_option select,.subm_wrap_s select{width:180px;margin:0 50px 0px 10px;padding:3px;}
+.views-exposed-form .views-exposed-widget input[type='checkbox']{float:left;margin:3px 5px 0px 0px;}
+div[id*='field-jpg-add-more-wrapper'] .form-wrapper .file-widget .file-size{margin:0 60px 0 0}
+
+
