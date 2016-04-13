@@ -41,9 +41,9 @@
                     var position = $.colorbox.element().attr('nodeIndex');
                     var submission =  $('table#subContent'+nodeId+position).parent('div.group').html();
                     $("#cboxLoadedContent").html(submission);
-                    $("#cboxLoadedContent").find('table input[rel="reply"]').show();
-                    $("#cboxLoadedContent").find('table input[rel="admin-reply"]').show();
-                    $("#cboxLoadedContent").find('table input[rel="approve"]').show();
+                    $("#cboxLoadedContent").find('table input[rel="reply"]').toggle();
+                    $("#cboxLoadedContent").find('table input[rel="admin-reply"]').toggle();
+                    $("#cboxLoadedContent").find('table input[rel="approve"]').toggle();
                     $.colorbox.resize();
             }
 

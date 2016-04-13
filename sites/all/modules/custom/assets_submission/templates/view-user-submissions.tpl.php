@@ -167,11 +167,17 @@
                         </tr>
                         <tr>
                             <td colspan="2">
+                                <?php
+                                  $style = 'style = display:block';
+                                  if($i == 0){
+                                      $style = 'style = display:none';
+                                  }
+                                ?>
                                 <?php if($admin){ ?>
-                                        <input type="button" class="btn btn-info" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Reply" style="display:none;" rel="admin-reply"/>
-                                        <input type="button" class="btn btn-success" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Approve" style="display:none;" rel="approve"/>
+                                        <input type="button" class="btn btn-info" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Reply" <?php echo $style;?> rel="admin-reply"/>
+                                        <input type="button" class="btn btn-success" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Approve" <?php echo $style;?> rel="approve"/>
                                 <?php }else{ ?>
-                                         <input type="button" class="btn btn-info" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Reply" style="display:none;" rel="reply"/>
+                                         <input type="button" class="btn btn-info" submission-node="<?php echo $nid?>" submission-iteration="<?php echo $rid?>" submission-title="<?php echo $submission->title;?>" value="Reply" <?php echo $style;?> rel="reply"/>
                                 <?php }?>
                                 <a href="<?php print $img_original_url; ?>" class="download-image" download>
                                     <input type="button" value="Download" class="form-submit"/>
