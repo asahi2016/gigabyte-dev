@@ -77,5 +77,5 @@ jQuery(document).ready(function($) {
     $('<p>'+txt_val+'</p>').insertBefore($("#webform-client-form-18724"));
     $('.make_a_request_ptag').text('');
 
-});s
+});
 
