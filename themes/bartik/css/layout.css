@@ -978,7 +978,11 @@ div[id*='field-png-add-more-wrapper']{float:left;width:100%;}
 div[id*='field-png-add-more-wrapper'] .field-name-field-dimension-png,div[id*='field-png-add-more-wrapper'] .field-name-field-resolution-png,div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png{float:left;}
 div[id*='field-png-add-more-wrapper'] .field-name-field-dimension-png{width:280px;}
 div[id*='field-png-add-more-wrapper'] .field-name-field-resolution-png{width:280px;}
-div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png{width:500px;}
+div[id*='field-png-add-more-wrapper'] .field-name-field-upload-png{width:470px;}
+
+div[id*='field-png-add-more-wrapper'] .field-type-file .form-managed-file img{float:left;margin:3px 0px 0px 0px;}
+div[id*='field-png-add-more-wrapper'] .field-type-file .form-managed-file a{width: 120px;float: left;height: 20px;overflow: hidden;}
+
 div[id*='field-png-add-more-wrapper'] .field-name-field-resolution-png label{margin:0 0 0 20px;}
 div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .fieldset-legend{font-family:Arial,Helvetica,sans-serif;color:#000;font-weight:normal;}
 div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper{margin-top:0px;width:auto;border-bottom:0px;}
@@ -998,14 +1002,19 @@ div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-w
 div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .description{margin:15px 0px 0px;}
 div[id*='field-png-add-more-wrapper'] .form-wrapper .file-widget .form-submit{margin:0px;}
 
-div[id*='field-pdf-add-more-wrapper']{float:left;width:100%;}
-div[id*='field-pdf-add-more-wrapper'] .field-type-file{width:100%;}
+div[id*='field-pdf-add-more-wrapper']{float:left;width:99%;}
+div[id*='field-pdf-add-more-wrapper'] .form-wrapper{width:100%;}
+div[id*='field-pdf-add-more-wrapper'] .field-type-file{width:470px;float:right;}
 div[id*='field-pdf-add-more-wrapper'] .field-name-field-upload-image-pdf .form-wrapper .description{margin:15px 0px 0px;}
-div[id*='field-pdf-add-more-wrapper'] .form-wrapper .form-item{width: 540px; float: right;}
-div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget .form-file,div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget .form-submit{float:left;margin:0px;}
+div[id*='field-pdf-add-more-wrapper'] .form-wrapper .form-item{width:470px; float: right;}
+div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget .form-file{float:left;margin:0px;}
+div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget .form-submit{margin:0px;}
 div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget span.file a,div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget span.file img,div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget span.file-size{float:left;}
-div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget span.file a{width:180px;}
-div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget span.file-size{margin:0 15px;}
+div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget span.file a{width:120px;}
+div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget span.file-size{margin:0 0px;}
+
+div[id*='field-pdf-add-more-wrapper'] .field-type-file .form-managed-file img{float:left;margin:3px 0px 0px 0px;}
+div[id*='field-pdf-add-more-wrapper'] .field-type-file .form-managed-file a{width: 120px;float: left;height: 20px;overflow: hidden;}
 
 .view-assets-upload-view  > .view-content{width:1100px;float:left;margin:50px 0px 0px;}
 .view-assets-upload-view  .view-content .views-table{width:100%;float:left;}
@@ -1028,7 +1037,7 @@ div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget span.file-size{
 .view-assets-upload-view .view-content .views-table .views-field-field-jpg{width:120px;float:left;}
 .node-tools_assets_logos-form .messages.error{float:left;width:90%;}
 .node-tools_assets_logos-form .messages.error li{margin:0px;}
-.node-tools_assets_logos-form .form-submit{float:right;margin:0 100px 0px 10px;}
+.node-tools_assets_logos-form .form-submit{float:right;margin:0 20px 0px 10px;}
 .node-tools_assets_logos-form > .form-submit{float:right;margin:0 90px 0px 0px;}
 .user-submissions .group{
     display: none;
@@ -1116,12 +1125,16 @@ div[id*='field-png-add-more-wrapper'] .field-type-image{width:auto;margin:0px;}
 div[id*='field-png-add-more-wrapper'] .field-type-image label{margin:0px;}
 #block-views-image-preview-view-block{float:left;}
 div[id*='field-jpg-add-more-wrapper'] .form-wrapper .file-widget .form-file{width:270px;}
+div[id*='field-png-add-more-wrapper'] .form-wrapper .file-widget .form-file{width:270px;}
+div[id*='field-pdf-add-more-wrapper'] .form-wrapper .file-widget .form-file{width:280px;}
 /* .node-tools_assets_logos-form .form-submit{margin:0 90px 0 0;} */
 div[id*='field-jpg-add-more-wrapper'] .field-type-image .image-widget{clear:both;}
 div[id*='field-jpg-add-more-wrapper'] .image-preview img{width:100px;}
 div[id*='field-jpg-add-more-wrapper'] .image-widget-data img{float:left;margin:0 5px 0 0;}
 .field-type-file{float:left;margin:0 0 10px 0}
-div[id*='field-jpg-add-more-wrapper'] .field-type-file{float:right;width:470px;}
+div[id*='field-jpg-add-more-wrapper'] .field-type-file{float:left;width:470px;}
+div[id*='field-jpg-add-more-wrapper'] .field-type-file .form-managed-file img{float:left;margin:3px 0px 0px 0px;}
+div[id*='field-jpg-add-more-wrapper'] .field-type-file .form-managed-file a{width: 120px;float: left;height: 20px;overflow: hidden;}
 
 #pagination th.ui-state-default{padding: 8px 0px 8px 12px;  background: #3e3e3e;  color: #fffce5; border:1px solid #F8FBFF}
 #pagination th .DataTables_sort_wrapper{width:140px;font:bold 14px/22px ralewayregular;color:#fff;}
