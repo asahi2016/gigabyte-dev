@@ -38,8 +38,8 @@
     </tr>
     <?php  } ?>
     <tr>
-        <td>Filter by status:</td>
-        <td>
+        <td valign="top"><span class="title">Filter by status:</span></td>
+        <td valign="top">
             <?php
 
             $status_filter = array('partner' => 'Awaiting Reply from Partner' , 'gigabyte' => 'Awaiting Reply from GIGABYTE' ,'approved'=> 'Approved');
@@ -51,37 +51,35 @@
                 }else{
                     $checked = '';
                 }
-                ?>
-                <input type="radio" name="status-option" value="<?php echo $stkey;?>" <?php echo $checked;?>/> <?php echo $stlabel;?>
+                ?><div class="radio_list">
+                <input type="radio" name="status-option" value="<?php echo $stkey;?>" <?php echo $checked;?>/> <?php echo $stlabel;?></div>
             <?php } ?>
         </td>
     </tr>
     <tr>
         <td></td>
-        <td>
-            <?php
-            $date_filter = array('all'=> 'All', 'submitted' => 'Submitted' , 'updated' => 'Updated');
-            ?>
-            Filter By:
-            <select id="date-filter">
+        <td valign="top">
+            <div class="by_option">
                 <?php
-                $selected = '';
-                foreach ($date_filter as $dkey => $dlabel) {
-                    if (isset($args['filter']) && ($dkey == $args['filter'])) {
-                        $selected = 'selected = selected';
-                    }else{
-                        $selected = '';
-                    }
-                    ?>
-                    <option value="<?php echo $dkey;?>" <?php echo $selected;?> ><?php echo $dlabel;?></option>
-                <?php } ?>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>
-            Sort By:
+                $date_filter = array('all'=> 'All', 'submitted' => 'Submitted' , 'updated' => 'Updated');
+                ?>
+                <b>Filter By:</b>
+                <select id="date-filter">
+                    <?php
+                    $selected = '';
+                    foreach ($date_filter as $dkey => $dlabel) {
+                        if (isset($args['filter']) && ($dkey == $args['filter'])) {
+                            $selected = 'selected = selected';
+                        }else{
+                            $selected = '';
+                        }
+                        ?>
+                        <option value="<?php echo $dkey;?>" <?php echo $selected;?> ><?php echo $dlabel;?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="by_option">
+            <b>Sort By:</b>
             <select id="date-sort">
                 <?php
                 $sselected = '';
@@ -96,6 +94,7 @@
                     <option value="<?php echo $skey;?>" <?php echo $sselected;?> ><?php echo $slabel;?></option>
                 <?php } ?>
             </select>
+            </div>
         </td>
     </tr>
     </tbody>

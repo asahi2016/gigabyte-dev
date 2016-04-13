@@ -1214,4 +1214,8 @@ padding:10px;}
     padding: 10px 0 10px 20px;
     border-radius: 5px;
 }
-div[id="#edit-field-jpg-und-0-field-dimension-jpg*"]{float:left;}
+.subm_wrap_s{font-size:15px;}
+.subm_wrap_s .radio_list{float:left;margin:0 40px 30px 0px;}
+.subm_wrap_s .title{font-weight: bold;font-size:18px;}
+.subm_wrap_s .by_option{float:left;margin:0 20px 0px 0px}
+.subm_wrap_s .by_option select{width:160px;margin:0 50px 0px 10px}

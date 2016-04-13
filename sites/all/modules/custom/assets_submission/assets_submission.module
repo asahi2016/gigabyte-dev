@@ -408,7 +408,7 @@ function assets_submission_form_submission_node_form_alter(&$form, &$form_state,
     $form['new_submission'] = array(
         '#prefix' => '<div class="new-submission-form" style="float: left">',
         '#suffix' => '</div>',
-        '#markup' => '<input id="new-submission" type="button" value="New Submission">',
+        '#markup' => '<input id="new-submission" type="button" value="[+] Create New Submission">',
         '#weight' => -10,
     );
     $form['ajax-submit']['#value'] = 'Submit';
