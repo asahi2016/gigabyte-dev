@@ -157,7 +157,8 @@ function asset_upload_views_pre_render(&$view) {
                     }
                     $rev_id_jpg = $view->result[$key]->_field_data['nid']['entity']->field_jpg['und'][0]['value'];
                     $rev_id_png = $view->result[$key]->_field_data['nid']['entity']->field_png['und'][0]['value'];
-                    $view->result[$key]->field_field_jpg[0]['rendered']['entity']['field_collection_item'][$rev_id_jpg]['field_dimension_jpg']['#markup'] = "<div class='field field-name-field-dimension-jpg field-type-file field-label-inline clearfix'><div class='field-label'>Dimensions:</div><div class='field-items'><div class='field-item even'>{$file_data['width']} X {$file_data['height']}</div></div></div>";
+                    if(!empty($file_data['fid']))
+                        $view->result[$key]->field_field_jpg[0]['rendered']['entity']['field_collection_item'][$rev_id_jpg]['field_dimension_jpg']['#markup'] = "<div class='field field-name-field-dimension-jpg field-type-file field-label-inline clearfix'><div class='field-label'>Dimensions:</div><div class='field-items'><div class='field-item even'>{$file_data['width']} X {$file_data['height']}</div></div></div>";
                     if(!empty($file_data_png['fid'])){
                         $view->result[$key]->field_field_png[0]['rendered']['entity']['field_collection_item'][$rev_id_png]['field_dimension_png']['#markup'] = "<div class='field field-name-field-dimension-jpg field-type-file field-label-inline clearfix'><div class='field-label'>Dimensions:</div><div class='field-items'><div class='field-item even'>{$file_data_png['width']} X {$file_data_png['height']}</div></div></div>";
                     }
@@ -219,4 +220,56 @@ function asset_upload_views_pre_render(&$view) {
             }
             break;
     }
+}
+
+/**
+ * Implements hook_views_api()
+ */
+function asset_upload_views_api() {
+    return array(
+        'api' => 3,
+    );
+}
+
+/**
+ * Implements hook_views_data()
+ * Exposes our playcount table to views
+ */
+function asset_upload_views_data() {
+    // Basic table information.
+    $data['asset_uploads'] = array(
+        'table' => array(
+            'group' => t('File Types'),
+            'join' => array(
+                'file_managed' => array(
+                    'left_field' => 'fid',
+                    'field' => 'fid',
+                ),
+            ),
+        )
+    );
+
+    // Our fields
+    $data['asset_uploads']['uri'] = array(
+        'title' => t('File'),
+        'help' => t('File path location of the file'),
+    );
+
+    // Adds our field in the "Fields" section of Views
+    $data['asset_uploads']['jpg']['field'] = array(
+        'handler' => 'views_handler_field_numeric',
+        'click sortable' => TRUE,
+    );
+
+    // Adds our field in the "Filters" section of Views
+    $data['asset_uploads']['jpg']['filter'] = array(
+        'handler' => 'views_handler_filter_numeric',
+    );
+
+    // Adds our field in the "Sort" section of Views
+    $data['asset_uploads']['jpg']['sort'] = array(
+        'handler' => 'views_handler_sort',
+    );
+
+    return $data;
 }

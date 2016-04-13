@@ -52,10 +52,10 @@ drupal_add_css($base_url.'/sites/all/modules/custom/make_a_request/css/buttons.d
 
         $('#export-excel').click(function(){
             $("#pagination-none").table2excel({
-                exclude: ".noExl",
                 name: "Make a request",
                 filename: "Make_a_Request.xls"
             });
+
         });
 
         $('#pagination').DataTable( {
