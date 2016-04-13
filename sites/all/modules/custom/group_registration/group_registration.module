@@ -346,17 +346,22 @@ function group_registration_errors_reset(&$element){
     // Check for errors and settings
     $errors = form_get_errors();
 
-    if(empty($errors) && !empty($_POST)){
+    if(!empty($_POST)){
 
         $group_id = null;
         if (preg_match("/.+\((\d+)\)/", $_POST['field_company_name']['und'][0]['target_id'] , $matches)) {
             $group_id =  $matches[1];
         }
 
-        if (!$group_id && !check_group_title($_POST['field_company_name']['und'][0]['target_id'])) {
-            $_SESSION['new_group_name'] = $_POST['field_company_name']['und'][0]['target_id'];
-            if(!isset($_SESSION['new_group_name'])){
+        if (!$group_id){
+
+            if(!check_group_title($_POST['field_company_name']['und'][0]['target_id'])) {
                 $_SESSION['new_group_name'] = $_POST['field_company_name']['und'][0]['target_id'];
+                if (!isset($_SESSION['new_group_name'])) {
+                    $_SESSION['new_group_name'] = $_POST['field_company_name']['und'][0]['target_id'];
+                }
+            }else{
+                form_set_error('field_company_name][und][0][target_id' , 'This company name is already exists. Plese select from auto complete company list.');
             }
         }
 
@@ -436,7 +441,7 @@ function check_group_title($group_title = null){
         $result = db_select('node', 'n')
         ->fields('n')
         ->condition('type', 'group' , '=')
-        ->condition('title', $group_title, '=')
+        ->condition('title',  '%'.db_like($group_title).'%', 'LIKE')
         ->condition('status', 1,'=')
         ->execute()
         ->fetchAssoc();
