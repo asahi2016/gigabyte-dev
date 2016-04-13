@@ -92,44 +92,42 @@
                 }
             }
 
-            fullTemplate += e.template.foot;
 
             for (i in table) {
                 e.ctx["table" + i] = table[i];
             }
             delete e.ctx.table;
 
-            if (typeof msie !== "undefined" && msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+            fullTemplate = e.format(fullTemplate, e.ctx);
+
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf("MSIE ");
+
+            if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
             {
                 if (typeof Blob !== "undefined") {
                     //use blobs if we can
                     fullTemplate = [fullTemplate];
                     //convert to array
-                    var blob1 = new Blob(fullTemplate, { type: "text/html" });
-                    window.navigator.msSaveBlob(blob1, getFileName(e.settings) );
+                    var blob1 = new Blob(fullTemplate, { type: 'text/html' });
+                    window.navigator.msSaveBlob(blob1, 'Download.xls');
+                    return (true);
                 } else {
                     //otherwise use the iframe and save
                     //requires a blank iframe on page called txtArea1
                     txtArea1.document.open("text/html", "replace");
-                    txtArea1.document.write(e.format(fullTemplate, e.ctx));
+                    txtArea1.document.write(fullTemplate);
                     txtArea1.document.close();
                     txtArea1.focus();
-                    sa = txtArea1.document.execCommand("SaveAs", true, getFileName(e.settings) );
+                    sa = txtArea1.document.execCommand("SaveAs", true, "Download.xls");
                 }
 
             } else {
-                link = e.uri + e.base64(e.format(fullTemplate, e.ctx));
-                a = document.createElement("a");
-                a.download = getFileName(e.settings);
-                a.href = link;
-
-                document.body.appendChild(a);
-
-                a.click();
-
-                document.body.removeChild(a);
+                sa = window.open(e.uri + e.base64(fullTemplate));
             }
-            return true;
+
+            return (sa);
+
         }
     };
 
