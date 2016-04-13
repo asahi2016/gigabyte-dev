@@ -1,6 +1,6 @@
 
 <?php
-
+//header("Content-type: application/vnd.ms-excel");
 global $base_url;
 
 drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/jquery-1.12.0.min.js');
@@ -19,6 +19,7 @@ drupal_add_css($base_url.'/sites/all/modules/custom/make_a_request/css/buttons.d
 
 ?>
 <button id="export-excel">Export</button>
+<a href="<?php echo $base_url;?>/test.xlsx" download="test.xlsx">Export Direct</a>
 <div class="request-data">
     <table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
@@ -53,7 +54,7 @@ drupal_add_css($base_url.'/sites/all/modules/custom/make_a_request/css/buttons.d
         $('#export-excel').click(function(){
             $("#pagination-none").table2excel({
                 name: "Make a request",
-                filename: "Make_a_Request.xls"
+                filename: "Download.xls'"
             });
 
         });
