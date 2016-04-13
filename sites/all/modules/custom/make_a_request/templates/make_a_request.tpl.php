@@ -19,7 +19,7 @@ drupal_add_css($base_url.'/sites/all/modules/custom/make_a_request/css/buttons.d
 
 ?>
 <button id="export-excel">Export</button>
-<a href="<?php echo $base_url;?>/test.xlsx" download="test.xlsx">Export Direct</a>
+<a href="<?php echo $base_url;?>/Make a Request.xls" download="Make a Request.xls">Export Direct</a>
 <div class="request-data">
     <table id="pagination" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
