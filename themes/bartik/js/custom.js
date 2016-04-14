@@ -71,8 +71,6 @@ jQuery(document).ready(function($) {
             $('#scrol-top').hide();
         }
     }
-
-
     var txt_val = $('.make_a_request_ptag').text();
     $('<p>'+txt_val+'</p>').insertBefore($("#webform-client-form-18724"));
     $('.make_a_request_ptag').text('');
