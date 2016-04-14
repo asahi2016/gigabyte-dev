@@ -962,7 +962,7 @@ div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-w
 div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .form-item{float:left;}
 div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .file-widget .form-select,div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .file-widget span{
     float:left;}
-div[id*='field-jpg-add-more-wrapper'] .fieldset-wrapper{float:left;margin-top:20px;width:100%;}
+div[id*='field-jpg-add-more-wrapper'] .fieldset-wrapper{float:left;margin-top:20px;width:100%;position: relative;}
 div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .file-widget span.file a,div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .file-widget span.file img{float:left;}
 div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .file-widget span.file a{width:180px;}
 div[id*='field-jpg-add-more-wrapper'] .field-name-field-upload-image-jpg .form-wrapper .file-widget .form-select{margin:0 15px 0 15px}
@@ -992,7 +992,7 @@ div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-w
 div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .form-item{float:left;}
 div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .file-widget .form-select,div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .file-widget span{
     float:left;}
-div[id*='field-png-add-more-wrapper'] .fieldset-wrapper{float:left;margin-top:20px;width:100%;}
+div[id*='field-png-add-more-wrapper'] .fieldset-wrapper{float:left;margin-top:20px;width:100%;position: relative;}
 div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .file-widget span.file a,div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .file-widget span.file img{float:left;}
 div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .file-widget span.file a{width:180px;}
 div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-wrapper .file-widget .form-select{margin:0 15px 0 15px}
@@ -1003,7 +1003,7 @@ div[id*='field-png-add-more-wrapper'] .field-name-field-upload-image-png .form-w
 div[id*='field-png-add-more-wrapper'] .form-wrapper .file-widget .form-submit{margin:0px;}
 
 div[id*='field-pdf-add-more-wrapper']{float:left;width:99%;}
-div[id*='field-pdf-add-more-wrapper'] .form-wrapper{width:100%;}
+div[id*='field-pdf-add-more-wrapper'] .form-wrapper{width:100%;position: relative;}
 div[id*='field-pdf-add-more-wrapper'] .field-type-file{width:470px;float:right;}
 div[id*='field-pdf-add-more-wrapper'] .field-name-field-upload-image-pdf .form-wrapper .description{margin:15px 0px 0px;}
 div[id*='field-pdf-add-more-wrapper'] .form-wrapper .form-item{width:470px; float: right;}
@@ -1035,7 +1035,7 @@ div[id*='field-pdf-add-more-wrapper'] .field-type-file .form-managed-file a{widt
 .view-assets-upload-view .view-content .views-table .views-field-field-image-asset-category
 {width:80px;}
 .view-assets-upload-view .view-content .views-table .views-field-field-jpg{width:120px;float:left;}
-.node-tools_assets_logos-form .messages.error{float:left;width:90%;}
+.node-tools_assets_logos-form .messages.error{float:left;90%;position: absolute; top: -75px; left: 0;}
 .node-tools_assets_logos-form .messages.error li{margin:0px;}
 .node-tools_assets_logos-form .form-submit{float:right;margin:0 20px 0px 10px;}
 .node-tools_assets_logos-form > .form-submit{float:right;margin:0 90px 0px 0px;}
