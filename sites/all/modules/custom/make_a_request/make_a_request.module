@@ -1,243 +1,25 @@
 <?php
 
-function make_a_request_menu(){
-
-    $items = array();
-    $items['make_a_request'] = array(
-            'title' => t('Make a request form'),
-            'page callback' => 'drupal_get_form',
-            'page arguments' => array('make_a_request_form'),
-            'access arguments' => array('access administration pages'),
-            'description' => t('Make a request form'),
-            'type' => MENU_CALLBACK,
-        );
-    $items['admin/config/make_a_request'] = array(
-        'title' => t('Make a request view'),
-        'page callback' => 'customer_request_review',
-        'access arguments' => array('access administration pages'),
-        'access callback' => TRUE,
-        'theme' => 'make_a_request_display',
-        'description' => t('Make a request view'),
-        'type' => MENU_CALLBACK,
-    );
-
-    return $items;
-}
-
-function make_a_request_block_info()
-{
-    $block['make_a_request_form'] = array(
-        'info' => t('Make a Request'),
-        'cache' => DRUPAL_CACHE_PER_ROLE,
-    );
-    $block['customer_request_review'] = array(
-        'info' => t('Customer Request Review'),
-        'cache' => DRUPAL_CACHE_PER_ROLE,
-    );
-    return $block;
-}
-
-function make_a_request_block_view($delta = '')
-{
-    $block = array();
-    switch ($delta) {
-        case 'make_a_request_form':
-            $block['content'] = drupal_get_form('make_a_request_form');
-            break;
-        case 'customer_request_review':
-            $block['content'] = customer_request_review();
-    }
-    return $block;
-}
-
-function make_a_request_form($form,&$form_state){
+function make_a_request_form_webform_client_form_18724_alter( &$form, &$form_state, $form_id){
 
     $form_required_marker = array('#theme' => 'form_required_marker');
     $required = ' ' . drupal_render($form_required_marker);
-    $form['make_a_request'] = array(
-        '#type' => 'textarea',
-        '#title' => t('Request:') . $required,
-        '#id' => 'make-a-request-form-id',
-    );
-    $form['submit'] = array(
-        '#type' => 'submit',
-        '#value' => 'Submit',
-    );
 
-    return $form;
-}
-
-function make_a_request_form_validate(&$form , &$form_state){
-
-    $request_value = $form_state['input']['make_a_request'];
-    if(!$request_value){
-        form_set_error('make_a_request','Please enter the request');
+    if($form_id == 'webform_client_form_18724'){
+        $form['submitted']['request']['#title'] = t('Request:').$required;
     }
 
+    $form['#validate'][] = 'make_a_request_form_validation';
 }
 
-function make_a_request_form_submit($form,&$form_state){
+function make_a_request_form_validation(&$form, &$form_state){
 
-    $role = !user_access('administer users');
-    if($role){
+    $request = $form_state['values']['submitted']['request'];
 
-        global $user;
-
-        $account = user_load($user->uid);
-        $node = node_load($account->field_company_name['und'][0]['target_id']);
-        $company_name = $node->title;
-        $first_name = $account->field_first_name['und'][0]['value'];
-        $last_name = $account->field_last_name['und'][0]['value'];
-        $request = $form_state['input']['make_a_request'];
-        $date_now = date("Y/m/d H:i:s");
-
-        db_insert('make_a_request')
-            ->fields(array(
-                'uid' => $user->uid,
-                'date' => $date_now,
-                'first_name' => $first_name,
-                'last_name' => $last_name,
-                'contact_email' => $user->mail,
-                'company_name' => $company_name,
-                'request' => $request
-
-            ))->execute();
-
-        $headers = array(
-            'MIME-Version' => '1.0',
-            'Content-Type' => 'text/html; charset=UTF-8; format=flowed',
-            'From' => 'request@gigabyte.com',
-            'Return-Path' => 'request@gigabyte.com',
-            'Content-Transfer-Encoding' => '8Bit',
-            'X-Mailer' => 'Drupal'
-        );
-
-        $to = $user->mail;
-        $from = "request@gigabyte.com";
-        $subject = "Gigabyte Partner Portal - Marketing Material Request";
-        $body = " ";
-        $body .= '<p style="margin:10px 5px">Hi ' . $first_name.',</p>';
-        $body .= '<p style="margin:10px 5px"> Thank you for submitting your request.  A Gigabyte Representative will be contacting you soon.</p>';
-        $body .= '<p style="margin:10px 5px">Your Request:</p>';
-        $body .= '<p style="margin:10px 5px">'.'"'.$request.'"'.'</p></br>';
-        $body .= '<p> </p>';
-        $body .= '<p style="margin:10px 5px">Thank you,</p></br>';
-        $body .= '<p> </p>';
-        $body .= '<p style="margin:10px 5px">Gigabyte</p>';
-
-
-        $params = array(
-            'subject' => $subject,
-            'body' => $body,
-            'headers' => $headers,
-        );
-
-
-        drupal_mail('make_a_request', 'make_a_request_mail', $to, language_default(), $params, $from,TRUE);
-
-        $site_email = variable_get('site_mail');
-        $to_admin = $site_email;
-        $from_user = $user->mail;
-        $subject_admin = "Gigabyte Partner Portal - Marketing Material Request";
-        $body_admin  = " ";
-        $body_admin .= '<p style="margin:10px 5px">Hi admin' .'</p>';
-        $body_admin .= '<p style="margin:10px 5px">You have received a new Request for Marketing Material from the Partner Portal:</p>';
-        $body_admin .= '<p style="margin:10px 5px">Name: '.$first_name .' '.$last_name.'<br';
-        $body_admin .= 'Email: '.$user->mail.'<br>';
-        $body_admin .= 'Company: '.$company_name.'<br>';
-        $body_admin .= 'Request:</p>';
-        $body_admin .= '<p style="margin:10px 5px">'.'"'.$request.'."'.'</p></br>';
-        $body_admin .= '<p> </p>';
-        $body_admin .= '<p style="margin:10px 5px">Thank you,</p></br>';
-        $body_admin .= '<p> </p>';
-        $body_admin .= '<p style="margin:10px 5px">Gigabyte</p>';
-
-        $params = array(
-            'subject' => $subject_admin,
-            'body' => $body_admin,
-            'headers' => $headers,
-            );
-        drupal_mail('make_a_request', 'make_a_request_mail', $to_admin, language_default(), $params, $from_user,TRUE);
-
-        drupal_set_message('<p>'.t('Thank you for your request. A Gigabyte representative will be contacting you soon.').'</p>');
-}
-    else{
-        drupal_set_message(t('<p>Admin cannot send request to admin.</p>'), 'error');
-    }
-
-}
-function make_a_request_mail($key, &$message, $params) {
-    switch ($key) {
-        case 'make_a_request_mail':
-            $message['subject'] = $params['subject'];
-            $message['body'][] = t($params['body']);
-            $message['headers'] = t($params['headers']);
-            break;
+    if(empty($request)){
+        form_set_error('submitted][request','Please Enter your request');
     }
 }
 
-function customer_request_review_admin(){
 
-    $query = db_select('make_a_request','request')
-        ->fields('request',array('date','first_name','last_name','contact_email','company_name','request'))
-        ->orderBy('date','DESC');
-
-    $result = $query->execute()->fetchAll();
-
-    return $result;
-}
-
-function make_a_request_theme(){
-    return array(
-        'make_a_request_display' =>
-            array(
-                'template' => 'templates/make_a_request',
-                'variables' => array('value' => customer_request_review_admin())
-            )
-    );
-}
-function customer_request_review(){
-
-    customer_request_review_admin();
-    return theme('make_a_request_display');
-}
-
-function template_preprocess_make_a_request_display(&$variables){
-
-   $content = '';
-
-   if(!empty($variables['value'])){
-
-        $content .= '<table id="pagination-none" class="table table-striped table-bordered" cellspacing="0" width="100%" style="display: none;">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Contact Email</th>
-                            <th>Company Name</th>
-                            <th>Request</th>
-                        </tr>
-                    </thead>
-                    <tbody>';
-         foreach($variables['value'] as $customer_request)
-         {
-                $content .='<tr>
-                        <td>'.$customer_request->date.'</td>
-                        <td>'.$customer_request->first_name.'</td>
-                        <td>'.$customer_request->last_name.'</td>
-                        <td> <a href="mailto:'.$customer_request->contact_email.'">'.$customer_request->contact_email.'</a></td>
-                        <td>'.$customer_request->company_name.'</td>
-                        <td>'.$customer_request->request.'</td>
-                        </tr>';
-                 }
-
-       $content .= '</tbody>
-                    </table>';
-
-       $variables['exportTable'] = $content;
-   }
-
-
-}
 
