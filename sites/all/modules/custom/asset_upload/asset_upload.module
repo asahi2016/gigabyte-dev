@@ -30,6 +30,14 @@ function asset_upload_form_tools_assets_logos_node_form_alter(&$form, &$form_sta
 function save_asset_permissions(&$form, &$form_state){
     //print_pre($form_state['input']);
     $permitted = $form_state['input']['trc_user_roles'];
+    $resellers = !empty($permitted[5])?$permitted[5]:'';
+    $distributors = !empty($permitted[6])?$permitted[6]:'';
+    $partners = !empty($permitted[7])?$permitted[7]:'';
+    $system_integrators = !empty($permitted[8])?$permitted[8]:'';
+    $gigabyte_employees = !empty($permitted[9])?$permitted[9]:'';
+    $esf = !empty($permitted[10])?$permitted[10]:'';
+    $new_users = !empty($permitted[11])?$permitted[11]:'';
+
     $permitted_role = array();
     foreach($permitted as $permit){
         if(!empty($permit)){
@@ -71,12 +79,17 @@ function save_asset_permissions(&$form, &$form_state){
         $nid = db_insert('asset_uploads')
             ->fields(array(
                 'uid' => $userid,
-                'fid' => $images,
                 'cid' => $category_id,
-                'permitted_roles' => $roles_permitted,
-                'img_resolution' => $dimension,
-                'dpi' => $resolution,
                 'created_at' => $created_at,
+                'resellers' => !empty($resellers)?1:0,
+                'distributors' =>  !empty($distributors)?1:0,
+                'partners' => !empty($partners)?1:0,
+                'system_integrators' => !empty($system_integrators)?1:0,
+                'gigabyte_employees' => !empty($gigabyte_employees)?1:0,
+                'esf' => !empty($esf)?1:0,
+                'jpg_fid' => !empty($image_array['jpg_fileid'])?$image_array['jpg_fileid']:0,
+                'png_fid' => !empty($image_array['png_fileid'])?$image_array['png_fileid']:0,
+                'pdf_fid' => !empty($image_array['pdf_fileid'])?$image_array['pdf_fileid']:0,
             ))
             ->execute();
     }else{
@@ -228,48 +241,6 @@ function asset_upload_views_pre_render(&$view) {
 function asset_upload_views_api() {
     return array(
         'api' => 3,
+        'path' => drupal_get_path('module', 'asset_upload') . '/views',
     );
-}
-
-/**
- * Implements hook_views_data()
- * Exposes our playcount table to views
- */
-function asset_upload_views_data() {
-    // Basic table information.
-    $data['asset_uploads'] = array(
-        'table' => array(
-            'group' => t('File Types'),
-            'join' => array(
-                'file_managed' => array(
-                    'left_field' => 'fid',
-                    'field' => 'fid',
-                ),
-            ),
-        )
-    );
-
-    // Our fields
-    $data['asset_uploads']['uri'] = array(
-        'title' => t('File'),
-        'help' => t('File path location of the file'),
-    );
-
-    // Adds our field in the "Fields" section of Views
-    $data['asset_uploads']['jpg']['field'] = array(
-        'handler' => 'views_handler_field_numeric',
-        'click sortable' => TRUE,
-    );
-
-    // Adds our field in the "Filters" section of Views
-    $data['asset_uploads']['jpg']['filter'] = array(
-        'handler' => 'views_handler_filter_numeric',
-    );
-
-    // Adds our field in the "Sort" section of Views
-    $data['asset_uploads']['jpg']['sort'] = array(
-        'handler' => 'views_handler_sort',
-    );
-
-    return $data;
 }
