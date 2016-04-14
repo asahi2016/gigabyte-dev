@@ -74,6 +74,7 @@ jQuery(document).ready(function($) {
     var txt_val = $('.make_a_request_ptag').text();
     $('<p>'+txt_val+'</p>').insertBefore($("#webform-client-form-18724"));
     $('.make_a_request_ptag').text('');
-
+    $('.feed-icon').prependTo('.view-make-a-request-submission-view .view-content');
+    $('.feed-icon a').text('Export Request Review to Excel');
 });
 

@@ -1256,4 +1256,16 @@ padding:10px;}
 .views-exposed-form .views-exposed-widget input[type='checkbox']{float:left;margin:3px 5px 0px 0px;}
 div[id*='field-jpg-add-more-wrapper'] .form-wrapper .file-widget .file-size{margin:0 60px 0 0}
 .messages.status{display:none;}
-
+.view-make-a-request-submission-view table.views-table th,.view-make-a-request-submission-view table.views-table td{padding:15px 10px 12px 15px;vertical-align:top;}
+.view-make-a-request-submission-view table.views-table th:nth-child(1),.view-make-a-request-submission-view table.views-table td:nth-child(1){width:110px;}
+.view-make-a-request-submission-view table.views-table th:nth-child(2){width:130px;}
+.view-make-a-request-submission-view table.views-table th:nth-child(3){width:110px;}
+.view-make-a-request-submission-view table.views-table th:nth-child(4){width:110px;}
+.view-make-a-request-submission-view table.views-table th:nth-child(5){width:110px;}
+.view-make-a-request-submission-view table.views-table th:nth-child(6){width:110px;}
+.view-make-a-request-submission-view table.views-table th:nth-child(1) a{display: inline-block;width: 100%;}
+.view-make-a-request-submission-view table.views-table th img{float:right;}
+.feed-icon{float:right;}
+.feed-icon img{height:0px;}
+.feed-icon a{width: 230px;padding: 10px 0px 10px 20px;float: right;background: #E5E5E5;margin: 0 0 20px 0;border-radius: 3px;color: #7D7D7D;font-weight: bold;text-decoration:none;}
+.feed-icon a:hover{text-decoration: none;}
