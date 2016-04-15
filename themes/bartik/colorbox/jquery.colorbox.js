@@ -381,7 +381,7 @@
 
 	function launch(element) {
 		var options;
-
+        console.log("Closing:"+closing);
 		if (!closing) {
 
 			options = $(element).data(colorbox);
@@ -389,8 +389,9 @@
 			settings = new Settings(element, options);
 
 			getRelated(settings.get('rel'));
-
+            console.log("Open:"+open);
 			if (!open) {
+                console.log("Test");
 				open = active = true; // Prevents the page-change action from queuing up if the visitor holds down the left or right keys.
 
 				setClass(settings.get('className'));
@@ -446,8 +447,9 @@
 					});
 				}
 			}
-
+            console.log("Not in open");
 			var opacity = parseFloat(settings.get('opacity'));
+            console.log($overlay);
 			$overlay.css({
 				opacity: opacity === opacity ? opacity : '',
 				cursor: settings.get('overlayClose') ? 'pointer' : '',
@@ -461,6 +463,7 @@
 			}
 
 			load();
+            console.log("After load");
 		}
 	}
 
@@ -1038,7 +1041,9 @@
 
 	// Navigates to the next page/image in a set.
 	publicMethod.next = function () {
-		if (!active && $related[1] && (settings.get('loop') || $related[index + 1])) {
+        active=false;
+        /* || $related[index + 1]*/
+		if (true) {
 			index = getIndex(1);
 			launch($related[index]);
 		}

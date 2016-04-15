@@ -3,7 +3,7 @@
 /**
  * Implements hook_views_data().
  */
-function asset_upload_views_data()
+/*function asset_upload_views_data()
 {
 
     $data = array();
@@ -18,6 +18,8 @@ function asset_upload_views_data()
     // The ID field
     $data['asset_uploads']['id'] = array(
         'title' => t('ID'),
+
+
         'help' => t('The record ID.'),
         'field' => array(
             'handler' => 'views_handler_field_numeric',
@@ -32,4 +34,4 @@ function asset_upload_views_data()
 
     return $data;
 
-}
+}*/
