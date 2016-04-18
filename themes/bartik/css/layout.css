@@ -1150,7 +1150,7 @@ div[id*='field-jpg-add-more-wrapper'] .image-widget-data img{float:left;margin:0
 div[id*='field-jpg-add-more-wrapper'] .field-name-field-resolution-dpi-asset,
 div[id*='field-jpg-add-more-wrapper'] .field-name-field-resolution-dpi-asset label{float:left;}
 div[id*='field-jpg-add-more-wrapper'] .field-type-file{float:right;width:470px;}
-div[id*='field-jpg-add-more-wrapper'] .field-type-file .form-managed-file img{float:left;margin:3px 0px 0px 0px;}
+div[id*='field-jpg-add-more-wrapper'] .field-type-file .form-managed-file img{float:left;margin:5px 0px 0px 0px;}
 div[id*='field-jpg-add-more-wrapper'] .field-type-file .form-managed-file a{width: 120px;float: left;height: 20px;overflow: hidden;margin:5px 0px 0px 5px;}
 
 #pagination th.ui-state-default{padding: 8px 0px 8px 12px;  background: #3e3e3e;  color: #fffce5; border:1px solid #F8FBFF}
@@ -1263,7 +1263,7 @@ padding:10px;}
 .subm_wrap_s .by_option:last-child{margin:0 20px 0px 0px}
 .subm_wrap_s .by_option select,.subm_wrap_s select{width:180px;margin:0 50px 0px 10px;padding:3px;}
 .views-exposed-form .views-exposed-widget input[type='checkbox']{float:left;margin:3px 5px 0px 0px;}
-div[id*='field-jpg-add-more-wrapper'] .form-wrapper .file-widget .file-size{margin:5px 10px 0 0}
+div[id*='field-jpg-add-more-wrapper'] .form-wrapper .file-widget .file-size{margin:4px 10px 0 2px;float:left;}
 .messages.status{display:none;}
 .view-make-a-request-submission-view table.views-table th,.view-make-a-request-submission-view table.views-table td{padding:15px 10px 12px 15px;vertical-align:top;}
 .view-make-a-request-submission-view table.views-table th:nth-child(1),.view-make-a-request-submission-view table.views-table td:nth-child(1){width:110px;}
@@ -1278,4 +1278,5 @@ div[id*='field-jpg-add-more-wrapper'] .form-wrapper .file-widget .file-size{marg
 .feed-icon img{height:0px;}
 .feed-icon a{width: 230px;padding: 10px 0px 10px 20px;float: right;background: #E5E5E5;margin: 0 0 20px 0;border-radius: 3px;color: #7D7D7D;font-weight: bold;text-decoration:none;}
 .feed-icon a:hover{text-decoration: none;}
-.field-multiple-table td:nth-child(2) > input[value='Remove']{border:1px solid red;}
+.field-multiple-table td:nth-child(2) > input[value="Remove"],.field-multiple-table td:nth-child(2) .ajax-new-content > input[value="Remove"]{visibility:hidden}
+div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;position:inherit;}
