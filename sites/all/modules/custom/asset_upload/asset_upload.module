@@ -34,7 +34,7 @@ function getRoundedsize($bytes){
 
 }
 function save_asset_permissions(&$form, &$form_state){
-    print_pre($form_state['input'],1);
+    //print_pre($form_state['input'],1);
     $title = $form_state['input']['title'];
     $permitted = $form_state['input']['trc_user_roles'];
     $resellers = !empty($permitted[5])?$permitted[5]:'';
