@@ -1,0 +1,39 @@
+<?php
+
+function search_custom_preprocess_search_results(&$variables) {
+    global $base_path;
+    drupal_add_library('system', 'ui.tabs');
+    drupal_add_js('jQuery(document).ready(function(){jQuery("#tabs").tabs();});', 'inline');
+    $variables['search_results'] = '';
+    // get a list of node types
+    $nodeTypes = node_type_get_types();
+    // loop through results, group by type
+    $resultTypes = array();
+    foreach ($variables['results'] as $result) {
+        $resultTypes[$result['node']->type][] = $result;
+    }
+
+    // create fieldsets for each type
+    $output = '<div id="tabs">';
+    $output .= '<ul>';
+    $i = 0;
+    foreach ($resultTypes as $resultType => $resultTypeResults) {
+        $i++;
+        $value = "";
+        // loop through entries
+        foreach ($resultTypeResults as $result) {
+            $value .= theme('search_result', array('result' => $result, 'module' => $variables['module']));
+        }
+        $output .=  '<li><a href="#tabs-'.$i.'">';
+        $output .=  $nodeTypes[$resultType]->name.'</a></li>';
+        $output .=  '<div id="tabs-'.$i.'">';
+        $output .=  $value;
+        $output .=  '</div>';
+
+    }
+    $output .= '</ul>';
+    $output .= '</div>';
+
+    $variables['search_results'] = $output;
+
+}
