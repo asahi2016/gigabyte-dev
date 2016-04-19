@@ -50,6 +50,7 @@ body,
 .w300{width:300px;}
 .m_top30{margin-top:30px;}
 a{color: #337ab7;text-decoration: none;}
+a:hover{text-decoration: none;}
 .f_w_700 {font-weight: 700;}
 .f_size20 {font-size: 20px;}
 .cblue{color:#0000FF;}
@@ -1280,3 +1281,25 @@ div[id*='field-jpg-add-more-wrapper'] .form-wrapper .file-widget .file-size{marg
 .feed-icon a:hover{text-decoration: none;}
 .field-multiple-table td:nth-child(2) > input[value="Remove"],.field-multiple-table td:nth-child(2) .ajax-new-content > input[value="Remove"]{visibility:hidden}
 div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;position:inherit;}
+.entitytype-asset_upload_form-form  #field-image-name-entity-add-more-wrapper .form-item label{float:left;margin:0 20px 0 0;}
+.entitytype-asset_upload_form-form  #edit-field-category-entity-und {float:left;width:100%;}
+.entitytype-asset_upload_form-form  #edit-field-category-entity-und .form-type-checkbox{float:left;margin:15px 20px 15px 0;}
+.entitytype-asset_upload_form-form  #edit-field-category-entity-und .form-type-checkbox input.form-checkbox{float:left;margin:8px 3px 0px 0;}
+.entitytype-asset_upload_form-form  .field-name-field-upload-asset-file{border:1px solid #eee;width:100%;padding: 10px 10px 15px 10px;}
+.entitytype-asset_upload_form-form  .field-name-field-upload-asset-file fieldset.form-wrapper{margin-bottom:0px;border-bottom:0px;}
+.entitytype-asset_upload_form-form  .form-type-checkboxes .form-type-checkbox{float:left;margin:10px 15px 10px 0;}
+.entitytype-asset_upload_form-form  .form-type-checkboxes .form-checkboxes{float:left;}
+.entitytype-asset_upload_form-form  .form-type-checkboxes .form-type-checkbox input.form-checkbox{float:left;margin: 8px 3px 0px 0px;}
+.view-clone-of-entityforms .views-table{padding:20px 0 30px 0;width:100%;}
+.view-clone-of-entityforms .views-table caption{font-size:18px;margin:20px 0 30px 0;width:100%;}
+.view-clone-of-entityforms .views-table tr th:first-child{background:none;color:#757575}
+.view-clone-of-entityforms .views-table tr td .file-size,.view-clone-of-entityforms .views-table tr td .file img{display:none;}
+.view-clone-of-entityforms .views-table tr td.file-size-column .file a{cursor:default;color:#757575;text-decoration:none;}
+.view-clone-of-entityforms .views-table tr th:first-child,.view-clone-of-entityforms .views-table tr td:first-child{width:130px;}
+.view-clone-of-entityforms .views-table tr td {padding:8px;}
+.view-clone-of-entityforms .views-table tr td li{width:100%;float:left;}
+.view-clone-of-entityforms .feed-icon a{margin:0 0 0 10px}
+.view-clone-of-entityforms  .form-checkboxes .bef-checkboxes .form-item{float:left;}
+.view-clone-of-entityforms  .views-exposed-widgets{float:left;width:100%;}
+.view-clone-of-entityforms  .views-exposed-widgets .views-exposed-widget:first-child{width:500px;}
+.view-clone-of-entityforms  .views-exposed-widgets .views-exposed-widget{padding: 10px 0px 15px 20px;float: left;}
