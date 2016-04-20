@@ -1279,7 +1279,7 @@ div[id*='field-jpg-add-more-wrapper'] .form-wrapper .file-widget .file-size{marg
 .feed-icon img{height:0px;}
 .feed-icon a{width: 230px;padding: 10px 0px 10px 20px;float: right;background: #E5E5E5;margin: 0 0 20px 0;border-radius: 3px;color: #7D7D7D;font-weight: bold;text-decoration:none;}
 .feed-icon a:hover{text-decoration: none;}
-.field-multiple-table td:nth-child(2) > input[value="Remove"],.field-multiple-table td:nth-child(2) .ajax-new-content > input[value="Remove"]{visibility:hidden}
+/*.field-multiple-table td:nth-child(2) > input[value="Remove"],.field-multiple-table td:nth-child(2) .ajax-new-content > input[value="Remove"]{display:block;}*/
 div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;position:inherit;}
 .entitytype-asset_upload_form-form  #field-image-name-entity-add-more-wrapper .form-item label{float:left;margin:0 20px 0 0;}
 .entitytype-asset_upload_form-form  #edit-field-category-entity-und {float:left;width:100%;}
