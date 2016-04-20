@@ -2,28 +2,12 @@
 
 
 
-function asset_upload_form_tools_assets_logos_node_form_alter(&$form, &$form_state, $form_id){
+function asset_upload_form_asset_upload_form_entityform_edit_form_alter(&$form, &$form_state, $form_id){
     // Remove preview button
     unset($form['actions']['preview']);
-    // Get the system roles.
-    $roles = user_roles(FALSE, NULL);
-    unset($roles[3], $roles[4], $roles[1], $roles[2], $roles[11]);
-    /*print_r($roles);
-    exit;*/
-
-    //print_pre($form,1);
-    $form['trc_user_roles'] = array(
-        '#type' => 'checkboxes',
-        '#title' => 'Allow users who can see uploaded files',
-        '#options' => $roles,
-        '#descripion' => 'User roles checked are able to see site-wide uploads.',
-        '#default_value' => variable_get('trc_user_roles', array()),
-        '#weight' => 30
-    );
-
-   $form['ajax-submit']['#value'] = 'Submit';
-    $form['#submit'][] = 'save_asset_permissions';
-      //return $form;
+   if(isset($_GET['success'])){
+       drupal_set_message("The asset you have submitted has been successfully uploaded!");
+   }
 }
 
 function getRoundedsize($bytes){
@@ -127,7 +111,7 @@ function asset_upload_views_pre_render(&$view) {
             //print_pre($view->result,1);
             foreach($view->result as $key => $value){
                 $file_data = array();
-                   // print_pre($value,1);
+                   //print_pre($value,1);
                     if(!empty($value->field_field_upload_file)){
                         foreach($value->field_field_upload_file as $k => $v){
                             //print_pre($v,1);
@@ -152,7 +136,7 @@ function asset_upload_views_pre_render(&$view) {
                                 }else if(($file_data['file']['filesize']/1000) > 999){
                                     $size = round(($file_data['file']['filesize']/1000000),2).' MB';
                                 }
-                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><a href="'.$file_data['file']['uri'].'" >'.strtoupper($ext[count($ext)-1]).'</a> </td>';
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><a href="'.$base_url.'/sites/default/files/file_uploads/assets/'.$file_data['file']['filename'].'" >'.strtoupper($ext[count($ext)-1]).'</a> </td>';
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">'.$file_data['res']['value'].'</p></td>';
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">'.$file_data['file']['metadata']['width'].' x '.$file_data['file']['metadata']['height'].'</p></td>';
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">'.$size.'</p></td>';
@@ -160,9 +144,9 @@ function asset_upload_views_pre_render(&$view) {
                             }
                             $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '</table>';
                         }
-                        //print_pre($file_data);
+
                     }else{
-                            $file_data['uri'] = "noimage.png";
+                            $file_data['file']['uri'] = "noimage.png";
                     }
 
 
@@ -172,19 +156,10 @@ function asset_upload_views_pre_render(&$view) {
                     if(!empty($file_data)){
                         $view->result[$key]->field_field_assets_image_preview[0]['rendered']['#markup'] = "<a class='assets-preview-image' href='".image_style_url('large',$file_data['uri'])."' ><img src='".image_style_url('medium',$file_data['uri'])."'></a>";
                     }*/
-                    unset($file_data);
+                $view->result[$key]->field_field_image_preview_assets[0]['rendered']['#markup'] = "<a class='assets-preview-image' href='".image_style_url('large',$file_data['file']['uri'])."' ><img src='".image_style_url('medium',$file_data['file']['uri'])."'></a>";
+                unset($file_data);
             }
         break;
 
     }
 }
-
-/**
- * Implements hook_views_api()
- */
-/*function asset_upload_views_api() {
-    return array(
-        'api' => 3,
-        'path' => drupal_get_path('module', 'asset_upload') . '/views',
-    );
-}*/
