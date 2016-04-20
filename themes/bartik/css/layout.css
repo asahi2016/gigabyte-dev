@@ -1082,12 +1082,12 @@ div[id*='field-pdf-add-more-wrapper'] .field-type-file .form-managed-file a{widt
 .user-submissions table td p span{font-size:12px;}
 .descrip_td{font-weight: 400;margin:5px 0px 0px;float:left;}
 .user-submissions table td input.form-submit{width:130px;float:left;}
-.btn-success{
+/*.btn-success{
     color: #fff;
     background-color: #5cb85c;
     border-color: #4cae4c;
-}
-.btn-info {
+}*/
+.btn-info a{
     color: #fff;
     background-color: #5bc0de;
     border-color: #46b8da;
@@ -1290,14 +1290,32 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .entitytype-asset_upload_form-form  .form-type-checkboxes .form-type-checkbox{float:left;margin:10px 15px 10px 0;}
 .entitytype-asset_upload_form-form  .form-type-checkboxes .form-checkboxes{float:left;}
 .entitytype-asset_upload_form-form  .form-type-checkboxes .form-type-checkbox input.form-checkbox{float:left;margin: 8px 3px 0px 0px;}
-.view-clone-of-entityforms .views-table{padding:20px 0 30px 0;width:100%;}
+.view-clone-of-entityforms .views-table{padding:20px 0 30px 0;width:1100px;}
 .view-clone-of-entityforms .views-table caption{font-size:18px;margin:20px 0 30px 0;width:100%;}
 .view-clone-of-entityforms .views-table tr th:first-child{background:none;color:#757575}
-.view-clone-of-entityforms .views-table tr td .file-size,.view-clone-of-entityforms .views-table tr td .file img{display:none;}
+.view-clone-of-entityforms .views-table .download-file-type-info-table tr th{background:rgba(0, 0, 0, 0.51);color:#fff}
+.view-clone-of-entityforms .views-table tr td .file-size,.view-clone-of-entityforms .views-table tr td .file-icon{display:none;}
 .view-clone-of-entityforms .views-table tr td.file-size-column .file a{cursor:default;color:#757575;text-decoration:none;}
-.view-clone-of-entityforms .views-table tr th:first-child,.view-clone-of-entityforms .views-table tr td:first-child{width:130px;}
-.view-clone-of-entityforms .views-table tr td {padding:8px;}
+.view-clone-of-entityforms .views-table tr th:first-child,.view-clone-of-entityforms .views-table tr td:first-child{width:200px;}
+.view-clone-of-entityforms .views-table tr th:nth-child(2),.view-clone-of-entityforms .views-table tr td:nth-child(2){width:80px;}
+.view-clone-of-entityforms .views-table tr th:nth-child(3),.view-clone-of-entityforms .views-table tr td:nth-child(3){width:400px;}
+.view-clone-of-entityforms .views-table tr th:nth-child(4),.view-clone-of-entityforms .views-table tr td:nth-child(4){width:100px;}
+.view-clone-of-entityforms .views-table tr th:nth-child(5),.view-clone-of-entityforms .views-table tr td:nth-child(5){width:100px;}
+.view-clone-of-entityforms .views-table tr th:nth-child(6),.view-clone-of-entityforms .views-table tr td:nth-child(6){width:100px;}
+.view-clone-of-entityforms .views-table .download-file-type-info-table{width:400px;}
+.view-clone-of-entityforms .views-table .download-file-type-info-table tr th,
+.view-clone-of-entityforms .views-table .download-file-type-info-table tr td{width:80px;}
+.view-clone-of-entityforms .views-table tr td:first-child img{width:180px;height: inherit;}
+.view-clone-of-entityforms .views-table tr td {padding:8px;vertical-align:middle;}
+.view-clone-of-entityforms .views-table tr td p{margin:0px;}
+.view-clone-of-entityforms .views-table tr td.btn {display: table-cell}
+.view-clone-of-entityforms .views-table tr th, .view-clone-of-entityforms .views-table tr td {text-align: center;}
+.view-clone-of-entityforms .views-table tr td .item-list,.view-clone-of-entityforms .views-table tr td ul{width:100%;}
 .view-clone-of-entityforms .views-table tr td li{width:100%;float:left;}
+.view-clone-of-entityforms .views-table tr td{border:1px solid #DEDEDE;}
+.view-clone-of-entityforms .views-table tr td:nth-child(3) .file{text-transform: uppercase}
+.view-clone-of-entityforms .views-table tr td:first-child{border:0;}
+.view-clone-of-entityforms .views-table .download-file-type-info-table tr td:first-child{border:1px solid #DEDEDE;}
 .view-clone-of-entityforms .feed-icon a{margin:0 0 0 10px}
 .view-clone-of-entityforms  .form-checkboxes .bef-checkboxes .form-item{float:left;}
 .view-clone-of-entityforms  .views-exposed-widgets{float:left;width:100%;}
@@ -1321,3 +1339,8 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .page-eform-submit-asset-upload-form .image-widget .file .file-size{margin: 0 5px 0 5px;width: 95px;float: left;}
 .page-eform-submit-asset-upload-form .field-multiple-table td .file-size{margin: 0 0 0 5px;width:65px;overflow:hidden;float:left;}
 .tabledrag-toggle-weight{display:none;}
+.view-clone-of-entityforms .form-checkboxes .bef-checkboxes .form-item{float:left;}
+.view-clone-of-entityforms .views-exposed-widgets{float:left;width:100%;}
+.view-clone-of-entityforms .views-exposed-widgets .views-exposed-widget:first-child{width:500px;}
+.view-clone-of-entityforms .views-exposed-widgets .views-exposed-widget{padding: 10px 0px 15px 20px;float: left;}
+.view-clone-of-entityforms div.feed-icon{display:none;}

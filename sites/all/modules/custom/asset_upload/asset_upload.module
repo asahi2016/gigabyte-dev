@@ -123,32 +123,56 @@ function asset_upload_views_pre_render(&$view) {
     drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/jquery.dataTables.min.js');
     drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/dataTables.buttons.min.js');
     switch($view->name){
-        case 'assets_upload_view':
+        case 'clone_of_entityforms':
             //print_pre($view->result,1);
             foreach($view->result as $key => $value){
                 $file_data = array();
-                foreach($view->result as $key => $value){
-                    $file_data = array();
-                    //print_pre($value,1);
-                    if(!empty($value->field_field_jpg)){
-                        foreach($value->field_field_jpg[0]['rendered']['entity']['field_collection_item'] as $k => $v){
+                   // print_pre($value,1);
+                    if(!empty($value->field_field_upload_file)){
+                        foreach($value->field_field_upload_file as $k => $v){
                             //print_pre($v,1);
-                            if(!empty($v['#entity']->field_upload_file_asset['und'][0])){
-                                //print_pre($v);
-                                $file_data = $v['#entity']->field_upload_file_asset['und'][0];
+                            $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] = "<table class='download-file-type-info-table'><tr>";
+                            $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Download</th>";
+                            $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Resolution</th>";
+                            $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Dimension</th>";
+                            $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Size</th></tr>";
+
+                            foreach($v['rendered']['entity']['field_collection_item'] as $ke=>$val) {
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<tr>";
+                               // print_pre($val,1);
+                                if (!empty($val['#entity']->field_upload_asset['und'][0])) {
+                                    $file_data['file'] = $val['#entity']->field_upload_asset['und'][0];
+                                    $file_data['res'] = $val['#entity']->field_asset_resolution['und'][0];
+
+                                }
+                                //print_pre($file_data,1);
+                                $ext = explode(".",$file_data['file']['uri']);
+                                if(($file_data['file']['filesize']/1000) <= 999 ){
+                                    $size = round(($file_data['file']['filesize']/1000),2).' KB';
+                                }else if(($file_data['file']['filesize']/1000) > 999){
+                                    $size = round(($file_data['file']['filesize']/1000000),2).' MB';
+                                }
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><a href="'.$file_data['file']['uri'].'" >'.strtoupper($ext[count($ext)-1]).'</a> </td>';
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">'.$file_data['res']['value'].'</p></td>';
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">'.$file_data['file']['metadata']['width'].' x '.$file_data['file']['metadata']['height'].'</p></td>';
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">'.$size.'</p></td>';
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '</tr>';
                             }
+                            $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '</table>';
                         }
+                        //print_pre($file_data);
                     }else{
                             $file_data['uri'] = "noimage.png";
                     }
-                    $rev_id_jpg = $view->result[$key]->_field_data['nid']['entity']->field_jpg['und'][0]['value'];
+
+
+                   /* $rev_id_jpg = $view->result[$key]->_field_data['nid']['entity']->field_jpg['und'][0]['value'];
                     if(!empty($file_data['fid']))
                         $view->result[$key]->field_field_jpg[0]['rendered']['entity']['field_collection_item'][$rev_id_jpg]['field_dimension_jpg']['#markup'] = "<div class='field field-name-field-dimension-jpg field-type-file field-label-inline clearfix'><div class='field-label'>Dimensions:</div><div class='field-items'><div class='field-item even'>{$file_data['width']} X {$file_data['height']}</div></div></div>";
                     if(!empty($file_data)){
                         $view->result[$key]->field_field_assets_image_preview[0]['rendered']['#markup'] = "<a class='assets-preview-image' href='".image_style_url('large',$file_data['uri'])."' ><img src='".image_style_url('medium',$file_data['uri'])."'></a>";
-                    }
+                    }*/
                     unset($file_data);
-                }
             }
         break;
 
