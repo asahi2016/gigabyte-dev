@@ -1,0 +1,5 @@
+name = How To Sell
+description = Admin upload the How to sell products and users can view the uploaded content
+version = 7.x
+core = 7.x
+package = Custom Module

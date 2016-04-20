@@ -1,0 +1,19 @@
+<?php
+
+if(!function_exists('node_add')){
+    module_load_include('inc','node','node.pages');
+}
+
+function how_to_sell_init(){
+
+    drupal_add_js(drupal_get_path('module', 'custom').'/how_to_sell/js/how_to_sell.js');
+}
+
+function how_to_sell_form_webform_client_form_18762_alter(&$form, &$form_state, $form_id){
+    //print_pre($form['submitted']['series']['#options'],1);
+
+    if($form['submitted']['type']['#options']['A']){
+       unset($form['submitted']['series']['#options']['E']);
+    }
+
+}
