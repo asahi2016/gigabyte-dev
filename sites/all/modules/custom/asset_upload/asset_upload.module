@@ -138,7 +138,11 @@ function asset_upload_views_pre_render(&$view) {
                                 }
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><a href="'.$base_url.'/sites/default/files/file_uploads/assets/'.$file_data['file']['filename'].'" >'.strtoupper($ext[count($ext)-1]).'</a> </td>';
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">'.$file_data['res']['value'].'</p></td>';
-                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">'.$file_data['file']['metadata']['width'].' x '.$file_data['file']['metadata']['height'].'</p></td>';
+                                if(!empty($file_data['file']['metadata']['width']) && !empty($file_data['file']['metadata']['height'])) {
+                                    $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">' . $file_data['file']['metadata']['width'] . ' x ' . $file_data['file']['metadata']['height'] . '</p></td>';
+                                }else{
+                                    $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">-</p></td>';
+                                }
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">'.$size.'</p></td>';
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '</tr>';
                             }
