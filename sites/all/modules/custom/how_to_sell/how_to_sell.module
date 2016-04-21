@@ -1,19 +1,87 @@
 <?php
 
-if(!function_exists('node_add')){
-    module_load_include('inc','node','node.pages');
-}
-
 function how_to_sell_init(){
 
     drupal_add_js(drupal_get_path('module', 'custom').'/how_to_sell/js/how_to_sell.js');
 }
 
-function how_to_sell_form_webform_client_form_18762_alter(&$form, &$form_state, $form_id){
-    //print_pre($form['submitted']['series']['#options'],1);
+// Alter the webform elements
+function how_to_sell_form_how_to_sell_node_form_alter(&$form, &$form_state, $form_id){
 
-    if($form['submitted']['type']['#options']['A']){
-       unset($form['submitted']['series']['#options']['E']);
+    if($form_id == 'how_to_sell_node_form'){
+        $form['title']['#title'] ='File Name';
+        $form['ajax-submit']['#value'] ='Submit';
+        $form['#validate'][] = 'how_to_sell_form_validation';
+
     }
+
+}
+
+function how_to_sell_form_validation(&$form, &$form_state){
+    // Append custom error message element with content
+    how_to_sell_errors_reset($form);
+
+}
+
+function how_to_sell_errors_reset(&$element){
+
+    // Check for errors and settings
+    $errors = form_get_errors();
+
+
+    //print_pre($element['#type']);
+    if( ! isset( $_SESSION[ 'messages' ] ) ) {
+        return;
+    }
+
+    $reset_errors = array();
+
+    // Recurse through all children.
+    foreach( element_children( $element ) as $key ) {
+        if( isset( $element[ $key ] ) && $element[ $key ] ) {
+            $reset_errors += how_to_sell_errors_reset( $element[ $key ] );
+        }
+    }
+
+    $element_id = implode( '][', $element[ '#parents' ] );
+
+    if ( !empty( $errors[ $element_id ] )) {
+        $error_message = $errors[ $element_id ];
+
+        // Get error id
+        $error_id = array_search( $error_message, $_SESSION[ 'messages' ][ 'error' ] );
+
+        if( $error_id !== FALSE ) {
+            unset( $_SESSION[ 'messages' ][ 'error' ][ $error_id ] );
+            $_SESSION[ 'messages' ][ 'error' ] = array_values( $_SESSION[ 'messages' ][ 'error' ]  );
+
+            if( count( $_SESSION[ 'messages' ][ 'error' ] ) <= 0 ) {
+                unset( $_SESSION[ 'messages' ][ 'error' ] );
+            }
+
+            switch($element['#type']){
+
+                case 'textfield':
+                    $error_message = str_replace('File Name: field is required.','File Name Cannot be empty.',$error_message);
+                    break;
+                case 'file':
+                    switch($element['#id']) {
+                        case 'edit-submitted-file-image-upload':
+                            $error_message = str_replace($error_message, 'Please select your file image and only files with the following extensions are allowed: png jpg jpeg.', $error_message);
+                            break;
+                        case 'edit-submitted-pdf-file-upload':
+                            $error_message = str_replace($error_message, 'Please select your pdf file and file allowed only pdf format.', $error_message);
+                            break;
+                    }
+                    break;
+            }
+
+            $element[ '#suffix' ] = '<span class="custom-error '.$element[ '#id' ].'" >'.$error_message.'</span>';
+
+            $reset_errors[ $element[ '#id' ] ] = $error_message;
+        }
+    }
+
+    return $reset_errors;
 
 }
