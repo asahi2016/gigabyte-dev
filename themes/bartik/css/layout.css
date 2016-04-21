@@ -911,7 +911,7 @@ form.node-tools_assets_logos-form {float:left;border:2px solid #eee;padding:20px
 .node-tools_assets_logos-form .field-add-more-submit.form-submit{margin:10px 0px 0px;}
 
 .field-name-field-multi-image-upload .field-add-more-submit{clear:both;float:left;margin:15px 0px;}
-.field-multiple-table .form-submit{float: right; margin: 0 20px 0 0;  width: 120px;}
+.field-multiple-table .form-submit{float:right;margin: 0 0px 0 0;width: 120px;}
 .field-multiple-table img.file-icon{float:left;margin:2px 5px 0px 0px;}
 .view-assets-upload-view{float:left;}
 .view-assets-upload-view .views-table{width:925px;float:left;}
@@ -1321,28 +1321,35 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .view-clone-of-entityforms  .views-exposed-widgets{float:left;width:100%;}
 .view-clone-of-entityforms  .views-exposed-widgets .views-exposed-widget:first-child{width:500px;}
 .view-clone-of-entityforms  .views-exposed-widgets .views-exposed-widget{padding: 10px 0px 15px 20px;float: left;}
-.page-eform-submit-asset-upload-form .field-multiple-table tr.draggable{width:98%;padding:10px 1%;}
-.page-eform-submit-asset-upload-form .field-multiple-table td .file-widget .form-submit{margin:0px;width:180px;}
-.page-eform-submit-asset-upload-form .field-multiple-table td .form-item .form-managed-file{width:440px;}
-.page-eform-submit-asset-upload-form .field-multiple-table td .form-item  input.text-full{width:200px;margin:15px 0px 0px;}
-.page-eform-submit-asset-upload-form .form-type-checkboxes{float:left;}
-.page-eform-submit-asset-upload-form .form-type-checkboxes label{float:left;width:auto;}
-.page-eform-submit-asset-upload-form .form-type-checkboxes #edit-field-category-entity-und{float:left;width:auto;margin:0px 0px 0px 50px;}
-.page-eform-submit-asset-upload-form #field-upload-file-values{margin:30px 0 0;}
-.page-eform-submit-asset-upload-form .form-type-checkboxes #edit-field-category-entity-und .form-type-checkbox:first-child{margin:0;}
-.page-eform-submit-asset-upload-form .form-type-checkboxes #edit-field-category-entity-und .form-type-checkbox{margin:0 0 0 20px;}
-.page-eform-submit-asset-upload-form .field-multiple-table td .file-entity-preview{float:left;width:80px;}
-.page-eform-submit-asset-upload-form .image-preview img{width:80px;height:auto;}
-.page-eform-submit-asset-upload-form .field-multiple-table td .file{width: 100px;float: left;overflow: hidden;margin: 0 0 0 5px;}
-.page-eform-submit-asset-upload-form .image-widget .file img,.page-eform-submit-asset-upload-form .image-widget .file a{float:left;}
-.page-eform-submit-asset-upload-form .image-widget .file a{width:110px;overflow:hidden;max-height:20px;}
-.page-eform-submit-asset-upload-form .image-widget .file .file-size{margin: 0 5px 0 5px;width: 95px;float: left;}
-.page-eform-submit-asset-upload-form .field-multiple-table td .file-size{margin: 0 0 0 5px;width:65px;overflow:hidden;float:left;}
+.page-eform-submit-asset-upload-form .field-multiple-table tr.draggable,.page-entityform .field-multiple-table tr.draggable{width:98%;padding:10px 1%;}
+.page-eform-submit-asset-upload-form .field-multiple-table td .file-widget .form-submit,.page-entityform .field-multiple-table td .file-widget .form-submit{margin:0px;width:180px;}
+.page-eform-submit-asset-upload-form .field-multiple-table td .form-item .form-managed-file,.page-entityform .field-multiple-table td .form-item .form-managed-file {width:440px;}
+.page-eform-submit-asset-upload-form .field-multiple-table td .form-item  input.text-full,.page-entityform .field-multiple-table td .form-item  input.text-full{width:200px;margin:15px 0px 0px;}
+.page-eform-submit-asset-upload-form .form-type-checkboxes,.page-entityform .form-type-checkboxes{float:left;}
+.page-eform-submit-asset-upload-form .form-type-checkboxes label,.page-entityform .form-type-checkboxes label{float:left;width:auto;}
+.page-eform-submit-asset-upload-form .form-type-checkboxes #edit-field-category-entity-und,.page-entityform .form-type-checkboxes #edit-field-category-entity-und{float:left;width:auto;margin:0px 0px 0px 50px;}
+.page-eform-submit-asset-upload-form #field-upload-file-values,.page-entityform #field-upload-file-values{margin:30px 0 0;}
+.page-eform-submit-asset-upload-form .form-type-checkboxes #edit-field-category-entity-und .form-type-checkbox:first-child,.page-entityform .form-type-checkboxes #edit-field-category-entity-und .form-type-checkbox:first-child{margin:0;}
+.page-eform-submit-asset-upload-form .form-type-checkboxes #edit-field-category-entity-und .form-type-checkbox,.page-entityform .form-type-checkboxes #edit-field-category-entity-und .form-type-checkbox{margin:0 0 0 20px;}
+.page-eform-submit-asset-upload-form .field-multiple-table td .file-entity-preview,.page-entityform .field-multiple-table td .file-entity-preview{float:left;width:80px;}
+.page-eform-submit-asset-upload-form .image-preview img,.page-entityform .image-preview img{width:80px;height:auto;}
+.page-eform-submit-asset-upload-form .field-multiple-table td .file,.page-entityform .field-multiple-table td .file{width: 100px;float: left;overflow: hidden;margin: 0 0 0 5px;}
+.page-eform-submit-asset-upload-form .image-widget .file img,.page-eform-submit-asset-upload-form .image-widget .file a,
+.page-entityform .image-widget .file img,.page-entityform .image-widget .file a{float:left;}
+.page-eform-submit-asset-upload-form .image-widget .file a,.page-entityform .image-widget .file a{width:110px;overflow:hidden;max-height:20px;}
+.page-eform-submit-asset-upload-form .image-widget .file .file-size,.page-entityform .image-widget .file .file-size{margin: 0 5px 0 5px;width: 95px;float: left;}
+.page-eform-submit-asset-upload-form .field-multiple-table td .file-size,.page-entityform .field-multiple-table td .file-size{margin: 0 0 0 5px;width:65px;overflow:hidden;float:left;}
 .tabledrag-toggle-weight{display:none;}
 .view-clone-of-entityforms .form-checkboxes .bef-checkboxes .form-item{float:left;}
 .view-clone-of-entityforms .views-exposed-widgets{float:left;width:100%;}
 .view-clone-of-entityforms .views-exposed-widgets .views-exposed-widget:first-child{width:500px;}
-.view-clone-of-entityforms .views-exposed-widgets .views-exposed-widget{padding: 10px 0px 15px 20px;float: left;}
+.view-clone-of-entityforms .views-exposed-widgets .views-exposed-widget{padding: 10px 0px 15px 20px;float: left;width:100%;}
 .view-clone-of-entityforms div.feed-icon{display:none;}
-.page-eform-submit-asset-upload-form .messages.status,.page-eform-submit-asset-upload-form .messages.error{display:block;margin-left: 75px;}
+.page-eform-submit-asset-upload-form .messages.status{display:block;margin-left: 75px;}
 #field-upload-file-add-more-wrapper .messages.error{margin-left: 0px;margin-top: 170px;}
+.views-exposed-form .views-exposed-widgets h3{font-size:20px;font-weight:bold;}
+.views-exposed-widget.views-submit-button{display:none;}
+.page-eform-submit-asset-upload-form form .field-multiple-table tr,.page-entityform .field-multiple-table tr{position:relative;}
+.page-eform-submit-asset-upload-form form #field-upload-file-add-more-wrapper input.field-add-more-submit,.page-entityform form #field-upload-file-add-more-wrapper input.field-add-more-submit{margin:10px 10px 0 0;}
+.page-eform-submit-asset-upload-form form .field-multiple-table td input[id*='remove-button'],.page-entityform form .field-multiple-table td input[id*='remove-button']{position:absolute;right:10px;bottom:15px;}
+.page-eform-submit-asset-upload-form .messages.error{margin:8px 0px;}
