@@ -152,6 +152,9 @@ function asset_upload_views_pre_render(&$view) {
                                     $file_data['file'] = $val['#entity']->field_upload_asset['und'][0];
                                     $file_data['res'] = $val['#entity']->field_asset_resolution['und'][0];
 
+                                }else{
+                                    $file_data['file'] = array();
+                                    $file_data['res'] = array();
                                 }
                                 //print_pre($file_data,1);
                                 $ext = explode(".", $file_data['file']['uri']);
@@ -176,14 +179,6 @@ function asset_upload_views_pre_render(&$view) {
                     } else {
                         $file_data['file']['uri'] = "noimage.png";
                     }
-
-
-                   /* $rev_id_jpg = $view->result[$key]->_field_data['nid']['entity']->field_jpg['und'][0]['value'];
-                    if(!empty($file_data['fid']))
-                        $view->result[$key]->field_field_jpg[0]['rendered']['entity']['field_collection_item'][$rev_id_jpg]['field_dimension_jpg']['#markup'] = "<div class='field field-name-field-dimension-jpg field-type-file field-label-inline clearfix'><div class='field-label'>Dimensions:</div><div class='field-items'><div class='field-item even'>{$file_data['width']} X {$file_data['height']}</div></div></div>";
-                    if(!empty($file_data)){
-                        $view->result[$key]->field_field_assets_image_preview[0]['rendered']['#markup'] = "<a class='assets-preview-image' href='".image_style_url('large',$file_data['uri'])."' ><img src='".image_style_url('medium',$file_data['uri'])."'></a>";
-                    }*/
                     $view->result[$key]->field_field_image_preview_assets[0]['rendered']['#markup'] = "<a class='assets-preview-image' href='".image_style_url('large',$file_data['file']['uri'])."' ><img src='".image_style_url('medium',$file_data['file']['uri'])."'></a>";
                     unset($file_data);
                 }else{
