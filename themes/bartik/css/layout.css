@@ -1352,4 +1352,4 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .page-eform-submit-asset-upload-form form .field-multiple-table tr,.page-entityform .field-multiple-table tr{position:relative;}
 .page-eform-submit-asset-upload-form form #field-upload-file-add-more-wrapper input.field-add-more-submit,.page-entityform form #field-upload-file-add-more-wrapper input.field-add-more-submit{margin:10px 10px 0 0;}
 .page-eform-submit-asset-upload-form form .field-multiple-table td input[id*='remove-button'],.page-entityform form .field-multiple-table td input[id*='remove-button']{position:absolute;right:10px;bottom:15px;}
-.page-eform-submit-asset-upload-form .messages.error{margin:8px 0px;}
+.page-eform-submit-asset-upload-form .messages.error{margin:8px 0px;float:left;}
