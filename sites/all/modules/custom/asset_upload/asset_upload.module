@@ -153,8 +153,9 @@ function asset_upload_views_pre_render(&$view) {
                                     $file_data['res'] = $val['#entity']->field_asset_resolution['und'][0];
 
                                 }else{
-                                    $file_data['file'] = array();
-                                    $file_data['res'] = array();
+                                    $file_data['file']['uri'] = "noimage.png";
+                                    $file_data['file']['filename'] = "noimage";
+                                    $file_data['res']['value'] = '0';
                                 }
                                 //print_pre($file_data,1);
                                 $ext = explode(".", $file_data['file']['uri']);
