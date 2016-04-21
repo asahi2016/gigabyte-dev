@@ -102,6 +102,15 @@ function asset_upload_views_pre_render(&$view) {
     // This example alters the title of the node:nid field in the Views UI.
    // global $image_url;
 
+    global $user;
+    $usr = user_load($user->uid);
+    foreach($usr->roles as $key => $value){
+        if($key != 2){
+            $role['value'] = $value;
+            $role['id'] = $key;
+        }
+    }
+    //print_pre($role,1);
     global $base_url;
     drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/dataTables.bootstrap.min.js');
     drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/jquery.dataTables.min.js');
@@ -110,10 +119,25 @@ function asset_upload_views_pre_render(&$view) {
         case 'clone_of_entityforms':
             //print_pre($view->result,1);
             foreach($view->result as $key => $value){
+                //print_pre($value,1);
                 $file_data = array();
-                   //print_pre($value,1);
-                    if(!empty($value->field_field_upload_file)){
-                        foreach($value->field_field_upload_file as $k => $v){
+                $roles_permitted = array();
+                $access = false;
+                foreach($value->field_field_permitted_roles as $rkey => $rval){
+                    $role_permitted[] = $rval['raw']['rid'];
+                    if($role['id'] == $rval['raw']['rid']){
+                        $access = true;
+                    }
+                }
+                /*echo $role['id'];
+                exit;*/
+                if (in_array('administrator', array_values($user->roles))) {
+                    $access = true;
+                }
+                if($access) {
+                    //print_pre($roles_permitted, 1);
+                    if (!empty($value->field_field_upload_file)) {
+                        foreach ($value->field_field_upload_file as $k => $v) {
                             //print_pre($v,1);
                             $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] = "<table class='download-file-type-info-table'><tr>";
                             $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Download</th>";
@@ -121,36 +145,36 @@ function asset_upload_views_pre_render(&$view) {
                             $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Dimension</th>";
                             $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Size</th></tr>";
 
-                            foreach($v['rendered']['entity']['field_collection_item'] as $ke=>$val) {
+                            foreach ($v['rendered']['entity']['field_collection_item'] as $ke => $val) {
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<tr>";
-                               // print_pre($val,1);
+                                // print_pre($val,1);
                                 if (!empty($val['#entity']->field_upload_asset['und'][0])) {
                                     $file_data['file'] = $val['#entity']->field_upload_asset['und'][0];
                                     $file_data['res'] = $val['#entity']->field_asset_resolution['und'][0];
 
                                 }
                                 //print_pre($file_data,1);
-                                $ext = explode(".",$file_data['file']['uri']);
-                                if(($file_data['file']['filesize']/1000) <= 999 ){
-                                    $size = round(($file_data['file']['filesize']/1000),2).' KB';
-                                }else if(($file_data['file']['filesize']/1000) > 999){
-                                    $size = round(($file_data['file']['filesize']/1000000),2).' MB';
+                                $ext = explode(".", $file_data['file']['uri']);
+                                if (($file_data['file']['filesize'] / 1000) <= 1023) {
+                                    $size = round(($file_data['file']['filesize'] / 1024), 2) . ' KB';
+                                } else if (($file_data['file']['filesize'] / 1000) > 1023) {
+                                    $size = round(($file_data['file']['filesize'] / (1024 * 1024)), 2) . ' MB';
                                 }
-                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><a href="'.$base_url.'/sites/default/files/file_uploads/assets/'.$file_data['file']['filename'].'" >'.strtoupper($ext[count($ext)-1]).'</a> </td>';
-                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">'.$file_data['res']['value'].'</p></td>';
-                                if(!empty($file_data['file']['metadata']['width']) && !empty($file_data['file']['metadata']['height'])) {
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><a href="' . $base_url . '/sites/default/files/file_uploads/assets/' . $file_data['file']['filename'] . '" >' . strtoupper($ext[count($ext) - 1]) . '</a> </td>';
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">' . $file_data['res']['value'] . '</p></td>';
+                                if (!empty($file_data['file']['metadata']['width']) && !empty($file_data['file']['metadata']['height'])) {
                                     $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">' . $file_data['file']['metadata']['width'] . ' x ' . $file_data['file']['metadata']['height'] . '</p></td>';
-                                }else{
+                                } else {
                                     $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">-</p></td>';
                                 }
-                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">'.$size.'</p></td>';
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">' . $size . '</p></td>';
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '</tr>';
                             }
                             $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '</table>';
                         }
 
-                    }else{
-                            $file_data['file']['uri'] = "noimage.png";
+                    } else {
+                        $file_data['file']['uri'] = "noimage.png";
                     }
 
 
@@ -160,8 +184,11 @@ function asset_upload_views_pre_render(&$view) {
                     if(!empty($file_data)){
                         $view->result[$key]->field_field_assets_image_preview[0]['rendered']['#markup'] = "<a class='assets-preview-image' href='".image_style_url('large',$file_data['uri'])."' ><img src='".image_style_url('medium',$file_data['uri'])."'></a>";
                     }*/
-                $view->result[$key]->field_field_image_preview_assets[0]['rendered']['#markup'] = "<a class='assets-preview-image' href='".image_style_url('large',$file_data['file']['uri'])."' ><img src='".image_style_url('medium',$file_data['file']['uri'])."'></a>";
-                unset($file_data);
+                    $view->result[$key]->field_field_image_preview_assets[0]['rendered']['#markup'] = "<a class='assets-preview-image' href='".image_style_url('large',$file_data['file']['uri'])."' ><img src='".image_style_url('medium',$file_data['file']['uri'])."'></a>";
+                    unset($file_data);
+                }else{
+                    unset($view->result[$key]);
+                }
             }
         break;
 
