@@ -19,3 +19,5 @@ themes/bartik/css/layout - Copy.css
 sites/default/settings.php
 sites/default/settings.php
 sites/default/settings.php
+*.iml
+tmp/.htaccess
