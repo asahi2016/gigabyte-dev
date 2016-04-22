@@ -1303,7 +1303,7 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .view-clone-of-entityforms .views-table tr th:nth-child(4),.view-clone-of-entityforms .views-table tr td:nth-child(4){width:100px;}
 .view-clone-of-entityforms .views-table tr th:nth-child(5),.view-clone-of-entityforms .views-table tr td:nth-child(5){width:100px;}
 .view-clone-of-entityforms .views-table tr th:nth-child(6),.view-clone-of-entityforms .views-table tr td:nth-child(6){width:100px;}
-.view-clone-of-entityforms .views-table .download-file-type-info-table{width:400px;}
+.view-clone-of-entityforms .views-table .download-file-type-info-table{width:100%;}
 .view-clone-of-entityforms .views-table .download-file-type-info-table tr th,
 .view-clone-of-entityforms .views-table .download-file-type-info-table tr td{width:80px;}
 .view-clone-of-entityforms .views-table tr td:first-child img{width:180px;height: inherit;}

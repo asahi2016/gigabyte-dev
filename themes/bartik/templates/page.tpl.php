@@ -173,7 +173,11 @@ if(!user_is_logged_in()){
         $_SESSION['user_country_id'] = !empty($country)?$country:1;
     }
 }
-
+if (in_array('administrator', array_values($user->roles))) {
+    $access = true;
+}else{
+    $access = false;
+}
 ?>
 <script type="text/javascript">
 jQuery(document) . ready(function () {
@@ -211,7 +215,12 @@ jQuery(document) . ready(function () {
                 jQuery('#country-menu li:first-child') . addClass('active');
                 jQuery('#country-menu li:last-child') . removeClass('active');
             }
-        }})
+        }
+        <?php if(!$access){ ?>
+        jQuery('table .views-field-edit-entityform, table .views-field-delete-entityform').hide();
+        <?php } ?>
+
+});
 </script>
 <div id="page-wrapper"><div id="page">
 
