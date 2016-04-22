@@ -9,7 +9,7 @@ function how_to_sell_init(){
 function how_to_sell_form_how_to_sell_node_form_alter(&$form, &$form_state, $form_id){
 
     if($form_id == 'how_to_sell_node_form'){
-        $form['title']['#title'] ='File Name';
+        $form['title']['#title'] ='Model Name';
         $form['ajax-submit']['#value'] ='Submit';
         $form['#validate'][] = 'how_to_sell_form_validation';
 
