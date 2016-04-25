@@ -143,6 +143,8 @@ function asset_upload_views_pre_render(&$view) {
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Resolution</th>";
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Dimension</th>";
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Size</th></tr>";
+                            }else{
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] = '';
                             }
 
                             foreach ($v['rendered']['entity']['field_collection_item'] as $ke => $val) {
