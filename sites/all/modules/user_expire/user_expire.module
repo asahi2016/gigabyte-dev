@@ -456,7 +456,7 @@ function user_expire_get_role_rules() {
 /**
  * Implements hook_mail().
  */
-function user_expire_mail($key, &$message, $params) {
+/*function user_expire_mail($key, &$message, $params) {
   if ($key == 'expiration_warning') {
     // The subject.
     $message['subject'] = t('@site_name: Account expiration warning', array('@site_name' => variable_get('site_name', 'Drupal.org')));
@@ -473,4 +473,4 @@ function user_expire_mail($key, &$message, $params) {
     $message['body'][] = '';
     $message['body'][] = t('Thanks, @site_name', array('@site_name' => variable_get('site_name', 'Drupal.org')));
   }
-}
+}*/

@@ -2160,7 +2160,7 @@ function user_login_default_validators() {
 function user_login_name_validate($form, &$form_state) {
   if (!empty($form_state['values']['name']) && user_is_blocked($form_state['values']['name'])) {
     // Blocked in user administration.
-    form_set_error('name', t('The username %name has not been activated or is blocked.', array('%name' => $form_state['values']['name'])));
+    form_set_error('name', t('Your account has been blocked, Please contact Gigabyte admin', array('%name' => $form_state['values']['name'])));
   }
 }
 
