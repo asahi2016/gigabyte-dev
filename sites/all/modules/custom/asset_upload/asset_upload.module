@@ -137,15 +137,21 @@ function asset_upload_views_pre_render(&$view) {
                 if($access) {
                     //print_pre($roles_permitted, 1);
                     if (!empty($value->field_field_upload_file)) {
+
+                        $lcount = 0;
+                        $cnt = count($value->field_field_upload_file);
                         foreach ($value->field_field_upload_file as $k => $v) {
-                            //print_pre($v,1);
-                            $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] = "<table class='download-file-type-info-table'><tr>";
-                            $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Download</th>";
-                            $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Resolution</th>";
-                            $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Dimension</th>";
-                            $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Size</th></tr>";
+                           // print_pre($v);
+                            if($lcount <= 0) {
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] = "<table class='download-file-type-info-table'>";
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<tr><th>Download</th>";
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Resolution</th>";
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Dimension</th>";
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<th>Size</th></tr>";
+                            }
 
                             foreach ($v['rendered']['entity']['field_collection_item'] as $ke => $val) {
+                                print_pre($view->result[$key]->field_field_upload_file[$k]['rendered'],1);
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= "<tr>";
                                 // print_pre($val,1);
                                 if (!empty($val['#entity']->field_upload_asset['und'][0])) {
@@ -176,8 +182,15 @@ function asset_upload_views_pre_render(&$view) {
                                 }
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">' . $size . '</p></td>';
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '</tr>';
+
                             }
-                            $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '</table>';
+
+                            $lcount++;
+                            if($cnt == $lcount){
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '</table>';
+                            }
+
+
                         }
 
                     } else {
