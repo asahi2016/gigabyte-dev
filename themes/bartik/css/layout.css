@@ -1382,3 +1382,4 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .view-id-clone_of_entityforms .view-content .download-file-type-info-table td p{margin:0px;}
 .view-id-clone_of_entityforms .view-content .views-field.views-field-field-category-entity,.view-id-clone_of_entityforms .view-content .views-field-field-image-preview-assets{clear:both;}
 .view-id-clone_of_entityforms .view-content .views-field.views-field-field-category-entity{margin:5px 0 15px 0;width:100%;}
+.view-id-clone_of_entityforms .views-exposed-form{float: left;padding: 20px 2%;width: 96%;border: 1px solid #EEE;margin: 0 0 40px 0;}
