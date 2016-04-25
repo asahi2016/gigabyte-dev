@@ -1352,6 +1352,7 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 #field-upload-file-add-more-wrapper .messages.error{margin-left: 0px;margin-top:0px;}
 .views-exposed-form .views-exposed-widgets h3{font-size:20px;font-weight:bold;}
 .views-exposed-widget.views-submit-button{display:none;}
+#views-exposed-form-how-to-sell-view-page .views-exposed-widget.views-submit-button{display: block;}
 .page-eform-submit-asset-upload-form form .field-multiple-table tr,.page-entityform .field-multiple-table tr{position:relative;}
 .page-eform-submit-asset-upload-form form div[id*='field-upload-file-add-more-wrapper'] input.field-add-more-submit,.page-entityform form div[id*='field-upload-file-add-more-wrapper'] input.field-add-more-submit{margin:10px 10px 0 0;}
 .page-eform-submit-asset-upload-form form .field-multiple-table td input[id*='remove-button'],.page-entityform form .field-multiple-table td input[id*='remove-button']{position:absolute;right:10px;bottom:15px;}

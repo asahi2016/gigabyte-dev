@@ -85,3 +85,43 @@ function how_to_sell_errors_reset(&$element){
     return $reset_errors;
 
 }
+
+// Views exposed filter alter for separating series
+function how_to_sell_form_alter(&$form, &$form_state, $form_id) {
+
+    if ($form['#id'] == 'views-exposed-form-how-to-sell-view-page') {
+        $form['#attached']['js'] = array(
+            drupal_get_path('module', 'how_to_sell') . '/js/how_to_sell.js',
+        );
+
+        $links = $form['term_node_tid_depth']['#options'];
+        $newlinks = array();
+
+        foreach ($links as $tid => $term_name) {
+
+                $newlinks[] = array('data' => '<span class="filter-tab"><a href="" id="' .$tid . '" class="active">' . $term_name . '</a></span>', 'class' => array('pop-filter-label'));
+
+        }
+
+        $prefix = theme(
+            'item_list', array(
+            'items' => $newlinks,
+            'type' => 'ul',
+            'attributes' => array('id' => 'pop-filter-list'),
+            'container_id' => 'scope-list-wrapper',
+        ));
+
+        $form['links'] = array(
+            '#type' => 'markup',
+            '#value' => $prefix,
+            '#markup' => $prefix,
+        );
+    }
+
+
+}
+
+function how_to_sell_views_pre_render(&$view){
+    //print_pre($view->result,1);
+}
+
