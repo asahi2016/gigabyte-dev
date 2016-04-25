@@ -67,7 +67,7 @@ ul{list-style-type:none;}
     margin-left: auto;
     margin-right: auto;
 }
-#messages div.section{width:1100px;}
+#messages div.section{width:1100px;margin:0px auto;}
 #messages div.section .messages.error{width:100%;}
 #main{width:1100px;margin:0px auto;}
 #header div.section {
@@ -1355,5 +1355,30 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .page-eform-submit-asset-upload-form form .field-multiple-table tr,.page-entityform .field-multiple-table tr{position:relative;}
 .page-eform-submit-asset-upload-form form div[id*='field-upload-file-add-more-wrapper'] input.field-add-more-submit,.page-entityform form div[id*='field-upload-file-add-more-wrapper'] input.field-add-more-submit{margin:10px 10px 0 0;}
 .page-eform-submit-asset-upload-form form .field-multiple-table td input[id*='remove-button'],.page-entityform form .field-multiple-table td input[id*='remove-button']{position:absolute;right:10px;bottom:15px;}
+
 .page-eform-submit-asset-upload-form .messages.error{margin:8px 0px;float:left;width:100%;}
 .page-eform-submit-asset-upload-form .tabledrag-changed-warning.messages,.page-entityform .tabledrag-changed-warning.messages{clear: both;margin: 0 0 10px;}
+
+.page-eform-submit-asset-upload-form .messages.error{margin:8px 0px;float:left;width:98%;}
+.page-eform-submit-asset-upload-form .tabledrag-changed-warning.messages,.page-entityform .tabledrag-changed-warning.messages{clear: both;margin: 0 0 10px;}
+#how-to-sell-node-form .fel-field-label{float:left;margin:0 10px 0 0;min-width:130px;}
+#how-to-sell-node-form .form-select{width:250px;}
+#how-to-sell-node-form .form-item label{width:130px;float:left;}
+#how-to-sell-node-form .form-item .form-text{width:240px;float:left;margin:0 0px 0 10px;}
+#how-to-sell-node-form .form-managed-file{width:600px;float:left;}
+#how-to-sell-node-form .field-name-field-file-pdf{width:100%;}
+#how-to-sell-node-form .form-item .description{clear:both;}
+#how-to-sell-node-form input.form-submit,#how-to-sell-node-form .form-managed-file .form-file{float: left;}
+#how-to-sell-node-form .form-managed-file .form-file{margin:0 0 0 10px}
+#how-to-sell-node-form > div:first-child > input.form-submit{margin:0 0 0 430px;}
+
+.view-id-clone_of_entityforms .view-content .assets-list-partner li{width:100%;float:left;margin:0 0 30px 0;}
+.view-id-clone_of_entityforms .view-content .views-field-field-image-name-entity{font-weight:bold;float:left;line-height: 35px;font-size: 22px;max-width:920px;}
+.view-id-clone_of_entityforms .view-content .item-list .views-field{float:left;}
+.view-id-clone_of_entityforms .view-content .item-list .views-field .btn{padding:0;margin:0 0 0 10px;}
+.view-id-clone_of_entityforms .view-content .item-list .views-field .btn a{margin:0;}
+.view-id-clone_of_entityforms .view-content .download-file-type-info-table{margin:10px 0 0 60px;}
+.view-id-clone_of_entityforms .view-content .download-file-type-info-table td{border:1px solid #eee;padding:6px;}
+.view-id-clone_of_entityforms .view-content .download-file-type-info-table td p{margin:0px;}
+.view-id-clone_of_entityforms .view-content .views-field.views-field-field-category-entity,.view-id-clone_of_entityforms .view-content .views-field-field-image-preview-assets{clear:both;}
+.view-id-clone_of_entityforms .view-content .views-field.views-field-field-category-entity{margin:5px 0 15px 0;width:100%;}
