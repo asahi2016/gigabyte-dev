@@ -836,7 +836,7 @@ form.node-tools_assets_logos-form {float:left;border:2px solid #eee;padding:20px
 .view-assets-upload-view ul li .views-label{font-weight:bold;margin:20px 0px;}
 .view-assets-upload-view ul li .field-content a{float:left;}
 .views-field-edit-node{clear:both;}
-.btn a{
+.btn a,input.btn{
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
@@ -858,22 +858,22 @@ form.node-tools_assets_logos-form {float:left;border:2px solid #eee;padding:20px
     border-radius: 4px;
     margin:0 20px 0 0px;
 }
-.btn-success a{
+.btn-success a,input.btn-success{
     color: #fff;
     background-color: #5cb85c;
     border-color: #4cae4c;
 }
-.btn-success a:hover{
+.btn-success a:hover,input.btn-success:hover{
     color: #fff;
     background-color: #449d44;
     border-color: #398439;
 }
-.btn-danger a{
+.btn-danger a,input.btn-danger{
     color: #fff;
     background-color: #c9302c;
     border-color: #ac2925;
 }
-.btn-danger a:hover{
+.btn-danger a:hover,input.btn-danger:hover{
     color: #fff;
     background-color: #c9302c;
     border-color: #ac2925;
@@ -1088,12 +1088,12 @@ div[id*='field-pdf-add-more-wrapper'] .field-type-file .form-managed-file a{widt
     background-color: #5cb85c;
     border-color: #4cae4c;
 }*/
-.btn-info a{
+.btn-info a,input.btn-info{
     color: #fff;
     background-color: #5bc0de;
     border-color: #46b8da;
 }
-.btn{
+.btn,input.btn{
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
