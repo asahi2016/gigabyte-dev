@@ -91,7 +91,16 @@ function group_registration_update_user_account_submit(){
             }
         }
 
+        if(isset($_POST['field_contact_number'])){
+            if(empty($_POST['field_contact_number']['und'][0]['value']))
+                form_set_error('field_contact_number', 'Contact Number cannot be empty.');
+        }
+
         $errors = form_get_errors();
+
+        if($errors){
+            $_SESSION['account_setting_error'] = $errors;
+        }
 
         if(!$errors) {
 
@@ -157,13 +166,14 @@ function group_registration_ajax_get_company_info() {
         $response = array();
         $company_name = $_POST['company_name'];
 
-        $group_users = get_group_users_lists(array('group_name' => $company_name));
+        //$group_users = get_group_users_lists(array('group_name' => $company_name));
+        $group_users = get_group_admin_user(array('group_name' => $company_name));
 
         $group_info = array();
 
         foreach($group_users as $key => $group_user) {
 
-            if(isset($group_user->og_user_node['und'][0]['target_id'])) { // Check Group Admin user
+            if(isset($group_user->og_user_node['und'][0]['target_id']) && !empty($group_user->og_user_node['und'][0]['target_id'])) { // Check Group Admin user
 
                 $business_address_1 = $group_user->field_business_address_1['und'][0]['value'];
                 $business_address_2 = $group_user->field_business_address_2['und'][0]['value'];
@@ -172,6 +182,29 @@ function group_registration_ajax_get_company_info() {
                 $company_city = $group_user->field_company_city['und'][0]['value'];
                 $company_country = $group_user->field_country['und'][0]['tid'];
 
+                $participating_programs = array();
+                foreach ($group_user->field_participating_programs['und'] as $k => $tid){
+                    $participating_programs[$k]= $tid['tid'];
+                }
+
+                $distributor = array();
+                foreach ($group_user->field_choose_distributor['und'] as $k => $tid){
+                    $distributor[$k] = $tid['tid'];
+                }
+
+                $sub_distributor = array();
+                foreach ($group_user->field_choose_sub_distributor['und'] as $k => $tid){
+                    $sub_distributor[$k] = $tid['tid'];
+                }
+
+                $other_programs = $group_user->field_other_programs['und'][0]['value'];
+                $other_distributor = $group_user->field_other_distributor['und'][0]['value'];
+                $other_sub_distributor = $group_user->field_other_sub_distributor['und'][0]['value'];
+
+                $motherboard_qty = $group_user->field_motherboard_qty['und'][0]['value'];
+                $membership = $group_user->field_membership_account['und'][0]['value'];
+                $newsletter = $group_user->field_receive_newsletter['und'][0]['value'];
+
                 $group_info = array(
                     'business_address_1' => $business_address_1,
                     'business_address_2' => $business_address_2,
@@ -179,6 +212,12 @@ function group_registration_ajax_get_company_info() {
                     'state' => $company_state,
                     'city' => $company_city,
                     'country' => $company_country,
+                    'programs' => array('ids' => $participating_programs,'others' => $other_programs),
+                    'distributor' => array('ids' => $distributor,'others' => $other_distributor),
+                    'sub_distributor' => array('ids' => $sub_distributor,'others' => $other_sub_distributor),
+                    'membership' => $membership,
+                    'motherboard_qty' => $motherboard_qty,
+                    'newsletter' => $newsletter
                 );
             }
 
@@ -214,6 +253,31 @@ function get_group_users_lists($group = array()){
             }
         }
 
+    }
+
+    return $group_users;
+
+}
+
+
+function get_group_admin_user($group = array()){
+
+    $group_users = array();
+
+    preg_match("/.+\((\d+)\)/", $group['group_name'] , $matches);
+    $group_id = trim($matches[1]);
+
+    //Get group id by group name
+    $result = db_query("SELECT * FROM {node} n WHERE n.nid = :nid AND n.type = :type", array(":nid"=> $group_id , ":type"=> 'group'));
+    $group = $result->fetchAssoc();
+
+    $user_details = user_load_multiple(array($group['uid']));
+    foreach($user_details as $ukey => $user_detail ){
+        if(!in_array('administrator', $user_detail->roles)){
+            if($user_detail->field_company_name['und'][0]['target_id'] == $group['nid']){
+                array_push($group_users, $user_detail);
+            }
+        }
     }
 
     return $group_users;
@@ -542,7 +606,8 @@ function group_registration_user_insert(&$edit, $account, $category){
                 'country' => $account->field_country['und'][0]['tid'],
                 'zip' => $account->field_company_zip_code['und'][0]['value'],
                 'status' => 1,
-                'updated' => date('Y-m-d H:i:s')
+                'updated' => date('Y-m-d H:i:s'),
+                'data' => serialize($account)
             );
 
             if(isset($account->field_business_address_2['und'][0]['value']) && !empty($account->field_business_address_2['und'][0]['value'])) {

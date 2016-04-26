@@ -1,3 +1,8 @@
+<?php
+$errors = array();
+if(isset($variables['account']['errors']) && !empty($variables['account']['errors']))
+    $errors = $variables['account']['errors'];
+?>
 <div id="account-setting">
 <table>
     <tbody>
@@ -17,7 +22,10 @@
         </tr>
         <tr>
             <td>Email Address (Login ID): <?=$account['mail']?></td>
-            <td><?= $account['contact_number']['form'] ?></td>
+            <td>
+                <?= $account['contact_number']['form'] ?>
+                <?php echo (isset($errors['field_contact_number']))? '<span class="error">' . $errors['field_contact_number'].'</span>' : ''; ?>
+            </td>
         </tr>
         <tr>
             <td colspan="3"><hr /></td>
@@ -104,17 +112,19 @@
         </tbody>
     </table>
 </div>
-<?php
-  print drupal_render($variables['form']['actions']);
-  //print drupal_render($form);
-?>
 <?php global $base_url; ?>
 <input type="hidden" id="actionUrl" value="<?php echo $base_url ?>/update/user/account" />
-
+ <div id="edit-actions" class="form-actions form-wrapper">
+     <input type="button" class="form-submit" value="Update" name="op" id="edit-submit">
+ </div>
+<?php  //print drupal_render($form); ?>
 </div>
 <script>
     (function($) {
         $(document).ready(function($){
+
+            make_disabled_and_readonly_account_fields();
+
             $('#password').hide()
 
             $('#password_hide').click(function(){
@@ -122,10 +132,115 @@
             });
 
             $('#edit-submit').click(function(e){
+                $('span.custom-error').remove();
                 var url = $('#actionUrl').val();
+                var error = false;
+                error = check_options_mandatory();
                 e.preventDefault();
-                $('form#user-profile-form').attr('action', url).submit();
+                if(!error) {
+                    make_enabled_account_fields();
+                    $('form#user-profile-form').attr('action', url).submit();
+                }
+                return false;
             });
+            
+            function check_options_mandatory() {
+
+                var error = false;
+
+                var contact = $('#edit-field-contact-number-und-0-value').val();
+                if(!contact){
+                    error = true;
+                    $('#edit-field-contact-number .form-item').append('<span class="custom-error">Contact number cannot be empty.</span>');
+                }
+
+                var current_pass = $('#edit-current-pass');
+                var pass1 = $('#edit-pass-pass1');
+                var pass2 = $('#edit-pass-pass2');
+                var check_pass = true;
+                if(!current_pass.val() && !pass1.val() && !pass2.val()){
+                    check_pass = false;
+                }
+
+
+                if(check_pass){
+                    if (!current_pass.val()) {
+                        error = true;
+                        $('table#password').append('<span class="custom-error">Current Password cannot be empty.</span>');
+                    }
+
+                    if (!pass1.val()) {
+                        error = true;
+                        $('table#password').append('<span class="custom-error">Password cannot be empty.</span>');
+                    }
+
+                    if (!pass2.val()) {
+                        error = true;
+                        $('table#password').append('<span class="custom-error">Confirm Password cannot be empty.</span>');
+                    }
+
+                    if (pass1.val() && pass2.val()) {
+
+                        if (pass1.val() != pass2.val()) {
+                            error = true;
+                            $('table#password').append('<span class="custom-error">Password you entered does not match</span>');
+                        }
+                    }
+                }
+
+                return error;
+            }
+
+            function make_disabled_and_readonly_account_fields() {
+
+                $('#edit-field-participating-programs-und input[type="checkbox"]').each(function () {
+                    $(this).attr('disabled','disabled');
+                });
+
+                $('#edit-field-choose-distributor-und input[type="checkbox"]').each(function () {
+                    $(this).attr('disabled','disabled');
+                });
+
+                $('#edit-field-choose-sub-distributor-und input[type="checkbox"]').each(function () {
+                    $(this).attr('disabled','disabled');
+                });
+
+                $('#edit-field-receive-newsletter-und input[type="radio"]').each(function () {
+                    $(this).attr('disabled','disabled');
+                });
+                $('#edit-field-membership-account-und-0-value').attr('readonly','readonly');
+                $('#edit-field-motherboard-qty-und-0-value').attr('readonly','readonly');
+
+                $('#edit-field-other-programs-und-0-value').attr('readonly','readonly');
+                $('#edit-field-other-distributor-und-0-value').attr('readonly','readonly');
+                $('#edit-field-other-sub-distributor-und-0-value').attr('readonly','readonly');
+
+            }
+
+            function make_enabled_account_fields() {
+
+                $('#edit-field-participating-programs-und input[type="checkbox"]').each(function () {
+                    $(this).removeAttr('disabled');
+                });
+
+                $('#edit-field-choose-distributor-und input[type="checkbox"]').each(function () {
+                    $(this).removeAttr('disabled');
+                });
+
+                $('#edit-field-choose-sub-distributor-und input[type="checkbox"]').each(function () {
+                    $(this).removeAttr('disabled');
+                });
+
+                $('#edit-field-receive-newsletter-und input[type="radio"]').each(function () {
+                    $(this).removeAttr('disabled');
+                });
+
+                $('#edit-field-other-programs-und-0-value').removeAttr('disabled');
+                $('#edit-field-other-distributor-und-0-value').removeAttr('disabled');
+                $('#edit-field-other-sub-distributor-und-0-value').removeAttr('disabled');
+
+            }
+            
         });
     })(jQuery);
 </script>

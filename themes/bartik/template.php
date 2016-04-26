@@ -312,6 +312,14 @@ function bartik_preprocess_user_profile_form(&$variables) {
     $variables['account']['company'] = $company_info;
     $variables['account']['company']['roles'] = $roles;
     $variables['account']['company']['country'] = $country;
+    $variables['account']['company']['info'] = unserialize($variables['account']['company']['data']);
+
+    $errors = array();
+    if(isset($_SESSION['account_setting_error']) && !empty($_SESSION['account_setting_error'])){
+        $errors = $_SESSION['account_setting_error'];
+        unset($_SESSION['account_setting_error']);
+        $variables['account']['errors'] = $errors;
+    }
 
     $variables['account']['job_title']['form'] = drupal_render($variables['form']['group_personal_info']['field_job_title']);
     $variables['account']['contact_number']['form'] = drupal_render($variables['form']['group_personal_info']['field_contact_number']);
