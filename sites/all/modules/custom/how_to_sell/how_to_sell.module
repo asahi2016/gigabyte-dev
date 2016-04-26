@@ -122,6 +122,19 @@ function how_to_sell_form_alter(&$form, &$form_state, $form_id) {
 }
 
 function how_to_sell_views_pre_render(&$view){
-    //print_pre($view->result,1);
+
+   if($view->name='how_to_sell_view'){
+
+     //print_pre($view->result,1);
+       $uri = $view->result[0]->field_field_file_pdf[0]['rendered']['file']['#file']->uri;
+       $path= file_create_url($uri);
+       $view->result[0]->field_field_file_image[0]['rendered']['#path']['path'] = $path;
+       $view->result[0]->field_field_file_image[0]['rendered']['#path']['options']= array('class' => 'colorbox-load');
+
+        //print_pre($view->result[0]->field_field_file_image[0]['rendered'],1);
+   }
+
+    return $view;
+
 }
 
