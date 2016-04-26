@@ -638,4 +638,36 @@ function group_registration_user_insert(&$edit, $account, $category){
     }
 }
 
+/**
+ * Remove a role from a user.
+ *
+ * @param $user
+ *   User object or user ID.
+ * @param $role_name
+ *   String value of role to be removed.
+ */
+function group_registration_user_update(&$edit, $account, $category) {
+
+    $role_name = 'New Users';
+    $key = array_search($role_name, $edit['roles']);
+
+    if ($key && $edit['status'] == 1 && $category== 'account') {
+
+        // Get the rid from the roles table.
+        $roles = user_roles(TRUE);
+        $rid = array_search($role_name, $roles);
+        if ($rid != FALSE) {
+
+            // Make a copy of the roles array, without the deleted one.
+            $new_roles = array();
+            foreach($account->roles as $id => $name) {
+                if ($id != $rid) {
+                    $new_roles[$id] = $name;
+                }
+            }
+            user_save($account , array('roles' => $new_roles));
+        }
+    }
+}
+
 ?>
