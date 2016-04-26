@@ -1,7 +1,13 @@
+<style>
+    .messages.status{
+        display: block !important;
+    }
+</style>
 <?php
 $errors = array();
 if(isset($variables['account']['errors']) && !empty($variables['account']['errors']))
     $errors = $variables['account']['errors'];
+
 ?>
 <div id="account-setting">
 <table>
@@ -18,20 +24,21 @@ if(isset($variables['account']['errors']) && !empty($variables['account']['error
         <tr>
             <td width="380" valign="top">First Name: <?= $account['firstname']['value']?></td>
             <td width="380" valign="top">Last Name: <?= $account['lastname']['value']?></td>
-            <td width="340" rowspan="2" valign="top">Job Title: <?= $account['job_title']['value']?></td>
+            <td width="340" valign="top">Job Title: <?= $account['job_title']['value']?></td>
         </tr>
         <tr>
             <td>Email Address (Login ID): <?=$account['mail']?></td>
             <td>
                 <?= $account['contact_number']['form'] ?>
-                <?php echo (isset($errors['field_contact_number']))? '<span class="error">' . $errors['field_contact_number'].'</span>' : ''; ?>
             </td>
+            <td align="left"><?php echo (isset($errors['field_contact_number']))? '<span class="custom-error">' . $errors['field_contact_number'].'</span>' : ''; ?></td>
         </tr>
         <tr>
             <td colspan="3"><hr /></td>
         </tr>
         </tbody>
     </table>
+    <?php echo (isset($errors['current_pass']))? '<span class="custom-error password-error">' . $errors['current_pass'].'</span>' : ''; ?>
     <table id="password" style="width:940px; margin:0 30px 0 30px;">
         <tbody>
         <tr>
@@ -125,7 +132,9 @@ if(isset($variables['account']['errors']) && !empty($variables['account']['error
 
             make_disabled_and_readonly_account_fields();
 
-            $('#password').hide()
+            if(!$('span.password-error').length > 0) {
+                $('#password').hide();
+            }
 
             $('#password_hide').click(function(){
                 $('#password').fadeToggle()
@@ -138,7 +147,7 @@ if(isset($variables['account']['errors']) && !empty($variables['account']['error
                 error = check_options_mandatory();
                 e.preventDefault();
                 if(!error) {
-                    make_enabled_account_fields();
+                    //make_enabled_account_fields();
                     $('form#user-profile-form').attr('action', url).submit();
                 }
                 return false;
@@ -151,7 +160,7 @@ if(isset($variables['account']['errors']) && !empty($variables['account']['error
                 var contact = $('#edit-field-contact-number-und-0-value').val();
                 if(!contact){
                     error = true;
-                    $('#edit-field-contact-number .form-item').append('<span class="custom-error">Contact number cannot be empty.</span>');
+                    $('#edit-field-contact-number').parent('td').next('td').append('<span class="custom-error" style="padding: 10px 0px;">Contact number cannot be empty.</span>');
                 }
 
                 var current_pass = $('#edit-current-pass');
@@ -166,24 +175,24 @@ if(isset($variables['account']['errors']) && !empty($variables['account']['error
                 if(check_pass){
                     if (!current_pass.val()) {
                         error = true;
-                        $('table#password').append('<span class="custom-error">Current Password cannot be empty.</span>');
+                        $('table#password').before('<span class="custom-error">Current Password cannot be empty.</span>');
                     }
 
                     if (!pass1.val()) {
                         error = true;
-                        $('table#password').append('<span class="custom-error">Password cannot be empty.</span>');
+                        $('table#password').before('<span class="custom-error">Password cannot be empty.</span>');
                     }
 
                     if (!pass2.val()) {
                         error = true;
-                        $('table#password').append('<span class="custom-error">Confirm Password cannot be empty.</span>');
+                        $('table#password').before('<span class="custom-error">Confirm Password cannot be empty.</span>');
                     }
 
                     if (pass1.val() && pass2.val()) {
 
                         if (pass1.val() != pass2.val()) {
                             error = true;
-                            $('table#password').append('<span class="custom-error">Password you entered does not match</span>');
+                            $('table#password').before('<span class="custom-error">Password you entered does not match</span>');
                         }
                     }
                 }
