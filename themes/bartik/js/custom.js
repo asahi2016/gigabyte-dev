@@ -78,8 +78,10 @@ jQuery(document).ready(function($) {
     $('.feed-icon a').text('Export Request Review to Excel');
 	$('.view-clone-of-entityforms .views-table tr td.file-size-column .file a').attr('href','javascript:;');
 	$('.views-exposed-form .views-exposed-widgets').prepend('<h3>Filters</h3>');
+    $(document).on('ready','body',function(){
+        $('div.views-exposed-form').prepend('<h3>Filters</h3>');
+    });
     $('#node-90 h2').hide();
-	$('.views-exposed-form .views-exposed-widgets').prepend('<h3>Filters </h3>');
 	$('table.gsm_benefit td > br').remove();
 	$('.page-partner-upload-assets .views-row .field-content li li:empty').remove();
 });
