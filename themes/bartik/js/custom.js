@@ -81,5 +81,6 @@ jQuery(document).ready(function($) {
     $('#node-90 h2').hide();
 	$('.views-exposed-form .views-exposed-widgets').prepend('<h3>Filters </h3>');
 	$('table.gsm_benefit td > br').remove();
+	$('.page-partner-upload-assets .views-row .field-content li li:empty').remove();
 });
 

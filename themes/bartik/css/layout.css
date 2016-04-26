@@ -1378,7 +1378,7 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .view-id-clone_of_entityforms .view-content .item-list .views-field{float:left;}
 .view-id-clone_of_entityforms .view-content .item-list .views-field .btn{padding:0;margin:0 0 0 10px;}
 .view-id-clone_of_entityforms .view-content .item-list .views-field .btn a{margin:0;}
-.view-id-clone_of_entityforms .view-content .download-file-type-info-table{margin:10px 0 0 60px;}
+.view-id-clone_of_entityforms .view-content .download-file-type-info-table{margin:0px 0 0 60px;}
 .view-id-clone_of_entityforms .view-content .download-file-type-info-table td{border:1px solid #eee;padding:6px;}
 .view-id-clone_of_entityforms .view-content .download-file-type-info-table td p{margin:0px;}
 .view-id-clone_of_entityforms .view-content .views-field.views-field-field-category-entity,.view-id-clone_of_entityforms .view-content .views-field-field-image-preview-assets{clear:both;}
