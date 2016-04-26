@@ -17,90 +17,14 @@ function getRoundedsize($bytes){
     return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
 
 }
-function save_asset_permissions(&$form, &$form_state){
-    $title = $form_state['input']['title'];
-    $permitted = $form_state['input']['trc_user_roles'];
-    $resellers = !empty($permitted[5])?$permitted[5]:'';
-    $distributors = !empty($permitted[6])?$permitted[6]:'';
-    $partners = !empty($permitted[7])?$permitted[7]:'';
-    $system_integrators = !empty($permitted[8])?$permitted[8]:'';
-    $gigabyte_employees = !empty($permitted[9])?$permitted[9]:'';
-    $esf = !empty($permitted[10])?$permitted[10]:'';
-    $new_users = !empty($permitted[11])?$permitted[11]:'';
 
-    $permitted_role = array();
-    foreach($permitted as $permit){
-        if(!empty($permit)){
-            $permitted_role[] = $permit;
-        }
-    }
-    //get user ID
-    global $user;
-    $userid = $user->uid;
-    // Get File ID
-    $image_array = array();
-    $fid = $form_state['input']['field_jpg']['und'][0]['field_upload_file_asset']['und'][0]['fid'];
-    // Get file path from file_managed table
-    $file = db_query('SELECT filename,uri FROM file_managed WHERE fid = '.$fid)->fetchAll();
-    $filename = $file[0]->filename;
-    $filepath = $file[0]->uri;
-    //print_pre($file,1);
-    $file_info = image_get_info($filepath);
-    $dimension = $file_info['width'].' X '.$file_info['height'];
-    $extension = $file_info['extension'];
-    $filesize = getRoundedsize($file_info['file_size']);
-    //print_pre($file_info,1);
-    // Get Permitted roles
-    $roles_permitted = serialize($permitted_role);
-    // Get Image Resolution
-    $img_resolution = $form_state['input']['field_jpg']['und'][0]['field_resolution_dpi_asset']['und'][0]['value'];
-    //$img_resolution['pdf'] = $form_state['input']['field_jpg']['und'][0]['field_resolution_jpg']['und'][0]['value'];
-    // Get Image Dimension
-
-    // Get creation timestamp
-    $created_at = date('Y-m-d h:i:s');
-    // Get category ID
-    $category_id = serialize($form_state['input']['field_image_asset_category']['und']);
-    //DB Insert
-    //print_pre($image_array,1);
-    if(!empty($userid) && !empty($filepath)){
-        $nid = db_insert('asset_uploads')
-            ->fields(array(
-                'uid' => $userid,
-                'cid' => $category_id,
-                'created_at' => $created_at,
-                'resellers' => !empty($resellers)?$resellers:0,
-                'distributors' =>  !empty($distributors)?$distributors:0,
-                'partners' => !empty($partners)?$partners:0,
-                'system_integrators' => !empty($system_integrators)?$system_integrators:0,
-                'gigabyte_employees' => !empty($gigabyte_employees)?$gigabyte_employees:0,
-                'esf' => !empty($esf)?$esf:0,
-                'fid' => $fid,
-                'file_path' => $filepath,
-                'resolution' => $img_resolution,
-                'dimension' => $dimension,
-                'filesize' => $filesize,
-                'extension' => $extension
-            ))
-            ->execute();
-    }else{
-       drupal_set_message('Required fields are empty');
-    }
-    //drupal_goto('partner/upload-assets');
-}
-
-/*function asset_upload_views_default_views_alter(&$views) {
-    print_pre($views,1);
-    if (isset($views['asset_uploads'])) {
-        $views['taxonomy_term']->display['default']->display_options['title'] = 'Categories';
-    }
-}*/
+/**
+ * View alter to display the file info for each file type for TAL nodes
+ * @param $view
+ *
+ */
 
 function asset_upload_views_pre_render(&$view) {
-   //print_pre($view,1);
-    // This example alters the title of the node:nid field in the Views UI.
-   // global $image_url;
-
     global $user;
     $usr = user_load($user->uid);
     foreach($usr->roles as $key => $value){
@@ -114,6 +38,7 @@ function asset_upload_views_pre_render(&$view) {
     drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/dataTables.bootstrap.min.js');
     drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/jquery.dataTables.min.js');
     drupal_add_js($base_url.'/sites/all/modules/custom/make_a_request/js/dataTables.buttons.min.js');
+    drupal_add_js($base_url.'/sites/all/modules/custom/asset_upload/js/custom.js');
     switch($view->name){
         case 'clone_of_entityforms':
             //print_pre($view->result,1);
@@ -167,7 +92,7 @@ function asset_upload_views_pre_render(&$view) {
                                 } else if (($file_data['file']['filesize'] / 1000) > 1023) {
                                     $size = round(($file_data['file']['filesize'] / (1024 * 1024)), 2) . ' MB';
                                 }
-                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><a href="' . $base_url . '/sites/default/files/file_uploads/assets/' . $file_data['file']['filename'] . '" >' . strtoupper($ext[count($ext) - 1]) . '</a> </td>';
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><a href="' . $base_url . '/sites/default/files/file_uploads/assets/' . $file_data['file']['filename'] . '" onclick="file_ajax_save(this.href);" >' . strtoupper($ext[count($ext) - 1]) . '</a> </td>';
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">' . $file_data['res']['value'] . '</p></td>';
                                 if (!empty($file_data['file']['metadata']['width']) && !empty($file_data['file']['metadata']['height'])) {
                                     $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">' . $file_data['file']['metadata']['width'] . ' x ' . $file_data['file']['metadata']['height'] . '</p></td>';
@@ -196,7 +121,66 @@ function asset_upload_views_pre_render(&$view) {
                     unset($view->result[$key]);
                 }
             }
-        break;
+            break;
+        case 'asset_download_history':
+            //print_pre($view->result,1);
+            foreach($view->result as $key => $value){
+                $img = explode('/',$value->asset_download_history_file);
+                $image = $img[count($img)-1];
 
+                $value->asset_download_history_file = $image;
+                $value->asset_download_history_file_preview = '<img src="'.image_style_url('thumbnail', $value->asset_download_history_file_preview).'" />';
+            }
+            //print_pre($view->result);
+            break;
+    }
+}
+
+/**
+ * Hooks menu
+ */
+
+function asset_upload_menu(){
+    $items['partner/asset/store/history'] = array(
+        'page callback' => 'asset_upload_store_download_history',
+        'type' => MENU_CALLBACK,
+        'access arguments' => array('access content'),
+    );
+    return $items;
+}
+
+/**
+ * Ajax callback function to store Assets Download info
+ */
+
+function asset_upload_store_download_history(){
+    global $user;
+    $usr = user_load($user->uid);
+    $name = $usr->name;
+    $email = $usr->mail;
+    $download_date = date('Y-m-d h:i:s');
+    foreach($usr->roles as $key => $value){
+        if($key != 2){
+            $role = $value;
+        }
+    }
+    $img = explode('/',$_POST['image']);
+    $image =$_POST['image'];
+    $nid = db_insert('asset_download_history')
+        ->fields(array(
+            'name' => $name,
+            'email' => $email,
+            'role' => $role,
+            'file' => $img[count($img)-1],
+            'download_date' => $download_date,
+            'file_preview' => $image
+        ))
+        ->execute();
+
+    if(!$nid){
+        drupal_set_message('Something went wrong while trying to download file!','error');
+        return false;
+    }else{
+        echo $nid;
     }
 }
