@@ -77,12 +77,12 @@ jQuery(document).ready(function($) {
     $('.feed-icon').prependTo('.view-make-a-request-submission-view .view-content');
     $('.feed-icon a').text('Export Request Review to Excel');
 	$('.view-clone-of-entityforms .views-table tr td.file-size-column .file a').attr('href','javascript:;');
-	$('.views-exposed-form .views-exposed-widgets').prepend('<h3>Filters</h3>');
-    $(document).on('ready','body',function(){
-        $('div.views-exposed-form').prepend('<h3>Filters</h3>');
-    });
+	$('.view-clone-of-entityforms').parent('.content').prepend('<h3>Filters</h3>');
     $('#node-90 h2').hide();
 	$('table.gsm_benefit td > br').remove();
-	$('.page-partner-upload-assets .views-row .field-content li li:empty').remove();
+	$('.page-partner-upload-assets .views-row .field-content li li:empty').remove();	
+	$('#how-to-sell-node-form .form-submit').on('click',function(){
+		$('#how-to-sell-node-form div:empty').remove();
+	});
 });
 

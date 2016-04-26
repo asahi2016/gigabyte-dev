@@ -1350,7 +1350,7 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .view-clone-of-entityforms div.feed-icon{display:none;}
 .page-eform-submit-asset-upload-form .messages.status{display:block;margin-left: 0px;}
 #field-upload-file-add-more-wrapper .messages.error{margin-left: 0px;margin-top:0px;}
-.views-exposed-form .views-exposed-widgets h3{font-size:20px;font-weight:bold;}
+.page-partner-upload-assets .content h3{font-size:20px;font-weight:bold;}
 .views-exposed-widget.views-submit-button{display:none;}
 #views-exposed-form-how-to-sell-view-page .views-exposed-widget.views-submit-button{display: block;}
 .page-eform-submit-asset-upload-form form .field-multiple-table tr,.page-entityform .field-multiple-table tr{position:relative;}
@@ -1364,16 +1364,17 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .page-eform-submit-asset-upload-form .tabledrag-changed-warning.messages,.page-entityform .tabledrag-changed-warning.messages{clear: both;margin: 0 0 10px;}
 #how-to-sell-node-form .fel-field-label{float:left;margin:0 10px 0 0;min-width:130px;}
 #how-to-sell-node-form .form-select{width:250px;}
-#how-to-sell-node-form .form-item label{width:130px;float:left;}
+#how-to-sell-node-form .form-item label{width:400px;float:left;}
 #how-to-sell-node-form .form-item .form-text{width:240px;float:left;margin:0 0px 0 10px;}
 #how-to-sell-node-form .form-managed-file{width:600px;float:left;}
 #how-to-sell-node-form .field-name-field-file-pdf{width:100%;}
 #how-to-sell-node-form .form-item .description{clear:both;}
 #how-to-sell-node-form input.form-submit,#how-to-sell-node-form .form-managed-file .form-file{float: left;}
 #how-to-sell-node-form .form-managed-file .form-file{margin:0 0 0 10px}
-#how-to-sell-node-form > div:first-child > input.form-submit{margin:0 0 0 430px;}
+#how-to-sell-node-form > div:first-child > input.form-submit{margin:0 0 0 715px;}
 
 .view-id-clone_of_entityforms .view-content .assets-list-partner li{width:100%;float:left;margin:0 0 30px 0;}
+.view-id-clone_of_entityforms .view-content .assets-list-partner li .file-asset-category li{width:auto;margin:0px 10px 0 0;background: #5bc0de;padding: 2px 7px;border-radius:2px;color: #fff;}
 .view-id-clone_of_entityforms .view-content .views-field-field-image-name-entity{font-weight:bold;float:left;line-height: 35px;font-size: 22px;max-width:920px;}
 .view-id-clone_of_entityforms .view-content .item-list .views-field{float:left;}
 .view-id-clone_of_entityforms .view-content .item-list .views-field .btn{padding:0;margin:0 0 0 10px;}
@@ -1384,3 +1385,7 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .view-id-clone_of_entityforms .view-content .views-field.views-field-field-category-entity,.view-id-clone_of_entityforms .view-content .views-field-field-image-preview-assets{clear:both;}
 .view-id-clone_of_entityforms .view-content .views-field.views-field-field-category-entity{margin:5px 0 15px 0;width:100%;}
 .view-id-clone_of_entityforms .views-exposed-form{float: left;padding: 20px 2%;width: 96%;border: 1px solid #EEE;margin: 0 0 40px 0;}
+.node-how_to_sell-form .field-type-image,.node-how_to_sell-form .field-type-file,.node-how_to_sell-form .form-type-textfield {position:relative;}
+.node-how_to_sell-form  .form-submit {margin:0 0 0 15px;}
+.node-how_to_sell-form  .image-widget-data .custom-error,.node-how_to_sell-form .file-widget .custom-error {position:absolute;right:0px;bottom:45px;}
+.node-how_to_sell-form  .image-widget-data .custom-error{bottom:70px;}
