@@ -80,6 +80,6 @@ jQuery(document).ready(function($) {
 	$('.views-exposed-form .views-exposed-widgets').prepend('<h3>Filters</h3>');
     $('#node-90 h2').hide();
 	$('.views-exposed-form .views-exposed-widgets').prepend('<h3>Filters </h3>');
-	$('table.gsm_benefit td').find('br').remove();
+	$('table.gsm_benefit td > br').remove();
 });
 
