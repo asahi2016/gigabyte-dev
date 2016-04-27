@@ -1371,7 +1371,7 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 #how-to-sell-node-form .form-item .description{clear:both;}
 #how-to-sell-node-form input.form-submit,#how-to-sell-node-form .form-managed-file .form-file{float: left;}
 #how-to-sell-node-form .form-managed-file .form-file{margin:0 0 0 10px}
-#how-to-sell-node-form > div:first-child > input.form-submit{margin:0 0 0 715px;}
+#how-to-sell-node-form div input[value="Submit"]{margin:0 0 0 715px;}
 
 .view-id-clone_of_entityforms .view-content .assets-list-partner li{width:100%;float:left;margin:0 0 30px 0;}
 .view-id-clone_of_entityforms .view-content .assets-list-partner li .file-asset-category li{width:auto;margin:0px 10px 0 0;background: #5bc0de;padding: 2px 7px;border-radius:2px;color: #fff;font-size: 11px;}
@@ -1390,3 +1390,5 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .node-how_to_sell-form  .image-widget-data .custom-error,.node-how_to_sell-form .file-widget .custom-error {position:absolute;right:0px;bottom:45px;}
 .node-how_to_sell-form  .image-widget-data .custom-error{bottom:70px;}
 li.assets-row-list-partner .btn-success a,li.assets-row-list-partner .btn-danger a{line-height:16px;}
+table.txt_center{table-layout: fixed;}
+

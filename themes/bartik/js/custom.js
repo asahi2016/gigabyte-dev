@@ -1,4 +1,3 @@
-
 jQuery(document).ready(function($) {
     //Node option publish option enable
     $('.block-system .vertical-tabs ul.vertical-tabs-list li').removeClass('selected');
@@ -82,7 +81,12 @@ jQuery(document).ready(function($) {
 	$('table.gsm_benefit td > br').remove();
 	$('.page-partner-upload-assets .views-row .field-content li li:empty').remove();	
 	$('#how-to-sell-node-form .form-submit').on('click',function(){
-		$('#how-to-sell-node-form div:empty').remove();
+		
 	});
+	/* $('#how-to-sell-node-form div:empty').remove();
+	$('#how-to-sell-node-form div').eq(0).addClass('how-sell-upload-form');
+	$('').eq(1).addClass('how-sell-upload-form'); */
+	/* $( "<div class='how-sell-upload-form'></div>" ).appendTo( "#how-to-sell-node-form > div" );
+	$( "#how-to-sell-node-form > div > .form-submit" ).appendTo( ".how-sell-upload-form" ); */
 });
 
