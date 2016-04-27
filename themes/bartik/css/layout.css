@@ -419,13 +419,14 @@ div.form-item div.password-suggestions{display: none !important;}
     width:1000px;
     padding:0 0 0 100px;
 }
-.page-user-register .region-top-content h2{
+.page-user-register .region-content h2{
     font-weight: 900;
     font-size: 27px;
     margin-top: 30px;
     margin-bottom: 30px;
     color: #12406A;}
-.page-user-register .region-top-content p{
+
+.page-user-register .region-content p{
     color:#12406a;
     margin:0px 0 10px;
 }
