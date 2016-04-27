@@ -665,7 +665,7 @@ function group_registration_user_update(&$edit, $account, $category) {
                     $new_roles[$id] = $name;
                 }
             }
-            user_save($account , array('roles' => $new_roles));
+            //user_save($account , array('roles' => $new_roles));
         }
     }
 }
