@@ -133,6 +133,30 @@ function asset_upload_views_pre_render(&$view) {
             }
             //print_pre($view->result);
             break;
+        case 'calendar_events_view':
+            //print_pre($view->result,1);
+            foreach($view->result as $key => $value){
+                //print_pre(count($value->field_field_event_country));
+                if(count($value->field_field_event_country) == 1) {
+                    if ($value->field_field_event_country[0]['raw']['tid'] == 1) {
+                        $value->field_field_event_country[0]['rendered']['#markup'] = '<img src="' . $base_url . '/themes/bartik/images/usa.jpg" alt="usa-event" />';
+                    }
+                    if ($value->field_field_event_country[0]['raw']['tid'] == 2) {
+                        $value->field_field_event_country[0]['rendered']['#markup'] = '<img src="' . $base_url . '/themes/bartik/images/ca.jpg" alt="usa-event" />';
+                    }
+                }
+                if(count($value->field_field_event_country) > 1) {
+                    foreach($value->field_field_event_country as $k => $v){
+                        if($v['raw']['tid'] == 1){
+                            $value->field_field_event_country[$k]['rendered']['#markup'] = '<img src="' . $base_url . '/themes/bartik/images/usa.jpg" alt="usa-event" />';
+                        }
+                        if($v['raw']['tid'] == 2){
+                            $value->field_field_event_country[0]['rendered']['#markup'] = '<img src="' . $base_url . '/themes/bartik/images/ca.jpg" alt="canada-event" />';
+                        }
+                    }
+                }
+            }
+            break;
     }
 }
 
