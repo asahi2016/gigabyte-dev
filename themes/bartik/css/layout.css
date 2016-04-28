@@ -487,7 +487,7 @@ table.company-details tr td{padding: 0px;}
 #account-setting table#password td:nth-child(2) .form-item .form-item{clear:inherit;float: left;width:290px;margin:0 0px 0 0}
 #account-setting table#password td label{width:auto;float:left;}
 #account-setting table#password td input{width:120px;float:left;}
-#account-setting table#password td .description,.page-user-edit h1#page-title,.page-user-edit div.messages.error{display: none;}
+#account-setting table#password td .description,.page-user-edit h1#page-title,.page-user-register h1#page-title,.page-user-edit div.messages.error{display: none;}
 #edit-field-participating-programs .form-item{width:100%}
 #edit-field-participating-programs .form-item{
     clear: inherit;
