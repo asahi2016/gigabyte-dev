@@ -12,7 +12,8 @@ function how_to_sell_form_how_to_sell_node_form_alter(&$form, &$form_state, $for
         $form['title']['#title'] ='Model Name';
         $form['ajax-submit']['#value'] ='Submit';
         $form['#validate'][] = 'how_to_sell_form_validation';
-
+        $form['ajax-submit']['#submit'][] = 'how_to_sell_form_submit';
+        $form['#submit'][] = 'how_to_sell_form_submit';
     }
 
 }
@@ -86,53 +87,24 @@ function how_to_sell_errors_reset(&$element){
 
 }
 
-// Views exposed filter alter for separating series
-function how_to_sell_form_alter(&$form, &$form_state, $form_id) {
+function how_to_sell_form_submit($form,$form_state){
 
-    if ($form['#id'] == 'views-exposed-form-how-to-sell-view-page') {
-        $form['#attached']['js'] = array(
-            drupal_get_path('module', 'how_to_sell') . '/js/how_to_sell.js',
-        );
-
-        $links = $form['term_node_tid_depth']['#options'];
-        $newlinks = array();
-
-        foreach ($links as $tid => $term_name) {
-
-                $newlinks[] = array('data' => '<span class="filter-tab"><a href="" id="' .$tid . '" class="active">' . $term_name . '</a></span>', 'class' => array('pop-filter-label'));
-
-        }
-
-        $prefix = theme(
-            'item_list', array(
-            'items' => $newlinks,
-            'type' => 'ul',
-            'attributes' => array('id' => 'pop-filter-list'),
-            'container_id' => 'scope-list-wrapper',
-        ));
-
-        $form['links'] = array(
-            '#type' => 'markup',
-            '#value' => $prefix,
-            '#markup' => $prefix,
-        );
-    }
-
-
+    drupal_set_message(t('How To Sell form uploaded successfully'));
 }
 
 function how_to_sell_views_pre_render(&$view){
 
-   if($view->name=='how_to_sell_view'){
+        if($view->name == 'how_to_sell_view'){
+            foreach($view->result as $key => $value){
+                $uri = $view->result[$key]->field_field_file_pdf[0]['rendered']['#file']->uri;
+                $uri = str_replace('public://','',$uri);
+                $uri = 'sites/default/files/'.$uri;
+                $view->result[$key]->field_field_file_image[0]['rendered']['#path']['path'] = $uri;
 
-        //print_pre($view->result,1);
-       $uri = $view->result[0]->field_field_file_pdf[0]['rendered']['file']['#file']->uri;
-       $path= file_create_url($uri);
-       $view->result[0]->field_field_file_image[0]['rendered']['#path']['path'] = $path;
-       $view->result[0]->field_field_file_image[0]['rendered']['#path']['options']= array('class' => 'colorbox-load');
 
-        //print_pre($view->result[0]->field_field_file_image[0]['rendered'],1);
-   }
+            }
+
+        }
 
     return $view;
 

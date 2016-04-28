@@ -142,6 +142,9 @@ DirectoryIndex index.php index.html index.htm
     <FilesMatch "\.(?i:jpg|pdf|png)$">
       Header set Content-Disposition attachment
     </FilesMatch>
+    <FilesMatch "\.(?i:pdf)$">
+          Header set Content-Disposition inline
+        </FilesMatch>
   </IfModule>
 </IfModule>
 
