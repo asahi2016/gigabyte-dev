@@ -27,7 +27,7 @@ function create_how_to_sell_content(){
     $form_state['values']['promote'] = 0;
 }
 function how_to_sell_form_validation(&$form, &$form_state){
-
+    $form_state['rebuild'] = true;
     // Append custom error message element with content
     how_to_sell_errors_reset($form);
 
@@ -100,9 +100,10 @@ function how_to_sell_views_pre_render(&$view){
             foreach($view->result as $key => $value){
                 $uri = $view->result[$key]->field_field_file_pdf[0]['rendered']['#file']->uri;
                 $uri = str_replace('public://','',$uri);
-                $uri = 'sites/default/files/'.$uri;
-                $view->result[$key]->field_field_file_image[0]['rendered']['#path']['path'] = $uri;
-                $view->result[$key]->field_field_file_pdf_1[0]['rendered']['#markup'] = $uri;
+                $uri_title_pdf = '../sites/default/files/'.$uri;
+                $uri_image_pdf = 'sites/default/files/'.$uri;
+                $view->result[$key]->field_field_file_image[0]['rendered']['#path']['path'] = $uri_image_pdf;
+                $view->result[$key]->field_field_file_pdf_1[0]['rendered']['#markup'] = $uri_title_pdf;
 
             }
 
