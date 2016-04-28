@@ -1,0 +1,104 @@
+<?php
+
+function awards_reviews_init(){
+
+    drupal_add_js(drupal_get_path('module', 'custom').'/awards_reviews/js/awards_reviews.js');
+}
+
+// Alter the webform elements
+function awards_reviews_form_awards_reviews_node_form_alter(&$form, &$form_state, $form_id){
+
+    if($form_id == 'awards_reviews_node_form'){
+        $form['title']['#title'] ='Model Name';
+        $form['ajax-submit']['#value'] ='Submit';
+        $form['#validate'][] = 'awards_reviews_form_validation';
+    }
+
+}
+
+function awards_reviews_form_validation(&$form, &$form_state){
+    // Append custom error message element with content
+    awards_reviews_errors_reset($form);
+
+}
+
+function awards_reviews_errors_reset(&$element){
+
+    // Check for errors and settings
+    $errors = form_get_errors();
+
+    //print_pre($element['#type']);
+    if( ! isset( $_SESSION[ 'messages' ] ) ) {
+        return;
+    }
+
+    $reset_errors = array();
+
+    // Recurse through all children.
+    foreach( element_children( $element ) as $key ) {
+        if( isset( $element[ $key ] ) && $element[ $key ] ) {
+            $reset_errors += awards_reviews_errors_reset( $element[ $key ] );
+        }
+    }
+
+    $element_id = implode( '][', $element[ '#parents' ] );
+
+    if ( !empty( $errors[ $element_id ] )) {
+        $error_message = $errors[ $element_id ];
+
+        // Get error id
+        $error_id = array_search( $error_message, $_SESSION[ 'messages' ][ 'error' ] );
+
+        if( $error_id !== FALSE ) {
+            unset( $_SESSION[ 'messages' ][ 'error' ][ $error_id ] );
+            $_SESSION[ 'messages' ][ 'error' ] = array_values( $_SESSION[ 'messages' ][ 'error' ]  );
+
+            if( count( $_SESSION[ 'messages' ][ 'error' ] ) <= 0 ) {
+                unset( $_SESSION[ 'messages' ][ 'error' ] );
+            }
+
+            switch($element['#type']){
+
+                case 'textfield':
+                    $error_message = str_replace('File Name: field is required.','File Name Cannot be empty.',$error_message);
+                    break;
+                case 'file':
+                    switch($element['#id']) {
+                        case 'edit-submitted-file-image-upload':
+                            $error_message = str_replace($error_message, 'Please select your file image and only files with the following extensions are allowed: png jpg jpeg.', $error_message);
+                            break;
+                        case 'edit-submitted-pdf-file-upload':
+                            $error_message = str_replace($error_message, 'Please select your pdf file and file allowed only pdf format.', $error_message);
+                            break;
+                    }
+                    break;
+            }
+
+            $element[ '#suffix' ] = '<span class="custom-error '.$element[ '#id' ].'" >'.$error_message.'</span>';
+
+            $reset_errors[ $element[ '#id' ] ] = $error_message;
+        }
+    }
+
+    return $reset_errors;
+
+}
+
+
+function awards_reviews_views_pre_render(&$view){
+
+   /*if($view->name=='awards_reviews_view'){
+
+     //print_pre($view->result,1);
+       $uri = $view->result[0]->field_field_file_pdf[0]['rendered']['file']['#file']->uri;
+       $path= file_create_url($uri);
+       $view->result[0]->field_field_file_image[0]['rendered']['#path']['path'] = $path;
+       $view->result[0]->field_field_file_image[0]['rendered']['#path']['options']= array('class' => 'colorbox-load');
+
+        //print_pre($view->result[0]->field_field_file_image[0]['rendered'],1);
+   }*/
+
+    return $view;
+
+}
+

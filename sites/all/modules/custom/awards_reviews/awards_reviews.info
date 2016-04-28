@@ -1,0 +1,5 @@
+name = Awards & Reviews
+description = Admin upload the Awards & Reivews submission and users can view the Awards & reviews content
+version = 7.x
+core = 7.x
+package = Custom Module
