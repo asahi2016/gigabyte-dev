@@ -25,10 +25,16 @@
         });
 
         setInterval(function(){
-            $(".views-field-field-file-image .field-content a").colorbox({ iframe: true, width: "90%", height: "95%" });
+            $(".view-how-to-sell-view .field-content a").colorbox({ iframe: true, width: "90%", height: "95%" });
         },600);
 
-        $(".views-field-field-file-image .field-content a").colorbox({ iframe: true, width: "90%", height: "95%" });
+        $(".view-how-to-sell-view .field-content a").colorbox({ iframe: true, width: "90%", height: "95%" });
+
+        setInterval(function(){
+            $(".view-how-to-sell-amd .field-content a").colorbox({ iframe: true, width: "90%", height: "95%" });
+        },600);
+
+        $(".view-how-to-sell-amd .field-content a").colorbox({ iframe: true, width: "90%", height: "95%" });
 
     });
 })(jQuery);

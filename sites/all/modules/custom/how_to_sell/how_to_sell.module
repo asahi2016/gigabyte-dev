@@ -10,15 +10,24 @@ function how_to_sell_form_how_to_sell_node_form_alter(&$form, &$form_state, $for
 
     if($form_id == 'how_to_sell_node_form'){
         $form['title']['#title'] ='Model Name';
-        $form['ajax-submit']['#value'] ='Submit';
         $form['#validate'][] = 'how_to_sell_form_validation';
-        $form['ajax-submit']['#submit'][] = 'how_to_sell_form_submit';
+        $form['options']['promote']['#value'] = 0;
+        $form['ajax-submit']['#value'] = t('Submit');
+        $form['#submit'][] = 'create_how_to_sell_content';
         $form['#submit'][] = 'how_to_sell_form_submit';
-    }
 
+    }
+   //print_pre($form,1);
+   return $form;
 }
 
+//remove the promote to front page element
+function create_how_to_sell_content(){
+
+    $form_state['values']['promote'] = 0;
+}
 function how_to_sell_form_validation(&$form, &$form_state){
+
     // Append custom error message element with content
     how_to_sell_errors_reset($form);
 
@@ -29,8 +38,6 @@ function how_to_sell_errors_reset(&$element){
     // Check for errors and settings
     $errors = form_get_errors();
 
-
-    //print_pre($element['#type']);
     if( ! isset( $_SESSION[ 'messages' ] ) ) {
         return;
     }
@@ -63,18 +70,12 @@ function how_to_sell_errors_reset(&$element){
             switch($element['#type']){
 
                 case 'textfield':
-                    $error_message = str_replace('File Name: field is required.','File Name Cannot be empty.',$error_message);
+                    $error_message = str_replace('Model Name field is required.','Model Name Cannot be empty.',$error_message);
                     break;
                 case 'file':
-                    switch($element['#id']) {
-                        case 'edit-submitted-file-image-upload':
-                            $error_message = str_replace($error_message, 'Please select your file image and only files with the following extensions are allowed: png jpg jpeg.', $error_message);
-                            break;
-                        case 'edit-submitted-pdf-file-upload':
-                            $error_message = str_replace($error_message, 'Please select your pdf file and file allowed only pdf format.', $error_message);
-                            break;
-                    }
-                    break;
+                    $error_message = str_replace('File Image field is required.','File Image Cannot be empty.',$error_message);
+                    $error_message = str_replace('File PDF field is required.','File PDF Cannot be empty.',$error_message);
+
             }
 
             $element[ '#suffix' ] = '<span class="custom-error '.$element[ '#id' ].'" >'.$error_message.'</span>';
@@ -87,25 +88,25 @@ function how_to_sell_errors_reset(&$element){
 
 }
 
-function how_to_sell_form_submit($form,$form_state){
+function how_to_sell_form_submit(&$form,&$form_state){
 
     drupal_set_message(t('How To Sell form uploaded successfully'));
+    //print_pre($form_state,1);
 }
 
 function how_to_sell_views_pre_render(&$view){
 
-        if($view->name == 'how_to_sell_view'){
+        if($view->name == 'how_to_sell_view' || $view->name == 'how_to_sell_amd'){
             foreach($view->result as $key => $value){
                 $uri = $view->result[$key]->field_field_file_pdf[0]['rendered']['#file']->uri;
                 $uri = str_replace('public://','',$uri);
                 $uri = 'sites/default/files/'.$uri;
                 $view->result[$key]->field_field_file_image[0]['rendered']['#path']['path'] = $uri;
-
+                $view->result[$key]->field_field_file_pdf_1[0]['rendered']['#markup'] = $uri;
 
             }
 
         }
-
     return $view;
 
 }
