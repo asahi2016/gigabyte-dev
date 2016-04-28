@@ -7,6 +7,7 @@
              make_enabled_fields();
          });
 
+         $('.page-user-register div.messages.error').remove();
          //Member type move to company information section
 
          $('#edit-autoassignrole-user legend').remove();
