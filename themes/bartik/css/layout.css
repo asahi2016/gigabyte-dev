@@ -1267,7 +1267,6 @@ padding:10px;}
 .subm_wrap_s .by_option select,.subm_wrap_s select{width:180px;margin:0 50px 0px 10px;padding:3px;}
 .views-exposed-form .views-exposed-widget input[type='checkbox']{float:left;margin:3px 5px 0px 0px;}
 div[id*='field-jpg-add-more-wrapper'] .form-wrapper .file-widget .file-size{margin:4px 10px 0 2px;float:left;}
-.messages.status{display:none;}
 .view-make-a-request-submission-view table.views-table th,.view-make-a-request-submission-view table.views-table td{padding:15px 10px 12px 15px;vertical-align:top;}
 .view-make-a-request-submission-view table.views-table th:nth-child(1),.view-make-a-request-submission-view table.views-table td:nth-child(1){width:110px;}
 .view-make-a-request-submission-view table.views-table th:nth-child(2){width:130px;}
