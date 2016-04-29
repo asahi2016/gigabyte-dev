@@ -10,7 +10,7 @@ function awards_reviews_init(){
  */
 function awards_reviews_menu() {
 
-    $items['get/awards_and_reviews/banner'] = array(
+    $items['awards_and_reviews/banner'] = array(
         'page callback' => 'get_awards_and_reviews_banner_image', // Render HTML
         'type' => MENU_CALLBACK,
         'access callback' => TRUE,
@@ -24,7 +24,15 @@ function get_awards_and_reviews_banner_image(){
     if($_POST['ajax'] == true){
         if(!empty($_POST['term_id'])){
             $term = taxonomy_term_load($_POST['term_id']);
-            print_pre($term);
+            $uri = isset($term->field_awards_banner_image['und'][0]['uri'])? file_create_url($term->field_awards_banner_image['und'][0]['uri']):'';
+
+            if($uri){
+                $uri = '<div class="awards-reviews-banner">
+                        <img src='.$uri.' height="500" width="1000"/>
+                        </div>';
+            }
+            $result = array('banner' => $uri);
+            echo json_encode($result);
         }
     }
 
@@ -109,4 +117,6 @@ function awards_reviews_views_pre_render(&$view){
     return $view;
 
 }
+
+
 
