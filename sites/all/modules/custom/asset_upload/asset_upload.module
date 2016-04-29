@@ -1,6 +1,14 @@
 <?php
 
 
+function asset_upload_form_product_roadmap_form_entityform_edit_form_alter(&$form, &$form_state){
+   $form['#submit'][] = 'product_roadmap_form_submission';
+}
+
+function product_roadmap_form_submission($form, &$form_state){
+   // $form_state['rebuild'] = TRUE;
+   // print_pre($form_state,1);
+}
 
 function asset_upload_form_asset_upload_form_entityform_edit_form_alter(&$form, &$form_state, $form_id){
     // Remove preview button
@@ -154,6 +162,30 @@ function asset_upload_views_pre_render(&$view) {
                             $value->field_field_event_country[0]['rendered']['#markup'] = '<img src="' . $base_url . '/themes/bartik/images/ca.jpg" alt="canada-event" />';
                         }
                     }
+                }
+            }
+            break;
+        case 'product_roadmap_amd':
+            //print_pre($view->result,1);
+            foreach($view->result as $key => $value){
+                if($key != 0){
+                    unset($view->result[$key]);
+                }
+            }
+            break;
+        case 'product_roadmap_brix':
+            //print_pre($view->result,1);
+            foreach($view->result as $key => $value){
+                if($key != 0){
+                    unset($view->result[$key]);
+                }
+            }
+            break;
+        case 'product_roadmap_intel':
+            //print_pre($view->result,1);
+            foreach($view->result as $key => $value){
+                if($key != 0){
+                    unset($view->result[$key]);
                 }
             }
             break;
