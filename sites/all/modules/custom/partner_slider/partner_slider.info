@@ -1,0 +1,5 @@
+name = Partner Slider
+description = Admin able to upload the images to display the partner portal slider.
+version = 7.x
+core = 7.x
+package = Custom Module

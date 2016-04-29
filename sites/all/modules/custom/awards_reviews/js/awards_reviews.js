@@ -22,6 +22,8 @@
              getBannerImage($(this).attr('href'));
          });
 
+
+        
          function getBannerImage(url){
             $('.awards-reviews-banner').remove();
             $.post(
