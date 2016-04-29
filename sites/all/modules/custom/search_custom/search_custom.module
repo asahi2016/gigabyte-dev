@@ -12,7 +12,6 @@ function search_custom_preprocess_search_results(&$variables) {
     foreach ($variables['results'] as $result) {
         $resultTypes[$result['node']->type][] = $result;
     }
-
     // create fieldsets for each type
     $output = '<div id="tabs">';
     $output .= '<ul>';
@@ -26,12 +25,19 @@ function search_custom_preprocess_search_results(&$variables) {
         }
         $output .=  '<li><a href="#tabs-'.$i.'">';
         $output .=  $nodeTypes[$resultType]->name.'</a></li>';
-        $output .=  '<div id="tabs-'.$i.'">';
-        $output .=  $value;
-        $output .=  '</div>';
-
     }
     $output .= '</ul>';
+    $j=0;
+    foreach ($resultTypes as $resultType => $resultTypeResults) {
+        $j++;
+        $value = "";
+        foreach ($resultTypeResults as $result) {
+            $value .= theme('search_result', array('result' => $result, 'module' => $variables['module']));
+        }
+        $output .=  '<div id="tabs-'.$j.'">';
+        $output .=  $value;
+        $output .=  '</div>';
+    }
     $output .= '</div>';
 
     $variables['search_results'] = $output;
