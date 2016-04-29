@@ -1882,4 +1882,5 @@ hr{border:1px solid #eee;}
 a.feed-icon{
     display:none;
 }
+div.view-item-calendar_events_view span.views-label .views-label-title-1{display:none;}
 /*ending */
