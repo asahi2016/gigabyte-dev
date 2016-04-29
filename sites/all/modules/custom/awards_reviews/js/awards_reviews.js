@@ -2,7 +2,7 @@
     $(document).ready(function($) {
          $('#edit-term-node-tid-depth-all').remove();
 
-         if($('.content').find('.node-page').attr('about').length > 0) {
+         if( $('.content').find('.node-page').attr('about').length > 0) {
              var uri = $('.content .node-page').attr('about');
              var class_node = $('.content .node-page').attr('id');
 
