@@ -88,8 +88,16 @@ jQuery(document).ready(function($) {
 	$('').eq(1).addClass('how-sell-upload-form'); */
 	/* $( "<div class='how-sell-upload-form'></div>" ).appendTo( "#how-to-sell-node-form > div" );
 	$( "#how-to-sell-node-form > div > .form-submit" ).appendTo( ".how-sell-upload-form" ); */
+<<<<<<< Updated upstream
 
     //Product roadpam ppt image icon
     $('div.views-field-field-upload-file-roadmap .btn-primary span.file img').attr('src',Drupal.settings.gigabyte.baseUrl+'/themes/bartik/images/download.png');
+=======
+	setInterval(function(){ 	$('.page-partner-upload-assets .views-row .field-content li li:empty').remove();	
+ }, 1000);
+});
+jQuery(document).on('load', function(){
+	
+>>>>>>> Stashed changes
 });
 

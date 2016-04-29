@@ -1290,6 +1290,8 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .entitytype-asset_upload_form-form  .form-type-checkboxes .form-type-checkbox{float:left;margin:10px 15px 10px 0;}
 .entitytype-asset_upload_form-form  .form-type-checkboxes .form-checkboxes{float:left;}
 .entitytype-asset_upload_form-form  .form-type-checkboxes .form-type-checkbox input.form-checkbox{float:left;margin: 8px 3px 0px 0px;}
+.entitytype-asset_upload_form-form  .form-managed-file .form-file{float:left;}
+.entitytype-asset_upload_form-form  .form-managed-file input[type='Upload']{float:left;}
 .view-clone-of-entityforms .views-table{padding:20px 0 30px 0;width:1100px;}
 .view-clone-of-entityforms .views-table caption{font-size:18px;margin:20px 0 30px 0;width:100%;}
 .view-clone-of-entityforms .views-table tr th:first-child{background:none;color:#757575}
@@ -1347,7 +1349,7 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .view-clone-of-entityforms .views-exposed-widgets .views-exposed-widget:first-child{width:500px;}
 .view-clone-of-entityforms .views-exposed-widgets .views-exposed-widget{padding: 10px 0px 15px 20px;float: left;width:100%;}
 .view-clone-of-entityforms div.feed-icon{display:none;}
-.page-eform-submit-asset-upload-form .messages.status{display:block;margin-left: 0px;}
+.page-eform-submit-asset-upload-form .messages.status{display:block;margin-left: 0px;width:100%;margin:10px 0 30px 0}
 #field-upload-file-add-more-wrapper .messages.error{margin-left: 0px;margin-top:0px;}
 .page-partner-upload-assets .content h3{font-size:20px;font-weight:bold;}
 .views-exposed-widget.views-submit-button{display:none;}
@@ -1448,7 +1450,6 @@ table.txt_center{table-layout: fixed;}
 .node-awards_reviews-form .image-widget-data input[value="Upload"]{clear:both;float:left;margin:20px 0px 0px;}
 .node-awards_reviews-form .image-widget-data input[value="Remove"]{}
 .node-awards_reviews-form  input[value='Submit']{float:left;margin:15px 0 0 310px;}
-/*.group-page-us-content .field-label-hidden{display:none;}*/
 .page-eform-submit-product-roadmap-form  .fieldset-wrapper .form-type-managed-file label{min-width:245px;}
 /* .page-eform-submit-product-roadmap-form  .fieldset-wrapper .form-type-managed-file .form-managed-file .form-file{padding:4px 0px 4px 0px;} */
 .page-eform-submit-product-roadmap-form .form-type-managed-file .form-managed-file{float:left;margin:0 10px 0 0;}
@@ -1479,3 +1480,22 @@ table.txt_center{table-layout: fixed;}
 .page-partner-awards-reviews .view-awards-reviews .views-view-grid td{width:140px;float:left;}
 .page-partner-awards-reviews .view-awards-reviews .views-view-grid img{width:80px;height:80px;margin:0px auto;}
 .page-partner-awards-reviews .views-field-field-award-descriptions{font-weight:700;color:#333;font-size:14px;}
+.view-how-to-sell-view .views-view-grid .views-field img{width:220px;height:220px;}
+.view-how-to-sell-view .views-view-grid .views-field a{color:#23527c;text-decoration:underline;text-align: center;font-size: 16px;}
+.view-how-to-sell-view .views-view-grid .views-field-nothing{width:220px;text-align:center;margin:20px 0px;}
+.node-partner_slider-form .form-type-link-field{float:left;width:100%;}
+.node-partner_slider-form .form-item label{float:left;width:130px;}
+.node-partner_slider-form .form-item input.form-text{float:left;width:200px;}
+.node-partner_slider-form input[value='Save Node']{float:left;margin:0 0 0 420px;}
+
+/* jcarousel */
+.jcarousel-skin-default .jcarousel-container-horizontal,.jcarousel-skin-default .jcarousel-clip-horizontal{width:1200px;float:left;padding:0px 0px;}
+.jcarousel-skin-default .jcarousel-container-horizontal{height:409px;}
+.jcarousel-skin-default .jcarousel-item{width:1200px;height:409px;border:0px;}
+.one-sidebar .sidebar .block{margin:0px 0 20px;padding:0 30px 70px 0}
+.one-sidebar .sidebar .section{padding-top:0px }
+.jcarousel-navigation{position:absolute;bottom:50px;left:550px;}
+.jcarousel-navigation li a span{width: 20px;height: 20px;border-radius: 10px;color: #000;background-color: rgba(0, 0, 0, 0.2);border: 2px solid rgba(255, 255, 255, 0.7);text-indent:-999em;color: transparent;margin:0 1px 0 1px;display: inline-block;}
+.jcarousel-navigation li.active a span{background:rgba(255, 255, 255, 1.0)}
+.jcarousel-skin-default .jcarousel-next-horizontal{right:30px;top:190px;}
+.jcarousel-skin-default .jcarousel-prev-horizontal{left:30px;top:190px;}
