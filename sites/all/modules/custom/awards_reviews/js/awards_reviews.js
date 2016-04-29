@@ -2,15 +2,6 @@
     $(document).ready(function($) {
          $('#edit-term-node-tid-depth-all').remove();
 
-         if( $('.content').find('.node-page').attr('about').length > 0) {
-             var uri = $('.content .node-page').attr('about');
-             var class_node = $('.content .node-page').attr('id');
-
-             if (uri.indexOf('admin/awards-reviews') > -1) {
-                 $('#' + class_node + ' .group-page-us-content .field-label-hidden p').hide();
-             }
-         }
-
          $('#views-exposed-form-awards-reviews-page .description').remove();
 
          var uri =  $('#views-exposed-form-awards-reviews-page a:first-child').attr('href');
@@ -50,6 +41,16 @@
             if (!results) return null;
             if (!results[2]) return '';
             return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        
+        if( $('.content .node-page').attr('about').length > 0) {
+            var uri = $('.content .node-page').attr('about');
+            var class_node = $('.content .node-page').attr('id');
+
+            if (uri.indexOf('admin/awards-reviews') > -1) {
+                $('#' + class_node + ' .group-page-us-content .field-label-hidden p').hide();
+            }
         }
 
     });
