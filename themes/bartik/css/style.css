@@ -1883,4 +1883,14 @@ a.feed-icon{
     display:none;
 }
 div.view-item-calendar_events_view span.views-label .views-label-title-1{display:none;}
+/****Product Roadmap ****/
+
+div.views-field-field-upload-file-roadmap .btn-primary span.file a{color:#fff;margin:0}
+div.views-field-field-upload-file-roadmap .btn-primary span.file img{float: left;margin: 3px 0 0 0;}
+div.views-field-field-upload-file-roadmap .btn-primary {background:#337ab7;}
+div.views-field-field-upload-file-roadmap .btn-primary span.file .file-size{display:none;}
+div.field-name-field-image-tag-roadmap .field-items .even{text-align:center;}
+div.field-name-field-upload-image-roadmap-fc{margin:10px 0 20px;}
+#page-us-content .field-label-hidden .field-items .field-item p,#page-canada-content .field-label-hidden .field-items .field-item p{display:none;}
+
 /*ending */
