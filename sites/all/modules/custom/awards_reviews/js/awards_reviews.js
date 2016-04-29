@@ -1,6 +1,14 @@
 (function ($) {
     $(document).ready(function($) {
          $('#edit-term-node-tid-depth-all').remove();
+
+         var uri = $('.content .node-page').attr('about');
+         var class_node = $('.content .node-page').attr('id');
+
+         if(uri.indexOf('awards-reviews') > -1){
+            $('#'+class_node+' .group-page-us-content .field-label-hidden p').hide();
+         }
+
          $('#views-exposed-form-awards-reviews-page .description').remove();
 
          var uri =  $('#views-exposed-form-awards-reviews-page a:first-child').attr('href');
