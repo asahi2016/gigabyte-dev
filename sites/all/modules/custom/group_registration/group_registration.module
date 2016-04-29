@@ -27,10 +27,10 @@ function group_registration_menu() {
         'access callback' => TRUE,
     );
 
-    $items['update/user/account'] = array(
+    $items['update/account'] = array(
         'title' => 'Update user Account Information',
         'page callback' => 'group_registration_update_user_account_submit', // Render HTML
-        'type' => MENU_NORMAL_ITEM,
+        'type' => MENU_CALLBACK,
         'access arguments' => array('access content'),
         'access callback' => TRUE,
     );

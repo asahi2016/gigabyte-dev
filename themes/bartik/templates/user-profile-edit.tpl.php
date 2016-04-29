@@ -120,7 +120,7 @@ if(isset($variables['account']['errors']) && !empty($variables['account']['error
     </table>
 </div>
 <?php global $base_url; ?>
-<input type="hidden" id="actionUrl" value="<?php echo $base_url ?>/update/user/account" />
+<input type="hidden" id="actionUrl" value="<?php echo $base_url ?>/update/account" />
  <div id="edit-actions" class="form-actions form-wrapper">
      <input type="button" class="form-submit" value="Update" name="op" id="edit-submit">
  </div>
