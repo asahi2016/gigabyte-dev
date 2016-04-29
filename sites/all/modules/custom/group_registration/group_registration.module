@@ -649,23 +649,28 @@ function group_registration_user_insert(&$edit, $account, $category){
 function group_registration_user_update(&$edit, $account, $category) {
 
     $role_name = 'New Users';
-    $key = array_search($role_name, $edit['roles']);
+    $role = user_role_load_by_name($role_name);
+    $rid = $role->rid;
+    $urid = null;
+    if ($role && user_has_role($role->rid, $account)) {
+        $urid = $rid;
+    }
 
-    if ($key && $edit['status'] == 1 && $category== 'account') {
-
-        // Get the rid from the roles table.
-        $roles = user_roles(TRUE);
-        $rid = array_search($role_name, $roles);
-        if ($rid != FALSE) {
+    if ($urid && $account->status == 1 && $category== 'account') {
+        if ($urid != FALSE) {
 
             // Make a copy of the roles array, without the deleted one.
-            $new_roles = array();
             foreach($account->roles as $id => $name) {
-                if ($id != $rid) {
-                    $new_roles[$id] = $name;
+
+                if ($id == $urid) {
+                    // remove the new user role
+                    db_delete('users_roles')
+                        ->condition('uid', $account->uid)
+                        ->condition('rid', $rid)
+                        ->execute();
+
                 }
             }
-            //user_save($account , array('roles' => $new_roles));
         }
     }
 }
