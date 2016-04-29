@@ -1415,7 +1415,7 @@ input.form-button-disabled:active,
   margin-bottom: 0.4em;
 }
 #edit-actions input {
-  margin-right: 0.6em; /* LTR */
+  margin-right: 0; /* LTR */
 }
 
 /* -------------- Other Overrides ------------- */
@@ -1885,11 +1885,15 @@ a.feed-icon{
 div.view-item-calendar_events_view span.views-label .views-label-title-1{display:none;}
 /****Product Roadmap ****/
 
-div.views-field-field-upload-file-roadmap .btn-primary span.file a{color:#fff;margin:0}
+div.views-field-field-upload-file-roadmap .btn-primary span.file a{color:#fff;margin:0;}
 div.views-field-field-upload-file-roadmap .btn-primary span.file img{float: left;margin: 3px 0 0 0;}
-div.views-field-field-upload-file-roadmap .btn-primary {background:#337ab7;}
+div.views-field-field-upload-file-roadmap .btn-primary {background:#337ab7;padding: 3px 12px 4px;}
 div.views-field-field-upload-file-roadmap .btn-primary span.file .file-size{display:none;}
 div.field-name-field-image-tag-roadmap .field-items .even{text-align:center;}
 div.field-name-field-upload-image-roadmap-fc{margin:10px 0 20px;}
-
+div.view-product-roadmap-intel .views-field-edit-entityform,div.view-product-roadmap-amd .views-field-edit-entityform,div.view-product-roadmap-brix .views-field-edit-entityform{float:right;}
+div.view-product-roadmap-intel .views-field-edit-entityform span.btn-success a,div.view-product-roadmap-amd .views-field-edit-entityform span.btn-success a,div.view-product-roadmap-brix .views-field-edit-entityform span.btn-success a{padding:10px;}
+div.view-product-roadmap-intel .views-field-edit-entityform span.btn,div.view-product-roadmap-amd .views-field-edit-entityform span.btn,div.view-product-roadmap-brix .views-field-edit-entityform span.btn{padding:0;margin:0 0 0 10px;}
+div.views-field-field-upload-images-roadmap .product-roadmap-wrapper ul:first-child{margin-top:15px;}
+div.field-name-field-upload-file-roadmap input[id*='test-remove']{margin:0 0 0 10px; width:120px;}
 /*ending */
