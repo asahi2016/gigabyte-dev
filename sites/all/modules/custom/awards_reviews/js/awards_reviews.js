@@ -5,7 +5,7 @@
          var uri = $('.content .node-page').attr('about');
          var class_node = $('.content .node-page').attr('id');
 
-         if(uri.indexOf('awards-reviews') > -1){
+         if(uri.indexOf('admin/awards-reviews') > -1){
             $('#'+class_node+' .group-page-us-content .field-label-hidden p').hide();
          }
 
