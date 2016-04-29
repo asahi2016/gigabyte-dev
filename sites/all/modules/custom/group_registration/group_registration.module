@@ -20,22 +20,29 @@ function group_registration_init(){
 function group_registration_menu() {
 
     $items['get/company_info'] = array(
+        'title' => 'Get Company Information',
         'page callback' => 'group_registration_ajax_get_company_info', // Render HTML
         'type' => MENU_CALLBACK,
+        'access arguments' => array('access content'),
         'access callback' => TRUE,
     );
 
     $items['update/user/account'] = array(
+        'title' => 'Update user Account Information',
         'page callback' => 'group_registration_update_user_account_submit', // Render HTML
         'type' => MENU_CALLBACK,
+        'access arguments' => array('access content'),
         'access callback' => TRUE,
     );
 
     $items['user/account'] = array(
+        'title' => 'Account setting page',
         'page callback' => 'group_registration_user_account_redirect', // Render HTML
         'type' => MENU_CALLBACK,
+        'access arguments' => array('access content'),
         'access callback' => TRUE,
     );
+
     return $items;
 }
 
