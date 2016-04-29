@@ -1,0 +1,73 @@
+<?php
+
+function partner_slider_form_partner_slider_node_form_alter(&$form, &$form_state, $form_id){
+
+    if(user_access('administrator')){
+
+        $form['options']['promote']['#value'] = 0;
+        $form['ajax-submit']['#value'] = t('Submit');
+        $form['#validate'][] = 'partner_slider_form_validation';
+
+    }
+}
+
+function partner_slider_form_validation(&$form,&$form_state){
+
+    partner_slider_errors_reset($form);
+}
+
+// Append custom error message element with content
+function partner_slider_errors_reset(&$element){
+    // Check for errors and settings
+    $errors = form_get_errors();
+
+    if( ! isset( $_SESSION[ 'messages' ] ) ) {
+        return;
+    }
+
+    $reset_errors = array();
+
+    // Recurse through all children.
+    foreach( element_children( $element ) as $key ) {
+        if( isset( $element[ $key ] ) && $element[ $key ] ) {
+            $reset_errors += partner_slider_errors_reset( $element[ $key ] );
+        }
+    }
+
+    $element_id = implode( '][', $element[ '#parents' ] );
+
+    if ( !empty( $errors[ $element_id ] )) {
+        $error_message = $errors[ $element_id ];
+
+        // Get error id
+        $error_id = array_search( $error_message, $_SESSION[ 'messages' ][ 'error' ] );
+
+        if( $error_id !== FALSE ) {
+            unset( $_SESSION[ 'messages' ][ 'error' ][ $error_id ] );
+            $_SESSION[ 'messages' ][ 'error' ] = array_values( $_SESSION[ 'messages' ][ 'error' ]  );
+
+            if( count( $_SESSION[ 'messages' ][ 'error' ] ) <= 0 ) {
+                unset( $_SESSION[ 'messages' ][ 'error' ] );
+            }
+
+            switch($element['#type']){
+
+                case 'textfield':
+                    $error_message = str_replace('Title field is required.','Title field cannot be empty.',$error_message);
+                    break;
+                case 'image':
+                    $error_message = str_replace('File Image field is required.','File Image Cannot be empty.',$error_message);
+                    break;
+                case 'link':
+                    $error_message = str_replace('URL field is required.','Slider Link field cannot be empty.',$error_message);
+            }
+            $element[ '#suffix' ] = '<span class="custom-error '.$element[ '#id' ].'" >'.$error_message.'</span>';
+
+            $reset_errors[ $element[ '#id' ] ] = $error_message;
+        }
+    }
+    return $reset_errors;
+
+}
+
+function
