@@ -70,4 +70,3 @@ function partner_slider_errors_reset(&$element){
 
 }
 
-function
