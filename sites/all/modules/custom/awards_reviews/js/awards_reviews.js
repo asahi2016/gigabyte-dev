@@ -3,7 +3,6 @@
          $('#edit-term-node-tid-depth-all').remove();
 
          if($('.content').find('.node-page').attr('about').length > 0) {
-
              var uri = $('.content .node-page').attr('about');
              var class_node = $('.content .node-page').attr('id');
 
@@ -23,7 +22,6 @@
          });
 
 
-        
          function getBannerImage(url){
             $('.awards-reviews-banner').remove();
             $.post(
