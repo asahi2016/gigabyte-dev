@@ -1448,7 +1448,7 @@ table.txt_center{table-layout: fixed;}
 .node-awards_reviews-form .image-widget-data input[value="Upload"]{clear:both;float:left;margin:20px 0px 0px;}
 .node-awards_reviews-form .image-widget-data input[value="Remove"]{}
 .node-awards_reviews-form  input[value='Submit']{float:left;margin:15px 0 0 310px;}
-.group-page-us-content .field-label-hidden{display:none;}
+/*.group-page-us-content .field-label-hidden{display:none;}*/
 .page-eform-submit-product-roadmap-form  .fieldset-wrapper .form-type-managed-file label{min-width:245px;}
 /* .page-eform-submit-product-roadmap-form  .fieldset-wrapper .form-type-managed-file .form-managed-file .form-file{padding:4px 0px 4px 0px;} */
 .page-eform-submit-product-roadmap-form .form-type-managed-file .form-managed-file{float:left;margin:0 10px 0 0;}
