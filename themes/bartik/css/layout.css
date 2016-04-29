@@ -1133,7 +1133,13 @@ div[id*='field-pdf-add-more-wrapper'] .field-type-file .form-managed-file a{widt
 .page-partner-submissions .field-type-image .image-widget-data img{float:left;}
 .page-partner-submissions .field-type-image .image-widget-data{float:left;}
 .page-partner-submissions .form-managed-file .form-submit{margin: 0 0px 0 10px;display:block;}
-.page-partner-submissions .field-type-image .image-widget-data .form-file{width:200px;}
+.page-partner-submissions .field-type-image .image-widget-data .form-file,.entitytype-asset_upload_form-form .field-type-image .image-widget-data .form-file{width:200px;}
+.entitytype-asset_upload_form-form .form-managed-file .form-file{width:175px;}
+.entitytype-asset_upload_form-form .form-managed-file .field-multiple-table td .form-item .form-managed-file{width:360px}
+.entitytype-asset_upload_form-form .form-managed-file .field-multiple-table td .form-item .form-managed-file .form-submit{width:360px}
+.entitytype-asset_upload_form-form .field-multiple-table .form-submit{float:left;margin:0 0 0 10px;}
+.entitytype-asset_upload_form-form .field-multiple-drag .form-managed-file input[type='Remove']{margin:0 0 0 30px;}
+.entitytype-asset_upload_form-form .field-type-image .image-widget-data .form-file{margin:0 10px 0 0}
 .page-partner-submissions #cboxLoadedContent table td.td_img.w300{width:200px;padding:0 20px 0px 0px;}
 .page-partner-submissions #cboxLoadedContent table td.td_left{width:200px;float:left;padding: 0 20px 0 0}
 .page-partner-submissions table td.td_left,.page-partner-submissions table td.td_right{width:350px;float:left;}
@@ -1336,6 +1342,7 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .page-eform-submit-asset-upload-form .field-multiple-table td .file-entity-preview,.page-entityform .field-multiple-table td .file-entity-preview{float:left;width:80px;}
 .page-eform-submit-asset-upload-form .image-preview img,.page-entityform .image-preview img{width:80px;height:auto;}
 .page-eform-submit-asset-upload-form .field-multiple-table td .file,.page-entityform .field-multiple-table td .file{width:80px;float: left;overflow: hidden;margin: 0 0 0 5px;}
+.page-eform-submit-asset-upload-form .field-multiple-table td .file{width:105px;}
 .page-eform-submit-asset-upload-form .image-widget .file img,.page-eform-submit-asset-upload-form .image-widget .file a,
 .page-entityform .image-widget .file img,.page-entityform .image-widget .file a{float:left;}
 .page-eform-submit-asset-upload-form .image-widget .file a,.page-entityform .image-widget .file a{width:110px;overflow:hidden;max-height:20px;}
@@ -1486,7 +1493,7 @@ table.txt_center{table-layout: fixed;}
 .node-partner_slider-form .form-type-link-field{float:left;width:100%;}
 .node-partner_slider-form .form-item label{float:left;width:130px;}
 .node-partner_slider-form .form-item input.form-text{float:left;width:200px;}
-.node-partner_slider-form input[value='Save Node']{float:left;margin:0 0 0 420px;}
+.node-partner_slider-form input[value='Submit']{float:left;margin:0 0 0 420px;}
 
 /* jcarousel */
 .jcarousel-skin-default .jcarousel-container-horizontal,.jcarousel-skin-default .jcarousel-clip-horizontal{width:1200px;float:left;padding:0px 0px;}
@@ -1499,3 +1506,14 @@ table.txt_center{table-layout: fixed;}
 .jcarousel-navigation li.active a span{background:rgba(255, 255, 255, 1.0)}
 .jcarousel-skin-default .jcarousel-next-horizontal{right:30px;top:190px;}
 .jcarousel-skin-default .jcarousel-prev-horizontal{left:30px;top:190px;}
+.node-partner_slider-form .field-widget-link-field .link-field-subrow{float:left;}
+.node-partner_slider-form .form-type-link-field label{margin:10px 0px 0px 0px;}
+.custom-search-box{float:right;width:200px;}
+#header #site-search{width:715px;}
+#header #site-search .custom-search-button{width: 26px;height: 23px;margin:0px;}
+#header #site-search .search-form .form-actions{float: right;margin: 0;padding: 0;}
+#site-search div.section{width:100%;}
+.field-name-field-slider-image .image-preview img{width:120px;height:120px;}
+.field-name-field-slider-image .image-widget-data .file img{display:none;}
+.field-name-field-slider-image .image-widget-data .file a{width:130px;float:left;height:20px;overflow:hidden;}
+.field-name-field-slider-image .image-widget-data .file-size{width:80px;float:left;margin:0 10px;}
