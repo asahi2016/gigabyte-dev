@@ -12,7 +12,7 @@
          });
 
          function getBannerImage(url){
-
+            $('.awards-reviews-banner').remove();
             $.post(
                 Drupal.settings.gigabyte.baseUrl + '/awards_and_reviews/banner',
                 {
