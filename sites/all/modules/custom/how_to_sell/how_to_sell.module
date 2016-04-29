@@ -27,7 +27,7 @@ function create_how_to_sell_content(){
     $form_state['values']['promote'] = 0;
 }
 function how_to_sell_form_validation(&$form, &$form_state){
-    $form_state['rebuild'] = true;
+    //$form_state['rebuild'] = true;
     // Append custom error message element with content
     how_to_sell_errors_reset($form);
 
