@@ -1517,3 +1517,12 @@ table.txt_center{table-layout: fixed;}
 .field-name-field-slider-image .image-widget-data .file img{display:none;}
 .field-name-field-slider-image .image-widget-data .file a{width:130px;float:left;height:20px;overflow:hidden;}
 .field-name-field-slider-image .image-widget-data .file-size{width:80px;float:left;margin:0 10px;}
+.search-form .form-type-textfield label{float:left;margin:0 10px 0 0;}
+.search-form .form-type-textfield input.form-text{float:left;width:200px;}
+
+.page-search h2{clear:both;float:left;width:100%;}
+.page-search .form-submit{float:left;}
+.page-search #tabs{float:left;width:100%;}
+.page-search #tabs ul{float:left;width:100%;}
+.ui-tabs .ui-tabs-panel{float:left;clear:both;}
+

@@ -73,7 +73,7 @@ function partner_slider_errors_reset(&$element){
 function partner_slider_views_pre_render(&$view){
 
     if($view->name == 'partner_slider_new'){
-        
+
         foreach($view->result as $key => $value){
 
             $view->result[0]->field_field_slider_link[0]['rendered']['#field']['settings']['attributes']['target'] = '_blank';
