@@ -95,10 +95,19 @@ jQuery(document).ready(function($) {
  }, 1000);
     $('select#edit-field-roadmap-products-und').attr('disabled',true);
     $('body.page-eform-submit-product-roadmap-form select#edit-field-roadmap-products-und').attr('disabled',false);
+
+    //Product roadmap colorbox
     $('.product-roadmap-wrapper .item-list ul li').each(function(){
         $(this).find('img').attr('href',$(this).find('img').attr('src'));
     });
     $('.product-roadmap-wrapper .field-name-field-upload-image-roadmap-fc img').colorbox({width:800});
+
+    // Asset Download history thumbnail display
+    $('div.view-asset-download-history table.views-table tbody tr').each(function(){
+        $(this).find('td.views-field-file-preview').find('img').attr('src',Drupal.settings.gigabyte.baseUrl+'/sites/default/files/file_uploads/assets/'+$(this).find('td.views-field-file-preview').find('img').attr('src'));
+        $(this).find('td.views-field-file-preview').find('img').attr('href',Drupal.settings.gigabyte.baseUrl+'/sites/default/files/file_uploads/assets/'+$(this).find('td.views-field-file-preview').find('img').attr('src'));
+
+    });
 });
 
 
