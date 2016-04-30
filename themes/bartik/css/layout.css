@@ -1470,7 +1470,7 @@ table.txt_center{table-layout: fixed;}
 .page-eform-submit-product-roadmap-form .form-managed-file .file-size{float: left;margin: 0 10px 0 5px;width: 80px;}
 .page-eform-submit-product-roadmap-form .fieldset-wrapper .image-widget-data .form-item{display:none;}
 .page-eform-submit-product-roadmap-form  table.sticky-enabled tr.draggable td .image-preview img{width:120px;height:120px;}
-.product-roadmap-wrapper .field-name-field-upload-image-roadmap-fc img{width:450px;height:330px;margin:0px 30px 0px 30px}
+.product-roadmap-wrapper .field-name-field-upload-image-roadmap-fc img{width:450px;height:330px;margin:0px 30px 0px 30px; cursor:pointer;}
 .product-roadmap-wrapper .field-name-field-upload-image-roadmap-fc .field-items .field-item{float:left;}
 .views-field-field-upload-file-roadmap .field-content {float:right;}
 .view-how-to-sell-view .views-exposed-widget,.page-partner-awards-reviews .views-exposed-widget{width:100%}
