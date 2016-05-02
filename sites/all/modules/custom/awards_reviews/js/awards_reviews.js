@@ -5,6 +5,7 @@
          $('#views-exposed-form-awards-reviews-page .description').remove();
 
          var uri =  $('#views-exposed-form-awards-reviews-page a:first-child').attr('href');
+         $('#views-exposed-form-awards-reviews-page a:first').attr('class','active');
 
          getBannerImage(uri);
 
