@@ -14,7 +14,16 @@
          var member_type = $('#edit-autoassignrole-user div.fieldset-wrapper').html();
          $( member_type ).insertAfter( "#edit-field-company-name" );
          $('#edit-autoassignrole-user').remove();
-
+         $('#views-form-people-new-users-role-page .form-item-add-roles').remove();
+         $('#views-form-people-new-users-role-page .form-item-remove-roles select option').each(function () {
+             if($.trim($(this).text()) != 'New Users'){
+                $(this).remove();
+             }else{
+                 $(this).attr('selected', 'selected');
+             }
+         });
+         $('#views-form-people-new-users-role-page .description').remove();
+         $('<h3>Are You Sure! You want to removed "New Users" role from selected user item(s)</h3>').insertAfter('#views-form-people-new-users-role-page .form-item-remove-roles');
 
          //Password field custom error message and description field position changes
 
