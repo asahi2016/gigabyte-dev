@@ -23,6 +23,8 @@ function node_edit_redirect_page_build() {
         $options['language'] = $languages[1][$node_langcode];
         // Retain the current query string.
         $options['query'] = drupal_get_query_parameters();
+        // Prevent drupal_goto() from redirecting to the destination.
+        unset($_GET['destination']);
         // Redirect to the right prefix/domain.
         drupal_goto($path, $options);
       }

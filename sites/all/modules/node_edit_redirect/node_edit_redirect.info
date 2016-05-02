@@ -4,9 +4,9 @@ package = Multilingual - Internationalization
 core = 7.x
 files[] = node_edit_redirect.test
 
-; Information added by Drupal.org packaging script on 2016-04-20
-version = "7.x-1.0-rc1"
+; Information added by Drupal.org packaging script on 2016-04-27
+version = "7.x-1.0-rc2"
 core = "7.x"
 project = "node_edit_redirect"
-datestamp = "1461170343"
+datestamp = "1461775805"
 

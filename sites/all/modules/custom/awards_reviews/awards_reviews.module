@@ -2,7 +2,7 @@
 
 function awards_reviews_init(){
 
-    drupal_add_js(drupal_get_path('module', 'custom').'/awards_reviews/js/awards_reviews.js');
+    drupal_add_js(drupal_get_path('module', 'custom').'/awards_reviews/js/awards_reviews.js',array('type' => 'external', 'scope' => 'footer'));
 }
 
 /**

@@ -16,6 +16,8 @@ function asset_upload_form_asset_upload_form_entityform_edit_form_alter(&$form, 
    if(isset($_GET['success'])){
        drupal_set_message("The asset you have submitted has been successfully uploaded!");
    }
+
+    print_pre($form,1);
 }
 
 function getRoundedsize($bytes){
@@ -100,7 +102,7 @@ function asset_upload_views_pre_render(&$view) {
                                 } else if (($file_data['file']['filesize'] / 1000) > 1023) {
                                     $size = round(($file_data['file']['filesize'] / (1024 * 1024)), 2) . ' MB';
                                 }
-                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><a href="' . $base_url . '/sites/default/files/file_uploads/assets/' . $file_data['file']['filename'] . '" onclick="file_ajax_save(this.href);" >' . strtoupper($ext[count($ext) - 1]) . '</a> </td>';
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><a href="' . $base_url . '/sites/default/files/file_uploads/assets/' . $file_data['file']['filename'] . '" target="_blank">' . strtoupper($ext[count($ext) - 1]) . '</a> </td>';
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">' . $file_data['res']['value'] . '</p></td>';
                                 if (!empty($file_data['file']['metadata']['width']) && !empty($file_data['file']['metadata']['height'])) {
                                     $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">' . $file_data['file']['metadata']['width'] . ' x ' . $file_data['file']['metadata']['height'] . '</p></td>';
@@ -137,7 +139,7 @@ function asset_upload_views_pre_render(&$view) {
                 $image = $img[count($img)-1];
 
                 $value->asset_download_history_file = $image;
-                $value->asset_download_history_file_preview = '<img src="'.image_style_url('thumbnail', $value->asset_download_history_file_preview).'" />';
+                $value->asset_download_history_file_preview = html_entity_decode('<img src="'.image_style_url('thumbnail', $value->asset_download_history_file_preview).'" >');
             }
             //print_pre($view->result);
             break;
@@ -215,6 +217,7 @@ function asset_upload_store_download_history(){
     $name = $usr->name;
     $email = $usr->mail;
     $download_date = date('Y-m-d h:i:s');
+    //print_pre($usr->roles,1);
     foreach($usr->roles as $key => $value){
         if($key != 2){
             $role = $value;
@@ -234,9 +237,11 @@ function asset_upload_store_download_history(){
         ->execute();
 
     if(!$nid){
+        echo "Error";
         drupal_set_message('Something went wrong while trying to download file!','error');
         return false;
     }else{
+        echo "Saved";
         echo $nid;
     }
 }

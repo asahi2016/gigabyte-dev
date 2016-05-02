@@ -45,13 +45,13 @@ class NodeEditRedirectTestCase extends DrupalWebTestCase {
    * Test that the redirect works.
    */
   function testRedirect() {
-    // Create Basic page in English.
+    // Create Basic page in Spanish.
     $node_title = $this->randomName();
     $node_body =  $this->randomName();
     $node = $this->createPage($node_title, $node_body, 'es');
 
     $this->drupalLogin($this->admin_user);
-    // Visit the Italian page for an english node.
+    // Visit the Italian page for a Spanish node.
     $this->drupalGet('it/node/' . $node->nid . '/edit');
     $this->assertResponse(200);
     $headers = $this->drupalGetHeaders(TRUE);
@@ -59,7 +59,7 @@ class NodeEditRedirectTestCase extends DrupalWebTestCase {
     $this->assertEqual($status, 302, 'Expected response code was sent.');
     $languages = language_list();
 
-    // Assert that we redirected to the english edit page.
+    // Assert that we redirected to the Spanish edit page.
     $this->assertEqual($this->getUrl(), url('node/' . $node->nid . '/edit', array('absolute' => TRUE, 'language' => $languages['es'])));
     $this->assertNotEqual($this->getUrl(), url('node/' . $node->nid . '/edit', array('absolute' => TRUE, 'language' => $languages['it'])));
   }

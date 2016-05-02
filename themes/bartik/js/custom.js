@@ -103,8 +103,11 @@ jQuery(document).ready(function($) {
 
     $('.product-roadmap-wrapper .item-list ul li').each(function(){
         $(this).find('img').attr('href',$(this).find('img').attr('src'));
+        $(this).find('img').attr('rel','slideshow');
     });
-    $('.product-roadmap-wrapper .field-name-field-upload-image-roadmap-fc img').colorbox({width:800});
+    $('.product-roadmap-wrapper ul li .field-collection-view .field-collection-item-field-upload-images-roadmap .content .field-name-field-upload-image-roadmap-fc .field-items .field-item img').colorbox({width:800});
+    //$('.product-roadmap-wrapper ul li img').colorbox({speed: 500});
+    //$('.product-roadmap-wrapper .field-name-field-upload-image-roadmap-fc img').colorbox({width:800});
 
     // Asset Download history thumbnail display
     $('div.view-asset-download-history table.views-table tbody tr').each(function(){

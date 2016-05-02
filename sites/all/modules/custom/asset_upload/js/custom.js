@@ -23,14 +23,15 @@ jQuery(document).ready(function($){
 
 
     $("ul.assets-list-partner li.assets-row-list-partner").each(function(){
-        $(this).find('div.views-field-field-upload-file').find('table.download-file-type-info-table').find('td:first-child').click(function(){
-            var imgpath = $(this).find('a').attr('href');
+        $(this).find('div.views-field-field-upload-file').find('table.download-file-type-info-table').find('td').find('a').click(function(){
+            //alert('Clicked');
+            var imgpath = $(this).attr('href');
             $.ajax({
                 url:Drupal.settings.gigabyte.baseUrl+'/partner/asset/store/history',
                 type:'post',
                 data:{image:imgpath},
                 success:function(data){
-                    alert(data);
+                    //alert(data);
                     if(data > 0){
                         console.log('Download Saved');
                     }
@@ -41,6 +42,7 @@ jQuery(document).ready(function($){
 
 
     function file_ajax_save(imgpath){
+        alert('here');
         $.ajax({
             url:Drupal.settings.gigabyte.baseUrl+'/partner/asset/store/history',
             type:'post',
