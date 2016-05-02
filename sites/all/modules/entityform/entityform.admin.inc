@@ -543,6 +543,15 @@ function entityform_edit_form_submit(&$form, &$form_state) {
       $redirect_path = $entityform_type->get_path_property('redirect_path', $entityform);
       if (!empty($redirect_path)) {
         $form_state['redirect'] = $redirect_path;
+          print_pre($entityform,1);
+        switch($entityform->type){
+            case 'asset_upload_form':
+                $form_state['redirect'] = 'partner/upload-assets';
+                break;
+            case 'product_roadmap_form':
+                $form_state['redirect'] = 'partner/product-roadmap/amd';
+                break;
+        }
       }
       else {
         global $user;
@@ -574,6 +583,19 @@ function entityform_edit_form_submit(&$form, &$form_state) {
   else {
     $info = entity_get_info('entityform_type');
     $form_state['redirect'] = $info['admin ui']['path'] . "/manage/{$entityform_type->type}/submissions";
+      $tid = $entityform->field_roadmap_products['und'][0]['tid'];
+      switch($tid){
+          case 45:
+              $form_state['redirect'] = 'partner/product-roadmap/amd';
+              break;
+          case 46:
+              $form_state['redirect'] = 'partner/product-roadmap/brix';
+              break;
+          case 48:
+              $form_state['redirect'] = 'partner/product-roadmap/intel';
+              break;
+
+      }
     drupal_set_message($entityform_type->get_prop('submit_confirm_msg', $entityform));
   }
 }
@@ -624,8 +646,15 @@ function entityform_delete_form_submit($form, &$form_state) {
 
   drupal_set_message(t('The Submission for %name has been deleted.', array('%name' => $entityform->getTypeName())));
   watchdog('entityform', 'Deleted Submission for %name.', array('%name' => $entityform->getTypeName()));
-
-  $form_state['redirect'] = "admin/structure/entityform_types/manage/{$entityform->type}/submissions";
+  switch($entityform->type){
+      case 'asset_upload_form':
+          $form_state['redirect'] = "partner/upload-assets";
+          break;
+      case 'product_roadmap_form':
+          $form_state['redirect'] = "partner/roadmap/submit";
+          break;
+  }
+    //$form_state['redirect'] = "admin/structure/entityform_types/manage/{$entityform->type}/submissions";
 }
 
 

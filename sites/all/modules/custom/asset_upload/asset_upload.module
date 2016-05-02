@@ -12,12 +12,14 @@ function product_roadmap_form_submission($form, &$form_state){
 
 function asset_upload_form_asset_upload_form_entityform_edit_form_alter(&$form, &$form_state, $form_id){
     // Remove preview button
+    global $base_url;
     unset($form['actions']['preview']);
    if(isset($_GET['success'])){
        drupal_set_message("The asset you have submitted has been successfully uploaded!");
    }
-
-    print_pre($form,1);
+    $form_state['redirect'] = 'partner/upload-assets';
+    $form_state['rebuild'] = true;
+    //print_pre($form_state,1);
 }
 
 function getRoundedsize($bytes){
