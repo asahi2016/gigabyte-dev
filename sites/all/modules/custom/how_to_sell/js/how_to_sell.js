@@ -1,28 +1,10 @@
 (function ($) {
     $(document).ready(function($) {
 
-        //platform based series display
-        var current_val = $('#edit-field-platform-und').val();
-        if (current_val == 32) {
-            $("#edit-field-series-und").html("<option value='34'>100 Series</option>" +
-            "<option value='35'>X99 Series</option>" +
-            "<option value='36'>9 Series</option>" +
-            "<option value='37'>8 Series</option>");
-        }
+        $('#edit-term-node-tid-depth-all').remove();
 
-        $('#edit-field-platform-und').change(function(){
-            var current_val = $(this).val();
-            if (current_val == 32) {
-                $("#edit-field-series-und").html("<option value='34'>100 Series</option>" +
-                "<option value='35'>X99 Series</option>" +
-                "<option value='36'>9 Series</option>" +
-                "<option value='37'>8 Series</option>");
-        }
-            else if (current_val == 33) {
-                $("#edit-field-series-und").html("<option value='39'>900 Series</option>");
-            }
-
-        });
+        $('#views-exposed-form-how-to-sell-amd-page .description').remove();
+        $('#views-exposed-form-how-to-sell-view-page .description').remove();
 
         setInterval(function(){
             $(".view-how-to-sell-view .field-content a").colorbox({ iframe: true, width: "90%", height: "95%" });
@@ -35,6 +17,14 @@
         },600);
 
         $(".view-how-to-sell-amd .field-content a").colorbox({ iframe: true, width: "90%", height: "95%" });
+
+        setInterval(function(){
+            $('#views-exposed-form-how-to-sell-amd-page .description').remove();
+        },10);
+
+        setInterval(function(){
+            $('#views-exposed-form-how-to-sell-view-page .description').remove();
+        },10);
 
     });
 })(jQuery);
