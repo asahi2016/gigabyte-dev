@@ -1895,7 +1895,8 @@ div.view-product-roadmap-intel .views-field-edit-entityform,div.view-product-roa
 div.view-product-roadmap-intel .views-field-edit-entityform span.btn-success a,div.view-product-roadmap-amd .views-field-edit-entityform span.btn-success a,div.view-product-roadmap-brix .views-field-edit-entityform span.btn-success a{padding:10px;}
 div.view-product-roadmap-intel .views-field-edit-entityform span.btn,div.view-product-roadmap-amd .views-field-edit-entityform span.btn,div.view-product-roadmap-brix .views-field-edit-entityform span.btn{padding:0;margin:0 0 0 10px;}
 div.views-field-field-upload-images-roadmap .product-roadmap-wrapper ul:first-child{margin-top:15px;}
-div.field-name-field-upload-file-roadmap input[id*='test-remove']{margin:0 0 0 10px; width:120px;}
+div.field-name-field-upload-file-roadmap input[id*='test-remove'],.entityform div.field-name-field-upload-file-roadmap input[id*='test-remove'] {margin:0 0 0 10px; width:120px;}
+
 /* Download History */
 div.view-asset-download-history table.views-table tbody tr td{border: 1px solid #dedede;padding: 0 20px;text-align: center;}
 div.view-asset-download-history table.views-table tbody tr td:first-child{text-align: left;}

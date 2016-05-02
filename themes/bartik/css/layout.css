@@ -821,7 +821,12 @@ form.node-tools_assets_logos-form {float:left;border:2px solid #eee;padding:20px
 .field-type-image{float:left;width:100%;margin:20px 0px 0px;}
 .field-type-image label{float:left;margin:0 0 10px 0px;width:150px;}
 .field-type-image .image-widget-data{float:left;margin:0 0 10px 0px;}
+.node-partner_slider-form .field-type-image .image-widget-data{clear: both;margin: 0 0 0 300px;}
+.node-partner_slider-form .field-type-image .image-widget-data .form-file{width:200px;}
+.node-partner_slider-form .form-type-managed-file{position:relative;}
+.node-partner_slider-form .form-type-managed-file .description{position:absolute;top:50px;left:0px;}
 .field-type-image .image-widget-data .form-file{float:left;}
+.node-partner_slider-form .field-type-image .image-widget-data .form-submit{clear: both;margin: 20px 0 0 0;float: left;}
 .field-type-image .description{clear:both;}
 #edit-field-upload-image .form-submit{width:150px;float:left;margin:40px 0px;}
 #edit-field-upload-image .image-widget-data .form-submit{width:150px;float:left;margin:0px 0px;}
@@ -1302,7 +1307,7 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .view-clone-of-entityforms .views-table caption{font-size:18px;margin:20px 0 30px 0;width:100%;}
 .view-clone-of-entityforms .views-table tr th:first-child{background:none;color:#757575}
 .view-clone-of-entityforms .views-table .download-file-type-info-table tr th{background:rgba(0, 0, 0, 0.51);color:#fff}
-.view-clone-of-entityforms .views-table tr td .file-size,.view-clone-of-entityforms .views-table tr td .file-icon{display:none;}
+.view-clone-of-entityforms .views-table tr td .file-size,.view-clone-of-entityforms .views-table tr td .file-icon,.entityform .file-icon{display:none;}
 .view-clone-of-entityforms .views-table tr td.file-size-column .file a{cursor:default;color:#757575;text-decoration:none;}
 .view-clone-of-entityforms .views-table tr th:first-child,.view-clone-of-entityforms .views-table tr td:first-child{width:200px;}
 .view-clone-of-entityforms .views-table tr th:nth-child(2),.view-clone-of-entityforms .views-table tr td:nth-child(2){width:80px;}
@@ -1345,8 +1350,8 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .page-eform-submit-asset-upload-form .field-multiple-table td .file{width:105px;}
 .page-eform-submit-asset-upload-form .image-widget .file img,.page-eform-submit-asset-upload-form .image-widget .file a,
 .page-entityform .image-widget .file img,.page-entityform .image-widget .file a{float:left;}
-.page-eform-submit-asset-upload-form .image-widget .file a,.page-entityform .image-widget .file a{width:110px;overflow:hidden;max-height:20px;}
-.page-eform-submit-asset-upload-form .image-widget .file .file-size,.page-entityform .image-widget .file .file-size{margin: 0 5px 0 5px;width: 95px;float: left;}
+.page-eform-submit-asset-upload-form .image-widget .file a,.page-entityform .image-widget .file a,.entityform .field-widget-file-generic .file-widget .file a{width:110px;overflow:hidden;max-height:20px;float:left;}
+.page-eform-submit-asset-upload-form .image-widget .file .file-size,.page-entityform .image-widget .file .file-size,.entityform .file-size{margin: 0 5px 0 5px;width: 95px;float: left;}
 .page-eform-submit-asset-upload-form .field-multiple-table td .file-size,.page-entityform .field-multiple-table td .file-size{margin: 0 0 0 5px;width:65px;overflow:hidden;float:left;}
 .tabledrag-toggle-weight{display:none;}
 /*div.file-entity-preview{display:none;}*/
@@ -1405,6 +1410,7 @@ table.txt_center{table-layout: fixed;}
 .node-how_to_sell-form .image-widget-data{clear:both;width:100%;}
 .node-how_to_sell-form .image-widget-data .file img,#how-to-sell-node-form .file-widget .file img{display:none;}
 .node-how_to_sell-form .image-widget-data .file a,#how-to-sell-node-form .file-widget .file a{width:220px;height:20px;float:left;overflow:hidden;}
+.entityform .field-widget-file-generic{width:100%;}
 .node-how_to_sell-form .image-widget-data  input[value='Remove']{float:right;margin:0 0 0 30px;}
 .node-how_to_sell-form .file-widget input[value='Remove']{float:right;margin:0 0px 0 0px;}
 .page-calendar-event-display .calendar li img{width:32px;}
@@ -1441,10 +1447,16 @@ table.txt_center{table-layout: fixed;}
 .page-eform-submit-product-roadmap-form .field-multiple-table tr.draggable table.sticky-enabled tr{width:1000px;}
 .page-eform-submit-product-roadmap-form .field-multiple-table tr.draggable td .form-wrapper{background:transparent;width:1050px;border-bottom:0px;margin:0px;}/* 
 .page-eform-submit-product-roadmap-form #edit-actions input{margin-right:0px;} */
+#page-wrapper .field-multiple-table tr.draggable td .form-wrapper div.messages{width:90%;}
 .page-eform-submit-product-roadmap-form .field-multiple-table td .form-item .form-managed-file{width:500px;}
 .page-eform-submit-product-roadmap-form div.messages{width:950px;float:left;margin:0 0 10px 0;}
 .page-eform-submit-product-roadmap-form div.messages ul li{width:900px;margin:8px 15px 8px 0;}
-.page-eform-submit-product-roadmap-form .fel-field-label,.page-eform-submit-product-roadmap-form .form-type-managed-file label,.node-awards_reviews-form label{float:left;margin:0 10px 0 0;min-width:300px;}
+.page-eform-submit-product-roadmap-form .fel-field-label,.page-eform-submit-product-roadmap-form .form-type-managed-file label,.node-awards_reviews-form label,
+.entityform .fel-field-label,.entityform .form-type-managed-file label{float:left;margin:0 10px 0 0;min-width:300px;}
+.entityform .form-type-select select.form-select{width:200px;}
+.page-eform-submit-product-roadmap-form  #field-upload-images-roadmap-values .fel-field-label{min-width:250px;}
+.page-eform-submit-product-roadmap-form  #field-upload-images-roadmap-values .form-type-managed-file label{min-width:260px;}
+.page-eform-submit-product-roadmap-form  #field-upload-images-roadmap-values .form-text{width:200px;}
 .node-awards_reviews-form input.form-text{width:300px;}
 .node-awards_reviews-form .form-select{width:310px;}
 .node-awards_reviews-form .form-item{float:left;}
@@ -1462,8 +1474,9 @@ table.txt_center{table-layout: fixed;}
 .page-eform-submit-product-roadmap-form .form-type-managed-file .form-managed-file{float:left;margin:0 10px 0 0;}
 .page-eform-submit-product-roadmap-form .form-type-managed-file .form-managed-file .form-file{padding:4px 4px 4px 0px;width:270px;}
 .page-eform-submit-product-roadmap-form select.form-select{width:200px;}
-.page-eform-submit-product-roadmap-form .field-multiple-table .form-submit{width:180px;}
+.page-eform-submit-product-roadmap-form .field-multiple-table .form-submit{width:180px;margin:0 0 0 10px;}
 .page-eform-submit-product-roadmap-form .field-add-more-submit{margin:10px 10px 0px 0px;}
+.page-eform-submit-product-roadmap-form .form-actions#edit-actions .form-submit{margin-right:10px;}
 .page-eform-submit-product-roadmap-form .description{float:left;clear:both;margin:15px 0px 15px 0px;}
 .page-eform-submit-product-roadmap-form .form-managed-file .file img{display:none;}
 .page-eform-submit-product-roadmap-form .form-managed-file .file a{width: 170px;overflow: hidden;float: left;height: 20px;}
@@ -1491,9 +1504,10 @@ table.txt_center{table-layout: fixed;}
 .view-how-to-sell-view .views-view-grid .views-field a{color:#23527c;text-decoration:underline;text-align: center;font-size: 16px;}
 .view-how-to-sell-view .views-view-grid .views-field-nothing{width:220px;text-align:center;margin:20px 0px;}
 .node-partner_slider-form .form-type-link-field{float:left;width:100%;}
-.node-partner_slider-form .form-item label{float:left;width:130px;}
+.node-partner_slider-form .form-item label{float:left;width:300px;}
 .node-partner_slider-form .form-item input.form-text{float:left;width:200px;}
-.node-partner_slider-form input[value='Submit']{float:left;margin:0 0 0 420px;}
+.node-partner_slider-form input[value='Submit']{float:left;margin:0 0 0 300px;}
+
 
 /* jcarousel */
 .jcarousel-skin-default .jcarousel-container-horizontal,.jcarousel-skin-default .jcarousel-clip-horizontal{width:1200px;float:left;padding:0px 0px;}
@@ -1506,7 +1520,11 @@ table.txt_center{table-layout: fixed;}
 .jcarousel-navigation li.active a span{background:rgba(255, 255, 255, 1.0)}
 .jcarousel-skin-default .jcarousel-next-horizontal{right:30px;top:190px;}
 .jcarousel-skin-default .jcarousel-prev-horizontal{left:30px;top:190px;}
-.node-partner_slider-form .field-widget-link-field .link-field-subrow{float:left;}
+.node-partner_slider-form .field-widget-link-field .link-field-subrow{float:left;width:800px;}
+.node-partner_slider-form  .link-field-subrow .custom-error{width: 500px;
+    float: left;
+    margin: 0px 0px;
+    padding: 0px 0 0 20px;}
 .node-partner_slider-form .form-type-link-field label{margin:10px 0px 0px 0px;}
 .custom-search-box{float:right;width:200px;}
 #header #site-search{width:715px;float:right;}
