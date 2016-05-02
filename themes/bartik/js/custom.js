@@ -97,6 +97,10 @@ jQuery(document).ready(function($) {
     $('body.page-eform-submit-product-roadmap-form select#edit-field-roadmap-products-und').attr('disabled',false);
 
     //Product roadmap colorbox
+    $('.view-partner-slider-new .views-field-field-slider-image .field-content a[href]').attr({
+        target: "_blank"
+    });
+
     $('.product-roadmap-wrapper .item-list ul li').each(function(){
         $(this).find('img').attr('href',$(this).find('img').attr('src'));
     });
