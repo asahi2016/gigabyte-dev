@@ -23,7 +23,7 @@
              }
          });
          $('#views-form-people-new-users-role-page .description').remove();
-         $('<h3>Are You Sure! You want to Approved the selected user item(s)</h3>').insertAfter('#views-form-people-new-users-role-page .form-item-remove-roles');
+         $('<h3>Are You Sure! You want to Approved the selected user(s).</h3>').insertAfter('#views-form-people-new-users-role-page .form-item-remove-roles');
          $('#views-form-people-new-users-role-page .form-item-remove-roles').hide();
          //Password field custom error message and description field position changes
 
