@@ -1239,7 +1239,8 @@ padding:10px;}
 .assets-upload-display table.views-table td:first-child img{min-width:90%;padding:0 10% 0 0;cursor:pointer;max-height:140px;}
 .assets-upload-display table.views-table td img.file-icon{min-height:200;width:16x;height:16px;}
 .assets-upload-display table.views-table td .file img.file-icond{min-height:inherit;}
-.views-exposed-form .views-exposed-widget{float:left;width:98%;}
+.views-exposed-form .views-exposed-widget{float:left;width:400px;}
+.view-how-to-sell-amd .views-exposed-form #edit-term-node-tid-depth-wrapper{float:left;width:98%;}
 .views-exposed-form .views-exposed-widget:last-child{width:250px}
 .views-exposed-form .views-exposed-widget .views-widget{float:left;}
 .views-exposed-form .views-widget-filter-field_image_asset_category_tid .views-widget{clear:both;}
