@@ -7,7 +7,9 @@
          var uri =  $('#views-exposed-form-awards-reviews-page a:first-child').attr('href');
          $('#views-exposed-form-awards-reviews-page a:first').attr('class','active');
 
-         getBannerImage(uri);
+         if(uri) {
+             getBannerImage(uri);
+         }
 
          $('#views-exposed-form-awards-reviews-page a').click(function () {
              getBannerImage($(this).attr('href'));
@@ -45,14 +47,13 @@
         }
 
         
-        /*if( $('.content .node-page').attr('about').length > 0) {
+        if(($('.content .node-page').attr('about').length) > 0) {
             var uri = $('.content .node-page').attr('about');
             var class_node = $('.content .node-page').attr('id');
-
             if (uri.indexOf('admin/awards-reviews') > -1) {
                 $('#' + class_node + ' .group-page-us-content .field-label-hidden p').hide();
             }
-        }*/
+        }
 
     });
 })(jQuery);
