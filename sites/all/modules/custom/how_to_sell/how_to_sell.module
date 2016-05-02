@@ -90,7 +90,7 @@ function how_to_sell_errors_reset(&$element){
 
 function how_to_sell_form_submit(&$form,&$form_state){
 
-    drupal_set_message(t('How To Sell form uploaded successfully'));
+    //drupal_set_message(t('How To Sell form uploaded successfully'));
     //print_pre($form_state,1);
 }
 
@@ -108,10 +108,11 @@ function how_to_sell_views_pre_render(&$view){
                 $view->result[$key]->field_field_file_pdf_1[0]['rendered']['#markup'] = $uri_title_pdf;
 
             }
-
         }
     }
     return $view;
 
 }
+
+
 
