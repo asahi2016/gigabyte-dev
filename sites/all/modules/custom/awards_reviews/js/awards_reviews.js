@@ -46,13 +46,8 @@
             return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
 
-        
-        if(($('.content .node-page').attr('about').length) > 0) {
-            var uri = $('.content .node-page').attr('about');
-            var class_node = $('.content .node-page').attr('id');
-            if (uri.indexOf('admin/awards-reviews') > -1) {
-                $('#' + class_node + ' .group-page-us-content .field-label-hidden p').hide();
-            }
+        if($('#awards-reviews-node-form').length > 0){
+            $('#awards-reviews-node-form').parents('div.region-content').find('#page-us-content p').hide();
         }
 
     });
