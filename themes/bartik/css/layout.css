@@ -399,7 +399,7 @@ ul, li {
 body.page-user-register div.messages.error{
     display: none;
 }
-div.messages{float:left;}
+#page-wrapper div.messages{float:left;width:98%;margin:8px 15px 20px 0px;}
 .custom-error{float:left; padding: 10px 20px; color:red;}
 /*#user-register-form .form-checkboxes .form-item{clear:both;}*/
 #edit-field-job-title{clear:both;}
@@ -1515,7 +1515,7 @@ table.txt_center{table-layout: fixed;}
 #site-search div.section{width:100%;}
 .field-name-field-slider-image .image-preview img{width:120px;height:120px;}
 .field-name-field-slider-image .image-widget-data .file img{display:none;}
-.field-name-field-slider-image .image-widget-data .file a{width:130px;float:left;height:20px;overflow:hidden;}
+.field-name-field-slider-image .image-widget-data .file a{width:60px;float:left;height:20px;overflow:hidden;}
 .field-name-field-slider-image .image-widget-data .file-size{width:80px;float:left;margin:0 10px;}
 .search-form .form-type-textfield label{float:left;margin:0 10px 0 0;}
 .search-form .form-type-textfield input.form-text{float:left;width:200px;}
