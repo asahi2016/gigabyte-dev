@@ -253,7 +253,7 @@ fieldset.form-wrapper{
 .wrapper_full p{font-size: 14px;line-height: 1.42857143;color: #333;}
 #content.wrapper_full ul{float:left;padding: 0px;}
 .wrapper_full li{list-style-type: none;float:left;margin:20px 40px 0 0}
-.not-logged-in #content.partner-portal-login.split-page{width:600px;}
+.not-logged-in #content.partner-portal-login.split-page{width:600px;margin:30px 0px 0px;}
 .not-logged-in #content.partner-portal-login{width:1100px;}
 #content.partner-portal-login{width:100%;float:left;margin:0 0 0 35px;}
 /*#block-user-login{width:335px;}*/
@@ -264,7 +264,7 @@ fieldset.form-wrapper{
 #block-user-login .form-text{margin:0 0 20px 20px;width:170px;text-align:left;padding:4px 4px 4px 8px;}
 #breadcrumb{width:100%;}
 .inner-wrapper{width:100%;float:left;}
-.inner-wrapper #sidebar-second{width:400px;float:right;}
+.inner-wrapper #sidebar-second{width:400px;float:right;margin:30px 0px 0px;}
 #sidebar-second .item-list{clear: both}
 #sidebar-second li,#sidebar-second ul{list-style-type: none;text-align: left;padding:0px;text-align: right;margin:0 5px 0px 0px}
 #main-menu-nav h2{display:none;}
@@ -1448,7 +1448,7 @@ table.txt_center{table-layout: fixed;}
 .node-awards_reviews-form input.form-text{width:300px;}
 .node-awards_reviews-form .form-select{width:310px;}
 .node-awards_reviews-form .form-item{float:left;}
-.node-awards_reviews-form  div.messages{margin:12px 0px;}
+.node-awards_reviews-form  div.messages{margin:12px 0px 20px;width:98%;float:left;clear:both;}
 .node-awards_reviews-form  .image-widget-data {clear:both;margin:0 0 0 310px;}
 .node-awards_reviews-form  .image-widget-data .file a {width: 40px;float: left;height: 23px;overflow: hidden;}
 .node-awards_reviews-form  .image-widget-data .file-size{width: 80px;float: left;}
@@ -1484,7 +1484,7 @@ table.txt_center{table-layout: fixed;}
 .page-partner-awards-reviews .view-awards-reviews{background:#E3E3E3;float:left;margin:20px 0px 0px;}
 .page-partner-awards-reviews .view-awards-reviews .views-view-grid{text-align:center;width:140px;float:left;}
 .page-partner-awards-reviews .view-awards-reviews .views-view-grid tr{width:1000px;float:left;}
-.page-partner-awards-reviews .view-awards-reviews .views-view-grid td{width:140px;float:left;}
+.page-partner-awards-reviews .view-awards-reviews .views-view-grid td{width:110px;float:left;padding:10px 15px;}
 .page-partner-awards-reviews .view-awards-reviews .views-view-grid img{width:80px;height:80px;margin:0px auto;}
 .page-partner-awards-reviews .views-field-field-award-descriptions{font-weight:700;color:#333;font-size:14px;}
 .view-how-to-sell-view .views-view-grid .views-field img{width:220px;height:220px;}
@@ -1509,9 +1509,9 @@ table.txt_center{table-layout: fixed;}
 .node-partner_slider-form .field-widget-link-field .link-field-subrow{float:left;}
 .node-partner_slider-form .form-type-link-field label{margin:10px 0px 0px 0px;}
 .custom-search-box{float:right;width:200px;}
-#header #site-search{width:715px;}
+#header #site-search{width:715px;float:right;}
 #header #site-search .custom-search-button{width: 26px;height: 23px;margin:0px;}
-#header #site-search .search-form .form-actions{float: right;margin: 0;padding: 0;}
+#header #site-search .search-form .form-actions{float:right;margin: 0;padding: 0;}
 #site-search div.section{width:100%;}
 .field-name-field-slider-image .image-preview img{width:120px;height:120px;}
 .field-name-field-slider-image .image-widget-data .file img{display:none;}
@@ -1520,9 +1520,18 @@ table.txt_center{table-layout: fixed;}
 .search-form .form-type-textfield label{float:left;margin:0 10px 0 0;}
 .search-form .form-type-textfield input.form-text{float:left;width:200px;}
 
+
+.search-form .form-type-textfield input.form-text{float:right;width:200px;}
+.search-form{float:right;width:280px;}
+
 .page-search h2{clear:both;float:left;width:100%;}
 .page-search .form-submit{float:left;}
 .page-search #tabs{float:left;width:100%;}
 .page-search #tabs ul{float:left;width:100%;}
 .ui-tabs .ui-tabs-panel{float:left;clear:both;}
+
+
+
+.search-results .ui-tabs-panel{width:98%;}
+.search-results .ui-tabs-panel li{width:100%;}
 
