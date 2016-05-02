@@ -1518,21 +1518,20 @@ table.txt_center{table-layout: fixed;}
 .field-name-field-slider-image .image-widget-data .file a{width:130px;float:left;height:20px;overflow:hidden;}
 .field-name-field-slider-image .image-widget-data .file-size{width:80px;float:left;margin:0 10px;}
 .search-form .form-type-textfield label{float:left;margin:0 10px 0 0;}
-<<<<<<< Updated upstream
 .search-form .form-type-textfield input.form-text{float:left;width:200px;}
 
-=======
+
 .search-form .form-type-textfield input.form-text{float:right;width:200px;}
 .search-form{float:right;width:280px;}
->>>>>>> Stashed changes
+
 .page-search h2{clear:both;float:left;width:100%;}
 .page-search .form-submit{float:left;}
 .page-search #tabs{float:left;width:100%;}
 .page-search #tabs ul{float:left;width:100%;}
 .ui-tabs .ui-tabs-panel{float:left;clear:both;}
-<<<<<<< Updated upstream
 
-=======
+
+
 .search-results .ui-tabs-panel{width:98%;}
 .search-results .ui-tabs-panel li{width:100%;}
->>>>>>> Stashed changes
+
