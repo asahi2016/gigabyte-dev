@@ -120,7 +120,7 @@ if(isset($variables['account']['errors']) && !empty($variables['account']['error
     </table>
 </div>
 <?php global $base_url; ?>
-<input type="hidden" id="actionUrl" value="<?php echo $base_url ?>/update/account" />
+<input type="hidden" id="actionUrl" value="<?php echo $base_url ?>/account/settings/update" />
  <div id="edit-actions" class="form-actions form-wrapper">
      <input type="button" class="form-submit" value="Update" name="op" id="edit-submit">
  </div>
@@ -148,7 +148,8 @@ if(isset($variables['account']['errors']) && !empty($variables['account']['error
                 e.preventDefault();
                 if(!error) {
                     //make_enabled_account_fields();
-                    $('form#user-profile-form').attr('action', url).submit();
+                    $('form#user-profile-form').attr('action', url);
+                    $('form#user-profile-form').submit();
                 }
                 return false;
             });

@@ -54,17 +54,13 @@ function group_registration_menu() {
     return $items;
 }
 
-function group_registration_account_settings_update(){
-   echo 'Account Setting Page Update';
-}
-
 function group_registration_user_account_redirect(){
 
    global $user;
    drupal_goto('user/'.$user->uid.'/edit');
 }
 
-function group_registration_update_user_account_submit(){
+function group_registration_account_settings_update(){
 
     if(isset($_POST) && !empty($_POST)) {
 
