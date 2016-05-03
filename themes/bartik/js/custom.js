@@ -105,8 +105,6 @@ jQuery(document).ready(function($) {
     $('.product-roadmap-wrapper ul li').colorbox({inline:true, rel:'inline', href: function(){
         return $(this).children();
     }});
-    //$('.product-roadmap-wrapper ul li img').colorbox({speed: 500});
-    //$('.product-roadmap-wrapper .field-name-field-upload-image-roadmap-fc img').colorbox({width:800});
 
     // Asset Download history thumbnail display
     $('div.view-asset-download-history table.views-table tbody tr').each(function(){
