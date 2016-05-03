@@ -270,7 +270,7 @@ jQuery(document) . ready(function () {
                 <?php if ($page['base_title']): ?>
                   <div id="base-title"><div class="section clearfix">
                           <?php
-                            if($_SESSION['curr_pg'] == 'partner' || in_array('partner',$current_url))
+                            if($_SESSION['curr_pg'] == 'partner' || in_array('partner',$current_url) || in_array('entityform',$current_url ))
                                 print render($page['base_title']['menu_menu-partner-portal-title']);
                             else
                                 print render($page['base_title']['menu_menu-business-center']);
