@@ -27,13 +27,21 @@ function group_registration_menu() {
         'access callback' => TRUE,
     );
 
-    $items['update/account'] = array(
+    $items['account/settings/update'] = array(
+        'title' => 'Update Account Setting Page',
+        'page callback' => 'group_registration_account_settings_update', // Render HTML
+        'type' => MENU_CALLBACK,
+        'access arguments' => array('access content'),
+        'access callback' => TRUE,
+    );
+
+    /*$items['update/account'] = array(
         'title' => t('Update user Account Information'),
         'page callback' => 'group_registration_update_user_account_submit', // Render HTML
         'type' => MENU_CALLBACK,
-        'access arguments' => array(1),
+        'access arguments' => array('access content'),
         'access callback' => TRUE,
-    );
+    );*/
 
     $items['user/account'] = array(
         'title' => 'Account setting page',
@@ -44,6 +52,10 @@ function group_registration_menu() {
     );
 
     return $items;
+}
+
+function group_registration_account_settings_update(){
+   echo 'Account Setting Page Update';
 }
 
 function group_registration_user_account_redirect(){
