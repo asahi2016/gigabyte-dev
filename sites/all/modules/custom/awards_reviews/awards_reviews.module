@@ -2,7 +2,7 @@
 
 function awards_reviews_init(){
 
-    drupal_add_js(drupal_get_path('module', 'custom').'/awards_reviews/js/awards_reviews.js',array('type' => 'external', 'scope' => 'footer'));
+    drupal_add_js(drupal_get_path('module', 'custom').'/awards_reviews/js/awards_reviews.js',array('scope' => 'footer'));
 }
 
 /**
@@ -40,14 +40,22 @@ function get_awards_and_reviews_banner_image(){
 
 // Alter the webform elements
 function awards_reviews_form_awards_reviews_node_form_alter(&$form, &$form_state, $form_id){
+    
+    if(isset($_SESSION['awards_reviews_success'])){
+        drupal_set_message("The awards & reviews you have submitted has been successfully created!");
+        unset($_SESSION['awards_reviews_success']);
+    }
 
     $form['ajax-submit']['#value'] ='Submit';
+    $form['ajax-submit']['#submit'][] ='create_awards_and_reviews_content';
     $form['#validate'][] = 'awards_reviews_form_validation';
     $form['#submit'][] = 'create_awards_and_reviews_content';
+    //print_pre($form,1);
 }
 
-function create_awards_and_reviews_content($form, &$form_state) {
+function create_awards_and_reviews_content(&$form, &$form_state) {
     $form_state['values']['promote'] = 0;
+    $_SESSION['awards_reviews_success'] = true;
 }
 
 function awards_reviews_form_validation(&$form, &$form_state){
