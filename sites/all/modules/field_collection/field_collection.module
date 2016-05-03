@@ -610,6 +610,7 @@ function field_collection_item_is_empty(FieldCollectionItemEntity $item) {
         foreach ($item->{$field_name}[$langcode] as $field_item) {
           if (!module_invoke($field['module'], 'field_is_empty', $field_item, $field)) {
             $is_empty = FALSE;
+            break 3;
           }
         }
       }
@@ -1246,9 +1247,30 @@ function field_collection_field_widget_embed_validate($element, &$form_state, $c
         $is_empty_string = (is_string($elements['#value']) && drupal_strlen(trim($elements['#value'])) == 0);
         $is_empty_value = ($elements['#value'] === 0);
         $is_empty_option = (isset($elements['#options']['_none']) && $elements['#value'] == '_none');
-        if ($is_empty_multiple || $is_empty_string || $is_empty_value || $is_empty_option) {
+
+        // Validate fields with hook_field_is_empty. This will handle cases when file entity passes validation when it shouldn't.
+        $is_empty_field = FALSE;
+        if (isset($elements['#field_name'])) {
+          $field = field_info_field($elements['#field_name']);
+          // Extract field values array with all columns from form_state.
+          // The field we're looking at is always 3 levels deeper than field collection field.
+          $field_depth = count($elements['#field_parents']) + 3;
+          $field_values = drupal_array_get_nested_value($form_state['values'], array_slice($elements['#array_parents'], 0, $field_depth));
+
+          // Special case lists since we don't get the correct array_parents.
+          if (count($elements['#array_parents']) < $field_depth && is_array($field_values)) {
+            $field_values = reset($field_values);
+          }
+
+          $is_empty_field = module_invoke($field['module'], 'field_is_empty', $field_values, $field);
+        }
+
+        if ($is_empty_multiple || $is_empty_string || $is_empty_value || $is_empty_option || $is_empty_field) {
           if (isset($elements['#title'])) {
-            form_error($elements, t('@name field is required.', array('@name' => $elements['#title'])));
+            form_error($elements, t('@name field is required in the @collection collection.', array(
+              '@name' => $elements['#title'],
+              '@collection' => $instance['label']
+            )));
           }
           else {
             form_error($elements);

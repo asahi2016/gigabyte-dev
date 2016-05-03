@@ -18,7 +18,6 @@ function asset_upload_form_asset_upload_form_entityform_edit_form_alter(&$form, 
        drupal_set_message("The asset you have submitted has been successfully uploaded!");
    }
     $form_state['redirect'] = 'partner/upload-assets';
-    $form_state['rebuild'] = true;
     //print_pre($form_state,1);
 }
 
