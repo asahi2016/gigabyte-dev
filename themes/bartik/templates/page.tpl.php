@@ -270,7 +270,7 @@ jQuery(document) . ready(function () {
                 <?php if ($page['base_title']): ?>
                   <div id="base-title"><div class="section clearfix">
                           <?php
-                            if($_SESSION['curr_pg'] == 'partner' || in_array('partner',$current_url))
+                            if($_SESSION['curr_pg'] == 'partner' || in_array('partner',$current_url) || in_array('entityform',$current_url ))
                                 print render($page['base_title']['menu_menu-partner-portal-title']);
                             else
                                 print render($page['base_title']['menu_menu-business-center']);
@@ -289,7 +289,7 @@ jQuery(document) . ready(function () {
 
     <div class="full-width top_s">
      <div class="section clearfix main-menu-nav" id="main-menu-nav">
-         <?php if(user_is_logged_in() && ($_SESSION['curr_pg'] == 'partner' || in_array('partner',$current_url))){ ?>
+         <?php if(user_is_logged_in() && ($_SESSION['curr_pg'] == 'partner' || in_array('partner',$current_url) || in_array('entityform',$current_url ))){ ?>
                 <?php if ($page['menu']): ?>
                 <?php
                      /*$partner_portal_menu_tree = menu_tree(variable_get('menu_main_links_source', 'menu_menu-partner-portal-menu'));

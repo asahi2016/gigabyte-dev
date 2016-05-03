@@ -591,7 +591,7 @@ function entityform_edit_form_submit(&$form, &$form_state) {
           case 46:
               $form_state['redirect'] = 'partner/product-roadmap/brix';
               break;
-          case 48:
+          case 44:
               $form_state['redirect'] = 'partner/product-roadmap/intel';
               break;
 

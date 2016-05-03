@@ -1891,6 +1891,7 @@ div.views-field-field-upload-file-roadmap .btn-primary {background:#337ab7;paddi
 div.views-field-field-upload-file-roadmap .btn-primary span.file .file-size{display:none;}
 div.field-name-field-image-tag-roadmap .field-items .even{text-align:center;}
 div.field-name-field-upload-image-roadmap-fc{margin:10px 0 20px;}
+div#cboxLoadedContent div.field-name-field-upload-image-roadmap-fc .field-items .field-item img{width:991px; height:auto;}
 div.view-product-roadmap-intel .views-field-edit-entityform,div.view-product-roadmap-amd .views-field-edit-entityform,div.view-product-roadmap-brix .views-field-edit-entityform{float:right;}
 div.view-product-roadmap-intel .views-field-edit-entityform span.btn-success a,div.view-product-roadmap-amd .views-field-edit-entityform span.btn-success a,div.view-product-roadmap-brix .views-field-edit-entityform span.btn-success a{padding:10px;}
 div.view-product-roadmap-intel .views-field-edit-entityform span.btn,div.view-product-roadmap-amd .views-field-edit-entityform span.btn,div.view-product-roadmap-brix .views-field-edit-entityform span.btn{padding:0;margin:0 0 0 10px;}
