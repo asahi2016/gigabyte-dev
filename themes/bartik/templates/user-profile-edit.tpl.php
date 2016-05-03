@@ -194,6 +194,15 @@ if(isset($variables['account']['errors']) && !empty($variables['account']['error
                         if (pass1.val() != pass2.val()) {
                             error = true;
                             $('table#password').before('<span class="custom-error">Password you entered does not match</span>');
+                        }else{
+
+                            if(pass1.val() && (pass1.length >= 8 || pass1.length <= 20)){
+                                if(!pass1.val().match(/^(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z$&+,:;=?@#|<>.-^*()%!]{8,20}$/)){
+                                    $('table#password').before('<span class="custom-error">Password does not meet the requirement</span>');
+                                }
+                            }else if(pass1.val() && (pass1.length < 8 || pass1.length > 20)){
+                                $('table#password').before('<span class="custom-error">Password does not meet the requirement</span>');
+                            }
                         }
                     }
                 }
