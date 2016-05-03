@@ -27,20 +27,25 @@ function custom_search_preprocess_search_results(&$variables) {
       // Get Custom Search authorized types.
       $searchable_node_types = variable_get('custom_search_node_types', array());
       $searchable_node_types = array_keys(array_filter($searchable_node_types, 'custom_search_filter_array'));
+
+
       if (!count($searchable_node_types)) {
         $searchable_node_types = array_keys(node_type_get_names());
       }
       $node_types = db_query("SELECT type, name FROM {node_type} WHERE type IN (:ntypes)", array(':ntypes' => $searchable_node_types));
+        
       // Build menu.
       $items = array();
-      $items[] = l(variable_get('custom_search_type_selector_all', CUSTOM_SEARCH_ALL_TEXT_DEFAULT), 'search/node/' . $keys);
-      foreach ($node_types as $node_type) {
+      //$items[] = l(variable_get('custom_search_type_selector_all', CUSTOM_SEARCH_ALL_TEXT_DEFAULT), 'search/node/' . $keys);
+
+
+        foreach ($node_types as $node_type) {
         // Count # of results per type.
-        $nbresults = 0;
+        $nbresults = 1;
         foreach ($variables['results'] as $result) {
-          if ($result['node']->type == $node_type->type) {
+          /*if ($result['node']->type == $node_type->type) {
             $nbresults++;
-          }
+          }*/
         }
         if ($nbresults) {
           $items[] = l($node_type->name, 'search/node/' . $keys . ' type:' . $node_type->type);
@@ -49,6 +54,8 @@ function custom_search_preprocess_search_results(&$variables) {
       if (!isset($variables['filter-title'])) {
         $variables['filter-title'] = filter_xss(variable_get('custom_search_filter_label', CUSTOM_SEARCH_FILTER_LABEL_DEFAULT));
       }
+
+
       if (count($items) > 2) {
         $variables['filter'] = theme('item_list', array('items' => $items, 'title' => $variables['filter-title']));
       }
