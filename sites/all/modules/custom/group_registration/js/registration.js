@@ -4,7 +4,9 @@
          $('form').submit(function(){
             $('select#edit-user-roles').removeAttr('disabled');
             $('select#edit-field-country-und').removeAttr('disabled');
-             make_enabled_fields();
+             if($('#account-setting').length == 0){
+                 make_enabled_fields();
+             }
          });
 
          $('.page-user-register div.messages.error').remove();
