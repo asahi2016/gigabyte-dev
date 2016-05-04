@@ -6,6 +6,9 @@
             $('select#edit-field-country-und').removeAttr('disabled');
              if($('#account-setting').length == 0){
                  make_enabled_fields();
+                 setTimeout(function () {
+                     make_disabled_and_readonly_fields();
+                 },100);
              }
          });
 
@@ -262,19 +265,19 @@
                         });
 
                         $.each(group_user.programs.ids , function(i, val) {
-                            $('#edit-field-participating-programs-und-'+val).attr('checked','checked')
+                            $('#edit-field-participating-programs-und-'+val).prop('checked','checked')
                         });
 
                         $.each(group_user.distributor.ids , function(i, val) {
-                            $('#edit-field-choose-distributor-und-'+val).attr('checked','checked')
+                            $('#edit-field-choose-distributor-und-'+val).prop('checked','checked')
                         });
 
                         $.each(group_user.sub_distributor.ids , function(i, val) {
-                            $('#edit-field-choose-sub-distributor-und-'+val).attr('checked','checked')
+                            $('#edit-field-choose-sub-distributor-und-'+val).prop('checked','checked')
                         });
 
                         $('#edit-field-receive-newsletter-und input[type="radio"]').each(function () {
-                            $('#edit-field-receive-newsletter-und-'+group_user.newsletter).attr('checked','checked')
+                            $('#edit-field-receive-newsletter-und-'+group_user.newsletter).prop('checked','checked')
                         });
 
                         $('#edit-field-membership-account-und-0-value').val(group_user.membership);
@@ -341,7 +344,40 @@
        }
 
 
+        function make_empty_services_fields() {
+
+            $('#edit-field-participating-programs-und input[type="checkbox"]').each(function () {
+                $(this).removeAttr('checked');
+            });
+
+            $('#edit-field-choose-distributor-und input[type="checkbox"]').each(function () {
+                $(this).removeAttr('checked');
+            });
+
+            $('#edit-field-choose-sub-distributor-und input[type="checkbox"]').each(function () {
+                $(this).removeAttr('checked');
+            });
+
+            $('#edit-field-receive-newsletter-und input[type="radio"]').each(function () {
+                $(this).removeAttr('checked');
+            });
+
+            $('#edit-field-other-programs-und-0-value').val('');
+            $('#edit-field-other-distributor-und-0-value').val('');
+            $('#edit-field-other-sub-distributor-und-0-value').val('');
+            $('#edit-field-membership-account-und-0-value').val('');
+            $('#edit-field-motherboard-qty-und-0-value').val('');
+
+        }
+
+
        $('#edit-field-company-name-und-0-target-id').click(function(){
+
+           if($(this).val().match(/\d+/)){
+               make_enabled_fields();
+               make_empty_services_fields();
+           }
+
            $('fieldset').each(function(i){
               if(i == 1) {
                   $(this).find('input[type="text"]').val('');
