@@ -1,4 +1,4 @@
-pf/* font face */
+/* font face */
 @font-face {
     font-family: 'ralewaybold';
     src: url('fonts/raleway-bold-webfont.eot');
@@ -69,7 +69,7 @@ ul{list-style-type:none;}
 }
 #messages div.section{width:1100px;margin:0px auto;}
 #messages div.section .messages.error{width:100%;}
-#main{width:1100px;margin:0px auto;}
+#main{width:1200px;margin:0px auto;}
 #header div.section {
     position: relative;
 }
@@ -134,6 +134,7 @@ ul{list-style-type:none;}
 #sidebar-first,
 #sidebar-second {
     /*width: 240px;*/
+	width:100%;
 }
 #main-wrapper {
     min-height: 300px;
@@ -252,10 +253,15 @@ fieldset.form-wrapper{
 
 .wrapper_full p{font-size: 14px;line-height: 1.42857143;color: #333;}
 #content.wrapper_full ul{float:left;padding: 0px;}
+
 .wrapper_full li{list-style-type: none;float:left;margin:0px 40px 0 0}
 .not-logged-in #content.partner-portal-login.split-page{width:600px;margin:30px 0px 0px;}
+
+.wrapper_full li{list-style-type: none;float:left;margin:20px 40px 0 0}
+.not-logged-in #content.partner-portal-login.split-page{width:700px;margin:0px 0px 0px;}
+
 .not-logged-in #content.partner-portal-login{width:1100px;}
-#content.partner-portal-login{width:100%;float:left;margin:0 0 0 35px;}
+#content.partner-portal-login{width:92%;float:left;margin:0 0 0 35px;}
 /*#block-user-login{width:335px;}*/
 #block-user-login h2{display: none}
 #block-user-login .form-text,#block-user-login label{    float: left;
@@ -264,7 +270,7 @@ fieldset.form-wrapper{
 #block-user-login .form-text{margin:0 0 20px 20px;width:170px;text-align:left;padding:4px 4px 4px 8px;}
 #breadcrumb{width:100%;}
 .inner-wrapper{width:100%;float:left;}
-.inner-wrapper #sidebar-second{width:400px;float:right;margin:30px 0px 0px;}
+.inner-wrapper #sidebar-second{width:500px;float:right;margin:90px 0px 0px;}
 #sidebar-second .item-list{clear: both}
 #sidebar-second li,#sidebar-second ul{list-style-type: none;text-align: left;padding:0px;text-align: right;margin:0 5px 0px 0px}
 #main-menu-nav h2{display:none;}
@@ -384,7 +390,7 @@ ul, li {
     left:266px;
     top:0px;
 }
-#main-menu-nav li:nth-last-child(2) ul li:hover > ul{
+#main-menu-nav li:last-child ul li:hover > ul{
     left:-266px;
 }
 #main-menu-nav li ul ul li:hover > ul{
@@ -501,14 +507,18 @@ table.company-details tr td{padding: 0px;}
 #account-setting input.form-submit{float:inherit;}
 #edit-field-membership-account,#edit-field-choose-sub-distributor-und .form-type-checkbox:last-child{clear:both;}
 .field-item table{clear:both;}
+.field-item table.h_page{margin:0px;}
+.field-item table.h_page img{width:100%;}
+.section .tabs{margin-bottom:0px;}
 table.even_img{margin:30px 0px 0px;}
 table.even_img tbody{border:0px}
 table.even_img tr{background:none;}
-table.even_img td{width:250px;float:left;padding:0 50px;}
+table.even_img td{width:280px;float:left;padding:0 50px;}
+table.even_img td img{width:100%;}
 table.even_img td:nth-child(2) {padding:0 30px;}
 table.even_img tr:nth-child(2) td:nth-child(2) {padding:30px 30px;}
 table.even_img tr:nth-child(2) td {padding:30px 50px;}
-table.tbl_grey{background:#F0F0F0;text-align:center;width:1000px;}
+table.tbl_grey{background:#F0F0F0;text-align:center;width:1100px;}
 table.tbl_grey td{background:#F0F0F0;padding:30px 230px;text-align:center;font-size:14px;}
 /* About GSM */
 table.chart{width:1000px;}
@@ -1139,12 +1149,12 @@ div[id*='field-pdf-add-more-wrapper'] .field-type-file .form-managed-file a{widt
 .page-partner-submissions .field-type-image .image-widget-data{float:left;}
 .page-partner-submissions .form-managed-file .form-submit{margin: 0 0px 0 10px;display:block;}
 .page-partner-submissions .field-type-image .image-widget-data .form-file,.entitytype-asset_upload_form-form .field-type-image .image-widget-data .form-file{width:200px;}
-.entitytype-asset_upload_form-form .form-managed-file .form-file{width:175px;}
+.entitytype-asset_upload_form-form .form-managed-file .form-file{width:210px;}
 .entitytype-asset_upload_form-form .form-managed-file .field-multiple-table td .form-item .form-managed-file{width:360px}
 .entitytype-asset_upload_form-form .form-managed-file .field-multiple-table td .form-item .form-managed-file .form-submit{width:360px}
 .entitytype-asset_upload_form-form .field-multiple-table .form-submit{float:left;margin:0 0 0 10px;}
 .entitytype-asset_upload_form-form .field-multiple-drag .form-managed-file input[type='Remove']{margin:0 0 0 30px;}
-.entitytype-asset_upload_form-form .field-type-image .image-widget-data .form-file{margin:0 10px 0 0}
+.entitytype-asset_upload_form-form .field-type-image .image-widget-data .form-file{margin:0 10px 0 5px}
 .page-partner-submissions #cboxLoadedContent table td.td_img.w300{width:200px;padding:0 20px 0px 0px;}
 .page-partner-submissions #cboxLoadedContent table td.td_left{width:200px;float:left;padding: 0 20px 0 0}
 .page-partner-submissions table td.td_left,.page-partner-submissions table td.td_right{width:350px;float:left;}
@@ -1167,7 +1177,7 @@ div[id*='field-jpg-add-more-wrapper'] .field-name-field-resolution-dpi-asset lab
 div[id*='field-jpg-add-more-wrapper'] .field-type-file{float:right;width:470px;}
 div[id*='field-jpg-add-more-wrapper'] .field-type-file .form-managed-file img{float:left;margin:5px 0px 0px 0px;}
 div[id*='field-jpg-add-more-wrapper'] .field-type-file .form-managed-file a{width: 120px;float: left;height: 20px;overflow: hidden;margin:5px 0px 0px 5px;}
-
+.form-actions#edit-actions input{margin-right:10px;}
 #pagination th.ui-state-default{padding: 8px 0px 8px 12px;  background: #3e3e3e;  color: #fffce5; border:1px solid #F8FBFF}
 #pagination th .DataTables_sort_wrapper{width:140px;font:bold 14px/22px ralewayregular;color:#fff;}
 #pagination th .DataTables_sort_wrapper span{float:right;}
@@ -1336,24 +1346,33 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .view-clone-of-entityforms  .views-exposed-widgets .views-exposed-widget:first-child{width:500px;}
 .view-clone-of-entityforms  .views-exposed-widgets .views-exposed-widget{padding: 10px 0px 15px 20px;float: left;}
 .page-eform-submit-asset-upload-form .field-multiple-table tr.draggable,.page-entityform .field-multiple-table tr.draggable{width:1100px;padding:10px 0;}
+.page-eform-submit-asset-upload-form .field-multiple-table tr.draggable{width:1105px;}
 .page-eform-submit-asset-upload-form .field-multiple-table td .file-widget .form-submit,.page-entityform .field-multiple-table td .file-widget .form-submit{margin:0px;width:180px;}
 .page-eform-submit-asset-upload-form .field-multiple-table td .form-item .form-managed-file,.page-entityform .field-multiple-table td .form-item .form-managed-file {width:440px;}
 .page-eform-submit-asset-upload-form .field-multiple-table td .form-item  input.text-full,.page-entityform .field-multiple-table td .form-item  input.text-full{width:200px;margin:15px 0px 0px;}
 .page-eform-submit-asset-upload-form .form-type-checkboxes,.page-entityform .form-type-checkboxes{float:left;}
 .page-eform-submit-asset-upload-form .form-type-checkboxes label,.page-entityform .form-type-checkboxes label{float:left;width:auto;}
 .page-eform-submit-asset-upload-form .form-type-checkboxes #edit-field-category-entity-und,.page-entityform .form-type-checkboxes #edit-field-category-entity-und{float:left;width:auto;margin:0px 0px 0px 50px;}
+.page-eform-submit-asset-upload-form .form-type-checkboxes #edit-field-category-entity-und{margin:0 0 0 10px;}
 .page-eform-submit-asset-upload-form #field-upload-file-values,.page-entityform #field-upload-file-values{margin:30px 0 0;}
 .page-eform-submit-asset-upload-form .form-type-checkboxes #edit-field-category-entity-und .form-type-checkbox:first-child,.page-entityform .form-type-checkboxes #edit-field-category-entity-und .form-type-checkbox:first-child{margin:0;}
 .page-eform-submit-asset-upload-form .form-type-checkboxes #edit-field-category-entity-und .form-type-checkbox,.page-entityform .form-type-checkboxes #edit-field-category-entity-und .form-type-checkbox{margin:0 0 0 20px;}
 .page-eform-submit-asset-upload-form .field-multiple-table td .file-entity-preview,.page-entityform .field-multiple-table td .file-entity-preview{float:left;width:80px;}
 .page-eform-submit-asset-upload-form .image-preview img,.page-entityform .image-preview img{width:80px;height:auto;}
 .page-eform-submit-asset-upload-form .field-multiple-table td .file,.page-entityform .field-multiple-table td .file{width:80px;float: left;overflow: hidden;margin: 0 0 0 5px;}
-.page-eform-submit-asset-upload-form .field-multiple-table td .file{width:105px;}
+.page-eform-submit-asset-upload-form .field-multiple-table td .file{width:125px;}
+table#field-upload-file-values tr th.field-label{padding:4px 0px;}
 .page-eform-submit-asset-upload-form .image-widget .file img,.page-eform-submit-asset-upload-form .image-widget .file a,
 .page-entityform .image-widget .file img,.page-entityform .image-widget .file a{float:left;}
 .page-eform-submit-asset-upload-form .image-widget .file a,.page-entityform .image-widget .file a,.entityform .field-widget-file-generic .file-widget .file a{width:110px;overflow:hidden;max-height:20px;float:left;}
+.page-eform-submit-asset-upload-form  .entitytype-asset_upload_form-form .image-widget .file a{width:30px;}
+.entityform .field-widget-file-generic .file-widget .file a{width:170px;}
+.page-entityform .image-widget .file a{width:80px;}
 .page-eform-submit-asset-upload-form .image-widget .file .file-size,.page-entityform .image-widget .file .file-size,.entityform .file-size{margin: 0 5px 0 5px;width: 95px;float: left;}
 .page-eform-submit-asset-upload-form .field-multiple-table td .file-size,.page-entityform .field-multiple-table td .file-size{margin: 0 0 0 5px;width:65px;overflow:hidden;float:left;}
+.page-entityform .field-multiple-table td .file-size{margin:0 10px 0 5px;}
+form .field-name-field-upload-images-roadmap .field-add-more-submit{margin:10px 15px 0 0;}
+.page-eform-submit-asset-upload-form .field-multiple-table td .file-size{width:85px;}
 .tabledrag-toggle-weight{display:none;}
 /*div.file-entity-preview{display:none;}*/
 .file-entity-preview .file-document{display:none;}
@@ -1383,11 +1402,11 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .node-how_to_sell-form .form-managed-file{width:500px;float:left;}
 .node-how_to_sell-form .field-name-field-file-pdf{width:100%;}
 .node-how_to_sell-form .form-item .description{clear:both;}
-#how-to-sell-node-form .form-managed-file .form-file{float: left;width:240px;overflow:hidden;height:25px;}
+#how-to-sell-node-form .form-managed-file .form-file{float: left;width:240px;overflow:hidden;height:22px;padding:0px;}
 .node-how_to_sell-form input.form-submit{float:right;}
 .node-how_to_sell-form .form-managed-file .form-file{margin:0 0 0 10px;float:left;}
 .node-how_to_sell-form div input[value="Submit"]{margin:0 0px 0 0px;float:right;}
-
+#field-upload-images-roadmap-add-more-wrapper .field-multiple-table{}
 .view-id-clone_of_entityforms .view-content .assets-list-partner li{width:100%;float:left;margin:0 0 30px 0;}
 .view-id-clone_of_entityforms .view-content .assets-list-partner li .file-asset-category li{width:auto;margin:0px 10px 0 0;background: #5bc0de;padding: 2px 7px;border-radius:2px;color: #fff;font-size: 11px;}
 .view-id-clone_of_entityforms .view-content .views-field-field-image-name-entity{font-weight:bold;float:left;line-height: 35px;font-size: 22px;max-width:920px;}
@@ -1402,8 +1421,8 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .view-id-clone_of_entityforms .views-exposed-form{float: left;padding: 20px 2%;width: 96%;border: 1px solid #EEE;margin: 0 0 40px 0;}
 .node-how_to_sell-form .field-type-image,.node-how_to_sell-form .field-type-file,.node-how_to_sell-form .form-type-textfield {position:relative;}
 .node-how_to_sell-form  .form-submit {margin:0 0 0 15px;}
-.node-how_to_sell-form  .image-widget-data .custom-error,.node-how_to_sell-form .file-widget .custom-error {position:absolute;right:-190px;top:0px;}
-.node-how_to_sell-form  .image-widget-data .custom-error{top:0px;right:-200px;}
+.node-how_to_sell-form  .image-widget-data .custom-error,.node-how_to_sell-form .file-widget .custom-error {position:absolute;right:-200px;top:0px;}
+.node-how_to_sell-form  .image-widget-data .custom-error{top:0px;right:-210px;}
 li.assets-row-list-partner .btn-success a,li.assets-row-list-partner .btn-danger a{line-height:16px;}
 table.txt_center{table-layout: fixed;}
 .node-how_to_sell-form{float:left;width:900px;}
@@ -1454,6 +1473,8 @@ table.txt_center{table-layout: fixed;}
 .page-eform-submit-product-roadmap-form div.messages ul li{width:900px;margin:8px 15px 8px 0;}
 .page-eform-submit-product-roadmap-form .fel-field-label,.page-eform-submit-product-roadmap-form .form-type-managed-file label,.node-awards_reviews-form label,
 .entityform .fel-field-label,.entityform .form-type-managed-file label{float:left;margin:0 10px 0 0;min-width:300px;}
+.entityform .field-multiple-table .fel-field-label{min-width:270px;}
+.entityform .field-name-field-upload-asset .form-type-managed-file label{min-width:275px;}
 .entityform .form-type-select select.form-select{width:200px;}
 .page-eform-submit-product-roadmap-form  #field-upload-images-roadmap-values .fel-field-label{min-width:250px;}
 .page-eform-submit-product-roadmap-form  #field-upload-images-roadmap-values .form-type-managed-file label{min-width:260px;}
@@ -1511,12 +1532,13 @@ table.txt_center{table-layout: fixed;}
 
 
 /* jcarousel */
-.jcarousel-skin-default .jcarousel-container-horizontal,.jcarousel-skin-default .jcarousel-clip-horizontal{width:1200px;float:left;padding:0px 0px;}
+.jcarousel-skin-default .jcarousel-container-horizontal,.jcarousel-skin-default .jcarousel-clip-horizontal{width:100%;float:left;padding:0px 0px;}
 .jcarousel-skin-default .jcarousel-container-horizontal{height:409px;}
 .jcarousel-skin-default .jcarousel-item{width:1200px;height:409px;border:0px;}
-.one-sidebar .sidebar .block{margin:0px 0 20px;padding:0 30px 70px 0}
+.one-sidebar .sidebar .block{margin:0px 0 20px;padding:0 0px 70px 0;width:100%;}
+.one-sidebar #sidebar-second.sidebar .block{padding:0 30px 70px 0;width:inherit;float:right;}
 .one-sidebar .sidebar .section{padding-top:0px }
-.jcarousel-navigation{position:absolute;bottom:50px;left:550px;}
+.jcarousel-navigation{position:absolute;bottom:50px;width:100%;text-align:center;}
 .jcarousel-navigation li a span{width: 20px;height: 20px;border-radius: 10px;color: #000;background-color: rgba(0, 0, 0, 0.2);border: 2px solid rgba(255, 255, 255, 0.7);text-indent:-999em;color: transparent;margin:0 1px 0 1px;display: inline-block;}
 .jcarousel-navigation li.active a span{background:rgba(255, 255, 255, 1.0)}
 .jcarousel-skin-default .jcarousel-next-horizontal{right:30px;top:190px;}
@@ -1530,16 +1552,17 @@ table.txt_center{table-layout: fixed;}
 .custom-search-box{float:right;width:200px;}
 #header #site-search{width:715px;float:right;}
 #header #site-search .custom-search-button{width: 26px;height: 23px;margin:0px;}
-#header #site-search .search-form .form-actions{float:right;margin: 0;padding: 0;}
+#header #site-search .search-form .form-actions{float:right;margin: 0;padding: 0;width:inherit;}
 #site-search div.section{width:100%;}
 .field-name-field-slider-image .image-preview img{width:120px;height:120px;}
 .field-name-field-slider-image .image-widget-data .file img{display:none;}
 .field-name-field-slider-image .image-widget-data .file a{width:60px;float:left;height:20px;overflow:hidden;}
 .field-name-field-slider-image .image-widget-data .file-size{width:80px;float:left;margin:0 10px;}
-.search-form .form-type-textfield label{float:left;margin:0 10px 0 0;}
+.search-form .form-type-textfield label{float:left;margin:4px 10px 0 0;}
 .search-form .form-type-textfield input.form-text{float:left;width:200px;}
 .search-form .form-type-textfield input.form-text{float:right;width:200px;}
-.search-form{float:right;width:280px;}
+.search-form{float:left;width:700px;margin:10px 0 0 0;}
+.search-form#search-form input#edit-keys{width:300px;}
 .page-search h2{clear:both;float:left;width:100%;}
 .page-search .form-submit{float:left;}
 .page-search #tabs{float:left;width:100%;}
@@ -1563,3 +1586,38 @@ table.txt_center{table-layout: fixed;}
 .page-partner-asset-download .views-table.sticky-enabled tr th:nth-child(5){width:140px;}
 .page-partner-asset-download .views-table.sticky-enabled tr th:nth-child(6){width:140px;}
 .page-partner-asset-download .views-table.sticky-enabled tr th:nth-child(6)img{width:150px;}
+#search-form .form-item-keys label{font-size:14px;}
+.custom-search-filter {float: left;
+    width: 100%;
+    border-bottom: 1px solid #dedede;
+    padding: 0 0 6px 0;
+    box-shadow: -1px 2px 1px 0px #dedede;
+}
+.custom-search-filter .item-list ul li{padding:0px 0px;margin:0 4px 0 0;}
+.custom-search-filter li a{padding:8px 15px;
+						background: rgba(255,255,255,1);
+						background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+						background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(237,237,237,1)));
+						background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+						background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+						background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+						background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+						filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=0 );
+						color:#757073;
+						font-size:12px;
+						border-radius: 3px 3px 0px 0px;
+						box-shadow: 2px 0px 1px #dedede;
+						border: 1px solid #eee;
+			}
+.custom-search-filter li a:hover{text-decoration:none;}
+.custom-search-filter li a.active{background: rgba(176,195,232,1);
+background: -moz-linear-gradient(top, rgba(176,195,232,1) 0%, rgba(176,194,232,1) 45%, rgba(103,130,197,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(176,195,232,1)), color-stop(45%, rgba(176,194,232,1)), color-stop(100%, rgba(103,130,197,1)));
+background: -webkit-linear-gradient(top, rgba(176,195,232,1) 0%, rgba(176,194,232,1) 45%, rgba(103,130,197,1) 100%);
+background: -o-linear-gradient(top, rgba(176,195,232,1) 0%, rgba(176,194,232,1) 45%, rgba(103,130,197,1) 100%);
+background: -ms-linear-gradient(top, rgba(176,195,232,1) 0%, rgba(176,194,232,1) 45%, rgba(103,130,197,1) 100%);
+background: linear-gradient(to bottom, rgba(176,195,232,1) 0%, rgba(176,194,232,1) 45%, rgba(103,130,197,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0c3e8', endColorstr='#6782c5', GradientType=0 );
+color:#fff;border: 1px solid rgba(176,195,232,1);}
+.search-results li{width:100%;margin:20px 0px 0px;}
+div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'], .entityform div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove']{float:left;}
