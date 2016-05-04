@@ -76,24 +76,34 @@ function group_registration_account_settings_update(){
                 $check_current_pass = user_check_password(trim($_POST['current_pass']) , $account);
 
                 if (!$check_current_pass) {
-                   form_set_error('current_pass', 'Current password you entered does not correct.');
+                   form_set_error('current_pass', 'Current password you entered did not correct.');
                 }
             }
 
             if (isset($_POST['pass']) && !empty($_POST['pass']) && is_array($_POST['pass'])) {
 
                 if (empty($_POST['pass']['pass1'])) {
-                    form_set_error('pass1', 'New Password cannot be empty.');
+                    form_set_error('current_pass', 'Password cannot be empty.');
 
                 }
 
                 if (empty($_POST['pass']['pass2'])) {
-                    form_set_error('pass2', 'Confirm Password cannot be empty.');
+                    form_set_error('current_pass', 'Confirm Password cannot be empty.');
 
                 }
 
                 if ($_POST['pass']['pass1'] != $_POST['pass']['pass2']) {
-                    form_set_error('pass_not_match', 'Password you entered does not match.');
+                    form_set_error('current_pass', 'Password you entered does not match.');
+                }
+
+                $pass_count = ($_POST['pass']['pass1'])? strlen($_POST['pass']['pass1']):0;
+
+                if($_POST['pass']['pass1'] && ($pass_count >= 8 || $pass_count <= 20)){
+                    if(!preg_match('/^(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z$&+,:;=?@#|<>.-^*()%!]{8,20}$/', $_POST['pass']['pass1'])){
+                        form_set_error('current_pass',t('Password does not meet the requirement'));
+                    }
+                }else if($_POST['pass']['pass1'] && ($pass_count < 8 || $pass_count > 20)){
+                    form_set_error('current_pass',t('Password does not meet the requirement'));
                 }
             }
         }
