@@ -117,6 +117,16 @@ jQuery(document).ready(function($) {
     $('.view-partner-slider-new .jcarousel-container-horizontal .views-field-field-slider-image .field-content a[href]').attr({
         target: "_blank"
     });
+
+    // View data export button insert after view item filter on download history
+    $('div.asset-download-history-page .feed-icon a').html('Export Download History to Excel');
+    $('div.asset-download-history-page .view-filters').after('<div class="feed-icon" >'+$('div.asset-download-history-page .feed-icon').html()+"</div>");
+    $('div.asset-download-history-page .feed-icon:last-child').hide();
+    $(document).on('ready','body',function(){
+        $('div.asset-download-history-page .feed-icon a').html('Export Download History to Excel');
+        $('div.asset-download-history-page .view-filters').after('<div class="feed-icon" >'+$('div.asset-download-history-page .feed-icon').html()+"</div>");
+        $('div.asset-download-history-page .feed-icon:last-child').hide();
+    });
 });
 
 

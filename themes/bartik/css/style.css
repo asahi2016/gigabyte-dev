@@ -1901,5 +1901,8 @@ div.field-name-field-upload-file-roadmap input[id*='test-remove'],.entityform di
 /* Download History */
 div.view-asset-download-history table.views-table tbody tr td{border: 1px solid #dedede;padding: 0 20px;text-align: center;}
 div.view-asset-download-history table.views-table tbody tr td:first-child{text-align: left;}
-
+div.asset-download-history-page .feed-icon{margin:10px 160px 0 0}
+div.asset-download-history-page .feed-icon a{background:#289048;color:#fff;padding: 10px 20px 10px 20px;margin:0;}
+div.asset-download-history-page .views-exposed-widgets{width:90%;}
+div.asset-download-history-page .view-asset-download-history table.views-table{width:100%}
 /*ending */
