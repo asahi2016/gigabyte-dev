@@ -582,18 +582,24 @@ function entityform_edit_form_submit(&$form, &$form_state) {
   else {
     $info = entity_get_info('entityform_type');
     $form_state['redirect'] = $info['admin ui']['path'] . "/manage/{$entityform_type->type}/submissions";
-      $tid = $entityform->field_roadmap_products['und'][0]['tid'];
-      switch($tid){
-          case 45:
-              $form_state['redirect'] = 'partner/product-roadmap/amd';
-              break;
-          case 46:
-              $form_state['redirect'] = 'partner/product-roadmap/brix';
-              break;
-          case 44:
-              $form_state['redirect'] = 'partner/product-roadmap/intel';
-              break;
 
+      if($entityform->type == "asset_upload_form"){
+          $form_state['redirect'] = 'partner/upload-assets';
+      }
+      if($entityform->type == "product_roadmap_form"){
+          $tid = $entityform->field_roadmap_products['und'][0]['tid'];
+          switch($tid){
+              case 45:
+                  $form_state['redirect'] = 'partner/product-roadmap/amd';
+                  break;
+              case 46:
+                  $form_state['redirect'] = 'partner/product-roadmap/brix';
+                  break;
+              case 44:
+                  $form_state['redirect'] = 'partner/product-roadmap/intel';
+                  break;
+
+          }
       }
     drupal_set_message($entityform_type->get_prop('submit_confirm_msg', $entityform));
   }
@@ -622,7 +628,7 @@ function entityform_delete_form($form, &$form_state, $entityform) {
 
   $form['#submit'][] = 'entityform_delete_form_submit';
   $entityform_type = entityform_type_load($entityform->type);
-  // @todo Where should a non-admin go when canceling?
+  //  Where should an admin go when canceling?
     switch($entityform->type){
         case 'asset_upload_form':
             $form = confirm_form($form,
@@ -643,6 +649,7 @@ function entityform_delete_form($form, &$form_state, $entityform) {
                 t('Cancel'),
                 'confirm'
             );
+            break;
     }
 
 
