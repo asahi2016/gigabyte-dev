@@ -2,6 +2,14 @@
     .messages.status{
         display: block !important;
     }
+    td.description{
+        color:black;
+        opacity: 0.5;
+        font-style: italic;
+        text-align: center;
+        text-size:10px;
+        padding:5px !important;
+    }
 </style>
 <?php
 $errors = array();
@@ -44,6 +52,9 @@ if(isset($variables['account']['errors']) && !empty($variables['account']['error
         <tr>
             <td valign="top" style="width:380px;"><?= $account['current_pass']['form'] ?> </td>
             <td valign="top" width="720"><?= $account['pass']['form'] ?></td>
+        </tr>
+        <tr>
+            <td colspan="3" class="description">(The password should be at least 8 letters including 1 uppercase, 1 lowercase.)</td>
         </tr>
         </tbody>
     </table>
