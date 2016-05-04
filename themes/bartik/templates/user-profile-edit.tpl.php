@@ -159,8 +159,19 @@ if(isset($variables['account']['errors']) && !empty($variables['account']['error
                 e.preventDefault();
                 if(!error) {
                     //make_enabled_account_fields();
+                    $('#edit-field-receive-newsletter-und input[type="radio"]').each(function () {
+                        $(this).removeAttr('disabled');
+                        $(this).attr('readonly','readonly');
+                    });
                     $('form#user-profile-form').attr('action', url);
                     $('form#user-profile-form').submit();
+
+                    $('#edit-field-receive-newsletter-und input[type="radio"]').each(function () {
+                        $(this).attr('disabled','disabled');
+                    });
+                }else{
+                   var pos =  $('span.custom-error').eq(0).offset().top;
+                    $("html, body").animate({ scrollTop: pos }, "slow");
                 }
                 return false;
             });
