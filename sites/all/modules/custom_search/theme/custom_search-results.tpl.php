@@ -20,13 +20,14 @@
  * @see template_preprocess_custom_search_results()
  */
 ?>
-<?php if ($search_results) : ?>
-  <h2><?php print t('Search results');?></h2>
-  <?php if (isset($filter) && $filter != '' && $filter_position == 'above') : ?>
+<h2><?php print t('Search results');?></h2>
+<?php if (isset($filter) && $filter != '' && $filter_position == 'above') : ?>
     <div class="custom-search-filter">
-      <?php print $filter; ?>
+        <?php print $filter; ?>
     </div>
-  <?php endif; ?>
+<?php endif; ?>
+
+<?php if ($search_results) : ?>
   <ol class="search-results <?php print $module; ?>-results">
     <?php print $search_results; ?>
   </ol>
@@ -37,6 +38,6 @@
   <?php endif; ?>
   <?php print $pager; ?>
 <?php else : ?>
-  <h2><?php print t('Your search yielded no results');?></h2>
-  <?php print search_help('search#noresults', drupal_help_arg()); ?>
+  <h2><?php print t('No results found...');?></h2>
+  <?php //print search_help('search#noresults', drupal_help_arg()); ?>
 <?php endif; ?>
