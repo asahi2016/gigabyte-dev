@@ -543,7 +543,6 @@ function entityform_edit_form_submit(&$form, &$form_state) {
       $redirect_path = $entityform_type->get_path_property('redirect_path', $entityform);
       if (!empty($redirect_path)) {
         $form_state['redirect'] = $redirect_path;
-          print_pre($entityform,1);
         switch($entityform->type){
             case 'asset_upload_form':
                 $form_state['redirect'] = 'partner/upload-assets';
