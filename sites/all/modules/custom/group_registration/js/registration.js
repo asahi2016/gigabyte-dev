@@ -5,7 +5,8 @@
             $('select#edit-user-roles').removeAttr('disabled');
             $('select#edit-field-country-und').removeAttr('disabled');
              if($('#account-setting').length == 0){
-                 make_enabled_fields();
+                 make_enabled_services_fields();
+                 make_remove_attr_readonly_fields();
                  setTimeout(function () {
                      make_disabled_and_readonly_fields();
                  },100);
@@ -291,9 +292,62 @@
                     }
                 }
             );
-       }
+        }
 
-       function make_disabled_and_readonly_fields() {
+
+        function make_remove_attr_readonly_fields() {
+            $('#edit-field-membership-account-und-0-value').removeAttr('disabled');
+            $('#edit-field-motherboard-qty-und-0-value').removeAttr('disabled');
+            $('#edit-field-other-programs-und-0-value').removeAttr('disabled');
+            $('#edit-field-other-distributor-und-0-value').removeAttr('disabled');
+            $('#edit-field-other-sub-distributor-und-0-value').removeAttr('disabled');
+
+            $('#edit-field-membership-account-und-0-value').removeAttr('readonly');
+            $('#edit-field-motherboard-qty-und-0-value').removeAttr('readonly');
+            $('#edit-field-other-programs-und-0-value').removeAttr('readonly');
+            $('#edit-field-other-distributor-und-0-value').removeAttr('readonly');
+            $('#edit-field-other-sub-distributor-und-0-value').removeAttr('readonly');
+        }
+
+        function make_enabled_services_fields() {
+
+            $('#edit-field-participating-programs-und input[type="checkbox"]').each(function () {
+                if($(this).is(':checked')){
+                    $(this).attr('readonly', 'readonly');
+                    $(this).removeAttr('disabled');
+                }
+                
+            });
+
+            $('#edit-field-choose-distributor-und input[type="checkbox"]').each(function () {
+                if($(this).is(':checked')){
+                    $(this).attr('readonly', 'readonly');
+                    $(this).removeAttr('disabled');
+                }
+            });
+
+            $('#edit-field-choose-sub-distributor-und input[type="checkbox"]').each(function () {
+                if($(this).is(':checked')){
+                    $(this).attr('readonly', 'readonly');
+                    $(this).removeAttr('disabled');
+                }
+            });
+
+            $('#edit-field-receive-newsletter-und input[type="radio"]').each(function () {
+                if($(this).is(':checked')){
+                    $(this).attr('readonly', 'readonly');
+                    $(this).removeAttr('disabled');
+                }
+            });
+
+            $('select#edit-user-roles').removeAttr('disabled');
+            $('select#edit-field-country-und').removeAttr('disabled');
+
+        }
+
+        function make_disabled_and_readonly_fields() {
+            $('select#edit-user-roles').attr('disabled','disabled');
+            $('select#edit-field-country-und').attr('disabled','disabled');
 
            $('#edit-field-participating-programs-und input[type="checkbox"]').each(function () {
                $(this).attr('disabled','disabled');
@@ -340,6 +394,9 @@
            $('#edit-field-other-programs-und-0-value').removeAttr('disabled');
            $('#edit-field-other-distributor-und-0-value').removeAttr('disabled');
            $('#edit-field-other-sub-distributor-und-0-value').removeAttr('disabled');
+           $('#edit-field-other-programs-und-0-value').removeAttr('readonly');
+           $('#edit-field-other-distributor-und-0-value').removeAttr('readonly');
+           $('#edit-field-other-sub-distributor-und-0-value').removeAttr('readonly');
 
        }
 
