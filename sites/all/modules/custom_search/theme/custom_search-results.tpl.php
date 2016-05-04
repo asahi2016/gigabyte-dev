@@ -38,6 +38,6 @@
   <?php endif; ?>
   <?php print $pager; ?>
 <?php else : ?>
-  <h2><?php print t('No results found...');?></h2>
+  <h4><?php print t('No results found...');?></h4>
   <?php //print search_help('search#noresults', drupal_help_arg()); ?>
 <?php endif; ?>
