@@ -1,11 +1,12 @@
 <?php
 
-function search_custom_preprocess_search_results(&$variables) {
+/*function search_custom_preprocess_search_results(&$variables) {
     global $base_path;
     drupal_add_library('system', 'ui.tabs');
     drupal_add_js('jQuery(document).ready(function(){jQuery("#tabs").tabs();});', 'inline');
     $variables['search_results'] = '';
     // get a list of node types
+
     $nodeTypes = node_type_get_types();
     // loop through results, group by type
     $resultTypes = array();
@@ -42,4 +43,9 @@ function search_custom_preprocess_search_results(&$variables) {
 
     $variables['search_results'] = $output;
 
-}
+}*/
+
+
+
+
+

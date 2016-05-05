@@ -36,16 +36,15 @@ function custom_search_preprocess_search_results(&$variables) {
         
       // Build menu.
       $items = array();
-      //$items[] = l(variable_get('custom_search_type_selector_all', CUSTOM_SEARCH_ALL_TEXT_DEFAULT), 'search/node/' . $keys);
-
+      $items[] = l(variable_get('custom_search_type_selector_all', CUSTOM_SEARCH_ALL_TEXT_DEFAULT), 'search/node/' . $keys);
 
         foreach ($node_types as $node_type) {
         // Count # of results per type.
         $nbresults = 1;
         foreach ($variables['results'] as $result) {
-          /*if ($result['node']->type == $node_type->type) {
+          if ($result['node']->type == $node_type->type) {
             $nbresults++;
-          }*/
+          }
         }
         if ($nbresults) {
           $items[] = l($node_type->name, 'search/node/' . $keys . ' type:' . $node_type->type);
@@ -55,8 +54,7 @@ function custom_search_preprocess_search_results(&$variables) {
         $variables['filter-title'] = filter_xss(variable_get('custom_search_filter_label', CUSTOM_SEARCH_FILTER_LABEL_DEFAULT));
       }
 
-
-      if (count($items) > 2) {
+      if (count($items) > 1) {
         $variables['filter'] = theme('item_list', array('items' => $items, 'title' => $variables['filter-title']));
       }
     }
