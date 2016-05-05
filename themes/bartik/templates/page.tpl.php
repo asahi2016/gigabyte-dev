@@ -179,6 +179,54 @@ if (in_array('administrator', array_values($user->roles))) {
     $access = false;
 }
 ?>
+<?php if(in_array('roadmap',$current_url) && in_array('submit',$current_url)){
+    $vocabulary = taxonomy_vocabulary_machine_name_load('Roadmap');
+    $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+    $tax_term = array();
+    foreach($terms as $key => $term){
+        $tax_term[] = $term->tid;
+    }
+    $entity_form_tid = $country = db_select('field_data_field_roadmap_products', 'f')
+        ->fields('f', array('field_roadmap_products_tid'))
+        ->execute()
+        ->fetchAll();
+
+    $roadmap_exists = array();
+
+    foreach($entity_form_tid as $k => $tid){
+        $exists = false;
+        if(in_array($tid->field_roadmap_products_tid,$tax_term)){
+            if(empty($roadmap_exists)){
+                $roadmap_exists[] = $tid->field_roadmap_products_tid;
+            }else{
+                if(in_array($tid->field_roadmap_products_tid,$roadmap_exists)){
+                    $exists = false;
+                }else{
+                    $roadmap_exists[] = $tid->field_roadmap_products_tid;
+                }
+            }
+        }
+    }
+
+?>
+<script>
+    jQuery(document).ready(function($){
+
+        <?php if(!empty($roadmap_exists)){ ?>
+            <?php foreach($roadmap_exists as $k => $v){ ?>
+            $("#edit-field-roadmap-products select#edit-field-roadmap-products-und option").each(function(){
+                console.log(<?php echo $v; ?>);
+                if($(this).val() == <?php echo $v; ?>){
+                    $(this).attr('disabled',true);
+                    $(this).attr('selected',false);
+                }
+            });
+            <?php } ?>
+        <?php drupal_set_message('Some of the Products might be disabled from selection if it already has a roadmap submitted.','warning'); } ?>
+
+    });
+</script>
+<?php } ?>
 <script type="text/javascript">
 jQuery(document) . ready(function () {
         country_id = <?php echo (!empty($_SESSION['user_country_id']) ? $_SESSION['user_country_id'] : 1) ?>;

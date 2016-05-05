@@ -287,12 +287,3 @@ function asset_upload_store_download_history(){
         echo $nid;
     }
 }
-
-/*
- * Ajax function to disable existing Roadmap items
- */
-function roadmap_disable_existing(){
-    $vocabulary = taxonomy_vocabulary_machine_name_load('Roadmap');
-    $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
-    print_pre($terms,1);
-}
