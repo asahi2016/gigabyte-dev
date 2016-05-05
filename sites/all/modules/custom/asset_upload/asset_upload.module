@@ -2,6 +2,28 @@
 
 
 function asset_upload_form_product_roadmap_form_entityform_edit_form_alter(&$form, &$form_state){
+    /*$vocabulary = taxonomy_vocabulary_machine_name_load('Roadmap');
+    $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+    $output = '<select id="edit-field-roadmap-products-und" name="field_roadmap_products[und]" class="form-select required" >';
+    foreach($terms as $key=>$term){
+        switch($term->name){
+            case 'AMD':
+                $output .= '<option value="'.$term->tid.'" disabled="disabled" >'.$term->name.'</option>';
+               // unset($form['field_roadmap_products']['und']['#options'][$term->tid]);
+                break;
+            case 'BRIX':
+                $output .= '<option value="'.$term->tid.'" disabled="disabled" >'.$term->name.'</option>';
+                //unset($form['field_roadmap_products']['und']['#options'][$term->tid]);
+                break;
+            case 'Intel':
+                $output .= '<option value="'.$term->tid.'" disabled="disabled" >'.$term->name.'</option>';
+                //unset($form['field_roadmap_products']['und']['#options'][$term->tid]);
+                break;
+        }
+    }
+    $output .= '</select>';
+    //$form['field_roadmap_products']['und']['#options']
+   // print_pre($form['field_roadmap_products']['und'],1);*/
    $form['#submit'][] = 'product_roadmap_form_submission';
 }
 
@@ -134,13 +156,12 @@ function asset_upload_views_pre_render(&$view) {
             }
             break;
         case 'asset_download_history':
-            //print_pre($view->result,1);
-            foreach($view->result as $key => $value){
-                $img = explode('/',$value->asset_download_history_file);
-                $image = $img[count($img)-1];
-
+            //print_pre($view->result);
+            foreach ($view->result as $key => $value) {
+                $img = explode('/', $value->asset_download_history_file);
+                $image = $img[count($img) - 1];
                 $value->asset_download_history_file = $image;
-                $value->asset_download_history_file_preview = html_entity_decode('<img src="'.image_style_url('thumbnail', $value->asset_download_history_file_preview).'" >');
+                $value->asset_download_history_file_preview = html_entity_decode('<img src="' . image_style_url('thumbnail', $value->asset_download_history_file_preview) . '" >');
             }
             //print_pre($view->result);
             break;
@@ -196,12 +217,33 @@ function asset_upload_views_pre_render(&$view) {
 }
 
 /**
+ * Implementation of hook_views_query_alter
+ * Alter view filter query to accommodate custom results
+ * @param type $view
+ * @param type $query
+ */
+/*function asset_upload_views_query_alter(&$view, &$query) {
+    print_pre($query);
+    switch($view->name){
+        case 'asset_download_history':
+            //$query->group_operator = "AND";
+            break;
+    }
+   // print_pre($query,1);
+}*/
+
+/**
  * Hooks menu
  */
 
 function asset_upload_menu(){
     $items['partner/asset/store/history'] = array(
         'page callback' => 'asset_upload_store_download_history',
+        'type' => MENU_CALLBACK,
+        'access arguments' => array('access content'),
+    );
+    $items['partner/roadmap/disable/existing'] = array(
+        'page callback' => 'roadmap_disable_existing',
         'type' => MENU_CALLBACK,
         'access arguments' => array('access content'),
     );
@@ -215,10 +257,9 @@ function asset_upload_menu(){
 function asset_upload_store_download_history(){
     global $user;
     $usr = user_load($user->uid);
-    $name = $usr->name;
+    $name = !empty($usr->field_first_name['und'][0]['value'])?$usr->field_first_name['und'][0]['value'].' '.$usr->field_last_name['und'][0]['value']:$usr->name;
     $email = $usr->mail;
     $download_date = date('Y-m-d h:i:s');
-    //print_pre($usr->roles,1);
     foreach($usr->roles as $key => $value){
         if($key != 2){
             $role = $value;
@@ -245,4 +286,13 @@ function asset_upload_store_download_history(){
         echo "Saved";
         echo $nid;
     }
+}
+
+/*
+ * Ajax function to disable existing Roadmap items
+ */
+function roadmap_disable_existing(){
+    $vocabulary = taxonomy_vocabulary_machine_name_load('Roadmap');
+    $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+    print_pre($terms,1);
 }
