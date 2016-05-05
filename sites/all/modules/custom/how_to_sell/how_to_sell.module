@@ -1,8 +1,10 @@
 <?php
 
-function how_to_sell_init(){
-
-    drupal_add_js(drupal_get_path('module', 'custom').'/how_to_sell/js/how_to_sell.js');
+function how_to_sell_init()
+{
+    if (arg(0) == 'partner' && arg(1) == 'how-to-sell-amd'||'how-to-sell-intel'  && arg(2) == null) {
+        drupal_add_js(drupal_get_path('module', 'custom') . '/how_to_sell/js/how_to_sell.js');
+    }
 }
 
 // Alter the webform elements
