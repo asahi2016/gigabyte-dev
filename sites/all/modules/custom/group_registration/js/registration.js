@@ -29,10 +29,14 @@
              }
          });
          $('#views-form-people-new-users-role-page .description').remove();
-         $('<h3>Are You Sure! You want to Approved the selected user(s).</h3>').insertAfter('#views-form-people-new-users-role-page .form-item-remove-roles');
-         $('#views-form-people-new-users-role-page .form-item-remove-roles').hide();
-         //Password field custom error message and description field position changes
 
+         if($('#views-form-people-new-users-role-page #edit-submit[value="Confirm"]').length > 0) {
+             $('.page-admin-people-new .page-title').text('Are you sure! You want to approved the following selected user(s).');
+             $('#views-form-people-new-users-role-page h3').text('You selected the following user(s):');
+         }
+         $('#views-form-people-new-users-role-page .form-item-remove-roles').hide();
+
+         //Password field custom error message and description field position changes
          var pwd_desc = $('.form-type-password-confirm .description');
          $('.form-type-password-confirm .password-parent').append(pwd_desc);
          var pwd_err_msg = $('#edit-account span.custom-error.edit-pass');
