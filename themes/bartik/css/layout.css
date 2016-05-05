@@ -1551,7 +1551,7 @@ table.txt_center{table-layout: fixed;}
 .node-partner_slider-form .form-type-link-field label{margin:10px 0px 0px 0px;}
 .custom-search-box{float:right;width:200px;}
 #header #site-search{width:715px;float:right;}
-#header #site-search .custom-search-button{width: 26px;height: 23px;margin:0px;}
+#header #site-search .custom-search-button{width: 26px;height: 23px;margin:0px;background: transparent;}
 #header #site-search .search-form .form-actions{float:right;margin: 0;padding: 0;width:inherit;}
 #site-search div.section{width:100%;}
 .field-name-field-slider-image .image-preview img{width:120px;height:120px;}
