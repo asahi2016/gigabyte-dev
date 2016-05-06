@@ -1472,13 +1472,13 @@ table.txt_center{table-layout: fixed;}
 .page-eform-submit-product-roadmap-form div.messages{width:950px;float:left;margin:0 0 10px 0;}
 .page-eform-submit-product-roadmap-form div.messages ul li{width:900px;margin:8px 15px 8px 0;}
 .page-eform-submit-product-roadmap-form .fel-field-label,.page-eform-submit-product-roadmap-form .form-type-managed-file label,.node-awards_reviews-form label,
-.entityform .fel-field-label,.entityform .form-type-managed-file label{float:left;margin:0 10px 0 0;min-width:300px;}
+.entityform .fel-field-label,.entityform .form-type-managed-file label,.node-e_catalogs-form .form-item label,.node-e_catalogs-form .field-type-file label{float:left;margin:0 10px 0 0;min-width:300px;}
 .entityform .field-multiple-table .fel-field-label{min-width:270px;}
 .entityform .field-name-field-upload-asset .form-type-managed-file label{min-width:275px;}
 .entityform .form-type-select select.form-select{width:200px;}
 .page-eform-submit-product-roadmap-form  #field-upload-images-roadmap-values .fel-field-label{min-width:250px;}
 .page-eform-submit-product-roadmap-form  #field-upload-images-roadmap-values .form-type-managed-file label{min-width:260px;}
-.page-eform-submit-product-roadmap-form  #field-upload-images-roadmap-values .form-text{width:200px;}
+.page-eform-submit-product-roadmap-form  #field-upload-images-roadmap-values .form-text,.node-e_catalogs-form .form-item input.form-text{width:200px;}
 .node-awards_reviews-form input.form-text{width:300px;}
 .node-awards_reviews-form .form-select{width:310px;}
 .node-awards_reviews-form .form-item{float:left;}
@@ -1624,3 +1624,20 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .sidebar-first.page-node .group-page-us-content table td {text-align:center;}
 .view-how-to-sell-wrapper .views-view-grid td{float:left;text-align:center;margin:20px 50px 0px 0px;}
 .view-how-to-sell-wrapper .views-view-grid td img{width:220px;height:220px;margin:0 0 20px 0;}
+.node-e_catalogs-form .field-name-field-upload-file-catalog{width:100%;}
+.node-e_catalogs-form .form-type-managed-file{float:left;width:100%;}
+.node-e_catalogs-form .messages.error{clear:both;width:100%;}
+.node-e_catalogs-form .views-field-field-upload-catalog-image img{width:220px;height:220px;}
+.node-e_catalogs-form .form-type-managed-file .image-preview img{width:120px;height:120px;}
+.node-e_catalogs-form .form-type-managed-file .image-preview img{width:120px;height:120px;}
+.node-e_catalogs-form .image-widget-data .file-icon{display:none;}
+.node-e_catalogs-form .image-widget-data a{width: 100px;overflow: hidden;float: left;height: 20px;}
+.node-e_catalogs-form .image-widget-data .file-size{width: 60px;float: left;margin: 0 10px 0 0;}
+.node-e_catalogs-form .field-name-field-upload-file-catalog .form-file,.node-e_catalogs-form .image-widget-data .form-file{float:left;margin:0 10px 0px 0px;}
+.node-e_catalogs-form .field-name-field-upload-file-catalog .form-submit{float:left;}
+#field-catalog-link-add-more-wrapper{clear:both;width:100%;}
+.view-e-catalogs-view{clear:both;float:left;}
+.node-e_catalogs-form .field-name-field-upload-file-catalog .form-managed-file img.file-icon{display:none;}
+.node-e_catalogs-form .field-name-field-upload-file-catalog .form-managed-file a{width:200px;overflow:hidden;float:left;height:20px;}
+.node-e_catalogs-form .field-name-field-upload-file-catalog .form-managed-file .file-size{width:80px;float:left;margin:0 10px 0px;}
+.node-e_catalogs-form .field-name-field-upload-file-catalog .form-managed-file input[value='Remove']{float:left;}
