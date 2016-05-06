@@ -33,6 +33,7 @@ function custom_search_preprocess_search_results(&$variables) {
       $searchable_node_types = array_keys(array_filter($searchable_node_types, 'custom_search_filter_array'));
 
       $all_results = content_search_execute_based_on_content($keys);
+        $variables['all_results']= count($all_results);
       $node_count = array();
       foreach($all_results as $node_key => $node){
           if(in_array(strtolower($node['node']->type), $searchable_node_types)){
@@ -57,16 +58,22 @@ function custom_search_preprocess_search_results(&$variables) {
             $nbresults++;
           }
         }
-        if ($nbresults) {
-          $cnt =  count($node_count[$node_type->type]);
-          $items[] = l($node_type->name, 'search/node/' . $keys . ' type:' . $node_type->type).' <span class="count">('.$cnt.')</span>';
+            $cnt =  count($node_count[$node_type->type]);
+        if ($nbresults) {   
+            if(!empty($node_type->type)){
+
+                if($cnt > 0 ){
+                    $items[] = l($node_type->name, 'search/node/' . $keys . ' type:' . $node_type->type).' <span class="count">('.$cnt.')</span>';
+                }
+
+            }
         }
       }
       if (!isset($variables['filter-title'])) {
         $variables['filter-title'] = filter_xss(variable_get('custom_search_filter_label', CUSTOM_SEARCH_FILTER_LABEL_DEFAULT));
       }
 
-      if (count($items) > 1) {
+      if ($items) {
         $variables['filter'] = theme('item_list', array('items' => $items, 'title' => $variables['filter-title']));
       }
     }

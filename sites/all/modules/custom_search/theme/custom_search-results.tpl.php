@@ -21,6 +21,7 @@
  */
 ?>
 <h2><?php print t('Search results');?></h2>
+<h2><?php print t('Results '.$all_results.' Items')?></h2>
 <?php if (isset($filter) && $filter != '' && $filter_position == 'above') : ?>
     <div class="custom-search-filter">
         <?php print $filter; ?>
