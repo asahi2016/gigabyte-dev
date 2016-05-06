@@ -1523,7 +1523,7 @@ table.txt_center{table-layout: fixed;}
 .page-partner-awards-reviews .view-awards-reviews .views-view-grid img{width:80px;height:80px;margin:0px auto;}
 .page-partner-awards-reviews .views-field-field-award-descriptions{font-weight:700;color:#333;font-size:14px;}
 .view-how-to-sell-view .views-view-grid .views-field img{width:220px;height:220px;}
-.view-how-to-sell-view .views-view-grid .views-field a{color:#23527c;text-decoration:underline;text-align: center;font-size: 16px;}
+.view-how-to-sell-view .views-view-grid .views-field a,.view-how-to-sell-wrapper .views-view-grid td a{color:#23527c;text-decoration:underline;text-align: center;font-size: 16px;text-decoration:none;}
 .view-how-to-sell-view .views-view-grid .views-field-nothing{width:220px;text-align:center;margin:20px 0px;}
 .node-partner_slider-form .form-type-link-field{float:left;width:100%;}
 .node-partner_slider-form .form-item label{float:left;width:300px;}
@@ -1622,3 +1622,5 @@ color:#fff;border: 1px solid rgba(176,195,232,1);}
 .search-results li{width:100%;margin:20px 0px 0px;}
 div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'], .entityform div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove']{float:left;}
 .sidebar-first.page-node .group-page-us-content table td {text-align:center;}
+.view-how-to-sell-wrapper .views-view-grid td{float:left;text-align:center;margin:20px 50px 0px 0px;}
+.view-how-to-sell-wrapper .views-view-grid td img{width:220px;height:220px;margin:0 0 20px 0;}
