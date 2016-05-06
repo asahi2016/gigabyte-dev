@@ -27,6 +27,7 @@
         <?php print $filter; ?>
     </div>
 <?php endif; ?>
+<h2><?php print t($name.' Results Shows '.$count.' Items' )?></h2>
 
 <?php if ($search_results) : ?>
   <ol class="search-results <?php print $module; ?>-results">

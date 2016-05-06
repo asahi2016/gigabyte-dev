@@ -24,60 +24,82 @@ function custom_search_preprocess_search_results(&$variables) {
       if (count($path) == 3) {
         $keys = $path[2];
       }
+        $type = false;
       if (strpos($keys, 'type:') !== FALSE) {
+          $type = drupal_substr($keys, strpos($keys, 'type:'));
+          $type = ($type) ? trim(str_replace('type:','',$type)) : 0;
           $keys = drupal_substr($keys, 0, strpos($keys, 'type:') - 1);
-      }
 
+      }
       // Get Custom Search authorized types.
       $searchable_node_types = variable_get('custom_search_node_types', array());
       $searchable_node_types = array_keys(array_filter($searchable_node_types, 'custom_search_filter_array'));
 
       $all_results = content_search_execute_based_on_content($keys);
-        $variables['all_results']= count($all_results);
+
       $node_count = array();
+      $nodetype = array();
+      $nodes_cnt = array();
+      $nodes_cnts = array();
+      $total = 0;
+
       foreach($all_results as $node_key => $node){
+
           if(in_array(strtolower($node['node']->type), $searchable_node_types)){
               $node_count[strtolower($node['node']->type)][$node_key] = $node['node']->type;
+              $nodes_cnts[$node['node']->type] = count($node_count[strtolower($node['node']->type)]);
+              $nodes_cnt[$node['node']->type] = $node['node']->type;
+              $nodetype[strtolower($node['node']->type)]['type']= $node['type'];
           }
+      }
+
+      foreach($nodes_cnts as $cn){
+          $total = $total+ $cn;
       }
 
       if (!count($searchable_node_types)) {
         $searchable_node_types = array_keys(node_type_get_names());
       }
-      $node_types = db_query("SELECT type, name FROM {node_type} WHERE type IN (:ntypes)", array(':ntypes' => $searchable_node_types));
+        $node_types = db_query("SELECT type, name FROM {node_type} WHERE type IN (:ntypes)", array(':ntypes' => $searchable_node_types));
         
       // Build menu.
-      $items = array();
-      //$items[] = l(variable_get('custom_search_type_selector_all', CUSTOM_SEARCH_ALL_TEXT_DEFAULT), 'search/node/' . $keys);
+        $items = array();
+        $items[] = l(variable_get('custom_search_type_selector_all', CUSTOM_SEARCH_ALL_TEXT_DEFAULT), 'search/node/' . $keys).' <span class="count">('.$total.')</span>';
 
+        $cnt = 0;
         foreach ($node_types as $node_type) {
-        // Count # of results per type.
-        $nbresults = 1;
-        foreach ($variables['results'] as $result) {
-          if ($result['node']->type == $node_type->type) {
-            $nbresults++;
-          }
-        }
-            $cnt =  count($node_count[$node_type->type]);
-        if ($nbresults) {   
-            if(!empty($node_type->type)){
+            // Count # of results per type.
+            $nbresults = 1;
+            $cnt = in_array($node_type->type , $nodes_cnt) ? count($node_count[$node_type->type]) : 0;
+            //$total = $total + $cnt;
 
-                if($cnt > 0 ){
-                    $items[] = l($node_type->name, 'search/node/' . $keys . ' type:' . $node_type->type).' <span class="count">('.$cnt.')</span>';
+            if ($nbresults) {
+                if(!empty($node_type->type)){
+                    if($cnt > 0 ){
+                        $items[] = l($node_type->name, 'search/node/' . $keys . ' type:' . $node_type->type).' <span class="count">('.$cnt.')</span>';
+                    }
+
                 }
-
             }
-        }
-      }
-      if (!isset($variables['filter-title'])) {
-        $variables['filter-title'] = filter_xss(variable_get('custom_search_filter_label', CUSTOM_SEARCH_FILTER_LABEL_DEFAULT));
-      }
+          }
+          $variables['name'] = 'All';
+          if($type !== false) {
+              $variables['count'] = count($node_count[$type]);
+              $variables['name'] = $nodetype[$type]['type'];
+          }else{
+              $variables['count'] = $total;
 
-      if ($items) {
-        $variables['filter'] = theme('item_list', array('items' => $items, 'title' => $variables['filter-title']));
+          }
+          $variables['all_results']= $total;
+          if (!isset($variables['filter-title'])) {
+            $variables['filter-title'] = filter_xss(variable_get('custom_search_filter_label', CUSTOM_SEARCH_FILTER_LABEL_DEFAULT));
+          }
+
+          if ($items) {
+            $variables['filter'] = theme('item_list', array('items' => $items, 'title' => $variables['filter-title']));
+          }
       }
-    }
-    $variables['theme_hook_suggestions'][] = 'custom_search_results';
+      $variables['theme_hook_suggestions'][] = 'custom_search_results';
   }
 }
 
@@ -102,7 +124,6 @@ function custom_search_preprocess_search_result(&$variables) {
 }
 
 function content_search_execute_based_on_content($keys){
-
 
     // Build matching conditions
     $query = db_select('search_index', 'i', array('target' => 'slave'))->extend('SearchQuery');
@@ -158,3 +179,5 @@ function content_search_execute_based_on_content($keys){
     }
     return $results;
 }
+
+
