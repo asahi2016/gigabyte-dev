@@ -13,7 +13,7 @@ jQuery(document).ready(function($) {
         $('#header-wrapper-right #block-system-user-menu li:nth-child(2).leaf').find('a').text( 'Back to Business Center');
     }else{
         $('#header-wrapper-right #block-system-user-menu li:nth-child(2).leaf').find('a').text('Back to Partner Portal');
-        $('#header-wrapper-right #block-system-user-menu li:nth-child(2).leaf').find('a').attr('href','/gigabyte/gigabyte/partner');
+        $('#header-wrapper-right #block-system-user-menu li:nth-child(2).leaf').find('a').attr('href',Drupal.settings.gigabyte.baseUrl+'/partner');
 
     }
     /*if(url_last == 'partner'){

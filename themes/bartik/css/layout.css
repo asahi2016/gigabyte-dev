@@ -261,7 +261,7 @@ fieldset.form-wrapper{
 .not-logged-in #content.partner-portal-login.split-page{width:700px;margin:0px 0px 0px;}
 
 .not-logged-in #content.partner-portal-login{width:1100px;}
-#content.partner-portal-login{width:92%;float:left;margin:0 0 0 35px;}
+#content.partner-portal-login{width:100%;float:left;margin:0 0 0 0px;}
 /*#block-user-login{width:335px;}*/
 #block-user-login h2{display: none}
 #block-user-login .form-text,#block-user-login label{    float: left;
@@ -1535,7 +1535,7 @@ table.txt_center{table-layout: fixed;}
 .jcarousel-skin-default .jcarousel-container-horizontal,.jcarousel-skin-default .jcarousel-clip-horizontal{width:100%;float:left;padding:0px 0px;}
 .jcarousel-skin-default .jcarousel-container-horizontal{height:409px;}
 .jcarousel-skin-default .jcarousel-item{width:1200px;height:409px;border:0px;}
-.one-sidebar .sidebar .block{margin:0px 0 20px;padding:0 0px 70px 0;width:100%;}
+.one-sidebar .sidebar .block{margin:0px 0 20px;padding:0 0px 0px 0;width:100%;}
 .one-sidebar #sidebar-second.sidebar .block{padding:0 30px 70px 0;width:inherit;float:right;}
 .one-sidebar .sidebar .section{padding-top:0px }
 .jcarousel-navigation{position:absolute;bottom:50px;width:100%;text-align:center;}
@@ -1621,3 +1621,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0c3e8', end
 color:#fff;border: 1px solid rgba(176,195,232,1);}
 .search-results li{width:100%;margin:20px 0px 0px;}
 div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'], .entityform div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove']{float:left;}
+.sidebar-first.page-node .group-page-us-content table td {text-align:center;}
