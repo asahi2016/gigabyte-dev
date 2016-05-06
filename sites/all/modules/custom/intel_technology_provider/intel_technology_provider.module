@@ -1,0 +1,80 @@
+<?php
+
+function intel_technology_provider_init(){
+
+    drupal_add_js(drupal_get_path('module', 'custom').'/intel_technology_provider/js/intel_technology_provider.js',array('scope' => 'footer'));
+}
+
+
+/**
+ * Implements hook_block_info().
+ */
+function intel_technology_provider_block_info() {
+
+    $blocks['intel_motherboard_models'] = array(
+        'info' => t('QUALIFYING MOTHERBOARD MODELS'),
+    );
+
+    $blocks['intel_brix_models'] = array(
+        'info' => t('QUALIFYING BRIX MODELS'),
+    );
+
+    return $blocks;
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+function intel_technology_provider_block_view($delta = '') {
+    $block = array();
+
+    switch ($delta) {
+        case 'intel_motherboard_models':
+            $block['content'] = theme('intel_motherboard_models', array('data' => ''));
+            break;
+
+        case 'intel_brix_models':
+
+            $block['content'] = theme('intel_brix_models', array('data' => ''));
+            break;
+    }
+
+    return $block;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function intel_technology_provider_theme(){
+
+    $path = drupal_get_path('module', 'intel_technology_provider') . '/templates';
+
+    return array('intel_motherboard_models' => array(
+        'path' => $path,
+        'template' => 'intel-motherboard-models',
+        'variables' => array('data' => NULL),
+    ),
+        'intel_brix_models' => array(
+            'path' => $path,
+            'template' => 'intel-brix-models',
+            'variables' => array('data' => NULL),
+        )
+    );
+}
+
+
+function template_preprocess_intel_motherboard_models(&$variables){
+    //$term = taxonomy_term_load($_POST['term_id']);
+    return $variables;
+
+}
+
+function template_preprocess_intel_brix_models(&$variables){
+    //$term = taxonomy_term_load($_POST['term_id']);
+    return $variables;
+
+}
+
+
+
