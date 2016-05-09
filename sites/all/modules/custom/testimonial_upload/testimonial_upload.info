@@ -1,0 +1,6 @@
+name = Testimonial Upload
+description = Admin Able to upload the testimonial content on the site
+version = 7.x
+core = 7.x
+package = Custom Module
+
