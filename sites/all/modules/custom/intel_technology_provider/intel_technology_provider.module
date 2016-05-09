@@ -6,6 +6,27 @@ function intel_technology_provider_init(){
 }
 
 
+function intel_technology_provider_menu(){
+
+    $items['partner/intel-technology-provider'] = array(
+        'title' => 'Display Intel Technology Provider Models',
+        'page callback' => 'display_intel_technology_provider_models', // Render HTML
+        'type' => MENU_CALLBACK,
+        'access arguments' => array('access content'),
+        'access callback' => TRUE,
+    );
+
+    return $items;
+
+}
+
+
+function display_intel_technology_provider_models(){
+
+    return theme('intel_technology_provider_models', array('data' => ''));
+}
+
+
 /**
  * Implements hook_block_info().
  */
@@ -50,17 +71,23 @@ function intel_technology_provider_theme(){
 
     $path = drupal_get_path('module', 'intel_technology_provider') . '/templates';
 
-    return array('intel_motherboard_models' => array(
-        'path' => $path,
-        'template' => 'intel-motherboard-models',
-        'variables' => array('data' => NULL),
-    ),
-        'intel_brix_models' => array(
-            'path' => $path,
-            'template' => 'intel-brix-models',
-            'variables' => array('data' => NULL),
-        )
-    );
+    return array(
+                'intel_technology_provider_models' => array(
+                    'path' => $path,
+                    'template' => 'intel-technology-provider-models',
+                    'variables' => array('data' => NULL),
+                ),
+                'intel_motherboard_models' => array(
+                    'path' => $path,
+                    'template' => 'intel-motherboard-models',
+                    'variables' => array('data' => NULL),
+                ),
+                'intel_brix_models' => array(
+                    'path' => $path,
+                    'template' => 'intel-brix-models',
+                    'variables' => array('data' => NULL),
+                )
+              );
 }
 
 
