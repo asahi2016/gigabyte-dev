@@ -9,7 +9,7 @@ function intel_technology_provider_init(){
 function intel_technology_provider_menu(){
 
     $items['partner/intel-technology-provider'] = array(
-        'title' => 'Display Intel Technology Provider Models',
+        'title' => '',
         'page callback' => 'display_intel_technology_provider_models', // Render HTML
         'type' => MENU_CALLBACK,
         'access arguments' => array('access content'),
@@ -91,8 +91,38 @@ function intel_technology_provider_theme(){
 }
 
 
-function template_preprocess_intel_motherboard_models(&$variables){
+function template_preprocess_intel_technology_provider_models(&$variables){
     //$term = taxonomy_term_load($_POST['term_id']);
+    $vocabs = taxonomy_get_vocabularies(NULL);
+    foreach ($vocabs as $vocab_object) {
+       //echo $vocab_object->name."<br>";
+    }
+    $name = 'QUALIFYING MOTHERBOARD MODELS';
+    //$myvoc = taxonomy_vocabulary_machine_name_load($name);
+    $vocabularies = taxonomy_vocabulary_load_multiple(NULL, array('machine_name' => $name));
+    //$tree = taxonomy_get_tree($myvoc->vid);
+
+    $query = db_select('taxonomy_vocabulary', 'tv');
+    $query->fields('tv', array(
+        'machine_name',
+        'vid',
+    ));
+    $query->condition('tv.name', $name, '=');
+    $vocabulary = $query->execute()->fetchObject();
+
+    $tree = taxonomy_vocabulary_load_multiple($vids = array($vocabulary->vid));
+    $tree = taxonomy_get_tree($vocabulary->vid);
+
+    print_pre($tree);
+
+   // print_pre($variables,1);
+    return $variables;
+
+}
+
+function template_preprocess_intel_motherboard_models(&$variables){
+
+    $term = taxonomy_term_load($_POST['term_id']);
     return $variables;
 
 }
