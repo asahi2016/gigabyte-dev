@@ -8,7 +8,7 @@ function intel_technology_provider_init(){
 
 function intel_technology_provider_menu(){
 
-    $items['partner/intel-technology-provider'] = array(
+    $items['intel-technology-provider'] = array(
         'title' => '',
         'page callback' => 'display_intel_technology_provider_models', // Render HTML
         'type' => MENU_CALLBACK,
