@@ -52,12 +52,12 @@ function intel_technology_provider_block_view($delta = '') {
 
     switch ($delta) {
         case 'intel_motherboard_models':
-            $block['content'] = theme('intel_motherboard_models', array('data' => ''));
+            $block['content'] = theme('intel_motherboard_models', array('motherboard' => ''));
             break;
 
         case 'intel_brix_models':
 
-            $block['content'] = theme('intel_brix_models', array('data' => ''));
+            $block['content'] = theme('intel_brix_models', array('brix' => ''));
             break;
     }
 
@@ -80,55 +80,149 @@ function intel_technology_provider_theme(){
                 'intel_motherboard_models' => array(
                     'path' => $path,
                     'template' => 'intel-motherboard-models',
-                    'variables' => array('data' => NULL),
+                    'variables' => array('motherboard' => NULL),
+                ),
+                'intel_motherboard_models_normal' => array(
+                    'path' => $path,
+                    'template' => 'intel-motherboard-models-normal',
+                    'variables' => array('motherboard_normal' => NULL),
                 ),
                 'intel_brix_models' => array(
                     'path' => $path,
                     'template' => 'intel-brix-models',
-                    'variables' => array('data' => NULL),
+                    'variables' => array('brix' => NULL),
                 )
               );
 }
 
 
 function template_preprocess_intel_technology_provider_models(&$variables){
-    //$term = taxonomy_term_load($_POST['term_id']);
-    $vocabs = taxonomy_get_vocabularies(NULL);
-    foreach ($vocabs as $vocab_object) {
-       //echo $vocab_object->name."<br>";
-    }
-    $name = 'QUALIFYING MOTHERBOARD MODELS';
-    //$myvoc = taxonomy_vocabulary_machine_name_load($name);
-    $vocabularies = taxonomy_vocabulary_load_multiple(NULL, array('machine_name' => $name));
-    //$tree = taxonomy_get_tree($myvoc->vid);
 
-    $query = db_select('taxonomy_vocabulary', 'tv');
-    $query->fields('tv', array(
-        'machine_name',
-        'vid',
-    ));
-    $query->condition('tv.name', $name, '=');
-    $vocabulary = $query->execute()->fetchObject();
+    $motherboard_models_term_name = 'QUALIFYING MOTHERBOARD MODELS';
 
-    $tree = taxonomy_vocabulary_load_multiple($vids = array($vocabulary->vid));
-    $tree = taxonomy_get_tree($vocabulary->vid);
+    $motherboard_models = get_vocabulary_terms_info_by_taxonomy_name($motherboard_models_term_name, 'motherboard');
 
-    print_pre($tree);
+    $motherboard_models_output = theme('intel_motherboard_models', array('motherboard' => $motherboard_models));
+    $motherboard_models_normal_output = theme('intel_motherboard_models_normal', array('motherboard_normal' => $motherboard_models));
 
-   // print_pre($variables,1);
+    $variables['intel_motherboard_models'] = $motherboard_models_output;
+    $variables['intel_motherboard_models_normal'] = $motherboard_models_normal_output;
+
+    $brix_models_term_name = 'QUALIFYING BRIX MODELS';
+
+    $brix_models = get_vocabulary_terms_info_by_taxonomy_name($brix_models_term_name, 'brix');
+
+    $brix_models_output = theme('intel_brix_models', array('brix' => $brix_models));
+
+    $variables['intel_brix_models'] = $brix_models_output;
+
     return $variables;
+
+}
+
+function get_vocabulary_terms_info_by_taxonomy_name($name  = NULL, $model = NULL){
+
+    if(!empty($name)){
+
+        $query = db_select('taxonomy_vocabulary', 'tv');
+        $query->fields('tv', array(
+            'machine_name',
+            'vid',
+        ));
+        $query->condition('tv.name', $name, '=');
+        $vocabulary_obj = $query->execute()->fetchObject();
+
+        $terms = taxonomy_get_tree($vocabulary_obj->vid);
+
+        foreach ($terms as $key => $term){
+            $terms[$key]->term = taxonomy_term_load($term->tid);
+
+            if($model == 'motherboard') {
+                $terms[$key]->term->points = taxonomy_term_load($terms[$key]->term->field_motherboard_points['und'][0]['tid'])->name;
+            }elseif ($model == 'brix'){
+                $terms[$key]->term->points = taxonomy_term_load($terms[$key]->term->field_brix_points['und'][0]['tid'])->name;
+            }
+
+        }
+
+        $filtered_terms = get_points_related_taxonomy_grouped_terms($terms);
+
+        return $filtered_terms;
+
+    }
+
+    return false;
+
+}
+
+
+function get_points_related_taxonomy_grouped_terms($terms = array()){
+
+    if($terms){
+
+        $points_terms = array();
+        $terms_points = array();
+
+        foreach ($terms as $key => $term){
+
+            if($term->depth > 0){
+
+                $parent_id = null;
+                foreach ($term->parents as $k => $parents){
+                    $parent_id = $parents;
+                }
+                $parent_id_points = $terms_points[$parent_id]['points'];
+                $parent_id_key = $terms_points[$parent_id]['key'];
+                $points_terms[$parent_id_points][$parent_id_key]->subterm[] = $term;
+
+
+            }else{
+
+                $points = (int)$term->term->points;
+                $points_terms[$points][] = $term;
+                $last_key = null;
+                foreach ($points_terms[$points] as $lkey => $val){
+                    $last_key = $lkey;
+                }
+
+                $terms_points[$term->tid] = array('points' => $points, 'key' => $last_key);
+
+            }
+        }
+
+    }
+
+    return $points_terms;
 
 }
 
 function template_preprocess_intel_motherboard_models(&$variables){
 
-    $term = taxonomy_term_load($_POST['term_id']);
     return $variables;
 
 }
 
+
+function template_preprocess_intel_motherboard_models_normal(&$variables){
+
+    $motherboard_normal = array();
+    foreach($variables['motherboard_normal'] as $points => $terms){
+        foreach ($terms as $term){
+            $motherboard_normal[] = $term;
+        }
+    }
+
+    $variables['normal_motherboard'] = $motherboard_normal;
+
+    return $variables;
+
+}
+
+
 function template_preprocess_intel_brix_models(&$variables){
-    //$term = taxonomy_term_load($_POST['term_id']);
+
+    //print_pre($variables['brix']);
+
     return $variables;
 
 }
