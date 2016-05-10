@@ -42,7 +42,6 @@ jQuery(document).ready(function($){
 
 
     function file_ajax_save(imgpath){
-        alert('here');
         $.ajax({
             url:Drupal.settings.gigabyte.baseUrl+'/partner/asset/store/history',
             type:'post',

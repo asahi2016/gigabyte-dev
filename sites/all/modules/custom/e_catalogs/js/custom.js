@@ -1,5 +1,4 @@
 jQuery(document).ready(function($){
-    alert('here');
     //Colorbox Popup Load for E-Catalogs
     //$('a.catalog-popup-link img').attr('href');
 
