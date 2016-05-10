@@ -21,14 +21,6 @@ function asset_upload_form_asset_upload_form_entityform_edit_form_alter(&$form, 
     //print_pre($form_state,1);
 }
 
-function getRoundedsize($bytes){
-    $decimals = 2;
-    $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
-    $factor = floor((strlen($bytes) - 1) / 3);
-    return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
-
-}
-
 /**
  * View alter to display the file info for each file type for TAL nodes
  * @param $view
@@ -52,6 +44,7 @@ function asset_upload_views_pre_render(&$view) {
     drupal_add_js($base_url.'/sites/all/modules/custom/asset_upload/js/custom.js');
     switch($view->name){
         case 'clone_of_entityforms':
+            // Do action on asset upload view, edit image preview display
             //print_pre($view->result,1);
             foreach($view->result as $key => $value){
                 //print_pre($value,1);

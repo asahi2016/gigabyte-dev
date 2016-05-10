@@ -11,17 +11,12 @@ function e_catalogs_form_e_catalogs_node_form_alter(&$form, &$form_state, $form_
  */
 
 function e_catalogs_views_pre_render(&$view) {
+    global $base_url;
+    drupal_add_js($base_url.'/sites/all/modules/custom/e_catalogs/js/custom.js');
+    // what needs to be done for each view
     switch($view->name){
         case 'e_catalogs_view':
-            foreach($view->result as $key => $value){
-                $img = array();
-                print_pre($value,1);
-                $img['uri'] = $value->field_field_upload_file_catalog[0]['rendered']['#file']->uri;
-                $img['title'] = $value->node_title;
-                $img['link'] = $value->field_field_catalog_link[0]['rendered']['#element']['url'];
-                //$value->field_field_upload_file_catalog[0]['rendered']['#markup'] = '<a href="'.$img['uri'].'" class="catalog-link" >'.$img['title'].'</a>';
-                //print_pre($img,1);
-            }
+            drupal_add_js($base_url.'/sites/all/modules/custom/e_catalogs/js/custom.js');
             break;
     }
 }
