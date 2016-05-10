@@ -1,0 +1,6 @@
+name = E-Catalogs
+description = Administrator can add E-Catalogs and can display it to the user on a separate page
+version = 7.x
+core = 7.x
+package = Custom Module
+dependencies[] = views
