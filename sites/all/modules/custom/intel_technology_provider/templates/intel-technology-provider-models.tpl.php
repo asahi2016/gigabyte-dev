@@ -4,8 +4,8 @@ global $base_url;
 <table class="tbl_intel_tech">
     <tbody>
     <tr>
-        <td><img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/ITP intro.jpg" alt="" /></td>
-        <td rowspan="2" width="250" style="font-family: 'Raleway', sans-serif; vertical-align:baseline;">
+        <td valign="top"><img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/ITP intro.jpg" alt="" /></td>
+        <td rowspan="2" width="250" style="font-family: 'Raleway', sans-serif; vertical-align:baseline;" valign="top">
             <div style="width:240px; background:#0070ac; margin:0 auto 0 auto; height:1740px;">
                 <div style="font-size:20px; font-weight:700; text-align:center; color:#ffffff; padding-top:50px;">ITP GIGABYTE<br />PRODUCT TRAINING</div>
                 <div style="background:#ffffff; height:3px; width:210px; margin:0 auto 0 auto;"></div>
@@ -45,7 +45,7 @@ global $base_url;
 
             <div class="claim"><a href="Claim_Rewards.html"><div>Claim Your Rewards</div></a></div>
 
-            <div style="width:950px; margin:0 auto 0 auto; margin-top:40px; color:white; font-size:25px; font-family: 'Raleway', sans-serif;"><div style="background:#007dc5; padding-left:30px;">INTEL TECHNOLOGY PROVIDER POINTS</div></div>
+            <div style="width:950px; margin:0 auto 0 auto; margin-top:40px; color:white; font-size:25px; font-family: 'ralewayregular', sans-serif;"><div style="background:#007dc5; padding-left:30px;">INTEL TECHNOLOGY PROVIDER POINTS</div></div>
 
             <?php print $intel_motherboard_models; ?>
 
@@ -53,17 +53,17 @@ global $base_url;
 
             <div class="claim"><a href="Claim_Rewards.html"><div>Claim Your Rewards</div></a></div>
 
-            <div style="width:950px; margin:0 auto 0 auto;margin-top:40px; color:white; font-size:25px; font-family: 'Raleway', sans-serif;"><div style="width:950px; background:#007dc5; padding-left:30px;">GIGABYTE REWARD PROGRAM</div></div>
+            <div style="width:950px; margin:0 auto 0 auto;margin-top:40px; color:white; font-size:25px; font-family: 'ralewayregular', sans-serif;"><div style="width:920px; background:#007dc5; padding-left:30px;">GIGABYTE REWARD PROGRAM</div></div>
 
             <table style="width:900px; margin-top:5px;">
                 <tbody>
                 <tr>
-                    <td rowspan="2" style="color:#e21f26; font-size:150px; font-family:DINCondensedC; text-align:center; width:150px; line-height:50px;">2% <span style="font-size:60px;">REBATE</span></td>
+                    <td rowspan="2" style="color:#e21f26; font-size:150px; font-family:DINCondensedC; text-align:center; width:150px; line-height:50px;vertical-align: middle" >2% <span style="font-size:60px;">REBATE</span></td>
                     <td style="color:#615e5f; font-size:40px; font-family:DINCondensedC; padding-left:39px;">WITH ELIGIBLE GOLD AND PLATINUM<br />INTEL® TECHNOLOGY PROVIDERS PURCHASE</td>
                 </tr>
                 <tr>
                     <td>
-                        <ul style="font-family: 'Raleway', sans-serif; font-weight:700;">
+                        <ul style="font-family: 'ralewayregular', sans-serif; font-weight:700;">
                             <li style="list-style-type:disc;">When eligible Gold and Platinum Intel Technology Providers purchase GIGABYTE qualified Motherboards models will receive a 2% rebate.</li>
                             <li style="list-style-type:disc;">200+ pcs qualified products per month (mix and match)</li>
                             <li style="list-style-type:disc;">This program does NOT apply to any GIGABYTE direct US etailer/retailer customers.</li>
@@ -85,7 +85,7 @@ global $base_url;
     <tbody>
     <tr>
         <td>
-            <table style="font-family: 'Raleway', sans-serif; font-weight:700; width:850px; text-align:left; font-size:20px; color:#5d5d5e;">
+            <table style="font-family: 'ralewayregular', sans-serif; font-weight:700;margin:0px auto; width:850px; text-align:left; font-size:20px; color:#5d5d5e;">
                 <tbody>
                 <tr>
                     <td colspan="2">GIGABYTE AUTHORIZED DISTRIBUTORS</td>
@@ -134,7 +134,7 @@ global $base_url;
     </tbody>
 </table>
 
-<div style="width:250px; margin:10px auto 0 auto; font-family: 'Raleway', sans-serif; color:#295e95; font-weight:900; font-size:20px;"><a class="inline" href="#Terms" id="terms-link">TERMS AND CONDITIONS</a></div>
+<div style="width:250px; margin:10px auto 0 auto; font-family: 'ralewayregular', sans-serif; color:#295e95; font-weight:900; font-size:20px;"><a class="inline" href="#Terms" id="terms-link">TERMS AND CONDITIONS</a></div>
 <div id="term-conditions" style="display: none;">
     <div id="Terms">
         <ul>
