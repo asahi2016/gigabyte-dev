@@ -2,28 +2,6 @@
 
 
 function asset_upload_form_product_roadmap_form_entityform_edit_form_alter(&$form, &$form_state){
-    /*$vocabulary = taxonomy_vocabulary_machine_name_load('Roadmap');
-    $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
-    $output = '<select id="edit-field-roadmap-products-und" name="field_roadmap_products[und]" class="form-select required" >';
-    foreach($terms as $key=>$term){
-        switch($term->name){
-            case 'AMD':
-                $output .= '<option value="'.$term->tid.'" disabled="disabled" >'.$term->name.'</option>';
-               // unset($form['field_roadmap_products']['und']['#options'][$term->tid]);
-                break;
-            case 'BRIX':
-                $output .= '<option value="'.$term->tid.'" disabled="disabled" >'.$term->name.'</option>';
-                //unset($form['field_roadmap_products']['und']['#options'][$term->tid]);
-                break;
-            case 'Intel':
-                $output .= '<option value="'.$term->tid.'" disabled="disabled" >'.$term->name.'</option>';
-                //unset($form['field_roadmap_products']['und']['#options'][$term->tid]);
-                break;
-        }
-    }
-    $output .= '</select>';
-    //$form['field_roadmap_products']['und']['#options']
-   // print_pre($form['field_roadmap_products']['und'],1);*/
    $form['#submit'][] = 'product_roadmap_form_submission';
 }
 
