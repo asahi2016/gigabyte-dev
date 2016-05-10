@@ -4,15 +4,15 @@ global $base_url;
 <table class="tbl_intel_tech">
     <tbody>
     <tr>
-        <td><img src="<?php echo $base_url; ?>/sites/default/files/ITP/ITP intro.jpg" alt="" /></td>
+        <td><img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/ITP intro.jpg" alt="" /></td>
         <td rowspan="2" width="250" style="font-family: 'Raleway', sans-serif; vertical-align:baseline;">
             <div style="width:240px; background:#0070ac; margin:0 auto 0 auto; height:1740px;">
                 <div style="font-size:20px; font-weight:700; text-align:center; color:#ffffff; padding-top:50px;">ITP GIGABYTE<br />PRODUCT TRAINING</div>
                 <div style="background:#ffffff; height:3px; width:210px; margin:0 auto 0 auto;"></div>
-                <div style="width:200px; margin:5px auto 0 auto; height:143px; background:url('<?php echo $base_url; ?>/sites/default/files/ITP/g1 gaming icon.jpg'); background-size:cover;">
+                <div style="width:200px; margin:5px auto 0 auto; height:143px; background:url('<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/g1 gaming icon.jpg'); background-size:cover;">
                     <a href="http://channeltraining.intel.com/diweb/gateway/init/1/f/catalog*2Fitem*2Feid*2F29668" target="_blank">
                         <div style="height:50px;"></div>
-                        <div class="txt_center"><img src="<?php echo $base_url; ?>/sites/default/files/ITP/play_icon.png" width="40" /></div>
+                        <div class="txt_center"><img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/play_icon.png" width="40" /></div>
                         <div style="height:50px;"></div>
                     </a>
                 </div>
@@ -26,10 +26,10 @@ global $base_url;
             <table class="benefits">
                 <tbody>
                 <tr class="txt_center">
-                    <td width="237"><img src="<?php echo $base_url; ?>/sites/default/files/ITP/register icon.jpg" width="200" /></td>
-                    <td width="237"><img src="<?php echo $base_url; ?>/sites/default/files/ITP/purchase icon.jpg" width="200" /></td>
-                    <td width="237"><img src="<?php echo $base_url; ?>/sites/default/files/ITP/no cap icon.jpg" width="200" /></td>
-                    <td width="237"><img src="<?php echo $base_url; ?>/sites/default/files/ITP/double up icon.jpg" width="200" /></td>
+                    <td width="237"><img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/register icon.jpg" width="200" /></td>
+                    <td width="237"><img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/purchase icon.jpg" width="200" /></td>
+                    <td width="237"><img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/no cap icon.jpg" width="200" /></td>
+                    <td width="237"><img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/double up icon.jpg" width="200" /></td>
                 </tr>
                 <tr style="font-weight:700; font-size:16px; color:#999999;">
                     <td>Not an intel Technology Provider? Learn more about the program and register <a href="http://techpartner.intel.com/gigabyte" target="_blank">here</a>.</td>
@@ -863,25 +863,25 @@ global $base_url;
                     <td>USA</td>
                     <td>
                         <a href="http://www.asipartner.com/" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/default/files/ITP/ASI.png" />
+                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/ASI.png" />
                         </a>
                         <a href="http://www.avnet.com/en-us/Pages/default.aspx" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/default/files/ITP/AVNET.png" />
+                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/AVNET.png" />
                         </a>
                         <a href="https://www.dandh.com/v4/view?pageReq=dhMainNS" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/default/files/ITP/DH.png" />
+                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/DH.png" />
                         </a>
                         <a href="http://www.ingrammicro.com/IMD_WASWeb/jsp/login/corporate.jsp" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/default/files/ITP/IngramLogo-240px.png" width="100" />
+                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/IngramLogo-240px.png" width="100" />
                         </a>
                         <a href="https://www.leadertechusa.com/Default.asp" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/default/files/ITP/LeaderTech.png" />
+                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/LeaderTech.png" />
                         </a>
                         <a href="http://www.malabs.com/" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/default/files/ITP/MaLabs.png" />
+                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/MaLabs.png" />
                         </a>
                         <a href="http://www.synnex.com/" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/default/files/ITP/Synnex.png" />
+                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/Synnex.png" />
                         </a>
                     </td>
                 </tr>
@@ -889,10 +889,10 @@ global $base_url;
                     <td>CANADA</td>
                     <td>
                         <a href="http://www.asipartner.com/" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/default/files/ITP/ASI.png" />
+                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/ASI.png" />
                         </a>
                         <a href="http://www.synnex.com/" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/default/files/ITP/Synnex.png" />
+                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/Synnex.png" />
                         </a>
                     </td>
                 </tr>
