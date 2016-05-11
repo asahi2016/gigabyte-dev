@@ -259,7 +259,7 @@ fieldset.form-wrapper{
 .not-logged-in #content.partner-portal-login.split-page{width:600px;margin:30px 0px 0px;}
 
 .wrapper_full li{list-style-type: none;float:left;margin:0px 40px 0 0}
-.not-logged-in #content.partner-portal-login.split-page{width:700px;margin:0px 0px 0px;}
+.not-logged-in #content.partner-portal-login.split-page{width:570px;margin:0px 0px 0 130px;}
 
 .not-logged-in #content.partner-portal-login{width:1200px;}
 #content.partner-portal-login{width:100%;float:left;margin:0 0 0 0px;}
@@ -618,7 +618,7 @@ a.join_a_tag,a.join_a_tag:link,a.join_a_tag:visited{color:#fff;text-decoration:u
 .white {color: white;}
 .w150 {width: 150px;}
 .m_bottom50 {margin-bottom: 50px;}
-.blue_c_box{background:#1F67A8;padding:75px 25px;font-size: 16px;font-family: ralewayheavy;line-height:20px;width:970px;}
+.blue_c_box{background:#1F67A8;padding:75px 25px;font-size: 16px;font-family: ralewayheavy;line-height:20px;width:950px;}
 .blue_c_box h3{color: #fff;font-size: 17px;font-weight: bold;margin: 10px 0 5px 0;font-family: ralewaybold;float: left;width: 100%;}
 .blue_c_box  p{color: #fff;font-family: ralewayregular;font-size: 17px;line-height: 24px;}
 .replace_servic th{background:#004282;font-family:ralewayregular;font-size:17px;color:#fff;}
@@ -1405,7 +1405,9 @@ form .field-name-field-upload-images-roadmap .field-add-more-submit{margin:10px 
 .node-testimonial-form .form-select{margin:0 0 0 10px;}
 .node-testimonial-form .field-name-field-upload-pdf{width:100%;}
 .node-testimonial-form .form-managed-file {float:left;margin:0 0 0 5px;}
+.node-testimonial-form .field-type-image .image-widget-data{clear:both;}
 .node-testimonial-form .description{clear:both;}
+.node-testimonial-form .file-icon{display:none;}
 .node-testimonial-form .form-textarea-wrapper{float:left;width:470px;margin:0 0 0 10px;}
 .node-testimonial-form  input[value='Submit']{float:left;margin:15px 0 0 410px;}
 .node-testimonial-form .messages.error{width:90%;}
@@ -1519,8 +1521,8 @@ table.txt_center{table-layout: fixed;}
 .page-eform-submit-product-roadmap-form .form-managed-file .file-size{float: left;margin: 0 10px 0 5px;width: 80px;}
 .page-eform-submit-product-roadmap-form .fieldset-wrapper .image-widget-data .form-item{display:none;}
 .page-eform-submit-product-roadmap-form  table.sticky-enabled tr.draggable td .image-preview img{width:120px;height:120px;}
-.product-roadmap-wrapper .field-name-field-upload-image-roadmap-fc img{width:450px;height:330px;margin:0px 30px 0px 30px; cursor:pointer;}
-.product-roadmap-wrapper .field-name-field-upload-image-roadmap-fc .field-items .field-item{float:left;}
+.product-roadmap-wrapper .field-name-field-upload-image-roadmap-fc img{width:450px;height:330px;cursor:pointer;margin:0 50px 0px;padding:0px;}
+.product-roadmap-wrapper li:nth-child(2n) .field-name-field-upload-image-roadmap-fc img{margin:0 0px 0px 0px;}
 .views-field-field-upload-file-roadmap .field-content {float:right;}
 .view-how-to-sell-view .views-exposed-widget,.page-partner-awards-reviews .views-exposed-widget{width:100%}
 .bef-select-as-links .form-type-bef-link  a{display: block;color: #666;text-align: center;padding: 6px 30px;text-decoration: none;cursor: pointer;}
@@ -1539,6 +1541,7 @@ table.txt_center{table-layout: fixed;}
 .view-how-to-sell-view .views-view-grid .views-field img{width:220px;height:220px;}
 .view-how-to-sell-view .views-view-grid .views-field a,.view-how-to-sell-wrapper .views-view-grid td a{color:#23527c;text-decoration:underline;text-align: center;font-size: 16px;text-decoration:none;}
 .view-how-to-sell-view .views-view-grid .views-field-nothing{width:220px;text-align:center;margin:20px 0px;}
+.view-how-to-sell-view .marker,.view-how-to-sell-amd .marker{float:right;}
 .node-partner_slider-form .form-type-link-field{float:left;width:100%;}
 .node-partner_slider-form .form-item label{float:left;width:300px;}
 .node-partner_slider-form .form-item input.form-text{float:left;width:200px;}
@@ -1550,7 +1553,7 @@ table.txt_center{table-layout: fixed;}
 .jcarousel-skin-default .jcarousel-container-horizontal{height:409px;}
 .jcarousel-skin-default .jcarousel-item{width:1200px;height:409px;border:0px;}
 .one-sidebar .sidebar .block{margin:0px 0 20px;padding:0 0px 0px 0;width:100%;}
-.one-sidebar #sidebar-second.sidebar .block{padding:0 30px 70px 0;width:inherit;float:right;}
+.one-sidebar #sidebar-second.sidebar .block{padding:0 0px 70px 15px;width:inherit;float:left;}
 .one-sidebar .sidebar .section{padding-top:0px }
 .jcarousel-navigation{position:absolute;bottom:50px;width:100%;text-align:center;}
 .jcarousel-navigation li a span{width: 20px;height: 20px;border-radius: 10px;color: #000;background-color: rgba(0, 0, 0, 0.2);border: 2px solid rgba(255, 255, 255, 0.7);text-indent:-999em;color: transparent;margin:0 1px 0 1px;display: inline-block;}
@@ -1661,15 +1664,17 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .node-testimonial-form .form-managed-file .form-file,.node-testimonial-form .form-managed-file .form-submit{float:left;}
 .node-testimonial-form .form-managed-file .form-submit{margin:0 0 0 10px;}
 .node-testimonial-form .form-managed-file .custom-error{float:right;}
-.view-testimonial .views-view-grid td img,.view-testimonial .views-view-grid td .testimonial-video-field iframe{width:300px;height:258px;float:left;}
+.view-testimonial .views-view-grid td img,.view-testimonial .views-view-grid td .testimonial-video-field iframe,.view-clone-of-testimonial .views-view-grid td .testimonial-video-field iframe,
+.view-clone-of-testimonial .views-view-grid td img{width:300px;height:258px;float:left;}
 .testimonial-title-field {margin: 20px auto 0 auto;width: 300px;font-size: 20px;color:#000;}
-.view-testimonial .views-view-grid td{vertical-align:top;opacity: .7; -webkit-transition: all .5s ease;-moz-transition: all .5s ease;-ms-transition: all .5s ease; -o-transition: all .5s ease;transition: all .5s ease;}
-.view-testimonial .views-view-grid td:hover{opacity:1;}
-.view-testimonial .views-view-grid td a,.view-testimonial .views-view-grid td a:hover{text-decoration:none;}
-.view-testimonial .views-field .testimonial-pdf-image-field{float:left;}
-.view-testimonial .views-field .testimonial-custom-text-field{float:left;text-align:center;}
-.view-testimonial .testimonial-custom-text-field .testimonial-created,.view-testimonial .testimonial-custom-text-field .testimonial-type-field{margin: 0 auto 0 auto;width: 300px;font-size: 12px;color:#808080;}
-.view-testimonial .testimonial-description-field{margin: 0 auto 0 auto;width: 300px;color:#000;font-size:14px;}
+.view-testimonial .views-view-grid td,.view-clone-of-testimonial .views-view-grid td{vertical-align:top;opacity: .7; -webkit-transition: all .5s ease;-moz-transition: all .5s ease;-ms-transition: all .5s ease; -o-transition: all .5s ease;transition: all .5s ease;}
+.view-testimonial .views-view-grid td:hover,.view-clone-of-testimonial .views-view-grid td:hover{opacity:1;}
+.view-testimonial .views-view-grid td a,.view-testimonial .views-view-grid td a:hover,.view-clone-of-testimonial .views-view-grid td a:hover{text-decoration:none;}
+.view-testimonial .views-field .testimonial-pdf-image-field,.view-clone-of-testimonial .views-field .testimonial-pdf-image-field{float:left;}
+.view-testimonial .views-field .testimonial-custom-text-field,.view-testimonial .views-field .testimonial-pdf-image-field,.view-clone-of-testimonial .views-field .testimonial-pdf-image-field,.view-clone-of-testimonial .views-field .testimonial-custom-text-field{float:left;text-align:center;}
+.view-testimonial .testimonial-custom-text-field .testimonial-created,.view-testimonial .testimonial-custom-text-field .testimonial-type-field,
+.view-clone-of-testimonial .testimonial-custom-text-field .testimonial-created,.view-clone-of-testimonial .testimonial-custom-text-field .testimonial-type-field{margin: 0 auto 0 auto;width: 300px;font-size: 12px;color:#808080;}
+.view-testimonial .testimonial-description-field,.view-clone-of-testimonial .testimonial-description-field{margin: 0 auto 0 auto;width: 300px;color:#000;font-size:14px;}
 .page-intel-technology-provider table.tbl_intel_tech td{vertical-align:top;}
 .page-intel-technology-provider .claim{width: 250px;margin: 20px auto 0 auto;text-align: center;}
 .page-intel-technology-provider .claim a,.claim a:hover{text-decoration:none;}
@@ -1684,14 +1689,23 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .page-intel-technology-provider .itp > tbody > tr > td > ul > li a:hover:not(.active){color: #fbb040;background-color: #ffffff;}
 .view-e-catalogs-view{width:1000px;margin:0px auto;}
 .view-e-catalogs-view li .views-field-nothing{color:#337ab7;text-decoration:none;font-size:12px;text-align:center;}
-.view-e-catalogs-view li .views-field-timestamp{float:left;position: absolute;bottom:50px;right: 35px;}
+.view-e-catalogs-view li .views-field-timestamp{float:left;position: absolute;top:228px;right: 45px;}
+.view-clone-of-testimonial .testimonial-custom-text-field  .testimonial-created,.view-testimonial .testimonial-custom-text-field  .testimonial-created{display: inline-block;width: auto;}
+.view-clone-of-testimonial .testimonial-timestamp,.view-testimonial .testimonial-timestamp{display:inline-block;margin:0 0 0 8px;}
+.view-clone-of-testimonial .testimonial-type-field,.view-testimonial .testimonial-type-field{clear:both;}
 .view-e-catalogs-view li .views-field-nothing:hover{color:#23527c;text-decoration:none;}
 .view-e-catalogs-view li .views-field:first-child{background: url("../images/E-Catalogs/e-Cacalog-BK.png");background-repeat: no-repeat;background-position: center;width:300px;height:220px;text-align:center;cursor:zoom-in;float:left;}
 .view-e-catalogs-view li .views-field img{width:214px;margin:30px 0px 0px;cursor:zoom-in;}
 .view-e-catalogs-view li.views-row{position:relative;margin:20px 10px 0;float: left;}
 .view-e-catalogs-view li .btn a{margin:0px;}
-.view-e-catalogs-view .marker{color: red;font-size: 30px;text-transform:uppercase;}
+.view-e-catalogs-view .marker,.testimonial-timestamp .new-label,.marker{color: red;font-size: 30px;text-transform:uppercase;background:url('../images/new.gif') 0px 0px no-repeat;width:35px;height:14px;float:left;text-indent:-9999em;}
 .view-e-catalogs-view .btn{cursor:default;margin: 0px 5px 0 10px;padding: 0px;}
 .view-e-catalogs-view .views-field-edit-node,.view-e-catalogs-view .views-field-delete-node{float:left;margin:30px 0px 0px;}
 /* .page-node .group-page-us-content .field-name-body{width:1000px;margin:0px auto;} */
 .page-testimonial h1.title{width:1000px;margin:0px auto;padding:30px 0px;}
+.view-product-roadmap-amd,.view-product-roadmap-brix,.view-product-roadmap-intel{width:1000px;margin:0px auto;}
+.view-product-roadmap-amd .item-list li,.view-product-roadmap-brix .item-list li,.view-product-roadmap-intel .item-list li{padding:0px;}
+.view-product-roadmap-amd .views-row-odd .views-field .btn a,.view-product-roadmap-brix .views-row-odd .views-field .btn a,.view-product-roadmap-intel .views-row-odd .views-field .btn a{margin:0px 0px 0 0px}
+#user-login-form .form-actions input.form-submit{float:left;margin:0 0 0 170px;}
+#request.back2{float:left;width:1020px;}
+h1#page-title{width:1000px;margin:0px auto;padding:30px 0px;}
