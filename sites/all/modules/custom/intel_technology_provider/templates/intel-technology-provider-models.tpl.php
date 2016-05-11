@@ -33,8 +33,8 @@ global $base_url;
                 </tr>
                 <tr style="font-weight:700; font-size:16px; color:#999999;">
                     <td>Not an intel Technology Provider? Learn more about the program and register <a href="http://techpartner.intel.com/gigabyte" target="_blank">here</a>.</td>
-                    <td>Buy qualified GIGABYTE motherboards and BRIX and earn points with Intel Technology Provider.</td>
-                    <td>Participation in the program is available to eligible Gold and Platinum Intel Technology Providers.</td>
+                    <td>Buy qualified GIGABYTE motherboards and BRIX and earn points with Intel Technology Provider.</td>
+                    <td>Participation in the program is available to eligible Gold and Platinum Intel Technology Providers.</td>
                     <td>
                         Purchase GIGABYTE motherboards and BRIX today and double your rewards.<br /><br />
                         You will earn points with Intel Technology Provider plus GIGABYTE rewards.
@@ -85,56 +85,13 @@ global $base_url;
     <tbody>
     <tr>
         <td>
-            <table style="font-family: 'ralewayregular', sans-serif; font-weight:700;margin:0px auto; width:850px; text-align:left; font-size:20px; color:#5d5d5e;">
-                <tbody>
-                <tr>
-                    <td colspan="2">GIGABYTE AUTHORIZED DISTRIBUTORS</td>
-                </tr>
-                <tr>
-                    <td>USA</td>
-                    <td>
-                        <a href="http://www.asipartner.com/" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/ASI.png" />
-                        </a>
-                        <a href="http://www.avnet.com/en-us/Pages/default.aspx" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/AVNET.png" />
-                        </a>
-                        <a href="https://www.dandh.com/v4/view?pageReq=dhMainNS" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/DH.png" />
-                        </a>
-                        <a href="http://www.ingrammicro.com/IMD_WASWeb/jsp/login/corporate.jsp" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/IngramLogo-240px.png" width="100" />
-                        </a>
-                        <a href="https://www.leadertechusa.com/Default.asp" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/LeaderTech.png" />
-                        </a>
-                        <a href="http://www.malabs.com/" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/MaLabs.png" />
-                        </a>
-                        <a href="http://www.synnex.com/" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/Synnex.png" />
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>CANADA</td>
-                    <td>
-                        <a href="http://www.asipartner.com/" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/ASI.png" />
-                        </a>
-                        <a href="http://www.synnex.com/" target="_blank">
-                            <img src="<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/Synnex.png" />
-                        </a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <?php print $gigabyte_authorized_distributors; ?>
         </td>
     </tr>
     </tbody>
 </table>
 
-<div style="width:250px; margin:10px auto 0 auto; font-family: 'ralewayregular', sans-serif; color:#295e95; font-weight:900; font-size:20px;"><a class="inline" href="#Terms" id="terms-link">TERMS AND CONDITIONS</a></div>
+<div style="width:265px; margin:10px auto 0 auto; font-family: 'ralewayregular', sans-serif; color:#295e95; font-weight:900; font-size:20px;"><a class="inline" href="#Terms" id="terms-link">TERMS AND CONDITIONS</a></div>
 <div id="term-conditions" style="display: none;">
     <div id="Terms">
         <ul>

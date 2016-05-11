@@ -1,9 +1,18 @@
 <table style="margin-top:10px;" class="itp">
     <tbody>
     <tr style="color:#007dc5;">
-        <td width="150"></td>
-        <td>QUALIFYING MOTHERBOARD MODELS <span style="color:black">(click to see more)</span></td>
+        <td>
+            <table cellspacing="0" cellpadding="0" style="margin:10px 0 0 110px;float:left;table-layout:fixed">
+                <tr>
+                    <td>QUALIFYING MOTHERBOARD MODELS <span style="color:black">(click to see more)</span></td>
+                </tr>
+            </table>
+        </td>
     </tr>
+    </tbody>
+</table>
+<table cellpadding="0" cellspacing="0" class="itp" style="margin:10px 0 0 240px;">
+    <tbody>
     <?php if($variables['normal_motherboard']){
         $i=0;
         foreach ($variables['normal_motherboard'] as $points => $term) {
@@ -12,7 +21,7 @@
             <?php if ($out == 0) { ?>
                 <tr>
             <?php } ?>
-            <td>
+            <td style="padding:0 0 10px 0;">
                 <ul>
                     <li>
                         <a class="inline root-term" href="javascript:void(0);" rel="<?php print $term->tid; ?>"><?php print $term->name; ?></a>

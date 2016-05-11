@@ -89,6 +89,11 @@ function intel_technology_provider_theme(){
                     'path' => $path,
                     'template' => 'intel-brix-models',
                     'variables' => array('brix' => NULL),
+                ),
+                'gigabyte_authorized_distributors' => array(
+                    'path' => $path,
+                    'template' => 'gigabyte-authorized-distributors',
+                    'variables' => array('distributors' => NULL),
                 )
               );
 }
@@ -114,9 +119,35 @@ function template_preprocess_intel_technology_provider_models(&$variables){
 
     $variables['intel_brix_models'] = $brix_models_output;
 
+    $gigabyte_authorized_distributors = 'GIGABYTE AUTHORIZED DISTRIBUTORS';
+    $gigabyte_distributors = get_gigabyte_authorized_distributors($gigabyte_authorized_distributors, 'gigabyte_authorized_distributors');
+    $gigabyte_distributors_output = theme('gigabyte_authorized_distributors', array('distributors' => $gigabyte_distributors));
+    $variables['gigabyte_authorized_distributors'] = $gigabyte_distributors_output;
+
     return $variables;
 
 }
+
+function get_gigabyte_authorized_distributors($name  = NULL, $model = NULL){
+
+    $query = db_select('taxonomy_vocabulary', 'tv');
+    $query->fields('tv', array(
+        'machine_name',
+        'vid',
+    ));
+    $query->condition('tv.name', $name, '=');
+    $vocabulary_obj = $query->execute()->fetchObject();
+
+    $terms = taxonomy_get_tree($vocabulary_obj->vid);
+
+    foreach ($terms as $key => $term){
+        $terms[$key]->term = taxonomy_term_load($term->tid);
+    }
+
+    return $terms;
+
+}
+
 
 function get_vocabulary_terms_info_by_taxonomy_name($name  = NULL, $model = NULL){
 
@@ -225,5 +256,18 @@ function template_preprocess_intel_brix_models(&$variables){
 
 }
 
+function template_preprocess_gigabyte_authorized_distributors(&$variables){
 
+    $gigabyte_authorized_distributors = array();
+
+    foreach ($variables['distributors'] as $key => $terms){
+        $country_tid = $terms->term->field_distributor_country['und'][0]['tid'];
+        $gigabyte_authorized_distributors[$country_tid][] = $terms;
+    }
+
+    unset($variables['distributors']);
+    $variables['distributors'] = $gigabyte_authorized_distributors;
+
+    return $variables;
+}
 
