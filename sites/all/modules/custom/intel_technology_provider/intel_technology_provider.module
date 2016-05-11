@@ -9,10 +9,8 @@ function intel_technology_provider_init(){
 function intel_technology_provider_menu(){
 
     $items['intel/technology/provider'] = array(
-        'title' => '',
         'page callback' => 'display_intel_technology_provider_models', // Render HTML
         'type' => MENU_CALLBACK,
-        'access arguments' => array('access content'),
         'access callback' => TRUE,
     );
 
