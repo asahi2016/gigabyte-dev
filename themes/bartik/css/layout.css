@@ -1689,6 +1689,8 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .page-intel-technology-provider .itp > tbody > tr > td > ul > li a:hover:not(.active){color: #fbb040;background-color: #ffffff;}
 .view-e-catalogs-view{width:1000px;margin:0px auto;}
 .view-e-catalogs-view li .views-field-nothing{color:#337ab7;text-decoration:none;font-size:12px;text-align:center;}
+.view-e-catalogs-view li .views-field-nothing span{display: inline-block;margin:3px 0px 0 10px}
+.view-e-catalogs-view li .views-field-nothing a{float: left;}
 .view-e-catalogs-view li .views-field-timestamp{float:left;position: absolute;top:228px;right: 45px;}
 .view-clone-of-testimonial .testimonial-custom-text-field  .testimonial-created,.view-testimonial .testimonial-custom-text-field  .testimonial-created{display: inline-block;width: auto;}
 .view-clone-of-testimonial .testimonial-timestamp,.view-testimonial .testimonial-timestamp{display:inline-block;margin:0 0 0 8px;}
@@ -1697,10 +1699,12 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .view-e-catalogs-view li .views-field:first-child{background: url("../images/E-Catalogs/e-Cacalog-BK.png");background-repeat: no-repeat;background-position: center;width:300px;height:220px;text-align:center;cursor:zoom-in;float:left;}
 .view-e-catalogs-view li .views-field img{width:214px;margin:30px 0px 0px;cursor:zoom-in;}
 .view-e-catalogs-view li.views-row{position:relative;margin:20px 10px 0;float: left;}
-.view-e-catalogs-view li .btn a{margin:0px;}
+.view-e-catalogs-view li .btn a{margin:0px;width:50px;}
 .view-e-catalogs-view .marker,.testimonial-timestamp .new-label,.marker{color: red;font-size: 30px;text-transform:uppercase;background:url('../images/new.gif') 0px 0px no-repeat;width:35px;height:14px;float:left;text-indent:-9999em;}
 .view-e-catalogs-view .btn{cursor:default;margin: 0px 5px 0 10px;padding: 0px;}
-.view-e-catalogs-view .views-field-edit-node,.view-e-catalogs-view .views-field-delete-node{float:left;margin:30px 0px 0px;}
+.view-e-catalogs-view .views-field-edit-node,.view-e-catalogs-view .views-field-delete-node{text-align: center;width: 49%;display: inline-block;margin:20px 0px 0px;}
+.view-e-catalogs-view .views-field-edit-node{text-align:right;}
+.view-e-catalogs-view .views-field-delete-node{text-align:left;}
 /* .page-node .group-page-us-content .field-name-body{width:1000px;margin:0px auto;} */
 .page-testimonial h1.title{width:1000px;margin:0px auto;padding:30px 0px;}
 .view-product-roadmap-amd,.view-product-roadmap-brix,.view-product-roadmap-intel{width:1000px;margin:0px auto;}
