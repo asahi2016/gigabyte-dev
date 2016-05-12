@@ -30,7 +30,7 @@
                                 <table class="title">
                                     <tbody>
                                     <tr>
-                                        <td>EARN 15 INTEL® TECHNOLOGY PROVIDER POINTS<br>WITH THE FOLLOWING MODELS</td>
+                                        <td>EARN <?php print $points; ?> INTEL® TECHNOLOGY PROVIDER POINTS<br>WITH THE FOLLOWING MODELS</td>
                                     </tr>
                                     </tbody>
                                 </table>

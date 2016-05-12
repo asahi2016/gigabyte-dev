@@ -955,7 +955,7 @@ form.node-tools_assets_logos-form {float:left;border:2px solid #eee;padding:20px
 .view-assets-upload-view .views-table td.views-field-edit-node,.view-assets-upload-view .views-table td.views-field-delete-node{clear:inherit}
 .view-assets-upload-view .views-table ul li table.sticky-enabled {width:250px;}
 .view-assets-upload-view .views-table ul li table.sticky-enabled tr td:last-child,.view-assets-upload-view .views-table ul li table.sticky-enabled tr th:last-child {border:0px;}
-.view-assets-upload-view .views-table ul li table.sticky-enabled tr td,.view-assets-upload-view .views-table ul li table.sticky-enabled tr th{width:125px;word-break:break-word;}
+.view-assets-upload-view .views-table ul li table.sticky-enabled tr td,.view-assets-upload-view .views-table ul li table.sticky-enabled tr th{width:125px;word-break:break-all;}
 
 #block-webform-client-block-76 .form-item{float:left;width:auto;}
 #block-webform-client-block-76 .form-item .custom-error{float:right;margin:0 0 0 125px;}
@@ -1252,7 +1252,7 @@ padding:10px;}
 .assets-row-list-partner .field-type-file{width:100%;}
 .assets-upload-display table.views-table th:first-child{width:330px;border:0px;}
 .assets-upload-display table.views-table td:first-child img{min-width:90%;padding:0 10% 0 0;cursor:pointer;max-height:140px;}
-.assets-upload-display table.views-table td img.file-icon{min-height:200;width:16x;height:16px;}
+.assets-upload-display table.views-table td img.file-icon{min-height:200px;width:16px;height:16px;}
 .assets-upload-display table.views-table td .file img.file-icond{min-height:inherit;}
 .views-exposed-form .views-exposed-widget{float:left;width:400px;}
 .view-how-to-sell-amd .views-exposed-form #edit-term-node-tid-depth-wrapper{float:left;width:98%;}
@@ -1706,6 +1706,8 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .view-e-catalogs-view .views-field-edit-node{text-align:right;}
 .view-e-catalogs-view .views-field-delete-node{text-align:left;}
 /* .page-node .group-page-us-content .field-name-body{width:1000px;margin:0px auto;} */
+.view-e-catalogs-view .views-field-edit-node,.view-e-catalogs-view .views-field-delete-node{float:left;margin:30px 0px 0px;}
+.page-node .group-page-us-content .field-name-body{width:1000px;margin:0px auto;} 
 .page-testimonial h1.title{width:1000px;margin:0px auto;padding:30px 0px;}
 .view-product-roadmap-amd,.view-product-roadmap-brix,.view-product-roadmap-intel{width:1000px;margin:0px auto;}
 .view-product-roadmap-amd .item-list li,.view-product-roadmap-brix .item-list li,.view-product-roadmap-intel .item-list li{padding:0px;}
@@ -1713,3 +1715,23 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 #user-login-form .form-actions input.form-submit{float:left;margin:0 0 0 170px;}
 #request.back2{float:left;width:1020px;}
 h1#page-title{width:1000px;margin:0px auto;padding:30px 0px;}
+.page-intel-technology #cboxTopCenter,.page-intel-technology #cboxMiddleLeft,.page-intel-technology #cboxMiddleRight,.page-intel-technology #cboxBottomCenter,
+.page-intel-technology #cboxTopRight,.page-intel-technology #cboxTopLeft,.page-intel-technology #cboxBottomLeft,.page-intel-technology #cboxTopRight,.page-intel-technology #cboxBottomRight{background:none;}
+.page-intel-technology #cboxContent{border:5px solid #000;}
+.page-intel-technology table.title{background: url(../colorbox/images/blue_background.png);background-position: center center;background-repeat: no-repeat;background-size: cover;width: 100%;height: 80px;margin:0px;font-size:14px;}
+.page-intel-technology table.title td{color:#333;}
+.page-intel-technology table.serie_name {width: 700px;text-align: center;font-size: 20px;font-weight: 700;background-color: #236db6; color: white;margin:0px auto;}
+.page-intel-technology table.pop{width: 1000px;text-align: center;font-size: 20px;font-weight: 700;table-layout:fixed;}
+.page-intel-technology table.pop td{width: 230px;display: inline-block;text-align: left;float: left;padding: 10px;}
+.page-intel-technology #cboxClose{background: url(../colorbox/images/controls_tab.png) no-repeat -31px 0;top: 0;right: 10px;width: 35px;outline:none;}
+.page-intel-technology #cboxClose:hover{background-position: -31px -111px;}
+.page-intel-technology #cboxMiddleLeft,.page-intel-technology #cboxMiddleRight{width:0px;}
+/*.page-intel-technology #cboxTopCenter,.page-intel-technology #cboxBottomCenter{height:0px;}*/
+.page-intel-technology #cboxLoadedContent{margin-bottom:0px;}
+.page-intel-technology #cboxTopRight,.page-intel-technology #cboxTopCenter,.page-intel-technology #cboxTopLeft,.page-intel-technology #cboxBottomLeft,.page-intel-technology #cboxBottomCenter,.page-intel-technology #cboxBottomRight{width:0px;height:0px;}
+#testimonial-node-form > div > div.messages.error{display:none;}
+.page-intel-technology table.tbl_intel_tech .views-field-nothing,table.tbl_intel_tech .views-field-nothing img{width:200px;height:150px;margin:0px auto;}
+.page-intel-technology table.tbl_intel_tech .views-field-nothing span,table.tbl_intel_tech .views-field-nothing a{float:left;}
+.page-intel-technology table.tbl_intel_tech .views-field-nothing img{margin:10px 0px;}
+.page-intel-technology table.tbl_intel_tech .view-itp-gigabyte-product-training .views-field-body{width:200px;margin:0px auto;}
+.page-intel-technology table.tbl_intel_tech .view-itp-gigabyte-product-training .views-field-body p{color:#fff;font-size:12px;}
