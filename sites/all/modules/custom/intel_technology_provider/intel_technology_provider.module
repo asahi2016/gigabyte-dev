@@ -19,6 +19,23 @@ function intel_technology_provider_menu(){
 
 }
 
+function intel_technology_provider_form_itp_training_node_form_alter(&$form,&$form_state, &$form_id){
+
+    if($form_id == 'itp_training_node_form'){
+        $form['options']['promote']['#value'] = 0;
+        $form['ajax-submit']['#value'] = t('Submit');
+        $form['ajax-submit']['#submit'][] = 'itp_form_submit';
+        unset($form['ajax-submit']['#ajax']);
+    }
+
+    return $form;
+}
+
+function itp_form_submit(&$form,&$form_state){
+
+    $current_url = url(current_path(), array('absolute' => TRUE));
+    $form_state['redirect'] = $current_url;
+}
 
 function display_intel_technology_provider_models(){
 
@@ -152,7 +169,6 @@ function get_gigabyte_authorized_distributors($name  = NULL, $model = NULL){
     return $terms;
 
 }
-
 
 function get_vocabulary_terms_info_by_taxonomy_name($name  = NULL, $model = NULL){
 
