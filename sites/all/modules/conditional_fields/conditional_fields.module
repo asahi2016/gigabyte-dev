@@ -794,9 +794,9 @@ function conditional_fields_form_validate($form, &$form_state) {
 
     // Reinstate remaining error messages (which, at this point, are messages that
     // were originated outside of the validation process).
-    foreach (array_diff($error_messages['error'], $removed_messages) as $message) {
+    /*foreach (array_diff($error_messages['error'], $removed_messages) as $message) {
       drupal_set_message($message, 'error');
-    }
+    }*/
   }
 }
 
