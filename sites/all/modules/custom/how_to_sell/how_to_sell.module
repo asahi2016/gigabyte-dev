@@ -6,33 +6,31 @@ function how_to_sell_init()
         drupal_add_js(drupal_get_path('module', 'custom') . '/how_to_sell/js/how_to_sell.js');
     }
 }
-
 // Alter the webform elements
 function how_to_sell_form_how_to_sell_node_form_alter(&$form, &$form_state, $form_id){
 
     if($form_id == 'how_to_sell_node_form'){
         $form['title']['#title'] ='Model Name';
-        $form['#validate'][] = 'how_to_sell_form_validation';
         $form['options']['promote']['#value'] = 0;
+        $form['#validate'][] = 'how_to_sell_form_validation';
+        $form['ajax-submit']['#submit'][] = 'how_to_sell_form_submit';
         $form['ajax-submit']['#value'] = t('Submit');
-        $form['#submit'][] = 'create_how_to_sell_content';
-        $form['#submit'][] = 'how_to_sell_form_submit';
-
+        unset($form['ajax-submit']['#ajax']);
     }
-   //print_pre($form,1);
+
    return $form;
 }
 
-//remove the promote to front page element
-function create_how_to_sell_content(){
-
-    $form_state['values']['promote'] = 0;
-}
 function how_to_sell_form_validation(&$form, &$form_state){
-    //$form_state['rebuild'] = true;
     // Append custom error message element with content
     how_to_sell_errors_reset($form);
 
+}
+
+function how_to_sell_form_submit(&$form,&$form_state){
+
+    $current_url = url(current_path(), array('absolute' => TRUE));
+    $form_state['redirect'] = $current_url;
 }
 
 function how_to_sell_errors_reset(&$element){
@@ -85,15 +83,7 @@ function how_to_sell_errors_reset(&$element){
             $reset_errors[ $element[ '#id' ] ] = $error_message;
         }
     }
-
     return $reset_errors;
-
-}
-
-function how_to_sell_form_submit(&$form,&$form_state){
-
-    //drupal_set_message(t('How To Sell form uploaded successfully'));
-    //print_pre($form_state,1);
 }
 
 function how_to_sell_views_pre_render(&$view){
@@ -102,18 +92,18 @@ function how_to_sell_views_pre_render(&$view){
 
         if($view->name == 'how_to_sell_view' || $view->name == 'how_to_sell_amd'){
             foreach($view->result as $key => $value){
-                $uri = $view->result[$key]->field_field_file_pdf[0]['rendered']['#file']->uri;
-                $uri = str_replace('public://','',$uri);
-                $uri_title_pdf = '../sites/default/files/'.$uri;
-                $uri_image_pdf = 'sites/default/files/'.$uri;
-                $view->result[$key]->field_field_file_image[0]['rendered']['#path']['path'] = $uri_image_pdf;
-                $view->result[$key]->field_field_file_pdf_1[0]['rendered']['#markup'] = $uri_title_pdf;
-
+                if(isset($view->result[$key]->field_field_file_pdf[0])){
+                    $uri = $view->result[$key]->field_field_file_pdf[0]['rendered']['#file']->uri;
+                    $uri = str_replace('public://','',$uri);
+                    $uri_title_pdf = '../sites/default/files/'.$uri;
+                    $uri_image_pdf = 'sites/default/files/'.$uri;
+                    $view->result[$key]->field_field_file_image[0]['rendered']['#path']['path'] = $uri_image_pdf;
+                    $view->result[$key]->field_field_file_pdf_1[0]['rendered']['#markup'] = $uri_title_pdf;
+                }
             }
         }
     }
     return $view;
-
 }
 
 
