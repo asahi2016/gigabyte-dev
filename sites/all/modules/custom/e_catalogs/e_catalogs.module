@@ -2,6 +2,14 @@
 
 function e_catalogs_form_e_catalogs_node_form_alter(&$form, &$form_state, $form_id){
     $form['options']['promote']['#value'] = 0;
+    $form['ajax-submit']['#submit'][] =  'e_catalogs_custom_submit';
+    unset($form['ajax-submit']['#ajax']);
+
+}
+
+function e_catalogs_custom_submit($form,&$form_state){
+    $current_url = url(current_path(), array('absolute' => TRUE));
+    $form_state['redirect'] = 'partner/e-catalogs/upload/';
 }
 
 /**
