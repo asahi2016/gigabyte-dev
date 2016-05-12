@@ -1,7 +1,8 @@
 <?php
 
 function intel_technology_provider_init(){
-
+    $css = ".page-intel-technology div.messages.error {display : none}";
+    drupal_add_css($css, 'inline');
     drupal_add_js(drupal_get_path('module', 'custom').'/intel_technology_provider/js/intel_technology_provider.js',array('scope' => 'footer'));
 }
 
@@ -123,6 +124,10 @@ function template_preprocess_intel_technology_provider_models(&$variables){
     $gigabyte_distributors = get_gigabyte_authorized_distributors($gigabyte_authorized_distributors, 'gigabyte_authorized_distributors');
     $gigabyte_distributors_output = theme('gigabyte_authorized_distributors', array('distributors' => $gigabyte_distributors));
     $variables['gigabyte_authorized_distributors'] = $gigabyte_distributors_output;
+
+    $video_content = (module_invoke('views', 'block_view', 'itp_gigabyte_product_training-block'))? module_invoke('views', 'block_view', 'itp_gigabyte_product_training-block') :'';
+
+    $variables['itp_gigabyte_product_training'] = $video_content;
 
     return $variables;
 

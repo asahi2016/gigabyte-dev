@@ -9,6 +9,7 @@ global $base_url;
             <div style="width:240px; background:#0070ac; margin:0 auto 0 auto; height:1740px;">
                 <div style="font-size:20px; font-weight:700; text-align:center; color:#ffffff; padding-top:50px;">ITP GIGABYTE<br />PRODUCT TRAINING</div>
                 <div style="background:#ffffff; height:3px; width:210px; margin:0 auto 0 auto;"></div>
+                <?php print render($itp_gigabyte_product_training);?>
                 <div style="width:200px; margin:5px auto 0 auto; height:143px; background:url('<?php echo $base_url; ?>/sites/all/modules/custom/intel_technology_provider/images/ITP/g1 gaming icon.jpg'); background-size:cover;">
                     <a href="http://channeltraining.intel.com/diweb/gateway/init/1/f/catalog*2Fitem*2Feid*2F29668" target="_blank">
                         <div style="height:50px;"></div>
