@@ -50,8 +50,8 @@ global $base_url;
             <table style="width:900px; margin-top:5px;">
                 <tbody>
                 <tr>
-                    <td rowspan="2" style="color:#e21f26; font-size:150px; font-family:DINCondensedC; text-align:center; width:150px; line-height:50px;vertical-align: middle" >2% <span style="font-size:60px;">REBATE</span></td>
-                    <td style="color:#615e5f; font-size:40px; font-family:DINCondensedC; padding-left:39px;">WITH ELIGIBLE GOLD AND PLATINUM<br />INTEL® TECHNOLOGY PROVIDERS PURCHASE</td>
+                    <td rowspan="2" style="color:#e21f26; font-size:150px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; text-align:center; width:150px; line-height:65px;vertical-align: middle" >2% <span style="font-size:60px;">REBATE</span></td>
+                    <td style="color:#615e5f; font-size:40px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; padding-left:39px;">WITH ELIGIBLE GOLD AND PLATINUM<br />INTEL® TECHNOLOGY PROVIDERS PURCHASE</td>
                 </tr>
                 <tr>
                     <td>

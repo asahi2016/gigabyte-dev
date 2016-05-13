@@ -1686,7 +1686,7 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .page-intel-technology-provider .claim a div:hover{background: white;color: #0066cc;border: 3px solid #0066cc;}
 .page-intel-technology-provider table.itp{width: 700px;margin: 0px auto;}
 .page-intel-technology-provider table.itp  td{font-size:20px;font-family:ralewayregular;}
-.page-intel-technology-provider table.itp td.number {font-family:DINCondensedC;font-size: 40px;font-weight: 700;color: #fbb040;text-align: center;}
+.page-intel-technology-provider table.itp td.number {font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 40px;font-weight: 700;color: #fbb040;text-align: center;}
 .page-intel-technology-provider table.itp > tbody > tr > td > ul > li{float:left;margin:0px;}
 .page-intel-technology-provider .itp > tbody > tr > td > ul{list-style-type: none;margin: 0;padding: 0;overflow: hidden;background: #fbb040;width:100%;}
 .page-intel-technology-provider .itp > tbody > tr > td > ul > li a{font-family: DINCondensedC;display: block;color: #ffffff;font-size: 30px;text-align: center;padding: 1px 16px;text-decoration: none;}
@@ -1756,7 +1756,7 @@ h1#page-title{width:1000px;margin:0px auto;padding:30px 0px;}
 .split-page .sidebar .block {background:none;border:0px;}
 .h2-title h2{width:1000px;margin:0px auto;}
 #testimonial-node-form #field-testimonial-video-add-more-wrapper .fieldset-legend{display:none;}
-#testimonial-node-form #field-testimonial-video-add-more-wrapper .form-wrapper{border-bottom:0px;}
+#testimonial-node-form #field-testimonial-video-add-more-wrapper .form-wrapper{border-bottom:0px;} 
 #testimonial-node-form #field-testimonial-video-add-more-wrapper .form-wrapper .fieldset-wrapper{float:left;padding:0px;margin:0px;}
 .node-itp_training-form ,.page-partner-testimonial .view-id-clone_of_testimonial{width:1000px;margin:0px auto;}
 .node-itp_training-form .form-type-textfield{width:100%;float:left;padding:20px 0px 0px 0px;}
