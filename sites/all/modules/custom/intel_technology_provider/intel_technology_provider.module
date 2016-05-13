@@ -119,7 +119,7 @@ function intel_technology_provider_theme(){
 
 function template_preprocess_intel_technology_provider_models(&$variables){
 
-    $motherboard_models_term_name = 'QUALIFYING MOTHERBOARD MODELS';
+    $motherboard_models_term_name = 'ITP Qualifying Motherboard Models';
 
     $motherboard_models = get_vocabulary_terms_info_by_taxonomy_name($motherboard_models_term_name, 'motherboard');
 
@@ -129,7 +129,7 @@ function template_preprocess_intel_technology_provider_models(&$variables){
     $variables['intel_motherboard_models'] = $motherboard_models_output;
     $variables['intel_motherboard_models_normal'] = $motherboard_models_normal_output;
 
-    $brix_models_term_name = 'QUALIFYING BRIX MODELS';
+    $brix_models_term_name = 'ITP Qualifying Brix Models';
 
     $brix_models = get_vocabulary_terms_info_by_taxonomy_name($brix_models_term_name, 'brix');
 
@@ -137,7 +137,7 @@ function template_preprocess_intel_technology_provider_models(&$variables){
 
     $variables['intel_brix_models'] = $brix_models_output;
 
-    $gigabyte_authorized_distributors = 'GIGABYTE AUTHORIZED DISTRIBUTORS';
+    $gigabyte_authorized_distributors = 'Gigabyte Authorized Distributors';
     $gigabyte_distributors = get_gigabyte_authorized_distributors($gigabyte_authorized_distributors, 'gigabyte_authorized_distributors');
     $gigabyte_distributors_output = theme('gigabyte_authorized_distributors', array('distributors' => $gigabyte_distributors));
     $variables['gigabyte_authorized_distributors'] = $gigabyte_distributors_output;
@@ -282,10 +282,13 @@ function template_preprocess_gigabyte_authorized_distributors(&$variables){
     $gigabyte_authorized_distributors = array();
 
     foreach ($variables['distributors'] as $key => $terms){
-        $country_tid = $terms->term->field_distributor_country['und'][0]['tid'];
-        $gigabyte_authorized_distributors[$country_tid][] = $terms;
-    }
 
+        foreach($terms->term->field_distributor_country['und'] as $k => $tid) {
+            $country_tid = $tid['tid'];
+            $gigabyte_authorized_distributors[$country_tid][] = $terms;
+        }
+    }
+    ksort($gigabyte_authorized_distributors);
     unset($variables['distributors']);
     $variables['distributors'] = $gigabyte_authorized_distributors;
 
