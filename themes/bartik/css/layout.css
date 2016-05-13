@@ -499,7 +499,7 @@ table.company-details tr td{padding: 0px;}
 #account-setting table#password td:nth-child(2) .form-item .form-item{clear:inherit;float: left;width:290px;margin:0 0px 0 0}
 #account-setting table#password td label{width:auto;float:left;}
 #account-setting table#password td input{width:120px;float:left;}
-#account-setting table#password td .description,.page-user-edit h1#page-title,.page-user-register h1#page-title,.page-user-edit div.messages.error{display: none;}
+#account-setting table#password td .description,.page-user-edit h1#page-title,.page-user-register h1#page-title,.page-user-edit div.messages.error,.page-partner-e-catalogs-upload h1#page-title{display: none;}
 #edit-field-participating-programs .form-item{width:100%}
 #edit-field-participating-programs .form-item{
     clear: inherit;
@@ -1414,6 +1414,8 @@ form .field-name-field-upload-images-roadmap .field-add-more-submit{margin:10px 
 .node-testimonial-form .messages.error{width:90%;}
 .node-how_to_sell-form .form-item label,.node-testimonial-form .form-item label{width:400px;float:left;}
 .node-how_to_sell-form .form-item .form-text,.node-testimonial-form .form-item .form-text{width:240px;float:left;margin:0 0px 0 10px;}
+.node-testimonial-form .form-item .form-text {width:280px;}
+.node-testimonial-form .form-select {width:290px;}
 .node-testimonial-form .form-item{float:left;}
 .node-how_to_sell-form .form-managed-file{width:500px;float:left;}
 .node-how_to_sell-form .field-name-field-file-pdf{width:100%;}
@@ -1442,7 +1444,7 @@ form .field-name-field-upload-images-roadmap .field-add-more-submit{margin:10px 
 li.assets-row-list-partner .btn-success a,li.assets-row-list-partner .btn-danger a{line-height:16px;}
 table.txt_center{table-layout: fixed;}
 .node-how_to_sell-form{float:left;width:900px;}
-.node-testimonial-form{width:1200px;float:left;}
+.node-testimonial-form{width:1000px;margin:0px auto;}
 .node-how_to_sell-form .image-preview img{width:120px;height:120px;}
 .node-how_to_sell-form .image-widget-data{clear:both;width:100%;}
 .node-how_to_sell-form .image-widget-data .file img,#how-to-sell-node-form .file-widget .file img{display:none;}
@@ -1651,7 +1653,7 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .node-e_catalogs-form .image-widget-data .file-icon{display:none;}
 .node-e_catalogs-form .image-widget-data a{width: 70px;overflow: hidden;float: left;height: 20px;}
 .node-e_catalogs-form .image-widget-data .file-size{width:90px;float: left;margin: 0 10px 0 0;}
-.node-e_catalogs-form .field-name-field-upload-file-catalog .form-file,.node-e_catalogs-form .image-widget-data .form-file{float:left;margin:0 10px 0px 0px;}
+.node-e_catalogs-form .field-name-field-upload-file-catalog .form-file,.node-e_catalogs-form .image-widget-data .form-file{float:left;margin:0 10px 0px 0px;width: 280px;}
 .node-e_catalogs-form .field-name-field-upload-file-catalog .form-submit{float:left;}
 #field-catalog-link-add-more-wrapper{clear:both;width:100%;}
 /* .view-e-catalogs-view{clear:both;float:left;} */
@@ -1663,12 +1665,13 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .node-testimonial-form .file a{width: 170px;float: left;height: 20px;overflow: hidden;margin: 0 0 0 5px;}
 .node-testimonial-form .file-size{width:90px;float: left;margin: 0 10px;}
 .node-testimonial-form .form-managed-file .form-file,.node-testimonial-form .form-managed-file .form-submit{float:left;}
-.node-testimonial-form .form-managed-file .form-submit{margin:0 0 0 10px;}
+.node-testimonial-form .form-managed-file .form-file,.node-testimonial-form .form-managed-file .form-file{width:280px;}
+.node-testimonial-form .form-managed-file .form-submit{margin:0 0 0 18px;}
 .node-testimonial-form .form-managed-file .custom-error{float:right;}
 .view-testimonial .views-view-grid td img,.view-testimonial .views-view-grid td .testimonial-video-field iframe,.view-clone-of-testimonial .views-view-grid td .testimonial-video-field iframe,
 .view-clone-of-testimonial .views-view-grid td img{width:300px;height:258px;float:left;}
 .testimonial-title-field {margin: 20px auto 0 auto;width: 300px;font-size: 20px;color:#000;}
-.view-testimonial .views-view-grid td,.view-clone-of-testimonial .views-view-grid td{vertical-align:top;opacity: .7; -webkit-transition: all .5s ease;-moz-transition: all .5s ease;-ms-transition: all .5s ease; -o-transition: all .5s ease;transition: all .5s ease;}
+.view-testimonial .views-view-grid td,.view-clone-of-testimonial .views-view-grid td{vertical-align:top;opacity: .7; -webkit-transition: all .5s ease;-moz-transition: all .5s ease;-ms-transition: all .5s ease; -o-transition: all .5s ease;transition: all .5s ease;padding:0 0 15px 0;}
 .view-testimonial .views-view-grid td:hover,.view-clone-of-testimonial .views-view-grid td:hover{opacity:1;}
 .view-testimonial .views-view-grid td a,.view-testimonial .views-view-grid td a:hover,.view-clone-of-testimonial .views-view-grid td a:hover{text-decoration:none;}
 .view-testimonial .views-field .testimonial-pdf-image-field,.view-clone-of-testimonial .views-field .testimonial-pdf-image-field{float:left;}
@@ -1691,14 +1694,14 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .view-e-catalogs-view{width:1000px;margin:0px auto;}
 .view-e-catalogs-view li .views-field-nothing{color:#337ab7;text-decoration:none;font-size:12px;text-align:center;}
 .view-e-catalogs-view li .views-field-nothing span{display: inline-block;margin:3px 0px 0 10px}
-.view-e-catalogs-view li .views-field-nothing a{float: left;width: 180px;overflow: hidden;height: 20px;}
+.view-e-catalogs-view li .views-field-nothing a{float: left;max-width: 180px;overflow: hidden;height: 20px;width: auto;}
 .view-e-catalogs-view li .views-field-timestamp{float:left;position: absolute;top:228px;right: 45px;}
 .view-clone-of-testimonial .testimonial-custom-text-field  .testimonial-created,.view-testimonial .testimonial-custom-text-field  .testimonial-created{display: inline-block;width: auto;}
 .view-clone-of-testimonial .testimonial-timestamp,.view-testimonial .testimonial-timestamp{display:inline-block;margin:0 0 0 8px;}
 .view-clone-of-testimonial .testimonial-type-field,.view-testimonial .testimonial-type-field{clear:both;}
 .view-e-catalogs-view li .views-field-nothing:hover{color:#23527c;text-decoration:none;}
 .view-e-catalogs-view li .views-field:first-child{background: url("../images/E-Catalogs/e-Cacalog-BK.png");background-repeat: no-repeat;background-position: center;width:300px;height:220px;text-align:center;cursor:zoom-in;float:left;}
-.view-e-catalogs-view li .views-field img{min-width:215px;margin:30px 0px 0px;cursor:zoom-in;min-height: 150px;}
+.view-e-catalogs-view li .views-field img{max-width:215px;margin:30px 0px 0px;cursor:zoom-in;max-height: 150px;height:150px;}
 .view-e-catalogs-view li.views-row{position:relative;margin:20px 10px 0;float: left;}
 .view-e-catalogs-view li .btn a{margin:0px;width:50px;}
 .view-e-catalogs-view .marker,.testimonial-timestamp .new-label,.marker{color: red;font-size: 30px;text-transform:uppercase;background:url('../images/new.gif') 0px 0px no-repeat;width:35px;height:14px;float:left;text-indent:-9999em;}
@@ -1737,18 +1740,36 @@ h1#page-title{width:1000px;margin:0px auto;padding:30px 0px;}
 .page-intel-technology table.tbl_intel_tech .views-field-nothing img{margin:10px 0px;}
 .page-intel-technology table.tbl_intel_tech .view-itp-gigabyte-product-training .views-field-body{width:200px;margin:0px auto;}
 .page-intel-technology table.tbl_intel_tech .view-itp-gigabyte-product-training .views-field-body div.field-content{color:#fff;font-size:12px;}
-
 .page-intel-technology table.tbl_intel_tech .view-itp-gigabyte-product-training .views-field-body p{color:#fff;font-size:12px;}
 .page-partner-e-catalogs .contextual-links-region h2,.page-partner-e-catalogs   .node-e_catalogs-form{width:1000px;margin:0px auto;padding:10px 0px 20px;}
 .page-partner-e-catalogs .node-e_catalogs-form > div > .form-submit{float:left;margin:0 0 0 310px;}
 .page-partner-awards-reviews .ctools-auto-submit-full-form{width:1000px;margin:0px auto;padding: 0 0 10px;}
 .page-partner-e-catalogs .contextual-links-region h1#title{display: none;}
-.page-partner-e-catalogs-sorting #draggableviews-table-e-catalogs-view-sorting-e-catalogs-page tr{width:310px;float:left;background:none;border-bottom:0px;
-text-align: center}
+.page-partner-e-catalogs-sorting #draggableviews-table-e-catalogs-view-sorting-e-catalogs-page tr{width:310px;float:left;background:none;border-bottom:0px;text-align: center;min-height:250px;}
 .page-partner-e-catalogs-sorting #draggableviews-table-e-catalogs-view-sorting-e-catalogs-page tr td a{display: inline-block;}
+.page-partner-e-catalogs-sorting #draggableviews-table-e-catalogs-view-sorting-e-catalogs-page tr td a.catalog-title-link{max-width:180px;height:20px;overflow:hidden;}
 .page-partner-e-catalogs-sorting #draggableviews-table-e-catalogs-view-sorting-e-catalogs-page tr td img{width:300px;height:200px;}
 .page-partner-e-catalogs-sorting #draggableviews-table-e-catalogs-view-sorting-e-catalogs-page tr td .marker{float:right;margin:0 8px 0 0px;}
 .page-partner-e-catalogs-sorting #draggableviews-table-e-catalogs-view-sorting-e-catalogs-page{width:1000px;margin:0px auto;}
 .page-partner-how-to-sell-intel .view-id-how_to_sell_view,.page-partner-how-to-sell-amd .view-id-how_to_sell_amd{width:1000px;margin:0px auto;}
 .page-partner-how-to-sell-intel .views-view-grid .views-field-nothing{margin:0px;}
-
+.split-page .sidebar .block {background:none;border:0px;}
+.h2-title h2{width:1000px;margin:0px auto;}
+#testimonial-node-form #field-testimonial-video-add-more-wrapper .fieldset-legend{display:none;}
+#testimonial-node-form #field-testimonial-video-add-more-wrapper .form-wrapper{border-bottom:0px;}
+#testimonial-node-form #field-testimonial-video-add-more-wrapper .form-wrapper .fieldset-wrapper{float:left;padding:0px;margin:0px;}
+.node-itp_training-form ,.page-partner-testimonial .view-id-clone_of_testimonial{width:1000px;margin:0px auto;}
+.node-itp_training-form .form-type-textfield{width:100%;float:left;padding:20px 0px 0px 0px;}
+.node-itp_training-form .form-type-textfield label,.node-itp_training-form .field-type-image label,.node-itp_training-form .link-field-url label{width:420px;float:left;margin:0 20px 0 0;}
+.node-itp_training-form  .image-widget-data .form-file {width:260px;margin:0 20px 0 0}
+.node-itp_training-form  .link-field-subrow .form-type-textfield{width:100%;margin:0 20px 0 0}
+.node-itp_training-form  .link-field-subrow .link-field-title,.node-itp_training-form  .link-field-subrow .form-type-textfield .form-item,.node-itp_training-form  .link-field-url{width:100%;}
+.node-itp_training-form  .link-field-subrow .form-type-textfield .form-text ,.node-itp_training-form  .form-item .form-text,.node-itp_training-form .link-field-url .form-text{float:left;width:280px;}
+.node-itp_training-form  .link-field-subrow .form-type-textfield .description {clear:both;float:left;margin:15px 0 0 440px}
+.node-itp_training-form  #body-add-more-wrapper{width:100%;float:left;margin:0 20px 0 0;}
+.node-itp_training-form  #body-add-more-wrapper .form-type-textarea label{width:420px;float:left;margin:0 20px 0 0;}
+.node-itp_training-form  .form-textarea-wrapper {width:480px;float:left;}
+.node-itp_training-form > div > .form-submit{float:left;margin:20px 0px 0px 440px;}
+.node-itp_training-form .file-icon{display:none;}
+.node-itp_training-form .file a{width: 100px;margin: 0 10px 0 0;float: left;height: 20px;overflow: hidden;}
+.node-itp_training-form .file-size{width:90px;margin:0 10px 0 0}
