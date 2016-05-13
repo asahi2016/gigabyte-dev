@@ -653,6 +653,8 @@ function group_registration_user_insert(&$edit, $account, $category){
         // Changes the users role in the group (1 = non-member, 2 = member, 3 = administrator member)
         og_role_grant('node', $gid, $account->uid, 2);
     }
+    $params['account'] = $account;
+    drupal_mail('user', 'register_pending_approval_admin', variable_get('site_mail', ini_get('sendmail_from')), language_default(), $params);
 }
 
 /**
