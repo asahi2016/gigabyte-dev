@@ -959,10 +959,10 @@ form.node-tools_assets_logos-form {float:left;border:2px solid #eee;padding:20px
 
 #block-webform-client-block-76 .form-item{float:left;width:auto;}
 #block-webform-client-block-76 .form-item .custom-error{float:right;margin:0 0 0 125px;}
-#block-webform-client-block-76 .form-item .description{float:left;text-align:right;width:690px;}
+#block-webform-client-block-76 .form-item .description{float:left;text-align:right;width:630px;}
 #block-webform-client-block-76 .form-item.webform-component-textarea label{clear:both;}
 #block-webform-client-block-76 .form-item .form-item{width:auto;}
-#block-webform-client-block-76 .form-item label{width:300px;float:left;padding:0 0 0 60px;}
+#block-webform-client-block-76 .form-item label{width:300px;float:left;padding:0 0 0 0px;}
 #block-webform-client-block-76 .form-item .form-item label{padding:0px;}
 #block-webform-client-block-76 .form-item label.option{width:auto;float:left;}
 #block-webform-client-block-76 .form-item .form-radio{float:left;margin:8px 0px 0px}
@@ -970,7 +970,7 @@ form.node-tools_assets_logos-form {float:left;border:2px solid #eee;padding:20px
 #block-webform-client-block-76 .form-item .form-textarea-wrapper{float:left}
 #block-webform-client-block-76 .form-item textarea.form-textarea{width:310px;resize:none;}
 #block-webform-client-block-76 .form-item .form-select{width:310px;}
-#block-webform-client-block-76 .form-actions{float:left;margin:0px 0px 0px 360px;}
+#block-webform-client-block-76 .form-actions{float:left;margin:0px 0px 0px 330px;}
 #block-webform-client-block-76 .form-actions input{margin:0px 20px 0px;width:120px;float:left;}
 #block-webform-client-block-76 .captcha{padding:0 0 0 60px;float:left;}
 #block-webform-client-block-76 .captcha legend{padding:0 0 0 55px;}
@@ -1688,6 +1688,7 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .page-intel-technology-provider .claim a div{border: 3px solid white;background: #0066cc;color: white;width: 250px;padding: 8px;font-size: 20px;font-weight: 700;}
 .page-intel-technology-provider .claim a div:hover{background: white;color: #0066cc;border: 3px solid #0066cc;}
 .page-intel-technology-provider table.itp{width: 700px;margin: 0px auto;}
+/* .page-intel-technology-provider table.itp tr{border:5px solid #fff;} */
 .page-intel-technology-provider table.itp  td{font-size:20px;font-family:ralewayregular;}
 .page-intel-technology-provider table.itp td.number {font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 40px;font-weight: 700;color: #fbb040;text-align: center;}
 .page-intel-technology-provider table.itp > tbody > tr > td > ul > li{float:left;margin:0px;}
@@ -1778,10 +1779,14 @@ h1#page-title{width:1000px;margin:0px auto;padding:30px 0px;}
 .node-itp_training-form .file-size{width:90px;margin:0 10px 0 0}
 form.entitytype-asset_upload_form-form{width:1000px;margin:0px auto;}
 form.entitytype-asset_upload_form-form .sticky-header{width:100%;float:left;}
-.itp_b_table{font-family: 'ralewayregular', sans-serif; font-weight:700;margin:0px 0 0 175px; width:775px; text-align:left; font-size:20px; color:#5d5d5e;}
+.itp_b_table{font-family: 'ralewayregular', sans-serif; font-weight:700;margin:10px 0 10px 175px; width:775px; text-align:left; font-size:20px; color:#5d5d5e;}
 .itp_qmm_table{margin: 10px 0 0 150px;float: left;table-layout: fixed;width: 550px;}
 .page-intel-technology-provider  .itp.itp_qmm2_table{padding: 10px 0 0 250px;margin: 0 0 0 275px;width: 550px;}
 .page-intel-technology-provider .itp.itp_qmm2_table > tbody > tr > td > ul > li a{padding:1px 10px;}
 .itp_b_table td img.s_logo{max-width:85px;max-height:35px;}
 table.tbl_intel_tech table.itp td{padding:0 0 0px;}
 .tbl_intel_tech .benefits td{padding:0 20px;}
+form.webform-client-form,.project_support_request_ptag {width:1000px;margin:0px auto;}
+form.webform-client-form{padding:30px 0px 0px;}
+.itp_b_table td ul{margin:0px 0 15px 0;}
+.itp_b_table td ul li{margin:0px 10px 0px 0;}

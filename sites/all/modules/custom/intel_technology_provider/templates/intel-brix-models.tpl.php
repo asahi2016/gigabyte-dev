@@ -15,7 +15,7 @@
                             <li>
                                 <a class="inline root-term" href="javascript:void(0);" rel="<?php print $term->tid;?>"><?php print $term->name;?></a>
                                 <div style="display: none;" id="term-<?php print $term->tid;?>">
-                                    <div id="<?php print $term->name;?>" style="height:400px;">
+                                    <div id="<?php print $term->name;?>" style="height:400px;overflow-y:scroll;">
                                         <table class="title">
                                             <tbody>
                                             <tr>
