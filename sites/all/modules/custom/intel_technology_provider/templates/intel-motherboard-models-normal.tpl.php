@@ -2,7 +2,7 @@
     <tbody>
     <tr style="color:#007dc5;">
         <td>
-            <table cellspacing="0" cellpadding="0" style="margin:10px 0 0 110px;float:left;table-layout:fixed">
+            <table cellspacing="0" cellpadding="0" class="itp_qmm_table">
                 <tr>
                     <td>QUALIFYING MOTHERBOARD MODELS <span style="color:black">(click to see more)</span></td>
                 </tr>
@@ -11,7 +11,7 @@
     </tr>
     </tbody>
 </table>
-<table cellpadding="0" cellspacing="0" class="itp" style="margin:10px 0 0 240px;">
+<table cellpadding="0" cellspacing="0" class="itp itp_qmm2_table">
     <tbody>
     <?php if($variables['normal_motherboard']){
         $i=0;

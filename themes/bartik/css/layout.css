@@ -1674,7 +1674,7 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .view-clone-of-testimonial .views-view-grid td img{width:300px;height:258px;float:left;}
 .testimonial-title-field {margin: 20px auto 0 auto;width: 300px;font-size: 20px;color:#000;}
 .view-testimonial .views-view-grid td,.view-clone-of-testimonial .views-view-grid td{vertical-align:top;opacity: .7; -webkit-transition: all .5s ease;-moz-transition: all .5s ease;-ms-transition: all .5s ease; -o-transition: all .5s ease;transition: all .5s ease;padding:0 0 15px 0;}
-.view-testimonial .views-view-grid td{width: 300px;float: left;max-height: 500px;overflow: hidden;margin:20px 30px 10px 0;}
+.view-testimonial .views-view-grid td,.view-clone-of-testimonial .views-view-grid td{width: 300px;float: left;max-height: 500px;overflow: hidden;margin:20px 30px 10px 0;}
 .view-testimonial .views-view-grid td:hover,.view-clone-of-testimonial .views-view-grid td:hover{opacity:1;}
 .view-testimonial .views-view-grid td a,.view-testimonial .views-view-grid td a:hover,.view-clone-of-testimonial .views-view-grid td a:hover{text-decoration:none;}
 .view-testimonial .views-field .testimonial-pdf-image-field,.view-clone-of-testimonial .views-field .testimonial-pdf-image-field{float:left;}
@@ -1778,3 +1778,10 @@ h1#page-title{width:1000px;margin:0px auto;padding:30px 0px;}
 .node-itp_training-form .file-size{width:90px;margin:0 10px 0 0}
 form.entitytype-asset_upload_form-form{width:1000px;margin:0px auto;}
 form.entitytype-asset_upload_form-form .sticky-header{width:100%;float:left;}
+.itp_b_table{font-family: 'ralewayregular', sans-serif; font-weight:700;margin:0px 0 0 175px; width:775px; text-align:left; font-size:20px; color:#5d5d5e;}
+.itp_qmm_table{margin: 10px 0 0 150px;float: left;table-layout: fixed;width: 550px;}
+.page-intel-technology-provider  .itp.itp_qmm2_table{padding: 10px 0 0 250px;margin: 0 0 0 275px;width: 550px;}
+.page-intel-technology-provider .itp.itp_qmm2_table > tbody > tr > td > ul > li a{padding:1px 10px;}
+.itp_b_table td img.s_logo{max-width:85px;max-height:35px;}
+table.tbl_intel_tech table.itp td{padding:0 0 0px;}
+.tbl_intel_tech .benefits td{padding:0 20px;}

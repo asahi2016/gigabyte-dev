@@ -1,11 +1,11 @@
-<table style="font-family: 'ralewayregular', sans-serif; font-weight:700;margin:0px auto; width:850px; text-align:left; font-size:20px; color:#5d5d5e;">
+<table class="itp_b_table">
     <tbody>
     <tr>
-        <td>GIGABYTE AUTHORIZED DISTRIBUTORS</td>
+        <td>GIGABYTE AUTHORIZED DISTRIBUTORSs</td>
     </tr>
     </tbody>
 </table>
-<table style="font-family: 'ralewayregular', sans-serif; font-weight:700;margin:0px auto; width:850px; text-align:left; font-size:20px; color:#5d5d5e;">
+<table class="itp_b_table">
     <tbody>
     <?php if($variables['distributors']){
     foreach ($variables['distributors'] as $cid => $terms){
@@ -13,12 +13,12 @@
       $country_name = ($country_term->name == 'United States') ? 'USA' : 'Canada';
     ?>
     <tr>
-        <td><?php print $country_name;?></td>
+        <td valign="top"><?php print $country_name;?></td>
         <?php foreach ($terms as $k => $term){ ?>
-        <td>
+        <td valign="top">
             <?php $path= file_create_url($term->term->field_distributor_image['und'][0]['uri']); ?>
             <a href="<?php echo $term->term->field_distributor_link['und'][0]['url'];?>" target="_blank">
-                <img src="<?php print $path; ?>" />
+                <img src="<?php print $path; ?>" class="s_logo"/>
             </a>
         </td>
         <?php } ?>
