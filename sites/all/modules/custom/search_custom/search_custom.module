@@ -28,7 +28,6 @@ function search_custom_preprocess_search_results(&$variables) {
             $searchable_node_types = variable_get('custom_search_node_types', array());
             $searchable_node_types = array_keys(array_filter($searchable_node_types, 'custom_search_filter_array'));
 
-            //print_pre($variables['search_results'], 1);
             $all_results = content_search_execute_based_on_content_types($keys);
 
             $node_count = array();
@@ -179,6 +178,7 @@ function content_search_execute_based_on_content_types($keys){
 
 //alter the search results for the query for selected node types
 function search_custom_query_alter(QueryAlterableInterface $query) {
+
     if (!$query->hasTag('custom_search_ignore') && $query->hasTag('node_access') && $query->hasTag('pager')) {
         $excluded_types = array_filter(variable_get('custom_search_' . variable_get('custom_search_delta', '') . 'node_types_excluded', array()));
         $searchable_node_types = variable_get('custom_search_node_types', array());
@@ -188,11 +188,23 @@ function search_custom_query_alter(QueryAlterableInterface $query) {
         foreach ($tables as $table) {
             if ($table['table'] == 'search_index') {
                 $query->condition('n.type', $searchable_node_types, 'IN');
+
             }
         }
         //}
     }
 }
+
+/*function search_entity_search_query($keys){
+
+    $query = db_select('search_index', 'i', array('target' => 'slave'))->extend('SearchQuery');
+    $query->join('entityform', 'e', 'e.entityform_id = i.sid');
+    $query
+        ->condition('n.status', 1)
+        ->addTag('node_access')
+        ->searchExpression($keys, 'entityform');
+
+}*/
 
 
 
