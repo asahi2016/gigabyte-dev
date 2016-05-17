@@ -70,9 +70,11 @@ jQuery(document).ready(function($) {
             $('#scrol-top').hide();
         }
     }
-    var txt_val = $('.make_a_request_ptag').text();
-    $('<p>'+txt_val+'</p>').insertBefore($("#webform-client-form-18724"));
+    var txt_val_mr = $('.make_a_request_ptag').text();
+    $('<p>'+txt_val_mr+'</p>').insertBefore($("#webform-client-form-18724"));
     $('.make_a_request_ptag').text('');
+    var txt_val_psr = $('.project_support_request_ptag');
+    $(txt_val_psr).insertBefore("#webform-client-form-76");
     $('.feed-icon').prependTo('.view-make-a-request-submission-view .view-content');
     $('.feed-icon a').text('Export Request Review to Excel');
 	$('.view-clone-of-entityforms .views-table tr td.file-size-column .file a').attr('href','javascript:;');
