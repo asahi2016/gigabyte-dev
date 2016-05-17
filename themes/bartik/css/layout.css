@@ -1443,7 +1443,8 @@ form .field-name-field-upload-images-roadmap .field-add-more-submit{margin:10px 
 .node-how_to_sell-form  .image-widget-data .custom-error{top:0px;right:-210px;}
 li.assets-row-list-partner .btn-success a,li.assets-row-list-partner .btn-danger a{line-height:16px;}
 table.txt_center{table-layout: fixed;}
-.node-how_to_sell-form{float:left;width:900px;}
+.node-how_to_sell-form{width:1000px;margin:0px auto;}
+.node-how_to_sell-form > div{width:900px;float:left;}
 .node-testimonial-form{width:1000px;margin:0px auto;}
 .node-how_to_sell-form .image-preview img{width:120px;height:120px;}
 .node-how_to_sell-form .image-widget-data{clear:both;width:100%;}
@@ -1543,6 +1544,7 @@ table.txt_center{table-layout: fixed;}
 .page-partner-awards-reviews .views-field-field-award-descriptions{font-weight:700;color:#333;font-size:14px;}
 .view-how-to-sell-view .views-view-grid .views-field img{width:220px;height:220px;}
 .view-how-to-sell-view .views-view-grid .views-field a,.view-how-to-sell-wrapper .views-view-grid td a{color:#23527c;text-decoration:underline;text-align: center;font-size: 16px;text-decoration:none;}
+.view-how-to-sell-view .views-view-grid .views-field-nothing a,.view-how-to-sell-wrapper .views-view-grid .views-field-nothing a{height: 20px;overflow: hidden;display:inline-block;width:150px;}
 .view-how-to-sell-view .views-view-grid .views-field-nothing{width:220px;text-align:center;margin:20px 0px;}
 .view-how-to-sell-view .marker,.view-how-to-sell-amd .marker{float:right;}
 .node-partner_slider-form .form-type-link-field{float:left;width:100%;}
@@ -1689,7 +1691,7 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .page-intel-technology-provider table.itp td.number {font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 40px;font-weight: 700;color: #fbb040;text-align: center;}
 .page-intel-technology-provider table.itp > tbody > tr > td > ul > li{float:left;margin:0px;}
 .page-intel-technology-provider .itp > tbody > tr > td > ul{list-style-type: none;margin: 0;padding: 0;overflow: hidden;background: #fbb040;width:100%;}
-.page-intel-technology-provider .itp > tbody > tr > td > ul > li a{font-family: DINCondensedC;display: block;color: #ffffff;font-size: 30px;text-align: center;padding: 1px 16px;text-decoration: none;}
+.page-intel-technology-provider .itp > tbody > tr > td > ul > li a{font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;display: block;color: #ffffff;font-size: 30px;text-align: center;padding: 1px 16px;text-decoration: none;}
 .page-intel-technology-provider .itp > tbody > tr > td > ul > li a:hover:not(.active){color: #fbb040;background-color: #ffffff;}
 .view-e-catalogs-view{width:1000px;margin:0px auto;}
 .view-e-catalogs-view li .views-field-nothing{color:#337ab7;text-decoration:none;font-size:12px;text-align:center;}
@@ -1754,7 +1756,7 @@ h1#page-title{width:1000px;margin:0px auto;padding:30px 0px;}
 .page-partner-how-to-sell-intel .view-id-how_to_sell_view,.page-partner-how-to-sell-amd .view-id-how_to_sell_amd{width:1000px;margin:0px auto;}
 .page-partner-how-to-sell-intel .views-view-grid .views-field-nothing{margin:0px;}
 .split-page .sidebar .block {background:none;border:0px;}
-.h2-title h2{width:1000px;margin:0px auto;}
+.h2-title h2{width:1000px;margin:0px auto;padding:20px 0px;}
 #testimonial-node-form #field-testimonial-video-add-more-wrapper .fieldset-legend{display:none;}
 #testimonial-node-form #field-testimonial-video-add-more-wrapper .form-wrapper{border-bottom:0px;} 
 #testimonial-node-form #field-testimonial-video-add-more-wrapper .form-wrapper .fieldset-wrapper{float:left;padding:0px;margin:0px;}
