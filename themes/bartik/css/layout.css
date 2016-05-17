@@ -1352,7 +1352,7 @@ div[id*='block-views-event-calendar-block'] .contextual-links-region{float:left;
 .view-clone-of-entityforms  .views-exposed-widgets .views-exposed-widget:first-child{width:500px;}
 .view-clone-of-entityforms  .views-exposed-widgets .views-exposed-widget{padding: 10px 0px 15px 20px;float: left;}
 .page-eform-submit-asset-upload-form .field-multiple-table tr.draggable,.page-entityform .field-multiple-table tr.draggable{width:1100px;padding:10px 0;}
-.page-eform-submit-asset-upload-form .field-multiple-table tr.draggable{width:1200px;}
+.page-eform-submit-asset-upload-form .field-multiple-table tr.draggable{width:1000px;}
 .page-eform-submit-asset-upload-form .field-multiple-table td .file-widget .form-submit,.page-entityform .field-multiple-table td .file-widget .form-submit{margin:0px;width:180px;}
 .page-eform-submit-asset-upload-form .field-multiple-table td .form-item .form-managed-file,.page-entityform .field-multiple-table td .form-item .form-managed-file {width:440px;}
 .page-eform-submit-asset-upload-form .field-multiple-table td .form-item  input.text-full,.page-entityform .field-multiple-table td .form-item  input.text-full{width:200px;margin:15px 0px 0px;}
@@ -1674,7 +1674,7 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .view-clone-of-testimonial .views-view-grid td img{width:300px;height:258px;float:left;}
 .testimonial-title-field {margin: 20px auto 0 auto;width: 300px;font-size: 20px;color:#000;}
 .view-testimonial .views-view-grid td,.view-clone-of-testimonial .views-view-grid td{vertical-align:top;opacity: .7; -webkit-transition: all .5s ease;-moz-transition: all .5s ease;-ms-transition: all .5s ease; -o-transition: all .5s ease;transition: all .5s ease;padding:0 0 15px 0;}
-.view-testimonial .views-view-grid td{width: 300px;float: left;max-height: 500px;overflow: hidden;margin:0 30px 0 0;}
+.view-testimonial .views-view-grid td{width: 300px;float: left;max-height: 500px;overflow: hidden;margin:20px 30px 10px 0;}
 .view-testimonial .views-view-grid td:hover,.view-clone-of-testimonial .views-view-grid td:hover{opacity:1;}
 .view-testimonial .views-view-grid td a,.view-testimonial .views-view-grid td a:hover,.view-clone-of-testimonial .views-view-grid td a:hover{text-decoration:none;}
 .view-testimonial .views-field .testimonial-pdf-image-field,.view-clone-of-testimonial .views-field .testimonial-pdf-image-field{float:left;}
@@ -1776,3 +1776,5 @@ h1#page-title{width:1000px;margin:0px auto;padding:30px 0px;}
 .node-itp_training-form .file-icon{display:none;}
 .node-itp_training-form .file a{width: 100px;margin: 0 10px 0 0;float: left;height: 20px;overflow: hidden;}
 .node-itp_training-form .file-size{width:90px;margin:0 10px 0 0}
+form.entitytype-asset_upload_form-form{width:1000px;margin:0px auto;}
+form.entitytype-asset_upload_form-form .sticky-header{width:100%;float:left;}
