@@ -7,6 +7,17 @@ jQuery(document).ready(function($){
             'paging':true
         });
     });*/
+
+    curr_url = document.URL.split('/');
+    var searchterm = decodeURIComponent(curr_url[curr_url.length-1]);
+
+    if(searchterm && searchterm != 'upload-assets'){
+        $('#edit-field-image-name-entity-value').val(searchterm);
+        $('#edit-field-image-name-entity-value').focus();
+        $('#edit-field-image-name-entity-value').keyup();
+    }
+
+
     $('.assets-preview-image').each(function(){
         imghref = $(this).find('img').attr('src');
         $(this).find('img').attr('href',imghref);

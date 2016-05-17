@@ -119,6 +119,7 @@ function custom_search_preprocess_search_result(&$variables) {
       }
     }
   }
+  $variables['url'] = ($variables['result']['node']->type != 'tools_assets_logos')? $variables['url'] : urldecode(url('partner/upload-assets/'.$variables['result']['node']->title, array('absolute'=> TRUE)));
   $variables['info'] = implode(' - ', $infos);
   $variables['theme_hook_suggestions'][] = 'custom_search_result';
 }
@@ -179,5 +180,31 @@ function content_search_execute_based_on_content($keys){
     }
     return $results;
 }
+
+function field_check_user_access($node){
+    global $user;
+
+    $usr = user_load($user->uid);
+    foreach($usr->roles as $key => $value){
+        if($key != 2){
+            $role['value'] = $value;
+            $role['id'] = $key;
+        }
+    }
+
+    $access = false;
+    foreach($node->field_field_permitted_roles_tal as $rkey => $rval){
+        $role_permitted[] = $rval['raw']['rid'];
+        if($role['id'] == $rval['raw']['rid']){
+            $access = true;
+        }
+    }
+    if (in_array('administrator', array_values($user->roles))) {
+        $access = true;
+    }
+
+    return $access;
+}
+
 
 

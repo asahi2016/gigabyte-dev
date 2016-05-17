@@ -29,7 +29,7 @@ function search_custom_preprocess_search_results(&$variables) {
             $searchable_node_types = array_keys(array_filter($searchable_node_types, 'custom_search_filter_array'));
 
             //print_pre($variables['search_results'], 1);
-            $all_results = content_search_execute_based_on_content($keys);
+            $all_results = content_search_execute_based_on_content_types($keys);
 
             $node_count = array();
             $nodetype = array();
@@ -115,6 +115,7 @@ function search_custom_preprocess_search_result(&$variables) {
             }
         }
     }
+    $variables['url'] = ($variables['result']['node']->type != 'tools_assets_logos')? $variables['url'] : urldecode(url('partner/upload-assets/'.$variables['result']['node']->title));
     $variables['info'] = implode(' - ', $infos);
     $variables['theme_hook_suggestions'][] = 'custom_search_result';
 }

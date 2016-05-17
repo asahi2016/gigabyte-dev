@@ -14,14 +14,16 @@
     ?>
     <tr>
         <td valign="top"><?php print $country_name;?></td>
+        <td><ul>
         <?php foreach ($terms as $k => $term){ ?>
-        <td valign="top">
+        <li>
             <?php $path= file_create_url($term->term->field_distributor_image['und'][0]['uri']); ?>
             <a href="<?php echo $term->term->field_distributor_link['und'][0]['url'];?>" target="_blank">
                 <img src="<?php print $path; ?>" class="s_logo"/>
             </a>
-        </td>
+        </li>
         <?php } ?>
+        </ul></td>
     </tr>
     <?php }
     } ?>
