@@ -73,7 +73,7 @@ if(user_is_logged_in()){
 
             <?php print $intel_motherboard_models_normal; ?>
 
-            <div class="claim"><a href="Claim_Rewards.html"><div>Claim Your Rewards</div></a></div>
+            <div class="claim"><a href="<?php print $link; ?>"><div>Claim Your Rewards</div></a></div>
         </td>
     </tr>
     </tbody>
