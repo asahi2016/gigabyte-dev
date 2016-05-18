@@ -45,6 +45,9 @@
  * @see template_preprocess_custom_search_result()
  */
 ?>
+<?php
+if($user_access_field == true){
+?>
 <li>
   <h3 class="title">
     <a href="<?php print $url; ?>" target="_blank"><?php print $title; ?></a>
@@ -58,3 +61,4 @@
     <?php endif; ?>
   </div>
 </li>
+<?php } ?>

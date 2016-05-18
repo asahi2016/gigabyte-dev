@@ -107,8 +107,10 @@ function custom_search_preprocess_search_results(&$variables) {
  * Customisation of the results info.
  */
 function custom_search_preprocess_search_result(&$variables) {
+
+  $variables['user_access_field'] = true;
   if(!field_check_user_access($variables['result']['node'])){
-        unset($variables['result']['node']);
+        $variables['user_access_field'] = false;
   }
   $infos = array();
   // In Drupal 7 the content type is no longer in the info array.
@@ -208,7 +210,7 @@ function field_check_user_access($node){
             }
         }
         if (in_array('administrator', array_values($user->roles))) {
-            $access = false;
+            $access = true;
         }
     }else{
         $access = true;
