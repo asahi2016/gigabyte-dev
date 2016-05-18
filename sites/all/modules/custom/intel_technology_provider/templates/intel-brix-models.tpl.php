@@ -26,11 +26,14 @@
                                         <table class="serie_name">
                                             <tbody>
                                             <tr>
-                                                <td><?php $lastword = end(explode(" ",$term->name));
-                                                    if(strtolower($lastword) != 'series'){
-                                                        print $term->name .' SERIES';
-                                                    }else{
-                                                        print $term->name;
+                                                <td><?php
+                                                    if(isset($term->name) && !empty($term->name)) {
+                                                        $lastword = end(explode(" ", $term->name));
+                                                        if (strtolower($lastword) != 'series') {
+                                                            print $term->name . ' SERIES';
+                                                        } else {
+                                                            print $term->name;
+                                                        }
                                                     }?>
                                                 </td>
                                             </tr>

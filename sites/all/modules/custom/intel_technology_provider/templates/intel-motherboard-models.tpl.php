@@ -4,7 +4,7 @@
         <td width="150" class="txt_center">POINTS</td>
         <td>QUALIFYING MOTHERBOARD MODELS <span style="color:black">(click to see more)</span></td>
     </tr>
-    <?php if($variables['motherboard']){
+    <?php if(isset($variables['motherboard']) && $variables['motherboard']){
     foreach ($variables['motherboard'] as $points => $terms){
     ?>
     <tr>
@@ -27,11 +27,13 @@
                                 <tbody>
                                 <tr>
                                     <td><?php
-                                        $lastword = end(explode(" ",$term->name));
-                                        if(strtolower($lastword) != 'series'){
-                                            print $term->name .' SERIES';
-                                        }else{
-                                            print $term->name;
+                                        if(isset($term->name) && !empty($term->name)) {
+                                            $lastword = end(explode(" ", $term->name));
+                                            if (strtolower($lastword) != 'series') {
+                                                print $term->name . ' SERIES';
+                                            } else {
+                                                print $term->name;
+                                            }
                                         }
                                         ?>
                                     </td>

@@ -13,7 +13,7 @@
 </table>
 <table cellpadding="0" cellspacing="0" class="itp itp_qmm2_table">
     <tbody>
-    <?php if($variables['normal_motherboard']){
+    <?php if(isset($variables['normal_motherboard']) && $variables['normal_motherboard']){
         $i=0;
         foreach ($variables['normal_motherboard'] as $points => $term) {
             $out = $i % 5;
@@ -38,11 +38,13 @@
                                     <tbody>
                                     <tr>
                                         <td><?php
-                                            $lastword = end(explode(" ",$term->name));
-                                            if(strtolower($lastword) != 'series'){
-                                                print $term->name .' SERIES';
-                                            }else{
-                                                print $term->name;
+                                            if(isset($term->name) && !empty($term->name)) {
+                                                $lastword = end(explode(" ", $term->name));
+                                                if (strtolower($lastword) != 'series') {
+                                                    print $term->name . ' SERIES';
+                                                } else {
+                                                    print $term->name;
+                                                }
                                             }
                                             ?> </td>
                                     </tr>
