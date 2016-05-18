@@ -1565,7 +1565,7 @@ table.txt_center{table-layout: fixed;}
 .jcarousel-navigation li.active a span{background:rgba(255, 255, 255, 1.0)}
 .jcarousel-skin-default .jcarousel-next-horizontal{right:30px;top:190px;}
 .jcarousel-skin-default .jcarousel-prev-horizontal{left:30px;top:190px;}
-.node-partner_slider-form .field-widget-link-field .link-field-subrow{float:left;width:800px;}
+/* .node-partner_slider-form .field-widget-link-field .link-field-subrow{float:left;width:800px;} */
 .node-partner_slider-form  .link-field-subrow .custom-error{width: 500px;
     float: left;
     margin: 0px 0px;
@@ -1787,7 +1787,8 @@ form.entitytype-asset_upload_form-form .sticky-header{width:100%;float:left;}
 .itp_b_table td img.s_logo{max-width:85px;max-height:35px;}
 table.tbl_intel_tech table.itp td{padding:0 0 0px;}
 .tbl_intel_tech .benefits td{padding:0 20px;}
-form.webform-client-form,.project_support_request_ptag {width:1000px;margin:0px auto;}
+form.webform-client-form,.project_support_request_ptag,.node-partner_slider-form,.page-search .wrapper_full .section{width:1000px;margin:0px auto;}
+.project_support_request_ptag p span{color:#ff0000;font-size:20px;}
 form.webform-client-form{padding:30px 0px 0px;}
 .itp_b_table td ul{margin:0px 0 15px 0;}
 .itp_b_table td ul li{margin:0px 10px 0px 0;}
