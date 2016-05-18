@@ -297,7 +297,7 @@ class SearchQuery extends SelectQueryExtender {
       else {
         $simple_and = TRUE;
         list($num_new_scores, $num_valid_words) = $this->parseWord($key);
-        $this->conditions->condition('d.data', "% $key", 'LIKE');
+        $this->conditions->condition('d.data', "% $key %", 'LIKE');
         if (!$num_valid_words) {
           $this->simple = FALSE;
         }
