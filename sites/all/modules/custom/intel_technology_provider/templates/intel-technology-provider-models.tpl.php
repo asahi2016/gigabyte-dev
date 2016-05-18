@@ -1,5 +1,11 @@
 <?php
 global $base_url;
+
+$link = 'login';
+if(user_is_logged_in()){
+    $link = 'partner/promotions';
+}
+
 ?>
 <table class="tbl_intel_tech">
     <tbody>
@@ -35,7 +41,7 @@ global $base_url;
                 </tbody>
             </table>
 
-            <div class="claim"><a href="Claim_Rewards.html"><div>Claim Your Rewards</div></a></div>
+            <div class="claim"><a href="<?php print $link; ?>"><div>Claim Your Rewards</div></a></div>
 
             <div style="width:950px; margin:0 auto 0 auto; margin-top:40px; color:white; font-size:25px; font-family: 'ralewayregular', sans-serif;"><div style="background:#007dc5; padding-left:30px;">INTEL TECHNOLOGY PROVIDER POINTS</div></div>
 
@@ -43,7 +49,7 @@ global $base_url;
 
             <?php print $intel_brix_models; ?>
 
-            <div class="claim"><a href="Claim_Rewards.html"><div>Claim Your Rewards</div></a></div>
+            <div class="claim"><a href="<?php print $link; ?>"><div>Claim Your Rewards</div></a></div>
 
             <div style="width:950px; margin:0 auto 0 auto;margin-top:40px; color:white; font-size:25px; font-family: 'ralewayregular', sans-serif;"><div style="width:920px; background:#007dc5; padding-left:30px;">GIGABYTE REWARD PROGRAM</div></div>
 
