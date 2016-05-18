@@ -826,28 +826,32 @@ function taxonomy_form_term_submit($form, &$form_state) {
       break;
   }
 
-  $current_parent_count = count($form_state['values']['parent']);
-  $previous_parent_count = count($form['#term']['parent']);
-  // Root doesn't count if it's the only parent.
-  if ($current_parent_count == 1 && isset($form_state['values']['parent'][0])) {
-    $current_parent_count = 0;
-    $form_state['values']['parent'] = array();
-  }
+    if(isset($form_state['values']['parent']) && isset($form['#term']['parent'])){
 
-  // If the number of parents has been reduced to one or none, do a check on the
-  // parents of every term in the vocabulary value.
-  if ($current_parent_count < $previous_parent_count && $current_parent_count < 2) {
-    taxonomy_check_vocabulary_hierarchy($form['#vocabulary'], $form_state['values']);
-  }
-  // If we've increased the number of parents and this is a single or flat
-  // hierarchy, update the vocabulary immediately.
-  elseif ($current_parent_count > $previous_parent_count && $form['#vocabulary']->hierarchy < 2) {
-    $form['#vocabulary']->hierarchy = $current_parent_count == 1 ? 1 : 2;
-    taxonomy_vocabulary_save($form['#vocabulary']);
-  }
+        $current_parent_count = count($form_state['values']['parent']);
+        $previous_parent_count = count($form['#term']['parent']);
+        // Root doesn't count if it's the only parent.
+        if ($current_parent_count == 1 && isset($form_state['values']['parent'][0])) {
+            $current_parent_count = 0;
+            $form_state['values']['parent'] = array();
+        }
 
-  $form_state['values']['tid'] = $term->tid;
-  $form_state['tid'] = $term->tid;
+        // If the number of parents has been reduced to one or none, do a check on the
+        // parents of every term in the vocabulary value.
+        if ($current_parent_count < $previous_parent_count && $current_parent_count < 2) {
+            taxonomy_check_vocabulary_hierarchy($form['#vocabulary'], $form_state['values']);
+        }
+        // If we've increased the number of parents and this is a single or flat
+        // hierarchy, update the vocabulary immediately.
+        elseif ($current_parent_count > $previous_parent_count && $form['#vocabulary']->hierarchy < 2) {
+            $form['#vocabulary']->hierarchy = $current_parent_count == 1 ? 1 : 2;
+            taxonomy_vocabulary_save($form['#vocabulary']);
+        }
+
+        $form_state['values']['tid'] = $term->tid;
+        $form_state['tid'] = $term->tid;
+    }
+
 }
 
 /**
