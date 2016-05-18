@@ -111,6 +111,10 @@ function custom_search_preprocess_search_result(&$variables) {
   $variables['user_access_field'] = true;
   if(!field_check_user_access($variables['result']['node'])){
         $variables['user_access_field'] = false;
+  }else{
+      if($variables['result']['node']->type == 'tools_assets_logos'){
+          $variables['snippet'] = '';
+      }
   }
   $infos = array();
   // In Drupal 7 the content type is no longer in the info array.
