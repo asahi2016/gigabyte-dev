@@ -15,8 +15,14 @@
     <tr>
         <td valign="top"><?php print $country_name;?></td>
         <td><ul>
-        <?php foreach ($terms as $k => $term){ ?>
-        <li>
+        <?php foreach ($terms as $k => $term){
+        $remainder = $k%7;
+        if($remainder == 0){
+            echo '<li class="begin" style="clear:both;">';
+        }else{
+            echo '<li>';
+        }
+        ?>
             <?php $path= file_create_url($term->term->field_distributor_image['und'][0]['uri']); ?>
             <a href="<?php echo $term->term->field_distributor_link['und'][0]['url'];?>" target="_blank">
                 <img src="<?php print $path; ?>" class="s_logo"/>
