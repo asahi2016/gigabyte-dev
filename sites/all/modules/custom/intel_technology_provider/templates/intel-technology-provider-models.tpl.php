@@ -1,9 +1,9 @@
 <?php
 global $base_url;
 
-$link = 'login';
+$link = url('login');
 if(user_is_logged_in()){
-    $link = 'partner/promotions';
+    $link = url('partner/promotions');
 }
 
 ?>
