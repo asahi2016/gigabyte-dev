@@ -107,6 +107,9 @@ function custom_search_preprocess_search_results(&$variables) {
  * Customisation of the results info.
  */
 function custom_search_preprocess_search_result(&$variables) {
+  if(!field_check_user_access($variables['result']['node'])){
+        unset($variables['result']['node']);
+  }
   $infos = array();
   // In Drupal 7 the content type is no longer in the info array.
   if (variable_get('custom_search_results_info_type', TRUE) && $variables['module'] == 'node') {
@@ -158,7 +161,7 @@ function content_search_execute_based_on_content($keys){
         $node = node_load($item->sid);
         node_build_content($node, 'search_result');
         $node->body = drupal_render($node->content);
-
+        if(!field_check_user_access($node)){ continue; }
         // Fetch comments for snippet.
         //$node->rendered .= ' ' . module_invoke('comment', 'node_update_index', $node);
         // Fetch terms for snippet.
@@ -182,24 +185,32 @@ function content_search_execute_based_on_content($keys){
 }
 
 function field_check_user_access($node){
-    global $user;
-
-    $usr = user_load($user->uid);
-    foreach($usr->roles as $key => $value){
-        if($key != 2){
-            $role['value'] = $value;
-            $role['id'] = $key;
-        }
-    }
 
     $access = false;
-    foreach($node->field_field_permitted_roles_tal as $rkey => $rval){
-        $role_permitted[] = $rval['raw']['rid'];
-        if($role['id'] == $rval['raw']['rid']){
-            $access = true;
+
+    if($node->type == 'tools_assets_logos') {
+
+        global $user;
+
+        $usr = user_load($user->uid);
+        foreach ($usr->roles as $key => $value) {
+            if ($key != 2) {
+                $role['value'] = $value;
+                $role['id'] = $key;
+            }
         }
-    }
-    if (in_array('administrator', array_values($user->roles))) {
+
+        $permitted_roles = explode(',', $node->field_permitted_roles_tal['und'][0]['value']);
+
+        foreach ($permitted_roles as $rkey => $rval) {
+            if ($role['id'] == trim($rval)) {
+                $access = true;
+            }
+        }
+        if (in_array('administrator', array_values($user->roles))) {
+            $access = false;
+        }
+    }else{
         $access = true;
     }
 
