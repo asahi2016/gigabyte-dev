@@ -1,7 +1,7 @@
 <table class="itp_b_table">
     <tbody>
     <tr>
-        <td>GIGABYTE AUTHORIZED DISTRIBUTORSs</td>
+        <td>GIGABYTE AUTHORIZED DISTRIBUTORS</td>
     </tr>
     </tbody>
 </table>

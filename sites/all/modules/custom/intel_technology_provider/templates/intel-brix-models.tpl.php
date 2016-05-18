@@ -7,7 +7,7 @@
     <?php if($variables['brix']){
         foreach ($variables['brix'] as $points => $terms){
             ?>
-            <tr>
+            <tr class="tr_seperate">
                 <td class="number"><?php print $points; ?></td>
                 <td>
                     <ul>

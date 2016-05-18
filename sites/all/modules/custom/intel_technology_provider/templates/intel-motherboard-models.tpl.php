@@ -7,7 +7,7 @@
     <?php if(isset($variables['motherboard']) && $variables['motherboard']){
     foreach ($variables['motherboard'] as $points => $terms){
     ?>
-    <tr>
+    <tr class="tr_seperate">
         <td class="number"><?php print $points; ?></td>
         <td>
             <ul>
