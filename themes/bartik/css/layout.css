@@ -1760,7 +1760,7 @@ h1#page-title{width:1000px;margin:0px auto;padding:30px 0px;}
 .page-partner-how-to-sell-intel .views-view-grid .views-field-nothing{margin:0px;}
 .split-page .sidebar .block {background:none;border:0px;}
 .h2-title h2{width:1000px;margin:0px auto;padding:20px 0px;}
-.h2-title .content p{width:1000px;margin:0px auto;}
+.h2-title .content p,.group-page-canada-content{width:1000px;margin:0px auto;}
 #testimonial-node-form #field-testimonial-video-add-more-wrapper .fieldset-legend{display:none;}
 #testimonial-node-form #field-testimonial-video-add-more-wrapper .form-wrapper{border-bottom:0px;} 
 #testimonial-node-form #field-testimonial-video-add-more-wrapper .form-wrapper .fieldset-wrapper{float:left;padding:0px;margin:0px;}
@@ -1795,7 +1795,7 @@ form.webform-client-form{padding:30px 0px 0px;}
 .itp_b_table td ul li{margin:0px 10px 0px 0;}
 .itp tr.tr_seperate{background:#FBB040;border-bottom:10px solid #fff;}
 .itp tr.tr_seperate .number{background:#fff;}
-table.ipa{margin:0px 0px 0px;}
+table.ipa{margin:0px 0px 0px;display:none;}
 table.ipa tr  th,table.ipa tr  td{padding:5px 0;}
 table.ipa tr .t_head{background:#666666;}
 table.ipa tr .t_series,table.ipa tr .t_alter,table.ipa tr .t_last{text-align:center;color:#fff;}
@@ -1803,5 +1803,6 @@ table.ipa tr .t_series a,table.ipa tr .t_alter a,table.ipa tr .t_last a{color:#f
 table.ipa tr .t_series{background:#000099;}
 table.ipa tr .t_alter{background:#0066ff;}
 table.ipa tr .t_last{background:#000066;}
-.fixed {width: 100%;position: fixed;top: 0;z-index: 99999;}
+.fixed {width:1000px;position: fixed;top: 0;z-index: 99999;}
 .tbl_p_alter {margin-top: 30px;margin-bottom: 30px;font-size: 20px;font-weight: 700;color:#333;}
+table.ipa_menu td a.active img{box-shadow: 0px 0px 0px 2px orange;}

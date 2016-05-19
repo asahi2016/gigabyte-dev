@@ -131,4 +131,29 @@ jQuery(document).ready(function($) {
     });
 });
 
+jQuery(document).ready(function($) {
+		$('table.ipa').hide();
+		$('.ipa_menu td a').removeClass('active');
+		$('table.ipa.category').show();
+		$('.ipa_menu td').eq(0).find('a').addClass('active');
+	$('.ipa_menu td a').click(function(){
+		$('.ipa_menu td a').removeClass('active');
+		$('table.ipa').hide();
+		$(this).addClass('active');
+		var table_val = $(this).attr('rel');
+		$('.'+table_val).show();
+	});
+	$(window).load(function () {
+		$(window).bind('scroll resize', function () {
+			var $this = $(this);
+			var $this_Top = $this.scrollTop();
 
+			if ($this_Top < 485) {
+				$('#top-bar').removeClass("fixed");
+			}
+			if ($this_Top > 485) {
+				$('#top-bar').addClass("fixed");
+			}
+		}).scroll();
+	});
+});
