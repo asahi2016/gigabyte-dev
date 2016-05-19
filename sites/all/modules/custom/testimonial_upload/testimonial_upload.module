@@ -2,13 +2,23 @@
 
 function testimonial_upload_form_testimonial_node_form_alter(&$form,&$form_state){
 
+    //print_pre($form['field_testimonial_description'],1);
         $form['title']['#title'] ='Testimonial Name';
         $form['options']['promote']['#value'] = 0;
+        $form['#validate'][] = 'testimonial_upload_form_validation';
         $form['ajax-submit']['#value'] = t('Submit');
         unset($form['ajax-submit']['#ajax']);
         $form['ajax-submit']['#submit'][] = 'testimonial_upload_form_submit';
 }
 
+function testimonial_upload_form_validation(&$form,&$form_state){
+
+    $description = $form_state['values']['field_testimonial_description']['und'][0]['value'];
+    $length = strlen($description);
+    if($length > 400){
+        form_set_error('field_testimonial_description][und','Description field allows only 300 characters.');
+   }
+}
 function testimonial_upload_form_submit(&$form,&$form_state){
 
     $current_url = url(current_path(), array('absolute' => TRUE));
