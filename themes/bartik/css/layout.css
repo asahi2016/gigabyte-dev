@@ -1724,6 +1724,7 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 #user-login-form .form-actions input.form-submit{float:left;margin:0 0 0 170px;}
 #request.back2{float:left;width:1020px;}
 h1#page-title{width:1000px;margin:0px auto;padding:30px 0px;}
+.page-intel-technology h1#page-title{width:1200px;margin:0px auto;padding:10px 0px 0px;}
 .page-intel-technology #cboxTopCenter,.page-intel-technology #cboxMiddleLeft,.page-intel-technology #cboxMiddleRight,.page-intel-technology #cboxBottomCenter,
 .page-intel-technology #cboxTopRight,.page-intel-technology #cboxTopLeft,.page-intel-technology #cboxBottomLeft,.page-intel-technology #cboxTopRight,.page-intel-technology #cboxBottomRight{background:none;}
 .page-intel-technology #cboxContent{border:5px solid #000;}
@@ -1794,3 +1795,13 @@ form.webform-client-form{padding:30px 0px 0px;}
 .itp_b_table td ul li{margin:0px 10px 0px 0;}
 .itp tr.tr_seperate{background:#FBB040;border-bottom:10px solid #fff;}
 .itp tr.tr_seperate .number{background:#fff;}
+table.ipa{margin:0px 0px 0px;}
+table.ipa tr  th,table.ipa tr  td{padding:5px 0;}
+table.ipa tr .t_head{background:#666666;}
+table.ipa tr .t_series,table.ipa tr .t_alter,table.ipa tr .t_last{text-align:center;color:#fff;}
+table.ipa tr .t_series a,table.ipa tr .t_alter a,table.ipa tr .t_last a{color:#fff;text-decoration:underline;}
+table.ipa tr .t_series{background:#000099;}
+table.ipa tr .t_alter{background:#0066ff;}
+table.ipa tr .t_last{background:#000066;}
+.fixed {width: 100%;position: fixed;top: 0;z-index: 99999;}
+.tbl_p_alter {margin-top: 30px;margin-bottom: 30px;font-size: 20px;font-weight: 700;color:#333;}
