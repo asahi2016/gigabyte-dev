@@ -232,7 +232,7 @@ jQuery(document) . ready(function () {
         country_id = <?php echo (!empty($_SESSION['user_country_id']) ? $_SESSION['user_country_id'] : 1) ?>;
         country_content_length = '<?php echo (!empty($node_content)?strlen($node_content):0) ?>';
         country = location.search.split('country=')[1];
-        if ((country == 'ca' || country_id == 2) && country_content . length > 0) {
+        if ((country == 'ca' || country_id == 2) && country_content_length > 0) {
             jQuery('#page-canada-content') . show();
             jQuery('#page-us-content') . hide();
             jQuery('#country-menu li:first-child') . removeClass('active');
