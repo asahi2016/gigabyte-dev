@@ -64,7 +64,7 @@ function custom_search_preprocess_search_results(&$variables) {
         
       // Build menu.
         $items = array();
-        $items[] = l(variable_get('custom_search_type_selector_all', CUSTOM_SEARCH_ALL_TEXT_DEFAULT), 'search/node/' . $keys).' <span class="count">('.$total.')</span>';
+        $items[] = l(variable_get('custom_search_type_selector_all', CUSTOM_SEARCH_ALL_TEXT_DEFAULT).' ('.$total.')', 'search/node/' . $keys);
 
         $cnt = 0;
         foreach ($node_types as $node_type) {
@@ -76,7 +76,7 @@ function custom_search_preprocess_search_results(&$variables) {
             if ($nbresults) {
                 if(!empty($node_type->type)){
                     if($cnt > 0 ){
-                        $items[] = l($node_type->name, 'search/node/' . $keys . ' type:' . $node_type->type).' <span class="count">('.$cnt.')</span>';
+                        $items[] = l($node_type->name.' ('.$cnt.')', 'search/node/' . $keys . ' type:' . $node_type->type);
                     }
 
                 }
