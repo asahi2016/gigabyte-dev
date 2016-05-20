@@ -194,27 +194,38 @@ function field_check_user_access($node){
 
     $access = false;
 
-    if($node->type == 'tools_assets_logos') {
+    if($node->type == 'tools_assets_logos' || $node->type == 'page') {
 
-        global $user;
-
-        $usr = user_load($user->uid);
-        foreach ($usr->roles as $key => $value) {
-            if ($key != 2) {
-                $role['value'] = $value;
-                $role['id'] = $key;
+        if($node->type == 'page'){
+            if(isset($node->noindex) && !empty($node->noindex)){
+                if($node->noindex == 1){
+                    $access = false;
+                }
             }
-        }
-
-        $permitted_roles = explode(',', $node->field_permitted_roles_tal['und'][0]['value']);
-
-        foreach ($permitted_roles as $rkey => $rval) {
-            if ($role['id'] == trim($rval)) {
+            else{
                 $access = true;
             }
-        }
-        if (in_array('administrator', array_values($user->roles))) {
-            $access = true;
+        }else {
+            global $user;
+
+            $usr = user_load($user->uid);
+            foreach ($usr->roles as $key => $value) {
+                if ($key != 2) {
+                    $role['value'] = $value;
+                    $role['id'] = $key;
+                }
+            }
+
+            $permitted_roles = explode(',', $node->field_permitted_roles_tal['und'][0]['value']);
+
+            foreach ($permitted_roles as $rkey => $rval) {
+                if ($role['id'] == trim($rval)) {
+                    $access = true;
+                }
+            }
+            if (in_array('administrator', array_values($user->roles))) {
+                $access = true;
+            }
         }
     }else{
         $access = true;

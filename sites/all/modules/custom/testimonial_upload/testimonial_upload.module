@@ -15,7 +15,7 @@ function testimonial_upload_form_validation(&$form,&$form_state){
 
     $description = $form_state['values']['field_testimonial_description']['und'][0]['value'];
     $length = strlen($description);
-    if($length > 400){
+    if($length > 300){
         form_set_error('field_testimonial_description][und','Description field allows only 300 characters.');
    }
 }
