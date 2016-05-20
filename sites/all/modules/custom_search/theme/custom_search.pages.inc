@@ -194,14 +194,18 @@ function field_check_user_access($node){
 
     $access = false;
 
+    //search results node access based on roles
     if($node->type == 'tools_assets_logos' || $node->type == 'page') {
 
+        //set noindex to basic page unwanted nodes
         if($node->type == 'page'){
             if(isset($node->noindex) && !empty($node->noindex)){
+
+                //set no access to noindexed nodes
                 if($node->noindex == 1){
                     $access = false;
                 }
-            }
+            }//set access to other basic pages
             else{
                 $access = true;
             }
