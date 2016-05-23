@@ -1,0 +1,5 @@
+name = Promotions and Rebates
+description = Admin upload the Promotions & Rebates submission and users can view the Promotions content
+version = 7.x
+core = 7.x
+package = Custom Module

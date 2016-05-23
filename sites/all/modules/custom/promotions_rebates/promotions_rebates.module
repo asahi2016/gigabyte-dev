@@ -1,0 +1,166 @@
+<?php
+
+function promotions_rebates_init(){
+
+    drupal_add_js(drupal_get_path('module', 'custom').'/promotions_rebates/js/promotions_rebates.js',array('scope' => 'footer'));
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function promotions_rebates_menu() {
+
+    $items['partner/promotions/intel'] = array(
+        'page callback' => 'display_intel_promotions_and_rebates', // Render HTML
+        'type' => MENU_CALLBACK,
+        'access callback' => TRUE,
+    );
+
+    $items['partner/promotions/amd'] = array(
+        'page callback' => 'display_amd_promotions_and_rebates', // Render HTML
+        'type' => MENU_CALLBACK,
+        'access callback' => TRUE,
+    );
+
+    return $items;
+}
+
+// Alter the webform elements
+function promotions_rebates_form_promotion_rebates_node_form_alter(&$form, &$form_state, $form_id){
+
+    $form['options']['promote']['#value'] = 0;
+    unset($form['ajax-submit']['#ajax']);
+    $form['ajax-submit']['#value'] ='Submit';
+    $form['ajax-submit']['#submit'][] ='create_promotions_and_rebates_content';
+    //$form['#validate'][] = 'promotions_rebates_form_validation';
+    //$form['#submit'][] = 'create_awards_and_reviews_content';;
+}
+
+function create_promotions_and_rebates_content(&$form, &$form_state) {
+
+    $form_state['values']['promote'] = 0;
+    $current_url = url(current_path(), array('absolute' => TRUE));
+    $form_state['redirect'] = $current_url;
+}
+
+function promotions_rebates_form_validation(&$form, &$form_state){
+    // Append custom error message element with content
+    //promotions_rebates_errors_reset($form);
+}
+
+function promotions_rebates_errors_reset(&$element){
+
+    // Check for errors and settings
+    $errors = form_get_errors();
+
+    if( ! isset( $_SESSION[ 'messages' ] ) ) {
+        return;
+    }
+
+    $reset_errors = array();
+
+    // Recurse through all children.
+    foreach( element_children( $element ) as $key ) {
+        if( isset( $element[ $key ] ) && $element[ $key ] ) {
+            $reset_errors += promotions_rebates_errors_reset( $element[ $key ] );
+        }
+    }
+
+    $element_id = implode( '][', $element[ '#parents' ] );
+
+    if ( !empty( $errors[ $element_id ] )) {
+        $error_message = $errors[ $element_id ];
+
+        // Get error id
+        $error_id = array_search( $error_message, $_SESSION[ 'messages' ][ 'error' ] );
+
+        if( $error_id !== FALSE ) {
+            unset( $_SESSION[ 'messages' ][ 'error' ][ $error_id ] );
+            $_SESSION[ 'messages' ][ 'error' ] = array_values( $_SESSION[ 'messages' ][ 'error' ]  );
+
+            if( count( $_SESSION[ 'messages' ][ 'error' ] ) <= 0 ) {
+                unset( $_SESSION[ 'messages' ][ 'error' ] );
+            }
+
+            switch($element['#type']){
+
+                case 'textfield':
+                      $error_message = str_replace('field is required', 'cannot be empty' ,$error_message);
+                      break;
+                case 'file':
+                      $error_message = isset($errors['field_award_image_und_0'])?
+                            'Invalid file format, Only files with the following extensions are allowed: png gif jpg jpeg':
+                            $error_message;
+                      unset($errors['field_award_image_und_0']);
+                      break;
+            }
+
+            $element[ '#suffix' ] = '<span class="custom-error '.$element[ '#id' ].'" >'.$error_message.'</span>';
+
+            $reset_errors[ $element[ '#id' ] ] = $error_message;
+        }
+    }
+
+    return $reset_errors;
+
+}
+
+function display_intel_promotions_and_rebates(){
+
+    return theme('intel_technology_provider_models', array('data' => ''));
+}
+
+function display_amd_promotions_and_rebates(){
+
+    return theme('intel_technology_provider_models', array('data' => ''));
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+function promotions_rebates_theme(){
+
+    $path = drupal_get_path('module', 'promotions_rebates') . '/templates';
+
+    return array(
+        'intel_promotions_rebates' => array(
+            'path' => $path,
+            'template' => 'intel-promotions-rebates-view',
+            'variables' => array('data' => NULL),
+        ),
+        'amd_promotions_rebates' => array(
+            'path' => $path,
+            'template' => 'amd-promotions-_rebates-view',
+            'variables' => array('data' => NULL),
+        )
+    );
+}
+
+function template_preprocess_intel_promotions_rebates(&$variables){
+
+    
+    $intel_promotions_content = (module_invoke('views', 'block_view', 'itp_gigabyte_product_training-block'))? module_invoke('views', 'block_view', 'itp_gigabyte_product_training-block') :'';
+
+    $variables['intel_promotions'] = $intel_promotions_content;
+
+    return $variables;
+
+}
+
+function template_preprocess_amd_promotions_rebates(&$variables){
+
+    $amd_promotions_content = (module_invoke('views', 'block_view', 'itp_gigabyte_product_training-block'))? module_invoke('views', 'block_view', 'itp_gigabyte_product_training-block') :'';
+
+    $variables['amd_promotions'] = $amd_promotions_content;
+
+    return $variables;
+
+}
+
+function promotions_rebates_views_pre_render(&$view){
+    return $view;
+}
+
+
+
