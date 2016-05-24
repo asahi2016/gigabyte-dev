@@ -1821,15 +1821,15 @@ font-size:20px; font-family: 'ralewayregular', sans-serif; line-height: 250%; fo
 table.gig_rep{margin:30px auto; width:800px;}
 table.gig_rep td{padding:20px 0px;}
 .view-clone-of-entityforms .view-empty{clear: both; width: 1000px; margin: 0px auto;padding: 0 0 0 80px;}
-.page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio{float:left;margin:20px 0 20px 350px;}
-.page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio:last-child{float:left;margin:20px 0 20px 200px;}
+.page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio{float:left;margin:5px 0 20px 45px;}
+.page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio:last-child{float:left;margin:5px 0 30px 30px;}
 .page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio label{float:left;margin:0 0 0 0px;font-size:14px;font-weight:bold;}
-.page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio .form-radio{float:left;margin:7px 6px 0 0px;}
+.page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio .form-radio{float:left;margin:3px 6px 0 0px;}
 .page-promotion-upload fieldset{margin:0px;}
 .page-promotion-upload .date-padding label{display:none;}
 .page-promotion-upload fieldset legend{color:#000;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;position:inherit;line-height: 25px; width: auto;}
 .page-promotion-upload fieldset .fieldset-legend{font-weight:bold;font-size:14px;}
-.page-promotion-upload #promotion-information > legend .fieldset-legend{font-weight:normal;font-size:20px;}
+.page-promotion-upload #promotion-information > legend .fieldset-legend{font-weight:normal;font-size:20px;text-indent:0px;}
 .page-promotion-upload .field-name-field-promotion-thumbnail{width:250px;float:left;margin:0px;}
 /* .page-promotion-upload .field-name-field-promotion-thumbnail .image-widget{float:left;border-top:1px solid #000;} */
 .page-promotion-upload .field-name-field-promotion-thumbnail .image-widget-data .form-submit{float:left;margin:15px 0px;}
@@ -1848,36 +1848,47 @@ table.gig_rep td{padding:20px 0px;}
 .page-promotion-upload .field-name-field-promotion-end-date .date-popup-init{}
 .page-promotion-upload .field-name-field-promotion-claim-date{width:160px;float:left;}
 .page-promotion-upload fieldset.form-wrapper{border-bottom:0px;position:inherit;}
-.page-promotion-upload .field-name-field-promotion-thumbnail label,.page-promotion-upload .form-type-textfield label,.page-promotion-upload .field-name-field-promotion-claim-date label{font-size:14px;font-weight:bold;}
+.page-promotion-upload .field-name-field-promotion-thumbnail label,#promotion-information .form-type-textfield label,.page-promotion-upload .field-name-field-promotion-claim-date label{font-size:14px;font-weight:bold;}
 .page-promotion-upload .field-name-field-promotion-claim-date .form-text{margin:13px 0px;}
 .page-promotion-upload .field-name-field-promotion-start-date .form-text,.page-promotion-upload .field-name-field-promotion-end-date .form-text,.page-promotion-upload .field-name-field-promotion-claim-date .form-text{width:100px;}
 .page-promotion-upload #promotion-information > .fieldset-wrapper{border:1px solid #efefef;float:left;padding:10px 0px 0 25px;margin:20px 0 0 0}
-.page-promotion-upload .field-name-field-promotion-url label{width:auto;float:left;margin:5px 10px 0 10px;}
+.page-promotion-upload .field-name-field-promotion-url label{width:auto;float:left;margin:5px 10px 0 0px;}
 .page-promotion-upload .fieldset-wrapper .form-item .description {clear: both; margin: 3px 0 0 0px;}
 .page-promotion-upload .field-name-field-promotion-url .form-type-textfield.form-item .description {clear: both; margin: 3px 0 0 70px;}
 .page-promotion-upload .form-item .description {margin:3px 0 0 205px;}
 .page-promotion-upload .field-type-image label{width:200px;}
-.node-promotion_rebates-form .field-type-image .image-widget-data .form-file{}
-#field-distributor-promotion-deta-values.field-multiple-table tr.draggable{width:1000px;background:none;border-bottom:0px;}
-#field-distributor-promotion-deta-values.field-multiple-table tr.draggable td .field-name-field-gigabyte-model,#field-distributor-promotion-deta-values.field-multiple-table tr.draggable td .field-widget-text-textfield,
-#field-distributor-promotion-deta-values.field-multiple-table tr.draggable td .field-name-field-stable-model,#field-distributor-promotion-deta-values.field-multiple-table tr.draggable td .field-name-field-itp-points,
-#field-distributor-promotion-deta-values.field-multiple-table tr.draggable td .field-name-field-intel-sba,#field-distributor-promotion-deta-values.field-multiple-table tr.draggable td .field-name-field-instant-rebate
-{width:170px;float:left;}
-#field-distributor-promotion-deta-values.field-multiple-table tr.draggable td .field-name-field-stable-model,#field-distributor-promotion-deta-values.field-multiple-table tr.draggable td .field-name-field-intel-sba{width:100px;float:left;}
-35px 0 0 0
-#field-distributor-promotion-deta-values tr th{background:none;color:#000;}
-#field-distributor-promotion-deta-values tr th label{padding:0px;}
-#field-distributor-promotion-deta-values td .field-name-field-prmotion-distributors .form-select{margin: 10px 0px 0px;width: 200px;}
-#field-promotion-details-values td .field-widget-text-textfield.form-wrapper input.form-text{width:120px;float:left;margin: 5px 0 0 0px;clear: both;}
-#field-promotion-details-values td .form-type-checkboxes label{font-size:14px;font-weight:bold;}
-table#field-distributor-promotion-deta-values tr th{background:none;}
-table#field-distributor-promotion-deta-values tr th label{color:#000;}
+.node-promotion_rebates-form .form-type-radios label{float:left;}
+table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable{width:1000px;background:none;border-bottom:0px;}
+table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-gigabyte-model,table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-widget-text-textfield,
+table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-stable-model,table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-itp-points,
+table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-intel-sba,table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-instant-rebate
+{width:160px;float:left;}
+table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-gigabyte-model{margin:0 0 0 20px;}
+table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-stable-model,table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-intel-sba{width:100px;float:left;}
+table[id*='field-distributor-promotion-deta-values'] div.messages ul li{width:100%;float:left;}
+table[id*='field-distributor-promotion-deta-values'] tr th{background:none;color:#000;}
+table[id*='field-distributor-promotion-deta-values'] tr th label{padding:0px;}
+table[id*='field-distributor-promotion-deta-values'] td .field-name-field-prmotion-distributors .form-select{margin: 10px 0px 0px;width: 200px;}
+table[id*='field-promotion-details-values']{padding:10px;}
+table[id*='field-promotion-details-values'] tr.draggable{border:1px solid #efefef;padding:0 0 20px 0px;}
+table[id*='field-promotion-details-values'] td .field-widget-text-textfield.form-wrapper input.form-text{width:120px;float:left;margin: 5px 0 0 0px;clear: both;}
+table[id*='field-promotion-details-values'] td .form-type-checkboxes label{font-size:14px;font-weight:bold;}
+table[id*='field-promotion-details-values'] td .form-item label{font-size:14px;font-weight:bold;}
+table[id*='field-distributor-promotion-deta-values'] tr th{background:none;}
+table[id*='field-distributor-promotion-deta-values'] tr th label{color:#000;margin:10px 20px 0 0px;}
+table[id*='field-distributor-promotion-deta-values'] td .field-type-taxonomy-term-reference{float:left;margin:10px 0 30px 0px;}
 .page-promotion-upload .node-promotion_rebates-form .field-name-field-intel-sba .form-type-radios .form-type-radio:last-child{margin:0 20px 0px 0px;font-size:14px;font-weight:200px;}
 .page-promotion-upload .node-promotion_rebates-form .field-name-field-intel-sba label{font-size:14px;font-weight:bold;}
-#field-promotion-details-values td  input.form-submit{margin:30px 0px 0px;}
-#field-promotion-details-values .field-multiple-drag,#field-distributor-promotion-deta-values tr.draggable{display:none;}
-#field-distributor-promotion-deta-values .field-add-more-submit{width:150px;margin:0 10px 0px 0px;}
-#field-promotion-notes-values tr.draggable td .field-widget-text-textfield.field-name-field-promotion-notes-sub{width:350px;}
-#field-distributor-promotion-deta-values .text-full{width:180px;}
-#field-distributor-promotion-deta-values .field-add-more-submit{width:150px;}
-#field-distributor-promotion-deta-values .field-name-field-promotion-notes .form-submit{margin:20px 0px 0px 0px;}
+table[id*='field-promotion-details-values'] td  input.form-submit{margin:30px 0px 0px;}
+/* #field-promotion-details-values .field-multiple-drag,#field-distributor-promotion-deta-values tr.draggable{display:none;} */
+form.node-promotion_rebates-form .field-multiple-table td.field-multiple-drag{display:none;}
+form.node-promotion_rebates-form .field-multiple-table tr.draggable{padding:10px 0px 20px;}
+table[id*='field-promotion-details-values'].field-multiple-table tr.draggable{border-bottom:1px solid #efefef;}
+table[id*='field-promotion-notes-values'].field-multiple-table tr.draggable{border-bottom:1px solid #efefef;}
+table[id*='field-distributor-promotion-deta-values'] .field-add-more-submit{width:150px;margin:20px 20px 0px 0px;}
+table[id*='field-promotion-notes-values'] tr.draggable td .field-widget-text-textfield.field-name-field-promotion-notes-sub{width: 410px;margin: 0 0px 0 0;float: left;}
+table[id*='field-promotion-notes-values'] tr.draggable{border: 1px solid #efefef;padding: 15px 10px;margin: 10px 0 15px 0px;}
+table[id*='field-promotion-notes-values'] td .form-item label{margin:5px 20px 0 10px;font-size:14px;font-weight:bold;}
+table[id*='field-distributor-promotion-deta-values'] .text-full{width:250px;}
+table[id*='field-distributor-promotion-deta-values'] .field-add-more-submit{width:150px;}
+table[id*='field-distributor-promotion-deta-values'] .field-name-field-promotion-notes .form-submit{margin:0px 0px 0px 0px;}
