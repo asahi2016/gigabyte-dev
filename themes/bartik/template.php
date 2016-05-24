@@ -132,6 +132,11 @@ function bartik_preprocess_node(&$variables) {
     }
   }
 
+  if (!empty($variables['node']) && !empty($variables['node']->type) && $variables['node']->type == 'promotion_rebates') {
+     $variables['promotions_rebates'] = theme('promotion_rebates_view', array('node' => $variables['node']));
+     $variables['theme_hook_suggestions'][] = 'page__node__' . $variables['node']->type;
+  }
+
 }
 
 function bartik_preprocess_views_view(&$vars) {
@@ -269,7 +274,7 @@ function bartik_theme(){
             'arguments' => array('form' => NULL),
             'render element' => 'form',
             'template' => 'templates/user-profile-edit',
-        ),
+        )
     );
 
 }

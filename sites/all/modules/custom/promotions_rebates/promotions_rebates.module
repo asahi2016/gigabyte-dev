@@ -124,43 +124,89 @@ function promotions_rebates_theme(){
     $path = drupal_get_path('module', 'promotions_rebates') . '/templates';
 
     return array(
-        'intel_promotions_rebates' => array(
+        'promotion_rebates_view' => array(
             'path' => $path,
-            'template' => 'intel-promotions-rebates-view',
-            'variables' => array('data' => NULL),
-        ),
-        'amd_promotions_rebates' => array(
-            'path' => $path,
-            'template' => 'amd-promotions-_rebates-view',
-            'variables' => array('data' => NULL),
+            'template' => 'promotions-rebates-view',
+            'variables' => array('node' => NULL),
         )
     );
 }
 
-function template_preprocess_intel_promotions_rebates(&$variables){
 
-    
-    $intel_promotions_content = (module_invoke('views', 'block_view', 'itp_gigabyte_product_training-block'))? module_invoke('views', 'block_view', 'itp_gigabyte_product_training-block') :'';
-
-    $variables['intel_promotions'] = $intel_promotions_content;
-
-    return $variables;
-
-}
-
-function template_preprocess_amd_promotions_rebates(&$variables){
-
-    $amd_promotions_content = (module_invoke('views', 'block_view', 'itp_gigabyte_product_training-block'))? module_invoke('views', 'block_view', 'itp_gigabyte_product_training-block') :'';
-
-    $variables['amd_promotions'] = $amd_promotions_content;
-
-    return $variables;
-
-}
-
-function promotions_rebates_views_pre_render(&$view){
+/*function promotions_rebates_views_pre_render(&$view){
     return $view;
+}*/
+
+
+function template_preprocess_promotion_rebates_view(&$variables){
+
+    $name = "Gigabyte Authorized Distributors";
+
+    $terms = get_gigabyte_authorized_distributors_taxonomy_by_name($name);
+
+    $items = field_get_items('node', $variables['node'] , 'field_distributor_promotion_deta');
+
+    $promotions = array();
+
+    foreach ($items as $item) {
+
+        $fc = field_collection_item_load($item['value']);
+
+        $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['tid'] = $fc->field_prmotion_distributors['und'][0]['tid'];
+
+        $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['term'] = $fc->field_prmotion_distributors['und'][0]['taxonomy_term'];
+
+        $promotion_details = array();
+        foreach ($fc->field_promotion_details['und'] as $key => $val){
+
+            $field_items = field_collection_item_load($val['value']);
+
+            $details = array();
+            $details['model'] = $field_items->field_gigabyte_model['und'][0]['value'];
+            $details['chipset'] = $field_items->field_gigabyte_chipset['und'][0]['value'];
+            $details['stable'] = $field_items->field_stable_model['und'][0]['value'];
+            $details['points'] = $field_items->field_itp_points['und'][0]['value'];
+            $details['intel_sba'] = $field_items->field_intel_sba['und'][0]['value'];
+            $details['rebate'] = $field_items->field_instant_rebate['und'][0]['value'];
+
+            $promotion_details[$key] = $details;
+        }
+        $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['promotions'] = $promotion_details;
+
+        $promotion_notes = array();
+        foreach ($fc->field_promotion_notes['und'] as $nkey => $nval){
+
+            $field_items = field_collection_item_load($nval['value']);
+
+            $promotion_notes[$nkey] = $field_items->field_promotion_notes_sub['und'][0]['value'];
+
+        }
+
+        $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['notes'] = $promotion_notes;
+
+    }
+
+    $variables['terms'] = $terms;
+    $variables['promotions'] = $promotions;
+
 }
 
+function get_gigabyte_authorized_distributors_taxonomy_by_name($name  = NULL){
 
+    $query = db_select('taxonomy_vocabulary', 'tv');
+    $query->fields('tv', array(
+        'machine_name',
+        'vid',
+    ));
+    $query->condition('tv.name', $name, '=');
+    $vocabulary_obj = $query->execute()->fetchObject();
 
+    $terms = taxonomy_get_tree($vocabulary_obj->vid);
+
+    foreach ($terms as $key => $term){
+        $terms[$key]->term = taxonomy_term_load($term->tid);
+    }
+
+    return $terms;
+
+}
