@@ -5,24 +5,23 @@ function promotions_rebates_init(){
     drupal_add_js(drupal_get_path('module', 'custom').'/promotions_rebates/js/promotions_rebates.js',array('scope' => 'footer'));
 }
 
+
 /**
- * Implementation of hook_menu().
+ * Implements hook_node_insert().
  */
-function promotions_rebates_menu() {
+function promotions_rebates_node_insert($node) {
+    // Set the URL alias
 
-    $items['partner/promotions/intel'] = array(
-        'page callback' => 'display_intel_promotions_and_rebates', // Render HTML
-        'type' => MENU_CALLBACK,
-        'access callback' => TRUE,
-    );
+    if (isset($node) && $node->type == 'promotion_rebates') {
 
-    $items['partner/promotions/amd'] = array(
-        'page callback' => 'display_amd_promotions_and_rebates', // Render HTML
-        'type' => MENU_CALLBACK,
-        'access callback' => TRUE,
-    );
-
-    return $items;
+         $term = taxonomy_term_load($node->field_promotion_type['und'][0]['tid']);
+         $path = array(
+             'source' => 'node/' . $node->nid,
+             'alias' => 'partner/promotions/'. $term->name. '/'. $node->field_promotion_url['und'][0]['value'],
+             'language' => isset($node->language) ? $node->language : LANGUAGE_NONE,
+         );
+         path_save($path);
+    }
 }
 
 // Alter the webform elements
@@ -105,17 +104,6 @@ function promotions_rebates_errors_reset(&$element){
 
 }
 
-function display_intel_promotions_and_rebates(){
-
-    return theme('intel_technology_provider_models', array('data' => ''));
-}
-
-function display_amd_promotions_and_rebates(){
-
-    return theme('intel_technology_provider_models', array('data' => ''));
-}
-
-
 /**
  * Implements hook_theme().
  */
@@ -140,9 +128,35 @@ function promotions_rebates_theme(){
 
 function template_preprocess_promotion_rebates_view(&$variables){
 
-    $name = "Gigabyte Authorized Distributors";
+    $term_name = null;
 
-    $terms = get_gigabyte_authorized_distributors_taxonomy_by_name($name);
+    $term_id = null;
+
+    $terms = null;
+
+    if(!empty(arg(2)) && !is_numeric(arg(2))){
+
+        $term_name = arg(2);
+
+        $single_term = taxonomy_get_term_by_name($term_name , $vocabulary = NULL);
+
+        if($single_term){
+
+            foreach ($single_term as $key => $term){
+
+                if($term->vocabulary_machine_name == 'gigabyte_authorized_distributors'){
+                    $term_id = $term->tid;
+                }
+            }
+        }
+    }
+
+    if(!$term_id) {
+
+        $name = "Gigabyte Authorized Distributors";
+
+        $terms = get_gigabyte_authorized_distributors_taxonomy_by_name($name);
+    }
 
     $items = field_get_items('node', $variables['node'] , 'field_distributor_promotion_deta');
 
@@ -150,39 +164,42 @@ function template_preprocess_promotion_rebates_view(&$variables){
 
     foreach ($items as $item) {
 
-        $fc = field_collection_item_load($item['value']);
+            $fc = field_collection_item_load($item['value']);
 
-        $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['tid'] = $fc->field_prmotion_distributors['und'][0]['tid'];
+        if($fc->field_prmotion_distributors['und'][0]['tid'] == $term_id) {
 
-        $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['term'] = $fc->field_prmotion_distributors['und'][0]['taxonomy_term'];
+            $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['tid'] = $fc->field_prmotion_distributors['und'][0]['tid'];
 
-        $promotion_details = array();
-        foreach ($fc->field_promotion_details['und'] as $key => $val){
+            $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['term'] = $fc->field_prmotion_distributors['und'][0]['taxonomy_term'];
 
-            $field_items = field_collection_item_load($val['value']);
+            $promotion_details = array();
+            foreach ($fc->field_promotion_details['und'] as $key => $val) {
 
-            $details = array();
-            $details['model'] = $field_items->field_gigabyte_model['und'][0]['value'];
-            $details['chipset'] = $field_items->field_gigabyte_chipset['und'][0]['value'];
-            $details['stable'] = $field_items->field_stable_model['und'][0]['value'];
-            $details['points'] = $field_items->field_itp_points['und'][0]['value'];
-            $details['intel_sba'] = $field_items->field_intel_sba['und'][0]['value'];
-            $details['rebate'] = $field_items->field_instant_rebate['und'][0]['value'];
+                $field_items = field_collection_item_load($val['value']);
 
-            $promotion_details[$key] = $details;
+                $details = array();
+                $details['model'] = $field_items->field_gigabyte_model['und'][0]['value'];
+                $details['chipset'] = $field_items->field_gigabyte_chipset['und'][0]['value'];
+                $details['stable'] = $field_items->field_stable_model['und'][0]['value'];
+                $details['points'] = $field_items->field_itp_points['und'][0]['value'];
+                $details['intel_sba'] = $field_items->field_intel_sba['und'][0]['value'];
+                $details['rebate'] = $field_items->field_instant_rebate['und'][0]['value'];
+
+                $promotion_details[$key] = $details;
+            }
+            $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['promotions'] = $promotion_details;
+
+            $promotion_notes = array();
+            foreach ($fc->field_promotion_notes['und'] as $nkey => $nval) {
+
+                $field_items = field_collection_item_load($nval['value']);
+
+                $promotion_notes[$nkey] = $field_items->field_promotion_notes_sub['und'][0]['value'];
+
+            }
+
+            $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['notes'] = $promotion_notes;
         }
-        $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['promotions'] = $promotion_details;
-
-        $promotion_notes = array();
-        foreach ($fc->field_promotion_notes['und'] as $nkey => $nval){
-
-            $field_items = field_collection_item_load($nval['value']);
-
-            $promotion_notes[$nkey] = $field_items->field_promotion_notes_sub['und'][0]['value'];
-
-        }
-
-        $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['notes'] = $promotion_notes;
 
     }
 
