@@ -11,6 +11,9 @@ function product_roadmap_form_submission($form, &$form_state){
 }
 
 function asset_upload_form_asset_upload_form_entityform_edit_form_alter(&$form, &$form_state, $form_id){
+
+    //altering the edit operations of entityform submissions
+    $form['actions']['save']['#submit'][] = 'asset_upload_node_entityform_edit_custom_submit';
     // Remove preview button
     global $base_url;
     unset($form['actions']['preview']);
@@ -18,9 +21,65 @@ function asset_upload_form_asset_upload_form_entityform_edit_form_alter(&$form, 
        drupal_set_message("The asset you have submitted has been successfully uploaded!");
    }
     $form_state['redirect'] = 'partner/upload-assets';
-    //print_pre($form_state,1);
+
 }
 
+//custom submit for saving the entityform into node
+function asset_upload_node_entityform_edit_custom_submit(&$form, &$form_state) {
+
+    //load entityform
+    $entityform = entityform_load(arg(1));
+    if($entityform) {
+        $node_id = null;
+        $type = 'tools_assets_logos';
+        //load the nodes of entityform
+        $nodes = node_load_multiple(array(), array('type' => $type));
+        foreach ($nodes as $nid => $node) {
+            if (isset($node->field_entity_form_id['und'])) {
+                if ($node->field_entity_form_id['und'][0]['value'] == arg(1)) {
+                    $node_id = $node->nid;
+                    $entity_node = $node;
+                    break;
+                }
+            }
+        }
+        if ($node_id) {
+            //updating the details of entityform into node
+            $entity_node->title = $entityform->field_image_name_entity['und'][0]['value'];
+            $roles = array();
+            foreach ($entityform->field_permitted_roles['und'] as $key => $role) {
+                $roles[$key] = $role['rid'];
+            }
+            $permitted_roles = implode($roles, ',');
+            $roles_values = array('value' => $permitted_roles, 'format' => '', 'safe_value' => $permitted_roles);
+            $entity_node->field_permitted_roles_tal['und'][0] = $roles_values;
+            node_save($entity_node);
+        }
+    }
+}
+
+//delete the node of entityform
+function asset_upload_entityform_delete( $entityform)
+{
+    $node_id = null;
+    $type = 'tools_assets_logos';
+    $nodes = node_load_multiple(array(), array('type' => $type)); //get all nodes of tools_assets_logos
+    if ($nodes) {
+        foreach ($nodes as $nid => $node) {
+            if (isset($node->field_entity_form_id['und'])) {
+                if ($node->field_entity_form_id['und'][0]['value'] == arg(1)) {
+                    $node_id = $node->nid;
+                    break;
+                }
+            }
+        }
+
+        //delete the node
+        if ($node_id) {
+            node_delete($node_id);
+        }
+    }
+}
 /**
  * View alter to display the file info for each file type for TAL nodes
  * @param $view
@@ -112,7 +171,6 @@ function asset_upload_views_pre_render(&$view) {
                             if($cnt == $lcount){
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '</table>';
                             }
-
 
                         }
 
