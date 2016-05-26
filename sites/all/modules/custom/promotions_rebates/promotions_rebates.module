@@ -134,10 +134,12 @@ function template_preprocess_promotion_rebates_view(&$variables){
 
     $terms = null;
 
+    //Checks term name from current url
     if(!empty(arg(2)) && !is_numeric(arg(2))){
 
         $term_name = arg(2);
 
+        //Load taxonomy by name
         $single_term = taxonomy_get_term_by_name($term_name , $vocabulary = NULL);
 
         if($single_term){
@@ -153,24 +155,32 @@ function template_preprocess_promotion_rebates_view(&$variables){
 
     if(!$term_id) {
 
+        //Get all distributor terms to display if individual term name not in url
         $name = "Gigabyte Authorized Distributors";
 
         $terms = get_gigabyte_authorized_distributors_taxonomy_by_name($name);
     }
 
+    //Get field collections items by custom field collection item name
     $items = field_get_items('node', $variables['node'] , 'field_distributor_promotion_deta');
 
     $promotions = array();
+    $banner = array();
 
     foreach ($items as $item) {
+
 
             $fc = field_collection_item_load($item['value']);
 
         if($fc->field_prmotion_distributors['und'][0]['tid'] == $term_id) {
 
+            $banner['promo'] = $fc->field_distributor_promo_banner;
+
             $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['tid'] = $fc->field_prmotion_distributors['und'][0]['tid'];
 
             $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['term'] = $fc->field_prmotion_distributors['und'][0]['taxonomy_term'];
+
+            $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['banner'] = $fc->field_distributor_promo_banner;
 
             $promotion_details = array();
             foreach ($fc->field_promotion_details['und'] as $key => $val) {
@@ -205,6 +215,7 @@ function template_preprocess_promotion_rebates_view(&$variables){
 
     $variables['terms'] = $terms;
     $variables['promotions'] = $promotions;
+    $variables['banner'] = $banner;
 
 }
 

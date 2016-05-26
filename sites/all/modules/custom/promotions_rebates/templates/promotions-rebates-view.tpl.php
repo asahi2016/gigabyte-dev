@@ -3,25 +3,29 @@
        
     });
 </script>
-<div class="txt_center"><a href="http://www.gigabyte.us/" target="_blank"><img src="../GIGABYTE_main-page_01.jpg" /></a></div>
+<?php if (!$logo = theme_get_setting('logo_path')) { $logo = theme_get_setting('logo'); } ?>
+<div class="txt_center"><a href="http://www.gigabyte.us/" target="_blank"><img src="<?php print $logo;?>" /></a></div>
 <?php $uri = isset($node->field_promotion_banner['und'][0]['uri'])? file_create_url($node->field_promotion_banner['und'][0]['uri']):'';?>
+<?php if(!isset($variables['terms']) && isset($variables['banner'])) { ?>
+    <?php $uri = isset($banner['promo']['und'][0]['uri'])? file_create_url($banner['promo']['und'][0]['uri']):'';?>
+<?php } ?>
 <div class="txt_center"><img src="<?php print $uri;?>" style="width: 1000px;height:400px;margin: 20px 0px;"></div>
-<?php global $base_url; ?>
+
 <?php if(isset($variables['terms'])) { ?>
-    <table class="stores">
-    <tbody>
+       <?php global $base_url; ?>
+        <table class="stores">
+        <tbody>
         <tr>
-    <?php foreach ($terms as $id => $term) {
-        $uri = isset($term->term->field_distributor_image['und'][0]['uri'])? file_create_url($term->term->field_distributor_image['und'][0]['uri']):'';
-        ?>
-        <td><a href="<?php print $base_url .'/' .drupal_get_path_alias() .'/'. $term->name; ?>" target="_blank"><img src="<?php print $uri;?>" term='#term<?php print $term->tid;?>' class="distributor"/></a></td>
-        <?php
-    } ?>
+            <?php foreach ($terms as $id => $term) {
+                $uri = isset($term->term->field_distributor_image['und'][0]['uri'])? file_create_url($term->term->field_distributor_image['und'][0]['uri']):'';
+                ?>
+                <td><a href="<?php print $base_url .'/' .drupal_get_path_alias() .'/'. $term->name; ?>" target="_blank"><img src="<?php print $uri;?>" term='#term<?php print $term->tid;?>' class="distributor"/></a></td>
+                <?php
+            } ?>
         </tr>
-    </tbody>
-    </table>
-<?php }
-?>
+        </tbody>
+        </table>
+<?php } ?>
 
 <?php if(isset($variables['promotions'])) { ?>
 
