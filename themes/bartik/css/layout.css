@@ -1827,7 +1827,7 @@ table.gig_rep td{padding:20px 0px;}
 .page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio .form-radio{float:left;margin:3px 6px 0 0px;}
 .page-promotion-upload fieldset{margin:0px;}
 .page-promotion-upload .date-padding label{display:none;}
-.page-promotion-upload fieldset legend{color:#000;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;position:inherit;line-height: 25px; width: auto;}
+.page-promotion-upload fieldset legend{color:#000;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;position:inherit;line-height: 25px; width: auto;text-indent: 0; }
 .page-promotion-upload fieldset .fieldset-legend{font-weight:bold;font-size:14px;}
 .page-promotion-upload #promotion-information > legend .fieldset-legend{font-weight:normal;font-size:20px;text-indent:0px;}
 .page-promotion-upload .field-name-field-promotion-thumbnail{width:250px;float:left;margin:0px;}
@@ -1847,7 +1847,7 @@ table.gig_rep td{padding:20px 0px;}
 .page-promotion-upload .field-name-field-promotion-end-date .fieldset-wrapper{margin:0px;width:120px;}
 .page-promotion-upload .field-name-field-promotion-end-date .date-popup-init{}
 .page-promotion-upload .field-name-field-promotion-claim-date{width:160px;float:left;}
-.page-promotion-upload fieldset.form-wrapper{border-bottom:0px;position:inherit;}
+.page-promotion-upload fieldset.form-wrapper{border-bottom:0px;position:inherit;clear:both;}
 .page-promotion-upload .field-name-field-promotion-thumbnail label,#promotion-information .form-type-textfield label,.page-promotion-upload .field-name-field-promotion-claim-date label{font-size:14px;font-weight:bold;}
 .page-promotion-upload .field-name-field-promotion-claim-date .form-text{margin:13px 0px;}
 .page-promotion-upload .field-name-field-promotion-start-date .form-text,.page-promotion-upload .field-name-field-promotion-end-date .form-text,.page-promotion-upload .field-name-field-promotion-claim-date .form-text{width:100px;}
