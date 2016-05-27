@@ -1896,7 +1896,7 @@ table[id*='field-distributor-promotion-deta-values'] .field-name-field-promotion
 .node-type-promotion-rebates table.product tr:nth-child(1) td{padding:10px 10px;}
 .node-type-promotion-rebates table.product tr td{padding:10px 10px;border:1px solid #808080;}
 .page-partner-promotions .view-promotion-rebate table td,.page-partner-promotions .view-promotion-rebate table th{padding: 15px 10px;font-size: 16px;font-weight: normal;border:1px solid #808080;}
-.node-type-promotion-rebates table.stores td{width:130px;float:left;}
+.node-type-promotion-rebates table.stores td{width:140px;float:left;}
 .field-name-field-promotion-banner .image-widget-data img,.node-promotion_rebates-form .image-widget-data .file img{float:left;margin:0px;}
 .node-promotion_rebates-form .image-widget-data .file a{float: left;width: 100px;margin: 0 10px;height: 20px;overflow: hidden;}
 .node-promotion_rebates-form .image-widget-data .file-size{float: left;margin:0 10px 0 0;}

@@ -13,13 +13,13 @@
 
 <?php if(isset($variables['terms'])) { ?>
        <?php global $base_url; ?>
-        <table class="stores">
+        <table class="stores" style="margin: 0 auto;width: 1000px;">
         <tbody>
         <tr>
             <?php foreach ($terms as $id => $term) {
                 $uri = isset($term->term->field_distributor_image['und'][0]['uri'])? file_create_url($term->term->field_distributor_image['und'][0]['uri']):'';
                 ?>
-                <td><a href="<?php print $base_url .'/' .drupal_get_path_alias() .'/'. $term->name; ?>" target="_blank"><img src="<?php print $uri;?>" term='#term<?php print $term->tid;?>' class="distributor"/></a></td>
+                <td style="text-align: center;"><a href="<?php print $base_url .'/' .drupal_get_path_alias() .'/'. $term->name; ?>" target="_blank"><img src="<?php print $uri;?>" term='#term<?php print $term->tid;?>' class="distributor" style="width: 70px;height:50px"/></a></td>
                 <?php
             } ?>
         </tr>
