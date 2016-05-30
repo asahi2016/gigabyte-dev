@@ -17,7 +17,7 @@
         <tbody>
         <tr>
             <?php foreach ($terms as $id => $term) {
-                $uri = isset($term->term->field_distributor_image['und'][0]['uri'])? file_create_url($term->term->field_distributor_image['und'][0]['uri']):'';
+                $dis_img_url = isset($term->term->field_distributor_image['und'][0]['uri'])? file_create_url($term->term->field_distributor_image['und'][0]['uri']):'';
                 $class = 'disabled';
                 $target = null;
                 if($variables['promotion_records'][$term->tid] == 1){
@@ -28,7 +28,7 @@
                     $uri = 'javascript:void(0)';
                 }
                 ?>
-                <td style="text-align: center;" class="<?php print $class;?>"><a href="<?php print $uri;?>" <?php print $target;?> ><img src="<?php print $uri;?>" term='#term<?php print $term->tid;?>' class="distributor" style="width: 70px;height:50px"/></a></td>
+                <td style="text-align: center;" class="<?php print $class;?>"><a href="<?php print $uri;?>" <?php print $target;?> ><img src="<?php print $dis_img_url;?>" term='#term<?php print $term->tid;?>' class="distributor" style="width: 70px;height:50px"/></a></td>
                 <?php
             } ?>
         </tr>
