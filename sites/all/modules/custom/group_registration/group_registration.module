@@ -653,9 +653,59 @@ function group_registration_user_insert(&$edit, $account, $category){
         // Changes the users role in the group (1 = non-member, 2 = member, 3 = administrator member)
         og_role_grant('node', $gid, $account->uid, 2);
     }
+
+
+    //Subscribe member to Mailchimp mailing lists
+    $subscription = $account->field_receive_newsletter['und'][0]['subscribe'];
+
+    if($subscription){
+
+        $country_name = isset($account->field_country['und'][0]['tid'])? taxonomy_term_load($account->field_country['und'][0]['tid'])->name : 'United States';
+
+        //Get mailchimp list based on country
+        $mail_list_name = ($country_name == 'United States') ? 'Test_email' : 'Test_email';
+
+        subscribe_member_to_mailchimp_mailing_lists($account, $mail_list_name);
+    }
+
     $params['account'] = $account;
     drupal_mail('user', 'register_pending_approval_admin', variable_get('site_mail', ini_get('sendmail_from')), language_default(), $params);
 }
+
+/*
+ * Subscribe member to Mailchimp mailing lists
+ * @param $user
+ */
+function subscribe_member_to_mailchimp_mailing_lists($account , $list_name = null){
+
+    //Get all mailchimp lists
+    $mailchimp_lists = mailchimp_get_lists(array());
+
+    $mail_list_id = null;
+
+    foreach ($mailchimp_lists as $mail_key => $list){
+
+        //Compare lists name with exists mailchimp lists
+        if(!empty($list->id) && $list->name == trim($list_name)){
+            $mail_list_id = $list->id;
+        }
+    }
+
+    //Add/subscribe user email id to specific mailchimp list
+    if($mail_list_id){
+        $process_response = mailchimp_subscribe($mail_list_id, $account->mail);
+
+        if($process_response){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    return false;
+
+}
+
 
 /**
  * Remove a role from a user.
