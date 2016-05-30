@@ -18,7 +18,7 @@
         <tr>
             <?php foreach ($terms as $id => $term) {
                 $uri = isset($term->term->field_distributor_image['und'][0]['uri'])? file_create_url($term->term->field_distributor_image['und'][0]['uri']):'';
-                $class = null;
+                $class = 'disabled';
                 $target = null;
                 if($variables['promotion_records'][$term->tid] == 1){
                     $uri = $base_url.'/'.drupal_get_path_alias() .'/'. $term->name;
