@@ -1847,7 +1847,7 @@ table.gig_rep td{padding:20px 0px;}
 .page-promotion-upload .field-name-field-promotion-end-date .fieldset-wrapper{margin:0px;width:120px;}
 .page-promotion-upload .field-name-field-promotion-end-date .date-popup-init{}
 .page-promotion-upload .field-name-field-promotion-claim-date{width:160px;float:left;}
-.page-promotion-upload fieldset.form-wrapper{border-bottom:0px;position:inherit;}
+.page-promotion-upload fieldset.form-wrapper{border-bottom:0px;position:inherit;background:#dedede;}
 .page-promotion-upload .field-name-field-promotion-thumbnail label,#promotion-information .form-type-textfield label,.page-promotion-upload .field-name-field-promotion-claim-date label{font-size:14px;font-weight:bold;}
 .page-promotion-upload .field-name-field-promotion-claim-date .form-text{margin:13px 0px;}
 .page-promotion-upload .field-name-field-promotion-start-date .form-text,.page-promotion-upload .field-name-field-promotion-end-date .form-text,.page-promotion-upload .field-name-field-promotion-claim-date .form-text{width:100px;}
@@ -1920,8 +1920,8 @@ table[id*='field-distributor-promotion-deta-values'] .field-name-field-promotion
 #field-distributor-promotion-deta-add-more-wrapper > .form-item  > .clearfix{float:left;width:100%;}
 .field-name-field-promotion-banner.field-type-image .image-widget-data .form-file{width:425px;}
 #field-distributor-promotion-deta-values .field-name-field-promotion-import-excel.field-widget-file-generic{margin:10px 0 0 15px;}
-form.node-promotion_rebates-form{position:relative;float: left;padding: 0 0 30px 0;}
-form.node-promotion_rebates-form > div > input[type='submit']{position:absolute;bottom:-20px;left:400px;}
+form.node-promotion_rebates-form{position:relative;float: left;padding: 0 0 30px 0;padding: 15px 20px 80px;background:#dedede;}
+form.node-promotion_rebates-form > div > input[type='submit']{position:absolute;bottom:15px;left:400px;}
 .group-page-us-content table{font-size:0.9em;line-height:22px;border:1px solid #fff;}
 .stores td.active{background:none;}
 .stores td.disabled a{background: #000;display: inline-block;opacity: 0.65;}
