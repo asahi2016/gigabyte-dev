@@ -1,0 +1,5 @@
+name = Product Change Notices
+description = Administrator can create a product change notice. This module also handles send mailers whenever a new PCN is created.
+version = 7.x
+core = 7.x
+package = Custom Module

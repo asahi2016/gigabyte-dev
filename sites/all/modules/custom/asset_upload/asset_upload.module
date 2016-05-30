@@ -1,6 +1,6 @@
 <?php
 
-
+/*
 function asset_upload_form_product_roadmap_form_entityform_edit_form_alter(&$form, &$form_state){
    $form['#submit'][] = 'product_roadmap_form_submission';
 }
@@ -8,7 +8,7 @@ function asset_upload_form_product_roadmap_form_entityform_edit_form_alter(&$for
 function product_roadmap_form_submission($form, &$form_state){
    // $form_state['rebuild'] = TRUE;
    // print_pre($form_state,1);
-}
+}*/
 
 function asset_upload_form_asset_upload_form_entityform_edit_form_alter(&$form, &$form_state, $form_id){
 
@@ -21,8 +21,10 @@ function asset_upload_form_asset_upload_form_entityform_edit_form_alter(&$form, 
        drupal_set_message("The asset you have submitted has been successfully uploaded!");
    }
     $form_state['redirect'] = 'partner/upload-assets';
-
+    //print_pre($form_state,1);
 }
+
+
 
 //custom submit for saving the entityform into node
 function asset_upload_node_entityform_edit_custom_submit(&$form, &$form_state) {
@@ -171,6 +173,7 @@ function asset_upload_views_pre_render(&$view) {
                             if($cnt == $lcount){
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '</table>';
                             }
+
 
                         }
 

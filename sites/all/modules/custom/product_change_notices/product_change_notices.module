@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Module for handling PCN upload and auto-send mail whenever a PCN is submitted
+ */
+
+/**
+ * @param $form
+ * @param $form_state
+ * @param $form_id
+ *
+ * Alter form function: After submission, an email with the mail content input in the form must be sent
+ * to USA or Canada Mailing List based on Country Selected
+ */
+
+function product_change_notices_form_product_change_notices_node_form_alter(&$form, &$form_state, $form_id){
+    //print_pre($form,1);
+    $form['#submit'][] = 'send_product_change_notices_mail';
+}
+
+function send_product_change_notices_mail(&$form, &$form_state){
+    print_pre($form_state,1);
+}

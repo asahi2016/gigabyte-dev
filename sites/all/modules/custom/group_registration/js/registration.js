@@ -281,9 +281,9 @@
                             $('#edit-field-choose-sub-distributor-und-'+val).prop('checked','checked')
                         });
 
-                        $('#edit-field-receive-newsletter-und input[type="radio"]').each(function () {
-                            $('#edit-field-receive-newsletter-und-'+group_user.newsletter).prop('checked','checked')
-                        });
+                        /*$('#edit-field-receive-newsletter-und input[type="radio"]').each(function () {
+                            //$('#edit-field-receive-newsletter-und-'+group_user.newsletter).prop('checked','checked')
+                        });*/
 
                         $('#edit-field-membership-account-und-0-value').val(group_user.membership);
                         $('#edit-field-motherboard-qty-und-0-value').val(group_user.motherboard_qty);
@@ -365,9 +365,9 @@
                $(this).attr('disabled','disabled');
            });
 
-           $('#edit-field-receive-newsletter-und input[type="radio"]').each(function () {
-               $(this).attr('disabled','disabled');
-           });
+           /*$('#edit-field-receive-newsletter-und input[type="radio"]').each(function () {
+               //$(this).attr('disabled','disabled');
+           });*/
            $('#edit-field-membership-account-und-0-value').attr('readonly','readonly');
            $('#edit-field-motherboard-qty-und-0-value').attr('readonly','readonly');
 
@@ -391,9 +391,9 @@
                $(this).removeAttr('disabled');
            });
 
-           $('#edit-field-receive-newsletter-und input[type="radio"]').each(function () {
+          /* $('#edit-field-receive-newsletter-und input[type="radio"]').each(function () {
                $(this).removeAttr('disabled');
-           });
+           });*/
 
            $('#edit-field-other-programs-und-0-value').removeAttr('disabled');
            $('#edit-field-other-distributor-und-0-value').removeAttr('disabled');
@@ -419,9 +419,9 @@
                 $(this).removeAttr('checked');
             });
 
-            $('#edit-field-receive-newsletter-und input[type="radio"]').each(function () {
+           /* $('#edit-field-receive-newsletter-und input[type="radio"]').each(function () {
                 $(this).removeAttr('checked');
-            });
+            });*/
 
             $('#edit-field-other-programs-und-0-value').val('');
             $('#edit-field-other-distributor-und-0-value').val('');
