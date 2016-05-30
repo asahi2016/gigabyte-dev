@@ -669,7 +669,7 @@ function group_registration_user_insert(&$edit, $account, $category){
     }
 
     $params['account'] = $account;
-    drupal_mail('user', 'register_pending_approval_admin', variable_get('site_mail', ini_get('sendmail_from')), language_default(), $params);
+    //drupal_mail('user', 'register_pending_approval_admin', variable_get('site_mail', ini_get('sendmail_from')), language_default(), $params);
 }
 
 /*

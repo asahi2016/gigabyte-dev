@@ -166,11 +166,14 @@ function template_preprocess_promotion_rebates_view(&$variables){
 
     $promotions = array();
     $banner = array();
-
+    $records = array();
+    
     foreach ($items as $item) {
 
 
             $fc = field_collection_item_load($item['value']);
+
+            $records[$fc->field_prmotion_distributors['und'][0]['tid']] = 1;
 
         if($fc->field_prmotion_distributors['und'][0]['tid'] == $term_id) {
 
@@ -213,6 +216,7 @@ function template_preprocess_promotion_rebates_view(&$variables){
 
     }
 
+    $variables['promotion_records'] = $records;
     $variables['terms'] = $terms;
     $variables['promotions'] = $promotions;
     $variables['banner'] = $banner;
