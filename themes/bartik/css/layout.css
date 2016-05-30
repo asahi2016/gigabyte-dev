@@ -855,7 +855,7 @@ form.node-tools_assets_logos-form {float:left;border:2px solid #eee;padding:20px
 .view-assets-upload-view ul li .views-field:first-child{margin:0 0 20px 0px;float:left;}
 .node-tools_assets_logos-form > .form-submit{float:left;margin:20px 0px 20px 0px}
 .node-tools_assets_logos-form .field-multiple-table td .form-submit{margin:10px 10px 0px 10px;}
-.field-multiple-table td .form-item .form-managed-file{margin:10px 0px 0px 0px;width:340px;}
+.field-multiple-table td .form-item .form-managed-file{margin:10px 0px 0px 0px;width:380px;}
 .view-assets-upload-view ul li .views-label{font-weight:bold;margin:20px 0px;}
 .view-assets-upload-view ul li .field-content a{float:left;}
 .views-field-edit-node{clear:both;}
@@ -1799,11 +1799,11 @@ form.webform-client-form{padding:30px 0px 0px;}
 .itp tr.tr_seperate .number{background:#fff;}
 table.ipa{margin:0px 0px 0px;display:none;}
 table.ipa tr  th,table.ipa tr  td{padding:5px 0;}
-table.ipa tr .t_head{background:#666666;padding:5px 0px 5px 10px}
-table.ipa tr .t_series,table.ipa tr .t_alter,table.ipa tr .t_last{text-align:center;color:#fff;}
+table.ipa tr .t_head{background:#666666;padding:5px 0px 5px 10px;border:1px solid #fff;}
+table.ipa tr .t_series,table.ipa tr .t_alter,table.ipa tr .t_last{text-align:center;color:#fff;border:1px solid #fff;}
 table.ipa tr .t_series a,table.ipa tr .t_alter a,table.ipa tr .t_last a{color:#fff;text-decoration:underline;}
 table.ipa tr .t_series{background:#000099;}
-table.ipa tr .t_alter{background:#0066ff;}
+table.ipa tr .t_alter{background:#0066ff;border:1px solid #fff;}
 table.ipa tr .t_last{background:#000066;}
 .fixed {width:1000px;position: fixed;top: 0;z-index: 99999;}
 .tbl_p_alter {margin-top: 30px;margin-bottom: 30px;font-size: 20px;font-weight: 700;color:#333;}
@@ -1827,7 +1827,7 @@ table.gig_rep td{padding:20px 0px;}
 .page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio .form-radio{float:left;margin:3px 6px 0 0px;}
 .page-promotion-upload fieldset{margin:0px;}
 .page-promotion-upload .date-padding label{display:none;}
-.page-promotion-upload fieldset legend{color:#000;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;position:inherit;line-height: 25px; width: auto;text-indent: 0; }
+.page-promotion-upload fieldset legend{color:#000;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;position:inherit;line-height: 25px; width: auto;text-indent:0px;}
 .page-promotion-upload fieldset .fieldset-legend{font-weight:bold;font-size:14px;}
 .page-promotion-upload #promotion-information > legend .fieldset-legend{font-weight:normal;font-size:20px;text-indent:0px;}
 .page-promotion-upload .field-name-field-promotion-thumbnail{width:250px;float:left;margin:0px;}
@@ -1847,16 +1847,29 @@ table.gig_rep td{padding:20px 0px;}
 .page-promotion-upload .field-name-field-promotion-end-date .fieldset-wrapper{margin:0px;width:120px;}
 .page-promotion-upload .field-name-field-promotion-end-date .date-popup-init{}
 .page-promotion-upload .field-name-field-promotion-claim-date{width:160px;float:left;}
-.page-promotion-upload fieldset.form-wrapper{border-bottom:0px;position:inherit;clear:both;}
+.page-promotion-upload fieldset.form-wrapper{border-bottom:0px;position:inherit;}
 .page-promotion-upload .field-name-field-promotion-thumbnail label,#promotion-information .form-type-textfield label,.page-promotion-upload .field-name-field-promotion-claim-date label{font-size:14px;font-weight:bold;}
 .page-promotion-upload .field-name-field-promotion-claim-date .form-text{margin:13px 0px;}
 .page-promotion-upload .field-name-field-promotion-start-date .form-text,.page-promotion-upload .field-name-field-promotion-end-date .form-text,.page-promotion-upload .field-name-field-promotion-claim-date .form-text{width:100px;}
-.page-promotion-upload #promotion-information > .fieldset-wrapper{border:1px solid #efefef;float:left;padding:10px 0px 0 25px;margin:20px 0 0 0}
+.page-promotion-upload #promotion-information > .fieldset-wrapper{border:1px solid #efefef;float:left;padding:10px 5px 0 25px;margin:20px 0 0 0;width:970px;}
+.page-promotion-upload .field-multiple-table .form-submit{width:180px;}
+.page-promotion-upload input[value='Remove']{width:180px;}
+.page-promotion-upload .field-multiple-table td .form-item .form-managed-file{width: 430px;}
+.page-promotion-upload .field-multiple-table td .form-item .form-managed-file.image-widget{width:545px;}
+.page-promotion-upload .field-multiple-table td .form-item .form-managed-file.image-widget .image-widget-data{width:100%;}
 .page-promotion-upload .field-name-field-promotion-url label{width:auto;float:left;margin:5px 10px 0 0px;}
 .page-promotion-upload .fieldset-wrapper .form-item .description {clear: both; margin: 3px 0 0 0px;}
-.page-promotion-upload .field-name-field-promotion-url .form-type-textfield.form-item .description {clear: both; margin: 3px 0 0 70px;}
-.page-promotion-upload .form-item .description {margin:3px 0 0 205px;}
+.page-promotion-upload .field-name-field-promotion-url .form-type-textfield.form-item .description {clear: both; margin: 3px 0 0 75px;}
+.page-promotion-upload .form-item .description {margin:3px 0 0 225px;}
+.page-promotion-upload .field-type-image.field-name-field-promotion-banner .image-widget-data{width:615px; clear: both;margin: 0 0 0 220px; }
+.page-promotion-upload .form-item.form-item-field-distributor-promotion-deta-und-0-field-promotion-import-excel-und-0 .description {margin:3px 0 0 75px;}
+.page-promotion-upload .form-item.form-item-field-distributor-promotion-deta-und-0-field-distributor-promo-banner-und-0 .description {margin:3px 0 0 295px;}
 .page-promotion-upload .field-type-image label{width:200px;}
+.page-promotion-upload .field-type-image .form-type-managed-file label{width:auto;}
+/* .page-promotion-upload .field-type-image .form-type-managed-file .image-widget .image-preview{clear:both;} */
+.page-promotion-upload .field-type-image .form-type-managed-file.form-item-field-promotion-thumbnail-und-0 .image-preview{clear:both;}
+.page-promotion-upload .field-type-image.field-name-field-promotion-banner .form-type-managed-file label{width:220px;}
+
 .node-promotion_rebates-form .form-type-radios label{float:left;}
 table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable{width:1000px;background:none;border-bottom:0px;}
 table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-gigabyte-model,table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-widget-text-textfield,
@@ -1885,7 +1898,7 @@ form.node-promotion_rebates-form .field-multiple-table td.field-multiple-drag{di
 form.node-promotion_rebates-form .field-multiple-table tr.draggable{padding:10px 0px 20px;}
 table[id*='field-promotion-details-values'].field-multiple-table tr.draggable{border-bottom:1px solid #efefef;}
 table[id*='field-promotion-notes-values'].field-multiple-table tr.draggable{border-bottom:1px solid #efefef;}
-table[id*='field-distributor-promotion-deta-values'] .field-add-more-submit{width:150px;margin:20px 20px 0px 0px;}
+table[id*='field-distributor-promotion-deta-values'] .field-add-more-submit{width:150px;margin:20px 0px 0px 0px;}
 table[id*='field-promotion-notes-values'] tr.draggable td .field-widget-text-textfield.field-name-field-promotion-notes-sub{width: 410px;margin: 0 0px 0 0;float: left;}
 table[id*='field-promotion-notes-values'] tr.draggable{border: 1px solid #efefef;padding: 15px 10px;margin: 10px 0 15px 0px;}
 table[id*='field-promotion-notes-values'] td .form-item label{margin:5px 20px 0 10px;font-size:14px;font-weight:bold;}
@@ -1896,7 +1909,30 @@ table[id*='field-distributor-promotion-deta-values'] .field-name-field-promotion
 .node-type-promotion-rebates table.product tr:nth-child(1) td{padding:10px 10px;}
 .node-type-promotion-rebates table.product tr td{padding:10px 10px;border:1px solid #808080;}
 .page-partner-promotions .view-promotion-rebate table td,.page-partner-promotions .view-promotion-rebate table th{padding: 15px 10px;font-size: 16px;font-weight: normal;border:1px solid #808080;}
-.node-type-promotion-rebates table.stores td{width:140px;float:left;}
+.node-type-promotion-rebates table.stores td{width:130px;float:left;}
 .field-name-field-promotion-banner .image-widget-data img,.node-promotion_rebates-form .image-widget-data .file img{float:left;margin:0px;}
 .node-promotion_rebates-form .image-widget-data .file a{float: left;width: 100px;margin: 0 10px;height: 20px;overflow: hidden;}
 .node-promotion_rebates-form .image-widget-data .file-size{float: left;margin:0 10px 0 0;}
+#field-distributor-promotion-deta-add-more-wrapper{position:relative;float:left;padding: 0 0 30px 0;}
+#field-distributor-promotion-deta-values input[value='Remove']{position: absolute;bottom: 0;right:0px;}
+#field-distributor-promotion-deta-add-more-wrapper > .form-item  > .clearfix > input[value='Add another item']{position: absolute;bottom: 0;right: 200px;}
+/* #field-distributor-promotion-deta-add-more-wrapper .clearfix .field-add-more-submit{position: absolute;bottom: 0;right: 200px;} */
+#field-distributor-promotion-deta-add-more-wrapper > .form-item  > .clearfix{float:left;width:100%;}
+.field-name-field-promotion-banner.field-type-image .image-widget-data .form-file{width:425px;}
+#field-distributor-promotion-deta-values .field-name-field-promotion-import-excel.field-widget-file-generic{margin:10px 0 0 15px;}
+form.node-promotion_rebates-form{position:relative;float: left;padding: 0 0 30px 0;}
+form.node-promotion_rebates-form > div > input[type='submit']{position:absolute;bottom:-20px;left:400px;}
+.group-page-us-content table{font-size:0.9em;line-height:22px;border:1px solid #fff;}
+.stores td.active{background:none;}
+.stores td.disabled a{background: #000;display: inline-block;opacity: 0.65;}
+.stores td.disabled a img{-webkit-filter: grayscale(100%);filter: grayscale(100%);opacity: 0.5;float: left;}
+#footer-wrapper .section.foot{
+background: url(../../themes/bartik/images/blue-background.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80px;
+    margin-top: 50px;
+    width: 100%;
+    color: #fff;
+}
