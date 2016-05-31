@@ -1939,7 +1939,9 @@ background-repeat: no-repeat;background-size: cover;height: 80px;margin-top: 50p
 .node-product_change_notices-form .form-item-field-platform-pcn-und{float:left;}
 .node-product_change_notices-form .form-item-field-platform-pcn-und .form-type-textfield,.node-product_change_notices-form .form-type-textfield{clear:both;float:left;width:100%;}
 .node-product_change_notices-form .form-item-field-platform-pcn-und label,.node-product_change_notices-form  #field-chipset-pcn-add-more-wrapper label,
-.node-product_change_notices-form  #field-model-pcn-add-more-wrapper label,.node-product_change_notices-form > div > .form-type-textfield label{float: left;margin: 0 10px 20px 0;width: 160px;}
+.node-product_change_notices-form  #field-model-pcn-add-more-wrapper label,.node-product_change_notices-form > div > .form-type-textfield label,
+.node-product_change_notices-form .field-name-field-model-url #field-model-url-add-more-wrapper label{float: left;margin: 0 10px 20px 0;width: 160px;}
+.node-product_change_notices-form .field-name-field-model-url #field-model-url-add-more-wrapper .link-field-subrow{float: left;}
 .node-product_change_notices-form  #field-model-pcn-add-more-wrapper .text-full,.node-product_change_notices-form #field-chipset-pcn-add-more-wrapper .text-full,
 ..node-product_change_notices-form{float: left;width:230px;}
 .node-product_change_notices-form .form-item-field-platform-pcn-und .form-item-field-platform-pcn-und label{width:auto;margin:0px 15px 0 0;}
@@ -1957,4 +1959,14 @@ background-repeat: no-repeat;background-size: cover;height: 80px;margin-top: 50p
 .node-product_change_notices-form fieldset .tips li{clear:both;margin:5px 0px;}
 .node-product_change_notices-form .form-submit{float: left;margin: 20px 0 0 175px;}
 .node-product_change_notices-form  .messages li{width:100%;}
-
+.node-product_change_notices-form #body-add-more-wrapper .form-type-textarea label{float: left;}
+.node-product_change_notices-form .field-name-field-model-url{clear:both;}
+.view-product-change-notices-view table.views-table{width:1000px;margin:0px auto;}
+.view-product-change-notices-view table.views-table th{background: #194399;padding: 8px 10px;text-align: center;}
+.view-product-change-notices-view table.views-table th,.view-product-change-notices-view table.views-table td{border: 1px solid #808080;text-align:center;}
+.view-product-change-notices-view table.views-table td{padding:5px 10px;}
+.view-product-change-notices-view table.views-table th:nth-child(1){width:150px;}
+.view-product-change-notices-view table.views-table th:nth-child(2){width:180px;}
+.view-product-change-notices-view table.views-table th:nth-child(3){width:180px;}
+.page-partner-support-product-change-notices #page-wrapper #messages div.section .messages.error{width:940px;margin: 0px auto;float: inherit;}
+.page-partner-support-product-change-notices #messages div.section .messages.error{width:940px;margin: 20px auto 0;float: inherit;}
