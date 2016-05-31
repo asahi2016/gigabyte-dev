@@ -435,7 +435,8 @@ jQuery(document) . ready(function () {
     </div></div> <!-- /#triptych, /#triptych-wrapper -->
   <?php endif; ?>
   <?php global $base_url; ?>
-  <div id="footer-wrapper"><div class="section">
+  <div id="footer-wrapper">
+      <div class="section <?php if(user_is_logged_in() && in_array('partner',$current_url)){echo 'foot';} ?>">
           <img class="f_img" src="<?php echo $base_url;?>/themes/bartik/images/icon_top_mouseover.png" width="100" height="100" alt="" id="scrol-top" />
     <?php if ($page['footer_firstcolumn'] || $page['footer_secondcolumn'] || $page['footer_thirdcolumn'] || $page['footer_fourthcolumn']): ?>
       <div id="footer-columns" class="clearfix">

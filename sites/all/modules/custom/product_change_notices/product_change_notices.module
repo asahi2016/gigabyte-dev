@@ -19,5 +19,5 @@ function product_change_notices_form_product_change_notices_node_form_alter(&$fo
 }
 
 function send_product_change_notices_mail(&$form, &$form_state){
-    print_pre($form_state,1);
+    //print_pre($form_state,1);
 }
