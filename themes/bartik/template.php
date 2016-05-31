@@ -361,6 +361,7 @@ function bartik_preprocess_user_profile_form(&$variables) {
     $variables['account']['other_sub_distributor']['form'] = drupal_render($variables['form']['group_better_services']['field_other_sub_distributor']);
 
     $variables['account']['receive_newsletter']['form'] = drupal_render($variables['form']['group_better_services']['field_receive_newsletter']);
+    $variables['account']['product_change_notices_sub']['form'] = drupal_render($variables['form']['group_better_services']['field_product_change_notices_sub']);
 }
 
 function bartik_menu_local_tasks() {

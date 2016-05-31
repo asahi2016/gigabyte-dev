@@ -1,5 +1,9 @@
 <?php
 
+define('USA_NEWSLETTER_MAIL_LIST', 'USA_Business Center Member 2016');
+define('CAN_NEWSLETTER_MAIL_LIST', 'CAN_Business Center Member 2016');
+define('PRODUCT_CHANGE_NOTICE_LIST', 'Product Change Notice');
+
 function group_registration_init(){
 
     global $base_path;
@@ -54,9 +58,9 @@ function group_registration_user_account_redirect(){
 
 function group_registration_account_settings_update(){
 
-    if(isset($_POST) && !empty($_POST)) {
+    global $user;
 
-        global $user;
+    if(isset($_POST) && !empty($_POST) && $user) {
 
         $account = user_load($user->uid);
 
@@ -149,9 +153,6 @@ function group_registration_account_settings_update(){
             unset($_POST['field_rma_country']['und']);
             $_POST['field_rma_country']['und'][0]['tid'] = $rma_country;
 
-            $news = $_POST['field_receive_newsletter']['und'];
-            unset($_POST['field_receive_newsletter']['und']);
-            $_POST['field_receive_newsletter']['und'][0]['value'] = $news;
 
             if(isset($_POST['pass'])) {
                 //Replace new password
@@ -162,6 +163,28 @@ function group_registration_account_settings_update(){
 
             user_save($account, $_POST, $category);
 
+            $country_name = isset($account->field_country['und'][0]['tid'])? taxonomy_term_load($account->field_country['und'][0]['tid'])->name : 'United States';
+
+            //Get mailchimp list based on country
+            $mail_list_name = ($country_name == 'United States') ? USA_NEWSLETTER_MAIL_LIST : CAN_NEWSLETTER_MAIL_LIST;
+            $product_change_list_name = PRODUCT_CHANGE_NOTICE_LIST;
+
+            if(isset($_POST['field_receive_newsletter'])){
+                if($_POST['field_receive_newsletter']['und'][0]['subscribe']){
+                    subscribe_member_to_mailchimp_mailing_lists($account, $mail_list_name, true);
+                }
+            }else{
+                subscribe_member_to_mailchimp_mailing_lists($account, $mail_list_name, false);
+            }
+
+            if(isset($_POST['field_product_change_notices_sub'])){
+                if($_POST['field_product_change_notices_sub']['und'][0]['subscribe']){
+                    subscribe_member_to_mailchimp_mailing_lists($account, $product_change_list_name, true);
+                }
+            }else{
+                subscribe_member_to_mailchimp_mailing_lists($account, $product_change_list_name, false);
+            }
+
             // Clear the page cache because pages can contain usernames and/or profile information:
             cache_clear_all();
 
@@ -170,8 +193,14 @@ function group_registration_account_settings_update(){
         }
 
         drupal_goto('user/' . $user->uid . '/edit');
-    }
+    }else{
 
+        if($user){
+            drupal_goto('user/' . $user->uid . '/edit');
+        }else{
+            drupal_goto('');
+        }
+    }
 }
 
 function group_registration_ajax_get_company_info() {
@@ -664,7 +693,7 @@ function group_registration_user_insert(&$edit, $account, $category){
         $country_name = isset($account->field_country['und'][0]['tid'])? taxonomy_term_load($account->field_country['und'][0]['tid'])->name : 'United States';
 
         //Get mailchimp list based on country
-        $mail_list_name = ($country_name == 'United States') ? 'Test_email' : 'Test_email';
+        $mail_list_name = ($country_name == 'United States') ? USA_NEWSLETTER_MAIL_LIST : CAN_NEWSLETTER_MAIL_LIST ;
 
         subscribe_member_to_mailchimp_mailing_lists($account, $mail_list_name);
     }
@@ -672,9 +701,9 @@ function group_registration_user_insert(&$edit, $account, $category){
      if($pcn_subscription){
 
             //Mailing list for product change notice
-            $mail_list_name = 'Product Change Notice';
+            $pcn_list_name = PRODUCT_CHANGE_NOTICE_LIST;
 
-            subscribe_member_to_mailchimp_mailing_lists($account, $mail_list_name);
+            subscribe_member_to_mailchimp_mailing_lists($account, $pcn_list_name);
         }
 
     $params['account'] = $account;
@@ -685,7 +714,7 @@ function group_registration_user_insert(&$edit, $account, $category){
  * Subscribe member to Mailchimp mailing lists
  * @param $user
  */
-function subscribe_member_to_mailchimp_mailing_lists($account , $list_name = null){
+function subscribe_member_to_mailchimp_mailing_lists($account , $list_name = null, $subscribe = TRUE){
 
     //Get all mailchimp lists
     $mailchimp_lists = mailchimp_get_lists(array());
@@ -701,7 +730,7 @@ function subscribe_member_to_mailchimp_mailing_lists($account , $list_name = nul
     }
 
     //Add/subscribe user email id to specific mailchimp list
-    if($mail_list_id){
+    if($mail_list_id && $subscribe){
         $process_response = mailchimp_subscribe($mail_list_id, $account->mail);
 
         if($process_response){
@@ -709,6 +738,9 @@ function subscribe_member_to_mailchimp_mailing_lists($account , $list_name = nul
         }else{
             return false;
         }
+    }else if($mail_list_id && !$subscribe){
+        mailchimp_unsubscribe($mail_list_id, $account->mail);
+        return true;
     }
 
     return false;

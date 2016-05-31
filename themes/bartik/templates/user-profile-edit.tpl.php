@@ -127,6 +127,9 @@ if(isset($variables['account']['errors']) && !empty($variables['account']['error
         <tr>
             <td><?= $account['receive_newsletter']['form']?></td>
         </tr>
+        <tr>
+            <td><?= $account['product_change_notices_sub']['form']?></td>
+        </tr>
         </tbody>
     </table>
 </div>
