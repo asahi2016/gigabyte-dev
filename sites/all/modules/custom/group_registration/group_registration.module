@@ -657,6 +657,7 @@ function group_registration_user_insert(&$edit, $account, $category){
 
     //Subscribe member to Mailchimp mailing lists
     $subscription = $account->field_receive_newsletter['und'][0]['subscribe'];
+    $pcn_subscription = $account->field_product_change_notices_sub['und'][0]['subscribe'];
 
     if($subscription){
 
@@ -667,6 +668,14 @@ function group_registration_user_insert(&$edit, $account, $category){
 
         subscribe_member_to_mailchimp_mailing_lists($account, $mail_list_name);
     }
+    //Subscription for Product Change Notices
+     if($pcn_subscription){
+
+            //Mailing list for product change notice
+            $mail_list_name = 'Product Change Notice';
+
+            subscribe_member_to_mailchimp_mailing_lists($account, $mail_list_name);
+        }
 
     $params['account'] = $account;
     //drupal_mail('user', 'register_pending_approval_admin', variable_get('site_mail', ini_get('sendmail_from')), language_default(), $params);
