@@ -1927,7 +1927,7 @@ table[id*='field-distributor-promotion-deta-values'] .field-name-field-promotion
 #field-distributor-promotion-deta-values .field-name-field-promotion-import-excel.field-widget-file-generic{margin:10px 0 0 15px;}
 form.node-promotion_rebates-form{position:relative;float: left;padding: 0 0 30px 0;padding: 15px 20px 80px;background:#dedede;}
 form.node-promotion_rebates-form > div > input[type='submit']{position:absolute;bottom:15px;left:400px;}
-.group-page-us-content table{font-size:0.9em;line-height:22px;border:1px solid #fff;}
+.group-page-us-content table{border:1px solid #fff;}
 .stores td.active{background:none;}
 .stores td.disabled a{background: #000;display: inline-block;opacity: 0.65;}
 .stores td.disabled a img{-webkit-filter: grayscale(100%);filter: grayscale(100%);opacity: 0.5;float: left;}
