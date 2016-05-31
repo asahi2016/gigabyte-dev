@@ -1564,7 +1564,7 @@ table.txt_center{table-layout: fixed;}
 .jcarousel-skin-default .jcarousel-container-horizontal{height:409px;}
 .jcarousel-skin-default .jcarousel-item{width:1200px;height:409px;border:0px;}
 .one-sidebar .sidebar .block{margin:0px 0 20px;padding:0 0px 0px 0;width:100%;}
-.one-sidebar #sidebar-second.sidebar .block{padding:0 0px 70px 15px;width:inherit;float:left;}
+.one-sidebar #sidebar-second.sidebar .block{padding:0 0px 70px 15px;width:inherit;float:left;background:#fff;}
 .one-sidebar .sidebar .section{padding-top:0px }
 .jcarousel-navigation{position:absolute;bottom:50px;width:100%;text-align:center;}
 .jcarousel-navigation li a span{width: 20px;height: 20px;border-radius: 10px;color: #000;background-color: rgba(0, 0, 0, 0.2);border: 2px solid rgba(255, 255, 255, 0.7);text-indent:-999em;color: transparent;margin:0 1px 0 1px;display: inline-block;}
@@ -1931,16 +1931,8 @@ form.node-promotion_rebates-form > div > input[type='submit']{position:absolute;
 .stores td.active{background:none;}
 .stores td.disabled a{background: #000;display: inline-block;opacity: 0.65;}
 .stores td.disabled a img{-webkit-filter: grayscale(100%);filter: grayscale(100%);opacity: 0.5;float: left;}
-#footer-wrapper .section.foot{
-background: url(../../themes/bartik/images/blue-background.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 80px;
-    margin-top: 50px;
-    width: 100%;
-    color: #fff;
-}
+#footer-wrapper .section.foot{background: url(../../themes/bartik/images/blue-background.png);background-position: center center;
+background-repeat: no-repeat;background-size: cover;height: 80px;margin-top: 50px;width: 100%;color: #fff;}
 .node-product_change_notices-form .form-item-field-platform-pcn-und{float:left;}
 .node-product_change_notices-form .form-item-field-platform-pcn-und .form-type-textfield,.node-product_change_notices-form .form-type-textfield{clear:both;float:left;width:100%;}
 .node-product_change_notices-form .form-item-field-platform-pcn-und label,.node-product_change_notices-form  #field-chipset-pcn-add-more-wrapper label,
