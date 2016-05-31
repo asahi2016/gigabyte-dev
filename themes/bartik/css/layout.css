@@ -184,7 +184,7 @@ h1.title,.wrapper_full h2{
 }
 #user-register-form .fieldset-wrapper{
     width:1000px;
-    margin:35px auto;
+    margin:35px auto 10px; 
     padding: 0 10px 0 60px;
     position:relative;
     float:left;
@@ -230,6 +230,11 @@ h1.title,.wrapper_full h2{
 fieldset.form-wrapper{
     border-bottom:1px solid #8c8b8b;
     width:99%;
+}
+#user-register-form #field-receive-newsletter-add-more-wrapper fieldset.form-wrapper,#user-register-form #field-product-change-notices-sub-add-more-wrapper fieldset.form-wrapper{
+	border-bottom:0px;
+	margin:0px;
+	padding:0px;
 }
 #user-register-form .fieldset-wrapper .form-checkboxes{
     width:670px;
@@ -413,7 +418,7 @@ body.page-user-register div.messages.error{
 #edit-field-job-title{clear:both;}
 #user-register-form .form-type-password-confirm.form-item{width:1000px;}
 #edit-field-receive-newsletter-und .custom-error{float:right;}
-#edit-field-participating-programs,#edit-field-choose-distributor,#edit-field-choose-sub-distributor{float:left;position: relative;width:100%;}
+#edit-field-participating-programs,#edit-field-choose-distributor,#edit-field-choose-sub-distributor{float:left;position: relative;width:100%;margin:0px;}
 #edit-field-participating-programs .custom-error,#edit-field-choose-distributor .custom-error,
 #edit-field-choose-sub-distributor .custom-error{position:absolute;left:316px;bottom:25px;}
 #edit-field-other-distributor .text-full,#edit-field-other-sub-distributor .text-full, #edit-field-other-programs .text-full{position:absolute;}
@@ -447,7 +452,7 @@ div.form-item div.password-suggestions{display: none !important;}
     width:100%;
     float:left;
 }
-.page-user-register .form-actions input.form-submit{float:left;margin-left:435px;}
+.page-user-register .form-actions input.form-submit{float:left;margin-left:500px;}
 
 #country-menu{float:left;}
 #country-menu ul{margin: 16px 0px 0px;}
@@ -1936,3 +1941,25 @@ background: url(../../themes/bartik/images/blue-background.png);
     width: 100%;
     color: #fff;
 }
+.node-product_change_notices-form .form-item-field-platform-pcn-und{float:left;}
+.node-product_change_notices-form .form-item-field-platform-pcn-und .form-type-textfield,.node-product_change_notices-form .form-type-textfield{clear:both;float:left;width:100%;}
+.node-product_change_notices-form .form-item-field-platform-pcn-und label,.node-product_change_notices-form  #field-chipset-pcn-add-more-wrapper label,
+.node-product_change_notices-form  #field-model-pcn-add-more-wrapper label,.node-product_change_notices-form > div > .form-type-textfield label{float: left;margin: 0 10px 20px 0;width: 160px;}
+.node-product_change_notices-form  #field-model-pcn-add-more-wrapper .text-full,.node-product_change_notices-form #field-chipset-pcn-add-more-wrapper .text-full,
+..node-product_change_notices-form{float: left;width:230px;}
+.node-product_change_notices-form .form-item-field-platform-pcn-und .form-item-field-platform-pcn-und label{width:auto;margin:0px 15px 0 0;}
+.node-product_change_notices-form .form-item-field-platform-pcn-und .form-radios{float:left;}
+.node-product_change_notices-form .form-item-field-platform-pcn-und .form-radio{float:left;margin:8px 5px 0 0;}
+.node-product_change_notices-form #field-chipset-pcn-add-more-wrapper{float:left;width:100%;}
+/* .node-product_change_notices-form #field-chipset-pcn-add-more-wrapper label{float:left;width:100%;} */
+.node-product_change_notices-form #field-chipset-pcn-add-more-wrapper .form-type-textfield{width: auto;float: left;margin: 0 45px 0 0;}
+.node-product_change_notices-form #field-model-pcn-add-more-wrapper .form-type-textfield{clear:both;float:left;width:100%;margin:0px;}
+.node-product_change_notices-form #body-add-more-wrapper{clear:both;}
+.node-product_change_notices-form .form-textarea-wrapper .cke_1,.node-product_change_notices-form .wysiwyg-toggle-wrapper,
+.node-product_change_notices-form fieldset.filter-wrapper{width: 800px !important;margin: 20px 0 0 170px;border-bottom:0px;}
+.node-product_change_notices-form fieldset .fieldset-wrapper{margin:0px;padding:0px;}
+.node-product_change_notices-form fieldset .tips{margin:15px 0px 0px;}
+.node-product_change_notices-form fieldset .tips li{clear:both;margin:5px 0px;}
+.node-product_change_notices-form .form-submit{float: left;margin: 20px 0 0 175px;}
+
+
