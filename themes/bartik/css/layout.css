@@ -1919,7 +1919,7 @@ table[id*='field-distributor-promotion-deta-values'] .field-name-field-promotion
 .node-promotion_rebates-form .image-widget-data .file a{float: left;width: 100px;margin: 0 10px;height: 20px;overflow: hidden;}
 .node-promotion_rebates-form .image-widget-data .file-size{float: left;margin:0 10px 0 0;}
 #field-distributor-promotion-deta-add-more-wrapper{position:relative;float:left;padding: 0 0 30px 0;}
-table[id*='field-distributor-promotion-deta-values'] input[value='Remove']{position: absolute;bottom: 0;right:0px;}
+table[id*='field-distributor-promotion-deta-values'] input[value='Remove']{bottom: 0;right:0px;}
 #field-distributor-promotion-deta-add-more-wrapper > .form-item  > .clearfix > input[value='Add another item']{position: absolute;bottom: 0;right: 200px;}
 /* #field-distributor-promotion-deta-add-more-wrapper .clearfix .field-add-more-submit{position: absolute;bottom: 0;right: 200px;} */
 #field-distributor-promotion-deta-add-more-wrapper > .form-item  > .clearfix{float:left;width:100%;}
