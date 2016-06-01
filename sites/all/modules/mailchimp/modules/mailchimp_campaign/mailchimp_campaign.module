@@ -314,7 +314,6 @@ function mailchimp_campaign_save_campaign($template, $recipients, $settings, $te
       'sections' => mailchimp_campaign_render_template($template),
     );
   }
-
   // Test for valid list segment, if selected.
   if (isset($recipients->segment_opts)) {
     if (mailchimp_test_list_segment($recipients->list_id, $recipients->segment_opts->saved_segment_id) === NULL) {
