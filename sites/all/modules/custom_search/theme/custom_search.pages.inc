@@ -193,7 +193,6 @@ function content_search_execute_based_on_content($keys){
 function field_check_user_access($node){
 
     $access = false;
-
     //search results node access based on roles
     if($node->type == 'tools_assets_logos' || $node->type == 'page') {
 
@@ -219,18 +218,19 @@ function field_check_user_access($node){
                     $role['id'] = $key;
                 }
             }
+                if ($node->type == 'tools_assets_logos') {
+                    $permitted_roles = explode(',', isset($node->field_permitted_roles_tal['und'][0]['value'])?$node->field_permitted_roles_tal['und'][0]['value']:'');
 
-            $permitted_roles = explode(',', $node->field_permitted_roles_tal['und'][0]['value']);
-
-            foreach ($permitted_roles as $rkey => $rval) {
-                if ($role['id'] == trim($rval)) {
-                    $access = true;
+                    foreach ($permitted_roles as $rkey => $rval) {
+                        if ($role['id'] == trim($rval)) {
+                            $access = true;
+                        }
+                    }
+                    if (in_array('administrator', array_values($user->roles))) {
+                        $access = true;
+                    }
                 }
             }
-            if (in_array('administrator', array_values($user->roles))) {
-                $access = true;
-            }
-        }
     }else{
         $access = true;
     }

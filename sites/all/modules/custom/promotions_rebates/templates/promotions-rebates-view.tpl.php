@@ -13,22 +13,21 @@
 
 <?php if(isset($variables['terms'])) { ?>
        <?php global $base_url; ?>
-        <table class="stores" style="margin: 0 auto;width: 1000px;">
+        <table class="stores" style="margin: 0 auto;width: 0%;">
         <tbody>
         <tr>
             <?php foreach ($terms as $id => $term) {
+
                 $dis_img_url = isset($term->term->field_distributor_image['und'][0]['uri'])? file_create_url($term->term->field_distributor_image['und'][0]['uri']):'';
                 $class = 'disabled';
                 $target = null;
-                if($variables['promotion_records'][$term->tid] == 1){
+                if(isset($variables['promotion_records'][$term->tid]) && $variables['promotion_records'][$term->tid] == 1){
                     $uri = $base_url.'/'.drupal_get_path_alias() .'/'. $term->name;
                     $class = "active";
                     $target = 'target="_blank"';
-                }else{
-                    $uri = 'javascript:void(0)';
                 }
                 ?>
-                <td style="text-align: center;" class="<?php print $class;?>"><a href="<?php print $uri;?>" <?php print $target;?> ><img src="<?php print $dis_img_url;?>" term='#term<?php print $term->tid;?>' class="distributor" style="width: 70px;height:50px"/></a></td>
+                <td style="text-align: center;" class="<?php print $class;?>"><a href="<?php print $uri;?>" <?php print $target;?> ><img src="<?php print $dis_img_url;?>" term='#term<?php print $term->tid;?>' class="distributor" style="width: 70px;height:50px;"/></a></td>
                 <?php
             } ?>
         </tr>
