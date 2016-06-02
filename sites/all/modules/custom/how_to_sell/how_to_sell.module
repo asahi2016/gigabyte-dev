@@ -2,7 +2,7 @@
 
 function how_to_sell_init()
 {
-    if (arg(0) == 'partner' && arg(1) == 'how-to-sell-amd'||'how-to-sell-intel'  && arg(2) == null) {
+    if (arg(0) == 'partner' && arg(1) == 'how-to-sell' && arg(2) == 'intel' || 'amd' ) {
         drupal_add_js(drupal_get_path('module', 'custom') . '/how_to_sell/js/how_to_sell.js');
     }
 }
@@ -98,13 +98,13 @@ function how_to_sell_views_pre_render(&$view){
                     $uri_title_pdf = '../sites/default/files/'.$uri;
                     $uri_image_pdf = 'sites/default/files/'.$uri;
                     $view->result[$key]->field_field_file_image[0]['rendered']['#path']['path'] = $uri_image_pdf;
-                    $view->result[$key]->field_field_file_pdf_1[0]['rendered']['#markup'] = $uri_title_pdf;
+                    $view->result[$key]->field_field_file_pdf[0]['rendered']['#markup'] = $uri_title_pdf;
+
                 }
             }
         }
     }
     return $view;
 }
-
 
 
