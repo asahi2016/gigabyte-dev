@@ -41,14 +41,14 @@ function send_product_change_notices_mail(&$form, &$form_state){
         'subject_line' => $values['title'],
         'title' => $values['title'],
         'from_name' => check_plain($values['name']),
-        'reply_to' => 'avi0007@gmail.com',
+        'reply_to' => 'krishna.asahi@gmail.com',
         //'reply_to' => $values['from_email'],
     );
 
     $template_id = !empty($values['field_mail_template_pcn']['und'][0]['value'])?$values['field_mail_template_pcn']['und'][0]['value']:2000094;
     $campaign_id = NULL;
     mailchimp_campaign_save_campaign($template_content,$recipient,$settings,$template_id);
-
+    drupal_set_message("The product change notice, {$values['title']} has been created successfully!");
     //print_pre($template_content,1);
 }
 
