@@ -1942,8 +1942,7 @@ background-repeat: no-repeat;background-size: cover;height: 80px;margin-top: 50p
 .node-product_change_notices-form  #field-model-pcn-add-more-wrapper label,.node-product_change_notices-form > div > .form-type-textfield label,
 .node-product_change_notices-form .field-name-field-model-url #field-model-url-add-more-wrapper label{float: left;margin: 0 10px 20px 0;width: 160px;}
 .node-product_change_notices-form .field-name-field-model-url #field-model-url-add-more-wrapper .link-field-subrow{float: left;}
-.node-product_change_notices-form  #field-model-pcn-add-more-wrapper .text-full,.node-product_change_notices-form #field-chipset-pcn-add-more-wrapper .text-full,
-.node-product_change_notices-form{float: left;width:230px;}
+.node-product_change_notices-form  #field-model-pcn-add-more-wrapper .text-full,.node-product_change_notices-form #field-chipset-pcn-add-more-wrapper .text-full{float: left; width:200px;}
 .node-product_change_notices-form .form-item-field-platform-pcn-und .form-item-field-platform-pcn-und label{width:auto;margin:0px 15px 0 0;}
 .node-product_change_notices-form .form-item-field-platform-pcn-und .form-radios{float:left;}
 .node-product_change_notices-form .form-item-field-platform-pcn-und .form-radio{float:left;margin:8px 5px 0 0;}
@@ -1972,3 +1971,4 @@ background-repeat: no-repeat;background-size: cover;height: 80px;margin-top: 50p
 .page-partner-support-product-change-notices #messages div.section .messages.error{width:940px;margin: 20px auto 0;float: inherit;}
 .node-promotion_rebates-form #promotion-information{float: left;}
 .node-promotion_rebates-form #edit-field-promotion-url-und-0-value{float: left;}
+.node-product_change_notices-form .field-name-field-mail-template-pcn,.node-product_change_notices-form .field-name-field-mailing-list{display:none;}
