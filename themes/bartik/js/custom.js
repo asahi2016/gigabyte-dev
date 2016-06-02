@@ -129,6 +129,30 @@ jQuery(document).ready(function($) {
         $('div.asset-download-history-page .view-filters').after('<div class="feed-icon" >'+$('div.asset-download-history-page .feed-icon').html()+"</div>");
         $('div.asset-download-history-page .feed-icon:last-child').hide();
     });
+	$('.win_box').eq(0).show();
+	$('.tbl_win10_bx a').addClass('black');
+	$('.tbl_win10_bx a').eq(0).addClass('cblue');
+	$('.tbl_win10_bx a').click(function(){
+		$('.win_box').hide();
+		$('.tbl_win10_bx a').removeClass('cblue');
+		$('.tbl_win10_bx a').addClass('black');
+		$(this).addClass('cblue');
+		var rel_va = $(this).attr('rel');
+		$('#'+rel_va).show();
+	});
+	$(window).load(function () {
+		$(window).bind('scroll resize', function () {
+			var $this = $(this);
+			var $this_Top = $this.scrollTop();
+
+			if ($this_Top < 350) {
+				$('#top-bar').removeClass("fixed");
+			}
+			if ($this_Top > 350) {
+				$('#top-bar').addClass("fixed");
+			}
+		}).scroll();
+    });
 });
 
 jQuery(document).ready(function($) {
