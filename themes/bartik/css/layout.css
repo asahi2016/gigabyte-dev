@@ -1930,7 +1930,7 @@ form.node-promotion_rebates-form{position:relative;float: left;padding: 0 0 30px
 #page-wrapper form.node-promotion_rebates-form #field-distributor-promotion-deta-add-more-wrapper .messages.error{width:90%;}
 form.node-promotion_rebates-form .messages.error li{width:100%;float:left;}
 form.node-promotion_rebates-form > div > input[type='submit']{position:absolute;bottom:15px;left:400px;}
-.group-page-us-content table{border:1px solid #fff;}
+/* .group-page-us-content table{border:1px solid #fff;} */
 .stores td.active{background:none;}
 .stores td.disabled a{display: none;}
 /*.stores td.disabled a img{-webkit-filter: grayscale(100%);filter: grayscale(100%);opacity: 0.5;float: left;}*/
@@ -1959,7 +1959,7 @@ background-repeat: no-repeat;background-size: cover;height: 80px;margin-top: 50p
 .node-product_change_notices-form .form-submit{float: left;margin: 20px 0 0 170px;}
 .node-product_change_notices-form  .messages li{width:100%;}
 .node-product_change_notices-form #body-add-more-wrapper .form-type-textarea label{float: left;}
-.node-product_change_notices-form .field-name-field-model-url{clear:both;}
+.node-product_change_notices-form .field-name-field-model-url{clear:both;width:100%;}
 .view-product-change-notices-view table.views-table{width:1000px;margin:0px auto;}
 .view-product-change-notices-view table.views-table th{background: #194399;padding: 8px 10px;text-align: center;}
 .view-product-change-notices-view table.views-table th,.view-product-change-notices-view table.views-table td{border: 1px solid #808080;text-align:center;}
@@ -1974,3 +1974,13 @@ background-repeat: no-repeat;background-size: cover;height: 80px;margin-top: 50p
 .node-product_change_notices-form .link-field-url .form-text,.node-product_change_notices-form .form-item-title .form-text{width:495px;}
 .node-product_change_notices-form .filter-wrapper .form-item,.node-product_change_notices-form .filter-guidelines{padding:0 0 0.5em 0em;}
 .node-product_change_notices-form .field-name-field-mail-template-pcn,.node-product_change_notices-form .field-name-field-mailing-list{display:none;}
+#user-register-form .fieldset-legend{font-size: 20px;font-weight: normal;color:#000;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;}
+#user-register-form fieldset legend{font-size: 20px;font-weight: normal;color:#000;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;}
+.node-product_change_notices-form .field-name-field-model-url .form-submit{margin:0px 0 0 0;}
+.node-product_change_notices-form .field-name-field-model-url .description{margin:0px 0 0 170px;}
+.node-product_change_notices-form .field-name-field-model-url .file-widget .file{float: left;margin: 0 15px 0 0;}
+.node-product_change_notices-form .field-name-field-model-url .file-widget .file .file-icon{margin:4px 3px 0px 0px;float:left;}
+.node-product_change_notices-form .field-name-field-model-url .file-widget .file-size{float: left;margin: 0 15px 0 0;}
+.node-product_change_notices-form .field-name-field-model-url label{float:left;margin: 0 10px 20px 0; width: 160px;}
+div[id*='edit-field-model-url'] input[type='file']{float: left;padding: 4px 0;margin:0 15px 0 0;}
+#page-wrapper .node-product_change_notices-form div.messages{width:80%;}
