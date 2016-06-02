@@ -1,5 +1,26 @@
 <?php
 
+function get_default_cloumn_title_of_import_excel($charCase = false)
+{
+
+    $column_title = array('GIGABYTE Model',
+        'Chipset',
+        'Stable Model',
+        'ITP Points',
+        'Intel SBA',
+        'Promotion IR');
+
+    if($charCase){
+        foreach ($column_title as $key => $value){
+            $column_title[$key] = strtolower($value);
+        }
+    }
+
+    return $column_title;
+
+}
+
+
 function promotions_rebates_init(){
 
     drupal_add_js(drupal_get_path('module', 'custom').'/promotions_rebates/js/promotions_rebates.js',array('scope' => 'footer'));
@@ -116,6 +137,11 @@ function promotions_rebates_theme(){
             'path' => $path,
             'template' => 'promotions-rebates-view',
             'variables' => array('node' => NULL),
+        ),
+        'promotion_upload_view' => array(
+            'path' => $path,
+            'template' => 'promotions-upload-view',
+            'variables' => array('promotions' => NULL),
         )
     );
 }
@@ -241,4 +267,128 @@ function get_gigabyte_authorized_distributors_taxonomy_by_name($name  = NULL){
 
     return $terms;
 
+}
+
+
+/**
+ * @file
+ * Testing functionality for Wysiwyg module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function promotions_rebates_menu() {
+
+    $items['promotions/ajax'] = array(
+        'title' => 'Ajaxified form',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('promotions_rebates_ajax_form'),
+        'access callback' => TRUE,
+    );
+    return $items;
+}
+
+/**
+ * Form constructor for an ajaxified form lazy-loading a textarea.
+ */
+function promotions_rebates_ajax_form($form, &$form_state) {
+
+    //Node add page from specific content type
+    /*if (!function_exists('node_add')) {
+        module_load_include('inc', 'node', 'node.pages');
+    }
+    $nodeform = node_add('promotion_rebates');*/
+
+    $lib = $_SERVER['DOCUMENT_ROOT'] . '/gigabyte'. '/' . libraries_get_path('Classes');
+    $file_to_include = $_SERVER['DOCUMENT_ROOT'] . '/gigabyte'. '/' . libraries_get_path('Classes').'/Jan_2016_Promotion.xls';
+
+    /** PHPExcel_IOFactory */
+    include $lib.'/PHPExcel/IOFactory.php';
+
+    $inputFileName = $file_to_include;
+
+    $objReader = PHPExcel_IOFactory::createReader('Excel5');
+    $objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
+    $worksheetList = $objReader->listWorksheetNames($inputFileName);
+
+    $i = 0;
+    $sheetData = array();
+    while ($objPHPExcel->setActiveSheetIndex($i) && $i < count($worksheetList) - 1){
+        $sheetname = $worksheetList[$i];
+        $sheetData[$sheetname] = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+        $i++;
+    }
+
+    $name = "Gigabyte Authorized Distributors";
+
+    $terms = get_gigabyte_authorized_distributors_taxonomy_by_name($name);
+
+    $distributors = array();
+    foreach ($terms as $t => $term){
+        $distributors[] = strtolower($term->name);
+    }
+
+    $column_title = get_default_cloumn_title_of_import_excel(true);
+
+    $error = array();
+
+    foreach ($sheetData as $sname => $sheetinfo){
+        foreach ($sheetinfo as $rowkey => $details){
+            if($rowkey == 1) {
+                if(count($column_title) == count($details)) {
+                    foreach ($details as $column => $val) {
+                        if (!in_array(strtolower($val), $column_title)) {
+                            $error['not_a_column'][$sname][$column]['sheetName'] = $sname;
+                            $error['not_a_column'][$sname][$column]['errorColumn'] = $val;
+                        }
+                    }
+                }else{
+                    $error['columnName'][$sname][$rowkey]['sheetName'] = $sname;
+                    $error['columnName'][$sname][$rowkey]['errorColumn'] = count($details) .' columns';
+                }
+            }
+        }
+    }
+
+
+    $sheetName = $worksheetList;
+    $n = 0;
+    for($n = 0; $n<=count($sheetName)-1; $n++){
+        if(!in_array(strtolower($sheetName[$n]) ,$distributors)){
+            $error['sheetname'][] = $sheetName[$n];
+            unset($sheetName[$n]);
+        }
+    }
+
+
+    print_pre($error);
+
+    if(!$error){
+
+
+
+    }
+
+   // $htmlform = drupal_render($form);
+
+    //print $htmlform;
+    exit;
+
+    //return $form;
+}
+
+/**
+ * #ajax callback for wysiwyg_test_ajax_form().
+ */
+function promotions_rebates_ajax_form_callback($form, &$form_state) {
+
+   // print_pre($form,1);
+
+    $form['body'] = array(
+        '#type' => 'text_format',
+        '#default_value' => '',
+    );
+    form_builder($form['form_id']['#value'], $form, $form_state);
+    return $form['body'];
 }
