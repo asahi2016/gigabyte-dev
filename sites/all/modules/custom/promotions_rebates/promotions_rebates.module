@@ -287,6 +287,12 @@ function promotions_rebates_menu() {
         'page callback' => 'promotions_rebates_ajax_form',
         'access callback' => TRUE,
     );
+
+    $items['promotions/get/termdata'] = array(
+        'title' => 'Get term data',
+        'page callback' => 'promotions_rebates_get_term_data',
+        'access callback' => TRUE,
+    );
     return $items;
 }
 
@@ -371,5 +377,18 @@ function promotions_rebates_ajax_form($form, &$form_state) {
     if($error){
        print theme('promotion_upload_view', array('promotions' => $sheetData, 'distributors' => $distributors_options));
     }
+}
+
+/**
+ * Get the Image URL of the term selected
+ */
+function promotions_rebates_get_term_data(){
+    global $base_url;
+    if(empty($_POST['termid'])){
+        echo "Term Cannot be Empty";
+    }
+    $term = taxonomy_term_load($_POST['termid']);
+    $image = $base_url.'/sites/default/files/'.str_replace('public://','',$term->field_distributor_image['und'][0]['uri']);
+    echo $image;
 }
 

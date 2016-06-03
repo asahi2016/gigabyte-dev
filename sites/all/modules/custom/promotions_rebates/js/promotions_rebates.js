@@ -55,5 +55,20 @@
          $.post('url' , array('formval' => $(this).serialize()));
         });*/
 
+        $(document).on('change','select[id*="edit-field-distributor-promotion-deta-und-0-field-prmotion-distributors-und"]',function(){
+            img_url = '';
+            $.ajax({
+                url:Drupal.settings.gigabyte.baseUrl+'/promotions/get/termdata',
+                type:'post',
+                data:{termid:$(this).val()},
+                success:function(data){
+                    img_url = data;
+                    var html_content = '<span class="distributor-image" ><img src="'+img_url+'" /> </span>';
+                    $('select[id*="edit-field-distributor-promotion-deta-und-0-field-prmotion-distributors-und"]').parent('div').find('span').remove();
+                    $('select[id*="edit-field-distributor-promotion-deta-und-0-field-prmotion-distributors-und"]').parent('div').append(html_content);
+                }
+            });
+
+        });
     });
 })(jQuery);
