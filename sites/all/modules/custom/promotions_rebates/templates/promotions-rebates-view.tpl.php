@@ -52,12 +52,12 @@
                 </tr>
                 <?php foreach ($term['promotions'] as $pid => $promotion) { ?>
                 <tr>
-                    <td><a href="#" target="_blank"><?php print $promotion['model']; ?></a></td>
-                    <td><?php print ($promotion['model'])?$promotion['model']:'-'; ?></td>
-                    <td><?php print ($promotion['model'])?$promotion['model']:'-'; ?></td>
-                    <td><?php print ($promotion['model'])?$promotion['model']:'-'; ?></td>
-                    <td><?php print ($promotion['model'])?$promotion['model']:'-'; ?></td>
-                    <td><?php print ($promotion['model'])?$promotion['model']:'-'; ?></td>
+                    <td><a href="<?php print $promotion['model_url']; ?>" target="_blank"><?php print $promotion['model']; ?></a></td>
+                    <td><?php print ($promotion['chipset'])?$promotion['chipset']:'-'; ?></td>
+                    <td><?php print ($promotion['stable'])?$promotion['stable']:'-'; ?></td>
+                    <td><?php print ($promotion['points'])?$promotion['points']:'-'; ?></td>
+                    <td><?php print ($promotion['intel_sba'])?$promotion['intel_sba']:'-'; ?></td>
+                    <td><?php print ($promotion['rebate'])?$promotion['rebate']:'-'; ?></td>
                 </tr>
                 <?php } ?>
                 </tbody>

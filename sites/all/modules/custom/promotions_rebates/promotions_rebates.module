@@ -218,6 +218,7 @@ function template_preprocess_promotion_rebates_view(&$variables){
 
                 $details = array();
                 $details['model'] = $field_items->field_gigabyte_model['und'][0]['value'];
+                $details['model_url'] = $field_items->field_gigabyte_model_url['und'][0]['url'];
                 $details['chipset'] = $field_items->field_gigabyte_chipset['und'][0]['value'];
                 $details['stable'] = $field_items->field_stable_model['und'][0]['value'];
                 $details['points'] = $field_items->field_itp_points['und'][0]['value'];
