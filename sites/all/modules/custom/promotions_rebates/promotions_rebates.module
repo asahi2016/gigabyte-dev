@@ -141,7 +141,7 @@ function promotions_rebates_theme(){
         'promotion_upload_view' => array(
             'path' => $path,
             'template' => 'promotions-upload-view',
-            'variables' => array('promotions' => NULL),
+            'variables' => array('promotions' => NULL, 'distributors' => NULL),
         )
     );
 }
@@ -282,8 +282,7 @@ function promotions_rebates_menu() {
 
     $items['promotions/ajax'] = array(
         'title' => 'Ajaxified form',
-        'page callback' => 'drupal_get_form',
-        'page arguments' => array('promotions_rebates_ajax_form'),
+        'page callback' => 'promotions_rebates_ajax_form',
         'access callback' => TRUE,
     );
     return $items;
@@ -325,8 +324,11 @@ function promotions_rebates_ajax_form($form, &$form_state) {
     $terms = get_gigabyte_authorized_distributors_taxonomy_by_name($name);
 
     $distributors = array();
+    $distributors_options = array();
     foreach ($terms as $t => $term){
         $distributors[] = strtolower($term->name);
+        $distributors_options[$term->tid]['lname'] = strtolower($term->name);
+        $distributors_options[$term->tid]['name'] = $term->name;
     }
 
     $column_title = get_default_cloumn_title_of_import_excel(true);
@@ -357,38 +359,15 @@ function promotions_rebates_ajax_form($form, &$form_state) {
     for($n = 0; $n<=count($sheetName)-1; $n++){
         if(!in_array(strtolower($sheetName[$n]) ,$distributors)){
             $error['sheetname'][] = $sheetName[$n];
+            $dname = $sheetName[$n];
             unset($sheetName[$n]);
+            unset($sheetData[$dname]);
         }
     }
 
 
-    print_pre($error);
-
-    if(!$error){
-
-
-
+    if($error){
+       print theme('promotion_upload_view', array('promotions' => $sheetData, 'distributors' => $distributors_options));
     }
-
-   // $htmlform = drupal_render($form);
-
-    //print $htmlform;
-    exit;
-
-    //return $form;
 }
 
-/**
- * #ajax callback for wysiwyg_test_ajax_form().
- */
-function promotions_rebates_ajax_form_callback($form, &$form_state) {
-
-   // print_pre($form,1);
-
-    $form['body'] = array(
-        '#type' => 'text_format',
-        '#default_value' => '',
-    );
-    form_builder($form['form_id']['#value'], $form, $form_state);
-    return $form['body'];
-}
