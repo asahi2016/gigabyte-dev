@@ -1889,7 +1889,9 @@ table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.dra
 table[id*='field-distributor-promotion-deta-values'] div.messages ul li{width:100%;float:left;}
 table[id*='field-distributor-promotion-deta-values'] tr th{background:none;color:#000;}
 table[id*='field-distributor-promotion-deta-values'] tr th label{padding:0px;}
-table[id*='field-distributor-promotion-deta-values'] td .field-name-field-prmotion-distributors .form-select{margin: 10px 0px 0px;width: 200px;}
+table[id*='field-distributor-promotion-deta-values'] td .field-name-field-prmotion-distributors .form-select{margin: 10px 10px 0px 0;width: 200px;float:left;}
+table[id*='field-distributor-promotion-deta-values'] td .field-name-field-prmotion-distributors .distributor-image,
+table[id*='field-distributor-promotion-deta-values'] td .field-name-field-prmotion-distributors .distributor-image img{float: left;width: 113px;height: 52px;}
 table[id*='field-promotion-details-values']{padding:10px;}
 table[id*='field-promotion-details-values'] tr.draggable{border:1px solid #efefef;padding:0 0 20px 0px;}
 table[id*='field-promotion-details-values'] td .field-widget-text-textfield.form-wrapper input.form-text{width:120px;float:left;margin:7px 0 0 0px;clear: both;}
@@ -2045,3 +2047,5 @@ div[id*='edit-field-model-url'] input[type='file']{float: left;padding: 4px 0;ma
 #field-promotion-details-values .field-name-field-gigabyte-model-url{float:left;margin:5px 5px 0px 0px;}
 #field-promotion-details-values .field-name-field-gigabyte-model-url .form-text{width:140px}
 table[id*='field-promotion-details-values'] td .field-name-field-gigabyte-model-url .form-item label{margin:3px 20px 7px 0px}
+#edit-field-promotion-excel  .form-item label{width: 220px;float: left;}
+#edit-field-promotion-excel  .form-item .form-managed-file{margin:0 0 0 220px;width: 615px;clear: both;}
