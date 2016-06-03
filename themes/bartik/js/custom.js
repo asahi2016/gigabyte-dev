@@ -136,20 +136,24 @@ jQuery(document).ready(function($) {
 		$('.win_box').hide();
 		$('.tbl_win10_bx a').removeClass('cblue');
 		$('.tbl_win10_bx a').addClass('black');
+		$('.win_box #top-bar').removeClass('fixed');
 		$(this).addClass('cblue');
 		var rel_va = $(this).attr('rel');
 		$('#'+rel_va).show();
 	});
+	
+	
 	$(window).load(function () {
 		$(window).bind('scroll resize', function () {
+		var active_class = $('.tbl_win10_bx td a.cblue').attr('rel');
 			var $this = $(this);
 			var $this_Top = $this.scrollTop();
-
-			if ($this_Top < 350) {
+			if ($this_Top < 480) {
 				$('#top-bar').removeClass("fixed");
+				$('#'+active_class+' '+'#top-bar').removeClass('fixed');
 			}
-			if ($this_Top > 350) {
-				$('#top-bar').addClass("fixed");
+			if ($this_Top > 480) {
+				$('#'+active_class+' '+'#top-bar').addClass("fixed");			
 			}
 		}).scroll();
     });

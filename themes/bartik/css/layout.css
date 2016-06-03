@@ -1883,8 +1883,8 @@ table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.dra
 table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-gigabyte-model,table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-widget-text-textfield,
 table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-stable-model,table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-itp-points,
 table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-intel-sba,table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-instant-rebate
-{width:160px;float:left;}
-table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-gigabyte-model{margin:0 0 0 20px;}
+{width:155px;float:left;}
+table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-gigabyte-model{margin:0 0 0 5px;float:left;width:auto;}
 table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-stable-model,table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-intel-sba{width:100px;float:left;}
 table[id*='field-distributor-promotion-deta-values'] div.messages ul li{width:100%;float:left;}
 table[id*='field-distributor-promotion-deta-values'] tr th{background:none;color:#000;}
@@ -1892,7 +1892,7 @@ table[id*='field-distributor-promotion-deta-values'] tr th label{padding:0px;}
 table[id*='field-distributor-promotion-deta-values'] td .field-name-field-prmotion-distributors .form-select{margin: 10px 0px 0px;width: 200px;}
 table[id*='field-promotion-details-values']{padding:10px;}
 table[id*='field-promotion-details-values'] tr.draggable{border:1px solid #efefef;padding:0 0 20px 0px;}
-table[id*='field-promotion-details-values'] td .field-widget-text-textfield.form-wrapper input.form-text{width:120px;float:left;margin: 5px 0 0 0px;clear: both;}
+table[id*='field-promotion-details-values'] td .field-widget-text-textfield.form-wrapper input.form-text{width:120px;float:left;margin:7px 0 0 0px;clear: both;}
 table[id*='field-promotion-details-values'] td .form-type-checkboxes label{font-size:14px;font-weight:bold;}
 table[id*='field-promotion-details-values'] td .form-item label{font-size:14px;font-weight:bold;}
 table[id*='field-distributor-promotion-deta-values'] tr th{background:none;}
@@ -2042,3 +2042,6 @@ div[id*='edit-field-model-url'] input[type='file']{float: left;padding: 4px 0;ma
     width: 180px;
 }
 #top-bar table{display:block !important;}
+#field-promotion-details-values .field-name-field-gigabyte-model-url{float:left;margin:5px 5px 0px 0px;}
+#field-promotion-details-values .field-name-field-gigabyte-model-url .form-text{width:140px}
+table[id*='field-promotion-details-values'] td .field-name-field-gigabyte-model-url .form-item label{margin:3px 20px 7px 0px}

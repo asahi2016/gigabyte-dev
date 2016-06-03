@@ -29,7 +29,7 @@
        /* if($('span.file').length > 0) {
 
         }else{
-            $.post(
+           /*  $.post(
                 Drupal.settings.gigabyte.baseUrl + '/promotions/ajax',
                 {
                     ajax: true
@@ -39,8 +39,13 @@
                     $('#edit-field-distributor-promotion-deta').html('');
                     $('#edit-field-distributor-promotion-deta').html(response);
                 }
+
             );
-        }*/
+        }
+
+            );} */
+        
+
 
 
         /*$('#promotion-rebates-node-form').on('submit', function(e) {
