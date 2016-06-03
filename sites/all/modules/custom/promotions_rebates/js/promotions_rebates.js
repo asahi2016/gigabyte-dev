@@ -23,8 +23,10 @@
                 }
             }
         },100);*/
+       // $("#edit-field-distributor-promotion-deta-und-add-more").trigger("click");
 
-        if($('span.file').length > 0) {
+
+       /* if($('span.file').length > 0) {
 
         }else{
             $.post(
@@ -38,14 +40,14 @@
                     $('#edit-field-distributor-promotion-deta').html(response);
                 }
             );
-        }
+        }*/
 
 
         /*$('#promotion-rebates-node-form').on('submit', function(e) {
             //prevent the default submithandling
             e.preventDefault();
             //send the data of 'this' (the matched form) to yourURL
-            $(this).serialize());
+         $.post('url' , array('formval' => $(this).serialize()));
         });*/
 
     });

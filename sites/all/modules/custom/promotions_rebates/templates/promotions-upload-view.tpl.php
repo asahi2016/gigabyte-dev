@@ -287,8 +287,20 @@ $btotal = count($promotions);
                     </td>
                 </tr>
                 <?php
+                /*if($i == 0) {
+                    echo '<script>$(document).ready(function(){
+                        $("#edit-field-distributor-promotion-deta-und-add-more").trigger("click");
+                 })
+                </script>';
+                }else{
+                    echo '<script>$(document).ready(function(){
+                        $("#edit-field-distributor-promotion-deta-und-add-more--'.($i+1).'").trigger("click");
+                 })
+                </script>';
+                }*/
                 $i=$i+1;
                 $total=$total-1;
+
             } ?>
             </tbody>
         </table>
@@ -297,5 +309,6 @@ $btotal = count($promotions);
         </div>
     </div>
 </div>
+
 
 
