@@ -4,6 +4,7 @@ function get_default_cloumn_title_of_import_excel($charCase = false)
 {
 
     $column_title = array('GIGABYTE Model',
+        'GIGABYTE Model Url',
         'Chipset',
         'Stable Model',
         'ITP Points',

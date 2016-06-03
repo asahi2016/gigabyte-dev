@@ -123,6 +123,21 @@ $btotal = count($promotions);
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div id="edit-field-distributor-promotion-deta-und-<?php print $i;?>-field-promotion-details-und-<?php print $j;?>-field-gigabyte-model-url" class="field-type-link-field field-name-field-gigabyte-model-url field-widget-link-field form-wrapper">
+                                                            <div id="field-distributor-promotion-deta-und-<?php print $i;?>-field-promotion-details-und-<?php print $j;?>-field-gigabyte-model-url-add-more-wrapper">
+                                                                <div class="form-item form-type-link-field form-item-field-distributor-promotion-deta-und-<?php print $i;?>-field-promotion-details-und-<?php print $j;?>-field-gigabyte-model-url-und-0">
+                                                                    <label for="edit-field-distributor-promotion-deta-und-<?php print $i;?>-field-promotion-details-und-<?php print $j;?>-field-gigabyte-model-url-und-0" class="fel-field-label">Gigabyte Model Url </label>
+                                                                    <div class="link-field-subrow clearfix">
+                                                                        <div class="link-field-url">
+                                                                            <div class="form-item form-type-textfield form-item-field-distributor-promotion-deta-und-<?php print $i;?>-field-promotion-details-und-<?php print $j;?>-field-gigabyte-model-url-und-0-url">
+                                                                                <label for="edit-field-distributor-promotion-deta-und-<?php print $i;?>-field-promotion-details-und-<?php print $j;?>-field-gigabyte-model-url-und-0-url" class="element-invisible">URL </label>
+                                                                                <input type="text" class="form-text" maxlength="2048" size="60" value="" name="field_distributor_promotion_deta[und][<?php print $i;?>][field_promotion_details][und][<?php print $j;?>][field_gigabyte_model_url][und][0][url]" id="edit-field-distributor-promotion-deta-und-<?php print $i;?>-field-promotion-details-und-<?php print $j;?>-field-gigabyte-model-url-und-0-url">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <div id="edit-field-distributor-promotion-deta-und-<?php print $i;?>-field-promotion-details-und-<?php print $j;?>-field-gigabyte-chipset" class="field-type-text field-name-field-gigabyte-chipset field-widget-text-textfield form-wrapper">
                                                             <div id="field-distributor-promotion-deta-und-<?php print $i;?>-field-promotion-details-und-<?php print $j;?>-field-gigabyte-chipset-add-more-wrapper">
                                                                 <div class="form-item form-type-textfield form-item-field-distributor-promotion-deta-und-<?php print $i;?>-field-promotion-details-und-<?php print $j;?>-field-gigabyte-chipset-und-0-value">
