@@ -1987,7 +1987,7 @@ background-repeat: no-repeat;background-size: cover;height: 80px;margin-top: 50p
 .node-product_change_notices-form .field-name-field-model-url label{float:left;margin: 0 10px 20px 0; width: 160px;}
 .node-product_change_notices-form  div[id*='body-add-more-wrapper']{float:left;}
 .node-product_change_notices-form  div[id*='body-add-more-wrapper'] .form-type-textarea label{float:left;}
-div[id*='edit-field-model-url'] input[type='file']{float: left;padding: 4px 0;margin:0 15px 0 0;}
+div[id*='edit-field-model-url'] input[type='file']{float: left;padding: 4px 0;margin:0 15px 0 0;width:310px;}
 #page-wrapper .node-product_change_notices-form div.messages{width:80%;}
 .tbl_win10_bx {text-align: center;font-size: 20px;width:1000px;margin:0px auto 30px;}
 .win_box .win th{background:#333333;color:#fff;padding:10px 10px;text-align:center;line-height:0.8;border:1px solid #808080;}
@@ -2041,3 +2041,4 @@ div[id*='edit-field-model-url'] input[type='file']{float: left;padding: 4px 0;ma
 .model > tbody > tr > td:nth-child(n+2) {
     width: 180px;
 }
+#top-bar table{display:block !important;}
