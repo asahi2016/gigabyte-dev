@@ -1733,6 +1733,7 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 /* .page-node .group-page-us-content .field-name-body{width:1000px;margin:0px auto;} */
 .view-e-catalogs-view .views-field-edit-node,.view-e-catalogs-view .views-field-delete-node{float:left;margin:30px 0px 0px;}
 .page-node .group-page-us-content .field-name-body{width:1000px;margin:0px auto;} 
+/* .page-node .group-page-us-content .field-name-body.field-label-hidden{display:none} */
 .page-node .split-page .group-page-us-content .field-name-body{width:570px;margin:0px;}
 .page-testimonial h1.title{width:1000px;margin:0px auto;padding:30px 0px;}
 .view-product-roadmap-amd,.view-product-roadmap-brix,.view-product-roadmap-intel{width:1000px;margin:0px auto;}
@@ -2062,3 +2063,4 @@ table[id*='field-promotion-details-values'] td .field-name-field-gigabyte-model-
 .page-search .pager li{background: #12406A;margin: 0 1px 0px 0px;border-radius: 5px;padding: 5px 12px;}
 .page-search .pager li a{color: #fff;}
 .page-search .pager li.pager-current{background:#fff;color: #12406A;}
+#block-system-user-menu ul.menu li.first p{margin:5px 0px 0px 0px;}

@@ -160,16 +160,26 @@ jQuery(document).ready(function($) {
 });
 
 jQuery(document).ready(function($) {
+		var a_text = $('#block-system-user-menu ul.menu li.first a').text();
+		$('#block-system-user-menu ul.menu li.first a').remove();
+		$('#block-system-user-menu ul.menu li.first').append('<p>' + a_text + '</p>');
 		$('table.ipa').hide();
 		$('.ipa_menu td a').removeClass('active');
 		$('table.ipa.category').show();
 		$('.ipa_menu td').eq(0).find('a').addClass('active');
-	$('.ipa_menu td a').click(function(){
+		$('.ipa_menu td a').click(function(){
 		$('.ipa_menu td a').removeClass('active');
 		$('table.ipa').hide();
 		$(this).addClass('active');
 		var table_val = $(this).attr('rel');
 		$('.'+table_val).show();
+		if(table_val = 'category')
+		{
+			$('#top-bar tr th.t_head').text('Series');
+		}
+		else{
+			$('#top-bar tr th.t_head').text('Form Factor');
+		}
 	});
 	$(window).load(function () {
 		$(window).bind('scroll resize', function () {
