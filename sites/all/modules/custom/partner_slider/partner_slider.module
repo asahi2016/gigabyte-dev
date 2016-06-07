@@ -1,5 +1,6 @@
 <?php
 
+//alter the partner slider form
 function partner_slider_form_partner_slider_node_form_alter(&$form, &$form_state, $form_id){
 
     if(user_access('administrator')){
@@ -92,7 +93,6 @@ function partner_slider_views_pre_render(&$view){
             $view->result[$key]->field_field_slider_image[0]['rendered']['#path']['path'] = $slide_url;
 
         }
-
 
     }
 }

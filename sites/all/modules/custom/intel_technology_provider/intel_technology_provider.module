@@ -6,13 +6,18 @@ function intel_technology_provider_init(){
     drupal_add_js(drupal_get_path('module', 'custom').'/intel_technology_provider/js/intel_technology_provider.js',array('scope' => 'footer'));
 }
 
-
 function intel_technology_provider_menu(){
 
     $items['intel/technology/provider'] = array(
         'page callback' => 'display_intel_technology_provider_models', // Render HTML
         'type' => MENU_CALLBACK,
-        'access callback' => TRUE,
+        'access callback' => TRUE
+    );
+
+    $items['intel/technology/provider/partner'] = array(
+        'page callback' => 'display_intel_technology_provider_models', // Render HTML
+        'type' => MENU_CALLBACK,
+        'access callback' => 'user_is_logged_in'
     );
 
     return $items;
@@ -42,7 +47,6 @@ function display_intel_technology_provider_models(){
     return theme('intel_technology_provider_models', array('data' => ''));
 }
 
-
 /**
  * Implements hook_block_info().
  */
@@ -59,7 +63,6 @@ function intel_technology_provider_block_info() {
     return $blocks;
 }
 
-
 /**
  * Implements hook_block_view().
  */
@@ -72,7 +75,6 @@ function intel_technology_provider_block_view($delta = '') {
             break;
 
         case 'intel_brix_models':
-
             $block['content'] = theme('intel_brix_models', array('brix' => ''));
             break;
     }
@@ -204,7 +206,6 @@ function get_vocabulary_terms_info_by_taxonomy_name($name  = NULL, $model = NULL
     return false;
 
 }
-
 
 function get_points_related_taxonomy_grouped_terms($terms = array()){
 
