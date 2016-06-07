@@ -94,6 +94,9 @@ ul{list-style-type:none;}
     top: 0;
     width: 480px;
 }
+body.page-search{
+	overflow-x:hidden;
+}
 .top_f,.top_s{
     /*background: transparent url('../images/blue-background.png') no-repeat scroll center center / cover;*/
     background-image: url('../images/blue-background.png');
@@ -399,6 +402,9 @@ ul, li {
     display: block;
     left:266px;
     top:0px;
+}
+#main-menu-nav li:nth-child(5) ul li:hover > ul{
+	left:-266px;
 }
 #main-menu-nav li:last-child ul li:hover > ul{
     left:-266px;
@@ -1594,7 +1600,8 @@ table.txt_center{table-layout: fixed;}
 .search-form .form-type-textfield input.form-text{float:right;width:200px;}
 .search-form{float:left;width:700px;margin:10px 0 0 0;}
 .search-form#search-form input#edit-keys{width:300px;}
-.page-search h2{clear:both;float:left;width:100%;font-size:18px;}
+.page-search h2{float:left;width:100%;font-size:18px;width:50%}
+.page-search .partner-portal-login .section > h2+h2 {text-align:right;margin-bottom:20px;}
 .page-search .form-submit{float:left;}
 .page-search #tabs{float:left;width:100%;}
 .page-search #tabs ul{float:left;width:100%;}
@@ -1621,11 +1628,12 @@ table.txt_center{table-layout: fixed;}
 .custom-search-filter {float: left;
     width: 100%;
     border-bottom: 1px solid #dedede;
-    padding: 0 0 6px 0;
+    padding: 0 0 0px 0;
     box-shadow: -1px 2px 1px 0px #dedede;
 }
-.custom-search-filter .item-list ul li{padding:7px 0 2px 1px;margin:0 4px 0 0;}
-.custom-search-filter li a{padding:8px 15px;
+.custom-search-filter .item-list ul{margin:0 0 5px 0;}
+.custom-search-filter .item-list ul li{padding:7px 0px 1px 0px;margin:0 4px 0 0;}
+.custom-search-filter li a{padding:8px 10px;
 						background: rgba(255,255,255,1);
 						background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
 						background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(237,237,237,1)));
@@ -2049,3 +2057,8 @@ div[id*='edit-field-model-url'] input[type='file']{float: left;padding: 4px 0;ma
 table[id*='field-promotion-details-values'] td .field-name-field-gigabyte-model-url .form-item label{margin:3px 20px 7px 0px}
 #edit-field-promotion-excel  .form-item label{width: 220px;float: left;}
 #edit-field-promotion-excel  .form-item .form-managed-file{margin:0 0 0 220px;width: 615px;clear: both;}
+#search-form h2,.page-search h2{margin-bottom:0px;}
+.page-search #content.wrapper_full ul.pager{float:right;width:auto;}
+.page-search .pager li{background: #12406A;margin: 0 1px 0px 0px;border-radius: 5px;padding: 5px 12px;}
+.page-search .pager li a{color: #fff;}
+.page-search .pager li.pager-current{background:#fff;color: #12406A;}
