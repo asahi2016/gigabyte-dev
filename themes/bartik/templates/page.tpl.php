@@ -393,7 +393,7 @@ jQuery(document) . ready(function () {
       </div></div> <!-- /.section, /#sidebar-first -->
     <?php endif; ?>
 
-    <div id="content" class="column wrapper_full partner-portal-login <?php if($_SESSION['curr_pg'] == 'login' || in_array('login?destination=node',$current_url)){echo 'split-page';} ?>"><div class="section">
+    <div id="content" class="column wrapper_full partner-portal-login <?php if($_SESSION['curr_pg'] == 'login' || in_array('login?destination=node',$current_url) || in_array('login?destination=partner',$current_url)){echo 'split-page';} ?>"><div class="section">
       <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
