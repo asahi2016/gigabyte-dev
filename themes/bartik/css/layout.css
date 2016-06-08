@@ -74,7 +74,7 @@ ul{list-style-type:none;}
 #messages div.section{width:1100px;margin:0px auto;}
 #messages div.section .messages.error{width:100%;}
 #main{width:1200px;margin:0px auto;}
-#main .div-1000{width:1000px;margin:0px auto;}
+#main .div-1000,#main-wrapper .product-change0notice{width:1000px;margin:0px auto;}
 #header div.section {
     position: relative;
 }
@@ -2059,8 +2059,8 @@ table[id*='field-promotion-details-values'] td .field-name-field-gigabyte-model-
 #edit-field-promotion-excel  .form-item label{width: 220px;float: left;}
 #edit-field-promotion-excel  .form-item .form-managed-file{margin:0 0 0 220px;width: 615px;clear: both;}
 #search-form h2,.page-search h2{margin-bottom:0px;}
-.page-search #content.wrapper_full ul.pager{float:right;width:auto;}
-.page-search .pager li{background: #12406A;margin: 0 1px 0px 0px;border-radius: 5px;padding: 5px 12px;}
-.page-search .pager li a{color: #fff;}
-.page-search .pager li.pager-current{background:#fff;color: #12406A;}
+.page-search #content.wrapper_full ul.pager,.page-partner-upload-assets #content.wrapper_full ul.pager{float:right;width:auto;}
+.page-search .pager li,.page-partner-upload-assets .pager li{background: #12406A;margin: 0 1px 0px 0px;border-radius: 5px;padding: 5px 12px;}
+.page-search .pager li a,.page-partner-upload-assets .pager li a{color: #fff;}
+.page-search .pager li.pager-current,.page-partner-upload-assets .pager li.pager-current{background:#fff;color: #12406A;}
 #block-system-user-menu ul.menu li.first p{margin:5px 0px 0px 0px;color:#000;float:left;}

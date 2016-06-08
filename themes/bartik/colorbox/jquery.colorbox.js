@@ -66,8 +66,8 @@
 		imgError: "This image failed to load.",
 
 		// accessbility
-		returnFocus: true,
-		trapFocus: true,
+		returnFocus: false,
+		trapFocus: false,
 
 		// callbacks
 		onOpen: false,
@@ -234,10 +234,8 @@
 
 	// Determine the next and previous members in a group.
 	function getIndex(increment) {
-		var
-		max = $related.length,
+		var max = $related.length;
 		newIndex = (index + increment) % max;
-
 		return (newIndex < 0) ? max + newIndex : newIndex;
 	}
 
@@ -305,6 +303,7 @@
 			timeOut;
 
 		function clear () {
+	
 			clearTimeout(timeOut);
 		}
 
@@ -538,6 +537,7 @@
 				// Anonymous functions here keep the public method from being cached, thereby allowing them to be redefined on the fly.
 				$next.click(function () {
 					publicMethod.next();
+					
 				});
 				$prev.click(function () {
 					publicMethod.prev();
@@ -824,7 +824,7 @@
 			}
 
 			function removeFilter() { // Needed for IE8 in versions of jQuery prior to 1.7.2
-				if ($.support.opacity === false) {
+				if ($.support.opacity === false){
 					$box[0].style.removeAttribute('filter');
 				}
 			}
