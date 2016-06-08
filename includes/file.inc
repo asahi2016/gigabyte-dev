@@ -2231,7 +2231,7 @@ function drupal_chmod($uri, $mode = NULL) {
       $mode = variable_get('file_chmod_directory', 0775);
     }
     else {
-      $mode = variable_get('file_chmod_file', 0664);
+      $mode = variable_get('file_chmod_file', 0775);
     }
   }
 
