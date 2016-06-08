@@ -172,8 +172,9 @@ jQuery(document).ready(function($) {
 		$('table.ipa').hide();
 		$(this).addClass('active');
 		var table_val = $(this).attr('rel');
+		
 		$('.'+table_val).show();
-		if(table_val = 'category')
+		if(table_val=='category')
 		{
 			$('#top-bar tr th.t_head').text('Series');
 		}
