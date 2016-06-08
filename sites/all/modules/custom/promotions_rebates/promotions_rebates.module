@@ -228,6 +228,16 @@ function create_promotions_and_rebates_content(&$form, &$form_state) {
 
                 }
             }
+        }else{
+
+            $error_message = null;
+            foreach ($error['not_a_column'] as $sheet_name => $column){
+                foreach ($column as $col => $err){
+                    $error_message .=  $sheet_name . '- has following column error. ('.$err['errorColumn'].') </br>';
+                }
+            }
+
+            drupal_set_message('Import excel file has errors, Please check and provide the excel file in a proper format. <br> '.$error_message ,'error');
         }
     }
 
