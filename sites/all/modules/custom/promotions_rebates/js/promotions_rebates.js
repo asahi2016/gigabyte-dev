@@ -55,7 +55,7 @@
          $.post('url' , array('formval' => $(this).serialize()));
         });*/
 
-        $(document).on('change','select[id*="edit-field-distributor-promotion-deta-und-0-field-prmotion-distributors-und"]',function(){
+        /*$(document).on('change','select[id*="edit-field-distributor-promotion-deta-und-0-field-prmotion-distributors-und"]',function(){
             img_url = '';
             $.ajax({
                 url:Drupal.settings.gigabyte.baseUrl+'/promotions/get/termdata',
@@ -69,6 +69,6 @@
                 }
             });
 
-        });
+        });*/
     });
 })(jQuery);

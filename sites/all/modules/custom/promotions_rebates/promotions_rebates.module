@@ -47,9 +47,11 @@ function promotions_rebates_node_insert($node) {
 }
 
 // Alter the webform elements
-function promotions_rebates_form_promotion_rebates_node_form_alter(&$form, &$form_state, $form_id){
+function promotions_rebates_form_promotion_rebates_node_form_alter(&$form, &$form_state, $form_id)
+{
 
     $form['options']['promote']['#value'] = 0;
+    $form['options']['status']['#value'] = 0;
     unset($form['ajax-submit']['#ajax']);
     $form['ajax-submit']['#value'] ='Submit';
     $form['ajax-submit']['#submit'][] ='create_promotions_and_rebates_content';
@@ -57,7 +59,177 @@ function promotions_rebates_form_promotion_rebates_node_form_alter(&$form, &$for
     //$form['#submit'][] = 'create_awards_and_reviews_content';;
 }
 
+function get_promotion_excel_records(){
+
+    $query = db_select('promotion_excel_records', 'per');
+    $query->fields('per', array(
+        'eid',
+        'nid',
+        'filename',
+        'filepath',
+        'data',
+        'status',
+        'created',
+        'updated',
+    ));
+
+    $query->condition('status', '0'); //ORDER BY created
+    $query->orderBy('created', 'DESC'); //ORDER BY created
+    $query->range(0,2); //LIMIT to 2 records
+
+    $records = $query->execute()->fetchObject();
+
+    $data = unserialize($records->data);
+
+    return $data;
+
+}
+
 function create_promotions_and_rebates_content(&$form, &$form_state) {
+
+    global $base_url;
+
+    $node = node_load($form_state['values']['nid']);
+
+    if(isset($node->field_promotion_excel['und']) && !empty($node->field_promotion_excel['und'])) {
+
+        $lib = $_SERVER['DOCUMENT_ROOT'] . '/gigabyte' . '/' . libraries_get_path('Classes');
+
+        $file_to_include = drupal_realpath($node->field_promotion_excel['und'][0]['uri']);
+        //$file_to_include = $_SERVER['DOCUMENT_ROOT'] . '/gigabyte' . '/' . libraries_get_path('Classes') . '/Jan_2016_Promotion.xls';
+
+        //Load PHPexcel Library
+        include $lib . '/PHPExcel/IOFactory.php';
+
+        $inputFileName = $file_to_include;
+
+        $objReader = PHPExcel_IOFactory::createReader('Excel5');
+        $objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
+        $worksheetList = $objReader->listWorksheetNames($inputFileName);
+
+        //Read excel sheet informations based on individual sheet name
+        $i = 0;
+        $sheetData = array();
+        while ($objPHPExcel->setActiveSheetIndex($i) && $i < count($worksheetList) - 1) {
+            $sheetname = $worksheetList[$i];
+            $sheetData[$sheetname] = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
+            $i++;
+        }
+
+        $name = "Gigabyte Authorized Distributors";
+        $terms = get_gigabyte_authorized_distributors_taxonomy_by_name($name);
+
+        //Create an array for exists distributor lists , get from taxonomy
+        $distributors = array();
+        $distributors_options = array();
+        foreach ($terms as $t => $term) {
+            $distributors[] = strtolower($term->name);
+            $distributors_options[$term->tid]['lname'] = strtolower($term->name);
+            $distributors_options[$term->tid]['name'] = $term->name;
+        }
+
+        //Get excel sheets column title
+        $column_title = get_default_cloumn_title_of_import_excel(true);
+
+        $error = array();
+
+        /*
+         * Checks sheets column title with exists column title array
+         * if column title same as defined column name, it will be allow to save this sheets records with present node.
+         * Otherwise this sheet information through from excel sheet records
+         */
+        foreach ($sheetData as $sname => $sheetinfo) {
+
+            foreach ($sheetinfo as $rowkey => $details) {
+                if ($rowkey == 1) {
+                    //Checks the column title with exists distributor name
+                    if (count($column_title) == count($details)) {
+                        foreach ($details as $column => $val) {
+                            if (!in_array(strtolower($val), $column_title)) {
+                                $error['not_a_column'][$sname][$column]['sheetName'] = $sname;
+                                $error['not_a_column'][$sname][$column]['errorColumn'] = $val;
+                            }
+                        }
+                    } else {
+                        $error['columnName'][$sname][$rowkey]['sheetName'] = $sname;
+                        $error['columnName'][$sname][$rowkey]['errorColumn'] = count($details) . ' columns';
+                    }
+                }
+            }
+        }
+
+
+        /*
+         * Checks sheets name with exists distributor lists array
+         * if the sheet name same as distributor lists name, it will be allow to save this sheets records with present node.
+         * Otherwise this sheet information unset from excel sheet records array
+         */
+
+        $sheetName = $worksheetList;
+        $n = 0;
+        for ($n = 0; $n <= count($sheetName) - 1; $n++) {
+            if (!in_array(strtolower($sheetName[$n]), $distributors)) {
+                $error['sheetname'][] = $sheetName[$n];
+                $dname = $sheetName[$n];
+                unset($sheetName[$n]);
+                unset($sheetData[$dname]);
+            }
+        }
+
+        if(!$error) {
+
+            foreach ($sheetData as $dis_name => $info) {
+
+                $terms = taxonomy_get_term_by_name($dis_name, 'gigabyte_authorized_distributors');
+
+                $term_id = null;
+                foreach ($terms as $tid => $term) {
+                    $term_id = $tid;
+                }
+
+                $distributors_tax = taxonomy_term_load($term_id);
+
+                $dist_value = array('tid' => $term_id, 'taxonomy_term' => $distributors_tax);
+
+                // you should have $node here
+                $field_collection_value = entity_create('field_collection_item', array('field_name' => 'field_distributor_promotion_deta'));
+                $field_collection_value->field_prmotion_distributors['und'][0] = $dist_value;
+                // Attach to the node
+                $field_collection_value->setHostEntity('node', $node);
+                $field_collection_value->save();
+
+                $program_details = $info;
+                unset($program_details[1]);
+                $program_details_items_count = count($program_details);
+
+                $field_promotion_notes_item = entity_create('field_collection_item', array('field_name' => 'field_promotion_notes'));
+                // Attach to the field collection item
+                $field_promotion_notes_item->setHostEntity('field_collection_item', $field_collection_value);
+                $field_promotion_notes_item->save();
+
+                for ($i = 1; $i <= $program_details_items_count; $i++) {
+
+                    $field_promotion_details_item = entity_create('field_collection_item', array('field_name' => 'field_promotion_details'));
+
+                    $promotion_details = $program_details[$i + 1];
+
+                    //Assign promotion details to field collection item
+                    $field_promotion_details_item->field_gigabyte_model['und'][0]['value'] = $promotion_details['A'];
+                    $field_promotion_details_item->field_gigabyte_model_url['und'][0]['url'] = $promotion_details['B'];
+                    $field_promotion_details_item->field_gigabyte_chipset['und'][0]['value'] = $promotion_details['C'];
+                    $field_promotion_details_item->field_stable_model['und'][0]['value'] = $promotion_details['D'];
+                    $field_promotion_details_item->field_itp_points['und'][0]['value'] = $promotion_details['E'];
+                    $field_promotion_details_item->field_intel_sba['und'][0]['value'] = $promotion_details['F'];
+                    $field_promotion_details_item->field_instant_rebate['und'][0]['value'] = $promotion_details['G'];
+
+                    // Attach to the field collection item
+                    $field_promotion_details_item->setHostEntity('field_collection_item', $field_collection_value);
+                    $field_promotion_details_item->save();
+
+                }
+            }
+        }
+    }
 
     $form_state['values']['promote'] = 0;
     $current_url = url(current_path(), array('absolute' => TRUE));
@@ -218,25 +390,28 @@ function template_preprocess_promotion_rebates_view(&$variables){
                 $field_items = field_collection_item_load($val['value']);
 
                 $details = array();
-                $details['model'] = $field_items->field_gigabyte_model['und'][0]['value'];
-                $details['model_url'] = $field_items->field_gigabyte_model_url['und'][0]['url'];
-                $details['chipset'] = $field_items->field_gigabyte_chipset['und'][0]['value'];
-                $details['stable'] = $field_items->field_stable_model['und'][0]['value'];
-                $details['points'] = $field_items->field_itp_points['und'][0]['value'];
-                $details['intel_sba'] = $field_items->field_intel_sba['und'][0]['value'];
-                $details['rebate'] = $field_items->field_instant_rebate['und'][0]['value'];
+                $details['model'] = isset($field_items->field_gigabyte_model['und'][0])? $field_items->field_gigabyte_model['und'][0]['value']:'-';
+                $details['model_url'] = isset($field_items->field_gigabyte_model_url['und'][0])? $field_items->field_gigabyte_model_url['und'][0]['url']:'-';
+                $details['chipset'] = isset($field_items->field_gigabyte_chipset['und'][0])? $field_items->field_gigabyte_chipset['und'][0]['value'] :'-';
+                $details['stable'] = isset($field_items->field_stable_model['und'][0])? $field_items->field_stable_model['und'][0]['value']:'-';
+                $details['points'] = isset($field_items->field_itp_points['und'][0])? $field_items->field_itp_points['und'][0]['value']:'-';
+                $details['intel_sba'] = isset($field_items->field_intel_sba['und'][0])? $field_items->field_intel_sba['und'][0]['value']:'-';
+                $details['rebate'] = isset($field_items->field_instant_rebate['und'][0]) ? $field_items->field_instant_rebate['und'][0]['value']:'-';
 
                 $promotion_details[$key] = $details;
             }
             $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['promotions'] = $promotion_details;
 
             $promotion_notes = array();
-            foreach ($fc->field_promotion_notes['und'] as $nkey => $nval) {
 
-                $field_items = field_collection_item_load($nval['value']);
+            if(isset($fc->field_promotion_notes['und'])) {
+                foreach ($fc->field_promotion_notes['und'] as $nkey => $nval) {
 
-                $promotion_notes[$nkey] = $field_items->field_promotion_notes_sub['und'][0]['value'];
+                    $field_items = field_collection_item_load($nval['value']);
 
+                    $promotion_notes[$nkey] = isset($field_items->field_promotion_notes_sub['und'][0]) ? $field_items->field_promotion_notes_sub['und'][0]['value'] : '';
+
+                }
             }
 
             $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['notes'] = $promotion_notes;
@@ -282,101 +457,12 @@ function get_gigabyte_authorized_distributors_taxonomy_by_name($name  = NULL){
  */
 function promotions_rebates_menu() {
 
-    $items['promotions/ajax'] = array(
-        'title' => 'Ajaxified form',
-        'page callback' => 'promotions_rebates_ajax_form',
-        'access callback' => TRUE,
-    );
-
     $items['promotions/get/termdata'] = array(
         'title' => 'Get term data',
         'page callback' => 'promotions_rebates_get_term_data',
         'access callback' => TRUE,
     );
     return $items;
-}
-
-/**
- * Form constructor for an ajaxified form lazy-loading a textarea.
- */
-function promotions_rebates_ajax_form($form, &$form_state) {
-
-    //Node add page from specific content type
-    /*if (!function_exists('node_add')) {
-        module_load_include('inc', 'node', 'node.pages');
-    }
-    $nodeform = node_add('promotion_rebates');*/
-
-    $lib = $_SERVER['DOCUMENT_ROOT'] . '/gigabyte'. '/' . libraries_get_path('Classes');
-    $file_to_include = $_SERVER['DOCUMENT_ROOT'] . '/gigabyte'. '/' . libraries_get_path('Classes').'/Jan_2016_Promotion.xls';
-
-    /** PHPExcel_IOFactory */
-    include $lib.'/PHPExcel/IOFactory.php';
-
-    $inputFileName = $file_to_include;
-
-    $objReader = PHPExcel_IOFactory::createReader('Excel5');
-    $objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
-    $worksheetList = $objReader->listWorksheetNames($inputFileName);
-
-    $i = 0;
-    $sheetData = array();
-    while ($objPHPExcel->setActiveSheetIndex($i) && $i < count($worksheetList) - 1){
-        $sheetname = $worksheetList[$i];
-        $sheetData[$sheetname] = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
-        $i++;
-    }
-
-    $name = "Gigabyte Authorized Distributors";
-
-    $terms = get_gigabyte_authorized_distributors_taxonomy_by_name($name);
-
-    $distributors = array();
-    $distributors_options = array();
-    foreach ($terms as $t => $term){
-        $distributors[] = strtolower($term->name);
-        $distributors_options[$term->tid]['lname'] = strtolower($term->name);
-        $distributors_options[$term->tid]['name'] = $term->name;
-    }
-
-    $column_title = get_default_cloumn_title_of_import_excel(true);
-
-    $error = array();
-
-    foreach ($sheetData as $sname => $sheetinfo){
-        foreach ($sheetinfo as $rowkey => $details){
-            if($rowkey == 1) {
-                if(count($column_title) == count($details)) {
-                    foreach ($details as $column => $val) {
-                        if (!in_array(strtolower($val), $column_title)) {
-                            $error['not_a_column'][$sname][$column]['sheetName'] = $sname;
-                            $error['not_a_column'][$sname][$column]['errorColumn'] = $val;
-                        }
-                    }
-                }else{
-                    $error['columnName'][$sname][$rowkey]['sheetName'] = $sname;
-                    $error['columnName'][$sname][$rowkey]['errorColumn'] = count($details) .' columns';
-                }
-            }
-        }
-    }
-
-
-    $sheetName = $worksheetList;
-    $n = 0;
-    for($n = 0; $n<=count($sheetName)-1; $n++){
-        if(!in_array(strtolower($sheetName[$n]) ,$distributors)){
-            $error['sheetname'][] = $sheetName[$n];
-            $dname = $sheetName[$n];
-            unset($sheetName[$n]);
-            unset($sheetData[$dname]);
-        }
-    }
-
-
-    if($error){
-       print theme('promotion_upload_view', array('promotions' => $sheetData, 'distributors' => $distributors_options));
-    }
 }
 
 /**
