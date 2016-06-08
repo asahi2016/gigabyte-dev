@@ -87,13 +87,11 @@ function get_promotion_excel_records(){
 
 function create_promotions_and_rebates_content(&$form, &$form_state) {
 
-    global $base_url;
-
     $node = node_load($form_state['values']['nid']);
 
     if(isset($node->field_promotion_excel['und']) && !empty($node->field_promotion_excel['und'])) {
 
-        $lib = $_SERVER['DOCUMENT_ROOT'] . '/gigabyte' . '/' . libraries_get_path('Classes');
+        $lib = $_SERVER['DOCUMENT_ROOT'] . '/gigabyte/gigabyte' . '/' . libraries_get_path('Classes');
 
         $file_to_include = drupal_realpath($node->field_promotion_excel['und'][0]['uri']);
         //$file_to_include = $_SERVER['DOCUMENT_ROOT'] . '/gigabyte' . '/' . libraries_get_path('Classes') . '/Jan_2016_Promotion.xls';
