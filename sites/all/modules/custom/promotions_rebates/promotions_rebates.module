@@ -147,7 +147,12 @@ function create_promotions_and_rebates_content(&$form, &$form_state) {
                         foreach ($details as $column => $val) {
                             if (!in_array(strtolower($val), $column_title)) {
                                 $error['not_a_column'][$sname][$column]['sheetName'] = $sname;
-                                $error['not_a_column'][$sname][$column]['errorColumn'] = $val;
+                                if($val){
+                                    $error['not_a_column'][$sname][$column]['errorColumn'] = $val;
+                                }else{
+                                    $error['not_a_column'][$sname][$column]['errorColumn'] = $sname .':Missing column';
+                                }
+
                             }
                         }
                     } else {
