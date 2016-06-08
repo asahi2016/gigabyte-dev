@@ -3,7 +3,7 @@ global $base_url;
 
 $link = url('login');
 if(user_is_logged_in()){
-    $link = url('partner/promotions');
+    $link = url('partner/promotions/intel');
 }
 
 ?>
