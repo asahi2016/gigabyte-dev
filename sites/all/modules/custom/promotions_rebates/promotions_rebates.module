@@ -91,10 +91,9 @@ function create_promotions_and_rebates_content(&$form, &$form_state) {
 
     if(isset($node->field_promotion_excel['und']) && !empty($node->field_promotion_excel['und'])) {
 
-        $lib = $_SERVER['DOCUMENT_ROOT'] . '/gigabyte/gigabyte' . '/' . libraries_get_path('Classes');
+        $lib = DRUPAL_ROOT . '/' . libraries_get_path('Classes');
 
         $file_to_include = drupal_realpath($node->field_promotion_excel['und'][0]['uri']);
-        //$file_to_include = $_SERVER['DOCUMENT_ROOT'] . '/gigabyte' . '/' . libraries_get_path('Classes') . '/Jan_2016_Promotion.xls';
 
         //Load PHPexcel Library
         include $lib . '/PHPExcel/IOFactory.php';
@@ -183,55 +182,62 @@ function create_promotions_and_rebates_content(&$form, &$form_state) {
 
             foreach ($sheetData as $dis_name => $info) {
 
-                $terms = taxonomy_get_term_by_name($dis_name, 'gigabyte_authorized_distributors');
-
-                $term_id = null;
-                foreach ($terms as $tid => $term) {
-                    $term_id = $tid;
-                }
-
-                $distributors_tax = taxonomy_term_load($term_id);
-
-                $dist_value = array('tid' => $term_id, 'taxonomy_term' => $distributors_tax);
-
-                // you should have $node here
-                $field_collection_value = entity_create('field_collection_item', array('field_name' => 'field_distributor_promotion_deta'));
-                $field_collection_value->field_prmotion_distributors['und'][0] = $dist_value;
-                // Attach to the node
-                $field_collection_value->setHostEntity('node', $node);
-                $field_collection_value->save();
-
                 $program_details = $info;
                 unset($program_details[1]);
                 $program_details_items_count = count($program_details);
 
-                $field_promotion_notes_item = entity_create('field_collection_item', array('field_name' => 'field_promotion_notes'));
-                // Attach to the field collection item
-                $field_promotion_notes_item->setHostEntity('field_collection_item', $field_collection_value);
-                $field_promotion_notes_item->save();
+                if($program_details_items_count > 0) {
 
-                for ($i = 1; $i <= $program_details_items_count; $i++) {
+                    $terms = taxonomy_get_term_by_name($dis_name, 'gigabyte_authorized_distributors');
 
-                    $field_promotion_details_item = entity_create('field_collection_item', array('field_name' => 'field_promotion_details'));
+                    $term_id = null;
+                    foreach ($terms as $tid => $term) {
+                        $term_id = $tid;
+                    }
 
-                    $promotion_details = $program_details[$i + 1];
+                    $distributors_tax = taxonomy_term_load($term_id);
 
-                    //Assign promotion details to field collection item
-                    $field_promotion_details_item->field_gigabyte_model['und'][0]['value'] = $promotion_details['A'];
-                    $field_promotion_details_item->field_gigabyte_model_url['und'][0]['url'] = $promotion_details['B'];
-                    $field_promotion_details_item->field_gigabyte_chipset['und'][0]['value'] = $promotion_details['C'];
-                    $field_promotion_details_item->field_stable_model['und'][0]['value'] = $promotion_details['D'];
-                    $field_promotion_details_item->field_itp_points['und'][0]['value'] = $promotion_details['E'];
-                    $field_promotion_details_item->field_intel_sba['und'][0]['value'] = $promotion_details['F'];
-                    $field_promotion_details_item->field_instant_rebate['und'][0]['value'] = $promotion_details['G'];
+                    $dist_value = array('tid' => $term_id, 'taxonomy_term' => $distributors_tax);
 
+                    // you should have $node here
+                    $field_collection_value = entity_create('field_collection_item', array('field_name' => 'field_distributor_promotion_deta'));
+                    $field_collection_value->field_prmotion_distributors['und'][0] = $dist_value;
+                    // Attach to the node
+                    $field_collection_value->setHostEntity('node', $node);
+                    $field_collection_value->save();
+
+                    $field_promotion_notes_item = entity_create('field_collection_item', array('field_name' => 'field_promotion_notes'));
                     // Attach to the field collection item
-                    $field_promotion_details_item->setHostEntity('field_collection_item', $field_collection_value);
-                    $field_promotion_details_item->save();
+                    $field_promotion_notes_item->setHostEntity('field_collection_item', $field_collection_value);
+                    $field_promotion_notes_item->save();
 
+                    for ($i = 1; $i <= $program_details_items_count; $i++) {
+
+                        $field_promotion_details_item = entity_create('field_collection_item', array('field_name' => 'field_promotion_details'));
+
+                        $promotion_details = $program_details[$i + 1];
+
+                        //Assign promotion details to field collection item
+                        $field_promotion_details_item->field_gigabyte_model['und'][0]['value'] = $promotion_details['A'];
+                        $field_promotion_details_item->field_gigabyte_model_url['und'][0]['url'] = $promotion_details['B'];
+                        $field_promotion_details_item->field_gigabyte_chipset['und'][0]['value'] = $promotion_details['C'];
+                        $field_promotion_details_item->field_stable_model['und'][0]['value'] = $promotion_details['D'];
+                        $field_promotion_details_item->field_itp_points['und'][0]['value'] = $promotion_details['E'];
+                        $field_promotion_details_item->field_intel_sba['und'][0]['value'] = $promotion_details['F'];
+                        $field_promotion_details_item->field_instant_rebate['und'][0]['value'] = $promotion_details['G'];
+
+                        // Attach to the field collection item
+                        $field_promotion_details_item->setHostEntity('field_collection_item', $field_collection_value);
+                        $field_promotion_details_item->save();
+
+                    }
                 }
             }
         }else{
+
+            node_delete($node->nid);
+
+            unset($_SESSION['messages']['status']);
 
             $error_message = null;
             foreach ($error['not_a_column'] as $sheet_name => $column){
@@ -239,6 +245,12 @@ function create_promotions_and_rebates_content(&$form, &$form_state) {
                     $error_message .=  $sheet_name . '- has following column error. ('.$err['errorColumn'].') </br>';
                 }
             }
+
+            $deafult_excel_column_title = get_default_cloumn_title_of_import_excel();
+
+            $excel_column = implode(' , ', $deafult_excel_column_title);
+
+            $error_message .= '</br></br> Note: (The excel column title shoule be following names like ['.$excel_column.'])';
 
             drupal_set_message('Import excel file has errors, Please check and provide the excel file in a proper format. <br> '.$error_message ,'error');
         }
