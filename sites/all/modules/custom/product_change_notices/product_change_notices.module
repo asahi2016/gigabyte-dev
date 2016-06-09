@@ -16,7 +16,9 @@
 function product_change_notices_form_product_change_notices_node_form_alter(&$form, &$form_state, $form_id){
     //print_pre($form,1);
     $form['options']['promote']['#value'] = 0;
-    $form['#submit'][] = 'send_product_change_notices_mail';
+    $form['ajax-submit']['#submit'][] = 'send_product_change_notices_mail';
+    $form['ajax-submit']['#value'] = t('Submit');
+    unset($form['ajax-submit']['#ajax']);
 }
 
 function send_product_change_notices_mail(&$form, &$form_state){
@@ -48,7 +50,9 @@ function send_product_change_notices_mail(&$form, &$form_state){
     $template_id = !empty($values['field_mail_template_pcn']['und'][0]['value'])?$values['field_mail_template_pcn']['und'][0]['value']:2000094;
     $campaign_id = NULL;
     mailchimp_campaign_save_campaign($template_content,$recipient,$settings,$template_id);
-    drupal_set_message("The product change notice, {$values['title']} has been created successfully!");
+
+    $current_url = url(current_path(), array('absolute' => TRUE));
+    $form_state['redirect'] = $current_url;
     //print_pre($template_content,1);
 }
 
