@@ -9,7 +9,8 @@ jQuery(document).ready(function($) {
     // Switch between back to business center and partner portal
     curr_url = document.URL.split('/');
     var found = curr_url.indexOf("partner") > -1;
-    if(found){
+    var promotion_url = curr_url.indexOf("promotion") > -1;
+    if(found || promotion_url){
         $('#header-wrapper-right #block-system-user-menu li:nth-child(2).leaf').find('a').text( 'Back to Business Center');
     }else{
         $('#header-wrapper-right #block-system-user-menu li:nth-child(2).leaf').find('a').text('Back to Partner Portal');
