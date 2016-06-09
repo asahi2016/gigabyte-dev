@@ -1971,7 +1971,7 @@ div[id*='field-distributor-promotion-deta-add-more-wrapper'] > .form-item  > .cl
 #field-distributor-promotion-deta-add-more-wrapper > .form-item  > .clearfix{float:left;width:100%;border-top:1px solid #efefef;margin: 45px 0px 0px 0px;padding: 10px 0px 0px 0px;}
 .field-name-field-promotion-banner.field-type-image .image-widget-data .form-file{width:780px;}
 table[id*='field-distributor-promotion-deta-values'] .field-name-field-promotion-import-excel.field-widget-file-generic{margin:10px 0 0 15px;}
-table[id*='field-distributor-promotion-deta-values'] > tbody > tr.draggable > td > input[value='Remove']{position:absolute;bottom:-40px;right:0px;}
+table[id*='field-distributor-promotion-deta-values'] > tbody > tr.draggable > td > input[value='Remove']{position:absolute;bottom:-40px;right:0px;z-index:5}
 .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr:first-child{border-top:0px}
 .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr{margin-top:2px;border-top:1px solid #efefef;}
 form.node-promotion_rebates-form{position:relative;float: left;padding: 0 0 30px 0;padding: 15px 0px 80px;/* background:#dedede; */width:1000px;}
