@@ -220,6 +220,9 @@
             $('select#edit-user-roles').removeAttr('disabled');
             $('select#edit-field-country-und').removeAttr('disabled');
 
+            make_empty_services_fields();
+            make_remove_attr_readonly_fields();
+
             $.post(
                 Drupal.settings.gigabyte.baseUrl + '/get/company_info',
                 {
@@ -445,6 +448,9 @@
                   $(this).find('input[type="text"]').removeAttr('readonly');
               }
            });
+
+           $('#edit-field-membership-account-und-0-value').removeAttr('readonly');
+           $('#edit-field-motherboard-qty-und-0-value').removeAttr('readonly');
 
            $('select#edit-field-country-und').removeAttr('disabled');
            $("select#edit-field-country-und option").each(function () {
