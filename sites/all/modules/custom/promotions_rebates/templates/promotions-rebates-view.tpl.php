@@ -7,7 +7,7 @@
 <div class="txt_center"><a href="http://www.gigabyte.us/" target="_blank"><img src="<?php print $logo;?>" /></a></div>
 <?php $uri = isset($node->field_promotion_banner['und'][0]['uri'])? file_create_url($node->field_promotion_banner['und'][0]['uri']):'';?>
 <?php if(!isset($variables['terms']) && isset($variables['banner'])) { ?>
-    <?php $uri = isset($banner['promo']['und'][0]['uri'])? file_create_url($banner['promo']['und'][0]['uri']):'';?>
+    <?php $uri = isset($banner['promo']['und'][0]['uri'])? file_create_url($banner['promo']['und'][0]['uri']):$uri;?>
 <?php } ?>
 <div class="txt_center"><img src="<?php print $uri;?>" style="width: 1000px;height:400px;margin: 20px 0px;"></div>
 

@@ -107,7 +107,8 @@ function create_promotions_and_rebates_content(&$form, &$form_state) {
         //Read excel sheet informations based on individual sheet name
         $i = 0;
         $sheetData = array();
-        while ($objPHPExcel->setActiveSheetIndex($i) && $i < count($worksheetList) - 1) {
+        while ($i < (count($worksheetList))) {
+            $objPHPExcel->setActiveSheetIndex($i);
             $sheetname = $worksheetList[$i];
             $sheetData[$sheetname] = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
             $i++;

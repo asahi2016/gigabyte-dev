@@ -1,16 +1,24 @@
 (function ($) {
     $(document).ready(function($) {
 
+        show_hide_distributor_program_details();
+
         setInterval(function () {
+            show_hide_distributor_program_details();
+        },100);
+
+        function show_hide_distributor_program_details(){
 
             if($('#promotion-rebates-node-form').find('#edit-field-promotion-excel').find('span.file').length > 0){
+                $('table#field-distributor-promotion-deta-values').hide();
                 $('table[id*="field-distributor-promotion-deta-values"]').hide();
                 $('#edit-field-distributor-promotion-deta-und-add-more').hide();
             }else{
+                $('table#field-distributor-promotion-deta-values').show();
                 $('table[id*="field-distributor-promotion-deta-values"]').show();
                 $('#edit-field-distributor-promotion-deta-und-add-more').show();
             }
-        },100);
+        }
 
         /*setInterval(function(){
             console.log($('select[id*="edit-field-distributor-promotion-deta]').attr('selected','selected').val());
