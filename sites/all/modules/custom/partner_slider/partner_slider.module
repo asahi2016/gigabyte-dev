@@ -81,7 +81,7 @@ function partner_slider_errors_reset(&$element){
 
 }
 
-//alter the view for map the link to image
+//alter the view for map the external link to image
 function partner_slider_views_pre_render(&$view){
 
     if($view->name == 'partner_slider_new'){

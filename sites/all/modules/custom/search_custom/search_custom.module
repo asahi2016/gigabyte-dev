@@ -195,16 +195,5 @@ function search_custom_query_alter(QueryAlterableInterface $query) {
     }
 }
 
-/*function search_entity_search_query($keys){
-
-    $query = db_select('search_index', 'i', array('target' => 'slave'))->extend('SearchQuery');
-    $query->join('entityform', 'e', 'e.entityform_id = i.sid');
-    $query
-        ->condition('n.status', 1)
-        ->addTag('node_access')
-        ->searchExpression($keys, 'entityform');
-
-}*/
-
 
 

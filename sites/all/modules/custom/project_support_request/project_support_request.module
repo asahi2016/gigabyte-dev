@@ -14,6 +14,7 @@ function project_support_request_menu(){
     return $items;
 }
 
+//alter the webform component elements
 function project_support_request_webform_component_render_alter(&$element, &$component) {
 
     if ($component['type'] = 'textfield' && $component['required'] = 1 ) {
@@ -22,7 +23,7 @@ function project_support_request_webform_component_render_alter(&$element, &$com
     }
 }
 
-//alter the webform id webform_client_form_76
+//alter the webform for project support request form elements
 function project_support_request_form_webform_client_form_76_alter( &$form, &$form_state, $form_id){
 
     foreach ($form['#node']->webform['components'] as &$field){
@@ -45,6 +46,7 @@ function project_support_request_form_webform_client_form_76_alter( &$form, &$fo
 
     }
 
+    // set default country selection for logged in users
     if(user_is_logged_in() && !user_access('administer users'))
     {
         global $user;
@@ -116,6 +118,7 @@ function project_support_request_form_submit($form, &$form_state){
 
 }
 
+// Showing custom errors to users
 function project_support_request_errors_reset(&$element)
 {
 

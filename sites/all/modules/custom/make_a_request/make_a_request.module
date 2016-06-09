@@ -1,5 +1,6 @@
 <?php
 
+//alter the webform elements for make a request
 function make_a_request_form_webform_client_form_18724_alter( &$form, &$form_state, $form_id){
 
     $form_required_marker = array('#theme' => 'form_required_marker');
@@ -12,6 +13,7 @@ function make_a_request_form_webform_client_form_18724_alter( &$form, &$form_sta
     $form['#validate'][] = 'make_a_request_form_validation';
 }
 
+//validate the make a request form
 function make_a_request_form_validation(&$form, &$form_state){
 
     $request = $form_state['values']['submitted']['request'];

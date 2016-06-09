@@ -6,7 +6,7 @@ function how_to_sell_init()
         drupal_add_js(drupal_get_path('module', 'custom') . '/how_to_sell/js/how_to_sell.js');
     }
 }
-// Alter the webform elements
+// Alter the how to sell upload form from default behaviour
 function how_to_sell_form_how_to_sell_node_form_alter(&$form, &$form_state, $form_id){
 
     if($form_id == 'how_to_sell_node_form'){
@@ -86,6 +86,7 @@ function how_to_sell_errors_reset(&$element){
     return $reset_errors;
 }
 
+//alter the view to map the image field with pdf file.
 function how_to_sell_views_pre_render(&$view){
 
     if(user_is_logged_in()){
@@ -93,11 +94,11 @@ function how_to_sell_views_pre_render(&$view){
         if($view->name == 'how_to_sell_view' || $view->name == 'how_to_sell_amd'){
             foreach($view->result as $key => $value){
                 if(isset($view->result[$key]->field_field_file_pdf[0])){
-                    $uri = $view->result[$key]->field_field_file_pdf[0]['rendered']['#file']->uri;
+                    $uri = $view->result[$key]->field_field_file_pdf[0]['rendered']['#file']->uri; // get uri of pdf file
                     $uri = str_replace('public://','',$uri);
                     $uri_title_pdf = '../sites/default/files/'.$uri;
                     $uri_image_pdf = 'sites/default/files/'.$uri;
-                    $view->result[$key]->field_field_file_image[0]['rendered']['#path']['path'] = $uri_image_pdf;
+                    $view->result[$key]->field_field_file_image[0]['rendered']['#path']['path'] = $uri_image_pdf; //map image link to pdf
                     $view->result[$key]->field_field_file_pdf[0]['rendered']['#markup'] = $uri_title_pdf;
 
                 }

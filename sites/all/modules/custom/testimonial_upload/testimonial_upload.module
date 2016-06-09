@@ -1,8 +1,8 @@
 <?php
 
+//Alter the testimonial upload form from default behaviour
 function testimonial_upload_form_testimonial_node_form_alter(&$form,&$form_state){
 
-    //print_pre($form['field_testimonial_description'],1);
         $form['title']['#title'] ='Testimonial Name';
         $form['options']['promote']['#value'] = 0;
         $form['#validate'][] = 'testimonial_upload_form_validation';
@@ -11,6 +11,7 @@ function testimonial_upload_form_testimonial_node_form_alter(&$form,&$form_state
         $form['ajax-submit']['#submit'][] = 'testimonial_upload_form_submit';
 }
 
+//validate the testimonial upload form
 function testimonial_upload_form_validation(&$form,&$form_state){
 
     $description = $form_state['values']['field_testimonial_description']['und'][0]['value'];
@@ -19,6 +20,7 @@ function testimonial_upload_form_validation(&$form,&$form_state){
         form_set_error('field_testimonial_description][und','Description field allows only 300 characters.');
    }
 }
+
 function testimonial_upload_form_submit(&$form,&$form_state){
 
     $current_url = url(current_path(), array('absolute' => TRUE));
