@@ -1966,7 +1966,7 @@ table[id*='field-promotion-notes-values'] {border-bottom:1px solid #efefef;}
 div[id*='field-distributor-promotion-deta-add-more-wrapper']{position:relative;float:left;padding: 0 0 30px 0;}
 
 .page-promotion-upload .field-type-field-collection .form-item .clearfix > input[value='Remove']{position: absolute;bottom: 5px;right: 5px;}
-div[id*='field-distributor-promotion-deta-add-more-wrapper'] > .form-item  > .clearfix > input[value='Add another item']{position: absolute;bottom:0px;right: 23px;}
+div[id*='field-distributor-promotion-deta-add-more-wrapper'] > .form-item  > .clearfix > input[value='Add another item']{position: absolute;bottom:0px;left: 23px;}
 /* #field-distributor-promotion-deta-add-more-wrapper .clearfix .field-add-more-submit{position: absolute;bottom: 0;right: 200px;} */
 #field-distributor-promotion-deta-add-more-wrapper > .form-item  > .clearfix{float:left;width:100%;border-top:1px solid #efefef;margin: 45px 0px 0px 0px;padding: 10px 0px 0px 0px;}
 .field-name-field-promotion-banner.field-type-image .image-widget-data .form-file{width:780px;}
