@@ -51,7 +51,7 @@ function promotions_rebates_form_promotion_rebates_node_form_alter(&$form, &$for
 {
 
     $form['options']['promote']['#value'] = 0;
-    $form['options']['status']['#value'] = 0;
+    /*$form['options']['status']['#value'] = 0;*/
     unset($form['ajax-submit']['#ajax']);
     $form['ajax-submit']['#value'] ='Submit';
     $form['ajax-submit']['#submit'][] ='create_promotions_and_rebates_content';
