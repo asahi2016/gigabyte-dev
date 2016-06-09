@@ -118,9 +118,11 @@ function create_promotions_and_rebates_content(&$form, &$form_state) {
 
         //Create an array for exists distributor lists , get from taxonomy
         $distributors = array();
+        $distributors_uname = array();
         $distributors_options = array();
         foreach ($terms as $t => $term) {
             $distributors[] = strtolower($term->name);
+            $distributors_uname[] = ucfirst(strtolower($term->name));
             $distributors_options[$term->tid]['lname'] = strtolower($term->name);
             $distributors_options[$term->tid]['name'] = $term->name;
         }
@@ -240,17 +242,40 @@ function create_promotions_and_rebates_content(&$form, &$form_state) {
             unset($_SESSION['messages']['status']);
 
             $error_message = null;
-            foreach ($error['not_a_column'] as $sheet_name => $column){
-                foreach ($column as $col => $err){
-                    $error_message .=  $sheet_name . '- has following column error. ('.$err['errorColumn'].') </br>';
+
+            if(isset($error['not_a_column'])) {
+
+                foreach ($error['not_a_column'] as $sheet_name => $column) {
+                    foreach ($column as $col => $err) {
+                        $error_message .= $sheet_name . '- has following column error. (' . $err['errorColumn'] . ') </br>';
+                    }
                 }
+            }
+
+            if(isset($error['columnName'])){
+                foreach ($error['columnName'] as $sheet_name => $column) {
+                    foreach ($column as $col => $err) {
+                        $error_message .= $sheet_name . '- has following error. ( Each sheet must has been ' . $err['errorColumn'] . ') </br>';
+                    }
+                }
+            }
+
+            if(isset($error['sheetname'])){
+
+                $sheet_name_error = implode(' , ', $error['sheetname']);
+
+                $error_message .=  '</br> The following sheet name is not match ( ' . $sheet_name_error . ') </br>';
+
+                $excel_sheet_name = implode(' , ', $distributors_uname);
+
+                $error_message .=  'Note: The sheet name should be ( ' . $excel_sheet_name . ') </br>';
             }
 
             $deafult_excel_column_title = get_default_cloumn_title_of_import_excel();
 
             $excel_column = implode(' , ', $deafult_excel_column_title);
 
-            $error_message .= '</br></br> Note: (The excel column title shoule be following names like ['.$excel_column.'])';
+            $error_message .= '</br>Note: (The excel column title shoule be following names like ['.$excel_column.'])';
 
             drupal_set_message('Import excel file has errors, Please check and provide the excel file in a proper format. <br> '.$error_message ,'error');
         }
