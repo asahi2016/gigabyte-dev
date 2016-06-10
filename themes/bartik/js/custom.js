@@ -161,6 +161,12 @@ jQuery(document).ready(function($) {
 });
 
 jQuery(document).ready(function($) {
+
+		$('.page-view-project-support-request-review .view-project-support-request-review .view-content').before($('.page-view-project-support-request-review .feed-icon'));
+		$('.page-view-project-support-request-review .view-project-support-request-review .view-content .views-table th:nth-child(8)').hide();
+		$('.page-view-project-support-request-review .view-project-support-request-review .view-content .views-table th:nth-child(9)').hide();
+		$('.page-view-project-support-request-review .view-project-support-request-review .view-content .views-table td:nth-child(8)').hide();
+		$('.page-view-project-support-request-review .view-project-support-request-review .view-content .views-table td:nth-child(9)').hide();
 		var a_text = $('#block-system-user-menu ul.menu li.first a').text();
 		$('#block-system-user-menu ul.menu li.first a').remove();
 		$('#block-system-user-menu ul.menu li.first').append('<p>' + a_text + '</p>');
