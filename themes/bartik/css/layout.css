@@ -1169,6 +1169,7 @@ div[id*='field-pdf-add-more-wrapper'] .field-type-file .form-managed-file a{widt
 .page-partner-submissions .field-type-image .image-widget-data{float:left;}
 .page-partner-submissions .form-managed-file .form-submit{margin: 0 0px 0 10px;display:block;}
 .page-partner-submissions .field-type-image .image-widget-data .form-file,.entitytype-asset_upload_form-form .field-type-image .image-widget-data .form-file{width:200px;}
+.entitytype-asset_upload_form-form .field-type-image .image-widget-data .form-file {width:222px;}
 .entitytype-asset_upload_form-form .form-managed-file .form-file{width:210px;}
 .entitytype-asset_upload_form-form .form-managed-file .field-multiple-table td .form-item .form-managed-file{width:360px}
 .entitytype-asset_upload_form-form .form-managed-file .field-multiple-table td .form-item .form-managed-file .form-submit{width:360px}
@@ -2112,7 +2113,10 @@ table[id*='field-promotion-details-values'] td .field-name-field-gigabyte-model-
 table[id*='field-promotion-details-values'].field-multiple-table .form-item .form-item{margin: 0px 5px 0px;}
 .node-promotion_rebates-form table#field-promotion-notes-values{float: left; border-bottom: 1px solid #dedede;}
 .page-promotion-upload h2,.page-promotion-upload .content,.entitytype-product_roadmap_form-form,.page-eform-submit-product-roadmap-form .entitytype-product_roadmap_form-form table.field-multiple-table{width:1000px;margin:0px auto;}
-.page-eform-submit-product-roadmap-form  table[id*='field-upload-images-roadmap-values'] .image-widget-data input[value='Remove']{background:transparent url('../../../themes/bartik/images/close.png') 0 0;text-indent:-999em;width:24px;height:24px;}
+.page-eform-submit-product-roadmap-form  table[id*='field-upload-images-roadmap-values'] .image-widget-data input[value='Remove'],.page-eform-submit-asset-upload-form
+table[id*='field-upload-file-values'] .file-widget  input[value='Remove']{background:transparent url('../../../themes/bartik/images/close.png') 0 0;text-indent:-999em;width:24px;height:24px;}
+.page-eform-submit-asset-upload-form table[id*='field-upload-file-values'] .file-widget .file a,.page-eform-submit-asset-upload-form table[id*='field-upload-file-values'] .file-widget .file-size{margin:3px 0 0 0;}
+.page-eform-submit-asset-upload-form table[id*='field-upload-file-values'] .file-widget .file-size{margin:3px 0 0 10px;}
 .page-eform-submit-product-roadmap-form .entitytype-product_roadmap_form-form table.field-multiple-table tr{width:1000px;padding:10px 0px;}
 .page-eform-submit-product-roadmap-form .entitytype-product_roadmap_form-form table.field-multiple-table tr td .form-submit{margin:0px 12px 0px;}
 .view-project-support-request-review .views-table th,.views-table th{background: #b5cfff;border-top: 4px solid #aabcfe;border-bottom: 1px solid #fff;color: #039;border-left:1px solid #aabcfe;border-bottom:1px solid #aabcfe;padding:4px 0 4px 5px}
