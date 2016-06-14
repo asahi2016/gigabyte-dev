@@ -49,8 +49,11 @@ function promotions_rebates_node_insert($node) {
 // Alter the webform elements
 function promotions_rebates_form_promotion_rebates_node_form_alter(&$form, &$form_state, $form_id)
 {
-
     $form['options']['promote']['#value'] = 0;
+    //Renaming the add another item buttons
+    $form['field_distributor_promotion_deta']['und'][0]['field_promotion_details']['und']['add_more']['#value'] ='Add Another Detail';
+    $form['field_distributor_promotion_deta']['und'][0]['field_promotion_notes']['und']['add_more']['#value'] ='Add Another Note';
+    $form['field_distributor_promotion_deta']['und']['add_more']['#value'] ='Add Another Distributor';
     /*$form['options']['status']['#value'] = 0;*/
     unset($form['ajax-submit']['#ajax']);
     $form['ajax-submit']['#value'] ='Submit';
