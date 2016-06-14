@@ -33,13 +33,9 @@
         $('.edit-submitted-country').hide();
 
         //adding mailto link to webform submission table email field.
-        $('.views-table.cols-17 tr').each(function() {
+        $(' .page-view-project-support-request-review .views-table.cols-17 tr').each(function() {
             var email = $(this).find("td").eq(6).html();
             $(this).find("td").eq(6).html('<a href="mailto:' + email + '">' + email + '</a>');
-        });
-        $('.views-table.cols-3 tr').each(function() {
-            var email = $(this).find("td").eq(1).html();
-            $(this).find("td").eq(1).html('<a href="mailto:' + email + '">' + email + '</a>');
         });
         function country_name_sel(){
             var country_selected_ca = $('#edit-submitted-country input:checked').val();
