@@ -9,7 +9,7 @@
 <?php if(!isset($variables['terms']) && isset($variables['banner'])) { ?>
     <?php $uri = isset($banner['promo']['und'][0]['uri'])? file_create_url($banner['promo']['und'][0]['uri']):$uri;?>
 <?php } ?>
-<div class="txt_center"><img src="<?php print $uri;?>" style="width: 1000px;height:400px;margin: 20px 0px;"></div>
+<div class="txt_center"><img src="<?php print $uri;?>" style="width: 100%;margin: 20px 0px;"></div>
 
 <?php if(isset($variables['terms'])) { ?>
        <?php global $base_url; ?>
