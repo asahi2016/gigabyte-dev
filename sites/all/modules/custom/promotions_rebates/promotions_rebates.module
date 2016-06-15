@@ -77,10 +77,16 @@ function promotions_rebates_node_form_after_build_recursive(&$elements){
     $elements['field_distributor_promotion_deta']['und']['add_more']['#value'] = 'Add Another Distributor';
 
     //Rename promotion notes block add another item button
-    foreach($elements['field_distributor_promotion_deta']['und'] as $k => $value){
+     foreach($elements['field_distributor_promotion_deta']['und'] as $k => $value){
 
         if(is_numeric($k)){
             $elements['field_distributor_promotion_deta']['und'][$k]['field_promotion_notes']['und']['add_more']['#value'] = 'Add Another Note';
+            //print_pre($elements['field_distributor_promotion_deta']['und'][$k]['field_promotion_details'],1);
+
+            foreach($elements['field_distributor_promotion_deta']['und'][$k]['field_promotion_details']['und'] as $in => $invalue){
+               // print_pre($elements['field_distributor_promotion_deta']['und'][$k]['field_promotion_details']['und'][$in]['remove_button'],1);
+                //$elements['field_distributor_promotion_deta']['und'][$k]['field_promotion_details']['und'][$in]['remove_button']['#attributes'] = array( 'class' => array('promotion_details_remove'));
+            }
         }
     }
 
