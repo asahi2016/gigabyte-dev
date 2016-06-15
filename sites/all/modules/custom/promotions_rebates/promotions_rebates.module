@@ -47,19 +47,43 @@ function promotions_rebates_node_insert($node) {
 }
 
 // Alter the webform elements
-function promotions_rebates_form_promotion_rebates_node_form_alter(&$form, &$form_state, $form_id)
-{
-    $form['options']['promote']['#value'] = 0;
-    //Renaming the add another item buttons
-    $form['field_distributor_promotion_deta']['und'][0]['field_promotion_details']['und']['add_more']['#value'] ='Add Another Detail';
-    $form['field_distributor_promotion_deta']['und'][0]['field_promotion_notes']['und']['add_more']['#value'] ='Add Another Note';
-    $form['field_distributor_promotion_deta']['und']['add_more']['#value'] ='Add Another Distributor';
-    /*$form['options']['status']['#value'] = 0;*/
-    unset($form['ajax-submit']['#ajax']);
-    $form['ajax-submit']['#value'] ='Submit';
-    $form['ajax-submit']['#submit'][] ='create_promotions_and_rebates_content';
-    //$form['#validate'][] = 'promotions_rebates_form_validation';
-    //$form['#submit'][] = 'create_awards_and_reviews_content';;
+function promotions_rebates_form_promotion_rebates_node_form_alter(&$form, &$form_state, $form_id){
+
+    if (isset($form['#node']) && isset($form['type']['#value']) && $form_id == $form['type']['#value'] .'_node_form') {
+        if (!isset($form['#after_build'])) {
+            $form['#after_build'] = array();
+        }
+        $form['#after_build'][] = 'promotions_rebates_node_form_after_build';
+        $form['options']['promote']['#value'] = 0;
+
+        /*$form['options']['status']['#value'] = 0;*/
+        unset($form['ajax-submit']['#ajax']);
+        $form['ajax-submit']['#value'] ='Submit';
+        $form['ajax-submit']['#submit'][] ='create_promotions_and_rebates_content';
+    }
+
+}
+
+//notes-> author ,field_distributor_promotion_deta,und,0,field_prmotion_distributors,und,add_more
+function promotions_rebates_node_form_after_build($form, &$form_state){
+    promotions_rebates_node_form_after_build_recursive($form);
+    return $form;
+}
+
+//Renaming the add another item buttons
+function promotions_rebates_node_form_after_build_recursive(&$elements){
+
+    //Rename promotion distributor block add another item button
+    $elements['field_distributor_promotion_deta']['und']['add_more']['#value'] = 'Add Another Distributor';
+
+    //Rename promotion notes block add another item button
+    foreach($elements['field_distributor_promotion_deta']['und'] as $k => $value){
+
+        if(is_numeric($k)){
+            $elements['field_distributor_promotion_deta']['und'][$k]['field_promotion_notes']['und']['add_more']['#value'] = 'Add Another Note';
+        }
+    }
+
 }
 
 function get_promotion_excel_records(){
