@@ -2003,6 +2003,7 @@ table[id*='field-distributor-promotion-deta-values'] .field-name-field-promotion
 table[id*='field-distributor-promotion-deta-values'] .field-name-field-promotion-notes .form-submit[value='Remove']{margin:0px 0px 0px 0px;float:left;}
 table[id*='field-distributor-promotion-deta-values'] .field-name-field-promotion-notes.field-widget-field-collection-embed{position:relative;float:left;}
 table[id*='field-promotion-notes-values'] {border-bottom:1px solid #c7bcbc;}
+.node-promotion_rebates-form div[id*='field-distributor-promotion-deta-add-more-wrapper'] table[id*='field-promotion-notes-values'] tr  {border:0px}
 .page-partner-promotions .view-promotion-rebate table th,.node-type-promotion-rebates table.product tr:nth-child(1) td{background:#0066FF;}
 .node-type-promotion-rebates table.product tr:nth-child(1) td{padding:10px 10px;}
 .node-type-promotion-rebates table.product tr td{padding:10px 10px;border:1px solid #808080;}
