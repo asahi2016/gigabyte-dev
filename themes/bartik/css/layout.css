@@ -1889,7 +1889,7 @@ table.gig_rep td{padding:20px 0px;}
 .page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file{margin:10px 0 0 2px; width:960px;clear:both;float:left;}
 .page-promotion-upload .field-multiple-table .form-submit{width:180px;}
 .page-promotion-upload input[value='Remove']{width:180px;}
-.node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] td input[value='Remove']{margin:20px 25px 0px 0px;}
+/* .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] td input[value='Remove']{margin:20px 25px 0px 0px;} */
 .page-promotion-upload .field-multiple-table td .form-item .form-managed-file{width: 430px;}
 .page-promotion-upload .field-multiple-table td .form-item .form-managed-file.image-widget{width:975px;}
 .page-promotion-upload .field-multiple-table td .form-item .form-managed-file.image-widget .image-widget-data{width:99%;margin:0 0 10px 10px;}
@@ -1925,7 +1925,7 @@ table.gig_rep td{padding:20px 0px;}
 .page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file{margin:10px 0 0 270px; width:auto;clear:both;float:left;}
 .page-promotion-upload .field-multiple-table .form-submit{width:180px;float: left; margin: 10px 20px 10px 20px;}
 .page-promotion-upload input[value='Remove']{width:180px;}
-.node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] td input[value='Remove']{margin:20px 25px 0px 0px;}
+/* .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] td input[value='Remove']{margin:20px 25px 0px 0px;} */
 .page-promotion-upload .field-multiple-table td .form-item .form-managed-file{width: 430px;}
 .page-promotion-upload .field-multiple-table td .form-item .form-managed-file.image-widget{width: 500px;float: left;margin:0px 0px 0px 5px}
 .page-promotion-upload .field-multiple-table td .form-item .form-managed-file.image-widget .image-widget-data{width:99%;margin:0 0 0px 10px;}
@@ -1956,12 +1956,14 @@ text-shadow:none;}
 .node-promotion_rebates-form #field-distributor-promotion-deta-values{float: left;margin:10px 0px 0 0px;border:1px solid #c5c2c2;width:100%;box-shadow:0px 0px 3px 1px #dedede}
 .node-promotion_rebates-form #field-distributor-promotion-deta-values .field-name-field-promotion-details .field-add-more-submit{float:left;margin:15px 0 15px 410px;}
 .node-promotion_rebates-form #field-distributor-promotion-deta-values .field-name-field-promotion-details .field-add-more-submit{float:left;margin:15px 0 15px 410px;}
-table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable{width:1000px;background:none;border-bottom:0px;}
+table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable{width:1000px;background:none;border-bottom:0px;border-top:10px solid #565656}
 table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-gigabyte-model,table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-widget-text-textfield,
 table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-stable-model,table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-itp-points,
 table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-intel-sba,table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-instant-rebate
 {width:140px;float:left;}
- .node-promotion_rebates-form table[id*=field-promotion-details-values] td input[value="Remove"]{background:transparent url('../../../themes/bartik/images/close.png') 0 0 no-repeat;width: 24px;height: 24px;text-indent: -999em;margin: 40px 0px 0px 10px;} 
+ .node-promotion_rebates-form table[id*=field-promotion-details-values] td input[value="Remove"]{background:transparent url('../../../themes/bartik/images/close.png') 0 0 no-repeat;width: 24px;height: 24px;text-indent: -999em;margin:5px 0px 0px 10px;} 
+ .node-promotion_rebates-form table[id*=field-promotion-details-values] tr:first-child td input[value="Remove"]{margin: 40px 0px 0px 10px;} 
+ 
  .node-promotion_rebates-form table[id*=field-promotion-notes-values] td input[value="Remove"]{background:transparent url('../../../themes/bartik/images/close.png') 0 0 no-repeat;width: 24px;height: 24px;text-indent: -999em;margin: 40px 0px 0px 10px;} 
 table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-gigabyte-model{margin:0 0 0 15px;float:left;width:auto;}
 table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-stable-model,table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-intel-sba{width:100px;float:left;}
@@ -1988,7 +1990,7 @@ table[id*='field-promotion-details-values'] td  input.form-submit{margin:30px 25
 /* #field-promotion-details-values .field-multiple-drag,#field-distributor-promotion-deta-values tr.draggable{display:none;} */
 form.node-promotion_rebates-form .field-multiple-table td.field-multiple-drag{display:none;}
 form.node-promotion_rebates-form .field-multiple-table tr.draggable{padding:10px 0px 5px;position:relative;}
-table[id*='field-promotion-details-values'].field-multiple-table tr.draggable{border-bottom:1px solid #c7bcbc;}
+table[id*='field-promotion-details-values'].field-multiple-table tr.draggable{border-bottom:1px solid #c7bcbc; border-top: 0;}
 /* table[id*='field-promotion-notes-values'].field-multiple-table tr.draggable{border-bottom:1px solid #efefef;} */
 table[id*='field-distributor-promotion-deta-values'] .field-add-more-submit{width:150px;margin:10px 25px 10px 0px;}
 table[id*='field-promotion-notes-values'] tr.draggable td .field-widget-text-textfield.field-name-field-promotion-notes-sub{width: 410px;margin: 0 0px 0 0;float: left;}
@@ -2020,10 +2022,13 @@ div[id*='field-distributor-promotion-deta-add-more-wrapper'] > .form-item  > .cl
 table[id*='field-distributor-promotion-deta-values'] .field-name-field-promotion-import-excel.field-widget-file-generic{margin:10px 0 0 15px;}
 .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr.draggable > td > input[value='Remove']{margin: 0px;background: #337ab7;width: 120px;text-indent: inherit;padding: 4px 10px 4px;display: inline-block;cursor: pointer;
 font-size: 15px;height: inherit;position: absolute;bottom: 15px;right: 10px;}
-.node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr:first-child{border-top:0px}
+.node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr.draggable > td > div > input[value='Remove']{margin: 0px;background: #337ab7;width: 120px;text-indent: inherit;padding: 4px 10px 4px;display: inline-block;cursor: pointer;
+font-size: 15px;height: inherit;position: absolute;bottom: 15px;right: 10px;}
+.node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr:first-child{border-top:0px;/* border-bottom:1px solid #c7bcbc */}
+.node-promotion_rebates-form div[id*='field-distributor-promotion-deta-add-more-wrapper'] table[id*='field-distributor-promotion-deta-values'] tr:first-child{border-top:0px;/* border-bottom:1px solid #c7bcbc */}
 .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr{margin-top:2px;border-top:1px solid #c7bcbc;}
 form.node-promotion_rebates-form{position:relative;float: left;padding: 0 0 30px 0;padding: 15px 0px 80px;/* background:#dedede; */width:1000px;}
-form.node-promotion_rebates-form input.form-submit{width:auto;margin: 0 10px 0 10px;}
+form.node-promotion_rebates-form input.form-submit{width:auto;margin:10px 10px 0 10px;}
 #page-wrapper #messages div.section  .messages.error{width: 940px;margin: 0px auto;float: inherit;}
 #page-wrapper form.node-promotion_rebates-form #field-distributor-promotion-deta-add-more-wrapper .messages.error{width:90%;}
 form.node-promotion_rebates-form .messages.error li{width:100%;float:left;}
@@ -2146,6 +2151,10 @@ div[id*='edit-field-model-url'] input[type='file']{float: left;padding: 4px 0;ma
 }
 #top-bar table{display:block !important;}
 table[id*='field-promotion-details-values'] .field-name-field-gigabyte-model-url{float:left;margin:5px 5px 0px 0px;}
+table[id*='field-promotion-details-values'] tr td label{display:none;border-top:0px;}
+table[id*='field-promotion-details-values'] tr:first-child td label,table[id*='field-promotion-details-values'] tr td label.option{display:block;}
+table[id*='field-promotion-details-values'] tr:first-child{border-bottom:0px;}
+table[id*='field-promotion-details-values'] tr{border-bottom:1px solid #c7bcbc;border-top:0;}
 table[id*='field-promotion-details-values'] .field-name-field-gigabyte-model-url .form-text{width:140px}
 table[id*='field-promotion-details-values'] td .field-name-field-gigabyte-model-url .form-item label{margin:3px 20px 7px 0px}
 table[id*='field-promotion-details-values'] td .field-name-field-gigabyte-model-url .form-item label{margin:3px 20px 7px 0px}
@@ -2172,9 +2181,9 @@ table[id*='field-upload-file-values'] .file-widget  input[value='Remove']{backgr
 .view-project-support-request-review .views-table th,.views-table th{background: #b5cfff;border-top: 4px solid #aabcfe;border-bottom: 1px solid #fff;color: #039;border-left:1px solid #aabcfe;border-bottom:1px solid #aabcfe;padding:4px 0 4px 5px}
 .views-table th:hover a{color: #039;text-decoration:none;}
 .view-project-support-request-review .views-table tr.odd td,.views-table tr.odd td{background: #fff;border-bottom: 1px solid #fff;color: #669;border-top: 1px solid transparent;padding: 8px;border-left:1px solid #aabcfe;border-bottom:1px solid #aabcfe}
-.view-project-support-request-review .views-table tr.odd td:last-child,.view-project-support-request-review .views-table th:last-child,.view-project-support-request-review .views-table tr.even td:last-child,
-.views-table tr td:last-child,.views-table th:last-child{border-right:1px solid #aabcfe}
-.view-project-support-request-review .views-table tr.even td:first-child,.views-table tr td:first-child{border-left:1px solid #aabcfe}
+.view-project-support-request-review .views-table tr.odd td:last-child,.view-project-support-request-review .views-table th:last-child,.view-project-support-request-review .views-table tr.even td:last-child,.views-table th:last-child{border-right:1px solid #aabcfe}
+.view-project-support-request-review .views-table tr.even td:first-child{border-left:1px solid #aabcfe}
+
 .view-project-support-request-review .views-table tr.even td{background: #e8edff;border-bottom: 1px solid #fff;color: #669;border-top: 1px solid transparent;padding: 8px;border-bottom:1px solid #aabcfe;border-left:1px solid #aabcfe}
 .view-project-support-request-review .views-table tr:hover td{background: #d0dafd;color: #339;}
 .views-table tr td{border-left:1px solid #aabcfe;border-bottom:1px solid #aabcfe}
@@ -2190,3 +2199,6 @@ table[id*='field-upload-file-values'] .file-widget  input[value='Remove']{backgr
     -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true)";filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true);
 }
 .page-customer-request-submission-review .view-make-a-request-submission-view{margin:20px 0px 0px 0px;}
+.node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr.draggable.odd{
+box-shadow:0 0 0 0 #dedede;
+}
