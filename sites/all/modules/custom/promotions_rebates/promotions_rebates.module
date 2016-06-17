@@ -559,9 +559,6 @@ function promotions_rebates_menu() {
  */
 function promotions_rebates_get_term_data(){
     global $base_url;
-    $vocabulary = taxonomy_vocabulary_machine_name_load('gigabyte_authorized_distributors');
-    $terms = taxonomy_get_tree($vocabulary->vid);
-    print_pre(count($terms),1);
     if(empty($_POST['termid'])){
         echo "Term Cannot be Empty";
     }

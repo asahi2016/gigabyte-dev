@@ -5,7 +5,6 @@
 
         setInterval(function () {
             show_hide_distributor_program_details();
-			//console.log($('#promotion-rebates-node-form').find('#edit-field-promotion-excel').find('span.file').length);
         },100);
 
         function show_hide_distributor_program_details(){
@@ -25,11 +24,83 @@
                 $('div[id*="edit-field-distributor-promotion-deta-und-add-more"]').show();
             }
         }
-		
+
         /*setInterval(function(){
             console.log($('select[id*="edit-field-distributor-promotion-deta]').attr('selected','selected').val());
             //gettermimage($('select[id*="edit-field-distributor-promotion-deta]').attr('selected','selected').val());
         },2000);*/
+
+
+        /*termlength = 0;
+        $.ajax({
+            url: Drupal.settings.gigabyte.baseUrl + '/promotions/get/termlength',
+            type: 'post',
+            success: function (data) {
+                termlength = data;
+            }
+        });
+        setInterval(function() {
+            var dis_selection = new Array();
+            var dis_selection_value = new Array();
+            var tr_counter = 0;
+
+            dist_length = $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").length;
+
+            $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").each(function (i) {
+                if ($(this).find('select').find('option:selected').val() != '_none') {
+                    option = $(this).find('select').find('option:selected');
+                    dis_selection[i] = option.val();
+                    dis_selection_value[i] = option.text();
+                }
+            });*/
+
+            //console.log(dis_selection);
+            /*if(dis_selection) {
+
+             $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").each(function(i) {
+
+             //if (dist_length <= termlength) {
+             //$(this).find('select').css('border','1px solid red');
+             //console.log($(this).find('select').find('option').val());
+             for(k = 0; k < dis_selection.length; k++) {
+             //console.log(dis_selection[k]);
+             $(this).find('select').find('option').each(function(l,elem){
+             if($(elem).val() == dis_selection[k]) {
+             $(elem).remove();
+             }
+             });
+
+             }
+             //}
+
+             /*console.log(dis_selection);
+             readd_counter = false;
+             //if(tr_counter > 0 ){
+             $(this).find('select').find('option').each(function(k, elem){
+             for(j=0;j<dis_selection.length;j++){
+             if($(elem).val() == dis_selection[j] && i > j ) {
+             $(elem).remove();
+             }else{
+             //console.log($(elem).val(dis_selection[j]).length);
+             if(!readd_counter && !dis_selection[j]){
+             $(elem).parent().append('<option value="'+dis_selection[j]+'" >'+dis_selection_value[dis_selection[j]]+'</option>')
+             readd_counter = true;
+             }
+             }
+             }
+
+             });*/
+            /*
+             //}
+             //tr_counter++;
+             */
+            /* }
+             */
+            /*    });*/
+            /*
+             }
+             },500);*/
+        //});
 
         //Display distributor image on selection from dropdown
         $(document).on('change','select[id*="edit-field-distributor-promotion-deta"]',function(){
@@ -48,22 +119,22 @@
                 }
             });
         });
-        termlength = 0;
-        setInterval(function(){
-            $.ajax({
-                url: Drupal.settings.gigabyte.baseUrl + '/promotions/get/termlength',
-                type: 'post',
-                success: function (data) {
-                    termlength = data;
-                }
-            });
-            dist_length = $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").length;
-            $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").each(function(i){
-                if(dist_length <= termlength){
-                    //console.log(i);
-                }
-            });
-        },500);
+       /* termlength = 0;
+            setInterval(function(){
+                $.ajax({
+                    url: Drupal.settings.gigabyte.baseUrl + '/promotions/get/termlength',
+                    type: 'post',
+                    success: function (data) {
+                        termlength = data;
+                    }
+                });
+                dist_length = $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").length;
+                $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").each(function(i){
+                    if(dist_length <= termlength){
+                        console.log(i);
+                    }
+                });
+        },500);*/
 
 
 
@@ -85,10 +156,5 @@
             });
 
         }
-		/*$('form.node-promotion_rebates-form input[value="Add Another Distributor"]').on('click',function(){
-		alert('hi');
-			tr_added();
-		});*/		
-		
     });
 })(jQuery);
