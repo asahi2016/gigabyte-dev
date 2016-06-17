@@ -42,6 +42,25 @@
                 }
             });
         });
+        termlength = 0;
+        setInterval(function(){
+            $.ajax({
+                url: Drupal.settings.gigabyte.baseUrl + '/promotions/get/termlength',
+                type: 'post',
+                success: function (data) {
+                    termlength = data;
+                }
+            });
+            dist_length = $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").length;
+            $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").each(function(i){
+                if(dist_length <= termlength){
+                    console.log(i);
+                }
+            });
+        },500);
+
+
+
 
         function gettermimage(termid){
             img_url = '';
