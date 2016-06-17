@@ -326,7 +326,7 @@ jQuery(document) . ready(function () {
                       </div></div> <!-- /.section, /#base_title -->
                  <?php endif; ?>
 
-                 <?php if ($page['search']): ?>
+                 <?php if (isset($page['search']) &&!empty($page['search']) ): ?>
                      <div id="site-search"><div class="section clearfix">
                           <?php print render($page['search']); ?>
                       </div></div> <!-- /.section, /#base_title -->
@@ -338,7 +338,7 @@ jQuery(document) . ready(function () {
     <div class="full-width top_s">
      <div class="section clearfix main-menu-nav" id="main-menu-nav">
          <?php if(user_is_logged_in() && ($_SESSION['curr_pg'] == 'partner' || in_array('partner',$current_url) || in_array('entityform',$current_url ) || in_array('batch',$current_url ))){ ?>
-                <?php if ($page['menu']): ?>
+                <?php if (isset($page['menu']) && !empty($page['menu'])): ?>
                 <?php
                      /*$partner_portal_menu_tree = menu_tree(variable_get('menu_main_links_source', 'menu_menu-partner-portal-menu'));
                      print drupal_render($partner_portal_menu_tree);*/
@@ -403,7 +403,7 @@ jQuery(document) . ready(function () {
         </h1>
       <?php endif; ?>
       <?php print render($title_suffix); ?>
-      <?php if ($tabs): ?>
+      <?php if (isset($tabs) && !empty($tabs)): ?>
         <div class="tabs">
           <?php print render($tabs); ?>
         </div>
