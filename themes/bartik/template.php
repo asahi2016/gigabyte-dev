@@ -230,6 +230,33 @@ function bartik_theme_preprocess_page(&$vars) {
     }
 }
 
+
+/**
+ * Override or node view page variables into the page template.
+ */
+function bartik_preprocess_page(&$variables) {
+
+    if(isset($variables['node']->nid) && !empty($variables['node']->nid) && $variables['node']->type == 'promotion_rebates') {
+
+        unset($variables['page']['header']);
+        unset($variables['page']['country_menu']);
+        $variables['page']['#show_messages'] = 0;
+        unset($variables['page']['search']);
+        unset($variables['page']['menu']);
+        unset($variables['page_bottom']);
+        unset($variables['tabs']);
+        unset($variables['page']['site_name']);
+        unset($variables['site_slogan']);
+        unset($variables['footer']['page_bottom']['admin_toolbar']);
+        unset($variables['page']['base_title']['menu_menu-business-center']);
+        foreach ($variables['page']['base_title']['menu_menu-partner-portal-title'] as $k => $menu) {
+            if (is_numeric($k))
+                $variables['page']['base_title']['menu_menu-partner-portal-title'][$k]['#title'] = 'PROMOTION';
+
+        }
+    }
+}
+
 /**
  * Duplicate of theme_menu_local_tasks() but adds clearfix to tabs.
  */

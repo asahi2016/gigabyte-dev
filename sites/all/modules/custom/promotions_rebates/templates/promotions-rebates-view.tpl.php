@@ -3,8 +3,8 @@
        
     });
 </script>
-<?php if (!$logo = theme_get_setting('logo_path')) { $logo = theme_get_setting('logo'); } ?>
-<div class="txt_center"><a href="http://www.gigabyte.us/" target="_blank"><img src="<?php print $logo;?>" /></a></div>
+<?php /*if (!$logo = theme_get_setting('logo_path')) { $logo = theme_get_setting('logo'); } */?>
+<!--<div class="txt_center"><a href="http://www.gigabyte.us/" target="_blank"><img src="<?php /*print $logo;*/?>" /></a></div>-->
 <?php $uri = isset($node->field_promotion_banner['und'][0]['uri'])? file_create_url($node->field_promotion_banner['und'][0]['uri']):'';?>
 <?php if(!isset($variables['terms']) && isset($variables['banner'])) { ?>
     <?php $uri = isset($banner['promo']['und'][0]['uri'])? file_create_url($banner['promo']['und'][0]['uri']):$uri;?>
@@ -12,6 +12,7 @@
 <div class="txt_center"><img src="<?php print $uri;?>" style="width: 100%;margin: 20px 0px;"></div>
 
 <?php if(isset($variables['terms'])) { ?>
+        <div class="promotion_instruct" style="background-color: red;padding: 10px; text-align: center;color: #ffffff;"><span><p> > CLICK ON EACH DISTRIBUTOR TO SEE PROMOTIONS > </p></span></div>
        <?php global $base_url; ?>
         <table class="stores" style="margin: 0 auto;width: 0%;">
         <tbody>
