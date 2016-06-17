@@ -5,21 +5,27 @@
 
         setInterval(function () {
             show_hide_distributor_program_details();
+			//console.log($('#promotion-rebates-node-form').find('#edit-field-promotion-excel').find('span.file').length);
         },100);
 
         function show_hide_distributor_program_details(){
-
-            if($('#promotion-rebates-node-form').find('#edit-field-promotion-excel').find('span.file').length > 0){
-                $('table#field-distributor-promotion-deta-values').hide();
+			//console.log($('div[id*="promotion-rebates-node-form"]').find('div[id*="edit-field-promotion-excel"]').find('span .file-size').size());
+			/* console.log($('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').length);
+			$('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').css('border','1px solid red'); */
+            if($('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').length > 0){
                 $('table[id*="field-distributor-promotion-deta-values"]').hide();
-                $('#edit-field-distributor-promotion-deta-und-add-more').hide();
+                $('table[id*="field-distributor-promotion-deta-values"]').hide();
+                $('div[id*="edit-field-distributor-promotion-deta-und-add-more"]').hide();
+                $('input.field-add-more-submit').hide();
+				$('#field-distributor-promotion-deta-add-more-wrapper > .form-item  > .clearfix').css('border', '0px');
             }else{
-                $('table#field-distributor-promotion-deta-values').show();
+                $('table[id*="#field-distributor-promotion-deta-values"]').show();
                 $('table[id*="field-distributor-promotion-deta-values"]').show();
-                $('#edit-field-distributor-promotion-deta-und-add-more').show();
+                $('input.field-add-more-submit').show();
+                $('div[id*="edit-field-distributor-promotion-deta-und-add-more"]').show();
             }
         }
-
+		
         /*setInterval(function(){
             console.log($('select[id*="edit-field-distributor-promotion-deta]').attr('selected','selected').val());
             //gettermimage($('select[id*="edit-field-distributor-promotion-deta]').attr('selected','selected').val());
@@ -54,7 +60,7 @@
             dist_length = $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").length;
             $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").each(function(i){
                 if(dist_length <= termlength){
-                    console.log(i);
+                    //console.log(i);
                 }
             });
         },500);
@@ -79,5 +85,10 @@
             });
 
         }
+		/*$('form.node-promotion_rebates-form input[value="Add Another Distributor"]').on('click',function(){
+		alert('hi');
+			tr_added();
+		});*/		
+		
     });
 })(jQuery);

@@ -12,6 +12,7 @@
 }
 @font-face {
     font-family: 'ralewayheavy';
+	
     src: url('fonts/raleway-heavy-webfont.eot');
     src: url('fonts/raleway-heavy-webfont.eot?#iefix') format('embedded-opentype'),
     url('fonts/raleway-heavy-webfont.woff2') format('woff2'),
@@ -1923,6 +1924,7 @@ table.gig_rep td{padding:20px 0px;}
 .page-promotion-upload .field-name-field-promotion-start-date .form-text,.page-promotion-upload .field-name-field-promotion-end-date .form-text,.page-promotion-upload .field-name-field-promotion-claim-date .form-text{width:100px;}
 .page-promotion-upload #promotion-information > .fieldset-wrapper{float:left;padding:10px 5px 0 25px;margin:20px 0 0 0;width:970px;}
 .page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file{margin:10px 0 0 270px; width:auto;clear:both;float:left;}
+.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file .file{float:left;}
 .page-promotion-upload .field-multiple-table .form-submit{width:180px;float: left; margin: 10px 20px 10px 20px;}
 .page-promotion-upload input[value='Remove']{width:180px;}
 /* .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] td input[value='Remove']{margin:20px 25px 0px 0px;} */
@@ -2008,7 +2010,7 @@ table[id*='field-promotion-notes-values'] {border-bottom:1px solid #c7bcbc;}
 .node-type-promotion-rebates table.product tr:nth-child(1) td{padding:10px 10px;}
 .node-type-promotion-rebates table.product tr td{padding:10px 10px;border:1px solid #808080;}
 .page-partner-promotions .view-promotion-rebate table td,.page-partner-promotions .view-promotion-rebate table th{padding: 15px 10px;font-size: 16px;font-weight: normal;border:1px solid #808080;}
-.node-type-promotion-rebates table.stores td{width:130px;padding: 5px;}
+.node-type-promotion-rebates table.stores td{width:auto;padding: 5px;}
 .node-type-promotion-rebates table.stores td.disabled{width:0px;}
 .field-name-field-promotion-banner .image-widget-data img,.node-promotion_rebates-form .image-widget-data .file img{float:left;margin:0px;}
 .node-promotion_rebates-form .image-widget-data .file a{float: left; width: 650px;margin: 0 10px; height: 20px; overflow: hidden;}
@@ -2200,6 +2202,8 @@ table[id*='field-upload-file-values'] .file-widget  input[value='Remove']{backgr
     -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true)";filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true);
 }
 .page-customer-request-submission-review .view-make-a-request-submission-view{margin:20px 0px 0px 0px;}
-.node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr.draggable.odd{
-box-shadow:0 0 0 0 #dedede;
-}
+.node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr.draggable.odd{box-shadow:0 0 0 0 #dedede;}
+.node-type-promotion-rebates .promotion_instruct{text-align: center;padding: 12px 0px;float: left;width: 100%;background: #E93F33;}
+.node-type-promotion-rebates .promotion_instruct p{margin: 0;color: #fff;font-size: 18px;letter-spacing: 1px;}
+.node-type-promotion-rebates table.stores{margin:15px auto;width:900px;}
+.node-type-promotion-rebates .full-width.top_s{display:none;}
