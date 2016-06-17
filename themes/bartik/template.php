@@ -248,11 +248,21 @@ function bartik_preprocess_page(&$variables) {
         unset($variables['page']['site_name']);
         unset($variables['site_slogan']);
         unset($variables['footer']['page_bottom']['admin_toolbar']);
-        unset($variables['page']['base_title']['menu_menu-business-center']);
-        foreach ($variables['page']['base_title']['menu_menu-partner-portal-title'] as $k => $menu) {
-            if (is_numeric($k))
-                $variables['page']['base_title']['menu_menu-partner-portal-title'][$k]['#title'] = 'PROMOTION';
-
+        
+        if(user_is_logged_in()) {
+            unset($variables['page']['base_title']['menu_menu-business-center']);
+            if (isset($variables['page']['base_title']['menu_menu-partner-portal-title'])) {
+                foreach ($variables['page']['base_title']['menu_menu-partner-portal-title'] as $k => $menu) {
+                    if (is_numeric($k))
+                        $variables['page']['base_title']['menu_menu-partner-portal-title'][$k]['#title'] = 'PROMOTION';
+                }
+            }
+        }else{
+            foreach ($variables['page']['base_title']['menu_menu-business-center'] as $k => $menu) {
+                if (is_numeric($k))
+                    $variables['page']['base_title']['menu_menu-business-center'][$k]['#title'] = 'PROMOTION';
+            }
+            $variables['page']['base_title']['promotion_external_menu'] = true;
         }
     }
 }
