@@ -6,7 +6,12 @@
         setInterval(function () {
             show_hide_distributor_program_details();
         },100);
-
+		
+		
+		var access = false;
+		$('.page-promotion-upload .field-name-field-promotion-thumbnail .image-widget-data .form-submit').on('Click',function(){
+				access = false;
+		});
         function show_hide_distributor_program_details(){
 			//console.log($('div[id*="promotion-rebates-node-form"]').find('div[id*="edit-field-promotion-excel"]').find('span .file-size').size());
 			/* console.log($('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').length);
@@ -16,6 +21,8 @@
                 $('table[id*="field-distributor-promotion-deta-values"]').hide();
                 $('div[id*="edit-field-distributor-promotion-deta-und-add-more"]').hide();
                 $('input.field-add-more-submit').hide();
+				$('table[id*="field-distributor-promotion-deta-values"] td .form-text').val('');
+				$('table[id*="field-distributor-promotion-deta-values"] td .option').prop( "checked", false );
 				$('#field-distributor-promotion-deta-add-more-wrapper > .form-item  > .clearfix').css('border', '0px');
             }else{
                 $('table[id*="#field-distributor-promotion-deta-values"]').show();
@@ -23,8 +30,12 @@
                 $('input.field-add-more-submit').show();
                 $('div[id*="edit-field-distributor-promotion-deta-und-add-more"]').show();
             }
+			if($('#page-wrapper form.node-promotion_rebates-form div.messages').length > 0 && access == false){
+			  $('.page-promotion-upload #promotion-information > .fieldset-wrapper').append($('#page-wrapper form.node-promotion_rebates-form div.messages'));			  
+			  access = true;
+			}
         }
-
+		
         /*setInterval(function(){
             console.log($('select[id*="edit-field-distributor-promotion-deta]').attr('selected','selected').val());
             //gettermimage($('select[id*="edit-field-distributor-promotion-deta]').attr('selected','selected').val());

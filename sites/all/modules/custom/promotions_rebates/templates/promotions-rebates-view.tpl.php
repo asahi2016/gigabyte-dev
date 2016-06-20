@@ -9,7 +9,7 @@
 <?php if(!isset($variables['terms']) && isset($variables['banner'])) { ?>
     <?php $uri = isset($banner['promo']['und'][0]['uri'])? file_create_url($banner['promo']['und'][0]['uri']):$uri;?>
 <?php } ?>
-<div class="txt_center"><img src="<?php print $uri;?>" style="min-width:800px;min-height:400px;margin:0 0 10px 0px;"></div>
+<div class="txt_center"><img src="<?php print $uri;?>" style="max-width: 1200px;height: 500px;margin: 0 0 10px 0px;"></div>
 
 <?php if(isset($variables['terms'])) { ?>
         <div class="promotion_instruct"><span><p> > CLICK ON EACH DISTRIBUTOR TO SEE PROMOTIONS > </p></span></div>

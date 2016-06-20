@@ -422,7 +422,7 @@ ul, li {
 body.page-user-register div.messages.error{
     display: none;
 }
-#page-wrapper div.messages{float:left;width:98%;margin:8px 15px 20px 0px;}
+#page-wrapper div.messages{width:940px;margin:0px auto;}
 .custom-error{float:left; padding: 10px 20px; color:red;}
 /*#user-register-form .form-checkboxes .form-item{clear:both;}*/
 #edit-field-job-title{clear:both;}
@@ -1900,13 +1900,14 @@ table.gig_rep td{padding:20px 0px;}
 .page-promotion-upload .field-name-field-promotion-url .form-type-textfield.form-item .description {clear: both; margin: 3px 0 0 75px;}
 .page-promotion-upload .form-item .description {margin:0px 0 15px 15px}
 .page-promotion-upload .field-name-field-promotion-excel .form-item .description {margin: 10px 0 15px 275px;clear: both;float: left;}
-#page-wrapper form.node-promotion_rebates-form div.messages {float: left;width: 94%;margin: 0px 2% 0px 0px;}
+#page-wrapper form.node-promotion_rebates-form div.messages {width: 880px; margin: 0px auto 20px; float: left;}
 .node-promotion_rebates-form .field-name-field-promotion-url{margin:20px 0 0;width:100%;padding:0px 0 20px 0;border: 1px solid #C5C2C2;box-shadow: 0px 0px 3px 0px #dedede;float:left;border-top:0px;}
 .node-promotion_rebates-form .field-name-field-promotion-url .form-item{margin-top: 0;float: left; width: 100%;}
 #page-wrapper form.node-promotion_rebates-form div.image-preview {margin: 0 10px 10px 10px;padding: 0;}
 .node-promotion_rebates-form .field-name-field-promotion-url label{background:#337ab7;color:#fff;}
 #page-wrapper form.node-promotion_rebates-form div.image-preview img{margin:0px;}
 .page-promotion-upload .field-type-image.field-name-field-promotion-banner .image-widget-data{margin:8px 0 0 25px;width:97%; }
+#page-wrapper form.node-promotion_rebates-form .field-type-image div.messages{display:none;}
 .page-promotion-upload .field-type-image.field-name-field-promotion-banner .image-widget-data .form-submit{clear: both;margin: 10px 0 10px 0;float: left;}
 .page-promotion-upload .form-item.form-item-field-distributor-promotion-deta-und-0-field-promotion-import-excel-und-0 .description {margin:3px 0 0 75px;}
 .page-promotion-upload .form-item.form-item-field-distributor-promotion-deta-und-0-field-distributor-promo-banner-und-0 .description {margin:0px 0 20px 275px;}
@@ -2013,7 +2014,7 @@ table[id*='field-promotion-notes-values'] {border-bottom:1px solid #c7bcbc;}
 .node-type-promotion-rebates table.stores td{width:auto;padding: 5px;}
 .node-type-promotion-rebates table.stores td.disabled{width:0px;}
 .field-name-field-promotion-banner .image-widget-data img,.node-promotion_rebates-form .image-widget-data .file img{float:left;margin:0px;}
-.node-promotion_rebates-form .image-widget-data .file a{float: left; width: 650px;margin: 0 10px; height: 20px; overflow: hidden;}
+.node-promotion_rebates-form .image-widget-data .file a{float: left; width:200px;margin: 0 10px; height: 20px; overflow: hidden;}
 .node-promotion_rebates-form .image-widget-data .file-size{float: left;margin:0 10px 0 0;}
 div[id*='field-distributor-promotion-deta-add-more-wrapper']{position:relative;float:left;padding: 0 0 30px 0;}
 
@@ -2203,7 +2204,8 @@ table[id*='field-upload-file-values'] .file-widget  input[value='Remove']{backgr
 }
 .page-customer-request-submission-review .view-make-a-request-submission-view{margin:20px 0px 0px 0px;}
 .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr.draggable.odd{box-shadow:0 0 0 0 #dedede;}
-.node-type-promotion-rebates .promotion_instruct{text-align: center;padding: 12px 0px;float: left;width: 100%;background: #E93F33;}
+.node-type-promotion-rebates .promotion_instruct{text-align: center;padding: 12px 0px;margin:0px auto;width:1000px;background: #E93F33;}
+.node-type-promotion-rebates .promotion_instruct img{margin:0 0 10px 0px;}
 .node-type-promotion-rebates .promotion_instruct p{margin: 0;color: #fff;font-size: 18px;letter-spacing: 1px;}
 .node-type-promotion-rebates table.stores{margin:15px auto;width:900px;}
 .node-type-promotion-rebates .full-width.top_s{display:none;}
