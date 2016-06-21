@@ -167,5 +167,8 @@
             });
 
         }
+
+        $('.views-field-field-promotion-thumbnail a').attr('target', '_blank');
+
     });
 })(jQuery);
