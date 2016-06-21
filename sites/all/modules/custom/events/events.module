@@ -1,0 +1,13 @@
+<?php
+
+//altering the event form to load the admin theme and modify some default behaviour
+function events_form_events_node_form_alter(&$form,&$form_state){
+
+    $form['options']['promote']['#value'] = 0;
+    $form['additional_settings']['#access'] = FALSE;
+    $form['actions']['delete']['#access'] = FALSE;
+    $form['options']['status']['#value'] = 1;
+
+}
+
+?>

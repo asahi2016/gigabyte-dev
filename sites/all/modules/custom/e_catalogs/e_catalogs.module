@@ -3,6 +3,9 @@
 function e_catalogs_form_e_catalogs_node_form_alter(&$form, &$form_state, $form_id){
     $form['options']['promote']['#value'] = 0;
     $form['ajax-submit']['#submit'][] =  'e_catalogs_custom_submit';
+    $form['additional_settings']['#access'] = FALSE;
+    $form['actions']['delete']['#access'] = FALSE;
+    $form['options']['status']['#value'] = 1;
     unset($form['ajax-submit']['#ajax']);
 
 }

@@ -16,6 +16,9 @@
 function product_change_notices_form_product_change_notices_node_form_alter(&$form, &$form_state, $form_id){
     //print_pre($form,1);
     $form['options']['promote']['#value'] = 0;
+    $form['additional_settings']['#access'] = FALSE;
+    $form['actions']['delete']['#access'] = FALSE;
+    $form['options']['status']['#value'] = 1;
     $form['ajax-submit']['#submit'][] = 'send_product_change_notices_mail';
     $form['ajax-submit']['#value'] = t('Submit');
     unset($form['ajax-submit']['#ajax']);

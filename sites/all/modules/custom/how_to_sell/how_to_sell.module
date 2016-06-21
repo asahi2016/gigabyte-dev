@@ -12,6 +12,9 @@ function how_to_sell_form_how_to_sell_node_form_alter(&$form, &$form_state, $for
     if($form_id == 'how_to_sell_node_form'){
         $form['title']['#title'] ='Model Name';
         $form['options']['promote']['#value'] = 0;
+        $form['additional_settings']['#access'] = FALSE;
+        $form['actions']['delete']['#access'] = FALSE;
+        $form['options']['status']['#value'] = 1;
         $form['#validate'][] = 'how_to_sell_form_validation';
         $form['ajax-submit']['#submit'][] = 'how_to_sell_form_submit';
         $form['ajax-submit']['#value'] = t('Submit');

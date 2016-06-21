@@ -28,6 +28,9 @@ function intel_technology_provider_form_itp_training_node_form_alter(&$form,&$fo
 
     if($form_id == 'itp_training_node_form'){
         $form['options']['promote']['#value'] = 0;
+        $form['additional_settings']['#access'] = FALSE;
+        $form['actions']['delete']['#access'] = FALSE;
+        $form['options']['status']['#value'] = 1;
         $form['ajax-submit']['#value'] = t('Submit');
         $form['ajax-submit']['#submit'][] = 'itp_form_submit';
         unset($form['ajax-submit']['#ajax']);

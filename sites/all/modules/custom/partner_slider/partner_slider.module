@@ -6,6 +6,9 @@ function partner_slider_form_partner_slider_node_form_alter(&$form, &$form_state
     if(user_access('administrator')){
 
         $form['options']['promote']['#value'] = 0;
+        $form['additional_settings']['#access'] = FALSE;
+        $form['actions']['delete']['#access'] = FALSE;
+        $form['options']['status']['#value'] = 1;
         $form['#validate'][] = 'partner_slider_form_validation';
         unset($form['ajax-submit']['#ajax']);
         $form['ajax-submit']['#value'] = t('Submit');

@@ -42,6 +42,9 @@ function awards_reviews_form_awards_reviews_node_form_alter(&$form, &$form_state
 
     $form['options']['promote']['#value'] = 0;
     unset($form['ajax-submit']['#ajax']);
+    $form['additional_settings']['#access'] = FALSE;
+    $form['actions']['delete']['#access'] = FALSE;
+    $form['options']['status']['#value'] = 1;
     $form['ajax-submit']['#value'] ='Submit';
     $form['ajax-submit']['#submit'][] ='create_awards_and_reviews_content';
     $form['#validate'][] = 'awards_reviews_form_validation';

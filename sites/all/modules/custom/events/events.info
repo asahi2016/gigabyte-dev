@@ -1,0 +1,6 @@
+name = Events
+description = Administrator can add Events and can display it to the user on a separate page
+version = 7.x
+core = 7.x
+package = Custom Module
+dependencies[] = views

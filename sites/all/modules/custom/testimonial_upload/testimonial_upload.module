@@ -5,6 +5,9 @@ function testimonial_upload_form_testimonial_node_form_alter(&$form,&$form_state
 
         $form['title']['#title'] ='Testimonial Name';
         $form['options']['promote']['#value'] = 0;
+        $form['additional_settings']['#access'] = FALSE;
+        $form['actions']['delete']['#access'] = FALSE;
+        $form['options']['status']['#value'] =1;
         $form['#validate'][] = 'testimonial_upload_form_validation';
         $form['ajax-submit']['#value'] = t('Submit');
         unset($form['ajax-submit']['#ajax']);
