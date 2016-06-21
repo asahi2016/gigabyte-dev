@@ -255,19 +255,32 @@ function node_uri($node) {
 /**
  * Implements hook_admin_paths().
  */
-function node_admin_paths() {
-  if (variable_get('node_admin_theme')) {
-    $paths = array(
-      'node/*/edit' => TRUE,
-      'node/*/delete' => TRUE,
-      'node/*/revisions' => TRUE,
-      'node/*/revisions/*/revert' => TRUE,
-      'node/*/revisions/*/delete' => TRUE,
-      'node/add' => TRUE,
-      'node/add/*' => TRUE,
-    );
-    return $paths;
-  }
+function node_admin_paths(){
+
+    // setting theme to when editing the nodes.
+    $access = FALSE;
+    if (variable_get('node_admin_theme')) {
+        $type = array('article','page','book','group','webform');  //set admin themes to these nodes.
+        if (arg(0) == 'node' && is_numeric(arg(1))) {
+            $node = node_load(arg(1));
+            if ($node && in_array($node->type, $type)) {
+                $access = TRUE;
+            }
+        }
+        //set default theme to remaining(custom) nodes
+        $paths = array(
+            'node/*/edit' => $access,
+            'node/*/delete' => $access,
+            'node/*/revisions' => $access,
+            'node/*/revisions/*/revert' => $access,
+            'node/*/revisions/*/delete' => $access,
+            'node/add' => $access,
+            'node/add/*' => $access,
+        );
+        return $paths;
+
+    }
+
 }
 
 /**
