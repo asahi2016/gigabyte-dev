@@ -42,11 +42,71 @@ function promotions_rebates_block_view($delta = '') {
     $block = array();
     switch ($delta) {
         case 'promotion_rabates-banner':
-            $block['subject'] = t('Block Title');
-            $block['content'] = t('Hello World!');
+            $block['subject'] = '';
+            $block['content'] = promotions_rebates_banner_content();
             break;
     }
     return $block;
+}
+
+function promotions_rebates_banner_content(){
+
+    $node = null;
+
+    $html = null;
+
+    if(is_numeric(arg(1))){
+        $node = node_load(arg(1));
+    }
+
+    if(!empty($node) && $node->type == 'promotion_rebates'){
+
+        $term_name = null;
+
+        $term_id = null;
+
+        $terms = null;
+
+        //Checks term name from current url
+        if(!empty(arg(2)) && !is_numeric(arg(2))){
+
+            $term_name = arg(2);
+
+            //Load taxonomy by name
+            $single_term = taxonomy_get_term_by_name($term_name , $vocabulary = NULL);
+
+            if($single_term){
+
+                foreach ($single_term as $key => $term){
+
+                    if($term->vocabulary_machine_name == 'gigabyte_authorized_distributors'){
+                        $term_id = $term->tid;
+                    }
+                }
+            }
+        }
+
+        //Get field collections items by custom field collection item name
+        $items = field_get_items('node', $node , 'field_distributor_promotion_deta');
+
+        foreach ($items as $item) {
+            $fc = field_collection_item_load($item['value']);
+            if ($fc->field_prmotion_distributors['und'][0]['tid'] == $term_id) {
+                $banner['promo'] = $fc->field_distributor_promo_banner;
+            }
+        }
+
+        $uri = isset($node->field_promotion_banner['und'][0]['uri'])? file_create_url($node->field_promotion_banner['und'][0]['uri']):'';
+        if(!empty($term_id)) {
+            $uri = isset($banner['promo']['und'][0]['uri'])? file_create_url($banner['promo']['und'][0]['uri']):$uri;
+        }
+
+        if($uri)
+            $html = '<div class="txt_center"><img src="'.$uri.'" style="width:auto;overflow-x:scroll;margin: 0 0 10px 0px;"></div>';
+
+    }
+
+    return $html;
 }
 
 /**
@@ -145,12 +205,16 @@ function create_promotions_and_rebates_content(&$form, &$form_state) {
 
         $file_to_include = drupal_realpath($node->field_promotion_excel['und'][0]['uri']);
 
+        $ext = pathinfo($node->field_promotion_excel['und'][0]['filename'], PATHINFO_EXTENSION);
+
+        $reader = ($ext == 'xls') ? 'Excel5' : 'Excel2007';
+
         //Load PHPexcel Library
         include $lib . '/PHPExcel/IOFactory.php';
 
         $inputFileName = $file_to_include;
 
-        $objReader = PHPExcel_IOFactory::createReader('Excel5');
+        $objReader = PHPExcel_IOFactory::createReader($reader);
         $objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
         $worksheetList = $objReader->listWorksheetNames($inputFileName);
 
