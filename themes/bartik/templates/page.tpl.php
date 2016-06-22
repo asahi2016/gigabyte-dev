@@ -364,6 +364,13 @@ jQuery(document) . ready(function () {
          <?php } ?>
       </div>
     </div>
+    <?php if ($page['banner']): ?>
+      <div id="banner-area">
+          <div class="section clearfix">
+              <?php print render($page['banner']); ?>
+          </div>
+      </div> <!-- /.section, /#featured -->
+    <?php endif; ?>
   </div> <!-- /.section, /#header -->
 
   <?php if ($messages): ?>

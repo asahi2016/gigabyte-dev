@@ -23,6 +23,8 @@ regions[page_top] = Page top
 regions[page_bottom] = Page bottom
 regions[highlighted] = Highlighted
 
+regions[banner] = Banner Area
+
 regions[featured] = Featured
 regions[top_content] = Top content
 regions[content] = Content

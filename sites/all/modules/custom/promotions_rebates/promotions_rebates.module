@@ -29,6 +29,25 @@ function promotions_rebates_init(){
     drupal_add_js(drupal_get_path('module', 'custom').'/promotions_rebates/js/promotions_rebates.js',array('scope' => 'footer'));
 }
 
+function promotions_rebates_block_info() {
+    $blocks['promotion_rabates-banner'] = array(
+        'info' => t('Promotion Rebates banner'),
+        'cache' => DRUPAL_NO_CACHE,
+    );
+    return $blocks;
+}
+
+function promotions_rebates_block_view($delta = '') {
+
+    $block = array();
+    switch ($delta) {
+        case 'promotion_rabates-banner':
+            $block['subject'] = t('Block Title');
+            $block['content'] = t('Hello World!');
+            break;
+    }
+    return $block;
+}
 
 /**
  * Implements hook_node_insert().
