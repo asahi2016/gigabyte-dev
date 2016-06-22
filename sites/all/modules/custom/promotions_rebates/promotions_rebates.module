@@ -541,17 +541,17 @@ function template_preprocess_promotion_rebates_view(&$variables){
 
             $fc = field_collection_item_load($item['value']);
 
-            $records[$fc->field_prmotion_distributors['und'][0]['tid']] = 1;
+            $records[isset($fc->field_prmotion_distributors['und'][0]['tid'])] = 1;
 
-            if($fc->field_prmotion_distributors['und'][0]['tid'] == $term_id) {
+            if(isset($fc->field_prmotion_distributors['und'][0]['tid']) == $term_id) {
 
                 $banner['promo'] = $fc->field_distributor_promo_banner;
 
-                $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['tid'] = $fc->field_prmotion_distributors['und'][0]['tid'];
+                $promotions[isset($fc->field_prmotion_distributors['und'][0]['tid'])]['tid'] = $fc->field_prmotion_distributors['und'][0]['tid'];
 
-                $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['term'] = $fc->field_prmotion_distributors['und'][0]['taxonomy_term'];
+                $promotions[isset($fc->field_prmotion_distributors['und'][0]['tid'])]['term'] = $fc->field_prmotion_distributors['und'][0]['taxonomy_term'];
 
-                $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['banner'] = $fc->field_distributor_promo_banner;
+                $promotions[isset($fc->field_prmotion_distributors['und'][0]['tid'])]['banner'] = $fc->field_distributor_promo_banner;
 
                 $promotion_details = array();
                 foreach ($fc->field_promotion_details['und'] as $key => $val) {
@@ -569,7 +569,7 @@ function template_preprocess_promotion_rebates_view(&$variables){
 
                     $promotion_details[$key] = $details;
                 }
-                $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['promotions'] = $promotion_details;
+                $promotions[isset($fc->field_prmotion_distributors['und'][0]['tid'])]['promotions'] = $promotion_details;
 
                 $promotion_notes = array();
 
@@ -583,12 +583,11 @@ function template_preprocess_promotion_rebates_view(&$variables){
                     }
                 }
 
-                $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['notes'] = $promotion_notes;
+                $promotions[isset($fc->field_prmotion_distributors['und'][0]['tid'])]['notes'] = $promotion_notes;
             }
 
         }
     }
-
 
     $variables['promotion_records'] = $records;
     $variables['terms'] = $terms;
