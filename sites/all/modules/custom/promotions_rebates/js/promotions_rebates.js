@@ -23,7 +23,17 @@
                 $('input.field-add-more-submit').hide();
 				$('table[id*="field-distributor-promotion-deta-values"] td .form-text').val('');
 				$('table[id*="field-distributor-promotion-deta-values"] td .option').prop( "checked", false );
+				$('table[id*="field-distributor-promotion-deta-values"] td .form-select').prop('selectedIndex',0);
+				$('table[id*="field-distributor-promotion-deta-values"] td .distributor-image img').remove();
 				$('#field-distributor-promotion-deta-add-more-wrapper > .form-item  > .clearfix').css('border', '0px');
+				/* $("table[id='field-distributor-promotion-deta-values'] td .field-name-field-distributor-promo-banner .form-managed-file input[value='Remove']").trigger('click');
+				$("table[id='field-promotion-details-values'] .form-type-checkboxes .form-item .form-checkbox").attr('checked',false);
+				setTimeout(function(){$("table[id='field-distributor-promotion-deta-values'] td .field-name-field-distributor-promo-banner .form-managed-file input[value='Remove']").click()}, 500);
+				$(document).on('click', "table[id='field-distributor-promotion-deta-values'] td .field-name-field-distributor-promo-banner .form-managed-file input[value='Remove']" , function(e) {
+				
+				   $(this).trigger('click');
+				}); */
+				
             }else{
                 $('table[id*="#field-distributor-promotion-deta-values"]').show();
                 $('table[id*="field-distributor-promotion-deta-values"]').show();
@@ -171,4 +181,5 @@
         $('.views-field-field-promotion-thumbnail a').attr('target', '_blank');
 
     });
+	$('.node-type-promotion-rebates.page-node-edit #content .section').addClass('promotion');
 })(jQuery);

@@ -853,12 +853,16 @@ form.node-tools_assets_logos-form {float:left;border:2px solid #eee;padding:20px
 .field-type-image{float:left;width:100%;margin:20px 0px 0px;}
 .field-type-image label{float:left;margin:0 0 10px 0px;width:150px;}
 .field-type-image .image-widget-data{float:left;margin:0 0 10px 0px;}
-.node-partner_slider-form .field-type-image .image-widget-data{float:left;}
+.node-itp_training-form .field-type-image .image-widget-data{margin: 0 0 10px 440px;clear: both;}
+.node-itp_training-form .image-widget-data input[value='Remove']{clear: both;float: left;margin: 10px 0px;}
+.node-itp_training-form .form-actions .form-submit{clear: both;float: left;margin: 10px 0px 0 440px;}
+.node-partner_slider-form .field-type-image .image-widget-data{float:left;clear: both;margin: 0 0 0 300px;}
 .node-partner_slider-form .field-type-image .image-widget-data .form-file{width:200px;}
 .node-partner_slider-form .form-type-managed-file{position:relative;}
 .node-partner_slider-form .form-type-managed-file .description{float: left;margin:5px 0 20px 300px;}
 .field-type-image .image-widget-data .form-file{float:left;}
-.node-partner_slider-form .field-type-image .image-widget-data .form-submit{float: left;}
+.node-partner_slider-form .field-type-image .image-widget-data .form-submit{float: left;clear: both;margin: 10px 0px 0px 0px;}
+.node-partner_slider-form .form-actions .form-submit{float: left;margin: 0 0 0 300px;}
 .field-type-image .description{clear:both;}
 #edit-field-upload-image .form-submit{width:150px;float:left;margin:40px 0px;}
 #edit-field-upload-image .image-widget-data .form-submit{width:150px;float:left;margin:0px 0px;}
@@ -1462,6 +1466,7 @@ form .field-name-field-upload-images-roadmap .field-add-more-submit{margin:10px 
 li.assets-row-list-partner .btn-success a,li.assets-row-list-partner .btn-danger a{line-height:16px;}
 table.txt_center{table-layout: fixed;}
 .node-how_to_sell-form{width:1000px;margin:0px auto;}
+.node-how_to_sell-form .form-actions{float: left;margin: 0 0 0 275px;}
 .node-how_to_sell-form > div{width:900px;float:left;}
 .node-testimonial-form{width:1000px;margin:0px auto;}
 .node-how_to_sell-form .image-preview img{width:120px;height:120px;}
@@ -1478,10 +1483,10 @@ table.txt_center{table-layout: fixed;}
 .calendar-calendar .month-view .full td.multi-day div.monthview{color:#000;}
 .calendar-calendar .month-view .full td.single-day div.monthview a{color:#351B1C;font-size:10px;font-family:verdana;}
 .node-how_to_sell-form div.messages{float:left;width:1000px;margin:8px 0px 30px 0px;}
-.node-how_to_sell-form .form-type-managed-file{position: relative;min-height:130px;float:left;}
+.node-how_to_sell-form .form-type-managed-file{position: relative;/* min-height:130px; */float:left;}
 .node-how_to_sell-form .form-type-managed-file .description{float:left;margin:0 0 0 290px;}
 .node-how_to_sell-form .form-managed-file .file img{display:none;}
-.node-how_to_sell-form .form-managed-file .file{width:130px;float:left;overflow:hidden;height:20px;margin:0 10px 0 0}
+.node-how_to_sell-form .form-managed-file .file{width:130px;float:left;overflow:hidden;height:20px;margin:0 10px 0 10px}
 .page-partner-calendar-events .calendar-calendar .month-view .full td.multi-day div.monthview{background:#D1E5FF;padding:6px 0px 0px 0px;}
 .page-partner-calendar-events .calendar-calendar .month-view .full td.multi-day div.monthview .stripe{display:none;}
 .calendar-calendar .month-view .full td.multi-day .inner .monthview .cutoff{display:none;}
@@ -1675,6 +1680,8 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .sidebar-first.page-node .group-page-us-content table td {text-align:center;}
 .view-how-to-sell-wrapper .views-view-grid td{float:left;text-align:center;margin:20px 30px 0px 0px;}
 .view-how-to-sell-wrapper .views-view-grid td img{width:220px;height:220px;margin:0 0 20px 0;}
+.node-e_catalogs-form{width:1000px;margin:0px auto;}
+.node-e_catalogs-form  .form-actions .form-submit{float: left; margin: 0 0 0 290px;}
 .node-e_catalogs-form .field-name-field-upload-file-catalog{width:100%;}
 .node-e_catalogs-form .field-name-field-upload-file-catalog .form-file{padding:4px 4px 4px 0;}
 .node-e_catalogs-form .form-type-managed-file{float:left;width:100%;}
@@ -1689,6 +1696,46 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .node-e_catalogs-form .field-name-field-upload-file-catalog .form-file,.node-e_catalogs-form .image-widget-data .form-file{float:left;margin:0 10px 0px 0px;width: 280px;padding:4px 4px 4px 0;}
 .node-e_catalogs-form .field-name-field-upload-file-catalog .form-submit{float:left;}
 #field-catalog-link-add-more-wrapper{clear:both;width:100%;}
+.node-form.node-how_to_sell-form .image-widget .image-preview{padding: 0 10px 10px 10px;}
+.node-events-form .weekly .form-type-checkboxes .form-type-checkbox label,.node-events-form  .yearly .byday-count label,.node-events-form  .yearly .byday-day label,.node-events-form .monthly{width:auto;}
+.node-events-form{width:1000px;margin:0px auto;}
+.node-events-form .form-item.form-type-date-popup label{width:auto;}
+
+.node-events-form .field-type-datetime .date-combo legend{float:left;width:auto;}
+.node-events-form fieldset.date-combo .container-inline-date .form-type-date-popup .date-padding{margin:0 0 0 100px;padding:0px;}
+.node-events-form fieldset.date-combo .range-of-repeat .form-type-date-popup .date-padding{margin:10px 0 0 30px;padding:0px;}
+.node-events-form #repeat-settings-fieldset .form-type-checkbox input.form-checkbox{float:left;margin:7px 5px 0 0;}
+.node-events-form #repeat-settings-fieldset > .form-type-checkbox{float:left;margin:0px 0px 0 0px;}
+.node-events-form .date-clear .bymonthday .form-item label{width:auto;}
+/* .node-events-form .date-clear .bymonthday{margin:-20px 0 0 0} */
+.node-events-form .date-clear.daily .form-wrapper{float:left;width:100%;}
+.node-events-form .date-clear.daily .form-type-date-repeat-form-element-radios > label{float:left;width:100%;}
+.node-events-form .bymonth .form-checkboxes .form-type-checkbox label{width:auto;}
+.field-type-taxonomy-term-reference div[id*='field-distributor-promotion-deta-add-more-wrapper'] .sticky-header{z-index:100;}
+/* .node-events-form .daily .container-inline.mo-we-fr .form-radio{float:left;margin:10px 5px 0 0;} */
+.node-events-form .daily .container-inline .date-clear{clear: inherit;width: 97%;float: left;}
+/* .node-events-form .date-clear .bymonthday >.form-item {margin:-22px 0 0 20px} */
+/* .node-events-form .fieldset-wrapper .date-repeat-input .form-type-select{position: absolute;left: 0;} */
+.node-events-form .fieldset-wrapper .date-clear.weekly .date-clear > .form-type-checkboxes > label{position: absolute;left: 0;}
+.node-events-form .fieldset-wrapper .range-of-repeat .form-type-date-repeat-form-element-radios > label{position: absolute;left: 0;}
+.node-events-form .field-type-datetime .fieldset-wrapper{margin:0 0 0 170px;}
+.node-events-form .end-date-wrapper .date-padding{clear:both;}
+.node-events-form .yearly .bymonth .form-type-checkboxes .form-type-checkbox label{width:auto;}
+.node-events-form .date-repeat-input{float:left;}
+.node-events-form .date-combo .fieldset-wrapper .date-clear{float:left;width:100%}
+.node-events-form .field-name-field-event-country{float: left;width:100%;}
+.node-events-form .field-name-field-event-country .form-checkboxes input[type='checkbox']{float: left;margin: 7px 5px 0px 0px;}
+.node-events-form .field-type-datetime .fieldset-description{width:0px;}
+.field-type-datetime .date-float .form-checkbox{float: left;margin: 7px 10px 0 0px;}
+.node-events-form .fieldset-wrapper .date-clear .form-type-checkbox input[type='checkbox']{float: left;margin: 7px 5px 0 0;}
+.node-events-form .field-name-field-event-country .form-checkboxes label{width:auto;}
+.node-events-form  .field-type-datetime .fieldset-legend{float: left;margin: 7px 0px 0px;text-indent: 0;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;color: #000;font-weight: normal;}
+.node-events-form .form-item label{float: left;margin: 0 10px 20px 0;width: 160px;}
+.node-events-form .form-item.form-type-textarea label{float: left;margin: 0 10px 20px 0;width:250px;}
+.node-events-form ul.tips li{width:100%;float:left;margin:10px 0px;}
+.node-events-form .fieldset .fieldset-wrapper{padding:0 0px;}
+.node-events-form .filter-wrapper .form-item,.node-events-form fieldset .fieldset-wrapper,.node-events-form .filter-guidelines{padding:0 0px;}
+.node-events-form .form-textarea-wrapper{float:left;}
 /* .view-e-catalogs-view{clear:both;float:left;} */
 .node-e_catalogs-form .field-name-field-upload-file-catalog .form-managed-file img.file-icon{display:none;}
 .node-e_catalogs-form .field-name-field-upload-file-catalog .form-managed-file a{width:200px;overflow:hidden;float:left;height:20px;}
@@ -1697,9 +1744,12 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 /* #page-wrapper .node-testimonial-form div:first-child >.messages.error{display:none;} */
 .node-testimonial-form .file a{width: 170px;float: left;height: 20px;overflow: hidden;margin: 0 0 0 5px;}
 .node-testimonial-form .file-size{width:90px;float: left;margin: 0 10px;}
+.node-testimonial-form .form-actions{clear: both;margin: 0 0 0 290px;float:left;}
+.node-product_change_notices-form{width:1000px;margin:0px auto;}
 .node-testimonial-form .form-managed-file .form-file,.node-testimonial-form .form-managed-file .form-submit{float:left;}
 .node-testimonial-form .form-managed-file .form-file,.node-testimonial-form .form-managed-file .form-file{width:280px;padding:4px 4px 4px 0px;margin:0 0 0 5px;}
 .node-testimonial-form .form-managed-file .form-submit{margin:0 0 0 18px;}
+.node-testimonial-form .form-managed-file input[value='Remove'].form-submit{margin:10px 0 0 8px;clear:both;float:left;}
 .node-testimonial-form .form-managed-file .custom-error{float:right;}
 .view-testimonial .views-view-grid td img,.view-testimonial .views-view-grid td .testimonial-video-field iframe,.view-clone-of-testimonial .views-view-grid td .testimonial-video-field iframe,
 .view-clone-of-testimonial .views-view-grid td img{width:300px;height:258px;float:left;}
@@ -1854,38 +1904,40 @@ font-size:20px; font-family: 'ralewayregular', sans-serif; line-height: 250%; fo
 table.gig_rep{margin:30px auto; width:800px;}
 table.gig_rep td{padding:20px 0px;}
 .view-clone-of-entityforms .view-empty{clear: both; width: 1000px; margin: 0px auto;padding: 0 0 0 80px;}
-.page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio{float:left;margin:5px 0 20px 45px;}
-.page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio:last-child{float:left;margin:5px 0 30px 30px;}
-.page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio label{float:left;margin:0 30px 0 0px;font-size:14px;font-weight:bold;}
-.page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio .form-radio{float:left;margin:3px 6px 0 0px;}
-.page-promotion-upload fieldset{margin:0px;}
-.page-promotion-upload .date-padding label{display:none;}
-.page-promotion-upload fieldset legend{color:#000;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;position:inherit;line-height: 25px; width: auto;text-indent:0px;}
-.page-promotion-upload fieldset .fieldset-legend{font-weight:bold;font-size:14px;}
-.page-promotion-upload #promotion-information > legend .fieldset-legend{font-weight:normal;font-size:20px;text-indent:0px;}
-.page-promotion-upload .field-name-field-promotion-thumbnail{width:250px;float:left;margin:0px;}
+.page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio,.page-node-edit .promotion .node-promotion_rebates-form .form-type-radios .form-type-radio{float:left;margin:5px 0 20px 45px;}
+.page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio:last-child,.page-node-edit .promotion .node-promotion_rebates-form .form-type-radios .form-type-radio:last-child{float:left;margin:5px 0 30px 30px;}
+.page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio label,.page-node-edit .promotion .node-promotion_rebates-form .form-type-radios .form-type-radio label{float:left;margin:0 30px 0 0px;font-size:14px;font-weight:bold;}
+.page-promotion-upload .node-promotion_rebates-form .form-type-radios .form-type-radio .form-radio,.page-node-edit .promotion .node-promotion_rebates-form .form-type-radios .form-type-radio .form-radio{float:left;margin:3px 6px 0 0px;}
+.page-promotion-upload fieldset,.page-node-edit .promotion fieldset,.page-node-edit .promotion fieldset,.page-node-edit .promotion fieldset{margin:0px;}
+.page-promotion-upload .date-padding label,.page-node-edit .promotion .date-padding label{display:none;}
+.page-promotion-upload fieldset legend,.page-node-edit .promotion fieldset legend{color:#000;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;position:inherit;line-height: 25px; width: auto;text-indent:0px;}
+.page-promotion-upload fieldset .fieldset-legend,.page-node-edit .promotion fieldset .fieldset-legend{font-weight:bold;font-size:14px;}
+.page-promotion-upload #promotion-information > legend .fieldset-legend,.page-node-edit .promotion #promotion-information > legend .fieldset-legend{font-weight:normal;font-size:20px;text-indent:0px;}
+.page-promotion-upload .field-name-field-promotion-thumbnail,.page-node-edit .promotion .field-name-field-promotion-thumbnail{width:250px;float:left;margin:0px;}
 /* .page-promotion-upload .field-name-field-promotion-thumbnail .image-widget{float:left;border-top:1px solid #000;} */
-.page-promotion-upload .field-name-field-promotion-thumbnail .image-widget-data .form-submit{float:left;margin:5px 0px 5px;}
-.page-promotion-upload .field-name-field-promotion-thumbnail .image-widget-data .form-file{float:left;width:250px;}
-.page-promotion-upload .fieldset-wrapper .form-type-textfield{width:200px;float:left;}
-.page-promotion-upload .form-type-textfield.form-item-title .form-text{width:150px;float:left;margin:13px 0px;}
-.page-promotion-upload .field-name-field-promotion-start-date{width:170px;float:left;}
+.page-promotion-upload .field-name-field-promotion-thumbnail .image-widget-data .form-submit,.page-node-edit .promotion .field-name-field-promotion-thumbnail .image-widget-data .form-submit{float:left;margin:5px 0px 5px;}
+.page-promotion-upload .field-name-field-promotion-thumbnail .image-widget-data .form-file,.page-node-edit .promotion .field-name-field-promotion-thumbnail .image-widget-data .form-file{float:left;width:250px;}
+.page-promotion-upload .fieldset-wrapper .form-type-textfield,.page-node-edit .promotion .fieldset-wrapper .form-type-textfield{width:200px;float:left;}
+.page-promotion-upload .form-type-textfield.form-item-title .form-text,.page-node-edit .promotion .form-type-textfield.form-item-title .form-text{width:150px;float:left;margin:13px 0px;}
+.page-promotion-upload .field-name-field-promotion-start-date,.page-node-edit .promotion .field-name-field-promotion-start-date{width:170px;float:left;}
 /* .page-promotion-upload .field-name-field-promotion-start-date  fieldset.date-combo .date-clear{margin:14px 0px;} */
-.page-promotion-upload .field-name-field-promotion-start-date fieldset.date-combo .date-padding{padding:0px 0;}
-.page-promotion-upload .field-name-field-promotion-start-date fieldset.date-combo .date-clear{margin:7px 0px;}
-.page-promotion-upload .field-name-field-promotion-end-date fieldset.date-combo .date-padding{padding:0px;}
-.page-promotion-upload .field-name-field-promotion-end-date fieldset.date-combo .date-clear{width: 110px;float:left;margin:7px 0px;}
-.page-promotion-upload .field-name-field-promotion-start-date .fieldset-wrapper{margin:0px;padding:0 10px 0 0}
-.page-promotion-upload .field-name-field-promotion-end-date{width:180px;float:left;}
-.page-promotion-upload .field-name-field-promotion-end-date .fieldset-wrapper{margin:0px;width:120px;padding:0 10px 0 0}
+.page-promotion-upload .field-name-field-promotion-start-date fieldset.date-combo .date-padding,.page-node-edit .promotion .field-name-field-promotion-start-date fieldset.date-combo .date-padding{padding:0px 0;}
+.page-promotion-upload .field-name-field-promotion-start-date fieldset.date-combo .date-clear,.page-node-edit .promotion .field-name-field-promotion-start-date fieldset.date-combo .date-clear{margin:7px 0px;}
+.page-promotion-upload .field-name-field-promotion-end-date fieldset.date-combo .date-padding,.page-node-edit .promotion .field-name-field-promotion-end-date fieldset.date-combo .date-padding{padding:0px;}
+.page-promotion-upload .field-name-field-promotion-end-date fieldset.date-combo .date-clear,.page-node-edit .promotion .field-name-field-promotion-end-date fieldset.date-combo .date-clear{width: 110px;float:left;margin:7px 0px;}
+.page-promotion-upload .field-name-field-promotion-start-date .fieldset-wrapper,.page-node-edit .promotion .field-name-field-promotion-start-date .fieldset-wrapper{margin:0px;padding:0 10px 0 0}
+.page-promotion-upload .field-name-field-promotion-end-date,.page-node-edit .promotion .field-name-field-promotion-end-date{width:180px;float:left;}
+.page-promotion-upload .field-name-field-promotion-end-date .fieldset-wrapper,.page-node-edit .promotion .field-name-field-promotion-end-date .fieldset-wrapper{margin:0px;width:120px;padding:0 10px 0 0}
 .page-promotion-upload .field-name-field-promotion-end-date .date-popup-init{}
-.page-promotion-upload .field-name-field-promotion-claim-date{width:160px;float:left;}
-.page-promotion-upload fieldset.form-wrapper{border-bottom:0px;position:inherit;/* background:#dedede; */}
+.page-promotion-upload .field-name-field-promotion-claim-date,.page-node-edit .promotion .field-name-field-promotion-claim-date{width:160px;float:left;}
+.page-promotion-upload fieldset.form-wrapper,.page-node-edit .promotion fieldset.form-wrapper{border-bottom:0px;position:inherit;/* background:#dedede; */}
 .node-promotion_rebates-form #promotion-information{float: left;width:1000px;padding:0px;border: 1px solid #C5C2C2;box-shadow: 0px 0px 3px 0px #dedede;}
 .node-promotion_rebates-form .field-name-field-promotion-url{margin:0px;width:90%;padding:20px 8% 20px 2%;border: 1px solid #C5C2C2;box-shadow: 0px 0px 3px 0px #dedede;float:left;border-top:0px;}
-.page-promotion-upload .field-name-field-promotion-thumbnail label,#promotion-information .form-type-textfield label,.page-promotion-upload .field-name-field-promotion-claim-date label{font-size:14px;font-weight:bold;}
+.page-promotion-upload .field-name-field-promotion-thumbnail label,#promotion-information .form-type-textfield label,.page-promotion-upload .field-name-field-promotion-claim-date label,
+.page-node-edit .promotion .field-name-field-promotion-claim-date label{font-size:14px;font-weight:bold;}
 .page-promotion-upload .field-name-field-promotion-claim-date .form-text{margin:13px 0px;}
-.page-promotion-upload .field-name-field-promotion-start-date .form-text,.page-promotion-upload .field-name-field-promotion-end-date .form-text,.page-promotion-upload .field-name-field-promotion-claim-date .form-text{width:100px;}
+.page-promotion-upload .field-name-field-promotion-start-date .form-text,.page-promotion-upload .field-name-field-promotion-end-date .form-text,.page-promotion-upload .field-name-field-promotion-claim-date .form-text,
+.page-node-edit .promotion .field-name-field-promotion-end-date .form-text,.page-node-edit .promotion .field-name-field-promotion-claim-date {width:100px;}
 .page-promotion-upload #promotion-information > .fieldset-wrapper{float:left;padding:10px 5px 0 25px;margin:20px 0 0 0;width:970px;}
 .page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file{margin:10px 0 0 2px; width:960px;clear:both;float:left;}
 .page-promotion-upload .field-multiple-table .form-submit{width:180px;}
@@ -1906,59 +1958,66 @@ table.gig_rep td{padding:20px 0px;}
 #page-wrapper form.node-promotion_rebates-form div.image-preview {margin: 0 10px 10px 10px;padding: 0;}
 .node-promotion_rebates-form .field-name-field-promotion-url label{background:#337ab7;color:#fff;}
 #page-wrapper form.node-promotion_rebates-form div.image-preview img{margin:0px;}
-.page-promotion-upload .field-type-image.field-name-field-promotion-banner .image-widget-data{margin:8px 0 0 25px;width:97%; }
+.page-promotion-upload .field-type-image.field-name-field-promotion-banner .image-widget-data,.promotion .field-type-image.field-name-field-promotion-banner .image-widget-data{margin:8px 0 0 25px;width:97%; }
 #page-wrapper form.node-promotion_rebates-form .field-type-image div.messages{display:none;}
-.page-promotion-upload .field-type-image.field-name-field-promotion-banner .image-widget-data .form-submit{clear: both;margin: 10px 0 10px 0;float: left;}
+.page-promotion-upload .field-type-image.field-name-field-promotion-banner .image-widget-data .form-submit,
+.promotion .field-type-image.field-name-field-promotion-banner .image-widget-data .form-submit{clear: both;margin: 10px 0 10px 0;float: left;}
 .page-promotion-upload .form-item.form-item-field-distributor-promotion-deta-und-0-field-promotion-import-excel-und-0 .description {margin:3px 0 0 75px;}
 .page-promotion-upload .form-item.form-item-field-distributor-promotion-deta-und-0-field-distributor-promo-banner-und-0 .description {margin:0px 0 20px 275px;}
-.page-promotion-upload .field-type-image label{width:200px;}
+.page-promotion-upload .field-type-image label,.page-promotion-upload .field-type-image label{width:200px;}
 /* .page-promotion-upload .field-type-image .form-type-managed-file label{width:auto;} */
 /* .page-promotion-upload .field-type-image .form-type-managed-file .image-widget .image-preview{clear:both;} */
 .page-promotion-upload .field-type-image .form-type-managed-file.form-item-field-promotion-thumbnail-und-0 .image-preview{clear:both;}
 /* .page-promotion-upload .field-type-image.field-name-field-promotion-banner .form-type-managed-file label{width:220px;} */
 .node-promotion_rebates-form .field-type-taxonomy-term-reference,.node-promotion_rebates-form .field-name-field-promotion-banner,.node-promotion_rebates-form .field-name-field-promotion-excel{float:left;/* border:1px solid #337ab7;*/border:1px solid #c5c2c2;width:100%;box-shadow:0px 0px 3px 1px #dedede;}
-.node-promotion_rebates-form .field-name-field-promotion-banner,.node-promotion_rebates-form .field-name-field-promotion-excel{border-bottom:0px;box-shadow:0px 0px 3px 0px #dedede;}
+.node-promotion_rebates-form .field-name-field-promotion-banner,.node-promotion_rebates-form .field-name-field-promotion-excel,.promotion .node-promotion_rebates-form .field-name-field-promotion-banner,.promotion .node-promotion_rebates-form .field-name-field-promotion-excel{border-bottom:0px;box-shadow:0px 0px 3px 0px #dedede;}
 .node-promotion_rebates-form .field-name-field-promotion-excel{border-top:0px;border-bottom:1px solid #c5c2c2;padding:1% 0 0 1%;width:99%}
-.page-promotion-upload .field-name-field-promotion-thumbnail label,#promotion-information .form-type-textfield label,.page-promotion-upload .field-name-field-promotion-claim-date label{font-size:14px;font-weight:bold;}
+.page-promotion-upload .field-name-field-promotion-thumbnail label,#promotion-information .form-type-textfield label,.page-promotion-upload .field-name-field-promotion-claim-date label,
+.node-type-promotion-rebates .promotion  .field-name-field-promotion-thumbnail label,.node-type-promotion-rebates .promotion #promotion-information .form-type-textfield label,.node-type-promotion-rebates .promotion .field-name-field-promotion-claim-date label
+{font-size:14px;font-weight:bold;}
 .page-promotion-upload .field-name-field-promotion-thumbnail .image-widget-data{float: left;margin: 0 0 0px 0px;}
-.page-promotion-upload .field-name-field-promotion-claim-date .form-text{margin:13px 0px;}
-.page-promotion-upload .field-name-field-promotion-start-date .form-text,.page-promotion-upload .field-name-field-promotion-end-date .form-text,.page-promotion-upload .field-name-field-promotion-claim-date .form-text{width:100px;}
-.page-promotion-upload #promotion-information > .fieldset-wrapper{float:left;padding:10px 5px 0 25px;margin:20px 0 0 0;width:970px;}
-.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file{margin:10px 0 0 270px; width:auto;clear:both;float:left;}
-.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file .file{float:left;}
-.page-promotion-upload .field-multiple-table .form-submit{width:180px;float: left; margin: 10px 20px 10px 20px;}
-.page-promotion-upload input[value='Remove']{width:180px;}
+.page-promotion-upload .field-name-field-promotion-claim-date .form-text,.node-type-promotion-rebates .promotion .field-name-field-promotion-claim-date .form-text{margin:13px 0px;}
+.page-promotion-upload .field-name-field-promotion-start-date .form-text,.page-promotion-upload .field-name-field-promotion-end-date .form-text,.page-promotion-upload .field-name-field-promotion-claim-date .form-text,
+.node-type-promotion-rebates .promotion .field-name-field-promotion-start-date .form-text,.node-type-promotion-rebates .field-name-field-promotion-end-date .form-text,.node-type-promotion-rebates  .field-name-field-promotion-claim-date .form-text{width:100px;}
+.page-promotion-upload #promotion-information > .fieldset-wrapper,.promotion #promotion-information > .fieldset-wrapper{float:left;padding:10px 5px 0 25px;margin:20px 0 0 0;width:970px;}
+.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file,.promotion #edit-field-promotion-excel .form-item .form-managed-file{margin:10px 0 0 270px; width:auto;clear:both;float:left;}
+.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file .file,.promotion #edit-field-promotion-excel .form-item .form-managed-file .file{float:left;}
+.page-promotion-upload .field-multiple-table .form-submit,.promotion .field-multiple-table .form-submit{width:180px;float: left; margin: 10px 20px 10px 20px;}
+.page-promotion-upload input[value='Remove'],.promotion input[value='Remove']{width:180px;}
 /* .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] td input[value='Remove']{margin:20px 25px 0px 0px;} */
 .page-promotion-upload .field-multiple-table td .form-item .form-managed-file{width: 430px;}
 .page-promotion-upload .field-multiple-table td .form-item .form-managed-file.image-widget{width: 500px;float: left;margin:0px 0px 0px 5px}
-.page-promotion-upload .field-multiple-table td .form-item .form-managed-file.image-widget .image-widget-data{width:99%;margin:0 0 0px 10px;}
+.page-promotion-upload .field-multiple-table td .form-item .form-managed-file.image-widget .image-widget-data,.promotion .field-multiple-table td .form-item .form-managed-file.image-widget .image-widget-data{width:99%;margin:0 0 0px 10px;}
 .page-promotion-upload .field-multiple-table td .form-item .form-managed-file.image-widget .image-widget-data .form-file{padding: 4px 4px 4px 0;float: left;}
-.page-promotion-upload .field-multiple-table td .form-item .form-managed-file.image-widget .image-widget-data .form-submit{clear:both;float:left;margin:5px 0px;}
+.page-promotion-upload .field-multiple-table td .form-item .form-managed-file.image-widget .image-widget-data .form-submit,
+.promotion .field-multiple-table td .form-item .form-managed-file.image-widget .image-widget-data .form-submit{clear:both;float:left;margin:5px 0px;}
 .page-promotion-upload .field-multiple-table td .field-type-image{margin:0 0 0px 0px;}
-.page-promotion-upload .field-name-field-promotion-url label{width:auto;float:left;margin:0px 10px 20px 0px; width:98%;padding:6px 0px 6px 2%;}
-.page-promotion-upload .field-name-field-promotion-url .form-text{margin:0 0 0 25px;}
-.page-promotion-upload .fieldset-wrapper .form-item .description {clear: both; margin: 3px 0 0 0px;}
-.page-promotion-upload .field-name-field-promotion-url .form-type-textfield.form-item .description {clear: both;margin: 6px 0 0 28px;float: left;}
-.page-promotion-upload .form-item .description{margin:10px 0 15px 275px;}
+.page-promotion-upload .field-name-field-promotion-url label,.node-type-promotion-rebates .promotion .field-name-field-promotion-url label{width:auto;float:left;margin:0px 10px 20px 0px; width:98%;padding:6px 0px 6px 2%;}
+.page-promotion-upload .field-name-field-promotion-url .form-text,.node-type-promotion-rebates .promotion .field-name-field-promotion-url .form-text{margin:0 0 0 25px;}
+.page-promotion-upload .fieldset-wrapper .form-item .description,.node-type-promotion-rebates .promotion .fieldset-wrapper .form-item .description {clear: both; margin: 3px 0 0 0px;}
+.page-promotion-upload .field-name-field-promotion-url .form-type-textfield.form-item .description,.promotion .field-name-field-promotion-url .form-type-textfield.form-item .description ,.node-type-promotion-rebates .promotion .field-name-field-promotion-url .form-type-textfield.form-item .description {clear: both;margin: 6px 0 0 28px;float: left;}
+.page-promotion-upload .form-item .description,.node-type-promotion-rebates .promotion .form-item .description{margin:10px 0 15px 275px;}
+.node-type-promotion-rebates .promotion .form-item .description{clear:both;float:left;}
+.node-type-promotion-rebates .promotion .sticky-header{z-index:10;}
 .node-promotion_rebates-form .field-name-field-promotion-excel,.node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values']{border: 1px solid #c5c2c2;width:100%;box-shadow: 0px 0px 3px 0px #dedede;float:left;padding:0px 0px 5px 0 }
 .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr {position:relative;}
 .node-promotion_rebates-form .field-name-field-promotion-excel .form-managed-file .form-file{width:220px;float:left}
-.node-promotion_rebates-form .field-name-field-promotion-excel .form-managed-file .form-submit{clear: both;margin: 10px 0 0 5px;float: left;}
+.node-promotion_rebates-form .field-name-field-promotion-excel .form-managed-file .form-submit,.promotion .node-promotion_rebates-form .field-name-field-promotion-excel .form-managed-file .form-submit{clear: both;margin: 10px 0 0 5px;float: left;}
 .node-promotion_rebates-form .field-type-taxonomy-term-reference .form-item,.node-promotion_rebates-form .field-name-field-promotion-banner .form-item{margin:0px;}
 .node-promotion_rebates-form .field-name-field-promotion-banner .image-widget{float: left; margin: 0 0 0 250px;}
 .node-promotion_rebates-form .form-type-radios > label,.node-promotion_rebates-form fieldset legend,.node-promotion_rebates-form .field-name-field-promotion-banner label,
 .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr th label,.page-eform-submit-asset-upload-form  table[id*='field-upload-file-values'] tr th.field-label,
-.field-name-field-upload-images-roadmap table[id*='field-upload-images-roadmap-values'] tr th{border-radius: 0;float:left;color: white;background-color: #337ab7;border-color: #337ab7;padding: 8px 5% 8px 2%;width: 93%;
+.field-name-field-upload-images-roadmap table[id*='field-upload-images-roadmap-values'] tr th,.node-type-promotion-rebates .node-promotion_rebates-form fieldset legend{border-radius: 0;float:left;color: white;background-color: #337ab7;border-color: #337ab7;padding: 8px 5% 8px 2%;width: 93%;
 text-shadow:none;}
 .page-eform-submit-asset-upload-form .field-name-field-upload-file  table[id*='field-upload-file-values'] tr th.field-label,.page-eform-submit-asset-upload-form table#field-upload-file-values tr th.field-label,
 .field-name-field-upload-images-roadmap table[id*='field-upload-images-roadmap-values'] tr th{width:93%;padding:8px 5% 8px 2%}
 .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr th label{margin:0px;}
 .node-promotion_rebates-form #field-promotion-details-values tr td .form-item{margin:0px 5px 0px;}
-.node-promotion_rebates-form fieldset fieldset legend{background:none;color:#000;padding:0px;width:auto;}
+.node-promotion_rebates-form fieldset fieldset legend,.node-type-promotion-rebates .node-promotion_rebates-form fieldset fieldset legend{background:none;color:#000;padding:0px;width:auto;}
 .node-promotion_rebates-form .form-type-radios #edit-field-promotion-type-und{float: left;margin: 20px 0px 0 0px;}
-.node-promotion_rebates-form #field-distributor-promotion-deta-values{float: left;margin:10px 0px 0 0px;border:1px solid #c5c2c2;width:100%;box-shadow:0px 0px 3px 1px #dedede}
-.node-promotion_rebates-form #field-distributor-promotion-deta-values .field-name-field-promotion-details .field-add-more-submit{float:left;margin:15px 0 15px 410px;}
-.node-promotion_rebates-form #field-distributor-promotion-deta-values .field-name-field-promotion-details .field-add-more-submit{float:left;margin:15px 0 15px 410px;}
+.node-promotion_rebates-form div[id*='field-distributor-promotion-deta-values']{float: left;margin:10px 0px 0 0px;border:1px solid #c5c2c2;width:100%;box-shadow:0px 0px 3px 1px #dedede}
+.node-promotion_rebates-form div[id*='field-distributor-promotion-deta-values'] .field-name-field-promotion-details .field-add-more-submit{float:left;margin:15px 0 15px 410px;}
+.node-promotion_rebates-form div[id*='field-distributor-promotion-deta-values'] .field-name-field-promotion-details .field-add-more-submit{float:left;margin:15px 0 15px 410px;}
 table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable{width:1000px;background:none;border-bottom:0px;border-top:10px solid #565656}
 table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-gigabyte-model,table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-widget-text-textfield,
 table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-stable-model,table[id*='field-distributor-promotion-deta-values'].field-multiple-table tr.draggable td .field-name-field-itp-points,
@@ -2014,7 +2073,7 @@ table[id*='field-promotion-notes-values'] {border-bottom:1px solid #c7bcbc;}
 .node-type-promotion-rebates table.stores td{width:auto;padding: 5px;}
 .node-type-promotion-rebates table.stores td.disabled{width:0px;}
 .field-name-field-promotion-banner .image-widget-data img,.node-promotion_rebates-form .image-widget-data .file img{float:left;margin:0px;}
-.node-promotion_rebates-form .image-widget-data .file a{float: left; width:200px;margin: 0 10px; height: 20px; overflow: hidden;}
+.node-promotion_rebates-form .image-widget-data .file a,.node-type-promotion-rebates .promotion .image-widget-data .file a{float: left; width:200px;margin: 0 10px; height: 20px; overflow: hidden;}
 .node-promotion_rebates-form .image-widget-data .file-size{float: left;margin:0 10px 0 0;}
 div[id*='field-distributor-promotion-deta-add-more-wrapper']{position:relative;float:left;padding: 0 0 30px 0;}
 
@@ -2031,7 +2090,10 @@ font-size: 15px;height: inherit;position: absolute;bottom: 15px;right: 10px;}
 .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr:first-child{border-top:0px;/* border-bottom:1px solid #c7bcbc */}
 .node-promotion_rebates-form div[id*='field-distributor-promotion-deta-add-more-wrapper'] table[id*='field-distributor-promotion-deta-values'] tr:first-child{border-top:0px;/* border-bottom:1px solid #c7bcbc */}
 .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr{margin-top:2px;border-top:1px solid #c7bcbc;}
-form.node-promotion_rebates-form{position:relative;float: left;padding: 0 0 30px 0;padding: 15px 0px 80px;/* background:#dedede; */width:1000px;}
+form.node-promotion_rebates-form{position:relative;float: left;padding: 0 0 30px 0;padding: 15px 0px 80px;width:1000px;}
+.section.promotion{width:1000px;margin:0px auto;}
+.section.promotion h1 em{font-style:normal;}
+.section.promotion h1{font-style:italic;}
 form.node-promotion_rebates-form input.form-submit{width:auto;margin:10px 10px 0 10px;}
 #page-wrapper #messages div.section  .messages.error{width: 940px;margin: 0px auto;float: inherit;}
 #page-wrapper form.node-promotion_rebates-form #field-distributor-promotion-deta-add-more-wrapper .messages.error{width:90%;}
@@ -2091,7 +2153,7 @@ background-repeat: no-repeat;background-size: cover;height: 80px;margin-top: 50p
 .node-product_change_notices-form .field-name-field-mail-template-pcn,.node-product_change_notices-form .field-name-field-mailing-list{display:none;}
 #user-register-form .fieldset-legend{font-size: 20px;font-weight: normal;color:#000;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;}
 #user-register-form fieldset legend{font-size: 20px;font-weight: normal;color:#000;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;}
-.node-product_change_notices-form .field-name-field-model-url .form-submit{margin:0px 0 0 0;}
+.node-product_change_notices-form .field-name-field-model-url .form-submit{clear: both;margin: 0 0 0 170px;}
 .node-product_change_notices-form .field-name-field-model-url .description{margin:0px 0 0 170px;}
 .node-product_change_notices-form .field-name-field-model-url .file-widget .file{float: left;margin: 0 15px 0 0;}
 .node-product_change_notices-form .field-name-field-model-url .file-widget .file .file-icon{margin:4px 3px 0px 0px;float:left;}
