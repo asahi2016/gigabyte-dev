@@ -6,16 +6,11 @@
         setInterval(function () {
             show_hide_distributor_program_details();
         },100);
-		
-		
-		var access = false;
-		$('.page-promotion-upload .field-name-field-promotion-thumbnail .image-widget-data .form-submit').on('Click',function(){
-				access = false;
-		});
+
         function show_hide_distributor_program_details(){
 			//console.log($('div[id*="promotion-rebates-node-form"]').find('div[id*="edit-field-promotion-excel"]').find('span .file-size').size());
-			/* console.log($('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').length);
-			$('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').css('border','1px solid red'); */
+			 console.log($('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').length);
+			$('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').css('border','1px solid red'); *//*
             if($('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').length > 0){
                 $('table[id*="field-distributor-promotion-deta-values"]').hide();
                 $('table[id*="field-distributor-promotion-deta-values"]').hide();
@@ -26,102 +21,19 @@
 				$('table[id*="field-distributor-promotion-deta-values"] td .form-select').prop('selectedIndex',0);
 				$('table[id*="field-distributor-promotion-deta-values"] td .distributor-image img').remove();
 				$('#field-distributor-promotion-deta-add-more-wrapper > .form-item  > .clearfix').css('border', '0px');
-				/* $("table[id='field-distributor-promotion-deta-values'] td .field-name-field-distributor-promo-banner .form-managed-file input[value='Remove']").trigger('click');
-				$("table[id='field-promotion-details-values'] .form-type-checkboxes .form-item .form-checkbox").attr('checked',false);
-				setTimeout(function(){$("table[id='field-distributor-promotion-deta-values'] td .field-name-field-distributor-promo-banner .form-managed-file input[value='Remove']").click()}, 500);
-				$(document).on('click', "table[id='field-distributor-promotion-deta-values'] td .field-name-field-distributor-promo-banner .form-managed-file input[value='Remove']" , function(e) {
-				
-				   $(this).trigger('click');
-				}); */
-				
             }else{
                 $('table[id*="#field-distributor-promotion-deta-values"]').show();
                 $('table[id*="field-distributor-promotion-deta-values"]').show();
                 $('input.field-add-more-submit').show();
                 $('div[id*="edit-field-distributor-promotion-deta-und-add-more"]').show();
             }
-			if($('#page-wrapper form.node-promotion_rebates-form div.messages').length > 0 && access == false){
-			  $('.page-promotion-upload #promotion-information > .fieldset-wrapper').append($('#page-wrapper form.node-promotion_rebates-form div.messages'));			  
-			  access = true;
-			}
         }
-		
-        /*setInterval(function(){
-            console.log($('select[id*="edit-field-distributor-promotion-deta]').attr('selected','selected').val());
+
+        setInterval(function(){
+            //console.log($('select[id*="edit-field-distributor-promotion-deta]').attr('selected','selected').val());
             //gettermimage($('select[id*="edit-field-distributor-promotion-deta]').attr('selected','selected').val());
-        },2000);*/
+        },2000);
 
-
-        /*termlength = 0;
-        $.ajax({
-            url: Drupal.settings.gigabyte.baseUrl + '/promotions/get/termlength',
-            type: 'post',
-            success: function (data) {
-                termlength = data;
-            }
-        });
-        setInterval(function() {
-            var dis_selection = new Array();
-            var dis_selection_value = new Array();
-            var tr_counter = 0;
-
-            dist_length = $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").length;
-
-            $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").each(function (i) {
-                if ($(this).find('select').find('option:selected').val() != '_none') {
-                    option = $(this).find('select').find('option:selected');
-                    dis_selection[i] = option.val();
-                    dis_selection_value[i] = option.text();
-                }
-            });*/
-
-            //console.log(dis_selection);
-            /*if(dis_selection) {
-
-             $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").each(function(i) {
-
-             //if (dist_length <= termlength) {
-             //$(this).find('select').css('border','1px solid red');
-             //console.log($(this).find('select').find('option').val());
-             for(k = 0; k < dis_selection.length; k++) {
-             //console.log(dis_selection[k]);
-             $(this).find('select').find('option').each(function(l,elem){
-             if($(elem).val() == dis_selection[k]) {
-             $(elem).remove();
-             }
-             });
-
-             }
-             //}
-
-             /*console.log(dis_selection);
-             readd_counter = false;
-             //if(tr_counter > 0 ){
-             $(this).find('select').find('option').each(function(k, elem){
-             for(j=0;j<dis_selection.length;j++){
-             if($(elem).val() == dis_selection[j] && i > j ) {
-             $(elem).remove();
-             }else{
-             //console.log($(elem).val(dis_selection[j]).length);
-             if(!readd_counter && !dis_selection[j]){
-             $(elem).parent().append('<option value="'+dis_selection[j]+'" >'+dis_selection_value[dis_selection[j]]+'</option>')
-             readd_counter = true;
-             }
-             }
-             }
-
-             });*/
-            /*
-             //}
-             //tr_counter++;
-             */
-            /* }
-             */
-            /*    });*/
-            /*
-             }
-             },500);*/
-        //});
 
         //Display distributor image on selection from dropdown
         $(document).on('change','select[id*="edit-field-distributor-promotion-deta"]',function(){
@@ -140,8 +52,16 @@
                 }
             });
         });
-       /* termlength = 0;
+
+        termlength = 0;
+        elem_array = new Array();
+        single_counter = 0;
+        original_dist = new Array();
             setInterval(function(){
+                var dis_selection = new Array();
+                var dis_selection_value = new Array();
+
+                var tr_counter = 0;
                 $.ajax({
                     url: Drupal.settings.gigabyte.baseUrl + '/promotions/get/termlength',
                     type: 'post',
@@ -151,11 +71,81 @@
                 });
                 dist_length = $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").length;
                 $(".node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] > tbody > tr").each(function(i){
-                    if(dist_length <= termlength){
+                    if ($(this).find('select[id*="field-prmotion-distributors-und"]').find('option:selected').val() != '_none') {
+                        option = $(this).find('select[id*="field-prmotion-distributors-und"]').find('option:selected');
+                        dis_selection[i] = option.val();
+                        dis_selection_value[i] = option.text();
+                    }
+                    $(this).find('select[id*="field-prmotion-distributors-und"]').find('option').each(function(m,el){
+                           if(single_counter == 0){
+                               original_dist[m] = [el,$(this).val()];
+                           }
+                    });single_counter = 1;
+                    if(dist_length < termlength){
+                        //console.log(dist_length+"--"+termlength);
+                        $('input[id*="edit-field-distributor-promotion-deta-und-add-more"]').show()
+                        for (k = 0; k < dis_selection.length; k++) {
+                            readd_counter = false;
+                            $(this).find('select[id*="field-prmotion-distributors-und"]').find('option').each(function (k, elem) {
+                                for (j = i-1; j < i; j++) {
+                                    //console.log(dis_selection[j+1]+",i="+i +", j="+j);
+                                    if ($(elem).val() == dis_selection[j] && i > j && j >= 0) {
+                                        //console.log(elem);
+                                        if(elem_array.indexOf(i) === -1){
+                                            //elem_array.push({value:elem,label:dis_selection_value[j]});
+                                            elem_array[i] = [elem, $(this).val()] ;
+                                        }
+                                        $(elem).remove();
+                                    }
+                                }
+                            });
+                        }
                         console.log(i);
+                        switch(i){
+                            case 1:
+                                for(l=0;l<i;l++){
+                                    console.log(original_dist);
+                                    console.log(elem_array);
+                                }
+                                break;
+                            case 2:
+                                for(l=1;l<i;l++){
+                                    console.log(elem_array[l]);
+                                }
+                                break;
+                            case 3:
+                                for(l=1;l<i;l++){
+                                    console.log(elem_array[l]);
+                                }
+                                break;
+                            case 4:
+                                for(l=1;l<i;l++){
+                                    console.log(elem_array[l]);
+                                }
+                                break;
+                            case 5:
+                                for(l=1;l<i;l++){
+                                    console.log(elem_array[l]);
+                                }
+                                break;
+                            case 6:
+                                for(l=1;l<i;l++){
+                                    console.log(elem_array[l]);
+                                }
+                                break;
+                            case 7:
+                                for(l=1;l<i;l++){
+                                    console.log(elem_array[l]);
+                                }
+                                break;
+                        }
+
+
+                    }else{
+                       $('input[id*="edit-field-distributor-promotion-deta-und-add-more"]').hide();
                     }
                 });
-        },500);*/
+        },1000);
 
 
 
@@ -177,9 +167,6 @@
             });
 
         }
-
-        $('.views-field-field-promotion-thumbnail a').attr('target', '_blank');
-
     });
 	$('.node-type-promotion-rebates.page-node-edit #content .section').addClass('promotion');
 })(jQuery);

@@ -219,7 +219,7 @@ $databases = array (
             'default' =>
                 array (
                     'database' => 'gigabyte',
-                    'username' => 'vinoth',
+                    'username' => 'avinash',
                     'password' => '',
                     'host' => '192.168.2.23',
                     'port' => '3306',
