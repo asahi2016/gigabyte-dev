@@ -208,4 +208,5 @@
         }
     });
 	$('.node-type-promotion-rebates.page-node-edit #content .section').addClass('promotion');
+	$('.views-field-field-promotion-thumbnail a').attr('target','_blank');
 })(jQuery);
