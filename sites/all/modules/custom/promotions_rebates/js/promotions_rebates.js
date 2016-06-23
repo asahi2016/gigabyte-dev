@@ -10,7 +10,7 @@
         function show_hide_distributor_program_details(){
 			//console.log($('div[id*="promotion-rebates-node-form"]').find('div[id*="edit-field-promotion-excel"]').find('span .file-size').size());
 			 console.log($('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').length);
-			$('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').css('border','1px solid red'); *//*
+			$('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').css('border','1px solid red');
             if($('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').length > 0){
                 $('table[id*="field-distributor-promotion-deta-values"]').hide();
                 $('table[id*="field-distributor-promotion-deta-values"]').hide();
@@ -36,6 +36,10 @@
 
 
         //Display distributor image on selection from dropdown
+        termlength = 0;
+        elem_array = new Array();
+        single_counter = 0;
+        original_dist = new Array();
         $(document).on('change','select[id*="edit-field-distributor-promotion-deta"]',function(){
             img_url = '';
             $('select[id*="edit-field-distributor-promotion-deta"]').parent('div').removeClass('active-selected');
@@ -51,13 +55,11 @@
                     $('div.field-name-field-prmotion-distributors div.active-selected').append(html_content);
                 }
             });
+            
+
         });
 
-        termlength = 0;
-        elem_array = new Array();
-        single_counter = 0;
-        original_dist = new Array();
-            setInterval(function(){
+      setInterval(function(){
                 var dis_selection = new Array();
                 var dis_selection_value = new Array();
 
@@ -95,47 +97,83 @@
                                             //elem_array.push({value:elem,label:dis_selection_value[j]});
                                             elem_array[i] = [elem, $(this).val()] ;
                                         }
-                                        $(elem).remove();
+                                        $(elem).attr('disabled',true);
                                     }
                                 }
                             });
                         }
-                        console.log(i);
                         switch(i){
                             case 1:
-                                for(l=0;l<i;l++){
-                                    console.log(original_dist);
-                                    console.log(elem_array);
+                                for(l=0;l<original_dist.length;l++){
+                                    console.log(l);
+                                    if(l<i){
+                                        optval = elem_array[l+1][1];
+                                    }
+                                    if(optval != original_dist[l][1]) {
+                                        $(this).find('select[id*="field-prmotion-distributors-und"]').attr('disabled',false);
+                                    }
                                 }
                                 break;
                             case 2:
-                                for(l=1;l<i;l++){
-                                    console.log(elem_array[l]);
+                                for(l=1;l<original_dist.length;l++){
+                                    if(l<i){
+                                        optval = elem_array[l][1];
+                                    }
+                                    if(optval != original_dist[l][1]) {
+                                        $(this).find('select[id*="field-prmotion-distributors-und"]').append(original_dist[l][0]);
+                                    }
                                 }
+
                                 break;
                             case 3:
-                                for(l=1;l<i;l++){
-                                    console.log(elem_array[l]);
+                                for(l=1;l<original_dist.length;l++){
+                                    if(l<i){
+                                        optval = elem_array[l][1];
+                                    }
+                                    if(optval != original_dist[l][1]) {
+                                        $(this).find('select[id*="field-prmotion-distributors-und"]').append(original_dist[l][0]);
+                                    }
                                 }
                                 break;
                             case 4:
-                                for(l=1;l<i;l++){
-                                    console.log(elem_array[l]);
+                                for(l=1;l<original_dist.length;l++){
+                                    if(l<i){
+                                        optval = elem_array[l][1];
+                                    }
+                                    if(optval != original_dist[l][1]) {
+                                        $(this).find('select[id*="field-prmotion-distributors-und"]').append(original_dist[l][0]);
+                                    }
                                 }
                                 break;
                             case 5:
-                                for(l=1;l<i;l++){
-                                    console.log(elem_array[l]);
+                                for(l=1;l<original_dist.length;l++){
+                                    if(l<i){
+                                        optval = elem_array[l][1];
+                                    }
+                                    if(optval != original_dist[l][1]) {
+                                        $(this).find('select[id*="field-prmotion-distributors-und"]').append(original_dist[l][0]);
+                                    }
                                 }
                                 break;
                             case 6:
-                                for(l=1;l<i;l++){
-                                    console.log(elem_array[l]);
+                                for(l=1;l<original_dist.length;l++){
+                                    if(l<i){
+                                        optval = elem_array[l][1];
+                                    }
+                                    if(optval != original_dist[l][1]) {
+                                        $(this).find('select[id*="field-prmotion-distributors-und"]').append(original_dist[l][0]);
+                                    }
                                 }
                                 break;
                             case 7:
-                                for(l=1;l<i;l++){
-                                    console.log(elem_array[l]);
+                                for(l=1;l<original_dist.length;l++){
+                                    if(l<i){
+                                        optval = elem_array[l][1];
+                                    }
+                                    console.log(optval)
+                                    if(optval != original_dist[l][1]) {
+                                        $(this).find('select[id*="field-prmotion-distributors-und"]').append(original_dist[l][0]);
+                                    }
                                 }
                                 break;
                         }
@@ -146,6 +184,7 @@
                     }
                 });
         },1000);
+
 
 
 
