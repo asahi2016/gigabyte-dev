@@ -89,15 +89,12 @@ function promotions_rebates_banner_content(){
         //Get field collections items by custom field collection item name
         $items = field_get_items('node', $node , 'field_distributor_promotion_deta');
 
-        if(isset($items) && !empty($items)) {
-
             foreach ($items as $item) {
                 $fc = field_collection_item_load($item['value']);
-                if (isset($fc->field_prmotion_distributors['und'][0]['tid']) == $term_id) {
+                if ($fc->field_prmotion_distributors['und'][0]['tid'] == $term_id) {
                     $banner['promo'] = $fc->field_distributor_promo_banner;
                 }
             }
-        }
 
         $uri = isset($node->field_promotion_banner['und'][0]['uri'])? file_create_url($node->field_promotion_banner['und'][0]['uri']):'';
         if(!empty($term_id)) {
@@ -535,23 +532,21 @@ function template_preprocess_promotion_rebates_view(&$variables){
     $banner = array();
     $records = array();
 
-    if(isset($items) && !empty($items)){
-
         foreach ($items as $item) {
 
             $fc = field_collection_item_load($item['value']);
 
-            $records[isset($fc->field_prmotion_distributors['und'][0]['tid'])] = 1;
+            $records[$fc->field_prmotion_distributors['und'][0]['tid']] = 1;
 
-            if(isset($fc->field_prmotion_distributors['und'][0]['tid']) == $term_id) {
+            if($fc->field_prmotion_distributors['und'][0]['tid'] == $term_id) {
 
                 $banner['promo'] = $fc->field_distributor_promo_banner;
 
-                $promotions[isset($fc->field_prmotion_distributors['und'][0]['tid'])]['tid'] = $fc->field_prmotion_distributors['und'][0]['tid'];
+                $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['tid'] = $fc->field_prmotion_distributors['und'][0]['tid'];
 
-                $promotions[isset($fc->field_prmotion_distributors['und'][0]['tid'])]['term'] = $fc->field_prmotion_distributors['und'][0]['taxonomy_term'];
+                $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['term'] = $fc->field_prmotion_distributors['und'][0]['taxonomy_term'];
 
-                $promotions[isset($fc->field_prmotion_distributors['und'][0]['tid'])]['banner'] = $fc->field_distributor_promo_banner;
+                $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['banner'] = $fc->field_distributor_promo_banner;
 
                 $promotion_details = array();
                 foreach ($fc->field_promotion_details['und'] as $key => $val) {
@@ -569,11 +564,10 @@ function template_preprocess_promotion_rebates_view(&$variables){
 
                     $promotion_details[$key] = $details;
                 }
-                $promotions[isset($fc->field_prmotion_distributors['und'][0]['tid'])]['promotions'] = $promotion_details;
+                $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['promotions'] = $promotion_details;
 
                 $promotion_notes = array();
 
-                if(isset($fc->field_promotion_notes['und'])) {
                     foreach ($fc->field_promotion_notes['und'] as $nkey => $nval) {
 
                         $field_items = field_collection_item_load($nval['value']);
@@ -581,18 +575,17 @@ function template_preprocess_promotion_rebates_view(&$variables){
                         $promotion_notes[$nkey] = isset($field_items->field_promotion_notes_sub['und'][0]) ? $field_items->field_promotion_notes_sub['und'][0]['value'] : '';
 
                     }
-                }
 
-                $promotions[isset($fc->field_prmotion_distributors['und'][0]['tid'])]['notes'] = $promotion_notes;
+                $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['notes'] = $promotion_notes;
             }
 
         }
-    }
 
     $variables['promotion_records'] = $records;
     $variables['terms'] = $terms;
     $variables['promotions'] = $promotions;
     $variables['banner'] = $banner;
+
 
 }
 
