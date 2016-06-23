@@ -236,7 +236,7 @@ function bartik_theme_preprocess_page(&$vars) {
  */
 function bartik_preprocess_page(&$variables) {
 
-    if(isset($variables['node']->nid) && !empty($variables['node']->nid) && $variables['node']->type == 'promotion_rebates') {
+    if(isset($variables['node']->nid) && !empty($variables['node']->nid) && $variables['node']->type == 'promotion_rebates' && arg(2) != 'edit') {
 
         unset($variables['page']['header']);
         unset($variables['page']['country_menu']);

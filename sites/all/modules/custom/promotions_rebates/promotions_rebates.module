@@ -105,7 +105,7 @@ function promotions_rebates_banner_content(){
         }
 
         if($uri)
-            $html = '<div class="txt_center"><img src="'.$uri.'" style="width:auto;overflow-x:scroll;margin: 0 0 10px 0px;"></div>';
+            $html = '<div class="txt_center"><img src="'.$uri.'" style="width:100%;height:auto;overflow-x:scroll;margin: 0 0 10px 0px;"></div>';
 
     }
 
