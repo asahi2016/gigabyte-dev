@@ -1711,7 +1711,7 @@ div.field-name-field-upload-file-roadmap .form-managed-file input[value='Remove'
 .node-events-form .date-clear.daily .form-wrapper{float:left;width:100%;}
 .node-events-form .date-clear.daily .form-type-date-repeat-form-element-radios > label{float:left;width:100%;}
 .node-events-form .bymonth .form-checkboxes .form-type-checkbox label{width:auto;}
-.field-type-taxonomy-term-reference div[id*='field-distributor-promotion-deta-add-more-wrapper'] .sticky-header{z-index:100;}
+.field-type-taxonomy-term-reference div[id*='field-distributor-promotion-deta-add-more-wrapper'] .sticky-header,table.sticky-header{z-index:1000;}
 /* .node-events-form .daily .container-inline.mo-we-fr .form-radio{float:left;margin:10px 5px 0 0;} */
 .node-events-form .daily .container-inline .date-clear{clear: inherit;width: 97%;float: left;}
 /* .node-events-form .date-clear .bymonthday >.form-item {margin:-22px 0 0 20px} */
