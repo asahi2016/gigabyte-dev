@@ -2125,7 +2125,9 @@ form.node-promotion_rebates-form{position:relative;float: left;padding: 0 0 30px
 .section.promotion h1{font-style:italic;}
 form.node-promotion_rebates-form input.form-submit{width:auto;margin:10px 10px 0 10px;}
 .page-customer-request-submission-review #messages div.section,.page-view-project-support-request-review #messages div.section{width:1200px;}
-.page-customer-request-submission-review #page-wrapper #messages div.section  .messages.error,.page-view-project-support-request-review #page-wrapper #messages div.section  .messages.error {width:1140px;}
+.page-customer-request-submission-review #page-wrapper #messages div.section  .messages.error,.page-view-project-support-request-review #page-wrapper #messages div.section  .messages.error ,
+.page-partner-promotions #messages div.section{width:1200px;}
+.page-partner-promotions #page-wrapper #messages div.section  .messages.error{width:1140px;}
 #page-wrapper #messages div.section  .messages.error{width: 940px;margin: 0px auto;float: inherit;}
 #page-wrapper form.node-promotion_rebates-form #field-distributor-promotion-deta-add-more-wrapper .messages.error{width:90%;}
 form.node-promotion_rebates-form .messages.error li{width:100%;float:left;}
@@ -2298,13 +2300,14 @@ table[id*='field-upload-file-values'] .file-widget  input[value='Remove']{backgr
 .page-customer-request-submission-review .view-make-a-request-submission-view{margin:20px 0px 0px 0px;}
 .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr.draggable.odd{box-shadow:0 0 0 0 #dedede;}
 .node-type-promotion-rebates .promotion_instruct{text-align: center;padding: 12px 0px;margin:0px auto;width:1000px;background: #E93F33;}
+.node-type-promotion-rebates #banner-area > .section{overflow:scroll;width:100%;}
 .node-type-promotion-rebates .promotion_instruct img{margin:0 0 10px 0px;}
 .node-type-promotion-rebates .promotion_instruct p{margin: 0;color: #fff;font-size: 18px;letter-spacing: 1px;}
 .node-type-promotion-rebates table.stores{margin:15px auto;width:900px;}
 .node-type-promotion-rebates .full-width.top_s{display:none;}
 .node-events-form fieldset.form-wrapper{border-bottom:0px;}
 .node-events-form #repeat-settings-fieldset .range-of-repeat{background: #e7e7e7;border-radius: 5px;margin: 20px 0px;padding: 10px; width:97%;}
-.page-partner-calendar h1#page-title{width:1200px;}
+.page-partner-calendar h1#page-title,.page-partner-promotions-intel h1#page-title{width:1200px;}
 .node-events-form .date-combo .fieldset-wrapper .date-clear .form-item.form-type-checkbox{float:left;} 
 #repeat-settings-fieldset .daily .form-type-date-repeat-form-element-radios label{width:auto;}
 #repeat-settings-fieldset .daily .form-type-date-repeat-form-element-radios > .form-radios{float: left;clear: both;}
