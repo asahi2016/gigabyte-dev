@@ -59,7 +59,7 @@ function promotions_rebates_banner_content(){
         $node = node_load(arg(1));
     }
 
-    if(!empty($node) && $node->type == 'promotion_rebates' && arg(2) != 'edit'){
+    if(!empty($node) && $node->type == 'promotion_rebates' && arg(2) != 'edit' && arg(2) != 'delete'){
 
         $term_name = null;
 
@@ -68,7 +68,7 @@ function promotions_rebates_banner_content(){
         $terms = null;
 
         //Checks term name from current url
-        if(!empty(arg(2)) && !is_numeric(arg(2)) && arg(2) !='edit'){
+        if(!empty(arg(2)) && !is_numeric(arg(2)) && arg(2) != 'edit'){
 
             $term_name = arg(2);
 
