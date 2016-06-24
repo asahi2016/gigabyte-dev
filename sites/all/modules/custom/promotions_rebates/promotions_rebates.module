@@ -59,7 +59,7 @@ function promotions_rebates_banner_content(){
         $node = node_load(arg(1));
     }
 
-    if(!empty($node) && $node->type == 'promotion_rebates'){
+    if(!empty($node) && $node->type == 'promotion_rebates' && arg(2) != 'edit'){
 
         $term_name = null;
 
@@ -68,7 +68,7 @@ function promotions_rebates_banner_content(){
         $terms = null;
 
         //Checks term name from current url
-        if(!empty(arg(2)) && !is_numeric(arg(2))){
+        if(!empty(arg(2)) && !is_numeric(arg(2)) && arg(2) !='edit'){
 
             $term_name = arg(2);
 
@@ -102,7 +102,7 @@ function promotions_rebates_banner_content(){
         }
 
         if($uri)
-            $html = '<div class="txt_center"><img src="'.$uri.'" style="width:100%;height:auto;overflow-x:scroll;margin: 0 0 10px 0px;"></div>';
+            $html = '<div class="txt_center"><img src="'.$uri.'" style="width:auto;height:auto;"></div>';
 
     }
 
@@ -585,7 +585,6 @@ function template_preprocess_promotion_rebates_view(&$variables){
     $variables['terms'] = $terms;
     $variables['promotions'] = $promotions;
     $variables['banner'] = $banner;
-
 
 }
 
