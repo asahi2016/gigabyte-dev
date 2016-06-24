@@ -1720,6 +1720,7 @@ fieldset.date-combo .container-inline-date > .form-item{margin: 0 30px 0 0;}
 .node-events-form fieldset.date-combo .container-inline-date.end-date-wrapper > .form-item > label{margin:0 40px 0 20px}
 .node-events-form fieldset.date-combo .container-inline-date .form-type-date-popup .date-padding{margin:0 0 0 0px;padding:0px;float:left;clear:inherit;}
 .node-events-form fieldset.date-combo .range-of-repeat .form-type-date-popup .date-padding{margin:20px 0 0 30px;padding:0px;}
+.node-events-form fieldset.date-combo .range-of-repeat .form-type-date-popup .date-padding{margin:20px 0 0 0px;padding:0px;}
 .node-events-form #repeat-settings-fieldset .form-type-checkbox input.form-checkbox{float:left;margin:7px 5px 0 0;}
 .node-events-form #repeat-settings-fieldset > .form-type-checkbox{float:left;margin:0px 0px 0 0px;}
 .node-events-form .date-clear .bymonthday .form-item label{width:auto;}
@@ -1820,7 +1821,7 @@ fieldset.date-combo .container-inline-date > .form-item{margin: 0 30px 0 0;}
 /* .page-node .group-page-us-content .field-name-body{width:1000px;margin:0px auto;} */
 .view-e-catalogs-view .views-field-edit-node,.view-e-catalogs-view .views-field-delete-node{float:left;margin:30px 0px 0px;}
 .page-node .group-page-us-content .field-name-body{width:1000px;margin:0px auto;} 
-.page-node .group-page-us-content .field-name-body.field-label-hidden{display:none;}
+/* .page-node .group-page-us-content .field-name-body.field-label-hidden{display:none;} */
 /* .page-node .group-page-us-content .field-name-body.field-label-hidden{display:none} */
 .page-node .split-page .group-page-us-content .field-name-body{width:570px;margin:0px;}
 .page-testimonial h1.title{width:1000px;margin:0px auto;padding:30px 0px;}
@@ -2303,3 +2304,12 @@ table[id*='field-upload-file-values'] .file-widget  input[value='Remove']{backgr
 .node-type-promotion-rebates .full-width.top_s{display:none;}
 .node-events-form fieldset.form-wrapper{border-bottom:0px;}
 .node-events-form #repeat-settings-fieldset .range-of-repeat{background: #e7e7e7;border-radius: 5px;margin: 20px 0px;padding: 10px; width:97%;}
+.page-partner-calendar h1#page-title{width:1200px;}
+.node-events-form .date-combo .fieldset-wrapper .date-clear .form-item.form-type-checkbox{float:left;} 
+#repeat-settings-fieldset .daily .form-type-date-repeat-form-element-radios label{width:auto;}
+#repeat-settings-fieldset .daily .form-type-date-repeat-form-element-radios > .form-radios{float: left;clear: both;}
+.node-events-form .container-inline-date.interval{float: left;}
+.node-events-form .container-inline.interval > .date-clear {width:auto;float:inherit;clear:both;}
+.node-events-form .container-inline.interval > .form-radio{float: left;margin: 10px 5px 0 0;}
+.node-events-form .container-inline-date > .form-radio > .date-clear{width: auto;float: left;}
+.container-inline-date .form-item .form-item{float: left;margin: 0 0 0 15px;}
