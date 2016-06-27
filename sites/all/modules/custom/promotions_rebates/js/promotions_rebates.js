@@ -65,7 +65,11 @@
            if(loopcheck >= distributor_option.length){
                $('input[id*="edit-field-distributor-promotion-deta-und-add-more"]').hide();
            }else{
-               $('input[id*="edit-field-distributor-promotion-deta-und-add-more"]').show();
+               if($('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').length > 0) {
+                   $('input[id*="edit-field-distributor-promotion-deta-und-add-more"]').hide();
+               }else{
+                   $('input[id*="edit-field-distributor-promotion-deta-und-add-more"]').show();
+               }
            }
 
         },2000);
