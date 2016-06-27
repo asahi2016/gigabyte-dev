@@ -52,6 +52,10 @@
 
            counter = $.cookie("loopcheck");
 
+           if(loopcheck < counter ) {
+                resetAllDistributors();
+           }
+
            if(loopcheck > counter) {
                resetAllDistributors();
            }
