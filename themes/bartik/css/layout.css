@@ -1820,6 +1820,9 @@ fieldset.date-combo .container-inline-date > .form-item{margin: 0 30px 0 0;}
 .view-e-catalogs-view .views-field-delete-node{text-align:left;}
 /* .page-node .group-page-us-content .field-name-body{width:1000px;margin:0px auto;} */
 .view-e-catalogs-view .views-field-edit-node,.view-e-catalogs-view .views-field-delete-node{float:left;margin:30px 0px 0px;}
+
+
+
 .page-node .group-page-us-content .field-name-body{width:1000px;margin:0px auto;} 
 /* .page-node .group-page-us-content .field-name-body.field-label-hidden{display:none;} */
 /* .page-node .group-page-us-content .field-name-body.field-label-hidden{display:none} */
@@ -2262,11 +2265,12 @@ table[id*='field-promotion-details-values'] td .field-name-field-gigabyte-model-
 #edit-field-promotion-excel  .form-item .form-managed-file{margin:0 0 0 220px;width: 615px;clear: both;}
 #search-form h2,.page-search h2{margin-bottom:0px;}
 .page-view-project-support-request-review ul.pager{margin:20px 0px 0px;}
-.page-search #content.wrapper_full ul.pager,.page-partner-upload-assets #content.wrapper_full ul.pager,#content.wrapper_full  .view-asset-download-history .pager,
+.page-search #content.wrapper_full ul.pager,.page-partner-upload-assets #content.wrapper_full ul.pager,.page-partner-promotions #content.wrapper_full ul.pager, #content.wrapper_full  .view-asset-download-history .pager,
 .page-customer-request-submission-review #content.wrapper_full ul.pager,.page-view-project-support-request-review #content.wrapper_full ul.pager{float:right;width:auto;}
-.page-search .pager li,.page-partner-upload-assets .pager li,.page-customer-request-submission-review .pager li,.page-view-project-support-request-review .pager li{background: #12406A;margin: 0 1px 0px 0px;border-radius: 5px;padding: 5px 12px;}
-.page-search .pager li a,.page-partner-upload-assets .pager li a,.page-customer-request-submission-review .pager li a,.page-view-project-support-request-review .pager li a{color: #fff;}
-.page-search .pager li.pager-current,.page-partner-upload-assets .pager li.pager-current,.page-customer-request-submission-review .pager li.pager-current,.page-view-project-support-request-review .pager li.pager-current{background:#fff;color: #12406A;}
+.page-search .pager li,.page-partner-upload-assets .pager li,.page-customer-request-submission-review .pager li,.page-view-project-support-request-review .pager li,.page-partner-promotions .pager li{background: #12406A;margin: 0 1px 0px 0px;border-radius: 5px;padding: 5px 12px;}
+.page-search .pager li a,.page-partner-upload-assets .pager li a,.page-customer-request-submission-review .pager li a,.page-view-project-support-request-review .pager li a,.page-partner-promotions .pager li a{color: #fff;}
+.page-search .pager li.pager-current,.page-partner-upload-assets .pager li.pager-current,.page-customer-request-submission-review .pager li.pager-current,.page-view-project-support-request-review .pager li.pager-current,
+.page-partner-promotions .pager li.pager-current{background:#fff;color: #12406A;}
 #block-system-user-menu ul.menu li.first p{margin:5px 0px 0px 0px;color:#000;float:left;}
 table[id*='field-promotion-details-values'].field-multiple-table .form-item .form-item{margin: 0px 5px 0px;}
 .node-promotion_rebates-form table#field-promotion-notes-values{float: left; border-bottom: 1px solid #c7bcbc;}
@@ -2300,7 +2304,7 @@ table[id*='field-upload-file-values'] .file-widget  input[value='Remove']{backgr
 .page-customer-request-submission-review .view-make-a-request-submission-view{margin:20px 0px 0px 0px;}
 .node-promotion_rebates-form table[id*='field-distributor-promotion-deta-values'] tr.draggable.odd{box-shadow:0 0 0 0 #dedede;}
 .node-type-promotion-rebates .promotion_instruct{text-align: center;padding: 12px 0px;margin:0px auto;width:1000px;background: #E93F33;}
-.node-type-promotion-rebates #banner-area > .section{overflow:scroll;width:100%;}
+.node-type-promotion-rebates #banner-area > .section{/* overflow:scroll; */width:100%;overflow-y:hidden;}
 .node-type-promotion-rebates .promotion_instruct img{margin:0 0 10px 0px;}
 .node-type-promotion-rebates .promotion_instruct p{margin: 0;color: #fff;font-size: 18px;letter-spacing: 1px;}
 .node-type-promotion-rebates table.stores{margin:15px auto;width:900px;}
