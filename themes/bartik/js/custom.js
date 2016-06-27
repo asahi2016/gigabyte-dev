@@ -34,7 +34,6 @@ jQuery(document).ready(function($) {
         $('#main-menu-nav > ul > li').css('width',f_width + 'px');
         $('#main-menu-nav > ul > li').css('padding-left',pad_s + 'px');
         $('#main-menu-nav > ul > li').css('padding-right',pad_s + 'px');
-
     $("a.register-account-link").parents('div.item-list').css('position','absolute');
     $("a.register-account-link").parents('div.item-list').css('bottom',35);
     $("a.register-account-link").parents('div.item-list').css('left',110);
@@ -157,11 +156,16 @@ jQuery(document).ready(function($) {
 				$('#'+active_class+' '+'#top-bar').addClass("fixed");			
 			}
 		}).scroll();
+		var window_width = $(window).width();
+		var img_width = $('#banner-area .section .txt_center img').width();
+		if(window_width <= img_width)
+		{		
+			$('.node-type-promotion-rebates #banner-area > .section').css('overflow-x','scroll');
+		}
     });
 });
 
 jQuery(document).ready(function($) {
-
 		$('.page-view-project-support-request-review .view-project-support-request-review .view-content').before($('.page-view-project-support-request-review .feed-icon'));
 		$('.page-view-project-support-request-review .view-project-support-request-review .view-content .views-table th:nth-child(8)').hide();
 		$('.page-view-project-support-request-review .view-project-support-request-review .view-content .views-table th:nth-child(9)').hide();
