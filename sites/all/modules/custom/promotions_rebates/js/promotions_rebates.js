@@ -95,9 +95,10 @@
 
             var all_selection = new Array;
 
-            $('div#edit-field-distributor-promotion-deta').find('div.field-name-field-prmotion-distributors').find('select.form-select').each(function (g) {
+            $('div#edit-field-distributor-promotion-deta').find('div.field-name-field-prmotion-distributors').find('select.form-select').each(function (g , dist) {
                 var all_select_option_val = $(this).find('option:selected').val();
                 if(all_select_option_val != '_none' && all_select_option_val && all_select_option_val != 0){
+                    gettermimage(all_select_option_val , dist);
                     all_selection[g] = all_select_option_val;
                 }
             });
@@ -174,47 +175,31 @@
         });
 
         //Display distributor image on selection from dropdown
-        termlength = 0;
-        elem_array = new Array();
-        single_counter = 0;
-        original_dist = new Array();
-        $(this).find('select[id*="field-prmotion-distributors-und"]').find('option').each(function(m,el){
-            if(single_counter == 0){
-                original_dist[m] = [el,$(this).val()];
-            }
-        });single_counter = 1;
         $(document).on('change','select[id*="edit-field-distributor-promotion-deta"]',function(){
-            img_url = '';
-            $('select[id*="edit-field-distributor-promotion-deta"]').parent('div').removeClass('active-selected');
-            $(this).parent('div').addClass('active-selected');
-            $.ajax({
-                url:Drupal.settings.gigabyte.baseUrl+'/promotions/get/termdata',
-                type:'post',
-                data:{termid:$(this).val()},
-                success:function(data){
-                    img_url = data;
-                    var html_content = '<span class="distributor-image" ><img src="'+img_url+'" /> </span>';
-                    $('div.field-name-field-prmotion-distributors div.active-selected').find('span').remove();
-                    $('div.field-name-field-prmotion-distributors div.active-selected').append(html_content);
-                }
-            });
+            gettermimage($(this).val(), $(this));
         });
 
-        function gettermimage(termid){
+        function gettermimage(termid, elem){
             img_url = '';
-            $('select[id*="edit-field-distributor-promotion-deta"]').parent('div').removeClass('active-selected');
-            $(this).parent('div').addClass('active-selected');
-            $.ajax({
-                url:Drupal.settings.gigabyte.baseUrl+'/promotions/get/termdata',
-                type:'post',
-                data:{termid:termid},
-                success:function(data){
-                    img_url = data;
-                    var html_content = '<span class="distributor-image" ><img src="'+img_url+'" /> </span>';
-                    $('div.field-name-field-prmotion-distributors div.active-selected').find('span').remove();
-                    $('div.field-name-field-prmotion-distributors div.active-selected').append(html_content);
-                }
-            });
+            $(elem).parent('div').removeClass('active-selected');
+
+            if(termid != '_none') {
+                $.ajax({
+                    url: Drupal.settings.gigabyte.baseUrl + '/promotions/get/termdata',
+                    type: 'post',
+                    data: {termid: termid},
+                    success: function (data) {
+                        img_url = data;
+                        var html_content = '<span class="distributor-image" ><img src="' + img_url + '" /> </span>';
+                        $(elem).parent('div').find('span').remove();
+                        $(elem).parent('div').append(html_content);
+                    }
+                });
+            }else{
+                $(elem).parent('div').find('span.distributor-image').remove();
+            }
+
+            return true;
 
         }
     });
