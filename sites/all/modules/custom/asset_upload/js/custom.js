@@ -30,9 +30,12 @@ jQuery(document).ready(function($){
     });
 
     $('.assets-preview-image img').colorbox();
+    $(document).on('load',function(){
+        $('.assets-preview-image img').colorbox();
+    });
     $('.assets-upload-display img.file-icon').hide();
 
-
+    // Store download history
     $("ul.assets-list-partner li.assets-row-list-partner").each(function(){
         $(this).find('div.views-field-field-upload-file').find('table.download-file-type-info-table').find('td').find('a').click(function(){
             //alert('Clicked');
@@ -51,7 +54,7 @@ jQuery(document).ready(function($){
         });
     });
 
-
+    // Store download history
     function file_ajax_save(imgpath){
         $.ajax({
             url:Drupal.settings.gigabyte.baseUrl+'/partner/asset/store/history',
