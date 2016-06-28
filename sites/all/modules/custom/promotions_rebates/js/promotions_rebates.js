@@ -5,7 +5,6 @@
 
         function show_hide_distributor_program_details(){
 
-			$('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').css('border','1px solid red');
             if($('.page-promotion-upload #edit-field-promotion-excel .form-item .form-managed-file').find('span.file-size').length > 0){
                 $('table[id*="field-distributor-promotion-deta-values"]').hide();
                 $('table[id*="field-distributor-promotion-deta-values"]').hide();
