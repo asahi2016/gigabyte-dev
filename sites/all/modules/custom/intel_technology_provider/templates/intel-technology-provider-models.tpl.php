@@ -89,7 +89,7 @@ if(user_is_logged_in()){
     </tbody>
 </table>
 
-<div style="width:265px; margin:10px auto 0 auto; font-family: 'ralewayregular', sans-serif; color:#295e95; font-weight:900; font-size:20px;"><a class="inline" href="#Terms" id="terms-link">TERMS AND CONDITIONS</a></div>
+<div style="width:290px; margin:10px auto 0 auto; font-family: 'ralewayregular', sans-serif; color:#295e95; font-weight:900; font-size:20px;padding: 30px 0"><a class="inline" href="#Terms" id="terms-link">TERMS AND CONDITIONS</a></div>
 <div id="term-conditions" style="display: none;">
     <div id="Terms">
         <ul>
