@@ -162,7 +162,7 @@ body.page-search{
     width: 280px;
 }
 #footer-wrapper {
-    padding: 35px 5px 30px;
+    padding: 0px 5px 10px;
 }
 .region-footer-firstcolumn,
 .region-footer-secondcolumn,
@@ -2320,6 +2320,6 @@ table[id*='field-upload-file-values'] .file-widget  input[value='Remove']{backgr
 .node-events-form .container-inline.interval > .form-radio{float: left;margin: 10px 5px 0 0;}
 .node-events-form .container-inline-date > .form-radio > .date-clear{width: auto;float: left;}
 .container-inline-date .form-item .form-item{float: left;margin: 0 0 0 15px;}
-#cboxLoadedContent #Terms{width : 700px !important;}
+#cboxLoadedContent #Terms{width : 800px !important;}
 #Terms ul{padding : 15px 30px 0}
 #Terms li{font-family: 'ralewayregular', sans-serif; margin: 8px 0;list-style-type: disc; font-weight:600;}
