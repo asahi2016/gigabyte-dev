@@ -568,6 +568,8 @@ function template_preprocess_promotion_rebates_view(&$variables){
 
                 $promotion_notes = array();
 
+                if(isset($fc->field_promotion_notes['und'])) {
+
                     foreach ($fc->field_promotion_notes['und'] as $nkey => $nval) {
 
                         $field_items = field_collection_item_load($nval['value']);
@@ -575,6 +577,7 @@ function template_preprocess_promotion_rebates_view(&$variables){
                         $promotion_notes[$nkey] = isset($field_items->field_promotion_notes_sub['und'][0]) ? $field_items->field_promotion_notes_sub['und'][0]['value'] : '';
 
                     }
+                }
 
                 $promotions[$fc->field_prmotion_distributors['und'][0]['tid']]['notes'] = $promotion_notes;
             }
