@@ -91,8 +91,10 @@ function promotions_rebates_banner_content(){
 
             foreach ($items as $item) {
                 $fc = field_collection_item_load($item['value']);
-                if ($fc->field_prmotion_distributors['und'][0]['tid'] == $term_id) {
-                    $banner['promo'] = $fc->field_distributor_promo_banner;
+                if(isset($fc->field_prmotion_distributors['und'])) {
+                    if ($fc->field_prmotion_distributors['und'][0]['tid'] == $term_id) {
+                        $banner['promo'] = $fc->field_distributor_promo_banner;
+                    }
                 }
             }
 
@@ -536,9 +538,10 @@ function template_preprocess_promotion_rebates_view(&$variables){
 
             $fc = field_collection_item_load($item['value']);
 
+            if(isset($fc->field_prmotion_distributors['und'])) {
+
             $records[$fc->field_prmotion_distributors['und'][0]['tid']] = 1;
 
-            if(isset($fc->field_prmotion_distributors['und'])) {
 
                 if ($fc->field_prmotion_distributors['und'][0]['tid'] == $term_id) {
 
