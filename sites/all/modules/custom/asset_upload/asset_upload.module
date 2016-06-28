@@ -157,7 +157,7 @@ function asset_upload_views_pre_render(&$view) {
                                 } else if (($file_data['file']['filesize'] / 1000) > 1023) {
                                     $size = round(($file_data['file']['filesize'] / (1024 * 1024)), 2) . ' MB';
                                 }
-                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><a href="' . $base_url . '/sites/default/files/file_uploads/assets/' . $file_data['file']['filename'] . '" target="_blank">' . strtoupper($ext[count($ext) - 1]) . '</a> </td>';
+                                $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><a href="' . $base_url . '/sites/default/files/file_uploads/assets/' . $file_data['file']['filename'] . '" download="download">' . strtoupper($ext[count($ext) - 1]) . '</a> </td>';
                                 $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">' . $file_data['res']['value'] . '</p></td>';
                                 if (!empty($file_data['file']['metadata']['width']) && !empty($file_data['file']['metadata']['height'])) {
                                     $view->result[$key]->field_field_upload_file[$k]['rendered']['#markup'] .= '<td><p class="internal-asset-info-p">' . $file_data['file']['metadata']['width'] . ' x ' . $file_data['file']['metadata']['height'] . '</p></td>';
