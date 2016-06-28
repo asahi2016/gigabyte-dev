@@ -30,9 +30,6 @@ jQuery(document).ready(function($){
     });
 
     $('.assets-preview-image img').colorbox();
-    $(document).on('load',function(){
-        $('.assets-preview-image img').colorbox();
-    });
     $('.assets-upload-display img.file-icon').hide();
 
     // Store download history
