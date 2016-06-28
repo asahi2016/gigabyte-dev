@@ -2311,7 +2311,7 @@ table[id*='field-upload-file-values'] .file-widget  input[value='Remove']{backgr
 .node-type-promotion-rebates .full-width.top_s{display:none;}
 .node-events-form fieldset.form-wrapper{border-bottom:0px;}
 .node-events-form #repeat-settings-fieldset .range-of-repeat{background: #e7e7e7;border-radius: 5px;margin: 20px 0px;padding: 10px; width:97%;}
-.page-partner-calendar h1#page-title,.page-partner-promotions-intel h1#page-title{width:1200px;}
+.page-partner-calendar h1#page-title,.page-partner-promotions-intel h1#page-title,.page-partner-promotions h1#page-title{width:1200px;}
 .node-events-form .date-combo .fieldset-wrapper .date-clear .form-item.form-type-checkbox{float:left;} 
 #repeat-settings-fieldset .daily .form-type-date-repeat-form-element-radios label{width:auto;}
 #repeat-settings-fieldset .daily .form-type-date-repeat-form-element-radios > .form-radios{float: left;clear: both;}
