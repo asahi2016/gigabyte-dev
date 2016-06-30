@@ -2290,6 +2290,7 @@ table[id*='field-upload-file-values'] .file-widget  input[value='Remove']{backgr
 .view-project-support-request-review .views-table tr.even td{background: #e8edff;border-bottom: 1px solid #fff;color: #669;border-top: 1px solid transparent;padding: 8px;border-bottom:1px solid #aabcfe;border-left:1px solid #aabcfe}
 .view-project-support-request-review .views-table tr:hover td{background: #d0dafd;color: #339;}
 .views-table tr td{border-left:1px solid #aabcfe;border-bottom:1px solid #aabcfe}
+.page-partner-e-catalogs .views-table tr td{border:0px;padding:0px;}
 .view-project-support-request-review .views-table th a,.views-table th a{color: #039;}
 .page-view-project-support-request-review h1#page-title,.view-project-support-request-review,.view-project-support-request-review .views-table{width:1200px;margin:0px auto;padding-bottom: 0;}
 .page-partner-asset.page-partner-asset-download  .view-asset-download-history{width:1000px;margin:0px auto;}
